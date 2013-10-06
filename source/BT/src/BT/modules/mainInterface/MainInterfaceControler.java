@@ -16,7 +16,6 @@ public class MainInterfaceControler extends BaseControler{
     String programName;
     public MainInterfaceControler (String programName)
     {
-        super();
         this.programName = programName;
     }
     
