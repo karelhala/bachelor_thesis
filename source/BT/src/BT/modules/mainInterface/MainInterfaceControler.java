@@ -22,13 +22,8 @@ public class MainInterfaceControler extends BaseControler{
     
     public void runTheMainWindow()
     {
-    java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                MainWindowModel mainWindowModel = new MainWindowModel("tOOl");
-                mainWindowModel.initComponents();
-            }
-        });
+        MainWindowModel mainWindowModel = new MainWindowModel("tOOl");
+        mainWindowModel.initComponents();
     }
     
 

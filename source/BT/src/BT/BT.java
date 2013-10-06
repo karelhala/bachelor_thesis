@@ -16,7 +16,12 @@ public class BT {
      */
     public static void main(String[] args) {
         System.out.println("you are about to run the program");
-        MainInterfaceControler mainWindow = new MainInterfaceControler("BT");
-        mainWindow.runTheMainWindow();
+        final MainInterfaceControler mainWindow = new MainInterfaceControler("BT");
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                mainWindow.runTheMainWindow();
+            }
+        });
     }
 }
