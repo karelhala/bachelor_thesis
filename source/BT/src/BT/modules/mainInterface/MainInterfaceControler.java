@@ -5,6 +5,7 @@
 package BT.modules.mainInterface;
 
 import BT.BaseControler;
+import GUI.MainContentModel;
 import GUI.MainWindowModel;
 
 /**
@@ -21,7 +22,10 @@ public class MainInterfaceControler extends BaseControler{
     
     public void runTheMainWindow()
     {
+        MainContentModel myContent = new MainContentModel();
+        
         MainWindowModel mainWindowModel = new MainWindowModel("tOOl");
+        mainWindowModel.setContent(myContent);
         mainWindowModel.initComponents();
     }
     
