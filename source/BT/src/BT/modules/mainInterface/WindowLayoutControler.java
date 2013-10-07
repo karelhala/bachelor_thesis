@@ -67,30 +67,5 @@ public class WindowLayoutControler {
         myWindow.setContentsSplitPanes(this.mycontent);
         myWindow.setDividerLocation();
         return myWindow.getLeftSplitPane();
-//        JSplitPane leftSplitPane = new JSplitPane();
-//        JSplitPane rightSplitPane = new JSplitPane();
-//        JSplitPane leftContentSplitPane = new JSplitPane();
-//        JSplitPane rightContentSplitPane = new JSplitPane();
-//        
-//        rightSplitPane.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
-//        leftContentSplitPane.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
-//        
-//        leftContentSplitPane.setLeftComponent(this.mycontent.getLeftTopPane());
-//        leftContentSplitPane.setRightComponent(this.mycontent.getLeftBottomPane());
-//        
-//        rightContentSplitPane.setLeftComponent(this.mycontent.getBottomLeftPane());
-//        rightContentSplitPane.setRightComponent(this.mycontent.getBottomRightPane());
-//        
-//        rightSplitPane.setLeftComponent(this.mycontent.getCenterPane());
-//        rightSplitPane.setRightComponent(rightContentSplitPane);
-//        
-//        leftSplitPane.setLeftComponent(leftContentSplitPane);
-//        leftSplitPane.setRightComponent(rightSplitPane);
-//        
-//        
-//        leftSplitPane.setDividerLocation(200);
-//        rightSplitPane.setDividerLocation(450);
-//        leftContentSplitPane.setDividerLocation(300);
-//        rightContentSplitPane.setDividerLocation(400);
     }
 }
