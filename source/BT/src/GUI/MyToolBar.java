@@ -30,7 +30,7 @@ public class MyToolBar {
         this.jToolBar.setRollover(true);
         
         JButton jButton1 = new javax.swing.JButton();
-        jButton1.setText("first");
+        jButton1.setText("New file");
         jButton1.setFocusable(false);
         this.jToolBar.add(jButton1);
     }

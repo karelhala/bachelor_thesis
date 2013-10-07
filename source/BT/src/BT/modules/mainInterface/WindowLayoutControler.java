@@ -53,8 +53,6 @@ public class WindowLayoutControler {
         JTabbedPane typeTab = new JTabbedPane();
         
         typeTab.addTab("UC", getWindowLayout());
-        typeTab.addTab("UML", getWindowLayout());
-        typeTab.addTab("OOPN", getWindowLayout());
         
         this.fileTab.addTab("new file", typeTab);
     }
