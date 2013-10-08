@@ -5,6 +5,7 @@
 package GUI;
 
 import javax.swing.JButton;
+import javax.swing.JPanel;
 import javax.swing.JToolBar;
 
 /**
@@ -23,15 +24,20 @@ public class MyToolBar {
     {
         return this.jToolBar;
     }
+    
+    public void setToolbar(JToolBar jToolBar)
+    {
+        this.jToolBar = jToolBar;
+    }
+    
+    public void setPaneToolbar(JPanel mypanel)
+    {
+        this.jToolBar.add(mypanel);
+    }
 
     private void initializeToolBar() {
         this.jToolBar = new JToolBar();
         this.jToolBar.setFloatable(false);
         this.jToolBar.setRollover(true);
-        
-        JButton jButton1 = new javax.swing.JButton();
-        jButton1.setText("New file");
-        jButton1.setFocusable(false);
-        this.jToolBar.add(jButton1);
     }
 }

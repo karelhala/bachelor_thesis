@@ -5,8 +5,8 @@
 package BT.modules.mainInterface;
 
 import BT.BaseControler;
-import GUI.MainContentModel;
 import GUI.MainWindowModel;
+import GUI.MyToolBar;
 
 /**
  *
@@ -22,12 +22,15 @@ public class MainInterfaceControler extends BaseControler{
     
     public void runTheMainWindow()
     {
-        MainContentModel myContent = new MainContentModel();
+        ToolBarContentControler ToolBarContent = new ToolBarContentControler();
+        MyToolBar toolBar = new MyToolBar();
+        WindowLayoutControler myLayout = new WindowLayoutControler(toolBar);
         
-        MainWindowModel mainWindowModel = new MainWindowModel("tOOl");
-        mainWindowModel.setContent(myContent);
+        ToolBarContent.addBasicButtons(myLayout);
+        toolBar.setPaneToolbar(ToolBarContent.getToolBarcontent().getToolBarPane());
+                
+        MainWindowModel mainWindowModel = new MainWindowModel("tOOl", myLayout);
         mainWindowModel.initComponents();
     }
-    
 
 }

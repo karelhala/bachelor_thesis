@@ -7,32 +7,26 @@ package BT.modules.mainInterface;
 import GUI.MainContentModel;
 import GUI.MyToolBar;
 import java.awt.BorderLayout;
-import java.awt.Component;
 import java.awt.Container;
-import java.awt.Dimension;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 import javax.swing.JTabbedPane;
 import GUI.WindowLayoutModel;
+import java.awt.Component;
 
 /**
  *
  * @author Karel
  */
 public class WindowLayoutControler {
-    private MainContentModel mycontent;
     private JTabbedPane fileTab;
-    
-    public WindowLayoutControler()
+    private MyToolBar toolBar;
+    public WindowLayoutControler(MyToolBar toolBar)
     {
+        this.toolBar = toolBar;
         fileTab = new JTabbedPane();
     }
     
-    public void setContent (MainContentModel content)
-    {
-        this.mycontent = content;
-    }
     
     public void addComponentsToPane(Container pane) {
         if (!(pane.getLayout() instanceof BorderLayout)) {
@@ -40,29 +34,43 @@ public class WindowLayoutControler {
             return;
         }
 
-        MyToolBar toolbar = new MyToolBar();
-        pane.add(toolbar.getToolbar(), BorderLayout.PAGE_START);
         
-        addNewTab();
+        pane.add(this.toolBar.getToolbar(), BorderLayout.PAGE_START);
 
         pane.add(this.fileTab, BorderLayout.CENTER);
     }
+    public void addNewTab(MainContentModel UCContentModel, MainContentModel UMLContentModel, MainContentModel OOPNContentModel)
+    {
+        addNewTab(UCContentModel, UMLContentModel, OOPNContentModel, "new file");
+    }
     
-    public void addNewTab()
+    public void removeTab(Component selectedTab)
+    {
+        this.fileTab.remove(selectedTab);
+    }
+    
+    public Component getSelectedTab()
+    {
+        return this.fileTab.getSelectedComponent();
+    }
+    
+    public void addNewTab(MainContentModel UCContentModel, MainContentModel UMLContentModel, MainContentModel OOPNContentModel, String name)
     {
         JTabbedPane typeTab = new JTabbedPane();
         
-        typeTab.addTab("UC", getWindowLayout());
+        typeTab.addTab("UC", getWindowLayout(UCContentModel));
+        typeTab.addTab("UML", getWindowLayout(UMLContentModel));
+        typeTab.addTab("OOPN", getWindowLayout(OOPNContentModel));
         
-        this.fileTab.addTab("new file", typeTab);
+        this.fileTab.addTab(name, typeTab);
     }
     
-    private JSplitPane getWindowLayout()
+    private JSplitPane getWindowLayout(MainContentModel mycontent)
     {
         WindowLayoutModel myWindow = new WindowLayoutModel();
         myWindow.initSplitPanes();
         myWindow.setVerticals();
-        myWindow.setContentsSplitPanes(this.mycontent);
+        myWindow.setContentsSplitPanes(mycontent);
         myWindow.setDividerLocation();
         return myWindow.getLeftSplitPane();
     }
