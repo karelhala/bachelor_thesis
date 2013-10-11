@@ -47,6 +47,11 @@ public class NewJFrame extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                keypressed(evt);
+            }
+        });
 
         jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
@@ -189,8 +194,12 @@ public class NewJFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        // TODO add your handling code here:
+        System.out.println(evt);
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void keypressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_keypressed
+        System.out.println(evt);
+    }//GEN-LAST:event_keypressed
 
     /**
      * @param args the command line arguments

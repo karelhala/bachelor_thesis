@@ -25,7 +25,7 @@ public class ToolBarContentControler {
     {
         JPanel myPanel = this.toolBarcontent.getToolBarPane();
         JButton NewFileButton = toolBarcontent.addNewButton("New File");
-        JButton Closebutton = toolBarcontent.addNewButton("Close");
+        JButton Closebutton = toolBarcontent.addNewButton("Close File");
         
         NewFileButton.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override

@@ -5,6 +5,7 @@
 package BT.modules.mainInterface;
 
 import GUI.MainContentModel;
+import GUI.CloseTabbedPane;
 import GUI.MyToolBar;
 import java.awt.BorderLayout;
 import java.awt.Container;
@@ -19,12 +20,12 @@ import java.awt.Component;
  * @author Karel
  */
 public class WindowLayoutControler {
-    private JTabbedPane fileTab;
+    private CloseTabbedPane fileTab;
     private MyToolBar toolBar;
     public WindowLayoutControler(MyToolBar toolBar)
     {
         this.toolBar = toolBar;
-        fileTab = new JTabbedPane();
+        fileTab = new CloseTabbedPane();
     }
     
     
@@ -33,7 +34,6 @@ public class WindowLayoutControler {
             pane.add(new JLabel("Container doesn't use BorderLayout!"));
             return;
         }
-
         
         pane.add(this.toolBar.getToolbar(), BorderLayout.PAGE_START);
 
@@ -51,6 +51,7 @@ public class WindowLayoutControler {
     
     public Component getSelectedTab()
     {
+//        int i = this.fileTab.indexOfTabComponent();
         return this.fileTab.getSelectedComponent();
     }
     
@@ -61,8 +62,7 @@ public class WindowLayoutControler {
         typeTab.addTab("UC", getWindowLayout(UCContentModel));
         typeTab.addTab("UML", getWindowLayout(UMLContentModel));
         typeTab.addTab("OOPN", getWindowLayout(OOPNContentModel));
-        
-        this.fileTab.addTab(name, typeTab);
+        this.fileTab.addCloseTab(name, typeTab);
     }
     
     private JSplitPane getWindowLayout(MainContentModel mycontent)
@@ -74,4 +74,5 @@ public class WindowLayoutControler {
         myWindow.setDividerLocation();
         return myWindow.getLeftSplitPane();
     }
+    
 }

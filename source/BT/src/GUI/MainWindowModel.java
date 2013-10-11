@@ -6,6 +6,12 @@ package GUI;
 
 import BT.modules.mainInterface.WindowLayoutControler;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
+import javax.swing.AbstractAction;
+import javax.swing.InputMap;
+import javax.swing.KeyStroke;
 
 /**
  *
@@ -41,6 +47,7 @@ public class MainWindowModel extends javax.swing.JFrame{
         this.pack();
         this.setLocationRelativeTo(null);
         this.setVisible(true);
+        
     }
 
 }
