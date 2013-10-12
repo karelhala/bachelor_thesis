@@ -16,6 +16,7 @@ import javax.swing.JPanel;
  */
 public class ToolBarContentControler {
     private ToolBarContentModel toolBarcontent;
+    private MouseAdapter newFileMouseClicked;
     
     public ToolBarContentControler()
     {
@@ -28,14 +29,13 @@ public class ToolBarContentControler {
         JButton NewFileButton = toolBarcontent.addNewButton("New File");
         JButton Closebutton = toolBarcontent.addNewButton("Close File");
         
-        MouseAdapter newFileMouseClickced = new MouseAdapter(){
+        this.newFileMouseClicked = new MouseAdapter(){
             @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 NewFileButtonMouseClicked(evt, myLayout);
             }
         };
-        
-        NewFileButton.addMouseListener(newFileMouseClickced);
+        NewFileButton.addMouseListener(this.newFileMouseClicked);
         
         Closebutton.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
@@ -67,5 +67,10 @@ public class ToolBarContentControler {
     public ToolBarContentModel getToolBarcontent()
     {
         return this.toolBarcontent;
+    }
+    
+    public MouseAdapter getNewFileMouseClicked()
+    {
+        return this.newFileMouseClicked;
     }
 }

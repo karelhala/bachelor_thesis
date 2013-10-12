@@ -7,6 +7,7 @@ package BT.modules.mainInterface;
 import BT.BaseControler;
 import GUI.MainWindowModel;
 import GUI.MyToolBar;
+import java.awt.event.MouseAdapter;
 
 /**
  *
@@ -27,6 +28,10 @@ public class MainInterfaceControler extends BaseControler{
         WindowLayoutControler myLayout = new WindowLayoutControler(toolBar);
         
         ToolBarContent.addBasicButtons(myLayout);
+        MouseAdapter addNewFileMouseclicked = ToolBarContent.getNewFileMouseClicked();
+        myLayout.setAddNewTabListener(addNewFileMouseclicked);
+        myLayout.setMouseClickedOnPlusButton();
+        
         toolBar.setPaneToolbar(ToolBarContent.getToolBarcontent().getToolBarPane());
                 
         MainWindowModel mainWindowModel = new MainWindowModel("tOOl", myLayout);

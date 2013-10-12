@@ -66,6 +66,19 @@ public class CloseTabbedPane extends JTabbedPane{
     
     public void removeTab(Component component)
     {
+        if (this.indexOfComponent(component) != -1)
+        {
+            if (this.indexOfComponent(component) == this.getSelectedIndex())
+            {
+                
+                this.setSelectedIndex(this.getTabCount()-3);
+            }
+        }
+        if (this.getTabCount() == 1)
+        {
+            this.setSelectedIndex(-1);
+        }
+        
         this.remove(component);
     }
     
@@ -90,14 +103,7 @@ public class CloseTabbedPane extends JTabbedPane{
     
     private void buttonCloseMouseClicked (MouseEvent evt, Component component)
     {
-        if (this.indexOfComponent(component) != -1)
-        {
-            removeTab(component);
-        }
-        if (this.getTabCount() == 1)
-        {
-            this.setSelectedIndex(-1);
-        }
+        removeTab(component);
     }
     
     private void createIconsForButton(JButton buttonClose)

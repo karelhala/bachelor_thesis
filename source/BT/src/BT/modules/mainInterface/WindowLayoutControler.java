@@ -15,6 +15,7 @@ import javax.swing.JSplitPane;
 import javax.swing.JTabbedPane;
 import GUI.WindowLayoutModel;
 import java.awt.Component;
+import java.awt.event.MouseAdapter;
 
 /**
  *
@@ -24,6 +25,7 @@ public class WindowLayoutControler {
     private CloseTabbedPane fileTab;
     private MyToolBar toolBar;
     private PlusTab plusTab;
+    private MouseAdapter addNewTabListener;
     public WindowLayoutControler(MyToolBar toolBar)
     {
         this.toolBar = toolBar;
@@ -32,6 +34,15 @@ public class WindowLayoutControler {
         this.plusTab.AddPlusTab(this.fileTab);
     }
     
+    public void setAddNewTabListener(MouseAdapter addNewTabListener)
+    {
+        this.addNewTabListener = addNewTabListener;
+    }
+    
+    public void setMouseClickedOnPlusButton()
+    {
+        this.plusTab.addMouseClickedListenerToPlus(this.addNewTabListener);
+    }
     
     public void addComponentsToPane(Container pane) {
         if (!(pane.getLayout() instanceof BorderLayout)) {
@@ -93,6 +104,7 @@ public class WindowLayoutControler {
         }
         this.fileTab.addCloseTab(name, typeTab);
         this.plusTab.AddPlusTab(this.fileTab);
+        setMouseClickedOnPlusButton();
         this.fileTab.setEnabledAt(this.fileTab.getTabCount()-1, false);
     }
     
