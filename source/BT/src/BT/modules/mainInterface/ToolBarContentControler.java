@@ -6,6 +6,7 @@ package BT.modules.mainInterface;
 
 import GUI.MainContentModel;
 import GUI.ToolBarContentModel;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -27,12 +28,14 @@ public class ToolBarContentControler {
         JButton NewFileButton = toolBarcontent.addNewButton("New File");
         JButton Closebutton = toolBarcontent.addNewButton("Close File");
         
-        NewFileButton.addMouseListener(new java.awt.event.MouseAdapter() {
+        MouseAdapter newFileMouseClickced = new MouseAdapter(){
             @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 NewFileButtonMouseClicked(evt, myLayout);
             }
-        });
+        };
+        
+        NewFileButton.addMouseListener(newFileMouseClickced);
         
         Closebutton.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override

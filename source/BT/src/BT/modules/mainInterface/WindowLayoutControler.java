@@ -7,6 +7,7 @@ package BT.modules.mainInterface;
 import GUI.MainContentModel;
 import GUI.CloseTabbedPane;
 import GUI.MyToolBar;
+import GUI.PlusTab;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import javax.swing.JLabel;
@@ -22,10 +23,13 @@ import java.awt.Component;
 public class WindowLayoutControler {
     private CloseTabbedPane fileTab;
     private MyToolBar toolBar;
+    private PlusTab plusTab;
     public WindowLayoutControler(MyToolBar toolBar)
     {
         this.toolBar = toolBar;
         fileTab = new CloseTabbedPane();
+        plusTab = new PlusTab();
+        this.plusTab.AddPlusTab(this.fileTab);
     }
     
     
@@ -44,9 +48,29 @@ public class WindowLayoutControler {
         addNewTab(UCContentModel, UMLContentModel, OOPNContentModel, "new file");
     }
     
-    public void removeTab(Component selectedTab)
+     public void removeTab(Component selectedTab)
+     {
+         removeTab(selectedTab, true);
+     }
+    
+    public void removeTab(Component selectedTab, Boolean closedByButton)
     {
-        this.fileTab.remove(selectedTab);
+        if (closedByButton && this.fileTab.getTabCount()>1)
+        {
+            this.fileTab.remove(selectedTab);
+        }
+        else if (!closedByButton)
+        {
+            this.fileTab.remove(selectedTab);
+        }
+        if (this.fileTab.getTabCount()>1)
+        {
+            this.fileTab.setSelectedIndex(this.fileTab.getTabCount() - 2);
+        }
+        else
+        {
+            this.fileTab.setSelectedIndex(-1);
+        }
     }
     
     public Component getSelectedTab()
@@ -62,7 +86,14 @@ public class WindowLayoutControler {
         typeTab.addTab("UC", getWindowLayout(UCContentModel));
         typeTab.addTab("UML", getWindowLayout(UMLContentModel));
         typeTab.addTab("OOPN", getWindowLayout(OOPNContentModel));
+       
+        if (this.fileTab.getTabCount() > 0)
+        {
+            removeTab(this.fileTab.getComponentAt(this.fileTab.getTabCount()-1), false);
+        }
         this.fileTab.addCloseTab(name, typeTab);
+        this.plusTab.AddPlusTab(this.fileTab);
+        this.fileTab.setEnabledAt(this.fileTab.getTabCount()-1, false);
     }
     
     private JSplitPane getWindowLayout(MainContentModel mycontent)

@@ -51,7 +51,7 @@ public class CloseTabbedPane extends JTabbedPane{
 
         this.setSelectedComponent(component);
          
-        this.getActionMap().put("closeTab", new AbstractAction() {
+        component.getActionMap().put("closeTab", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 removeTab(component);
@@ -59,7 +59,7 @@ public class CloseTabbedPane extends JTabbedPane{
           }
         );
         
-         InputMap inputMap = this.getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT );
+         InputMap inputMap = component.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
          
          inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_W, InputEvent.CTRL_MASK), "closeTab");
     }
@@ -73,7 +73,6 @@ public class CloseTabbedPane extends JTabbedPane{
     {
         JButton buttonClose = new JButton();
         buttonClose.setToolTipText("Close this tab");
-        buttonClose.setRolloverEnabled(true);
         buttonClose.setBorder(null);
         buttonClose.setFocusable(false);
         MouseAdapter mouseListener = new MouseAdapter() {
@@ -94,6 +93,10 @@ public class CloseTabbedPane extends JTabbedPane{
         if (this.indexOfComponent(component) != -1)
         {
             removeTab(component);
+        }
+        if (this.getTabCount() == 1)
+        {
+            this.setSelectedIndex(-1);
         }
     }
     
