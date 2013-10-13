@@ -6,10 +6,17 @@ package BT.modules.mainInterface;
 
 import GUI.MainContentModel;
 import GUI.ToolBarContentModel;
+import java.awt.event.ActionEvent;
+import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.AbstractAction;
+import javax.swing.InputMap;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JPanel;
+import javax.swing.KeyStroke;
 /**
  *
  * @author Karel
@@ -46,6 +53,7 @@ public class ToolBarContentControler {
         myPanel.add(NewFileButton);
         myPanel.add(Closebutton);
         this.toolBarcontent.setToolBarPane(myPanel);
+        setCloseAndOpenShortCuts(myLayout);
     }
     
     private void NewFileButtonMouseClicked(MouseEvent evt, WindowLayoutControler myLayout) {
@@ -72,5 +80,30 @@ public class ToolBarContentControler {
     public MouseAdapter getNewFileMouseClicked()
     {
         return this.newFileMouseClicked;
+    }
+    
+        
+    private void setCloseAndOpenShortCuts(final WindowLayoutControler myLayout)
+    {
+        myLayout.getFileTab().getActionMap().put("closeTab", new AbstractAction() {
+            @Override
+                public void actionPerformed(ActionEvent e) {
+                    myLayout.removeTab(myLayout.getSelectedTab());
+                }
+            }
+        );
+        
+        myLayout.getFileTab().getActionMap().put("newTab", new AbstractAction() {
+            @Override
+                public void actionPerformed(ActionEvent e) {
+                    addNewTab(myLayout);
+                }
+            }
+        );
+        
+        InputMap inputMap = myLayout.getFileTab().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+         
+        inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_W, InputEvent.CTRL_MASK), "closeTab");
+        inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_T, InputEvent.CTRL_MASK), "newTab");
     }
 }

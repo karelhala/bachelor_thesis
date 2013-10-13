@@ -15,7 +15,14 @@ import javax.swing.JSplitPane;
 import javax.swing.JTabbedPane;
 import GUI.WindowLayoutModel;
 import java.awt.Component;
+import java.awt.event.ActionEvent;
+import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
+import javax.swing.AbstractAction;
+import javax.swing.InputMap;
+import javax.swing.JComponent;
+import javax.swing.KeyStroke;
 
 /**
  *
@@ -118,4 +125,8 @@ public class WindowLayoutControler {
         return myWindow.getLeftSplitPane();
     }
     
+    public JTabbedPane getFileTab()
+    {
+        return this.fileTab;
+    }
 }

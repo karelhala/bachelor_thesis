@@ -50,18 +50,6 @@ public class CloseTabbedPane extends JTabbedPane{
         this.setTabComponentAt(index, closePanel);
 
         this.setSelectedComponent(component);
-         
-        component.getActionMap().put("closeTab", new AbstractAction() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                removeTab(component);
-            }
-          }
-        );
-        
-         InputMap inputMap = component.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
-         
-         inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_W, InputEvent.CTRL_MASK), "closeTab");
     }
     
     public void removeTab(Component component)
