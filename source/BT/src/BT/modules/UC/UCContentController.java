@@ -35,15 +35,15 @@ public final class UCContentController {
         UCLeftBottomContent UCLeftBottom = new UCLeftBottomContent();
         
         List list = new ArrayList(Arrays.asList());
-        setListeners(UCLeftTop.getMainContentPane().getComponents(), UCmain);
-        setListeners(UCLeftBottom.getMainContentPane().getComponents(), UCmain);
+        setListeners(UCLeftTop.getMainContentPane().getComponents(), UCmain, true);
+        setListeners(UCLeftBottom.getMainContentPane().getComponents(), UCmain, false);
         
         this.UCContent.setCenterPane(UCmain.getMainContentPane());
         this.UCContent.setLeftTopPane(UCLeftTop.getMainContentPane());
         this.UCContent.setLeftBottomPane(UCLeftBottom.getMainContentPane());
     }
     
-    public void setListeners(final Component[] allComponents, final UCMainContent UCMain)
+    public void setListeners(final Component[] allComponents, final UCMainContent UCMain, final boolean isNeeded)
     {
         for (Component comp : allComponents)
         {
@@ -54,7 +54,10 @@ public final class UCContentController {
                     if(ev.getStateChange()==ItemEvent.SELECTED){
                         toggleButtonSelected(toggleButton, allComponents);
                     }
-                    UCMain.setSelectedButton(getSelectedButton(allComponents));
+                    if (isNeeded)
+                    {
+                        UCMain.setSelectedButton(getSelectedButton(allComponents));
+                    }
                 }
             });
         }
