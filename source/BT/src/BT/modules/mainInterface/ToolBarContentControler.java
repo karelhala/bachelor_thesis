@@ -4,6 +4,7 @@
  */
 package BT.modules.mainInterface;
 
+import BT.modules.UC.UCContentController;
 import GUI.MainContentModel;
 import GUI.ToolBarContentModel;
 import java.awt.event.ActionEvent;
@@ -62,10 +63,11 @@ public class ToolBarContentControler {
     
     private void addNewTab(WindowLayoutControler myLayout)
     {
-        MainContentModel UCContentModel = new MainContentModel();
+        UCContentController UCController = new UCContentController();
+        
         MainContentModel UMLContenctModel = new MainContentModel();
         MainContentModel OOPNContentModel = new MainContentModel();
-        myLayout.addNewTab(UCContentModel, UMLContenctModel, OOPNContentModel);
+        myLayout.addNewTab(UCController.getUCContent(), UMLContenctModel, OOPNContentModel);
     }
     
     private void CloseButtonMouseClicked(MouseEvent evt, WindowLayoutControler myLayout) {
