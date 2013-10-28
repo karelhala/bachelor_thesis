@@ -4,7 +4,6 @@
  */
 package BT.managers.UC;
 
-import BT.managers.CoordinateManager;
 import java.util.ArrayList;
 
 /**
@@ -12,14 +11,26 @@ import java.util.ArrayList;
  * @author Karel
  */
 public class UCPlaceManager {
-    private ArrayList<CoordinateManager> places = new ArrayList<>();
+    private ArrayList<UCActor> actors = new ArrayList<>();
+    private ArrayList<UCUseCase> UseCases = new ArrayList<>();
     
-    public ArrayList<CoordinateManager> getPlaces()
+    public ArrayList<UCActor> getActors()
     {
-            return places;
+        return this.actors;
     }
     
-    public void addPlace(CoordinateManager place) {
-        this.places.add(place);
+    public void addActor(UCActor place) 
+    {
+        this.actors.add(place);
+    }
+    
+    public ArrayList<UCUseCase> getUseCases()
+    {
+        return this.UseCases;
+    }
+    
+    public void addUseCase(UCUseCase place) 
+    {
+        this.UseCases.add(place);
     }
 }

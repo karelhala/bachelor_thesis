@@ -6,6 +6,7 @@ package GUI;
 
 import BT.managers.CoordinateManager;
 import BT.managers.UC.UCPlaceManager;
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
@@ -38,8 +39,14 @@ public class DrawingPane{
             super.paintComponent(g1);
             Graphics2D g = (Graphics2D) g1.create();
             g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-            for (CoordinateManager place: UCPlaces.getPlaces()) {
-                drawX(g, place.getX(), place.getY());
+            for (CoordinateManager actor: UCPlaces.getActors()) {
+                g.setColor(Color.blue);
+                drawX(g, actor.getX(), actor.getY());
+            }
+            
+            for (CoordinateManager useCase: UCPlaces.getUseCases()) {
+                g.setColor(Color.red);
+                drawX(g, useCase.getX(), useCase.getY());
             }
         }
     }

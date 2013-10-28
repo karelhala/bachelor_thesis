@@ -10,8 +10,9 @@ import BT.managers.CoordinateManager;
  *
  * @author Karel
  */
-public class UCActor extends CoordinateManager{
-    public UCActor ()
+public class UCUseCase extends CoordinateManager{
+    
+    public UCUseCase()
     {
         super();
     }

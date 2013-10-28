@@ -5,7 +5,9 @@
 package BT.modules.UC;
 
 import BT.managers.CoordinateManager;
+import BT.managers.UC.UCActor;
 import BT.managers.UC.UCPlaceManager;
+import BT.managers.UC.UCUseCase;
 import GUI.DrawingPane;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -60,22 +62,23 @@ public final class UCMainContent {
     
     private void drawingPaneClicked(MouseEvent evt) {
         if (this.selectedButton!=null){
-            CoordinateManager place = new CoordinateManager();
             switch (this.selectedButton.getName()){
                 case "actor":
-                        place.setX(evt.getX());
-                        place.setY(evt.getY());
-                        this.places.addPlace(place);
+                        UCActor actor = new UCActor();
+                        actor.setX(evt.getX());
+                        actor.setY(evt.getY());
+                        this.places.addActor(actor);
                         this.drawingPane.setPlaces(places);
                         
                         this.drawingPane.getDrawing().repaint();
                         System.out.println(this.selectedButton.getText());
                      break;
                     
-               case "useCase":  
-                        place.setX(evt.getX());
-                        place.setY(evt.getY());
-                        this.places.addPlace(place);
+               case "useCase":
+                        UCUseCase useCase = new UCUseCase();
+                        useCase.setX(evt.getX());
+                        useCase.setY(evt.getY());
+                        this.places.addUseCase(useCase);
                         this.drawingPane.setPlaces(places);
                         
                         this.drawingPane.getDrawing().repaint();

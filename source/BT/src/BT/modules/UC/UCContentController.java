@@ -5,6 +5,7 @@
 package BT.modules.UC;
 
 import GUI.MainContentModel;
+import java.awt.Component;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.ArrayList;
@@ -33,35 +34,35 @@ public final class UCContentController {
         
         UCLeftBottomContent UCLeftBottom = new UCLeftBottomContent();
         
-        List list = new ArrayList(Arrays.asList(UCLeftTop.getMainContentPane().getComponents()));
-        list.addAll(Arrays.asList(UCLeftBottom.getMainContentPane().getComponents()));
-        setListeners(list.toArray(), UCmain);
+        List list = new ArrayList(Arrays.asList());
+        setListeners(UCLeftTop.getMainContentPane().getComponents(), UCmain);
+        setListeners(UCLeftBottom.getMainContentPane().getComponents(), UCmain);
         
         this.UCContent.setCenterPane(UCmain.getMainContentPane());
         this.UCContent.setLeftTopPane(UCLeftTop.getMainContentPane());
         this.UCContent.setLeftBottomPane(UCLeftBottom.getMainContentPane());
     }
     
-    public void setListeners(final Object[] allComponents, final UCMainContent UCMain)
+    public void setListeners(final Component[] allComponents, final UCMainContent UCMain)
     {
-        for (Object comp : allComponents)
+        for (Component comp : allComponents)
         {
             final JToggleButton toggleButton = (JToggleButton) comp;
             toggleButton.addItemListener(new ItemListener() {
                 @Override
                 public void itemStateChanged(ItemEvent ev) {
                     if(ev.getStateChange()==ItemEvent.SELECTED){
-                        UCMain.setSelectedButton(toggleButton);
                         toggleButtonSelected(toggleButton, allComponents);
                     }
+                    UCMain.setSelectedButton(getSelectedButton(allComponents));
                 }
             });
         }
     }
     
     
-    private void toggleButtonSelected(JToggleButton selectedButton, Object[] allComponents) {
-        for (Object comp : allComponents)
+    private void toggleButtonSelected(JToggleButton selectedButton, Component[] allComponents) {
+        for (Component comp : allComponents)
         {
             JToggleButton toggleButton = (JToggleButton) comp;
             if (selectedButton != toggleButton)
@@ -70,7 +71,20 @@ public final class UCContentController {
             }
         }
     }
-                    
+    
+    private JToggleButton getSelectedButton(Component[] allComponents)
+    {
+        for (Component comp : allComponents)
+        {
+            JToggleButton toggleButton = (JToggleButton) comp;
+            if (toggleButton.isSelected() == true)
+            {
+                return toggleButton;
+            }
+        }
+        return null;
+    }
+    
     public MainContentModel getUCContent()
     {
         return this.UCContent;
