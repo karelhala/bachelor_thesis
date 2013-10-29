@@ -5,7 +5,10 @@
 package GUI;
 
 import BT.managers.CoordinateManager;
+import BT.managers.UC.UCActor;
 import BT.managers.UC.UCPlaceManager;
+import BT.managers.UC.UCUseCase;
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -27,10 +30,9 @@ public class DrawingPane{
     }
     
     public class drawing extends JPanel{
-        void drawX(Graphics g1, int x1, int y1) {
-                Graphics2D g = (Graphics2D) g1.create();
-                g.drawLine(x1+5, y1+5, x1-5, y1-5);
-                g.drawLine(x1+5, y1-5, x1-5, y1+5);
+        void drawX(Graphics2D g1, int x1, int y1) {
+                g1.drawLine(x1+5, y1+5, x1-5, y1-5);
+                g1.drawLine(x1+5, y1-5, x1-5, y1+5);
             }
         
         
@@ -38,13 +40,14 @@ public class DrawingPane{
         protected void paintComponent(Graphics g1) {
             super.paintComponent(g1);
             Graphics2D g = (Graphics2D) g1.create();
+            g.setStroke(new BasicStroke(2));
             g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-            for (CoordinateManager actor: UCPlaces.getActors()) {
+            for (UCActor actor: UCPlaces.getActors()) {
                 g.setColor(Color.blue);
-                drawX(g, actor.getX(), actor.getY());
+                actor.drawActor(g, actor.getX(), actor.getY());
             }
             
-            for (CoordinateManager useCase: UCPlaces.getUseCases()) {
+            for (UCUseCase useCase: UCPlaces.getUseCases()) {
                 g.setColor(Color.red);
                 drawX(g, useCase.getX(), useCase.getY());
             }

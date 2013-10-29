@@ -9,8 +9,8 @@ package BT.managers;
  * @author Karel
  */
 public class CoordinateManager {
-    private int x;
-    private int y;
+    protected int x;
+    protected int y;
     
     public int getX()
     {

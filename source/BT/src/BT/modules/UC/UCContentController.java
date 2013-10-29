@@ -34,7 +34,6 @@ public final class UCContentController {
         
         UCLeftBottomContent UCLeftBottom = new UCLeftBottomContent();
         
-        List list = new ArrayList(Arrays.asList());
         setListeners(UCLeftTop.getMainContentPane().getComponents(), UCmain, true);
         setListeners(UCLeftBottom.getMainContentPane().getComponents(), UCmain, false);
         
