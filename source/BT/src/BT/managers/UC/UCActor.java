@@ -7,6 +7,7 @@ package BT.managers.UC;
 import BT.managers.CoordinateManager;
 import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics2D;
 
 /**
@@ -17,6 +18,8 @@ public class UCActor extends CoordinateManager{
     private Color actorColor;
     private int width;
     private int height;
+    private String name;
+    private int textSize;
     
     public UCActor (Color color)
     {
@@ -30,6 +33,13 @@ public class UCActor extends CoordinateManager{
         this.width = 30;
         this.height = 60;
         this.actorColor = Color.blue;
+        this.name = "Default";
+        this.textSize = 15;
+    }
+    
+    public void setName(String name)
+    {
+        this.name = name;
     }
     
     public void drawActor(Graphics2D g, int x, int y)
@@ -47,6 +57,9 @@ public class UCActor extends CoordinateManager{
         g.drawLine(x, y+bottom, x-arm, y+bottom+bottom);
         g.drawLine(x, y+bottom, x+arm, y+bottom+bottom);
         g.drawOval(x-neck, y-bottom-headSize, headSize*2, headSize*2);
+        g.setFont(new Font("Arial", Font.PLAIN, this.textSize));
+        g.setColor(Color.black);
+        g.drawString(this.name, x-arm, y+bottom+bottom+this.textSize);
     }
     
     public void setColor(Color color)
