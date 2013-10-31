@@ -12,7 +12,7 @@ import java.awt.Graphics2D;
 
 /**
  *
- * @author Karel
+ * @author Karel Hala
  */
 public class UCActor extends CoordinateManager{
     private Color actorColor;

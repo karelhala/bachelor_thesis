@@ -4,7 +4,6 @@
  */
 package GUI;
 
-import BT.managers.CoordinateManager;
 import BT.managers.UC.UCActor;
 import BT.managers.UC.UCPlaceManager;
 import BT.managers.UC.UCUseCase;
@@ -17,7 +16,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author Karel
+ * @author Karel Hala
  */
 public class DrawingPane{
     private UCPlaceManager UCPlaces;

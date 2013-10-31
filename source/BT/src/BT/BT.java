@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 import javax.swing.UnsupportedLookAndFeelException;
 /**
  *
- * @author Karel
+ * @author Karel Hala
  */
 public class BT {
 
@@ -18,7 +18,6 @@ public class BT {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        System.out.println("You are about to run the program.");
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -36,6 +35,5 @@ public class BT {
                 mainWindow.runTheMainWindow();
             }
         });
-        System.out.println("You have succesfully ran the program, I hope you nejoyed it.");
     }
 }

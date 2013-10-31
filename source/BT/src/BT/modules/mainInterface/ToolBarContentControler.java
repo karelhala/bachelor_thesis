@@ -20,7 +20,7 @@ import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 /**
  *
- * @author Karel
+ * @author Karel Hala
  */
 public class ToolBarContentControler {
     private ToolBarContentModel toolBarcontent;

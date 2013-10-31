@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author Karel
+ * @author Karel Hala
  */
 public class ToolBarContentModel {
     private JPanel toolBarPane;

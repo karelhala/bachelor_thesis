@@ -12,14 +12,11 @@ import javax.swing.event.MouseInputAdapter;
 
 /**
  *
- * @author Karel
+ * @author Karel Hala
  */
 public class UCDrawingListeners extends MouseInputAdapter{
     private DrawingPane.drawing drawing;
     private UCMainContent mainContent;
-    private int oldX = -1;
-    private int oldY = -1;
-    
 
     UCDrawingListeners(DrawingPane.drawing drawing, UCMainContent mainContent) {
         this.drawing = drawing;

@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 
 /**
  * Class for handeling with main content in window
- * @author Karel
+ * @author Karel Hala
  */
 public class MainContentModel {
     /**

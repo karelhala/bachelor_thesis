@@ -10,7 +10,7 @@ import javax.swing.JToggleButton;
 
 /**
  *
- * @author Karel
+ * @author Karel Hala
  */
 public final class UCLeftBottomContent {
         private JPanel mainContentPane;

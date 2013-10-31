@@ -8,14 +8,11 @@ import GUI.MainContentModel;
 import java.awt.Component;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import javax.swing.JToggleButton;
 
 /**
  *
- * @author Karel
+ * @author Karel Hala
  */
 public final class UCContentController {
     private MainContentModel UCContent;

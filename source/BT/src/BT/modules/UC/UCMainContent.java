@@ -18,7 +18,7 @@ import javax.swing.JToggleButton;
 
 /**
  *
- * @author Karel
+ * @author Karel Hala
  */
 public final class UCMainContent {
     private JPanel mainContentPane;

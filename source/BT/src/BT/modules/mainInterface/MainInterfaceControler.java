@@ -4,16 +4,15 @@
  */
 package BT.modules.mainInterface;
 
-import BT.BaseControler;
 import GUI.MainWindowModel;
 import GUI.MyToolBar;
 import java.awt.event.MouseAdapter;
 
 /**
  *
- * @author Karel
+ * @author Karel Hala
  */
-public class MainInterfaceControler extends BaseControler{
+public class MainInterfaceControler{
 
     String programName;
     public MainInterfaceControler (String programName)

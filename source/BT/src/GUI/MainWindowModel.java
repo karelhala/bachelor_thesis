@@ -6,16 +6,10 @@ package GUI;
 
 import BT.modules.mainInterface.WindowLayoutControler;
 import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.InputEvent;
-import java.awt.event.KeyEvent;
-import javax.swing.AbstractAction;
-import javax.swing.InputMap;
-import javax.swing.KeyStroke;
 
 /**
  *
- * @author Karel
+ * @author Karel Hala
  */
 public class MainWindowModel extends javax.swing.JFrame{
     private int width = 1200;

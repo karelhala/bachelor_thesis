@@ -7,25 +7,19 @@ package GUI;
 import java.awt.Component;
 import java.awt.FlowLayout;
 import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.InputEvent;
-import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import javax.swing.AbstractAction;
 import javax.swing.GrayFilter;
 import javax.swing.ImageIcon;
-import javax.swing.InputMap;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
-import javax.swing.KeyStroke;
 
 /**
  *
- * @author Karel
+ * @author Karel Hala
  */
 public class CloseTabbedPane extends JTabbedPane{
     public CloseTabbedPane ()

@@ -4,13 +4,12 @@
  */
 package GUI;
 
-import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JToolBar;
 
 /**
  *
- * @author Karel
+ * @author Karel Hala
  */
 public class MyToolBar {
     private javax.swing.JToolBar jToolBar;

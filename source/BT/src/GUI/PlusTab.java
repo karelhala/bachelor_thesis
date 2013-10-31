@@ -5,10 +5,8 @@
 package GUI;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import javax.swing.GrayFilter;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -17,7 +15,7 @@ import javax.swing.JTabbedPane;
 
 /**
  *
- * @author Karel
+ * @author Karel Hala
  */
 public class PlusTab {
     private JButton buttonPlus;

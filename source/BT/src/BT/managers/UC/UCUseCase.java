@@ -5,7 +5,6 @@
 package BT.managers.UC;
 
 import BT.managers.CoordinateManager;
-import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontMetrics;
@@ -13,7 +12,7 @@ import java.awt.Graphics2D;
 
 /**
  *
- * @author Karel
+ * @author Karel Hala
  */
 public class UCUseCase extends CoordinateManager{
     private Color useCaseColor;

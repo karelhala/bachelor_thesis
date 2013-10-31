@@ -4,11 +4,9 @@
  */
 package GUI;
 
-import javax.swing.JMenuBar;
-
 /**
  *
- * @author Karel
+ * @author Karel Hala
  */
 public class MyMenuBar {
     private javax.swing.JMenu jMenu1;

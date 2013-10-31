@@ -6,7 +6,7 @@ package BT.managers;
 
 /**
  *
- * @author Karel
+ * @author Karel Hala
  */
 public class CoordinateManager {
     protected int x;

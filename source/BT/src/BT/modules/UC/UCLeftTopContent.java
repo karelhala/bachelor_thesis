@@ -4,18 +4,13 @@
  */
 package BT.modules.UC;
 
-import GUI.DrawingPane;
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JToggleButton;
 
 /**
  *
- * @author Karel
+ * @author Karel Hala
  */
 public final class UCLeftTopContent {
     private JPanel mainContentPane;

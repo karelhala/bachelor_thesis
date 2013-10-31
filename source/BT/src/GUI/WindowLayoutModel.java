@@ -8,7 +8,7 @@ import javax.swing.JSplitPane;
 
 /**
  *
- * @author Karel
+ * @author Karel Hala
  */
 public class WindowLayoutModel {
     private JSplitPane leftSplitPane;

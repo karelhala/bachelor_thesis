@@ -19,7 +19,7 @@ import java.awt.event.MouseAdapter;
 
 /**
  *
- * @author Karel
+ * @author Karel Hala
  */
 public class WindowLayoutControler {
     private CloseTabbedPane fileTab;

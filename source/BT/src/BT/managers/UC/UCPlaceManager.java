@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Karel
+ * @author Karel Hala
  */
 public class UCPlaceManager {
     private ArrayList<UCActor> actors = new ArrayList<>();
