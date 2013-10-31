@@ -4,6 +4,7 @@
  */
 package BT.managers.UC;
 
+import BT.managers.CoordinateManager;
 import java.util.ArrayList;
 
 /**

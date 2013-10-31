@@ -57,9 +57,9 @@ public class UCActor extends CoordinateManager{
         g.drawLine(x, y+bottom, x-arm, y+bottom+bottom);
         g.drawLine(x, y+bottom, x+arm, y+bottom+bottom);
         g.drawOval(x-neck, y-bottom-headSize, headSize*2, headSize*2);
-        g.setFont(new Font("Arial", Font.PLAIN, this.textSize));
+        g.setFont(new Font("Arial", Font.BOLD, this.textSize));
         g.setColor(Color.black);
-        g.drawString(this.name, x-arm, y+bottom+bottom+this.textSize);
+        g.drawString(this.name, x-arm-this.textSize, y+bottom+bottom+this.textSize);
     }
     
     public void setColor(Color color)

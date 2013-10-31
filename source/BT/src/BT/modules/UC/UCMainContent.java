@@ -4,6 +4,7 @@
  */
 package BT.modules.UC;
 
+import BT.managers.CoordinateManager;
 import BT.managers.UC.UCActor;
 import BT.managers.UC.UCPlaceManager;
 import BT.managers.UC.UCUseCase;
@@ -56,12 +57,23 @@ public final class UCMainContent {
     
     public void mouseDragged(MouseEvent e)
     {
-        final UCActor actor = isActorUnderMouse(e.getX(), e.getY());
+        final CoordinateManager actor = isActorUnderMouse(e.getX(), e.getY());
         if (actor!=null){
             actor.setX(e.getX());
             actor.setY(e.getY());
             this.drawingPane.getDrawing().repaint();
         }
+        else
+        {
+            final CoordinateManager useCase = isUseCaseUnderMouse(e.getX(), e.getY());
+            if (useCase!= null)
+            {
+                useCase.setX(e.getX());
+                useCase.setY(e.getY());
+                this.drawingPane.getDrawing().repaint();
+            }
+        }
+
     }
     
     public void drawingPaneClicked(MouseEvent evt) {
@@ -113,6 +125,11 @@ public final class UCMainContent {
         {
             actor.setColor(Color.red);
         }
+        UCUseCase usecase = isUseCaseUnderMouse(evt.getX(), evt.getY());
+        if (usecase != null)
+        {
+            usecase.setColor(Color.green);
+        }
         this.drawingPane.getDrawing().repaint();
     }
     
@@ -127,6 +144,21 @@ public final class UCMainContent {
             else
             {
                 actor.setBasicColor();
+            }
+        }
+        return null;
+    }
+
+    public UCUseCase isUseCaseUnderMouse(int x, int y) {
+       for (UCUseCase useCase : places.getUseCases())
+        {
+            if (useCase.isUseCase(x,y))
+            {
+                return useCase;
+            }
+            else
+            {
+                useCase.setBasicColor();
             }
         }
         return null;

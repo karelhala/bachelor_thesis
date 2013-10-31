@@ -40,8 +40,8 @@ public class DrawingPane{
         protected void paintComponent(Graphics g1) {
             super.paintComponent(g1);
             Graphics2D g = (Graphics2D) g1.create();
-            g.setStroke(new BasicStroke(2));
             g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+            g.setStroke(new BasicStroke(2));
             for (UCActor actor: UCPlaces.getActors()) {
                 g.setColor(Color.blue);
                 actor.drawActor(g, actor.getX(), actor.getY());
@@ -49,7 +49,8 @@ public class DrawingPane{
             
             for (UCUseCase useCase: UCPlaces.getUseCases()) {
                 g.setColor(Color.red);
-                drawX(g, useCase.getX(), useCase.getY());
+                useCase.drawUseCase(g, useCase.getX(), useCase.getY());
+//                drawX(g, useCase.getX(), useCase.getY());
             }
         }
     }

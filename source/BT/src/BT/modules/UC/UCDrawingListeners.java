@@ -5,6 +5,7 @@
 package BT.modules.UC;
 
 import BT.managers.UC.UCActor;
+import BT.managers.UC.UCUseCase;
 import GUI.DrawingPane;
 import java.awt.event.MouseEvent;
 import javax.swing.event.MouseInputAdapter;
@@ -16,6 +17,9 @@ import javax.swing.event.MouseInputAdapter;
 public class UCDrawingListeners extends MouseInputAdapter{
     private DrawingPane.drawing drawing;
     private UCMainContent mainContent;
+    private int oldX = -1;
+    private int oldY = -1;
+    
 
     UCDrawingListeners(DrawingPane.drawing drawing, UCMainContent mainContent) {
         this.drawing = drawing;
@@ -25,7 +29,8 @@ public class UCDrawingListeners extends MouseInputAdapter{
     @Override
     public void mousePressed(java.awt.event.MouseEvent evt) {
         final UCActor actor = this.mainContent.isActorUnderMouse(evt.getX(), evt.getY());
-        if (actor == null)
+        final UCUseCase useCase = this.mainContent.isUseCaseUnderMouse(evt.getX(), evt.getY());
+        if (actor == null && useCase == null)
         {
             this.mainContent.drawingPaneClicked(evt);
         }
