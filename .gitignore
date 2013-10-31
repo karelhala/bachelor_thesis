@@ -4,3 +4,9 @@
 *.jar
 *.war
 *.ear
+source/BT/build/*
+source/BT/nbproject/private/*
+source/testGUI/build/*
+source/testGUI/nbproject/private/*
+source/testGUI/dist/*
+
