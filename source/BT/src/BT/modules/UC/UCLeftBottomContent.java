@@ -30,7 +30,7 @@ public final class UCLeftBottomContent {
         JToggleButton association = new JToggleButton("Association");
         association.setName("association");
         
-        JToggleButton include = new JToggleButton("Include");
+        JToggleButton include = new JToggleButton("Uses");
         include.setName("include");
         
         JToggleButton extend = new JToggleButton("Extend");

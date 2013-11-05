@@ -5,6 +5,8 @@
 package BT.managers.UC;
 
 import BT.managers.CoordinateManager;
+import java.awt.BasicStroke;
+import java.awt.Color;
 import java.util.ArrayList;
 
 /**
@@ -34,4 +36,16 @@ public class UCPlaceManager {
     {
         this.UseCases.add(place);
     }
+
+    public void removePlace(CoordinateManager selectedObject) {
+        if (selectedObject instanceof UCActor)
+        {
+            this.actors.remove(selectedObject);
+        }
+        else if (selectedObject instanceof UCUseCase)
+        {
+            this.UseCases.remove(selectedObject);
+        }
+    }
+
 }

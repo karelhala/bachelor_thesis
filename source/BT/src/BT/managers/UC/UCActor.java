@@ -8,7 +8,10 @@ import BT.managers.CoordinateManager;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.FontMetrics;
 import java.awt.Graphics2D;
+import java.util.Objects;
+import java.util.UUID;
 
 /**
  *
@@ -18,8 +21,11 @@ public class UCActor extends CoordinateManager{
     private Color actorColor;
     private int width;
     private int height;
-    private String name;
+    private int objectWidth;
+    private int objectHeight;
     private int textSize;
+    private int gap;
+    private UUID id;
     
     public UCActor (Color color)
     {
@@ -35,31 +41,34 @@ public class UCActor extends CoordinateManager{
         this.actorColor = Color.blue;
         this.name = "Default";
         this.textSize = 15;
+        this.gap = 2;
+        this.id = UUID.randomUUID();
     }
     
-    public void setName(String name)
+    public void drawActor(Graphics2D g)
     {
-        this.name = name;
-    }
-    
-    public void drawActor(Graphics2D g, int x, int y)
-    {
+        int actorX = this.getX();
+        int actorY = this.getY();
         g.setColor(this.actorColor);
+        g.setStroke(new BasicStroke(2));
         int middle = this.height/2;
-        int bottom = middle/2;
+        int bottom = middle/2-this.gap;
         int neck = bottom/2;
-        int arm = width/2;
+        int arm = width/2-this.gap;
         int headSize = arm/2;
-        g.drawLine(x, y, x, y-neck);
-        g.drawLine(x, y, x-arm, y);
-        g.drawLine(x, y, x+arm, y);
-        g.drawLine(x, y, x, y+bottom);
-        g.drawLine(x, y+bottom, x-arm, y+bottom+bottom);
-        g.drawLine(x, y+bottom, x+arm, y+bottom+bottom);
-        g.drawOval(x-neck, y-bottom-headSize, headSize*2, headSize*2);
+        g.drawLine(actorX, actorY, actorX, actorY-neck);
+        g.drawLine(actorX, actorY, actorX-arm, actorY);
+        g.drawLine(actorX, actorY, actorX+arm, actorY);
+        g.drawLine(actorX, actorY, actorX, actorY+bottom);
+        g.drawLine(actorX, actorY+bottom, actorX-arm, actorY+bottom+bottom);
+        g.drawLine(actorX, actorY+bottom, actorX+arm, actorY+bottom+bottom);
+        g.drawOval(actorX-neck, actorY-bottom-headSize, headSize*2, headSize*2);
         g.setFont(new Font("Arial", Font.BOLD, this.textSize));
         g.setColor(Color.black);
-        g.drawString(this.name, x-arm-this.textSize, y+bottom+bottom+this.textSize);
+        FontMetrics fm = g.getFontMetrics(g.getFont());
+        g.drawString(this.name, actorX-fm.stringWidth(this.name)/2, actorY+bottom+bottom+this.textSize);
+        this.objectHeight = this.height + textSize + gap;
+        this.objectWidth = this.width + fm.stringWidth(this.name) + gap - textSize;
     }
     
     public void setColor(Color color)
@@ -67,11 +76,22 @@ public class UCActor extends CoordinateManager{
         this.actorColor = color;
     }
     
+    public void drawSelectedActor(Graphics2D g, Color color)
+    {
+        this.actorColor = color;
+        drawActor(g);
+        int borderWidth = getMax(this.objectWidth, this.width);
+        int borderHeight = this.objectHeight;
+        g.setStroke(new BasicStroke(1));
+        g.setColor(Color.black);
+        g.drawRect(this.x-borderWidth/2, this.y-this.height/2, borderWidth, borderHeight);
+    }
+    
     public boolean isActor(int x, int y)
     {
         int isX=Math.abs(x-this.x);
         int isY=Math.abs(y-this.y);
-        if (isX<=this.width/2 && isY<=this.height/2){
+        if (isX<=getMax(this.objectWidth, this.width)/2 && isY<=getMax(this.objectHeight, this.height)/2){
             return true;
         }
         return false;
@@ -79,5 +99,28 @@ public class UCActor extends CoordinateManager{
 
     public void setBasicColor() {
         this.actorColor = Color.blue;
+    }
+    
+    private int getMax(int a, int b) {
+        return (a>b?a:b);
+    }
+    
+    @Override
+    public boolean equals(Object other)
+    {
+        if (other instanceof UCActor)
+        {
+            UCActor object = (UCActor) other;
+            if (this.hashCode()==object.hashCode())
+                return true;
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 67 * hash + Objects.hashCode(this.id);
+        return hash;
     }
 }

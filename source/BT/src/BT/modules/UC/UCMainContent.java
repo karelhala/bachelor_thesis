@@ -11,7 +11,10 @@ import BT.managers.UC.UCUseCase;
 import GUI.DrawingPane;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
+import javax.swing.AbstractAction;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JToggleButton;
@@ -46,6 +49,7 @@ public final class UCMainContent {
         this.drawingPane.getDrawing().addMouseMotionListener(alpha);
         this.drawingPane.getDrawing().addMouseListener(alpha);
         drawingPane.getDrawing().repaint();
+        drawingPane.setButtonsListeners();
         JScrollPane myScrollPane = new JScrollPane(drawingPane.getDrawing());
         
         this.mainContentPane.add(myScrollPane, BorderLayout.CENTER);
@@ -55,25 +59,11 @@ public final class UCMainContent {
         this.selectedButton = toggleButton;
     }
     
-    public void mouseDragged(MouseEvent e)
+    public void mouseDragged(MouseEvent e, CoordinateManager dragged)
     {
-        final CoordinateManager actor = isActorUnderMouse(e.getX(), e.getY());
-        if (actor!=null){
-            actor.setX(e.getX());
-            actor.setY(e.getY());
-            this.drawingPane.getDrawing().repaint();
-        }
-        else
-        {
-            final CoordinateManager useCase = isUseCaseUnderMouse(e.getX(), e.getY());
-            if (useCase!= null)
-            {
-                useCase.setX(e.getX());
-                useCase.setY(e.getY());
-                this.drawingPane.getDrawing().repaint();
-            }
-        }
-
+        dragged.setX(e.getX());
+        dragged.setY(e.getY());
+        this.drawingPane.getDrawing().repaint();
     }
     
     public void drawingPaneClicked(MouseEvent evt) {
@@ -85,6 +75,7 @@ public final class UCMainContent {
                         actor.setY(evt.getY());
                         this.places.addActor(actor);
                         this.drawingPane.setPlaces(places);
+//                        objectClicked(actor);
                         
                         this.drawingPane.getDrawing().repaint();
                         System.out.println(this.selectedButton.getText());
@@ -96,6 +87,7 @@ public final class UCMainContent {
                         useCase.setY(evt.getY());
                         this.places.addUseCase(useCase);
                         this.drawingPane.setPlaces(places);
+//                        objectClicked(useCase);
                         
                         this.drawingPane.getDrawing().repaint();
                         System.out.println(this.selectedButton.getText());
@@ -162,5 +154,24 @@ public final class UCMainContent {
             }
         }
         return null;
+    }
+
+    public void objectClicked(CoordinateManager pressedObject) {
+        String name = (String) JOptionPane.showInputDialog("Enter name of the object",pressedObject.getName());
+        if (name!= null && !"".equals(name))
+            pressedObject.setName(name);
+        this.drawingPane.getDrawing().repaint();
+    }
+
+    public void setSelectedObject(CoordinateManager clickedObject) {
+        if (clickedObject!=null)
+        {
+            this.drawingPane.setSelectedObject(clickedObject);
+        }
+        else
+        {
+            this.drawingPane.setSelectedObject(null);
+        }
+        this.drawingPane.getDrawing().repaint();
     }
 }

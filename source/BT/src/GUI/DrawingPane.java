@@ -4,15 +4,22 @@
  */
 package GUI;
 
+import BT.managers.CoordinateManager;
 import BT.managers.UC.UCActor;
 import BT.managers.UC.UCPlaceManager;
 import BT.managers.UC.UCUseCase;
-import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import java.awt.event.ActionEvent;
+import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
+import javax.swing.AbstractAction;
+import javax.swing.InputMap;
+import javax.swing.JComponent;
 import javax.swing.JPanel;
+import javax.swing.KeyStroke;
 
 /**
  *
@@ -21,6 +28,7 @@ import javax.swing.JPanel;
 public class DrawingPane{
     private UCPlaceManager UCPlaces;
     private drawing drawPane;
+    private CoordinateManager selectedObject;
 
     public DrawingPane(UCPlaceManager UCPlaces)
     {
@@ -40,15 +48,29 @@ public class DrawingPane{
             super.paintComponent(g1);
             Graphics2D g = (Graphics2D) g1.create();
             g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-            g.setStroke(new BasicStroke(2));
             for (UCActor actor: UCPlaces.getActors()) {
-                g.setColor(Color.blue);
-                actor.drawActor(g, actor.getX(), actor.getY());
+                if (!actor.equals(selectedObject))
+                {
+                    actor.setBasicColor();
+                    actor.drawActor(g);
+                }
+                else
+                {
+                    actor.drawSelectedActor(g, Color.green);
+                }
             }
             
             for (UCUseCase useCase: UCPlaces.getUseCases()) {
-                g.setColor(Color.red);
-                useCase.drawUseCase(g, useCase.getX(), useCase.getY());
+                if (!useCase.equals(selectedObject))
+                {
+                    useCase.setBasicColor();
+                    useCase.drawUseCase(g);
+                }
+                else
+                {
+                    useCase.drawSelectedUseCase(g, Color.LIGHT_GRAY);
+                }
+                useCase.drawUseCase(g);
 //                drawX(g, useCase.getX(), useCase.getY());
             }
         }
@@ -59,8 +81,31 @@ public class DrawingPane{
         return this.drawPane;
     }
     
+    public void setButtonsListeners()
+    {
+        this.drawPane.getActionMap().put("removeObject", new AbstractAction() {
+            @Override
+                public void actionPerformed(ActionEvent e) {
+                if(selectedObject!=null)
+                    {
+                        UCPlaces.removePlace(selectedObject);
+                        drawPane.repaint();
+                    }
+                }
+            }
+        );
+         InputMap inputMap = this.drawPane.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+         inputMap.put(KeyStroke.getKeyStroke("DELETE"), "removeObject");
+         inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_W, InputEvent.CTRL_MASK), "closeTab");
+    }
+    
     public void setPlaces(UCPlaceManager places)
     {
         this.UCPlaces = places;
+    }
+    
+    public void setSelectedObject(CoordinateManager selected)
+    {
+        this.selectedObject = selected;
     }
 }

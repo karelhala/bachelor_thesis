@@ -11,6 +11,7 @@ package BT.managers;
 public class CoordinateManager {
     protected int x;
     protected int y;
+    protected String name;
     
     public int getX()
     {
@@ -30,5 +31,15 @@ public class CoordinateManager {
     public void setY(int Y)
     {
         this.y = Y;
+    }
+    
+    public void setName(String name)
+    {
+        this.name = name;
+    }
+    
+    public String getName()
+    {
+        return this.name;
     }
 }
