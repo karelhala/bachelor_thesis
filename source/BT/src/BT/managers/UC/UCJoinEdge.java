@@ -12,7 +12,7 @@ import java.awt.Graphics2D;
  *
  * @author Karel Hala
  */
-public class UCJoinEdge{
+public class UCJoinEdge extends CoordinateManager{
     private CoordinateManager firstObject;
     private CoordinateManager secondObject;
     private int startX;

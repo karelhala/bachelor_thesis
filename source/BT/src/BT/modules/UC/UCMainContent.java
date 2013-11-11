@@ -62,6 +62,12 @@ public final class UCMainContent {
     
     public void setSelectedJoinEdgeButton(JToggleButton selectedButton) {
         this.selectedJoinEdgeButton = selectedButton;
+        if (selectedButton == null)
+        {
+            this.places.removeJointEdge(newJoinEdge);
+            newJoinEdge = null;
+            this.drawingPane.getDrawing().repaint();
+        }
     }
     
     public void mouseDragged(MouseEvent e, CoordinateManager dragged)
@@ -128,7 +134,6 @@ public final class UCMainContent {
             if (this.newJoinEdge.getfirstObject() != null && this.newJoinEdge.getSecondObject() != null)
             {
                 this.newJoinEdge = null;
-                this.selectedJoinEdgeButton.setSelected(false);
             }
         }
     }

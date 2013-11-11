@@ -57,4 +57,9 @@ public class UCPlaceManager {
             this.UseCases.remove(selectedObject);
         }
     }
+    
+    public void removeJointEdge(UCJoinEdge jointEdge)
+    {
+        this.joinEdges.remove(jointEdge);
+    }
 }
