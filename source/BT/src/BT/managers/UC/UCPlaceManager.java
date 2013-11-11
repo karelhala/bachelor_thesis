@@ -5,8 +5,6 @@
 package BT.managers.UC;
 
 import BT.managers.CoordinateManager;
-import java.awt.BasicStroke;
-import java.awt.Color;
 import java.util.ArrayList;
 
 /**
@@ -16,6 +14,18 @@ import java.util.ArrayList;
 public class UCPlaceManager {
     private ArrayList<UCActor> actors = new ArrayList<>();
     private ArrayList<UCUseCase> UseCases = new ArrayList<>();
+    private ArrayList<UCJoinEdge> joinEdges = new ArrayList<>();
+
+    
+    public void addJoinEdge(UCJoinEdge joinEdge)
+    {
+        this.joinEdges.add(joinEdge);
+    }
+    
+    public ArrayList<UCJoinEdge> getJoinEdges() 
+    {
+        return this.joinEdges;
+    }
     
     public ArrayList<UCActor> getActors()
     {
@@ -47,5 +57,4 @@ public class UCPlaceManager {
             this.UseCases.remove(selectedObject);
         }
     }
-
 }

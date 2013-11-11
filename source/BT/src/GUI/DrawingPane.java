@@ -6,6 +6,7 @@ package GUI;
 
 import BT.managers.CoordinateManager;
 import BT.managers.UC.UCActor;
+import BT.managers.UC.UCJoinEdge;
 import BT.managers.UC.UCPlaceManager;
 import BT.managers.UC.UCUseCase;
 import java.awt.Color;
@@ -48,22 +49,25 @@ public class DrawingPane{
             super.paintComponent(g1);
             Graphics2D g = (Graphics2D) g1.create();
             g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+            
+            for (UCJoinEdge joinEdge: UCPlaces.getJoinEdges()) {
+                joinEdge.drawJoinEdge(g);
+            }
+            
             for (UCActor actor: UCPlaces.getActors()) {
-                if (!actor.equals(selectedObject))
+                if (actor.equals(selectedObject))
                 {
-                    actor.setBasicColor();
-                    actor.drawActor(g);
+                    actor.drawSelectedActor(g, Color.green);
                 }
                 else
                 {
-                    actor.drawSelectedActor(g, Color.green);
+                    actor.drawActor(g);
                 }
             }
             
             for (UCUseCase useCase: UCPlaces.getUseCases()) {
                 if (!useCase.equals(selectedObject))
                 {
-                    useCase.setBasicColor();
                     useCase.drawUseCase(g);
                 }
                 else

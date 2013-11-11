@@ -52,7 +52,11 @@ public final class UCContentController {
                     }
                     if (isNeeded)
                     {
-                        UCMain.setSelectedButton(getSelectedButton(allComponents));
+                        UCMain.setSelectedItemButton(getSelectedButton(allComponents));
+                    }
+                    else
+                    {
+                        UCMain.setSelectedJoinEdgeButton(getSelectedButton(allComponents));
                     }
                 }
             });

@@ -31,10 +31,11 @@ public final class UCLeftBottomContent {
         association.setName("association");
         
         JToggleButton include = new JToggleButton("Uses");
-        include.setName("include");
+        include.setName("uses");
         
         JToggleButton extend = new JToggleButton("Extend");
         extend.setName("extend");
+        
         this.mainContentPane.add(association);
         this.mainContentPane.add(include);
         this.mainContentPane.add(extend);

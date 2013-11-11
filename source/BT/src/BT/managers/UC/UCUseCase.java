@@ -27,12 +27,6 @@ public class UCUseCase extends CoordinateManager{
     private int gap;
     private UUID id;
     
-    public UCUseCase (Color color)
-    {
-        super();
-        this.useCaseColor = color;
-    }
-    
     public UCUseCase ()
     {
         super();
@@ -59,11 +53,6 @@ public class UCUseCase extends CoordinateManager{
         g.drawString(this.name, this.x-width/2+this.textSize, y+this.textSize/2);
         this.objectHeight = this.height + gap;
         this.objectWidth = this.width + gap;
-    }
-    
-    public void setColor(Color color)
-    {
-        this.useCaseColor = color;
     }
     
     public boolean isUseCase(int x, int y)

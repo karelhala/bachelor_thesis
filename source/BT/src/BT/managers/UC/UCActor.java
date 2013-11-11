@@ -18,27 +18,19 @@ import java.util.UUID;
  * @author Karel Hala
  */
 public class UCActor extends CoordinateManager{
-    private Color actorColor;
-    private int width;
-    private int height;
+    
     private int objectWidth;
     private int objectHeight;
     private int textSize;
     private int gap;
     private UUID id;
     
-    public UCActor (Color color)
-    {
-        super();
-        this.actorColor = color;
-    }
-    
     public UCActor ()
     {
         super();
         this.width = 30;
         this.height = 60;
-        this.actorColor = Color.blue;
+        this.basicColor = Color.blue;
         this.name = "Default";
         this.textSize = 15;
         this.gap = 2;
@@ -47,14 +39,20 @@ public class UCActor extends CoordinateManager{
     
     public void drawActor(Graphics2D g)
     {
+        g.setFont(new Font("Arial", Font.BOLD, this.textSize));
+        FontMetrics fm = g.getFontMetrics(g.getFont());
+        this.objectHeight = this.getHeight() + textSize + gap;
+        this.objectWidth = this.getWidth() + fm.stringWidth(this.name) + gap - textSize;
+        g.setColor(Color.WHITE);
+        g.fillRect(this.x-getMax(this.objectWidth, this.width)/2+this.gap, this.y-this.height/2+this.gap, getMax(this.objectWidth, this.width)-this.gap*2, this.height+this.textSize-this.gap);
         int actorX = this.getX();
         int actorY = this.getY();
-        g.setColor(this.actorColor);
+        g.setColor(this.basicColor);
         g.setStroke(new BasicStroke(2));
-        int middle = this.height/2;
+        int middle = this.getHeight()/2;
         int bottom = middle/2-this.gap;
         int neck = bottom/2;
-        int arm = width/2-this.gap;
+        int arm = getWidth()/2-this.gap;
         int headSize = arm/2;
         g.drawLine(actorX, actorY, actorX, actorY-neck);
         g.drawLine(actorX, actorY, actorX-arm, actorY);
@@ -62,43 +60,35 @@ public class UCActor extends CoordinateManager{
         g.drawLine(actorX, actorY, actorX, actorY+bottom);
         g.drawLine(actorX, actorY+bottom, actorX-arm, actorY+bottom+bottom);
         g.drawLine(actorX, actorY+bottom, actorX+arm, actorY+bottom+bottom);
-        g.drawOval(actorX-neck, actorY-bottom-headSize, headSize*2, headSize*2);
-        g.setFont(new Font("Arial", Font.BOLD, this.textSize));
+        g.drawOval(actorX-neck, actorY-bottom-headSize, headSize*2, headSize*2);       
         g.setColor(Color.black);
-        FontMetrics fm = g.getFontMetrics(g.getFont());
         g.drawString(this.name, actorX-fm.stringWidth(this.name)/2, actorY+bottom+bottom+this.textSize);
-        this.objectHeight = this.height + textSize + gap;
-        this.objectWidth = this.width + fm.stringWidth(this.name) + gap - textSize;
-    }
-    
-    public void setColor(Color color)
-    {
-        this.actorColor = color;
+
     }
     
     public void drawSelectedActor(Graphics2D g, Color color)
     {
-        this.actorColor = color;
-        drawActor(g);
-        int borderWidth = getMax(this.objectWidth, this.width);
+        this.basicColor = color;
+        int borderWidth = getMax(this.objectWidth, this.getWidth());
         int borderHeight = this.objectHeight;
         g.setStroke(new BasicStroke(1));
         g.setColor(Color.black);
-        g.drawRect(this.x-borderWidth/2, this.y-this.height/2, borderWidth, borderHeight);
+        g.drawRect(this.x-borderWidth/2, this.y-this.getHeight()/2, borderWidth, borderHeight);
+        drawActor(g);
     }
     
     public boolean isActor(int x, int y)
     {
         int isX=Math.abs(x-this.x);
         int isY=Math.abs(y-this.y);
-        if (isX<=getMax(this.objectWidth, this.width)/2 && isY<=getMax(this.objectHeight, this.height)/2){
+        if (isX<=getMax(this.objectWidth, this.getWidth())/2 && isY<=getMax(this.objectHeight, this.getHeight())/2){
             return true;
         }
         return false;
     }
 
     public void setBasicColor() {
-        this.actorColor = Color.blue;
+        this.basicColor = Color.blue;
     }
     
     private int getMax(int a, int b) {
@@ -123,4 +113,5 @@ public class UCActor extends CoordinateManager{
         hash = 67 * hash + Objects.hashCode(this.id);
         return hash;
     }
+    
 }

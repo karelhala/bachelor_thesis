@@ -4,6 +4,8 @@
  */
 package BT.managers;
 
+import java.awt.Color;
+
 /**
  *
  * @author Karel Hala
@@ -12,6 +14,17 @@ public class CoordinateManager {
     protected int x;
     protected int y;
     protected String name;
+    protected Color basicColor;
+    protected int width;
+    protected int height;
+    
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
     
     public int getX()
     {
@@ -42,4 +55,38 @@ public class CoordinateManager {
     {
         return this.name;
     }
+    
+    public void setColor(Color color)
+    {
+        this.basicColor = color;
+    }
+    
+    public Color getColor()
+    {
+        return this.basicColor;
+    }
+
+    public int getWidth() 
+    {
+        return width;
+    }
+
+    public int getHeight() 
+    {
+        return height;
+    }
+
+    public int getRightX() {
+        return this.x - this.height/2;
+    }
+    
+    public int getLeftX() {
+        return this.x + this.height/2;
+    }
+
+    public int getCalculatedY() {
+        return this.y ;
+    }
+    
+    
 }

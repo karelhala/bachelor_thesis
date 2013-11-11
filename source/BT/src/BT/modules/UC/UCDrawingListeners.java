@@ -36,10 +36,12 @@ public class UCDrawingListeners extends MouseInputAdapter{
         else if (actor != null)
         {
             this.draggedObjec = actor;
+            this.mainContent.setSelectedObject(actor);
         }
         else if (useCase != null)
         {
             this.draggedObjec = useCase;
+            this.mainContent.setSelectedObject(useCase);
         }
     }
     
@@ -70,16 +72,17 @@ public class UCDrawingListeners extends MouseInputAdapter{
         final UCUseCase useCase = this.mainContent.isUseCaseUnderMouse(e.getX(), e.getY());
         CoordinateManager clickedObject;
         clickedObject = (actor != null)? actor:((useCase != null)?useCase:null);
-            if (e.getClickCount()%2 == 0)
+        if (e.getClickCount()%2 == 0)
+        {
+            if (clickedObject != null)
             {
-                if (clickedObject != null)
-                {
-                    this.mainContent.objectClicked(clickedObject);
-                }
+                this.mainContent.objectDoubleClicked(clickedObject);
             }
-            else
-            {
-                this.mainContent.setSelectedObject(clickedObject);
-            }
+        }
+        else
+        {
+            this.mainContent.setSelectedObject(clickedObject);
+            this.mainContent.clickedOnObject(clickedObject);
+        }
     }
 }

@@ -6,14 +6,13 @@ package BT.modules.UC;
 
 import BT.managers.CoordinateManager;
 import BT.managers.UC.UCActor;
+import BT.managers.UC.UCJoinEdge;
 import BT.managers.UC.UCPlaceManager;
 import BT.managers.UC.UCUseCase;
 import GUI.DrawingPane;
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
-import javax.swing.AbstractAction;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -25,9 +24,11 @@ import javax.swing.JToggleButton;
  */
 public final class UCMainContent {
     private JPanel mainContentPane;
-    private JToggleButton selectedButton;
+    private JToggleButton selectedItemButton;
+    private JToggleButton selectedJoinEdgeButton;
     private UCPlaceManager places;
     private DrawingPane drawingPane;
+    private UCJoinEdge newJoinEdge;
     
     public UCMainContent()
     {
@@ -55,8 +56,12 @@ public final class UCMainContent {
         this.mainContentPane.add(myScrollPane, BorderLayout.CENTER);
     }
 
-    void setSelectedButton(JToggleButton toggleButton) {
-        this.selectedButton = toggleButton;
+    public void setSelectedItemButton(JToggleButton toggleButton) {
+        this.selectedItemButton = toggleButton;
+    }
+    
+    public void setSelectedJoinEdgeButton(JToggleButton selectedButton) {
+        this.selectedJoinEdgeButton = selectedButton;
     }
     
     public void mouseDragged(MouseEvent e, CoordinateManager dragged)
@@ -67,8 +72,8 @@ public final class UCMainContent {
     }
     
     public void drawingPaneClicked(MouseEvent evt) {
-        if (this.selectedButton!=null){
-            switch (this.selectedButton.getName()){
+        if (this.selectedItemButton!=null){
+            switch (this.selectedItemButton.getName()){
                 case "actor":
                         UCActor actor = new UCActor();
                         actor.setX(evt.getX());
@@ -78,7 +83,7 @@ public final class UCMainContent {
 //                        objectClicked(actor);
                         
                         this.drawingPane.getDrawing().repaint();
-                        System.out.println(this.selectedButton.getText());
+                        System.out.println(this.selectedItemButton.getText());
                      break;
                     
                case "useCase":
@@ -90,34 +95,75 @@ public final class UCMainContent {
 //                        objectClicked(useCase);
                         
                         this.drawingPane.getDrawing().repaint();
-                        System.out.println(this.selectedButton.getText());
+                        System.out.println(this.selectedItemButton.getText());
+                     break;
+                }
+        }
+    }
+    
+    public void clickedOnObject(CoordinateManager clickedObject) {      
+        if (this.selectedJoinEdgeButton!=null)
+        {
+            if (this.newJoinEdge == null)
+            {
+                this.newJoinEdge = new UCJoinEdge();
+            }
+            createJoinEdge(clickedObject);
+            places.addJoinEdge(this.newJoinEdge);
+            switch (this.selectedJoinEdgeButton.getName())
+            {
+               case "association":
+                        System.out.println(this.selectedJoinEdgeButton.getText());
                      break;
                    
-               case "association":  
-                        System.out.println(evt.getX() + " " + evt.getY());
-                        System.out.println(this.selectedButton.getText());
-                     break;
-                   
-               case "include":  
-                        System.out.println(evt.getX() + " " + evt.getY());
-                        System.out.println(this.selectedButton.getText());
+               case "uses":  
+                        System.out.println(this.selectedJoinEdgeButton.getText());
                      break;
                    
                case "extend":  
-                        System.out.println(evt.getX() + " " + evt.getY());
-                        System.out.println(this.selectedButton.getText());
+                        System.out.println(this.selectedJoinEdgeButton.getText());
                      break;
+            }
+            
+            if (this.newJoinEdge.getfirstObject() != null && this.newJoinEdge.getSecondObject() != null)
+            {
+                this.newJoinEdge = null;
+                this.selectedJoinEdgeButton.setSelected(false);
             }
         }
     }
     
+    public void createJoinEdge(CoordinateManager clickedObject)
+    {
+        System.out.println("ssss");
+        
+        if (this.newJoinEdge.getfirstObject() == null)
+        {
+            this.newJoinEdge.setFirstObject(clickedObject);
+        }
+        else if (this.newJoinEdge.getSecondObject() == null)
+        {
+            this.newJoinEdge.setSecondObject(clickedObject);
+        }       
+        
+    }
+    
     public void drawingPanecheckMove(MouseEvent evt) {
-        UCActor actor = isActorUnderMouse(evt.getX(), evt.getY());
+        int x = evt.getX();
+        int y = evt.getY();
+        if (this.newJoinEdge != null)
+        {
+            if (this.newJoinEdge.getSecondObject() == null)
+            {
+                this.newJoinEdge.setMouseCoordinates(x, y);
+            }
+        }
+        UCActor actor = isActorUnderMouse(x, y);
         if (actor != null)
         {
             actor.setColor(Color.red);
         }
-        UCUseCase usecase = isUseCaseUnderMouse(evt.getX(), evt.getY());
+        UCUseCase usecase = isUseCaseUnderMouse(x, y);
         if (usecase != null)
         {
             usecase.setColor(Color.green);
@@ -156,7 +202,7 @@ public final class UCMainContent {
         return null;
     }
 
-    public void objectClicked(CoordinateManager pressedObject) {
+    public void objectDoubleClicked(CoordinateManager pressedObject) {
         String name = (String) JOptionPane.showInputDialog("Enter name of the object",pressedObject.getName());
         if (name!= null && !"".equals(name))
             pressedObject.setName(name);
