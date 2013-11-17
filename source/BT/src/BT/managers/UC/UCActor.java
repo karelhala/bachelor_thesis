@@ -28,16 +28,17 @@ public class UCActor extends CoordinateManager{
     public UCActor ()
     {
         super();
+        this.selectedColor = Color.GREEN;
         this.width = 30;
         this.height = 60;
-        this.basicColor = Color.blue;
+        this.basicColor = Color.BLUE;
         this.name = "Default";
         this.textSize = 15;
         this.gap = 2;
         this.id = UUID.randomUUID();
     }
     
-    public void drawActor(Graphics2D g)
+    public void drawActor(Graphics2D g, Color actorColor)
     {
         g.setFont(new Font("Arial", Font.BOLD, this.textSize));
         FontMetrics fm = g.getFontMetrics(g.getFont());
@@ -47,7 +48,7 @@ public class UCActor extends CoordinateManager{
         g.fillRect(this.x-getMax(this.objectWidth, this.width)/2+this.gap, this.y-this.height/2+this.gap, getMax(this.objectWidth, this.width)-this.gap*2, this.height+this.textSize-this.gap);
         int actorX = this.getX();
         int actorY = this.getY();
-        g.setColor(this.basicColor);
+        g.setColor(actorColor);
         g.setStroke(new BasicStroke(2));
         int middle = this.getHeight()/2;
         int bottom = middle/2-this.gap;
@@ -68,13 +69,12 @@ public class UCActor extends CoordinateManager{
     
     public void drawSelectedActor(Graphics2D g, Color color)
     {
-        this.basicColor = color;
         int borderWidth = getMax(this.objectWidth, this.getWidth());
         int borderHeight = this.objectHeight;
         g.setStroke(new BasicStroke(1));
         g.setColor(Color.black);
         g.drawRect(this.x-borderWidth/2, this.y-this.getHeight()/2, borderWidth, borderHeight);
-        drawActor(g);
+        drawActor(g, color);
     }
     
     public boolean isActor(int x, int y)

@@ -18,7 +18,6 @@ import java.util.UUID;
  * @author Karel Hala
  */
 public class UCUseCase extends CoordinateManager{
-    private Color useCaseColor;
     private int width;
     private int height;
     private int textSize;
@@ -30,22 +29,23 @@ public class UCUseCase extends CoordinateManager{
     public UCUseCase ()
     {
         super();
+        this.selectedColor = Color.GRAY;
         this.width = 60;
         this.height = 30;
-        this.useCaseColor = Color.ORANGE;
+        this.basicColor = Color.ORANGE;
         this.name = "Default";
         this.textSize = 15;
         this.gap = 2;
         this.id = UUID.randomUUID();
     }
     
-    public void drawUseCase(Graphics2D g)
+    public void drawUseCase(Graphics2D g, Color useCaseColor)
     {
         g.setStroke(new BasicStroke(2));
         g.setFont(new Font("Arial", Font.BOLD, this.textSize));
         FontMetrics fm = g.getFontMetrics(g.getFont());
         this.width = fm.stringWidth(name)+this.textSize*2;
-        g.setColor(this.useCaseColor);
+        g.setColor(useCaseColor);
         g.fillOval(this.x-width/2, y-height/2, this.width, this.height);
         g.setColor(Color.red);
         g.drawOval(this.x-width/2, y-height/2, this.width, this.height);
@@ -66,13 +66,12 @@ public class UCUseCase extends CoordinateManager{
     }
 
     public void setBasicColor() {
-        this.useCaseColor = Color.ORANGE;
+        this.basicColor = Color.ORANGE;
     }
     
     public void drawSelectedUseCase(Graphics2D g, Color color)
     {
-        this.useCaseColor = color;
-        drawUseCase(g);
+        drawUseCase(g, color);
         int borderWidth = getMax(this.objectWidth, this.width);
         int borderHeight = this.objectHeight;
         g.setStroke(new BasicStroke(1));

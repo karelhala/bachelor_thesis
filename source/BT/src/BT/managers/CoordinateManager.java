@@ -15,6 +15,7 @@ public class CoordinateManager {
     protected int y;
     protected String name;
     protected Color basicColor;
+    protected Color selectedColor;
     protected int width;
     protected int height;
     
@@ -88,5 +89,9 @@ public class CoordinateManager {
         return this.y ;
     }
     
+    public Color getSelectedColor()
+    {
+        return this.selectedColor;
+    }
     
 }

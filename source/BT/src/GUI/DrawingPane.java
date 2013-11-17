@@ -30,6 +30,7 @@ public class DrawingPane{
     private UCPlaceManager UCPlaces;
     private drawing drawPane;
     private CoordinateManager selectedObject;
+    private UCJoinEdge newLine;
 
     public DrawingPane(UCPlaceManager UCPlaces)
     {
@@ -49,32 +50,51 @@ public class DrawingPane{
             super.paintComponent(g1);
             Graphics2D g = (Graphics2D) g1.create();
             g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+            if (newLine != null)
+            {
+                g.setColor(Color.GREEN);
+                newLine.drawJoinEdge(g);
+                
+            }
             
             for (UCJoinEdge joinEdge: UCPlaces.getJoinEdges()) {
+                if (joinEdge.getSelected())
+                {
+                    g.setColor(joinEdge.getSelectedColor());
+                }
+                else
+                {
+                    g.setColor(joinEdge.getColor());
+                }
                 joinEdge.drawJoinEdge(g);
             }
             
             for (UCActor actor: UCPlaces.getActors()) {
+                Color objectColor;
                 if (actor.equals(selectedObject))
                 {
-                    actor.drawSelectedActor(g, Color.green);
+                    objectColor = actor.getSelectedColor();
+                    actor.drawSelectedActor(g, objectColor);
                 }
                 else
                 {
-                    actor.drawActor(g);
+                    objectColor = actor.getColor();
+                    actor.drawActor(g, objectColor);
                 }
             }
             
             for (UCUseCase useCase: UCPlaces.getUseCases()) {
+                Color objectColor;
                 if (!useCase.equals(selectedObject))
                 {
-                    useCase.drawUseCase(g);
+                    objectColor = useCase.getColor();
+                    useCase.drawUseCase(g, objectColor);
                 }
                 else
                 {
-                    useCase.drawSelectedUseCase(g, Color.LIGHT_GRAY);
+                    objectColor = useCase.getSelectedColor();
+                    useCase.drawSelectedUseCase(g, objectColor);
                 }
-                useCase.drawUseCase(g);
 //                drawX(g, useCase.getX(), useCase.getY());
             }
         }
@@ -90,8 +110,9 @@ public class DrawingPane{
         this.drawPane.getActionMap().put("removeObject", new AbstractAction() {
             @Override
                 public void actionPerformed(ActionEvent e) {
-                if(selectedObject!=null)
+                    if(selectedObject!=null)
                     {
+                        newLine = null;
                         UCPlaces.removePlace(selectedObject);
                         drawPane.repaint();
                     }
@@ -111,5 +132,10 @@ public class DrawingPane{
     public void setSelectedObject(CoordinateManager selected)
     {
         this.selectedObject = selected;
+    }
+    
+    public void setNewLine(UCJoinEdge newLine)
+    {
+        this.newLine = newLine;
     }
 }

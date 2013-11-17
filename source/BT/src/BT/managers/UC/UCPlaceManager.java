@@ -5,7 +5,9 @@
 package BT.managers.UC;
 
 import BT.managers.CoordinateManager;
+import java.awt.Color;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  *
@@ -19,7 +21,10 @@ public class UCPlaceManager {
     
     public void addJoinEdge(UCJoinEdge joinEdge)
     {
-        this.joinEdges.add(joinEdge);
+        if (!lineExists(joinEdge))
+        {
+            this.joinEdges.add(joinEdge);
+        }
     }
     
     public ArrayList<UCJoinEdge> getJoinEdges() 
@@ -48,6 +53,7 @@ public class UCPlaceManager {
     }
 
     public void removePlace(CoordinateManager selectedObject) {
+        removeJoinEdgesWithObject(selectedObject);
         if (selectedObject instanceof UCActor)
         {
             this.actors.remove(selectedObject);
@@ -61,5 +67,50 @@ public class UCPlaceManager {
     public void removeJointEdge(UCJoinEdge jointEdge)
     {
         this.joinEdges.remove(jointEdge);
+    }
+    
+    public void removeJoinEdgesWithObject(CoordinateManager removedObject)
+    {
+        Iterator<UCJoinEdge> it = joinEdges.iterator();
+        while (it.hasNext()) {
+          UCJoinEdge joinEdge = it.next();
+          if (joinEdge.getfirstObject().equals(removedObject) || joinEdge.getSecondObject().equals(removedObject)) {
+            it.remove();
+          }
+        }
+    }
+    
+    public UCJoinEdge setSelectedLinesOnObject(CoordinateManager place)
+    {
+        for (UCJoinEdge oneEdge : this.joinEdges)
+        {
+            if (oneEdge.getfirstObject().equals(place))
+            {
+                oneEdge.setSelected(true);
+            }
+            else
+            {
+                oneEdge.setSelected(false);
+            }
+        }
+        return null;
+    }
+    
+    public Boolean lineExists(UCJoinEdge newLine)
+    {
+        for (UCJoinEdge oneEdge : this.joinEdges)
+        {
+            if (oneEdge.getSecondObject().equals(newLine.getSecondObject()) || oneEdge.getSecondObject().equals(newLine.getfirstObject()))
+            {
+                if (oneEdge.getfirstObject().equals(newLine.getSecondObject()) || oneEdge.getfirstObject().equals(newLine.getfirstObject()))
+                {
+                    if (oneEdge.getJoinEdgeType() == newLine.getJoinEdgeType())
+                    {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
     }
 }

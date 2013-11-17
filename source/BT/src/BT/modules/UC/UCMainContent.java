@@ -64,7 +64,8 @@ public final class UCMainContent {
         this.selectedJoinEdgeButton = selectedButton;
         if (selectedButton == null)
         {
-            this.places.removeJointEdge(newJoinEdge);
+            this.newJoinEdge = null;
+            this.drawingPane.setNewLine(null);
             newJoinEdge = null;
             this.drawingPane.getDrawing().repaint();
         }
@@ -107,41 +108,66 @@ public final class UCMainContent {
         }
     }
     
-    public void clickedOnObject(CoordinateManager clickedObject) {      
+    public void drawJoinEdge(CoordinateManager clickedObject)
+    {
         if (this.selectedJoinEdgeButton!=null)
         {
             if (this.newJoinEdge == null)
             {
                 this.newJoinEdge = new UCJoinEdge();
+                this.drawingPane.setNewLine(newJoinEdge);
             }
             createJoinEdge(clickedObject);
-            places.addJoinEdge(this.newJoinEdge);
             switch (this.selectedJoinEdgeButton.getName())
             {
                case "association":
                         System.out.println(this.selectedJoinEdgeButton.getText());
                      break;
-                   
+
                case "uses":  
                         System.out.println(this.selectedJoinEdgeButton.getText());
                      break;
-                   
+
                case "extend":  
                         System.out.println(this.selectedJoinEdgeButton.getText());
                      break;
             }
-            
+
             if (this.newJoinEdge.getfirstObject() != null && this.newJoinEdge.getSecondObject() != null)
             {
+                if (this.newJoinEdge.getfirstObject().equals(clickedObject))
+                {
+                    this.newJoinEdge.setSelected(true);
+                }
+                else
+                {
+                    this.newJoinEdge.setSelected(false);
+                }
+                places.addJoinEdge(this.newJoinEdge);
+                this.drawingPane.setNewLine(null);
                 this.newJoinEdge = null;
             }
         }
     }
     
+    public void clickedOnObject(CoordinateManager clickedObject) {
+        if (clickedObject == null)
+        {
+            this.newJoinEdge = null;
+            this.drawingPane.setNewLine(null);
+        }
+        else
+        {
+            if (this.newJoinEdge!=null && this.newJoinEdge.getfirstObject().equals(clickedObject))
+            {
+                this.newJoinEdge = null;
+            }
+            drawJoinEdge(clickedObject);
+        }
+    }
+    
     public void createJoinEdge(CoordinateManager clickedObject)
-    {
-        System.out.println("ssss");
-        
+    {        
         if (this.newJoinEdge.getfirstObject() == null)
         {
             this.newJoinEdge.setFirstObject(clickedObject);
@@ -223,6 +249,7 @@ public final class UCMainContent {
         {
             this.drawingPane.setSelectedObject(null);
         }
+        places.setSelectedLinesOnObject(clickedObject);
         this.drawingPane.getDrawing().repaint();
     }
 }
