@@ -4,6 +4,7 @@
  */
 package BT.modules.UC;
 
+import BT.modules.UC.mainContent.UCMainContent;
 import GUI.MainContentModel;
 import java.awt.Component;
 import java.awt.event.ItemEvent;
@@ -17,14 +18,20 @@ import javax.swing.JToggleButton;
 public final class UCContentController {
     private MainContentModel UCContent;
     
+    /**
+     * 
+     */
     public UCContentController()
     {
         this.UCContent = new MainContentModel();
         createComponents();
     }
     
+    /**
+     * 
+     */
     public void createComponents()
-    {   
+    {
         UCMainContent UCmain = new UCMainContent();
         
         UCLeftTopContent UCLeftTop = new UCLeftTopContent();
@@ -39,6 +46,12 @@ public final class UCContentController {
         this.UCContent.setLeftBottomPane(UCLeftBottom.getMainContentPane());
     }
     
+    /**
+     * 
+     * @param allComponents
+     * @param UCMain
+     * @param isNeeded 
+     */
     public void setListeners(final Component[] allComponents, final UCMainContent UCMain, final boolean isNeeded)
     {
         for (Component comp : allComponents)
@@ -63,7 +76,11 @@ public final class UCContentController {
         }
     }
     
-    
+    /**
+     * 
+     * @param selectedButton
+     * @param allComponents 
+     */
     private void toggleButtonSelected(JToggleButton selectedButton, Component[] allComponents) {
         for (Component comp : allComponents)
         {
@@ -75,6 +92,11 @@ public final class UCContentController {
         }
     }
     
+    /**
+     * 
+     * @param allComponents
+     * @return 
+     */
     private JToggleButton getSelectedButton(Component[] allComponents)
     {
         for (Component comp : allComponents)
@@ -88,6 +110,10 @@ public final class UCContentController {
         return null;
     }
     
+    /**
+     * 
+     * @return 
+     */
     public MainContentModel getUCContent()
     {
         return this.UCContent;

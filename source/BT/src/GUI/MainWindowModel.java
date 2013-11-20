@@ -28,6 +28,9 @@ public class MainWindowModel extends javax.swing.JFrame{
         this.myLayout = myLayout;
     }
         
+    /**
+     * 
+     */
     public void initComponents() {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         this.setPreferredSize(new Dimension(this.width, this.height));

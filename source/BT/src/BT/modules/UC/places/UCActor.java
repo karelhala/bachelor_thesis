@@ -2,9 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package BT.managers.UC;
+package BT.modules.UC.places;
 
-import BT.managers.CoordinateManager;
+import BT.models.CoordinateModel;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
@@ -17,7 +17,7 @@ import java.util.UUID;
  *
  * @author Karel Hala
  */
-public class UCActor extends CoordinateManager{
+public class UCActor extends CoordinateModel{
     
     private int objectWidth;
     private int objectHeight;
@@ -25,6 +25,9 @@ public class UCActor extends CoordinateManager{
     private int gap;
     private UUID id;
     
+    /**
+     * TODO: create model
+     */
     public UCActor ()
     {
         super();
@@ -38,14 +41,26 @@ public class UCActor extends CoordinateManager{
         this.id = UUID.randomUUID();
     }
     
-    public void drawActor(Graphics2D g, Color actorColor)
+    /**
+     * TODO: refactor
+     * @param g 
+     */
+    public void drawActor(Graphics2D g)
     {
+        Color actorColor = this.basicColor;
         g.setFont(new Font("Arial", Font.BOLD, this.textSize));
         FontMetrics fm = g.getFontMetrics(g.getFont());
         this.objectHeight = this.getHeight() + textSize + gap;
         this.objectWidth = this.getWidth() + fm.stringWidth(this.name) + gap - textSize;
         g.setColor(Color.WHITE);
         g.fillRect(this.x-getMax(this.objectWidth, this.width)/2+this.gap, this.y-this.height/2+this.gap, getMax(this.objectWidth, this.width)-this.gap*2, this.height+this.textSize-this.gap);
+        
+        if (getSelected())
+        {
+            drawRectArroundActor(g);
+            actorColor = this.selectedColor;
+        }
+        
         int actorX = this.getX();
         int actorY = this.getY();
         g.setColor(actorColor);
@@ -67,16 +82,25 @@ public class UCActor extends CoordinateManager{
 
     }
     
-    public void drawSelectedActor(Graphics2D g, Color color)
+    /**
+     * 
+     * @param g 
+     */
+    public void drawRectArroundActor(Graphics2D g)
     {
         int borderWidth = getMax(this.objectWidth, this.getWidth());
         int borderHeight = this.objectHeight;
         g.setStroke(new BasicStroke(1));
         g.setColor(Color.black);
         g.drawRect(this.x-borderWidth/2, this.y-this.getHeight()/2, borderWidth, borderHeight);
-        drawActor(g, color);
     }
     
+    /**
+     * 
+     * @param x
+     * @param y
+     * @return 
+     */
     public boolean isActor(int x, int y)
     {
         int isX=Math.abs(x-this.x);
@@ -87,14 +111,28 @@ public class UCActor extends CoordinateManager{
         return false;
     }
 
+    /**
+     * 
+     */
     public void setBasicColor() {
         this.basicColor = Color.blue;
     }
     
+    /**
+     * 
+     * @param a
+     * @param b
+     * @return 
+     */
     private int getMax(int a, int b) {
         return (a>b?a:b);
     }
     
+    /**
+     * 
+     * @param other
+     * @return 
+     */
     @Override
     public boolean equals(Object other)
     {
@@ -107,6 +145,10 @@ public class UCActor extends CoordinateManager{
         return false;
     }
 
+    /**
+     * 
+     * @return 
+     */
     @Override
     public int hashCode() {
         int hash = 5;

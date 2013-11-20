@@ -2,13 +2,13 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package GUI;
+package BT.modules.UC.mainContent;
 
-import BT.managers.CoordinateManager;
-import BT.managers.UC.UCActor;
-import BT.managers.UC.UCJoinEdge;
+import BT.models.CoordinateModel;
+import BT.modules.UC.places.UCActor;
+import BT.modules.UC.places.UCJoinEdge;
 import BT.managers.UC.UCPlaceManager;
-import BT.managers.UC.UCUseCase;
+import BT.modules.UC.places.UCUseCase;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -26,25 +26,35 @@ import javax.swing.KeyStroke;
  *
  * @author Karel Hala
  */
-public class DrawingPane{
+public class UCDrawingPane{
     private UCPlaceManager UCPlaces;
     private drawing drawPane;
-    private CoordinateManager selectedObject;
     private UCJoinEdge newLine;
 
-    public DrawingPane(UCPlaceManager UCPlaces)
+    /**
+     * 
+     * @param UCPlaces 
+     */
+    public UCDrawingPane(UCPlaceManager UCPlaces)
     {
         drawPane = new drawing();
         this.UCPlaces = UCPlaces;
     }
     
+    /**
+     * 
+     */
     public class drawing extends JPanel{
+        //TODO: remove this
         void drawX(Graphics2D g1, int x1, int y1) {
                 g1.drawLine(x1+5, y1+5, x1-5, y1-5);
                 g1.drawLine(x1+5, y1-5, x1-5, y1+5);
             }
         
-        
+        /**
+         * 
+         * @param g1 
+         */
         @Override
         protected void paintComponent(Graphics g1) {
             super.paintComponent(g1);
@@ -58,64 +68,41 @@ public class DrawingPane{
             }
             
             for (UCJoinEdge joinEdge: UCPlaces.getJoinEdges()) {
-                if (joinEdge.getSelected())
-                {
-                    g.setColor(joinEdge.getSelectedColor());
-                }
-                else
-                {
-                    g.setColor(joinEdge.getColor());
-                }
                 joinEdge.drawJoinEdge(g);
             }
             
             for (UCActor actor: UCPlaces.getActors()) {
-                Color objectColor;
-                if (actor.equals(selectedObject))
-                {
-                    objectColor = actor.getSelectedColor();
-                    actor.drawSelectedActor(g, objectColor);
-                }
-                else
-                {
-                    objectColor = actor.getColor();
-                    actor.drawActor(g, objectColor);
-                }
+                actor.drawActor(g);
             }
             
             for (UCUseCase useCase: UCPlaces.getUseCases()) {
-                Color objectColor;
-                if (!useCase.equals(selectedObject))
-                {
-                    objectColor = useCase.getColor();
-                    useCase.drawUseCase(g, objectColor);
-                }
-                else
-                {
-                    objectColor = useCase.getSelectedColor();
-                    useCase.drawSelectedUseCase(g, objectColor);
-                }
+                useCase.drawUseCase(g);
+                
 //                drawX(g, useCase.getX(), useCase.getY());
             }
         }
     }
     
+    /**
+     * 
+     * @return 
+     */
     public drawing getDrawing()
     {
         return this.drawPane;
     }
     
+    /**
+     * 
+     */
     public void setButtonsListeners()
     {
         this.drawPane.getActionMap().put("removeObject", new AbstractAction() {
             @Override
                 public void actionPerformed(ActionEvent e) {
-                    if(selectedObject!=null)
-                    {
-                        newLine = null;
-                        UCPlaces.removePlace(selectedObject);
-                        drawPane.repaint();
-                    }
+                UCPlaces.removeAllSelectedItems();
+                newLine = null;
+                drawPane.repaint();
                 }
             }
         );
@@ -124,16 +111,19 @@ public class DrawingPane{
          inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_W, InputEvent.CTRL_MASK), "closeTab");
     }
     
+    /**
+     * 
+     * @param places 
+     */
     public void setPlaces(UCPlaceManager places)
     {
         this.UCPlaces = places;
     }
-    
-    public void setSelectedObject(CoordinateManager selected)
-    {
-        this.selectedObject = selected;
-    }
-    
+
+    /**
+     * 
+     * @param newLine 
+     */
     public void setNewLine(UCJoinEdge newLine)
     {
         this.newLine = newLine;

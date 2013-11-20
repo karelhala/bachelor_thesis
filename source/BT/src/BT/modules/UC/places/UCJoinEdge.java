@@ -2,9 +2,11 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package BT.managers.UC;
+package BT.modules.UC.places;
 
-import BT.managers.CoordinateManager;
+import BT.managers.UC.DistanceCalculator;
+import BT.modules.UC.places.UCActor;
+import BT.models.CoordinateModel;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -14,27 +16,35 @@ import java.util.Objects;
  *
  * @author Karel Hala
  */
-public class UCJoinEdge extends CoordinateManager{
-    
-    private Boolean selected;
-    private CoordinateManager firstObject;
-    private CoordinateManager secondObject;
+public class UCJoinEdge extends CoordinateModel{
+    private CoordinateModel firstObject;
+    private CoordinateModel secondObject;
     private int startX;
     private int startY;
     private int endX;
     private int endY;
+    private double tolerance;
+
     public static enum LineType{ASSOCIATION, USES, EXTENDS};
     private LineType joinEdgeType;
     
+    /**
+     * TODO: make model
+     */
     public UCJoinEdge ()
     {
+        this.tolerance = 8;
         this.selected = true;
         this.selectedColor = Color.RED;
         this.basicColor = Color.BLACK;
         this.joinEdgeType = LineType.ASSOCIATION;
     }
     
-    public void setFirstObject(CoordinateManager object)
+    /**
+     * 
+     * @param object 
+     */
+    public void setFirstObject(CoordinateModel object)
     {
         
         this.startX = object.getX();
@@ -44,12 +54,20 @@ public class UCJoinEdge extends CoordinateManager{
         this.firstObject = object;
     }
     
-    public CoordinateManager getfirstObject()
+    /**
+     * 
+     * @return 
+     */
+    public CoordinateModel getfirstObject()
     {
         return this.firstObject;
     }
     
-    public void setSecondObject(CoordinateManager object)
+    /**
+     * 
+     * @param object 
+     */
+    public void setSecondObject(CoordinateModel object)
     {
         this.endX = object.getX();
         this.endY = object.getY();
@@ -64,33 +82,48 @@ public class UCJoinEdge extends CoordinateManager{
         }
     }
     
-    public CoordinateManager getSecondObject()
+    /**
+     * 
+     * @return 
+     */
+    public CoordinateModel getSecondObject()
     {
         return this.secondObject;
     }
     
+    /**
+     * 
+     * @param x
+     * @param y 
+     */
     public void setMouseCoordinates(int x, int y)
     {
         this.endX = x;
         this.endY = y;
     }
     
-    public void setSelected(Boolean selected)
-    {
-        this.selected = selected;
-    }
-    
-    public Boolean getSelected()
-    {
-        return this.selected;
-    }
-    
+    /**
+     * 
+     * @return 
+     */
     public LineType getJoinEdgeType()
     {
         return this.joinEdgeType;
     }
     
+    /**
+     * 
+     * @param g 
+     */
     public void drawJoinEdge(Graphics2D g) {      
+        if (this.selected)
+        {
+            g.setColor(selectedColor);
+        }
+        else
+        {
+            g.setColor(basicColor);
+        }
         if (this.getSecondObject() != null)
         {
             endX = secondObject.getX();
@@ -105,7 +138,40 @@ public class UCJoinEdge extends CoordinateManager{
         }
     }
     
-        @Override
+    /**
+     * 
+     * @param x
+     * @param y
+     * @return 
+     */
+    public Boolean isInRange(int x, int y) {
+        int firstPointX = this.firstObject.getX();
+        int firstPointY = this.firstObject.getY();
+        
+        int secondPointX = this.secondObject.getX();
+        int secondPointY = this.secondObject.getY();
+        DistanceCalculator calculateDistance = new DistanceCalculator();
+        double distance = calculateDistance.getDistanceOfPointToSegment(firstPointX, firstPointY, secondPointX, secondPointY, x, y);
+        if (distance !=-1 && distance < this.tolerance)
+        {
+            return true;
+        }
+        return false;
+    }
+    
+    /**
+     * 
+     */
+    public void setBasicColor() {
+        this.basicColor = Color.BLACK;
+    }
+    
+    /**
+     * 
+     * @param other
+     * @return 
+     */
+    @Override
     public boolean equals(Object other)
     {
         if (other instanceof UCJoinEdge)
@@ -119,6 +185,10 @@ public class UCJoinEdge extends CoordinateManager{
         return false;
     }
 
+    /**
+     * 
+     * @return 
+     */
     @Override
     public int hashCode() {
         int hash = 5;
@@ -126,6 +196,5 @@ public class UCJoinEdge extends CoordinateManager{
         hash = 67 * hash + Objects.hashCode(this.secondObject);
         hash = 67 * hash + Objects.hashCode(this.joinEdgeType);
         return hash;
-    }
-    
+    } 
 }

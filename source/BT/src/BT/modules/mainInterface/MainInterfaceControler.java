@@ -15,11 +15,19 @@ import java.awt.event.MouseAdapter;
 public class MainInterfaceControler{
 
     String programName;
+    
+    /**
+     * 
+     * @param programName 
+     */
     public MainInterfaceControler (String programName)
     {
         this.programName = programName;
     }
     
+    /**
+     * 
+     */
     public void runTheMainWindow()
     {
         ToolBarContentControler ToolBarContent = new ToolBarContentControler();

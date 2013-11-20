@@ -26,6 +26,11 @@ public class WindowLayoutControler {
     private MyToolBar toolBar;
     private PlusTab plusTab;
     private MouseAdapter addNewTabListener;
+    
+    /**
+     * 
+     * @param toolBar 
+     */
     public WindowLayoutControler(MyToolBar toolBar)
     {
         this.toolBar = toolBar;
@@ -34,16 +39,27 @@ public class WindowLayoutControler {
         this.plusTab.AddPlusTab(this.fileTab);
     }
     
+    /**
+     * 
+     * @param addNewTabListener 
+     */
     public void setAddNewTabListener(MouseAdapter addNewTabListener)
     {
         this.addNewTabListener = addNewTabListener;
     }
     
+    /**
+     * 
+     */
     public void setMouseClickedOnPlusButton()
     {
         this.plusTab.addMouseClickedListenerToPlus(this.addNewTabListener);
     }
     
+    /**
+     * 
+     * @param pane 
+     */
     public void addComponentsToPane(Container pane) {
         if (!(pane.getLayout() instanceof BorderLayout)) {
             pane.add(new JLabel("Container doesn't use BorderLayout!"));
@@ -54,16 +70,32 @@ public class WindowLayoutControler {
 
         pane.add(this.fileTab, BorderLayout.CENTER);
     }
+    
+    /**
+     * 
+     * @param UCContentModel
+     * @param UMLContentModel
+     * @param OOPNContentModel 
+     */
     public void addNewTab(MainContentModel UCContentModel, MainContentModel UMLContentModel, MainContentModel OOPNContentModel)
     {
         addNewTab(UCContentModel, UMLContentModel, OOPNContentModel, "new file");
     }
     
-     public void removeTab(Component selectedTab)
-     {
-         removeTab(selectedTab, true);
-     }
+    /**
+     * 
+     * @param selectedTab 
+     */
+    public void removeTab(Component selectedTab)
+    {
+        removeTab(selectedTab, true);
+    }
     
+    /**
+     * 
+     * @param selectedTab
+     * @param closedByButton 
+     */
     public void removeTab(Component selectedTab, Boolean closedByButton)
     {
         if (closedByButton && this.fileTab.getTabCount()>1)
@@ -83,13 +115,22 @@ public class WindowLayoutControler {
             this.fileTab.setSelectedIndex(-1);
         }
     }
-    
+    /**
+     * 
+     * @return 
+     */
     public Component getSelectedTab()
     {
-//        int i = this.fileTab.indexOfTabComponent();
         return this.fileTab.getSelectedComponent();
     }
     
+    /**
+     * 
+     * @param UCContentModel
+     * @param UMLContentModel
+     * @param OOPNContentModel
+     * @param name 
+     */
     public void addNewTab(MainContentModel UCContentModel, MainContentModel UMLContentModel, MainContentModel OOPNContentModel, String name)
     {
         JTabbedPane typeTab = new JTabbedPane();
@@ -108,6 +149,11 @@ public class WindowLayoutControler {
         this.fileTab.setEnabledAt(this.fileTab.getTabCount()-1, false);
     }
     
+    /**
+     * 
+     * @param mycontent
+     * @return 
+     */
     private JSplitPane getWindowLayout(MainContentModel mycontent)
     {
         WindowLayoutModel myWindow = new WindowLayoutModel();
@@ -118,6 +164,10 @@ public class WindowLayoutControler {
         return myWindow.getLeftSplitPane();
     }
     
+    /**
+     * 
+     * @return 
+     */
     public JTabbedPane getFileTab()
     {
         return this.fileTab;

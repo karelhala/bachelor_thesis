@@ -2,14 +2,13 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package BT.modules.UC;
+package BT.modules.UC.mainContent;
 
-import BT.managers.CoordinateManager;
-import BT.managers.UC.UCActor;
-import BT.managers.UC.UCJoinEdge;
+import BT.models.CoordinateModel;
+import BT.modules.UC.places.UCActor;
+import BT.modules.UC.places.UCJoinEdge;
 import BT.managers.UC.UCPlaceManager;
-import BT.managers.UC.UCUseCase;
-import GUI.DrawingPane;
+import BT.modules.UC.places.UCUseCase;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
@@ -27,22 +26,32 @@ public final class UCMainContent {
     private JToggleButton selectedItemButton;
     private JToggleButton selectedJoinEdgeButton;
     private UCPlaceManager places;
-    private DrawingPane drawingPane;
+    private UCDrawingPane drawingPane;
     private UCJoinEdge newJoinEdge;
     
+    /**
+     * 
+     */
     public UCMainContent()
     {
         this.places = new UCPlaceManager();
         this.mainContentPane = new JPanel(new BorderLayout());
-        this.drawingPane = new DrawingPane(this.places);
+        this.drawingPane = new UCDrawingPane(this.places);
         createMainPane();
     }
     
+    /**
+     * 
+     * @return 
+     */
     public JPanel getMainContentPane ()
     {
         return this.mainContentPane;
     }
     
+    /**
+     * 
+     */
     public void createMainPane()
     {   
         this.drawingPane.getDrawing().setBackground(Color.WHITE);
@@ -56,10 +65,18 @@ public final class UCMainContent {
         this.mainContentPane.add(myScrollPane, BorderLayout.CENTER);
     }
 
+    /**
+     * 
+     * @param toggleButton 
+     */
     public void setSelectedItemButton(JToggleButton toggleButton) {
         this.selectedItemButton = toggleButton;
     }
     
+    /**
+     * 
+     * @param selectedButton 
+     */
     public void setSelectedJoinEdgeButton(JToggleButton selectedButton) {
         this.selectedJoinEdgeButton = selectedButton;
         if (selectedButton == null)
@@ -71,13 +88,25 @@ public final class UCMainContent {
         }
     }
     
-    public void mouseDragged(MouseEvent e, CoordinateManager dragged)
+    /**
+     * 
+     * @param e
+     * @param dragged 
+     */
+    public void mouseDragged(MouseEvent e, CoordinateModel dragged)
     {
-        dragged.setX(e.getX());
-        dragged.setY(e.getY());
+        if (dragged instanceof UCActor || dragged instanceof UCUseCase)
+        {
+            dragged.setX(e.getX());
+            dragged.setY(e.getY());
+        }
         this.drawingPane.getDrawing().repaint();
     }
     
+    /**
+     * 
+     * @param evt 
+     */
     public void drawingPaneClicked(MouseEvent evt) {
         if (this.selectedItemButton!=null){
             switch (this.selectedItemButton.getName()){
@@ -108,49 +137,54 @@ public final class UCMainContent {
         }
     }
     
-    public void drawJoinEdge(CoordinateManager clickedObject)
+    /**
+     * 
+     * @param clickedObject 
+     */
+    public void drawJoinEdge(CoordinateModel clickedObject)
     {
-        if (this.selectedJoinEdgeButton!=null)
+        if (this.newJoinEdge == null)
         {
-            if (this.newJoinEdge == null)
-            {
-                this.newJoinEdge = new UCJoinEdge();
-                this.drawingPane.setNewLine(newJoinEdge);
-            }
-            createJoinEdge(clickedObject);
-            switch (this.selectedJoinEdgeButton.getName())
-            {
-               case "association":
-                        System.out.println(this.selectedJoinEdgeButton.getText());
-                     break;
+            this.newJoinEdge = new UCJoinEdge();
+            this.drawingPane.setNewLine(newJoinEdge);
+        }
+        createJoinEdge(clickedObject);
+        switch (this.selectedJoinEdgeButton.getName())
+        {
+           case "association":
+                    System.out.println(this.selectedJoinEdgeButton.getText());
+                 break;
 
-               case "uses":  
-                        System.out.println(this.selectedJoinEdgeButton.getText());
-                     break;
+           case "uses":  
+                    System.out.println(this.selectedJoinEdgeButton.getText());
+                 break;
 
-               case "extend":  
-                        System.out.println(this.selectedJoinEdgeButton.getText());
-                     break;
-            }
+           case "extend":  
+                    System.out.println(this.selectedJoinEdgeButton.getText());
+                 break;
+        }
 
-            if (this.newJoinEdge.getfirstObject() != null && this.newJoinEdge.getSecondObject() != null)
+        if (this.newJoinEdge.getfirstObject() != null && this.newJoinEdge.getSecondObject() != null)
+        {
+            if (this.newJoinEdge.getfirstObject().equals(clickedObject))
             {
-                if (this.newJoinEdge.getfirstObject().equals(clickedObject))
-                {
-                    this.newJoinEdge.setSelected(true);
-                }
-                else
-                {
-                    this.newJoinEdge.setSelected(false);
-                }
-                places.addJoinEdge(this.newJoinEdge);
-                this.drawingPane.setNewLine(null);
-                this.newJoinEdge = null;
+                this.newJoinEdge.setSelected(true);
             }
+            else
+            {
+                this.newJoinEdge.setSelected(false);
+            }
+            places.addJoinEdge(this.newJoinEdge);
+            this.drawingPane.setNewLine(null);
+            this.newJoinEdge = null;
         }
     }
     
-    public void clickedOnObject(CoordinateManager clickedObject) {
+    /**
+     * 
+     * @param clickedObject 
+     */
+    public void clickedOnObject(CoordinateModel clickedObject) {
         if (clickedObject == null)
         {
             this.newJoinEdge = null;
@@ -166,7 +200,11 @@ public final class UCMainContent {
         }
     }
     
-    public void createJoinEdge(CoordinateManager clickedObject)
+    /**
+     * 
+     * @param clickedObject 
+     */
+    public void createJoinEdge(CoordinateModel clickedObject)
     {        
         if (this.newJoinEdge.getfirstObject() == null)
         {
@@ -179,6 +217,10 @@ public final class UCMainContent {
         
     }
     
+    /**
+     * 
+     * @param evt 
+     */
     public void drawingPanecheckMove(MouseEvent evt) {
         int x = evt.getX();
         int y = evt.getY();
@@ -199,9 +241,21 @@ public final class UCMainContent {
         {
             usecase.setColor(Color.green);
         }
+        
+        UCJoinEdge joinEdge = isJoinEdgeUnderMouse(x, y);
+        if (joinEdge != null)
+        {
+            joinEdge.setColor(Color.ORANGE);
+        }
         this.drawingPane.getDrawing().repaint();
     }
     
+    /**
+     * 
+     * @param x
+     * @param y
+     * @return 
+     */
     public UCActor isActorUnderMouse(int x, int y)
     {
         for (UCActor actor : places.getActors())
@@ -218,6 +272,34 @@ public final class UCMainContent {
         return null;
     }
 
+    /**
+     * 
+     * @param x
+     * @param y
+     * @return 
+     */
+    public UCJoinEdge isJoinEdgeUnderMouse(int x, int y)
+    {
+        for (UCJoinEdge joinEdge : places.getJoinEdges())
+        {
+            if (joinEdge.isInRange(x,y))
+            {
+                return joinEdge;
+            }
+            else
+            {
+                joinEdge.setBasicColor();
+            }
+        }
+        return null;
+    }
+            
+    /**
+     * 
+     * @param x
+     * @param y
+     * @return 
+     */
     public UCUseCase isUseCaseUnderMouse(int x, int y) {
        for (UCUseCase useCase : places.getUseCases())
         {
@@ -232,24 +314,52 @@ public final class UCMainContent {
         }
         return null;
     }
-
-    public void objectDoubleClicked(CoordinateManager pressedObject) {
+    /**
+     * 
+     * @param pressedObject 
+     */
+    public void objectDoubleClicked(CoordinateModel pressedObject) {
         String name = (String) JOptionPane.showInputDialog("Enter name of the object",pressedObject.getName());
         if (name!= null && !"".equals(name))
             pressedObject.setName(name);
         this.drawingPane.getDrawing().repaint();
     }
 
-    public void setSelectedObject(CoordinateManager clickedObject) {
+    /**
+     * 
+     * @param clickedObject 
+     */
+    public void setSelectedObject(CoordinateModel clickedObject) {
+        this.places.setAllObjectDiselected();
+        places.setSelectedLinesOnObject(clickedObject);
         if (clickedObject!=null)
         {
-            this.drawingPane.setSelectedObject(clickedObject);
+            clickedObject.setSelected(true);
         }
-        else
+
+        if (this.selectedJoinEdgeButton!=null)
         {
-            this.drawingPane.setSelectedObject(null);
+            clickedOnObject(clickedObject);
         }
-        places.setSelectedLinesOnObject(clickedObject);
         this.drawingPane.getDrawing().repaint();
+    }
+    
+    /**
+     * 
+     */
+    public void deselectAllObjectsAndRepaint()
+    {
+        this.places.setAllObjectDiselected();
+        this.drawingPane.getDrawing().repaint();
+    }
+
+    /**
+     * 
+     * @param joinEdge 
+     */
+    private void setSelectedLine(UCJoinEdge joinEdge) {
+        this.newJoinEdge = new UCJoinEdge();
+        this.newJoinEdge.setFirstObject(joinEdge.getfirstObject());
+        this.places.removeJointEdge(joinEdge);
     }
 }

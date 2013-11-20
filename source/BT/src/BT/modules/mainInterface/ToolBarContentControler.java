@@ -26,11 +26,18 @@ public class ToolBarContentControler {
     private ToolBarContentModel toolBarcontent;
     private MouseAdapter newFileMouseClicked;
     
+    /**
+     * 
+     */
     public ToolBarContentControler()
     {
         this.toolBarcontent = new ToolBarContentModel();
     }
     
+    /**
+     * 
+     * @param myLayout 
+     */
     public void addBasicButtons(final WindowLayoutControler myLayout)
     {
         JPanel myPanel = this.toolBarcontent.getToolBarPane();
@@ -57,10 +64,19 @@ public class ToolBarContentControler {
         setCloseAndOpenShortCuts(myLayout);
     }
     
+    /**
+     * 
+     * @param evt
+     * @param myLayout 
+     */
     private void NewFileButtonMouseClicked(MouseEvent evt, WindowLayoutControler myLayout) {
         addNewTab(myLayout);
     }
     
+    /**
+     * 
+     * @param myLayout 
+     */
     private void addNewTab(WindowLayoutControler myLayout)
     {
         UCContentController UCController = new UCContentController();
@@ -69,22 +85,38 @@ public class ToolBarContentControler {
         MainContentModel OOPNContentModel = new MainContentModel();
         myLayout.addNewTab(UCController.getUCContent(), UMLContenctModel, OOPNContentModel);
     }
-    
+
+    /**
+     * 
+     * @param evt
+     * @param myLayout 
+     */
     private void CloseButtonMouseClicked(MouseEvent evt, WindowLayoutControler myLayout) {
         myLayout.removeTab(myLayout.getSelectedTab());
     }
     
+    /**
+     * 
+     * @return 
+     */
     public ToolBarContentModel getToolBarcontent()
     {
         return this.toolBarcontent;
     }
     
+    /**
+     * 
+     * @return 
+     */
     public MouseAdapter getNewFileMouseClicked()
     {
         return this.newFileMouseClicked;
     }
     
-        
+    /**
+     * 
+     * @param myLayout 
+     */
     private void setCloseAndOpenShortCuts(final WindowLayoutControler myLayout)
     {
         myLayout.getFileTab().getActionMap().put("closeTab", new AbstractAction() {

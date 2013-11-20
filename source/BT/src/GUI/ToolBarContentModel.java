@@ -28,11 +28,22 @@ public class ToolBarContentModel {
         this.toolBarPane = toolBarPane;
     }
     
+    /**
+     * 
+     * @param name
+     * @return 
+     */
     public JButton addNewButton (String name)
     {
         return addNewButton(name, Color.PINK); 
     }
     
+    /**
+     * 
+     * @param name
+     * @param buttonColor
+     * @return 
+     */
     public JButton addNewButton (String name, Color buttonColor)
     {
         JButton jButton1 = new javax.swing.JButton();

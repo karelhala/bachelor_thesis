@@ -27,6 +27,11 @@ public class CloseTabbedPane extends JTabbedPane{
         super();
     }
     
+    /**
+     * 
+     * @param title
+     * @param component 
+     */
     public void addCloseTab(String title, final JComponent component) {
         JPanel closePanel = new JPanel();
         JLabel closeTitle = new JLabel(title);
@@ -46,6 +51,10 @@ public class CloseTabbedPane extends JTabbedPane{
         this.setSelectedComponent(component);
     }
     
+    /**
+     * 
+     * @param component 
+     */
     public void removeTab(Component component)
     {
         if (this.indexOfComponent(component) != -1)
@@ -64,6 +73,11 @@ public class CloseTabbedPane extends JTabbedPane{
         this.remove(component);
     }
     
+    /**
+     * 
+     * @param component
+     * @return 
+     */
     private JButton createCloseButton(final Component component)
     {
         JButton buttonClose = new JButton();
@@ -83,11 +97,20 @@ public class CloseTabbedPane extends JTabbedPane{
         return buttonClose;
     }
     
+    /**
+     * 
+     * @param evt
+     * @param component 
+     */
     private void buttonCloseMouseClicked (MouseEvent evt, Component component)
     {
         removeTab(component);
     }
     
+    /**
+     * 
+     * @param buttonClose 
+     */
     private void createIconsForButton(JButton buttonClose)
     {
         ImageIcon icon = new ImageIcon(CloseTabbedPane.class.getResource("/resources/redSmallX.png"));

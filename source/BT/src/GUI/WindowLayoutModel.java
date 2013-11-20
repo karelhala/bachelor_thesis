@@ -15,7 +15,10 @@ public class WindowLayoutModel {
     private JSplitPane rightSplitPane;
     private JSplitPane leftContentSplitPane;
     private JSplitPane rightContentSplitPane;
-        
+       
+    /**
+     * 
+     */
     public void initSplitPanes()
     {
         this.leftSplitPane = new JSplitPane();
@@ -24,12 +27,19 @@ public class WindowLayoutModel {
         this.rightContentSplitPane = new JSplitPane();
     }
     
+    /**
+     * 
+     */
     public void setVerticals ()
     {
         this.rightSplitPane.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
         this.leftContentSplitPane.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
     }
     
+    /**
+     * 
+     * @param mycontent 
+     */
     public void setContentsSplitPanes(MainContentModel mycontent)
     {
         this.leftContentSplitPane.setLeftComponent(mycontent.getLeftTopPane());
@@ -45,6 +55,9 @@ public class WindowLayoutModel {
         this.leftSplitPane.setRightComponent(this.rightSplitPane);
     }
     
+    /**
+     * 
+     */
     public void setDividerLocation ()
     {
         this.leftSplitPane.setDividerLocation(200);
@@ -53,6 +66,10 @@ public class WindowLayoutModel {
         this.rightContentSplitPane.setDividerLocation(400);
     }
     
+    /**
+     * 
+     * @return 
+     */
     public JSplitPane getLeftSplitPane()
     {
         return this.leftSplitPane;

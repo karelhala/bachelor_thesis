@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package BT.managers;
+package BT.models;
 
 import java.awt.Color;
 
@@ -10,7 +10,7 @@ import java.awt.Color;
  *
  * @author Karel Hala
  */
-public class CoordinateManager {
+public class CoordinateModel {
     protected int x;
     protected int y;
     protected String name;
@@ -18,6 +18,12 @@ public class CoordinateManager {
     protected Color selectedColor;
     protected int width;
     protected int height;
+    protected Boolean selected;
+    
+    public CoordinateModel()
+    {
+        this.selected = true;
+    }
     
     public void setWidth(int width) {
         this.width = width;
@@ -76,22 +82,20 @@ public class CoordinateManager {
     {
         return height;
     }
-
-    public int getRightX() {
-        return this.x - this.height/2;
-    }
-    
-    public int getLeftX() {
-        return this.x + this.height/2;
-    }
-
-    public int getCalculatedY() {
-        return this.y ;
-    }
     
     public Color getSelectedColor()
     {
         return this.selectedColor;
+    }
+    
+    public void setSelected(Boolean selected)
+    {
+        this.selected = selected;
+    }
+    
+    public Boolean getSelected()
+    {
+        return this.selected;
     }
     
 }

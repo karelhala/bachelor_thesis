@@ -20,17 +20,27 @@ public class MyMenuBar {
         addItemsToMenu();
     }
     
+    /**
+     * 
+     */
     private void initializeMenu()
     {
         this.jMenuBar1 = new javax.swing.JMenuBar();
     }
     
+    /**
+     * 
+     * @return 
+     */
     public javax.swing.JMenuBar getMainMenu()
     {
         javax.swing.JMenuBar menubar = this.jMenuBar1;
         return menubar;
     }
 
+    /**
+     * 
+     */
     private void initializeItems() {
         this.jMenu1 = new javax.swing.JMenu();
         this.jMenu2 = new javax.swing.JMenu();
@@ -39,6 +49,9 @@ public class MyMenuBar {
         this.jMenu2.setText("Edit");
     }
 
+    /**
+     * 
+     */
     private void addItemsToMenu() {
         this.jMenuBar1.add(this.jMenu1);
         this.jMenuBar1.add(this.jMenu2);

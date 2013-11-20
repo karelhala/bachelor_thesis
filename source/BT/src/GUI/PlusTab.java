@@ -19,6 +19,11 @@ import javax.swing.JTabbedPane;
  */
 public class PlusTab {
     private JButton buttonPlus;
+    
+    /**
+     * 
+     * @param tabPane 
+     */
     public void AddPlusTab(JTabbedPane tabPane)
     {
         JPanel closePanel = new JPanel(new BorderLayout());
@@ -33,6 +38,10 @@ public class PlusTab {
         tabPane.setSelectedIndex(index - 1);
     }
     
+    /**
+     * 
+     * @return 
+     */
     private JButton createPlusButton()
     {
         JButton plusButton = new JButton(); 
@@ -44,6 +53,10 @@ public class PlusTab {
         return plusButton;
     }
     
+    /**
+     * 
+     * @param button 
+     */
     private void createIconsForButton(JButton button)
     {
         ImageIcon icon = new ImageIcon(CloseTabbedPane.class.getResource("/resources/greenPlus.png"));
@@ -57,6 +70,10 @@ public class PlusTab {
         button.setIcon(greyIcon);
     }
 
+    /**
+     * 
+     * @param addNewTabListener 
+     */
     public void addMouseClickedListenerToPlus(MouseAdapter addNewTabListener) {
         this.buttonPlus.addMouseListener(addNewTabListener);
     }
