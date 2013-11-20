@@ -37,6 +37,7 @@ public class UCJoinEdge extends CoordinateModel{
         this.selected = true;
         this.selectedColor = Color.RED;
         this.basicColor = Color.BLACK;
+        this.color = Color.BLACK;
         this.joinEdgeType = LineType.ASSOCIATION;
     }
     
@@ -122,7 +123,7 @@ public class UCJoinEdge extends CoordinateModel{
         }
         else
         {
-            g.setColor(basicColor);
+            g.setColor(color);
         }
         if (this.getSecondObject() != null)
         {
@@ -163,7 +164,7 @@ public class UCJoinEdge extends CoordinateModel{
      * 
      */
     public void setBasicColor() {
-        this.basicColor = Color.BLACK;
+        this.color = this.basicColor;
     }
     
     /**
