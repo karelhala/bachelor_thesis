@@ -35,6 +35,7 @@ public class UCUseCase extends CoordinateModel{
         this.width = 60;
         this.height = 30;
         this.basicColor = Color.ORANGE;
+        this.color = this.basicColor;
         this.name = "Default";
         this.textSize = 15;
         this.gap = 2;
@@ -47,7 +48,7 @@ public class UCUseCase extends CoordinateModel{
      */
     public void drawUseCase(Graphics2D g)
     {
-        Color useCaseColor = this.basicColor;
+        Color useCaseColor = this.color;
         g.setStroke(new BasicStroke(2));
         g.setFont(new Font("Arial", Font.BOLD, this.textSize));
         FontMetrics fm = g.getFontMetrics(g.getFont());
@@ -87,7 +88,7 @@ public class UCUseCase extends CoordinateModel{
      * 
      */
     public void setBasicColor() {
-        this.basicColor = Color.ORANGE;
+        this.color = this.basicColor;
     }
     
     /**
