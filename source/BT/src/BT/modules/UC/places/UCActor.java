@@ -35,6 +35,7 @@ public class UCActor extends CoordinateModel{
         this.width = 30;
         this.height = 60;
         this.basicColor = Color.BLUE;
+        this.color = this.basicColor;
         this.name = "Default";
         this.textSize = 15;
         this.gap = 2;
@@ -47,7 +48,7 @@ public class UCActor extends CoordinateModel{
      */
     public void drawActor(Graphics2D g)
     {
-        Color actorColor = this.basicColor;
+        Color actorColor = this.color;
         g.setFont(new Font("Arial", Font.BOLD, this.textSize));
         FontMetrics fm = g.getFontMetrics(g.getFont());
         this.objectHeight = this.getHeight() + textSize + gap;
@@ -115,7 +116,7 @@ public class UCActor extends CoordinateModel{
      * 
      */
     public void setBasicColor() {
-        this.basicColor = Color.blue;
+        this.color = this.basicColor;
     }
     
     /**
