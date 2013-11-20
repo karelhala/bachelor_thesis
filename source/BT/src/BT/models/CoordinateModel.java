@@ -15,6 +15,7 @@ public class CoordinateModel {
     protected int y;
     protected String name;
     protected Color basicColor;
+    protected Color color;
     protected Color selectedColor;
     protected int width;
     protected int height;
@@ -65,12 +66,12 @@ public class CoordinateModel {
     
     public void setColor(Color color)
     {
-        this.basicColor = color;
+        this.color = color;
     }
     
     public Color getColor()
     {
-        return this.basicColor;
+        return this.color;
     }
 
     public int getWidth() 
