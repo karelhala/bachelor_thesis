@@ -10,19 +10,19 @@ package BT.managers.UC;
  */
 public class DistanceCalculator {
     /**
-     * 
-     * @param x
-     * @return 
+     * Method for sqaure of x.
+     * @param double x number to be squared 
+     * @return sqr as double
      */
     private double sqr(double x) { 
         return x * x;
     }
     
     /**
-     * 
-     * @param firstPoin
-     * @param secondPoint
-     * @return 
+     * Method for calculating distance between 2 points.
+     * @param DoublePoint firstPoin point containing double x and double y
+     * @param DoublePoint secondPoint point containing double x and double y
+     * @return distance as double
      */
     private double distanceFromTwoPoints(DoublePoint firstPoin, DoublePoint secondPoint)
     {
@@ -30,11 +30,13 @@ public class DistanceCalculator {
     }
     
     /**
-     * 
-     * @param firstPointSegment
-     * @param secondPointSegment
-     * @param point
-     * @return 
+     * Method for calculating distance from point to line segment.
+     * First check if point is withing line segment. And then calculate distance.
+     * @param DoublePoint firstPointSegment first point determining line segment (point A)
+     * @param secondPointSegment second point determining line segment (point B)
+     * @param DoublePoint point coordinates of clicked point
+     * @return double as distance from point to line segment
+     * @return -1 if point is not within line segment
      */
     private double getDistancePointSegment(DoublePoint firstPointSegment, DoublePoint secondPointSegment, DoublePoint point)
     {
@@ -55,14 +57,14 @@ public class DistanceCalculator {
     }
     
     /**
-     * 
-     * @param x1
-     * @param y1
-     * @param x2
-     * @param y2
-     * @param pointX
-     * @param pointY
-     * @return 
+     * Method enveloping the calculation of distance from point to line segment
+     * @param int x1 x coordinate of first point determining line segment
+     * @param int y1 y coordinate of first point determining line segment
+     * @param x2 x coordinate of second point determining line segment
+     * @param y2 y coordinate of second point determining line segment
+     * @param pointX x coordinate of clicked point
+     * @param pointY y coordinate of clicked point
+     * @return double as distance of point to line segment
      */
     public double getDistanceOfPointToSegment(int x1, int y1, int x2, int y2, int pointX, int pointY)
     {
@@ -81,6 +83,11 @@ public class DistanceCalculator {
     private class DoublePoint{
         public double x;
         public double y;
+        
+        public DoublePoint()
+        {
+            
+        }
         
         public DoublePoint(double x, double y)
         {
