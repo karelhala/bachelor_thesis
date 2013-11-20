@@ -29,11 +29,11 @@ public class UCPlaceManager extends UCPlaceModel {
         removeJoinEdgesWithObject(selectedObject);
         if (selectedObject instanceof UCActor)
         {
-            this.actors.remove(selectedObject);
+            actors.remove(selectedObject);
         }
         else if (selectedObject instanceof UCUseCase)
         {
-            this.UseCases.remove(selectedObject);
+            UseCases.remove(selectedObject);
         }
     }
     
@@ -129,32 +129,5 @@ public class UCPlaceManager extends UCPlaceModel {
                 oneEdge.setSelected(false);
             }
         }
-    }
-    
-    /**
-     * Method that checks if line allrady exists. Either in way first object --> second object or
-     * second object --> first object.
-     * Resolving issue with multiple lines connected to same objects.
-     * Also checks if line isn't same
-     * @param UCJoinEdge newLine
-     * @return true when line exist
-     * @return false when line doesn't exist
-     */
-    public Boolean lineExists(UCJoinEdge newLine)
-    {
-        for (UCJoinEdge oneEdge : this.joinEdges)
-        {
-            if (oneEdge.getSecondObject().equals(newLine.getSecondObject()) || oneEdge.getSecondObject().equals(newLine.getfirstObject()))
-            {
-                if (oneEdge.getfirstObject().equals(newLine.getSecondObject()) || oneEdge.getfirstObject().equals(newLine.getfirstObject()))
-                {
-                    if (oneEdge.getJoinEdgeType() == newLine.getJoinEdgeType())
-                    {
-                        return true;
-                    }
-                }
-            }
-        }
-        return false;
     }
 }

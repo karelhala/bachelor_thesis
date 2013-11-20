@@ -19,19 +19,19 @@ public class UCPlaceModel {
     * Arraylist that contains all actors in UC
     * @var ArrayList<UCActor>
     */
-    private ArrayList<UCActor> actors = new ArrayList<>();
+    protected ArrayList<UCActor> actors = new ArrayList<>();
     
     /**
     * Arraylist that all contains use cases in UC
     * @var ArrayList<UCUseCase>
     */
-    private ArrayList<UCUseCase> UseCases = new ArrayList<>();
+    protected ArrayList<UCUseCase> UseCases = new ArrayList<>();
     
     /**
     * Arraylist that contains all join edges in UC
     * @var ArrayList<UCJoinEdge>
     */
-    private ArrayList<UCJoinEdge> joinEdges = new ArrayList<>();
+    protected ArrayList<UCJoinEdge> joinEdges = new ArrayList<>();
 
     /**
     * Method for add new join edge to array list.
@@ -88,5 +88,32 @@ public class UCPlaceModel {
     public void addUseCase(UCUseCase place)
     {
         this.UseCases.add(place);
+    }
+    
+        /**
+     * Method that checks if line allrady exists. Either in way first object --> second object or
+     * second object --> first object.
+     * Resolving issue with multiple lines connected to same objects.
+     * Also checks if line isn't same
+     * @param UCJoinEdge newLine
+     * @return true when line exist
+     * @return false when line doesn't exist
+     */
+    public Boolean lineExists(UCJoinEdge newLine)
+    {
+        for (UCJoinEdge oneEdge : this.joinEdges)
+        {
+            if (oneEdge.getSecondObject().equals(newLine.getSecondObject()) || oneEdge.getSecondObject().equals(newLine.getfirstObject()))
+            {
+                if (oneEdge.getfirstObject().equals(newLine.getSecondObject()) || oneEdge.getfirstObject().equals(newLine.getfirstObject()))
+                {
+                    if (oneEdge.getJoinEdgeType() == newLine.getJoinEdgeType())
+                    {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
     }
 }
