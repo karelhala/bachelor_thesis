@@ -16,13 +16,27 @@ import java.util.Iterator;
  * @author Karel Hala
  */
 public class UCPlaceManager {
+    /**
+     * Arraylist that contains all actors in UC
+     * @var ArrayList<UCActor> 
+     */
     private ArrayList<UCActor> actors = new ArrayList<>();
+    
+    /**
+     * Arraylist that all contains use cases in UC
+     * @var ArrayList<UCUseCase> 
+     */
     private ArrayList<UCUseCase> UseCases = new ArrayList<>();
+    
+    /**
+     * Arraylist that contains all join edges in UC
+     * @var ArrayList<UCJoinEdge> 
+     */
     private ArrayList<UCJoinEdge> joinEdges = new ArrayList<>();
 
     /**
-     * 
-     * @param joinEdge 
+     * Method for add new join edge to array list.
+     * @param UCJoinEdge joinEdge object to be added
      */
     public void addJoinEdge(UCJoinEdge joinEdge)
     {
@@ -33,8 +47,8 @@ public class UCPlaceManager {
     }
     
     /**
-     * 
-     * @return 
+     * Method for returning all join edges in array list.
+     * @return ArrayList<UCJoinEdge>
      */
     public ArrayList<UCJoinEdge> getJoinEdges() 
     {
@@ -42,8 +56,8 @@ public class UCPlaceManager {
     }
     
     /**
-     * 
-     * @return 
+     * Method for returning all actors in array list.
+     * @return ArrayList<UCActor>
      */
     public ArrayList<UCActor> getActors()
     {
@@ -51,8 +65,8 @@ public class UCPlaceManager {
     }
     
     /**
-     * 
-     * @param place 
+     * Method for adding new place to array list.
+     * @param UCActor place object to be added
      */
     public void addActor(UCActor place) 
     {
@@ -60,8 +74,8 @@ public class UCPlaceManager {
     }
     
     /**
-     * 
-     * @return 
+     * Method that returns all use cases as array list.
+     * @return ArrayList<UCUseCase>
      */
     public ArrayList<UCUseCase> getUseCases()
     {
@@ -69,8 +83,8 @@ public class UCPlaceManager {
     }
     
     /**
-     * 
-     * @param place 
+     * Method for adding new use case to array list.
+     * @param UCUseCase place object to be added
      */
     public void addUseCase(UCUseCase place) 
     {
@@ -78,8 +92,8 @@ public class UCPlaceManager {
     }
 
     /**
-     * 
-     * @param selectedObject 
+     * Method that removes selected object from any array list.
+     * @param CoordinateModel selectedObject object to be deleted
      */
     public void removePlace(CoordinateModel selectedObject) {
         removeJoinEdgesWithObject(selectedObject);
@@ -94,8 +108,8 @@ public class UCPlaceManager {
     }
     
     /**
-     * 
-     * @param jointEdge 
+     * Method for removing join edge from array list.
+     * @param UCJoinEdge jointEdge object to be removed.
      */
     public void removeJointEdge(UCJoinEdge jointEdge)
     {
@@ -103,10 +117,10 @@ public class UCPlaceManager {
     }
     
     /**
-     * 
-     * @param removedObject 
+     * Remove join edges that has object, that will be removed.
+     * @param CoordinateModel removedObject object that will be removed.
      */
-    public void removeJoinEdgesWithObject(CoordinateModel removedObject)
+    private void removeJoinEdgesWithObject(CoordinateModel removedObject)
     {
         Iterator<UCJoinEdge> it = joinEdges.iterator();
         while (it.hasNext()) {
@@ -118,7 +132,7 @@ public class UCPlaceManager {
     }
     
     /**
-     * 
+     * Method for looping through every array list and removing every object, that is selected.
      */
     public void removeAllSelectedItems()
     {
@@ -153,7 +167,7 @@ public class UCPlaceManager {
     }
     
     /**
-     * 
+     * Method that sets all obejct to be not selected.
      */
     public void setAllObjectDiselected()
     {
@@ -169,11 +183,10 @@ public class UCPlaceManager {
     }
     
     /**
-     * 
-     * @param place
-     * @return 
+     * Method for selecting lines that come out of object.
+     * @param CoordinateModel place selected place
      */
-    public UCJoinEdge setSelectedLinesOnObject(CoordinateModel place)
+    public void setSelectedLinesOnObject(CoordinateModel place)
     {
         for (UCJoinEdge oneEdge : this.joinEdges)
         {
@@ -186,13 +199,16 @@ public class UCPlaceManager {
                 oneEdge.setSelected(false);
             }
         }
-        return null;
     }
     
     /**
-     * 
-     * @param newLine
-     * @return 
+     * Method that checks if line allrady exists. Either in way first object --> second object or
+     * second object --> first object.
+     * Resolving issue with multiple lines connected to same objects.
+     * Also checks if line isn't same
+     * @param UCJoinEdge newLine
+     * @return true when line exist
+     * @return false when line doesn't exist
      */
     public Boolean lineExists(UCJoinEdge newLine)
     {
