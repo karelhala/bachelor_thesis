@@ -7,24 +7,27 @@ package BT.modules.UC;
 import java.awt.GridLayout;
 import javax.swing.JPanel;
 import javax.swing.JToggleButton;
+import BT.models;
 
 /**
- *
+ * Class for sotring and managing left top panel, that consists of buttons
  * @author Karel Hala
  */
-public final class UCLeftTopContent {
-    private JPanel mainContentPane;
+public final class UCLeftTopContent extends ContentPaneModel {
+
+    /**
+     * Constructor, creates gridlayour and calls to create main pane
+     */
     public UCLeftTopContent()
     {
+        super();
         this.mainContentPane = new JPanel(new GridLayout(2, 1));
         createMainPane();
     }
     
-    public JPanel getMainContentPane ()
-    {
-        return this.mainContentPane;
-    }
-    
+    /**
+     * Method for creating main page. It will add 2 jtoggleButtons to main pane.
+     */
     public void createMainPane()
     {
         JToggleButton actor = new JToggleButton("Actor");
