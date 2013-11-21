@@ -44,6 +44,7 @@ public final class UCContentController {
         this.UCContent.setCenterPane(UCmain.getMainContentPane());
         this.UCContent.setLeftTopPane(UCLeftTop.getMainContentPane());
         this.UCContent.setLeftBottomPane(UCLeftBottom.getMainContentPane());
+        UCmain.setButtonPane(UCLeftBottom);
     }
     
     /**

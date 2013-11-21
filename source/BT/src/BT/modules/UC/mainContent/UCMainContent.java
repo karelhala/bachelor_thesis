@@ -4,10 +4,13 @@
  */
 package BT.modules.UC.mainContent;
 
+import BT.BT;
+import BT.BT.LineType;
 import BT.models.CoordinateModel;
 import BT.modules.UC.places.UCActor;
 import BT.modules.UC.places.UCJoinEdge;
 import BT.managers.UC.UCPlaceManager;
+import BT.modules.UC.UCLeftBottomContent;
 import BT.modules.UC.places.UCUseCase;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -28,6 +31,7 @@ public final class UCMainContent {
     private UCPlaceManager places;
     private UCDrawingPane drawingPane;
     private UCJoinEdge newJoinEdge;
+    private UCLeftBottomContent buttonPane;
     
     /**
      * 
@@ -38,6 +42,15 @@ public final class UCMainContent {
         this.mainContentPane = new JPanel(new BorderLayout());
         this.drawingPane = new UCDrawingPane(this.places);
         createMainPane();
+    }
+    
+    /**
+     * 
+     * @param buttonPane 
+     */
+    public void setButtonPane(UCLeftBottomContent buttonPane)
+    {
+        this.buttonPane = buttonPane;
     }
     
     /**
@@ -97,8 +110,26 @@ public final class UCMainContent {
     {
         if (dragged instanceof UCActor || dragged instanceof UCUseCase)
         {
+            if (this.newJoinEdge != null)
+            {
+                this.newJoinEdge = null;
+                this.drawingPane.setNewLine(null);
+            }
             dragged.setX(e.getX());
             dragged.setY(e.getY());
+        }
+        else if (dragged instanceof UCJoinEdge)
+        {
+            UCJoinEdge draggedJoinEdge = (UCJoinEdge) dragged;
+            if (!draggedJoinEdge.isInRange(e.getX(), e.getY()))
+            {
+                if (this.selectedJoinEdgeButton == null)
+                {
+                    this.buttonPane.getButtonWithName(LineType.ASSOCIATION.name()).setSelected(true);
+                }
+                removeLineFromArrayListAndSetNewLine(draggedJoinEdge);
+                drawingPanecheckMove(e);
+            }
         }
         this.drawingPane.getDrawing().repaint();
     }
@@ -185,7 +216,7 @@ public final class UCMainContent {
      * @param clickedObject 
      */
     public void clickedOnObject(CoordinateModel clickedObject) {
-        if (clickedObject == null)
+        if (clickedObject == null || clickedObject instanceof UCJoinEdge)
         {
             this.newJoinEdge = null;
             this.drawingPane.setNewLine(null);
@@ -230,6 +261,7 @@ public final class UCMainContent {
             {
                 this.newJoinEdge.setMouseCoordinates(x, y);
             }
+            this.drawingPane.setNewLine(this.newJoinEdge);
         }
         UCActor actor = isActorUnderMouse(x, y);
         if (actor != null)
@@ -357,7 +389,7 @@ public final class UCMainContent {
      * 
      * @param joinEdge 
      */
-    private void setSelectedLine(UCJoinEdge joinEdge) {
+    public void removeLineFromArrayListAndSetNewLine(UCJoinEdge joinEdge) {
         this.newJoinEdge = new UCJoinEdge();
         this.newJoinEdge.setFirstObject(joinEdge.getfirstObject());
         this.places.removeJointEdge(joinEdge);

@@ -7,7 +7,6 @@ package BT.managers.UC;
 import BT.modules.UC.places.UCUseCase;
 import BT.modules.UC.places.UCJoinEdge;
 import BT.modules.UC.places.UCActor;
-import BT.models.CoordinateModel;
 import java.util.ArrayList;
 
 /**

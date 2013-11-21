@@ -108,7 +108,6 @@ public class UCDrawingPane{
         );
          InputMap inputMap = this.drawPane.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
          inputMap.put(KeyStroke.getKeyStroke("DELETE"), "removeObject");
-         inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_W, InputEvent.CTRL_MASK), "closeTab");
     }
     
     /**

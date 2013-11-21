@@ -4,6 +4,9 @@
  */
 package BT.modules.UC;
 
+import BT.BT;
+import BT.BT.LineType;
+import java.awt.Component;
 import java.awt.GridLayout;
 import javax.swing.JPanel;
 import javax.swing.JToggleButton;
@@ -28,16 +31,29 @@ public final class UCLeftBottomContent {
     public void createMainPane()
     {
         JToggleButton association = new JToggleButton("Association");
-        association.setName("association");
+        association.setName(LineType.ASSOCIATION.name());
         
         JToggleButton include = new JToggleButton("Uses");
-        include.setName("uses");
+        include.setName(LineType.USES.name());
         
         JToggleButton extend = new JToggleButton("Extend");
-        extend.setName("extend");
+        extend.setName(LineType.EXTENDS.name());
         
         this.mainContentPane.add(association);
         this.mainContentPane.add(include);
         this.mainContentPane.add(extend);
+    }
+    
+    public JToggleButton getButtonWithName(String name)
+    {
+        for (Component comp : this.mainContentPane.getComponents())
+        {
+            JToggleButton toggleButton = (JToggleButton) comp;
+            if (toggleButton.getName() == null ? name == null : toggleButton.getName().equals(name))
+            {
+                return toggleButton;
+            }
+        }
+        return null;
     }
 }

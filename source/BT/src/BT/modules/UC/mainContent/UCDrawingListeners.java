@@ -16,7 +16,13 @@ import javax.swing.event.MouseInputAdapter;
  * @author Karel Hala
  */
 public class UCDrawingListeners extends MouseInputAdapter{
+    /**
+     * 
+     */
     private UCMainContent mainContent;
+    /**
+     * 
+     */
     private CoordinateModel draggedObjec;
 
     /**
@@ -37,7 +43,7 @@ public class UCDrawingListeners extends MouseInputAdapter{
         final UCActor actor = this.mainContent.isActorUnderMouse(evt.getX(), evt.getY());
         final UCUseCase useCase = this.mainContent.isUseCaseUnderMouse(evt.getX(), evt.getY());
         final UCJoinEdge joinEdge = this.mainContent.isJoinEdgeUnderMouse(evt.getX(), evt.getY());
-        if (actor == null && useCase == null)
+        if (actor == null && useCase == null && joinEdge == null)
         {
             this.mainContent.drawingPaneClicked(evt);
         }
@@ -51,7 +57,7 @@ public class UCDrawingListeners extends MouseInputAdapter{
             this.draggedObjec = useCase;
             this.mainContent.setSelectedObject(useCase);
         }
-        if (joinEdge != null)
+        else if (joinEdge != null)
         {
             this.draggedObjec = joinEdge;
         }
@@ -65,12 +71,25 @@ public class UCDrawingListeners extends MouseInputAdapter{
     public void mouseDragged(MouseEvent e){
         if (draggedObjec!= null)
         {
-            this.mainContent.mouseDragged(e, this.draggedObjec);
+            if (this.draggedObjec instanceof UCJoinEdge)
+            {
+                UCJoinEdge draggedJoin = (UCJoinEdge) this.draggedObjec;
+                if (!draggedJoin.isInRange(e.getX(), e.getY()))
+                {
+                    this.mainContent.mouseDragged(e, this.draggedObjec);
+                    this.draggedObjec = null;
+                }
+            }
+            else
+            {
+                this.mainContent.mouseDragged(e, this.draggedObjec);
+            }
         }
         else
         {
             this.mainContent.deselectAllObjectsAndRepaint();
         }
+        this.mainContent.drawingPanecheckMove(e);
     }
     
     /**

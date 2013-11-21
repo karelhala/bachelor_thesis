@@ -4,8 +4,8 @@
  */
 package BT.modules.UC.places;
 
+import BT.BT.LineType;
 import BT.managers.UC.DistanceCalculator;
-import BT.modules.UC.places.UCActor;
 import BT.models.CoordinateModel;
 import java.awt.BasicStroke;
 import java.awt.Color;
@@ -25,7 +25,6 @@ public class UCJoinEdge extends CoordinateModel{
     private int endY;
     private double tolerance;
 
-    public static enum LineType{ASSOCIATION, USES, EXTENDS};
     private LineType joinEdgeType;
     
     /**

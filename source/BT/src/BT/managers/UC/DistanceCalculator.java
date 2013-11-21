@@ -30,7 +30,7 @@ public class DistanceCalculator {
     }
     
     /**
-     * Method for calculating distance from point to line segment.
+     * Method for calculating distance from point to line segment. 
      * First check if point is withing line segment. And then calculate distance.
      * @param DoublePoint firstPointSegment first point determining line segment (point A)
      * @param secondPointSegment second point determining line segment (point B)

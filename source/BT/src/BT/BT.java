@@ -13,7 +13,7 @@ import javax.swing.UnsupportedLookAndFeelException;
  * @author Karel Hala
  */
 public class BT {
-
+    public static enum LineType{ASSOCIATION, USES, EXTENDS};
     /**
      * @param args the command line arguments
      */
