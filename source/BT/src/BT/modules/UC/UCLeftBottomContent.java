@@ -10,24 +10,28 @@ import java.awt.Component;
 import java.awt.GridLayout;
 import javax.swing.JPanel;
 import javax.swing.JToggleButton;
+import BT.models;
 
 /**
- *
+ * Class for creating LeftBottom pane that holds 3 jtoggle buttons
  * @author Karel Hala
  */
-public final class UCLeftBottomContent {
-        private JPanel mainContentPane;
+public final class UCLeftBottomContent extends ContentPaneModel {
+    
+    /**
+     * contructor, that creates grid of 3 rows and 1 column a fill them with jtogglebuttons
+     */
     public UCLeftBottomContent()
     {
+        super();
         this.mainContentPane = new JPanel(new GridLayout(3, 1));
         createMainPane();
     }
-    
-    public JPanel getMainContentPane ()
-    {
-        return this.mainContentPane;
-    }
-    
+
+    /**
+     * Method that will create main content pane.
+     * It will add to this pane 3 jtoggle buttons, these buttons are specified byt lineType enum.
+     */
     public void createMainPane()
     {
         JToggleButton association = new JToggleButton("Association");
@@ -44,6 +48,12 @@ public final class UCLeftBottomContent {
         this.mainContentPane.add(extend);
     }
     
+    /**
+     * Method for getting button specified by it's name.
+     * @param String name of button that will be returned
+     * @return JToggleButton specified by it's name
+     * @return null if no button is found
+     */
     public JToggleButton getButtonWithName(String name)
     {
         for (Component comp : this.mainContentPane.getComponents())
