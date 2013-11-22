@@ -12,5 +12,5 @@ import javax.swing.JToggleButton;
  */
 public interface ToggleButtonsInterface {
     public JToggleButton getSelectedButton();
-    public JToggleButton getButtonByName(String name);
+    public JToggleButton getButtonWithName(String name);
 }

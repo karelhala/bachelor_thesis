@@ -9,13 +9,13 @@ import java.awt.Component;
 import java.awt.GridLayout;
 import javax.swing.JPanel;
 import javax.swing.JToggleButton;
-import BT.models.ContentPaneModel;
+import BT.models.ButtonlPaneModel;
 
 /**
  * Class for creating LeftBottom pane that holds 3 jtoggle buttons
  * @author Karel Hala
  */
-public final class UCLeftBottomContent extends ContentPaneModel {
+public final class UCLeftBottomContent extends ButtonlPaneModel{
     
     /**
      * contructor, that creates grid of 3 rows and 1 column a fill them with jtogglebuttons
@@ -53,12 +53,26 @@ public final class UCLeftBottomContent extends ContentPaneModel {
      * @return JToggleButton specified by it's name
      * @return null if no button is found
      */
+    @Override
     public JToggleButton getButtonWithName(String name)
     {
         for (Component comp : this.mainContentPane.getComponents())
         {
             JToggleButton toggleButton = (JToggleButton) comp;
             if (toggleButton.getName() == null ? name == null : toggleButton.getName().equals(name))
+            {
+                return toggleButton;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public JToggleButton getSelectedButton() {
+        for (Component comp : this.mainContentPane.getComponents())
+        {
+            JToggleButton toggleButton = (JToggleButton) comp;
+            if (toggleButton.isSelected())
             {
                 return toggleButton;
             }
