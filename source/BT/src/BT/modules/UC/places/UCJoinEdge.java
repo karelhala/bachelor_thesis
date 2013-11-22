@@ -4,7 +4,7 @@
  */
 package BT.modules.UC.places;
 
-import BT.BT.LineType;
+import BT.BT.UCLineType;
 import BT.managers.UC.DistanceCalculator;
 import BT.models.CoordinateModel;
 import java.awt.BasicStroke;
@@ -25,7 +25,7 @@ public class UCJoinEdge extends CoordinateModel{
     private int endY;
     private double tolerance;
 
-    private LineType joinEdgeType;
+    private UCLineType joinEdgeType;
     
     /**
      * TODO: make model
@@ -37,7 +37,7 @@ public class UCJoinEdge extends CoordinateModel{
         this.selectedColor = Color.RED;
         this.basicColor = Color.BLACK;
         this.color = Color.BLACK;
-        this.joinEdgeType = LineType.ASSOCIATION;
+        this.joinEdgeType = UCLineType.ASSOCIATION;
     }
     
     /**
@@ -106,7 +106,7 @@ public class UCJoinEdge extends CoordinateModel{
      * 
      * @return 
      */
-    public LineType getJoinEdgeType()
+    public UCLineType getJoinEdgeType()
     {
         return this.joinEdgeType;
     }
@@ -132,7 +132,7 @@ public class UCJoinEdge extends CoordinateModel{
         startX = firstObject.getX();
         startY = firstObject.getY();
         g.setStroke(new BasicStroke(2));
-        if (this.joinEdgeType == LineType.ASSOCIATION)
+        if (this.joinEdgeType == UCLineType.ASSOCIATION)
         {
             g.drawLine(startX, startY, endX, endY);
         }

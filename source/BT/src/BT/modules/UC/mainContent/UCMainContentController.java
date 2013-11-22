@@ -4,12 +4,13 @@
  */
 package BT.modules.UC.mainContent;
 
-import BT.BT.LineType;
+import BT.BT.UCLineType;
 import BT.models.CoordinateModel;
 import BT.modules.UC.places.UCActor;
 import BT.modules.UC.places.UCJoinEdge;
 import BT.managers.UC.UCPlaceManager;
 import BT.modules.UC.UCLeftBottomContent;
+import BT.modules.UC.UCLeftTopContent;
 import BT.modules.UC.places.UCUseCase;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
@@ -23,11 +24,10 @@ import BT.modules.UC.UCMainContent;
  */
 public class UCMainContentController {
     private UCMainContent mainContent;
-    private JToggleButton selectedItemButton;
-    private JToggleButton selectedJoinEdgeButton;
     private UCPlaceManager places;
     private UCJoinEdge newJoinEdge;
-    private UCLeftBottomContent buttonPane;
+    private UCLeftBottomContent LeftBottomContent;
+    private UCLeftTopContent LeftTopContent;
     
     /**
      * 
@@ -40,11 +40,20 @@ public class UCMainContentController {
     
     /**
      * 
-     * @param buttonPane 
+     * @param LeftBottomContent 
      */
-    public void setButtonPane(UCLeftBottomContent buttonPane)
+    public void setLeftBottomButtonPane(UCLeftBottomContent buttonPane)
     {
-        this.buttonPane = buttonPane;
+        this.LeftBottomContent = buttonPane;
+    }
+    
+    /**
+     * 
+     * @param LeftBottomContent 
+     */
+    public void setLeftTopButtonPane(UCLeftTopContent buttonPane)
+    {
+        this.LeftTopContent = buttonPane;
     }
     
     /**
@@ -66,27 +75,15 @@ public class UCMainContentController {
         UCdrawing.getDrawing().addMouseMotionListener(alpha);
         UCdrawing.getDrawing().addMouseListener(alpha);
     }
-
-    /**
-     * 
-     * @param toggleButton 
-     */
-    public void setSelectedItemButton(JToggleButton toggleButton) {
-        this.selectedItemButton = toggleButton;
-    }
     
-    /**
-     * 
-     * @param selectedButton 
-     */
-    public void setSelectedJoinEdgeButton(JToggleButton selectedButton) {
-        this.selectedJoinEdgeButton = selectedButton;
-        if (selectedButton == null)
+    public void buttonsChanged()
+    {
+        JToggleButton selectedJoinEdgeButton = this.LeftBottomContent.getSelectedButton();
+        if (selectedJoinEdgeButton == null)
         {
             UCDrawingPane UCdrawing = this.mainContent.getDrawingPane();
             this.newJoinEdge = null;
             UCdrawing.setNewLine(null);
-            newJoinEdge = null;
             UCdrawing.getDrawing().repaint();
         }
     }
@@ -114,9 +111,9 @@ public class UCMainContentController {
             UCJoinEdge draggedJoinEdge = (UCJoinEdge) dragged;
             if (!draggedJoinEdge.isInRange(e.getX(), e.getY()))
             {
-                if (this.selectedJoinEdgeButton == null)
+                if (this.LeftBottomContent.getSelectedButton() == null)
                 {
-                    this.buttonPane.getButtonWithName(LineType.ASSOCIATION.name()).setSelected(true);
+                    this.LeftBottomContent.getButtonWithName(UCLineType.ASSOCIATION.name()).setSelected(true);
                 }
                 removeLineFromArrayListAndSetNewLine(draggedJoinEdge);
                 drawingPanecheckMove(e);
@@ -130,10 +127,11 @@ public class UCMainContentController {
      * @param evt 
      */
     public void drawingPaneClicked(MouseEvent evt) {
-        if (this.selectedItemButton!=null){
+        JToggleButton selectedItemButton = this.LeftTopContent.getSelectedButton();
+        if (selectedItemButton!=null){
             UCDrawingPane UCdrawing = this.mainContent.getDrawingPane();
-            switch (this.selectedItemButton.getName()){
-                case "actor":
+            switch (selectedItemButton.getName()){
+                case "ACTOR":
                         UCActor actor = new UCActor();
                         actor.setX(evt.getX());
                         actor.setY(evt.getY());
@@ -141,10 +139,10 @@ public class UCMainContentController {
                         UCdrawing.setPlaces(places);
                         
                         UCdrawing.getDrawing().repaint();
-                        System.out.println(this.selectedItemButton.getText());
+                        System.out.println(selectedItemButton.getText());
                      break;
                     
-               case "useCase":
+               case "USECASE":
                         UCUseCase useCase = new UCUseCase();
                         useCase.setX(evt.getX());
                         useCase.setY(evt.getY());
@@ -152,7 +150,7 @@ public class UCMainContentController {
                         UCdrawing.setPlaces(places);
                         
                         UCdrawing.getDrawing().repaint();
-                        System.out.println(this.selectedItemButton.getText());
+                        System.out.println(selectedItemButton.getText());
                      break;
                 }
         }
@@ -165,24 +163,25 @@ public class UCMainContentController {
     public void drawJoinEdge(CoordinateModel clickedObject)
     {
         UCDrawingPane UCdrawing = this.mainContent.getDrawingPane();
+        JToggleButton selectedJoinEdgeButton = this.LeftBottomContent.getSelectedButton();
         if (this.newJoinEdge == null)
         {
             this.newJoinEdge = new UCJoinEdge();
             UCdrawing.setNewLine(newJoinEdge);
         }
         createJoinEdge(clickedObject);
-        switch (this.selectedJoinEdgeButton.getName())
+        switch (selectedJoinEdgeButton.getName())
         {
-           case "association":
-                    System.out.println(this.selectedJoinEdgeButton.getText());
+           case "ASSOCIATION":
+                    System.out.println(selectedJoinEdgeButton.getText());
                  break;
 
-           case "uses":  
-                    System.out.println(this.selectedJoinEdgeButton.getText());
+           case "USES":  
+                    System.out.println(selectedJoinEdgeButton.getText());
                  break;
 
-           case "extend":  
-                    System.out.println(this.selectedJoinEdgeButton.getText());
+           case "EXTENDS":  
+                    System.out.println(selectedJoinEdgeButton.getText());
                  break;
         }
 
@@ -361,7 +360,7 @@ public class UCMainContentController {
             clickedObject.setSelected(true);
         }
 
-        if (this.selectedJoinEdgeButton!=null)
+        if (this.LeftBottomContent.getSelectedButton()!=null)
         {
             clickedOnObject(clickedObject);
         }

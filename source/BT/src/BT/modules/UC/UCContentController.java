@@ -28,91 +28,6 @@ public class UCContentController {
     
     /**
      * 
-     */
-    public void createComponents()
-    {
-        UCMainContentController UCmain = new UCMainContentController();
-        UCmain.createMainPane();
-        
-        UCLeftTopContent UCLeftTop = new UCLeftTopContent();
-        
-        UCLeftBottomContent UCLeftBottom = new UCLeftBottomContent();
-        
-        setListeners(UCLeftTop.getMainContentPane().getComponents(), UCmain, true);
-        setListeners(UCLeftBottom.getMainContentPane().getComponents(), UCmain, false);
-        
-        this.UCContent.setCenterPane(UCmain.getMainContent().getMainContentPane());
-        this.UCContent.setLeftTopPane(UCLeftTop.getMainContentPane());
-        this.UCContent.setLeftBottomPane(UCLeftBottom.getMainContentPane());
-        UCmain.setButtonPane(UCLeftBottom);
-    }
-    
-    /**
-     * 
-     * @param allComponents
-     * @param UCMain
-     * @param isNeeded 
-     */
-    public void setListeners(final Component[] allComponents, final UCMainContentController UCMain, final boolean isNeeded)
-    {
-        for (Component comp : allComponents)
-        {
-            final JToggleButton toggleButton = (JToggleButton) comp;
-            toggleButton.addItemListener(new ItemListener() {
-                @Override
-                public void itemStateChanged(ItemEvent ev) {
-                    if(ev.getStateChange()==ItemEvent.SELECTED){
-                        toggleButtonSelected(toggleButton, allComponents);
-                    }
-                    if (isNeeded)
-                    {
-                        UCMain.setSelectedItemButton(getSelectedButton(allComponents));
-                    }
-                    else
-                    {
-                        UCMain.setSelectedJoinEdgeButton(getSelectedButton(allComponents));
-                    }
-                }
-            });
-        }
-    }
-    
-    /**
-     * 
-     * @param selectedButton
-     * @param allComponents 
-     */
-    private void toggleButtonSelected(JToggleButton selectedButton, Component[] allComponents) {
-        for (Component comp : allComponents)
-        {
-            JToggleButton toggleButton = (JToggleButton) comp;
-            if (selectedButton != toggleButton)
-            {
-                toggleButton.setSelected(false);
-            }
-        }
-    }
-    
-    /**
-     * 
-     * @param allComponents
-     * @return 
-     */
-    private JToggleButton getSelectedButton(Component[] allComponents)
-    {
-        for (Component comp : allComponents)
-        {
-            JToggleButton toggleButton = (JToggleButton) comp;
-            if (toggleButton.isSelected() == true)
-            {
-                return toggleButton;
-            }
-        }
-        return null;
-    }
-    
-    /**
-     * 
      * @return 
      */
     public MainContentModel getUCContent()
@@ -120,4 +35,25 @@ public class UCContentController {
         return this.UCContent;
     }
     
+    /**
+     * 
+     */
+    public void createComponents()
+    {
+        
+        UCMainContentController UCmain = new UCMainContentController();
+        UCmain.createMainPane();
+        
+        UCLeftTopContent UCLeftTop = new UCLeftTopContent(UCmain);
+        UCLeftTop.setListeners();
+        
+        UCLeftBottomContent UCLeftBottom = new UCLeftBottomContent(UCmain);
+        UCLeftBottom.setListeners();
+        
+        this.UCContent.setCenterPane(UCmain.getMainContent().getMainContentPane());
+        this.UCContent.setLeftTopPane(UCLeftTop.getMainContentPane());
+        this.UCContent.setLeftBottomPane(UCLeftBottom.getMainContentPane());
+        UCmain.setLeftBottomButtonPane(UCLeftBottom);
+        UCmain.setLeftTopButtonPane(UCLeftTop);
+    }
 }
