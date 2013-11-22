@@ -7,13 +7,13 @@ package BT.modules.UC;
 import java.awt.GridLayout;
 import javax.swing.JPanel;
 import javax.swing.JToggleButton;
-import BT.models;
+import BT.models.ContentPaneModel;
 
 /**
  * Class for sotring and managing left top panel, that consists of buttons
  * @author Karel Hala
  */
-public final class UCLeftTopContent extends ContentPaneModel {
+public class UCLeftTopContent extends ContentPaneModel {
 
     /**
      * Constructor, creates gridlayour and calls to create main pane

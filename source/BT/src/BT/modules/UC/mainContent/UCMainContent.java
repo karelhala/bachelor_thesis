@@ -275,7 +275,7 @@ public final class UCMainContent {
         }
         
         UCJoinEdge joinEdge = isJoinEdgeUnderMouse(x, y);
-        if (joinEdge != null)
+        if (joinEdge != null && actor == null && usecase == null)
         {
             joinEdge.setColor(Color.ORANGE);
         }

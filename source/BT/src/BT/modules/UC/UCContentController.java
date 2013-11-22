@@ -15,7 +15,7 @@ import javax.swing.JToggleButton;
  *
  * @author Karel Hala
  */
-public final class UCContentController {
+public class UCContentController {
     private MainContentModel UCContent;
     
     /**

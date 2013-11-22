@@ -6,11 +6,11 @@ package BT.models;
 
 import javax.swing.JPanel;
 
-**
+/**
  * Parent class, for ContentPane
  * @author Karel Hala
  */
-public final class ContentPaneModel {
+public class ContentPaneModel {
     /**
      * @var Jpanel for storing every component of top left content 
      */
@@ -30,7 +30,7 @@ public final class ContentPaneModel {
      * Method, that returns main pane has content of left top pane
      * @return JPanel left top pane of application
      */
-    public void setMainContentPane (Jpanel mainContentPane)
+    public void setMainContentPane (JPanel mainContentPane)
     {
         this.mainContentPane = mainContentPane;
     }

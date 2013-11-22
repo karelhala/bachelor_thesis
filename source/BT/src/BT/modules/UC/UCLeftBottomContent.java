@@ -4,19 +4,18 @@
  */
 package BT.modules.UC;
 
-import BT.BT;
 import BT.BT.LineType;
 import java.awt.Component;
 import java.awt.GridLayout;
 import javax.swing.JPanel;
 import javax.swing.JToggleButton;
-import BT.models;
+import BT.models.ContentPaneModel;
 
 /**
  * Class for creating LeftBottom pane that holds 3 jtoggle buttons
  * @author Karel Hala
  */
-public final class UCLeftBottomContent extends ContentPaneModel {
+public class UCLeftBottomContent extends ContentPaneModel {
     
     /**
      * contructor, that creates grid of 3 rows and 1 column a fill them with jtogglebuttons
