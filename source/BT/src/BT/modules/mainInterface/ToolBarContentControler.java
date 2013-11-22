@@ -80,6 +80,7 @@ public class ToolBarContentControler {
     private void addNewTab(WindowLayoutControler myLayout)
     {
         UCContentController UCController = new UCContentController();
+        UCController.createComponents();
         
         MainContentModel UMLContenctModel = new MainContentModel();
         MainContentModel OOPNContentModel = new MainContentModel();

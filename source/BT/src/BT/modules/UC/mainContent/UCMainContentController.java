@@ -11,24 +11,21 @@ import BT.modules.UC.places.UCJoinEdge;
 import BT.managers.UC.UCPlaceManager;
 import BT.modules.UC.UCLeftBottomContent;
 import BT.modules.UC.places.UCUseCase;
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JToggleButton;
+import BT.modules.UC.UCMainContent;
 
 /**
  *
  * @author Karel Hala
  */
-public final class UCMainContentController {
-    private JPanel mainContentPane;
+public class UCMainContentController {
+    private UCMainContent mainContent;
     private JToggleButton selectedItemButton;
     private JToggleButton selectedJoinEdgeButton;
     private UCPlaceManager places;
-    private UCDrawingPane drawingPane;
     private UCJoinEdge newJoinEdge;
     private UCLeftBottomContent buttonPane;
     
@@ -38,9 +35,7 @@ public final class UCMainContentController {
     public UCMainContentController()
     {
         this.places = new UCPlaceManager();
-        this.mainContentPane = new JPanel(new BorderLayout());
-        this.drawingPane = new UCDrawingPane(this.places);
-        createMainPane();
+        this.mainContent = new UCMainContent(places);
     }
     
     /**
@@ -56,9 +51,9 @@ public final class UCMainContentController {
      * 
      * @return 
      */
-    public JPanel getMainContentPane ()
+    public UCMainContent getMainContent ()
     {
-        return this.mainContentPane;
+        return this.mainContent;
     }
     
     /**
@@ -66,15 +61,10 @@ public final class UCMainContentController {
      */
     public void createMainPane()
     {   
-        this.drawingPane.getDrawing().setBackground(Color.WHITE);
-        UCDrawingListeners alpha = new UCDrawingListeners(this.drawingPane.getDrawing(), this);
-        this.drawingPane.getDrawing().addMouseMotionListener(alpha);
-        this.drawingPane.getDrawing().addMouseListener(alpha);
-        drawingPane.getDrawing().repaint();
-        drawingPane.setButtonsListeners();
-        JScrollPane myScrollPane = new JScrollPane(drawingPane.getDrawing());
-        
-        this.mainContentPane.add(myScrollPane, BorderLayout.CENTER);
+        UCDrawingPane UCdrawing = this.mainContent.getDrawingPane();
+        UCDrawingListeners alpha = new UCDrawingListeners(UCdrawing.getDrawing(), this);
+        UCdrawing.getDrawing().addMouseMotionListener(alpha);
+        UCdrawing.getDrawing().addMouseListener(alpha);
     }
 
     /**
@@ -93,10 +83,11 @@ public final class UCMainContentController {
         this.selectedJoinEdgeButton = selectedButton;
         if (selectedButton == null)
         {
+            UCDrawingPane UCdrawing = this.mainContent.getDrawingPane();
             this.newJoinEdge = null;
-            this.drawingPane.setNewLine(null);
+            UCdrawing.setNewLine(null);
             newJoinEdge = null;
-            this.drawingPane.getDrawing().repaint();
+            UCdrawing.getDrawing().repaint();
         }
     }
     
@@ -107,12 +98,13 @@ public final class UCMainContentController {
      */
     public void mouseDragged(MouseEvent e, CoordinateModel dragged)
     {
+        UCDrawingPane UCdrawing = this.mainContent.getDrawingPane();
         if (dragged instanceof UCActor || dragged instanceof UCUseCase)
         {
             if (this.newJoinEdge != null)
             {
                 this.newJoinEdge = null;
-                this.drawingPane.setNewLine(null);
+                UCdrawing.setNewLine(null);
             }
             dragged.setX(e.getX());
             dragged.setY(e.getY());
@@ -130,7 +122,7 @@ public final class UCMainContentController {
                 drawingPanecheckMove(e);
             }
         }
-        this.drawingPane.getDrawing().repaint();
+        UCdrawing.getDrawing().repaint();
     }
     
     /**
@@ -139,16 +131,16 @@ public final class UCMainContentController {
      */
     public void drawingPaneClicked(MouseEvent evt) {
         if (this.selectedItemButton!=null){
+            UCDrawingPane UCdrawing = this.mainContent.getDrawingPane();
             switch (this.selectedItemButton.getName()){
                 case "actor":
                         UCActor actor = new UCActor();
                         actor.setX(evt.getX());
                         actor.setY(evt.getY());
                         this.places.addActor(actor);
-                        this.drawingPane.setPlaces(places);
-//                        objectClicked(actor);
+                        UCdrawing.setPlaces(places);
                         
-                        this.drawingPane.getDrawing().repaint();
+                        UCdrawing.getDrawing().repaint();
                         System.out.println(this.selectedItemButton.getText());
                      break;
                     
@@ -157,10 +149,9 @@ public final class UCMainContentController {
                         useCase.setX(evt.getX());
                         useCase.setY(evt.getY());
                         this.places.addUseCase(useCase);
-                        this.drawingPane.setPlaces(places);
-//                        objectClicked(useCase);
+                        UCdrawing.setPlaces(places);
                         
-                        this.drawingPane.getDrawing().repaint();
+                        UCdrawing.getDrawing().repaint();
                         System.out.println(this.selectedItemButton.getText());
                      break;
                 }
@@ -173,10 +164,11 @@ public final class UCMainContentController {
      */
     public void drawJoinEdge(CoordinateModel clickedObject)
     {
+        UCDrawingPane UCdrawing = this.mainContent.getDrawingPane();
         if (this.newJoinEdge == null)
         {
             this.newJoinEdge = new UCJoinEdge();
-            this.drawingPane.setNewLine(newJoinEdge);
+            UCdrawing.setNewLine(newJoinEdge);
         }
         createJoinEdge(clickedObject);
         switch (this.selectedJoinEdgeButton.getName())
@@ -205,7 +197,7 @@ public final class UCMainContentController {
                 this.newJoinEdge.setSelected(false);
             }
             places.addJoinEdge(this.newJoinEdge);
-            this.drawingPane.setNewLine(null);
+            UCdrawing.setNewLine(null);
             this.newJoinEdge = null;
         }
     }
@@ -218,7 +210,7 @@ public final class UCMainContentController {
         if (clickedObject == null || clickedObject instanceof UCJoinEdge)
         {
             this.newJoinEdge = null;
-            this.drawingPane.setNewLine(null);
+            this.mainContent.getDrawingPane().setNewLine(null);
         }
         else
         {
@@ -252,6 +244,7 @@ public final class UCMainContentController {
      * @param evt 
      */
     public void drawingPanecheckMove(MouseEvent evt) {
+        UCDrawingPane UCdrawing = this.mainContent.getDrawingPane();
         int x = evt.getX();
         int y = evt.getY();
         if (this.newJoinEdge != null)
@@ -260,7 +253,7 @@ public final class UCMainContentController {
             {
                 this.newJoinEdge.setMouseCoordinates(x, y);
             }
-            this.drawingPane.setNewLine(this.newJoinEdge);
+            UCdrawing.setNewLine(this.newJoinEdge);
         }
         UCActor actor = isActorUnderMouse(x, y);
         if (actor != null)
@@ -278,7 +271,7 @@ public final class UCMainContentController {
         {
             joinEdge.setColor(Color.ORANGE);
         }
-        this.drawingPane.getDrawing().repaint();
+        UCdrawing.getDrawing().repaint();
     }
     
     /**
@@ -353,7 +346,7 @@ public final class UCMainContentController {
         String name = (String) JOptionPane.showInputDialog("Enter name of the object",pressedObject.getName());
         if (name!= null && !"".equals(name))
             pressedObject.setName(name);
-        this.drawingPane.getDrawing().repaint();
+        this.mainContent.getDrawingPane().getDrawing().repaint();
     }
 
     /**
@@ -372,7 +365,7 @@ public final class UCMainContentController {
         {
             clickedOnObject(clickedObject);
         }
-        this.drawingPane.getDrawing().repaint();
+        this.mainContent.getDrawingPane().getDrawing().repaint();
     }
     
     /**
@@ -381,7 +374,7 @@ public final class UCMainContentController {
     public void deselectAllObjectsAndRepaint()
     {
         this.places.setAllObjectDiselected();
-        this.drawingPane.getDrawing().repaint();
+        this.mainContent.getDrawingPane().getDrawing().repaint();
     }
 
     /**

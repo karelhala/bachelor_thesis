@@ -24,7 +24,6 @@ public class UCContentController {
     public UCContentController()
     {
         this.UCContent = new MainContentModel();
-        createComponents();
     }
     
     /**
@@ -33,6 +32,7 @@ public class UCContentController {
     public void createComponents()
     {
         UCMainContentController UCmain = new UCMainContentController();
+        UCmain.createMainPane();
         
         UCLeftTopContent UCLeftTop = new UCLeftTopContent();
         
@@ -41,7 +41,7 @@ public class UCContentController {
         setListeners(UCLeftTop.getMainContentPane().getComponents(), UCmain, true);
         setListeners(UCLeftBottom.getMainContentPane().getComponents(), UCmain, false);
         
-        this.UCContent.setCenterPane(UCmain.getMainContentPane());
+        this.UCContent.setCenterPane(UCmain.getMainContent().getMainContentPane());
         this.UCContent.setLeftTopPane(UCLeftTop.getMainContentPane());
         this.UCContent.setLeftBottomPane(UCLeftBottom.getMainContentPane());
         UCmain.setButtonPane(UCLeftBottom);
