@@ -6,11 +6,9 @@ package BT.modules.UC;
 
 import BT.managers.UC.UCPlaceManager;
 import BT.models.ContentPaneModel;
-import BT.modules.UC.mainContent.UCDrawingListeners;
 import BT.modules.UC.mainContent.UCDrawingPane;
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.GridLayout;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
@@ -30,6 +28,9 @@ public final class UCMainContent extends ContentPaneModel{
         return drawingPane;
     }
     
+    /**
+     * 
+     */
     public UCMainContent()
     {
         this(null);

@@ -19,7 +19,7 @@ public class UCDrawingListeners extends MouseInputAdapter{
     /**
      * 
      */
-    private UCMainContent mainContent;
+    private UCMainContentController mainContent;
     /**
      * 
      */
@@ -30,7 +30,7 @@ public class UCDrawingListeners extends MouseInputAdapter{
      * @param drawing
      * @param mainContent 
      */
-    UCDrawingListeners(UCDrawingPane.drawing drawing, UCMainContent mainContent) {
+    UCDrawingListeners(UCDrawingPane.drawing drawing, UCMainContentController mainContent) {
         this.mainContent = mainContent;
     }
 

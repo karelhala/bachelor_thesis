@@ -4,7 +4,7 @@
  */
 package BT.modules.UC;
 
-import BT.modules.UC.mainContent.UCMainContent;
+import BT.modules.UC.mainContent.UCMainContentController;
 import GUI.MainContentModel;
 import java.awt.Component;
 import java.awt.event.ItemEvent;
@@ -32,7 +32,7 @@ public class UCContentController {
      */
     public void createComponents()
     {
-        UCMainContent UCmain = new UCMainContent();
+        UCMainContentController UCmain = new UCMainContentController();
         
         UCLeftTopContent UCLeftTop = new UCLeftTopContent();
         
@@ -53,7 +53,7 @@ public class UCContentController {
      * @param UCMain
      * @param isNeeded 
      */
-    public void setListeners(final Component[] allComponents, final UCMainContent UCMain, final boolean isNeeded)
+    public void setListeners(final Component[] allComponents, final UCMainContentController UCMain, final boolean isNeeded)
     {
         for (Component comp : allComponents)
         {

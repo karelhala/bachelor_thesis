@@ -23,7 +23,7 @@ import javax.swing.JToggleButton;
  *
  * @author Karel Hala
  */
-public final class UCMainContent {
+public final class UCMainContentController {
     private JPanel mainContentPane;
     private JToggleButton selectedItemButton;
     private JToggleButton selectedJoinEdgeButton;
@@ -35,7 +35,7 @@ public final class UCMainContent {
     /**
      * 
      */
-    public UCMainContent()
+    public UCMainContentController()
     {
         this.places = new UCPlaceManager();
         this.mainContentPane = new JPanel(new BorderLayout());
@@ -274,7 +274,7 @@ public final class UCMainContent {
         }
         
         UCJoinEdge joinEdge = isJoinEdgeUnderMouse(x, y);
-        if (joinEdge != null && actor == null && joinEdge == null)
+        if (joinEdge != null && actor == null && usecase == null)
         {
             joinEdge.setColor(Color.ORANGE);
         }
