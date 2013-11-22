@@ -28,6 +28,11 @@ public class UCDrawingPane{
     private drawing drawPane;
     private UCJoinEdge newLine;
 
+     public UCDrawingPane()
+    {
+        this(null);
+    }
+    
     /**
      * 
      * @param UCPlaces 

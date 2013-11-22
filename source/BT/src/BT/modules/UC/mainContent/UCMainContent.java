@@ -4,7 +4,6 @@
  */
 package BT.modules.UC.mainContent;
 
-import BT.BT;
 import BT.BT.LineType;
 import BT.models.CoordinateModel;
 import BT.modules.UC.places.UCActor;
@@ -275,7 +274,7 @@ public final class UCMainContent {
         }
         
         UCJoinEdge joinEdge = isJoinEdgeUnderMouse(x, y);
-        if (joinEdge != null && actor == null && usecase == null)
+        if (joinEdge != null && actor == null && joinEdge == null)
         {
             joinEdge.setColor(Color.ORANGE);
         }

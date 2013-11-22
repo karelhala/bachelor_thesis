@@ -15,7 +15,7 @@ import BT.models.ContentPaneModel;
  * Class for creating LeftBottom pane that holds 3 jtoggle buttons
  * @author Karel Hala
  */
-public class UCLeftBottomContent extends ContentPaneModel {
+public final class UCLeftBottomContent extends ContentPaneModel {
     
     /**
      * contructor, that creates grid of 3 rows and 1 column a fill them with jtogglebuttons
