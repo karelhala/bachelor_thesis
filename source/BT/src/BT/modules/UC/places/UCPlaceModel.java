@@ -2,7 +2,7 @@
 * To change this template, choose Tools | Templates
 * and open the template in the editor.
 */
-package BT.managers.UC;
+package BT.modules.UC.places;
 
 import BT.modules.UC.places.UCUseCase;
 import BT.modules.UC.places.UCJoinEdge;
@@ -90,7 +90,7 @@ public class UCPlaceModel {
     }
     
         /**
-     * Method that checks if line allrady exists. Either in way first object --> second object or
+     * Method that checks if line allrady exists, either in way first object --> second object or
      * second object --> first object.
      * Resolving issue with multiple lines connected to same objects.
      * Also checks if line isn't same

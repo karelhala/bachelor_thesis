@@ -4,7 +4,7 @@
  */
 package BT.models;
 
-import BT.UC.interfaces.ToggleButtonsInterface;
+import BT.interfaces.ToggleButtonsInterface;
 import BT.modules.UC.mainContent.UCMainContentController;
 import java.awt.Component;
 import java.awt.event.ItemEvent;
