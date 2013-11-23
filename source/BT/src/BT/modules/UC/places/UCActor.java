@@ -114,13 +114,6 @@ public class UCActor extends CoordinateModel{
 
     /**
      * 
-     */
-    public void setBasicColor() {
-        this.color = this.basicColor;
-    }
-    
-    /**
-     * 
      * @param a
      * @param b
      * @return 

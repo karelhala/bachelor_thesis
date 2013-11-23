@@ -83,13 +83,6 @@ public class UCUseCase extends CoordinateModel{
         }
         return false;
     }
-
-    /**
-     * 
-     */
-    public void setBasicColor() {
-        this.color = this.basicColor;
-    }
     
     /**
      * 

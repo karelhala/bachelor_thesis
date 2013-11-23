@@ -4,9 +4,6 @@
 */
 package BT.modules.UC.places;
 
-import BT.modules.UC.places.UCUseCase;
-import BT.modules.UC.places.UCJoinEdge;
-import BT.modules.UC.places.UCActor;
 import java.util.ArrayList;
 
 /**

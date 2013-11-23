@@ -99,4 +99,11 @@ public class CoordinateModel {
         return this.selected;
     }
     
+    /**
+     * 
+     */
+    public void setBasicColor() {
+        this.color = this.basicColor;
+    }
+    
 }
