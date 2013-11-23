@@ -6,10 +6,6 @@ package BT.modules.UC;
 
 import BT.modules.UC.mainContent.UCMainContentController;
 import GUI.MainContentModel;
-import java.awt.Component;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
-import javax.swing.JToggleButton;
 
 /**
  *

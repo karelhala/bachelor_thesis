@@ -17,6 +17,11 @@ import java.awt.event.MouseEvent;
 import javax.swing.JOptionPane;
 import javax.swing.JToggleButton;
 import BT.modules.UC.UCMainContent;
+import java.awt.event.ActionEvent;
+import javax.swing.AbstractAction;
+import javax.swing.InputMap;
+import javax.swing.JComponent;
+import javax.swing.KeyStroke;
 
 /**
  *
@@ -74,6 +79,7 @@ public class UCMainContentController {
         UCDrawingListeners alpha = new UCDrawingListeners(UCdrawing.getDrawing(), this);
         UCdrawing.getDrawing().addMouseMotionListener(alpha);
         UCdrawing.getDrawing().addMouseListener(alpha);
+        setButtonsListeners();
     }
     
     public void buttonsChanged()
@@ -337,6 +343,28 @@ public class UCMainContentController {
         }
         return null;
     }
+    
+        /**
+     * 
+     */
+    public void setButtonsListeners()
+    {
+        UCDrawingPane drawingPane = this.mainContent.getDrawingPane();
+        drawingPane.getDrawing().getActionMap().put("removeObject", new AbstractAction() {
+            UCDrawingPane drawingPane = mainContent.getDrawingPane();
+            @Override
+                public void actionPerformed(ActionEvent e) {
+                places.removeAllSelectedItems();
+                newJoinEdge = null;
+                drawingPane.setNewLine(null);
+                drawingPane.getDrawing().repaint();
+                }
+            }
+        );
+        InputMap inputMap = drawingPane.getDrawing().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+        inputMap.put(KeyStroke.getKeyStroke("DELETE"), "removeObject");
+    }
+    
     /**
      * 
      * @param pressedObject 

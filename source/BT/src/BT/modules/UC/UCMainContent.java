@@ -53,8 +53,9 @@ public final class UCMainContent extends ContentPaneModel{
     private void createMainPane() {
         this.drawingPane.getDrawing().setBackground(Color.WHITE);
         drawingPane.getDrawing().repaint();
-        drawingPane.setButtonsListeners();
         JScrollPane myScrollPane = new JScrollPane(drawingPane.getDrawing());
         this.mainContentPane.add(myScrollPane, BorderLayout.CENTER);
     }
+    
+    
 }

@@ -96,24 +96,6 @@ public class UCDrawingPane{
     
     /**
      * 
-     */
-    public void setButtonsListeners()
-    {
-        this.drawPane.getActionMap().put("removeObject", new AbstractAction() {
-            @Override
-                public void actionPerformed(ActionEvent e) {
-                UCPlaces.removeAllSelectedItems();
-                newLine = null;
-                drawPane.repaint();
-                }
-            }
-        );
-         InputMap inputMap = this.drawPane.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
-         inputMap.put(KeyStroke.getKeyStroke("DELETE"), "removeObject");
-    }
-    
-    /**
-     * 
      * @param places 
      */
     public void setPlaces(UCPlaceManager places)
