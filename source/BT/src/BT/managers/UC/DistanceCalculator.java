@@ -4,31 +4,13 @@
  */
 package BT.managers.UC;
 
+import BT.models.DistanceCalculatorModel;
+
 /**
  *
  * @author Karel Hala
  */
-public class DistanceCalculator {
-    /**
-     * Method for sqaure of x.
-     * @param double x number to be squared 
-     * @return sqr as double
-     */
-    private double sqr(double x) { 
-        return x * x;
-    }
-    
-    /**
-     * Method for calculating distance between 2 points.
-     * @param DoublePoint firstPoin point containing double x and double y
-     * @param DoublePoint secondPoint point containing double x and double y
-     * @return distance as double
-     */
-    private double distanceFromTwoPoints(DoublePoint firstPoin, DoublePoint secondPoint)
-    {
-        return sqr(firstPoin.x - secondPoint.x) + sqr(firstPoin.y - secondPoint.y);
-    }
-    
+public class DistanceCalculator extends DistanceCalculatorModel{
     /**
      * Method for calculating distance from point to line segment. 
      * First check if point is withing line segment. And then calculate distance.
@@ -78,21 +60,25 @@ public class DistanceCalculator {
     }
     
     /**
-     * Private class that contains x and y in double.
+     * 
+     * @param x1
+     * @param y1
+     * @param x2
+     * @param y2
+     * @param width1
+     * @param height1
+     * @param width2
+     * @param height2
+     * @return double as distance of point to line segment
      */
-    private class DoublePoint{
-        public double x;
-        public double y;
-        
-        public DoublePoint()
-        {
-            
-        }
-        
-        public DoublePoint(double x, double y)
-        {
-            this.x = x;
-            this.y = y;
-        }
+    public double getPointOfIntersectionLineSegments(int x1, int y1, int x2, int y2, int width1, int height1, int width2, int height2)
+    {
+        LineSegment lineA = new LineSegment(x1-width1/2, y1+height1, x1+width1/2, y1+height1);
+        LineSegment lineB = new LineSegment(x1+width1/2, y1+height1, x1+width1/2, y1-height1);
+        LineSegment lineC = new LineSegment(x1+width1/2, y1-height1, x1-width1/2, y1-height1);
+        LineSegment lineD = new LineSegment(x1-width1/2, y1-height1, x1-width1/2, y1+height1);
+        return -1;
     }
+    
 }
+
