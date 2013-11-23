@@ -5,7 +5,7 @@
 package BT.modules.UC.places;
 
 import BT.BT.UCLineType;
-import BT.managers.UC.DistanceCalculator;
+import BT.managers.DistanceCalculator;
 import BT.models.CoordinateModel;
 import java.awt.BasicStroke;
 import java.awt.Color;
