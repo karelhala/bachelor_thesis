@@ -18,10 +18,10 @@ public class DistanceCalculator extends DistanceCalculatorModel{
      * @return double as distance from point to line segment
      * @return -1 if point is not within line segment
      */
-    private double getDistancePointSegment(DoublePoint firstPointSegment, DoublePoint secondPointSegment, DoublePoint point)
+    private double getDistancePointSegment(LineSegment line, DoublePoint point)
     {
-        double LineLength = distanceFromTwoPoints(firstPointSegment, secondPointSegment);
-        double t = ((point.x - firstPointSegment.x) * (secondPointSegment.x - firstPointSegment.x) + (point.y - firstPointSegment.y) * (secondPointSegment.y - firstPointSegment.y)) / LineLength;
+        double LineLength = distanceFromTwoPoints(line.pointA, line.pointB);
+        double t = ((point.x - line.pointA.x) * (line.pointB.x - line.pointA.x) + (point.y - line.pointA.y) * (line.pointB.y - line.pointA.y)) / LineLength;
         
         if (t < 0)
         {
@@ -32,7 +32,7 @@ public class DistanceCalculator extends DistanceCalculatorModel{
             return -1;
         }
         
-        double distance = (Math.abs((secondPointSegment.x-firstPointSegment.x)*(firstPointSegment.y-point.y) - (firstPointSegment.x-point.x)*(secondPointSegment.y-firstPointSegment.y))/Math.sqrt(LineLength));
+        double distance = (Math.abs((line.pointB.x-line.pointA.x)*(line.pointA.y-point.y) - (line.pointA.x-point.x)*(line.pointB.y-line.pointA.y))/Math.sqrt(LineLength));
         return distance;
     }
     
@@ -48,12 +48,11 @@ public class DistanceCalculator extends DistanceCalculatorModel{
      */
     public double getDistanceOfPointToSegment(int x1, int y1, int x2, int y2, int pointX, int pointY)
     {
-        DoublePoint firstLineA = new DoublePoint((double) x1, (double) y1);
-        DoublePoint firstLineB = new DoublePoint((double) x2, (double) y2);
+        LineSegment line = new LineSegment(x1, y1, x2, y2);
         DoublePoint clickedPoint = new DoublePoint((double) pointX, (double) pointY);
 
         double finalDistance;
-        finalDistance = getDistancePointSegment(firstLineA, firstLineB, clickedPoint);
+        finalDistance = getDistancePointSegment(line, clickedPoint);
         return finalDistance;
     }
     
