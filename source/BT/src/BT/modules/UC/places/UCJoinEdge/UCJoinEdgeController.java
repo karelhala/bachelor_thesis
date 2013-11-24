@@ -128,7 +128,7 @@ public class UCJoinEdgeController extends CoordinateModel{
         }
         this.startX = this.firstObject.getX();
         this.startY = this.firstObject.getY();
-        UCJoinEdgePointsCalculator pointsCaluclator = new UCJoinEdgePointsCalculator(this, new Point(this.startX, this.startY), new Point(this.endX, this.endY));  
+        UCJoinEdgePointsCalculator pointsCaluclator = new UCJoinEdgePointsCalculator(this.firstObject, this.secondObject, new Point(this.startX, this.startY), new Point(this.endX, this.endY));  
         
         UCJoinEdgeDrawer lineDrawer = new UCJoinEdgeDrawer(this, pointsCaluclator.getStartPoint(), pointsCaluclator.getEndPoint());
         if (pointsCaluclator.getStartPoint() !=null && pointsCaluclator.getEndPoint() !=null)

@@ -10,11 +10,14 @@ import BT.modules.UC.places.UCActor;
 import java.awt.Point;
 
 /**
- *
+ * Class that will calculate star and end points for given object.
+ * This class will calculate start and end point by given objects, just pass 2 objects in it and it ethod will handle everzthing else.
+ * To get calculated points call for getStartPoint and getEndPoint
  * @author Karel Hala
  */
 public class UCJoinEdgePointsCalculator {
-    private UCJoinEdgeController joinEdgeController;
+    private CoordinateModel firstObject;
+    private CoordinateModel secondObject;
     private DistanceCalculator distanceCalculator;
     private Point startPoint;
     private Point endPoint;
@@ -27,24 +30,27 @@ public class UCJoinEdgePointsCalculator {
         return endPoint;
     }
     
-    public UCJoinEdgePointsCalculator(UCJoinEdgeController joinEdgeController, Point startPoint, Point endPoint)
+    public UCJoinEdgePointsCalculator(CoordinateModel firstObject, CoordinateModel secondObject, Point startPoint, Point endPoint)
     {
+        this.firstObject = firstObject;
+        this.secondObject = secondObject;
         this.startPoint = startPoint;
         this.endPoint = endPoint;
-        this.joinEdgeController = joinEdgeController;
         this.distanceCalculator = new DistanceCalculator();
         calculatePoints();
     }
 
-    
+    /**
+     * 
+     */
     private void calculatePoints() {
-        if (this.joinEdgeController.getSecondObject() != null)
+        if (this.secondObject != null)
         {
-            this.endPoint.x = this.joinEdgeController.getSecondObject().getX();
-            this.endPoint.y = this.joinEdgeController.getSecondObject().getY();
+            this.endPoint.x = this.secondObject.getX();
+            this.endPoint.y = this.secondObject.getY();
         }
-        this.startPoint.x = this.joinEdgeController.getfirstObject().getX();
-        this.startPoint.y = this.joinEdgeController.getfirstObject().getY();
+        this.startPoint.x = this.firstObject.getX();
+        this.startPoint.y = this.firstObject.getY();
         
         this.endPoint = calculateEndPoint();
         
@@ -61,7 +67,7 @@ public class UCJoinEdgePointsCalculator {
         Point pointA = this.endPoint;
         Point pointB = this.startPoint;
         Point calculatedPoint;
-        WidthHeight widthHeight = getObjectWidthAndheight(this.joinEdgeController.getfirstObject());
+        WidthHeight widthHeight = getObjectWidthAndheight(this.firstObject);
         calculatedPoint = this.distanceCalculator.getPointOfIntersectionLineSegments(pointA, pointB, widthHeight.width, widthHeight.height);
         if (calculatedPoint !=null)
         {
@@ -101,9 +107,9 @@ public class UCJoinEdgePointsCalculator {
     {
         Point pointA = this.startPoint;
         Point pointB = this.endPoint;
-        if (this.joinEdgeController.getSecondObject() != null)
+        if (this.secondObject != null)
         {
-            WidthHeight widthHeight = getObjectWidthAndheight(this.joinEdgeController.getSecondObject());
+            WidthHeight widthHeight = getObjectWidthAndheight(this.secondObject);
             return this.distanceCalculator.getPointOfIntersectionLineSegments(pointA, pointB, widthHeight.width, widthHeight.height);
         }
         return this.endPoint;
