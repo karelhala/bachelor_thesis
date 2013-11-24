@@ -51,7 +51,7 @@ public class UCJoinEdgeDrawer {
         {
             g.drawLine(startPoint.x, startPoint.y, endPoint.x, endPoint.y);
         }
-        else if (this.joinEdgeController.getJoinEdgeType() == BT.UCLineType.ASSOCIATION)
+        else if (this.joinEdgeController.getJoinEdgeType() == BT.UCLineType.USES)
         {
             g.setStroke(dashed);
             g.drawLine(startPoint.x, startPoint.y, endPoint.x, endPoint.y);

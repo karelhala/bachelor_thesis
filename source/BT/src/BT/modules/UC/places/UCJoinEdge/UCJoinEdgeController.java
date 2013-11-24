@@ -31,6 +31,10 @@ public class UCJoinEdgeController extends CoordinateModel{
     private DistanceCalculator distanceCalculator;
 
     private UCLineType joinEdgeType;
+
+    public void setJoinEdgeType(UCLineType joinEdgeType) {
+        this.joinEdgeType = joinEdgeType;
+    }
     
     /**
      * TODO: make model

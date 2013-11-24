@@ -92,6 +92,12 @@ public class UCMainContentController {
             UCdrawing.setNewLine(null);
             UCdrawing.getDrawing().repaint();
         }
+        else if (this.newJoinEdge != null)
+        {
+            changeLineType(selectedJoinEdgeButton, this.newJoinEdge);
+            this.mainContent.getDrawingPane().getDrawing().repaint();
+        }
+             
     }
     
     /**
@@ -176,20 +182,7 @@ public class UCMainContentController {
             UCdrawing.setNewLine(newJoinEdge);
         }
         createJoinEdge(clickedObject);
-        switch (selectedJoinEdgeButton.getName())
-        {
-           case "ASSOCIATION":
-                    System.out.println(selectedJoinEdgeButton.getText());
-                 break;
-
-           case "USES":  
-                    System.out.println(selectedJoinEdgeButton.getText());
-                 break;
-
-           case "EXTENDS":  
-                    System.out.println(selectedJoinEdgeButton.getText());
-                 break;
-        }
+        changeLineType(selectedJoinEdgeButton, newJoinEdge);
 
         if (this.newJoinEdge.getfirstObject() != null && this.newJoinEdge.getSecondObject() != null)
         {
@@ -206,6 +199,29 @@ public class UCMainContentController {
             this.newJoinEdge = null;
         }
     }
+    
+    /**
+     * 
+     * @param selectedJoinEdgeButton 
+     */
+    private void changeLineType(JToggleButton selectedJoinEdgeButton, UCJoinEdgeController joinEdge)
+    {
+        switch (selectedJoinEdgeButton.getName())
+        {
+           case "ASSOCIATION":
+                    joinEdge.setJoinEdgeType(UCLineType.ASSOCIATION);
+                 break;
+
+           case "USES":  
+                    joinEdge.setJoinEdgeType(UCLineType.USES);
+                 break;
+
+           case "EXTENDS":  
+                    joinEdge.setJoinEdgeType(UCLineType.EXTENDS);
+                 break;
+        }
+    }
+    
     
     /**
      * 
