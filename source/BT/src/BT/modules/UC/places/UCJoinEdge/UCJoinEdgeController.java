@@ -9,11 +9,9 @@ import BT.managers.DistanceCalculator;
 import BT.models.CoordinateModel;
 import BT.modules.UC.places.UCActor;
 import BT.modules.UC.places.UCUseCase;
-import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Point;
-import java.awt.geom.AffineTransform;
 import java.util.Objects;
 
 /**
@@ -122,94 +120,17 @@ public class UCJoinEdgeController extends CoordinateModel{
      * @param g 
      */
     public void drawJoinEdge(Graphics2D g) {
-        if (this.selected)
-        {
-            g.setColor(selectedColor);
-        }
-        else
-        {
-            g.setColor(color);
-        }
-        if (this.getSecondObject() != null)
-        {
-            endX = secondObject.getX();
-            endY = secondObject.getY();
-        }
-        startX = firstObject.getX();
-        startY = firstObject.getY();
-        
-        g.setStroke(new BasicStroke(2));
-        Point endPoint = calculateEndPoint();
-        
-        Point startPoint = calculateStartPoint();
-        
-        drawUseArrow(g, endPoint);        
-        
-        if (this.joinEdgeType == UCLineType.ASSOCIATION)
-        {
-            g.drawLine(startPoint.x, startPoint.y, endPoint.x, endPoint.y);
-        }
-    }
-    
-    /**
-     * 
-     * @return 
-     */
-    private Point calculateStartPoint()
-    {
-        Point pointA = new Point(endX, endY);
-        Point pointB = new Point(this.firstObject.getX(), this.firstObject.getY());
-        Point startPoint;
-        startPoint = this.distanceCalculator.getPointOfIntersectionLineSegments(pointA, pointB, this.firstObject.getWidth(), this.firstObject.getHeight());
-        if (startPoint !=null)
-        {
-            return startPoint;
-        }
-        return new Point(startX, startY);
-    }
-    
-    /**
-     * 
-     * @return 
-     */
-    private Point calculateEndPoint()
-    {
-        Point pointA = new Point(startX, startY);
-        Point pointB = new Point(endX, endY);
         if (this.secondObject != null)
         {
-            return this.distanceCalculator.getPointOfIntersectionLineSegments(pointA, pointB, this.secondObject.getWidth(), this.secondObject.getHeight());
+            this.endX = this.secondObject.getX();
+            this.endY = this.secondObject.getY();
         }
-        return new Point(endX, endY);
+        this.startX = this.firstObject.getX();
+        this.startY = this.firstObject.getY();
+        UCJoinEdgeLineDrawer lineDrawer = new UCJoinEdgeLineDrawer(this, new Point(this.startX, this.startY), new Point(this.endX, this.endY));  
+        
+        lineDrawer.drawJoinEdge(g);
     }
-    
-    /**
-     * 
-     * @param g
-     * @param endPoint 
-     */
-    private void drawUseArrow(Graphics2D g, Point endPoint)
-    {
-        if (endPoint !=null )
-        {
-            drawArrow(g, endPoint, new Point(this.firstObject.getX(), this.firstObject.getY()));
-        }
-    }
-    
-    private void drawArrow(Graphics2D g2D, Point A, Point B)
-    {
-        Graphics2D g = (Graphics2D) g2D.create();
-        double dx = B.x - A.x;
-        double dy = B.y - A.y;
-        double angle = Math.atan2(dy, dx);
-        AffineTransform at = AffineTransform.getTranslateInstance(A.x, A.y);
-        at.concatenate(AffineTransform.getRotateInstance(angle));
-        g.transform(at);
-
-        g.drawLine(0, 0, 0+5, 0+5);
-        g.drawLine(0, 0, 0+5, 0-5);
-    }
-    
     /**
      * 
      * @param x
