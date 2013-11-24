@@ -6,7 +6,7 @@ package BT.modules.UC.mainContent;
 
 import BT.models.CoordinateModel;
 import BT.modules.UC.places.UCActor;
-import BT.modules.UC.places.UCJoinEdge;
+import BT.modules.UC.places.UCJoinEdge.UCJoinEdgeController;
 import BT.modules.UC.places.UCUseCase;
 import java.awt.event.MouseEvent;
 import javax.swing.event.MouseInputAdapter;
@@ -42,7 +42,7 @@ public class UCDrawingListeners extends MouseInputAdapter{
     public void mousePressed(java.awt.event.MouseEvent evt) {
         final UCActor actor = this.mainContent.isActorUnderMouse(evt.getX(), evt.getY());
         final UCUseCase useCase = this.mainContent.isUseCaseUnderMouse(evt.getX(), evt.getY());
-        final UCJoinEdge joinEdge = this.mainContent.isJoinEdgeUnderMouse(evt.getX(), evt.getY());
+        final UCJoinEdgeController joinEdge = this.mainContent.isJoinEdgeUnderMouse(evt.getX(), evt.getY());
         if (actor == null && useCase == null && joinEdge == null)
         {
             this.mainContent.drawingPaneClicked(evt);
@@ -71,9 +71,9 @@ public class UCDrawingListeners extends MouseInputAdapter{
     public void mouseDragged(MouseEvent e){
         if (draggedObjec!= null)
         {
-            if (this.draggedObjec instanceof UCJoinEdge)
+            if (this.draggedObjec instanceof UCJoinEdgeController)
             {
-                UCJoinEdge draggedJoin = (UCJoinEdge) this.draggedObjec;
+                UCJoinEdgeController draggedJoin = (UCJoinEdgeController) this.draggedObjec;
                 if (!draggedJoin.isInRange(e.getX(), e.getY()))
                 {
                     this.mainContent.mouseDragged(e, this.draggedObjec);
@@ -120,7 +120,7 @@ public class UCDrawingListeners extends MouseInputAdapter{
     {
         CoordinateModel clickedObject;
         clickedObject = getModelUnderMouse(e);
-        final UCJoinEdge joinEdge = this.mainContent.isJoinEdgeUnderMouse(e.getX(), e.getY());
+        final UCJoinEdgeController joinEdge = this.mainContent.isJoinEdgeUnderMouse(e.getX(), e.getY());
         if (e.getClickCount()%2 == 0)
         {
             if (clickedObject != null)

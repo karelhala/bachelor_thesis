@@ -6,7 +6,7 @@ package BT.managers.UC;
 
 import BT.modules.UC.places.UCPlaceModel;
 import BT.modules.UC.places.UCUseCase;
-import BT.modules.UC.places.UCJoinEdge;
+import BT.modules.UC.places.UCJoinEdge.UCJoinEdgeController;
 import BT.modules.UC.places.UCActor;
 import BT.models.CoordinateModel;
 import java.util.Iterator;
@@ -39,9 +39,9 @@ public class UCPlaceManager extends UCPlaceModel {
     
     /**
      * Method for removing join edge from array list.
-     * @param UCJoinEdge jointEdge object to be removed.
+     * @param UCJoinEdgeController jointEdge object to be removed.
      */
-    public void removeJointEdge(UCJoinEdge jointEdge)
+    public void removeJointEdge(UCJoinEdgeController jointEdge)
     {
         this.joinEdges.remove(jointEdge);
     }
@@ -52,9 +52,9 @@ public class UCPlaceManager extends UCPlaceModel {
      */
     private void removeJoinEdgesWithObject(CoordinateModel removedObject)
     {
-        Iterator<UCJoinEdge> it = joinEdges.iterator();
+        Iterator<UCJoinEdgeController> it = joinEdges.iterator();
         while (it.hasNext()) {
-          UCJoinEdge joinEdge = it.next();
+          UCJoinEdgeController joinEdge = it.next();
           if (joinEdge.getfirstObject().equals(removedObject) || joinEdge.getSecondObject().equals(removedObject)) {
             it.remove();
           }
@@ -66,7 +66,7 @@ public class UCPlaceManager extends UCPlaceModel {
      */
     public void removeAllSelectedItems()
     {
-        for (Iterator<UCJoinEdge> it = joinEdges.iterator(); it.hasNext();)
+        for (Iterator<UCJoinEdgeController> it = joinEdges.iterator(); it.hasNext();)
         {
             CoordinateModel coorModel = it.next();
             if (coorModel.getSelected())
@@ -118,7 +118,7 @@ public class UCPlaceManager extends UCPlaceModel {
      */
     public void setSelectedLinesOnObject(CoordinateModel place)
     {
-        for (UCJoinEdge oneEdge : this.joinEdges)
+        for (UCJoinEdgeController oneEdge : this.joinEdges)
         {
             if (oneEdge.getfirstObject().equals(place))
             {

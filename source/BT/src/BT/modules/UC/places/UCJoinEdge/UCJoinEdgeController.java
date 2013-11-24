@@ -2,11 +2,13 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package BT.modules.UC.places;
+package BT.modules.UC.places.UCJoinEdge;
 
 import BT.BT.UCLineType;
 import BT.managers.DistanceCalculator;
 import BT.models.CoordinateModel;
+import BT.modules.UC.places.UCActor;
+import BT.modules.UC.places.UCUseCase;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -18,7 +20,7 @@ import java.util.Objects;
  *
  * @author Karel Hala
  */
-public class UCJoinEdge extends CoordinateModel{
+public class UCJoinEdgeController extends CoordinateModel{
     private CoordinateModel firstObject;
     private CoordinateModel secondObject;
     private int startX;
@@ -33,7 +35,7 @@ public class UCJoinEdge extends CoordinateModel{
     /**
      * TODO: make model
      */
-    public UCJoinEdge ()
+    public UCJoinEdgeController ()
     {
         this.tolerance = 8;
         this.selected = true;
@@ -236,9 +238,9 @@ public class UCJoinEdge extends CoordinateModel{
     @Override
     public boolean equals(Object other)
     {
-        if (other instanceof UCJoinEdge)
+        if (other instanceof UCJoinEdgeController)
         {
-            UCJoinEdge object = (UCJoinEdge) other;
+            UCJoinEdgeController object = (UCJoinEdgeController) other;
             if (this.hashCode()==object.hashCode())
             {
                 return true;

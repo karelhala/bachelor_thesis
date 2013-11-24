@@ -5,7 +5,7 @@
 package BT.modules.UC.mainContent;
 
 import BT.modules.UC.places.UCActor;
-import BT.modules.UC.places.UCJoinEdge;
+import BT.modules.UC.places.UCJoinEdge.UCJoinEdgeController;
 import BT.managers.UC.UCPlaceManager;
 import BT.modules.UC.places.UCUseCase;
 import java.awt.Color;
@@ -26,7 +26,7 @@ import javax.swing.KeyStroke;
 public class UCDrawingPane{
     private UCPlaceManager UCPlaces;
     private drawing drawPane;
-    private UCJoinEdge newLine;
+    private UCJoinEdgeController newLine;
 
      public UCDrawingPane()
     {
@@ -69,7 +69,7 @@ public class UCDrawingPane{
                 
             }
             
-            for (UCJoinEdge joinEdge: UCPlaces.getJoinEdges()) {
+            for (UCJoinEdgeController joinEdge: UCPlaces.getJoinEdges()) {
                 joinEdge.drawJoinEdge(g);
             }
             
@@ -107,7 +107,7 @@ public class UCDrawingPane{
      * 
      * @param newLine 
      */
-    public void setNewLine(UCJoinEdge newLine)
+    public void setNewLine(UCJoinEdgeController newLine)
     {
         this.newLine = newLine;
     }

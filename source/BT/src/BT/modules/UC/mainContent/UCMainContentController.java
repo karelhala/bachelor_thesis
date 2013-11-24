@@ -7,7 +7,7 @@ package BT.modules.UC.mainContent;
 import BT.BT.UCLineType;
 import BT.models.CoordinateModel;
 import BT.modules.UC.places.UCActor;
-import BT.modules.UC.places.UCJoinEdge;
+import BT.modules.UC.places.UCJoinEdge.UCJoinEdgeController;
 import BT.managers.UC.UCPlaceManager;
 import BT.modules.UC.UCLeftBottomContent;
 import BT.modules.UC.UCLeftTopContent;
@@ -30,7 +30,7 @@ import javax.swing.KeyStroke;
 public class UCMainContentController {
     private UCMainContent mainContent;
     private UCPlaceManager places;
-    private UCJoinEdge newJoinEdge;
+    private UCJoinEdgeController newJoinEdge;
     private UCLeftBottomContent LeftBottomContent;
     private UCLeftTopContent LeftTopContent;
     
@@ -112,9 +112,9 @@ public class UCMainContentController {
             dragged.setX(e.getX());
             dragged.setY(e.getY());
         }
-        else if (dragged instanceof UCJoinEdge)
+        else if (dragged instanceof UCJoinEdgeController)
         {
-            UCJoinEdge draggedJoinEdge = (UCJoinEdge) dragged;
+            UCJoinEdgeController draggedJoinEdge = (UCJoinEdgeController) dragged;
             if (!draggedJoinEdge.isInRange(e.getX(), e.getY()))
             {
                 if (this.LeftBottomContent.getSelectedButton() == null)
@@ -172,7 +172,7 @@ public class UCMainContentController {
         JToggleButton selectedJoinEdgeButton = this.LeftBottomContent.getSelectedButton();
         if (this.newJoinEdge == null)
         {
-            this.newJoinEdge = new UCJoinEdge();
+            this.newJoinEdge = new UCJoinEdgeController();
             UCdrawing.setNewLine(newJoinEdge);
         }
         createJoinEdge(clickedObject);
@@ -212,7 +212,7 @@ public class UCMainContentController {
      * @param clickedObject 
      */
     public void clickedOnObject(CoordinateModel clickedObject) {
-        if (clickedObject == null || clickedObject instanceof UCJoinEdge)
+        if (clickedObject == null || clickedObject instanceof UCJoinEdgeController)
         {
             this.newJoinEdge = null;
             this.mainContent.getDrawingPane().setNewLine(null);
@@ -271,7 +271,7 @@ public class UCMainContentController {
             usecase.setColor(Color.green);
         }
         
-        UCJoinEdge joinEdge = isJoinEdgeUnderMouse(x, y);
+        UCJoinEdgeController joinEdge = isJoinEdgeUnderMouse(x, y);
         if (joinEdge != null && actor == null && usecase == null)
         {
             joinEdge.setColor(Color.ORANGE);
@@ -307,9 +307,9 @@ public class UCMainContentController {
      * @param y
      * @return 
      */
-    public UCJoinEdge isJoinEdgeUnderMouse(int x, int y)
+    public UCJoinEdgeController isJoinEdgeUnderMouse(int x, int y)
     {
-        for (UCJoinEdge joinEdge : places.getJoinEdges())
+        for (UCJoinEdgeController joinEdge : places.getJoinEdges())
         {
             if (joinEdge.isInRange(x,y))
             {
@@ -408,8 +408,8 @@ public class UCMainContentController {
      * 
      * @param joinEdge 
      */
-    public void removeLineFromArrayListAndSetNewLine(UCJoinEdge joinEdge) {
-        this.newJoinEdge = new UCJoinEdge();
+    public void removeLineFromArrayListAndSetNewLine(UCJoinEdgeController joinEdge) {
+        this.newJoinEdge = new UCJoinEdgeController();
         this.newJoinEdge.setFirstObject(joinEdge.getfirstObject());
         this.places.removeJointEdge(joinEdge);
     }

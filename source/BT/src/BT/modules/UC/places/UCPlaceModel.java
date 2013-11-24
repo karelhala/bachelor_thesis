@@ -4,6 +4,7 @@
 */
 package BT.modules.UC.places;
 
+import BT.modules.UC.places.UCJoinEdge.UCJoinEdgeController;
 import java.util.ArrayList;
 
 /**
@@ -27,13 +28,13 @@ public class UCPlaceModel {
     * Arraylist that contains all join edges in UC
     * @var ArrayList<UCJoinEdge>
     */
-    protected ArrayList<UCJoinEdge> joinEdges = new ArrayList<>();
+    protected ArrayList<UCJoinEdgeController> joinEdges = new ArrayList<>();
 
     /**
     * Method for add new join edge to array list.
-    * @param UCJoinEdge joinEdge object to be added
+    * @param UCJoinEdgeController joinEdge object to be added
     */
-    public void addJoinEdge(UCJoinEdge joinEdge)
+    public void addJoinEdge(UCJoinEdgeController joinEdge)
     {
         if (!lineExists(joinEdge))
         {
@@ -45,7 +46,7 @@ public class UCPlaceModel {
     * Method for returning all join edges in array list.
     * @return ArrayList<UCJoinEdge>
     */
-    public ArrayList<UCJoinEdge> getJoinEdges()
+    public ArrayList<UCJoinEdgeController> getJoinEdges()
     {
         return this.joinEdges;
     }
@@ -91,13 +92,13 @@ public class UCPlaceModel {
      * second object --> first object.
      * Resolving issue with multiple lines connected to same objects.
      * Also checks if line isn't same
-     * @param UCJoinEdge newLine
+     * @param UCJoinEdgeController newLine
      * @return true when line exist
      * @return false when line doesn't exist
      */
-    public Boolean lineExists(UCJoinEdge newLine)
+    public Boolean lineExists(UCJoinEdgeController newLine)
     {
-        for (UCJoinEdge oneEdge : this.joinEdges)
+        for (UCJoinEdgeController oneEdge : this.joinEdges)
         {
             if (oneEdge.getSecondObject().equals(newLine.getSecondObject()) || oneEdge.getSecondObject().equals(newLine.getfirstObject()))
             {
