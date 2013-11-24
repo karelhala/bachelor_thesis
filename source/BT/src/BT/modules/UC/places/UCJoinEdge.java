@@ -10,6 +10,9 @@ import BT.models.CoordinateModel;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.Point;
+import java.awt.Polygon;
+import java.awt.geom.AffineTransform;
 import java.util.Objects;
 
 /**
@@ -115,7 +118,8 @@ public class UCJoinEdge extends CoordinateModel{
      * 
      * @param g 
      */
-    public void drawJoinEdge(Graphics2D g) {      
+    public void drawJoinEdge(Graphics2D g) {
+        DistanceCalculator calculateDistance = new DistanceCalculator();
         if (this.selected)
         {
             g.setColor(selectedColor);
@@ -131,11 +135,53 @@ public class UCJoinEdge extends CoordinateModel{
         }
         startX = firstObject.getX();
         startY = firstObject.getY();
+        
         g.setStroke(new BasicStroke(2));
+        
+        if (this.secondObject != null)
+        {
+            Point intersectionPoint = calculateDistance.getPointOfIntersectionLineSegments(startX, startY, endX, endY, this.secondObject.getWidth(), this.secondObject.getHeight());
+            if (intersectionPoint !=null )
+            {
+                drawArrow(g, intersectionPoint, new Point(this.firstObject.getX(), this.firstObject.getY()));
+                endX = intersectionPoint.x;
+                endY = intersectionPoint.y;
+            }
+        }
+        else
+        {
+            drawArrow(g, new Point(endX, endY), new Point(this.firstObject.getX(), this.firstObject.getY()));
+        }
+        
+        if (this.firstObject != null)
+        {
+            Point intersectionPoint = calculateDistance.getPointOfIntersectionLineSegments(endX, endY, this.firstObject.getX(), this.firstObject.getY(), this.firstObject.getWidth(), this.firstObject.getHeight());
+            if (intersectionPoint !=null )
+            {
+                startX = intersectionPoint.x;
+                startY = intersectionPoint.y;
+            }
+        }
+        
         if (this.joinEdgeType == UCLineType.ASSOCIATION)
         {
             g.drawLine(startX, startY, endX, endY);
         }
+    }
+    
+    private void drawArrow(Graphics2D g2D, Point A, Point B)
+    {
+        Graphics2D g = (Graphics2D) g2D.create();
+        double dx = B.x - A.x;
+        double dy = B.y - A.y;
+        double angle = Math.atan2(dy, dx);
+        System.out.println(angle);
+        AffineTransform at = AffineTransform.getTranslateInstance(A.x, A.y);
+        at.concatenate(AffineTransform.getRotateInstance(angle));
+        g.transform(at);
+
+        g.drawLine(0, 0, 0+10, 0+10);
+        g.drawLine(0, 0, 0+10, 0-10);
     }
     
     /**
@@ -157,13 +203,6 @@ public class UCJoinEdge extends CoordinateModel{
             return true;
         }
         return false;
-    }
-    
-    /**
-     * 
-     */
-    public void setBasicColor() {
-        this.color = this.basicColor;
     }
     
     /**

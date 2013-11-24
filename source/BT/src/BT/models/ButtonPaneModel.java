@@ -75,8 +75,8 @@ public class ButtonPaneModel extends ContentPaneModel implements ToggleButtonsIn
                 public void itemStateChanged(ItemEvent ev) {
                     if(ev.getStateChange()==ItemEvent.SELECTED){
                         toggleButtonSelected(toggleButton);
-                        UCMain.buttonsChanged();
                     }
+                    UCMain.buttonsChanged();
                 }
             };
             toggleButton.addItemListener(changeListener);

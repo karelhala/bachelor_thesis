@@ -18,7 +18,7 @@ public class DistanceCalculatorModel {
         return x * x;
     }
     
-        /**
+    /**
      * Method for calculating distance between 2 points.
      * @param DoublePoint firstPoin point containing double x and double y
      * @param DoublePoint secondPoint point containing double x and double y
@@ -27,6 +27,28 @@ public class DistanceCalculatorModel {
     protected double distanceFromTwoPoints(DoublePoint firstPoin, DoublePoint secondPoint)
     {
         return sqr(firstPoin.x - secondPoint.x) + sqr(firstPoin.y - secondPoint.y);
+    }
+    
+    /**
+     * Method for calculating magnitude of vector.
+     * @param DoublePoint A first point
+     * @param DoublePoint B second point
+     * @return DoublePoint magnitude of vector
+     */
+    protected DoublePoint vectorMagnitude(DoublePoint A, DoublePoint B)
+    {
+        return new DoublePoint(A.x - B.x, A.y - B.y);
+    }
+    
+    /**
+     * Dot product function used in vectors
+     * @param DoublePoint A first point
+     * @param DoublePoint B second point
+     * @return double calculaation of dot-product function
+     */
+    protected double dotProductFunction(DoublePoint A, DoublePoint B)
+    {
+        return A.x*B.x + A.y*B.y;
     }
     
         /**
