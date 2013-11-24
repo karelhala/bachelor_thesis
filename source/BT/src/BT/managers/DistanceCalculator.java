@@ -58,6 +58,14 @@ public class DistanceCalculator extends DistanceCalculatorModel{
         return finalDistance;
     }
     
+    /**
+     * Method for calculating intersect point to object with vertical lines.
+     * Vertical lines in object needs to be calculated differently from hotizontal.
+     * @param lineA
+     * @param lineB
+     * @return DoublePoint calculated point if success
+     * @return if error
+     */
     public DoublePoint getIntersectionPointLineVert(LineSegment lineA, LineSegment lineB)
     {
         DoublePoint s1 = vectorMagnitude(lineA.pointB, lineA.pointA);
@@ -73,6 +81,14 @@ public class DistanceCalculator extends DistanceCalculatorModel{
         return null;
     }
     
+    /**
+     * Method for calculating intersect point to object with hrtizontal lines.
+     * Horizontal lines in object needs to be calculated differently from vertical.
+     * @param LineSegment lineA
+     * @param LineSegment lineB
+     * @return DoublePoint calculated point if success
+     * @return if error
+     */
     public DoublePoint getIntersectionPointLineHoriz(LineSegment lineA, LineSegment lineB)
     {
         DoublePoint s1 = vectorMagnitude(lineA.pointB, lineA.pointA);
@@ -90,25 +106,22 @@ public class DistanceCalculator extends DistanceCalculatorModel{
     
     /**
      * 
-     * @param x2
-     * @param y2
-     * @param x2
-     * @param y2
+     * @param pointA
+     * @param pointB
      * @param width
      * @param height
-     * @param width2
-     * @param height2
      * @return double as distance of point to line segment
      */
-    public Point getPointOfIntersectionLineSegments(int x1, int y1, int x2, int y2, int width ,int height)
+    public Point getPointOfIntersectionLineSegments(Point pointA, Point pointB, int width ,int height)
     {
-        LineSegment segmentLine = new LineSegment(x1, y1, x2, y2);
+        LineSegment segmentLine = new LineSegment(pointA.x, pointA.y, pointB.x, pointB.y);
         
-        LineSegment lineA = new LineSegment(x2-width/2, y2+height/2, x2+width/2, y2+height/2);
-        LineSegment lineB = new LineSegment(x2+width/2, y2-height/2, x2+width/2, y2+height/2);
-        LineSegment lineC = new LineSegment(x2+width/2, y2-height/2, x2-width/2, y2-height/2);
-        LineSegment lineD = new LineSegment(x2-width/2, y2-height/2, x2-width/2, y2+height/2);
+        LineSegment lineA = new LineSegment(pointB.x-width/2, pointB.y+height/2, pointB.x+width/2, pointB.y+height/2);
+        LineSegment lineB = new LineSegment(pointB.x+width/2, pointB.y-height/2, pointB.x+width/2, pointB.y+height/2);
+        LineSegment lineC = new LineSegment(pointB.x+width/2, pointB.y-height/2, pointB.x-width/2, pointB.y-height/2);
+        LineSegment lineD = new LineSegment(pointB.x-width/2, pointB.y-height/2, pointB.x-width/2, pointB.y+height/2);
         DoublePoint intesectionPoint;
+
         if ((intesectionPoint = getIntersectionPointLineVert(lineB, segmentLine))!=null)
         {
             return new Point((int) intesectionPoint.x, (int) intesectionPoint.y);

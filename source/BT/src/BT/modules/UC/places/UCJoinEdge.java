@@ -11,7 +11,6 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Point;
-import java.awt.Polygon;
 import java.awt.geom.AffineTransform;
 import java.util.Objects;
 
@@ -27,6 +26,7 @@ public class UCJoinEdge extends CoordinateModel{
     private int endX;
     private int endY;
     private double tolerance;
+    private DistanceCalculator distanceCalculator;
 
     private UCLineType joinEdgeType;
     
@@ -41,6 +41,7 @@ public class UCJoinEdge extends CoordinateModel{
         this.basicColor = Color.BLACK;
         this.color = Color.BLACK;
         this.joinEdgeType = UCLineType.ASSOCIATION;
+        this.distanceCalculator = new DistanceCalculator();
     }
     
     /**
@@ -68,6 +69,15 @@ public class UCJoinEdge extends CoordinateModel{
     
     /**
      * 
+     * @return 
+     */
+    public CoordinateModel getSecondObject()
+    {
+        return this.secondObject;
+    }
+    
+    /**
+     * 
      * @param object 
      */
     public void setSecondObject(CoordinateModel object)
@@ -83,15 +93,6 @@ public class UCJoinEdge extends CoordinateModel{
         {
             this.secondObject = object;
         }
-    }
-    
-    /**
-     * 
-     * @return 
-     */
-    public CoordinateModel getSecondObject()
-    {
-        return this.secondObject;
     }
     
     /**
@@ -119,7 +120,6 @@ public class UCJoinEdge extends CoordinateModel{
      * @param g 
      */
     public void drawJoinEdge(Graphics2D g) {
-        DistanceCalculator calculateDistance = new DistanceCalculator();
         if (this.selected)
         {
             g.setColor(selectedColor);
@@ -137,35 +137,60 @@ public class UCJoinEdge extends CoordinateModel{
         startY = firstObject.getY();
         
         g.setStroke(new BasicStroke(2));
+        Point endPoint = calculateEndPoint();
         
-        if (this.secondObject != null)
-        {
-            Point intersectionPoint = calculateDistance.getPointOfIntersectionLineSegments(startX, startY, endX, endY, this.secondObject.getWidth(), this.secondObject.getHeight());
-            if (intersectionPoint !=null )
-            {
-                drawArrow(g, intersectionPoint, new Point(this.firstObject.getX(), this.firstObject.getY()));
-                endX = intersectionPoint.x;
-                endY = intersectionPoint.y;
-            }
-        }
-        else
-        {
-            drawArrow(g, new Point(endX, endY), new Point(this.firstObject.getX(), this.firstObject.getY()));
-        }
+        Point startPoint = calculateStartPoint();
         
-        if (this.firstObject != null)
-        {
-            Point intersectionPoint = calculateDistance.getPointOfIntersectionLineSegments(endX, endY, this.firstObject.getX(), this.firstObject.getY(), this.firstObject.getWidth(), this.firstObject.getHeight());
-            if (intersectionPoint !=null )
-            {
-                startX = intersectionPoint.x;
-                startY = intersectionPoint.y;
-            }
-        }
+        drawUseArrow(g, endPoint);        
         
         if (this.joinEdgeType == UCLineType.ASSOCIATION)
         {
-            g.drawLine(startX, startY, endX, endY);
+            g.drawLine(startPoint.x, startPoint.y, endPoint.x, endPoint.y);
+        }
+    }
+    
+    /**
+     * 
+     * @return 
+     */
+    private Point calculateStartPoint()
+    {
+        Point pointA = new Point(endX, endY);
+        Point pointB = new Point(this.firstObject.getX(), this.firstObject.getY());
+        Point startPoint;
+        startPoint = this.distanceCalculator.getPointOfIntersectionLineSegments(pointA, pointB, this.firstObject.getWidth(), this.firstObject.getHeight());
+        if (startPoint !=null)
+        {
+            return startPoint;
+        }
+        return new Point(startX, startY);
+    }
+    
+    /**
+     * 
+     * @return 
+     */
+    private Point calculateEndPoint()
+    {
+        Point pointA = new Point(startX, startY);
+        Point pointB = new Point(endX, endY);
+        if (this.secondObject != null)
+        {
+            return this.distanceCalculator.getPointOfIntersectionLineSegments(pointA, pointB, this.secondObject.getWidth(), this.secondObject.getHeight());
+        }
+        return new Point(endX, endY);
+    }
+    
+    /**
+     * 
+     * @param g
+     * @param endPoint 
+     */
+    private void drawUseArrow(Graphics2D g, Point endPoint)
+    {
+        if (endPoint !=null )
+        {
+            drawArrow(g, endPoint, new Point(this.firstObject.getX(), this.firstObject.getY()));
         }
     }
     
@@ -175,13 +200,12 @@ public class UCJoinEdge extends CoordinateModel{
         double dx = B.x - A.x;
         double dy = B.y - A.y;
         double angle = Math.atan2(dy, dx);
-        System.out.println(angle);
         AffineTransform at = AffineTransform.getTranslateInstance(A.x, A.y);
         at.concatenate(AffineTransform.getRotateInstance(angle));
         g.transform(at);
 
-        g.drawLine(0, 0, 0+10, 0+10);
-        g.drawLine(0, 0, 0+10, 0-10);
+        g.drawLine(0, 0, 0+5, 0+5);
+        g.drawLine(0, 0, 0+5, 0-5);
     }
     
     /**
@@ -196,8 +220,7 @@ public class UCJoinEdge extends CoordinateModel{
         
         int secondPointX = this.secondObject.getX();
         int secondPointY = this.secondObject.getY();
-        DistanceCalculator calculateDistance = new DistanceCalculator();
-        double distance = calculateDistance.getDistanceOfPointToSegment(firstPointX, firstPointY, secondPointX, secondPointY, x, y);
+        double distance = this.distanceCalculator.getDistanceOfPointToSegment(firstPointX, firstPointY, secondPointX, secondPointY, x, y);
         if (distance !=-1 && distance < this.tolerance)
         {
             return true;
