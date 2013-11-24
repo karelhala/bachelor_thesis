@@ -43,6 +43,24 @@ public class UCActor extends CoordinateModel{
     }
     
     /**
+     * 
+     * @return 
+     */
+    public int getMaxWidth()
+    {
+        return getMax(this.objectWidth, this.width);
+    }
+    
+    /**
+     * 
+     * @return 
+     */
+    public int getMaxHeight()
+    {
+        return getMax(this.objectHeight, this.height);
+    }
+    
+    /**
      * TODO: refactor
      * @param g 
      */

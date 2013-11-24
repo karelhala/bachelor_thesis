@@ -114,7 +114,15 @@ public class DistanceCalculator extends DistanceCalculatorModel{
      */
     public Point getPointOfIntersectionLineSegments(Point pointA, Point pointB, int width ,int height)
     {
-        LineSegment segmentLine = new LineSegment(pointA.x, pointA.y, pointB.x, pointB.y);
+        LineSegment segmentLine;
+        if (pointA != null && pointB != null)
+        {
+            segmentLine = new LineSegment(pointA.x, pointA.y, pointB.x, pointB.y);
+        }
+        else
+        {
+            return null;
+        }
         
         LineSegment lineA = new LineSegment(pointB.x-width/2, pointB.y+height/2, pointB.x+width/2, pointB.y+height/2);
         LineSegment lineB = new LineSegment(pointB.x+width/2, pointB.y-height/2, pointB.x+width/2, pointB.y+height/2);

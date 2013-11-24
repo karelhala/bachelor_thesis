@@ -6,6 +6,8 @@ package BT.modules.UC.places.UCJoinEdge;
 
 import BT.BT;
 import BT.managers.DistanceCalculator;
+import BT.models.CoordinateModel;
+import BT.modules.UC.places.UCActor;
 import java.awt.BasicStroke;
 import java.awt.Graphics2D;
 import java.awt.Point;
@@ -49,12 +51,15 @@ public class UCJoinEdgeLineDrawer {
         this.startPoint.x = this.joinEdgeController.getfirstObject().getX();
         this.startPoint.y = this.joinEdgeController.getfirstObject().getY();
         
-        g.setStroke(new BasicStroke(2));
         this.endPoint = calculateEndPoint();
         
         this.startPoint = calculateStartPoint();
-            
-        drawLine(g);
+        
+        if (this.startPoint !=null && this.endPoint !=null)
+        {
+            g.setStroke(new BasicStroke(2));    
+            drawLine(g);
+        }
     }
     
     /**
@@ -72,11 +77,11 @@ public class UCJoinEdgeLineDrawer {
             g.drawLine(startPoint.x, startPoint.y, endPoint.x, endPoint.y);
             drawArrow(g, this.endPoint, this.startPoint);
         }
-        else if (this.joinEdgeController.getJoinEdgeType() == BT.UCLineType.ASSOCIATION)
+        else if (this.joinEdgeController.getJoinEdgeType() == BT.UCLineType.EXTENDS)
         {
             g.drawLine(startPoint.x, startPoint.y, endPoint.x, endPoint.y);
             drawArrow(g, this.endPoint, this.startPoint);
-            drawArrow(g, this.startPoint, this.endPoint);
+            drawArrow(g, this.startPoint, this.endPoint);   
         }
     }
     
@@ -89,12 +94,36 @@ public class UCJoinEdgeLineDrawer {
         Point pointA = this.endPoint;
         Point pointB = this.startPoint;
         Point calculatedPoint;
-        calculatedPoint = this.distanceCalculator.getPointOfIntersectionLineSegments(pointA, pointB, this.joinEdgeController.getfirstObject().getWidth(), this.joinEdgeController.getfirstObject().getHeight());
+        WidthHeight widthHeight = getObjectWidthAndheight(this.joinEdgeController.getfirstObject());
+        calculatedPoint = this.distanceCalculator.getPointOfIntersectionLineSegments(pointA, pointB, widthHeight.width, widthHeight.height);
         if (calculatedPoint !=null)
         {
             return calculatedPoint;
         }
         return this.startPoint;
+    }
+    
+    /**
+     * 
+     * @param object
+     * @return 
+     */
+    private WidthHeight getObjectWidthAndheight(CoordinateModel object)
+    {
+        int width;
+        int height;
+        if (object instanceof UCActor)
+        {
+            UCActor actor = (UCActor) object;
+            width = actor.getMaxWidth();
+            height = actor.getMaxHeight();
+        }
+        else
+        {
+            width = object.getWidth();
+            height = object.getHeight();
+        }
+        return new WidthHeight(width, height);
     }
     
     /**
@@ -107,7 +136,8 @@ public class UCJoinEdgeLineDrawer {
         Point pointB = this.endPoint;
         if (this.joinEdgeController.getSecondObject() != null)
         {
-            return this.distanceCalculator.getPointOfIntersectionLineSegments(pointA, pointB, this.joinEdgeController.getSecondObject().getWidth(), this.joinEdgeController.getSecondObject().getHeight());
+            WidthHeight widthHeight = getObjectWidthAndheight(this.joinEdgeController.getSecondObject());
+            return this.distanceCalculator.getPointOfIntersectionLineSegments(pointA, pointB, widthHeight.width, widthHeight.height);
         }
         return this.endPoint;
     }
@@ -130,5 +160,24 @@ public class UCJoinEdgeLineDrawer {
 
         g.drawLine(0, 0, 0+5, 0+5);
         g.drawLine(0, 0, 0+5, 0-5);
+    }
+    
+    /**
+     * 
+     */
+    private class WidthHeight{
+        public int width;
+        public int height;
+        
+        public WidthHeight()
+        {
+            
+        }
+        
+        public WidthHeight(int width, int height)
+        {
+            this.width = width;
+            this.height = height;
+        }
     }
 }
