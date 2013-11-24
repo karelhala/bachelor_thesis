@@ -53,12 +53,30 @@ public class UCJoinEdgeLineDrawer {
         this.endPoint = calculateEndPoint();
         
         this.startPoint = calculateStartPoint();
-        
-        drawArrow(g, this.endPoint, this.startPoint);    
-        
+            
+        drawLine(g);
+    }
+    
+    /**
+     * Method for drawing each type of line.
+     * @param g 
+     */
+    private void drawLine(Graphics2D g)
+    {
         if (this.joinEdgeController.getJoinEdgeType() == BT.UCLineType.ASSOCIATION)
         {
             g.drawLine(startPoint.x, startPoint.y, endPoint.x, endPoint.y);
+        }
+        else if (this.joinEdgeController.getJoinEdgeType() == BT.UCLineType.USES)
+        {
+            g.drawLine(startPoint.x, startPoint.y, endPoint.x, endPoint.y);
+            drawArrow(g, this.endPoint, this.startPoint);
+        }
+        else if (this.joinEdgeController.getJoinEdgeType() == BT.UCLineType.ASSOCIATION)
+        {
+            g.drawLine(startPoint.x, startPoint.y, endPoint.x, endPoint.y);
+            drawArrow(g, this.endPoint, this.startPoint);
+            drawArrow(g, this.startPoint, this.endPoint);
         }
     }
     
@@ -94,6 +112,12 @@ public class UCJoinEdgeLineDrawer {
         return this.endPoint;
     }
     
+    /**
+     * Method for drawing arrow at end of the line given by 2 points.
+     * @param g2D
+     * @param A
+     * @param B 
+     */
     private void drawArrow(Graphics2D g2D, Point A, Point B)
     {
         Graphics2D g = (Graphics2D) g2D.create();
