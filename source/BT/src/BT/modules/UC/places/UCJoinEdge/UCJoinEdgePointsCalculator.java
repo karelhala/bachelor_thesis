@@ -4,45 +4,40 @@
  */
 package BT.modules.UC.places.UCJoinEdge;
 
-import BT.BT;
 import BT.managers.DistanceCalculator;
 import BT.models.CoordinateModel;
 import BT.modules.UC.places.UCActor;
-import java.awt.BasicStroke;
-import java.awt.Graphics2D;
 import java.awt.Point;
-import java.awt.geom.AffineTransform;
 
 /**
  *
  * @author Karel Hala
  */
-public class UCJoinEdgeLineDrawer {
+public class UCJoinEdgePointsCalculator {
     private UCJoinEdgeController joinEdgeController;
     private DistanceCalculator distanceCalculator;
     private Point startPoint;
     private Point endPoint;
+
+    public Point getStartPoint() {
+        return startPoint;
+    }
+
+    public Point getEndPoint() {
+        return endPoint;
+    }
     
-    public UCJoinEdgeLineDrawer(UCJoinEdgeController joinEdgeController, Point startPoint, Point endPoint)
+    public UCJoinEdgePointsCalculator(UCJoinEdgeController joinEdgeController, Point startPoint, Point endPoint)
     {
         this.startPoint = startPoint;
         this.endPoint = endPoint;
         this.joinEdgeController = joinEdgeController;
         this.distanceCalculator = new DistanceCalculator();
+        calculatePoints();
     }
-    /**
-     * 
-     * @param g 
-     */
-    public void drawJoinEdge(Graphics2D g) {
-        if (this.joinEdgeController.getSelected())
-        {
-            g.setColor(this.joinEdgeController.getSelectedColor());
-        }
-        else
-        {
-            g.setColor(this.joinEdgeController.getColor());
-        }
+
+    
+    private void calculatePoints() {
         if (this.joinEdgeController.getSecondObject() != null)
         {
             this.endPoint.x = this.joinEdgeController.getSecondObject().getX();
@@ -55,34 +50,6 @@ public class UCJoinEdgeLineDrawer {
         
         this.startPoint = calculateStartPoint();
         
-        if (this.startPoint !=null && this.endPoint !=null)
-        {
-            g.setStroke(new BasicStroke(2));    
-            drawLine(g);
-        }
-    }
-    
-    /**
-     * Method for drawing each type of line.
-     * @param g 
-     */
-    private void drawLine(Graphics2D g)
-    {
-        if (this.joinEdgeController.getJoinEdgeType() == BT.UCLineType.ASSOCIATION)
-        {
-            g.drawLine(startPoint.x, startPoint.y, endPoint.x, endPoint.y);
-        }
-        else if (this.joinEdgeController.getJoinEdgeType() == BT.UCLineType.USES)
-        {
-            g.drawLine(startPoint.x, startPoint.y, endPoint.x, endPoint.y);
-            drawArrow(g, this.endPoint, this.startPoint);
-        }
-        else if (this.joinEdgeController.getJoinEdgeType() == BT.UCLineType.EXTENDS)
-        {
-            g.drawLine(startPoint.x, startPoint.y, endPoint.x, endPoint.y);
-            drawArrow(g, this.endPoint, this.startPoint);
-            drawArrow(g, this.startPoint, this.endPoint);   
-        }
     }
     
     /**
@@ -140,26 +107,6 @@ public class UCJoinEdgeLineDrawer {
             return this.distanceCalculator.getPointOfIntersectionLineSegments(pointA, pointB, widthHeight.width, widthHeight.height);
         }
         return this.endPoint;
-    }
-    
-    /**
-     * Method for drawing arrow at end of the line given by 2 points.
-     * @param g2D
-     * @param A
-     * @param B 
-     */
-    private void drawArrow(Graphics2D g2D, Point A, Point B)
-    {
-        Graphics2D g = (Graphics2D) g2D.create();
-        double dx = B.x - A.x;
-        double dy = B.y - A.y;
-        double angle = Math.atan2(dy, dx);
-        AffineTransform at = AffineTransform.getTranslateInstance(A.x, A.y);
-        at.concatenate(AffineTransform.getRotateInstance(angle));
-        g.transform(at);
-
-        g.drawLine(0, 0, 0+5, 0+5);
-        g.drawLine(0, 0, 0+5, 0-5);
     }
     
     /**

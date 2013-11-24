@@ -9,6 +9,7 @@ import BT.managers.DistanceCalculator;
 import BT.models.CoordinateModel;
 import BT.modules.UC.places.UCActor;
 import BT.modules.UC.places.UCUseCase;
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Point;
@@ -127,9 +128,14 @@ public class UCJoinEdgeController extends CoordinateModel{
         }
         this.startX = this.firstObject.getX();
         this.startY = this.firstObject.getY();
-        UCJoinEdgeLineDrawer lineDrawer = new UCJoinEdgeLineDrawer(this, new Point(this.startX, this.startY), new Point(this.endX, this.endY));  
+        UCJoinEdgePointsCalculator pointsCaluclator = new UCJoinEdgePointsCalculator(this, new Point(this.startX, this.startY), new Point(this.endX, this.endY));  
         
-        lineDrawer.drawJoinEdge(g);
+        UCJoinEdgeDrawer lineDrawer = new UCJoinEdgeDrawer(this, pointsCaluclator.getStartPoint(), pointsCaluclator.getEndPoint());
+        if (pointsCaluclator.getStartPoint() !=null && pointsCaluclator.getEndPoint() !=null)
+        {
+            g.setStroke(new BasicStroke(2));
+            lineDrawer.drawLine(g);
+        }
     }
     /**
      * 
