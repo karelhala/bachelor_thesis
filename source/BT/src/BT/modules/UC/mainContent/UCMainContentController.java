@@ -125,7 +125,7 @@ public class UCMainContentController {
             {
                 if (this.LeftBottomContent.getSelectedButton() == null)
                 {
-                    this.LeftBottomContent.getButtonWithName(UCLineType.ASSOCIATION.name()).setSelected(true);
+                    this.LeftBottomContent.getButtonWithName(draggedJoinEdge.getJoinEdgeType().name()).setSelected(true);
                 }
                 removeLineFromArrayListAndSetNewLine(draggedJoinEdge);
                 drawingPanecheckMove(e);

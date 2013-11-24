@@ -53,16 +53,16 @@ public class UCJoinEdgeDrawer {
         }
         else if (this.joinEdgeController.getJoinEdgeType() == BT.UCLineType.USES)
         {
-            g.setStroke(dashed);
             g.drawLine(startPoint.x, startPoint.y, endPoint.x, endPoint.y);
-            drawArrow(g, this.endPoint, this.startPoint, "<<uses>>");
+            drawArrow(g, this.endPoint, this.startPoint);
+            drawString(g, this.endPoint, this.startPoint, "<<uses>>");
         }
         else if (this.joinEdgeController.getJoinEdgeType() == BT.UCLineType.EXTENDS)
         {
             g.setStroke(dashed);
             g.drawLine(startPoint.x, startPoint.y, endPoint.x, endPoint.y);
-            drawArrow(g, this.endPoint, this.startPoint, "<<extends>>");
-            drawArrow(g, this.startPoint, this.endPoint, "");
+            drawArrow(g, this.endPoint, this.startPoint);
+            drawString(g, this.endPoint, this.startPoint, "<<extends>>");
         }
     }
     
@@ -72,24 +72,39 @@ public class UCJoinEdgeDrawer {
      * @param A
      * @param B 111111111111111111111111
      */
-    private void drawArrow(Graphics2D g2D, Point A, Point B, String name)
+    private void drawArrow(Graphics2D g2D, Point A, Point B)
     {
         Graphics2D g = (Graphics2D) g2D.create();
         g.setStroke(new BasicStroke(2));
         double dx = B.x - A.x;
         double dy = B.y - A.y;
         double angle = Math.atan2(dy, dx);
-        System.out.println(angle);
-        int len = (int) Math.sqrt(dx*dx + dy*dy);
         AffineTransform at = AffineTransform.getTranslateInstance(A.x, A.y);
         at.concatenate(AffineTransform.getRotateInstance(angle));
         g.transform(at);
 
         g.drawLine(0, 0, 0+5, 0+5);
         g.drawLine(0, 0, 0+5, 0-5);
-        if (!"".equals(name))
-        {
-            g.drawString(name, len/3, -5);
-        }
     }
+    
+    private void drawString(Graphics2D g2D, Point A, Point B, String name)
+    {
+        Graphics2D g = (Graphics2D) g2D.create();
+        g.setStroke(new BasicStroke(2));
+        double dx = B.x - A.x;
+        double dy = B.y - A.y;
+        double angle = Math.atan2(dy, dx);
+        int len = (int) Math.sqrt(dx*dx + dy*dy);
+        if ((angle<=Math.PI && angle>=Math.PI/2) || (angle>=-Math.PI && angle<=-Math.PI/2))
+        {
+            len = -len*2;
+            angle = angle-Math.PI;
+        }
+        AffineTransform at = AffineTransform.getTranslateInstance(A.x, A.y);
+        at.concatenate(AffineTransform.getRotateInstance(angle));
+        g.transform(at);
+
+        g.drawString(name, len/3, -5);
+    }
+    
 }
