@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package BT.modules.UC.places.UCJoinEdge;
+package BT.managers;
 
 import BT.managers.DistanceCalculator;
 import BT.models.CoordinateModel;
@@ -15,7 +15,7 @@ import java.awt.Point;
  * To get calculated points call for getStartPoint and getEndPoint
  * @author Karel Hala
  */
-public class UCJoinEdgePointsCalculator {
+public class PointsCalculator {
     private CoordinateModel firstObject;
     private CoordinateModel secondObject;
     private DistanceCalculator distanceCalculator;
@@ -30,7 +30,7 @@ public class UCJoinEdgePointsCalculator {
         return endPoint;
     }
     
-    public UCJoinEdgePointsCalculator(CoordinateModel firstObject, CoordinateModel secondObject, Point startPoint, Point endPoint)
+    public PointsCalculator(CoordinateModel firstObject, CoordinateModel secondObject, Point startPoint, Point endPoint)
     {
         this.firstObject = firstObject;
         this.secondObject = secondObject;

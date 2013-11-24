@@ -4,6 +4,7 @@
  */
 package BT.modules.UC.places.UCJoinEdge;
 
+import BT.managers.PointsCalculator;
 import BT.BT.UCLineType;
 import BT.managers.DistanceCalculator;
 import BT.models.CoordinateModel;
@@ -128,7 +129,7 @@ public class UCJoinEdgeController extends CoordinateModel{
         }
         this.startX = this.firstObject.getX();
         this.startY = this.firstObject.getY();
-        UCJoinEdgePointsCalculator pointsCaluclator = new UCJoinEdgePointsCalculator(this.firstObject, this.secondObject, new Point(this.startX, this.startY), new Point(this.endX, this.endY));  
+        PointsCalculator pointsCaluclator = new PointsCalculator(this.firstObject, this.secondObject, new Point(this.startX, this.startY), new Point(this.endX, this.endY));  
         
         UCJoinEdgeDrawer lineDrawer = new UCJoinEdgeDrawer(this, pointsCaluclator.getStartPoint(), pointsCaluclator.getEndPoint());
         if (pointsCaluclator.getStartPoint() !=null && pointsCaluclator.getEndPoint() !=null)
