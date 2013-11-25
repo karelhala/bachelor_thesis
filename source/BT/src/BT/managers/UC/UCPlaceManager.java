@@ -29,11 +29,11 @@ public class UCPlaceManager extends UCPlaceModel {
         removeJoinEdgesWithObject(selectedObject);
         if (selectedObject instanceof UCActor)
         {
-            actors.remove(selectedObject);
+            actors.remove((UCActor)selectedObject);
         }
         else if (selectedObject instanceof UCUseCase)
         {
-            UseCases.remove(selectedObject);
+            UseCases.remove((UCUseCase)selectedObject);
         }
     }
     
@@ -41,7 +41,7 @@ public class UCPlaceManager extends UCPlaceModel {
      * Method for removing join edge from array list.
      * @param UCJoinEdgeController jointEdge object to be removed.
      */
-    public void removeJointEdge(UCJoinEdgeController jointEdge)
+    public void removeJoinEdge(UCJoinEdgeController jointEdge)
     {
         this.joinEdges.remove(jointEdge);
     }

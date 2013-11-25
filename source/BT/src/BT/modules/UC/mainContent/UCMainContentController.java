@@ -12,12 +12,10 @@ import BT.managers.UC.UCPlaceManager;
 import BT.modules.UC.UCLeftBottomContent;
 import BT.modules.UC.UCLeftTopContent;
 import BT.modules.UC.places.UCUseCase;
-import java.awt.Color;
 import java.awt.event.MouseEvent;
 import javax.swing.JOptionPane;
 import javax.swing.JToggleButton;
 import BT.modules.UC.UCMainContent;
-import java.awt.Point;
 import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
 import javax.swing.InputMap;
@@ -28,80 +26,34 @@ import javax.swing.KeyStroke;
  *
  * @author Karel Hala
  */
-public class UCMainContentController {
-    private UCMainContent mainContent;
-    private UCPlaceManager places;
-    private UCJoinEdgeController newJoinEdge;
-    private UCLeftBottomContent LeftBottomContent;
-    private UCLeftTopContent LeftTopContent;
+public class UCMainContentController extends UCMainContentModel{
+
     
-    public UCPlaceManager getPlaces() {
-        return places;
-    }
     /**
      * 
      */
     public UCMainContentController()
     {
-        this.places = new UCPlaceManager();
-        this.mainContent = new UCMainContent(places);
-    }
-    
-    /**
-     * 
-     * @param LeftBottomContent 
-     */
-    public void setLeftBottomButtonPane(UCLeftBottomContent buttonPane)
-    {
-        this.LeftBottomContent = buttonPane;
-    }
-    
-    /**
-     * 
-     * @param LeftBottomContent 
-     */
-    public void setLeftTopButtonPane(UCLeftTopContent buttonPane)
-    {
-        this.LeftTopContent = buttonPane;
-    }
-    
-    /**
-     * 
-     * @return 
-     */
-    public UCMainContent getMainContent ()
-    {
-        return this.mainContent;
+        super();
     }
     
     /**
      * 
      */
-    public void createMainPane()
-    {   
-        UCDrawingPane UCdrawing = this.mainContent.getDrawingPane();
-        UCDrawingListeners alpha = new UCDrawingListeners(UCdrawing.getDrawing(), this);
-        UCdrawing.getDrawing().addMouseMotionListener(alpha);
-        UCdrawing.getDrawing().addMouseListener(alpha);
-        setButtonsListeners();
-    }
-    
     public void buttonsChanged()
     {
         JToggleButton selectedJoinEdgeButton = this.LeftBottomContent.getSelectedButton();
+        UCDrawingPane UCdrawing = this.mainContent.getDrawingPane();
         if (selectedJoinEdgeButton == null)
         {
-            UCDrawingPane UCdrawing = this.mainContent.getDrawingPane();
             this.newJoinEdge = null;
             UCdrawing.setNewLine(null);
-            UCdrawing.getDrawing().repaint();
         }
         else if (this.newJoinEdge != null)
         {
             changeLineType(selectedJoinEdgeButton, this.newJoinEdge);
-            this.mainContent.getDrawingPane().getDrawing().repaint();
         }
-             
+        UCdrawing.getDrawing().repaint();
     }
     
     /**
@@ -148,27 +100,38 @@ public class UCMainContentController {
             UCDrawingPane UCdrawing = this.mainContent.getDrawingPane();
             switch (selectedItemButton.getName()){
                 case "ACTOR":
-                        UCActor actor = new UCActor();
-                        actor.setX(evt.getX());
-                        actor.setY(evt.getY());
-                        this.places.addActor(actor);
-                        UCdrawing.setPlaces(places);
-                        
-                        UCdrawing.getDrawing().repaint();
-                        System.out.println(selectedItemButton.getText());
+                        UCActor actor = new UCActor(evt.getX(), evt.getY());
+                        this.places.addObject(actor);
                      break;
                     
                case "USECASE":
-                        UCUseCase useCase = new UCUseCase();
-                        useCase.setX(evt.getX());
-                        useCase.setY(evt.getY());
-                        this.places.addUseCase(useCase);
-                        UCdrawing.setPlaces(places);
-                        
-                        UCdrawing.getDrawing().repaint();
-                        System.out.println(selectedItemButton.getText());
+                        UCUseCase useCase = new UCUseCase(evt.getX(), evt.getY());
+                        this.places.addObject(useCase);
                      break;
                 }
+            UCdrawing.getDrawing().repaint();
+        }
+    }
+    
+        /**
+     * 
+     * @param selectedJoinEdgeButton 
+     */
+    private void changeLineType(JToggleButton selectedJoinEdgeButton, UCJoinEdgeController joinEdge)
+    {
+        switch (selectedJoinEdgeButton.getName())
+        {
+           case "ASSOCIATION":
+                    joinEdge.setJoinEdgeType(UCLineType.ASSOCIATION);
+                 break;
+
+           case "USES":  
+                    joinEdge.setJoinEdgeType(UCLineType.USES);
+                 break;
+
+           case "EXTENDS":  
+                    joinEdge.setJoinEdgeType(UCLineType.EXTENDS);
+                 break;
         }
     }
     
@@ -198,31 +161,9 @@ public class UCMainContentController {
             {
                 this.newJoinEdge.setSelected(false);
             }
-            places.addJoinEdge(this.newJoinEdge);
+            this.places.addObject(this.newJoinEdge);
             UCdrawing.setNewLine(null);
             this.newJoinEdge = null;
-        }
-    }
-    
-    /**
-     * 
-     * @param selectedJoinEdgeButton 
-     */
-    private void changeLineType(JToggleButton selectedJoinEdgeButton, UCJoinEdgeController joinEdge)
-    {
-        switch (selectedJoinEdgeButton.getName())
-        {
-           case "ASSOCIATION":
-                    joinEdge.setJoinEdgeType(UCLineType.ASSOCIATION);
-                 break;
-
-           case "USES":  
-                    joinEdge.setJoinEdgeType(UCLineType.USES);
-                 break;
-
-           case "EXTENDS":  
-                    joinEdge.setJoinEdgeType(UCLineType.EXTENDS);
-                 break;
         }
     }
     
@@ -270,55 +211,22 @@ public class UCMainContentController {
      */
     public void drawingPanecheckMove(MouseEvent evt) {
         UCDrawingPane UCdrawing = this.mainContent.getDrawingPane();
-        int x = evt.getX();
-        int y = evt.getY();
         if (this.newJoinEdge != null)
         {
             if (this.newJoinEdge.getSecondObject() == null)
             {
-                this.newJoinEdge.setMouseCoordinates(x, y);
+                this.newJoinEdge.setMouseCoordinates(evt.getX(), evt.getY());
             }
             UCdrawing.setNewLine(this.newJoinEdge);
         }
         UCObjectChecker objectUnderMouse = new UCObjectChecker(places);
-        CoordinateModel coordModel = objectUnderMouse.getObjectUnderMouse(new Point(x, y));
-        if (coordModel instanceof UCActor)
+        CoordinateModel coordModel = objectUnderMouse.getObjectUnderMouse(evt.getPoint());
+        if (coordModel != null)
         {
-            ((UCActor)coordModel).setColor(Color.red);
-        }
-        else if (coordModel instanceof UCUseCase)
-        {
-            ((UCUseCase)coordModel).setColor(Color.green);
-        }
-        else if (coordModel instanceof UCJoinEdgeController)
-        {
-            ((UCJoinEdgeController)coordModel).setColor(Color.ORANGE);
+            coordModel.setHowerColor();
         }
         
         UCdrawing.getDrawing().repaint();
-    }
-    
-    
-    
-        /**
-     * 
-     */
-    public void setButtonsListeners()
-    {
-        UCDrawingPane drawingPane = this.mainContent.getDrawingPane();
-        drawingPane.getDrawing().getActionMap().put("removeObject", new AbstractAction() {
-            UCDrawingPane drawingPane = mainContent.getDrawingPane();
-            @Override
-                public void actionPerformed(ActionEvent e) {
-                places.removeAllSelectedItems();
-                newJoinEdge = null;
-                drawingPane.setNewLine(null);
-                drawingPane.getDrawing().repaint();
-                }
-            }
-        );
-        InputMap inputMap = drawingPane.getDrawing().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
-        inputMap.put(KeyStroke.getKeyStroke("DELETE"), "removeObject");
     }
     
     /**
@@ -367,6 +275,6 @@ public class UCMainContentController {
     public void removeLineFromArrayListAndSetNewLine(UCJoinEdgeController joinEdge) {
         this.newJoinEdge = new UCJoinEdgeController();
         this.newJoinEdge.setFirstObject(joinEdge.getfirstObject());
-        this.places.removeJointEdge(joinEdge);
+        this.places.removeJoinEdge(joinEdge);
     }
 }

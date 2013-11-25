@@ -28,9 +28,11 @@ public class UCActor extends CoordinateModel{
     /**
      * TODO: create model
      */
-    public UCActor ()
+    public UCActor (int x, int y)
     {
         super();
+        this.x = x;
+        this.y = y;
         this.selectedColor = Color.GREEN;
         this.width = 30;
         this.height = 60;
@@ -39,6 +41,7 @@ public class UCActor extends CoordinateModel{
         this.name = "Default";
         this.textSize = 15;
         this.gap = 2;
+        this.howerColor = Color.red;
         this.id = UUID.randomUUID();
     }
     

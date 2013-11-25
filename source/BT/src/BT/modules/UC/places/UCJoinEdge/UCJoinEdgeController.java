@@ -48,6 +48,7 @@ public class UCJoinEdgeController extends CoordinateModel{
         this.color = Color.BLACK;
         this.joinEdgeType = UCLineType.ASSOCIATION;
         this.distanceCalculator = new DistanceCalculator();
+        this.howerColor = Color.orange;
     }
     
     /**

@@ -28,9 +28,11 @@ public class UCUseCase extends CoordinateModel{
     /**
      * TODO: make model
      */
-    public UCUseCase ()
+    public UCUseCase (int x, int y)
     {
         super();
+        this.x = x;
+        this.y = y;
         this.selectedColor = Color.GRAY;
         this.width = 60;
         this.height = 30;
@@ -39,6 +41,7 @@ public class UCUseCase extends CoordinateModel{
         this.name = "Default";
         this.textSize = 15;
         this.gap = 2;
+        this.howerColor = Color.green;
         this.id = UUID.randomUUID();
     }
     

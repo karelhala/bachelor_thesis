@@ -20,6 +20,7 @@ public class CoordinateModel {
     protected int width;
     protected int height;
     protected Boolean selected;
+    protected Color howerColor;
     
     public CoordinateModel()
     {
@@ -104,6 +105,11 @@ public class CoordinateModel {
      */
     public void setBasicColor() {
         this.color = this.basicColor;
+    }
+    
+    public void setHowerColor()
+    {
+        this.color = this.howerColor;
     }
     
 }

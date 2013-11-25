@@ -4,6 +4,7 @@
 */
 package BT.modules.UC.places;
 
+import BT.models.CoordinateModel;
 import BT.modules.UC.places.UCJoinEdge.UCJoinEdgeController;
 import java.util.ArrayList;
 
@@ -34,7 +35,7 @@ public class UCPlaceModel {
     * Method for add new join edge to array list.
     * @param UCJoinEdgeController joinEdge object to be added
     */
-    public void addJoinEdge(UCJoinEdgeController joinEdge)
+    private void addJoinEdge(UCJoinEdgeController joinEdge)
     {
         if (!lineExists(joinEdge))
         {
@@ -64,7 +65,7 @@ public class UCPlaceModel {
     * Method for adding new place to array list.
     * @param UCActor place object to be added
     */
-    public void addActor(UCActor place)
+    private void addActor(UCActor place)
     {
         this.actors.add(place);
     }
@@ -82,12 +83,32 @@ public class UCPlaceModel {
     * Method for adding new use case to array list.
     * @param UCUseCase place object to be added
     */
-    public void addUseCase(UCUseCase place)
+    private void addUseCase(UCUseCase place)
     {
         this.UseCases.add(place);
     }
     
-        /**
+    /**
+     * 
+     * @param coordModel 
+     */
+    public void addObject (CoordinateModel coordModel)
+    {
+        if (coordModel instanceof UCActor)
+        {
+            addActor((UCActor)coordModel);
+        }
+        else if (coordModel instanceof UCUseCase)
+        {
+            addUseCase((UCUseCase)coordModel);
+        }
+        else if (coordModel instanceof UCJoinEdgeController)
+        {
+            addJoinEdge((UCJoinEdgeController)coordModel);
+        }
+    }
+    
+    /**
      * Method that checks if line allrady exists, either in way first object --> second object or
      * second object --> first object.
      * Resolving issue with multiple lines connected to same objects.
@@ -104,10 +125,7 @@ public class UCPlaceModel {
             {
                 if (oneEdge.getfirstObject().equals(newLine.getSecondObject()) || oneEdge.getfirstObject().equals(newLine.getfirstObject()))
                 {
-                    if (oneEdge.getJoinEdgeType() == newLine.getJoinEdgeType())
-                    {
-                        return true;
-                    }
+                    return true;
                 }
             }
         }
