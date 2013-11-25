@@ -17,6 +17,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.JOptionPane;
 import javax.swing.JToggleButton;
 import BT.modules.UC.UCMainContent;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
 import javax.swing.InputMap;
@@ -34,6 +35,9 @@ public class UCMainContentController {
     private UCLeftBottomContent LeftBottomContent;
     private UCLeftTopContent LeftTopContent;
     
+    public UCPlaceManager getPlaces() {
+        return places;
+    }
     /**
      * 
      */
@@ -276,89 +280,25 @@ public class UCMainContentController {
             }
             UCdrawing.setNewLine(this.newJoinEdge);
         }
-        UCActor actor = isActorUnderMouse(x, y);
-        if (actor != null)
+        UCObjectChecker objectUnderMouse = new UCObjectChecker(places);
+        CoordinateModel coordModel = objectUnderMouse.getObjectUnderMouse(new Point(x, y));
+        if (coordModel instanceof UCActor)
         {
-            actor.setColor(Color.red);
+            ((UCActor)coordModel).setColor(Color.red);
         }
-        UCUseCase usecase = isUseCaseUnderMouse(x, y);
-        if (usecase != null)
+        else if (coordModel instanceof UCUseCase)
         {
-            usecase.setColor(Color.green);
+            ((UCUseCase)coordModel).setColor(Color.green);
+        }
+        else if (coordModel instanceof UCJoinEdgeController)
+        {
+            ((UCJoinEdgeController)coordModel).setColor(Color.ORANGE);
         }
         
-        UCJoinEdgeController joinEdge = isJoinEdgeUnderMouse(x, y);
-        if (joinEdge != null && actor == null && usecase == null)
-        {
-            joinEdge.setColor(Color.ORANGE);
-        }
         UCdrawing.getDrawing().repaint();
     }
     
-    /**
-     * 
-     * @param x
-     * @param y
-     * @return 
-     */
-    public UCActor isActorUnderMouse(int x, int y)
-    {
-        for (UCActor actor : places.getActors())
-        {
-            if (actor.isActor(x,y))
-            {
-                return actor;
-            }
-            else
-            {
-                actor.setBasicColor();
-            }
-        }
-        return null;
-    }
-
-    /**
-     * 
-     * @param x
-     * @param y
-     * @return 
-     */
-    public UCJoinEdgeController isJoinEdgeUnderMouse(int x, int y)
-    {
-        for (UCJoinEdgeController joinEdge : places.getJoinEdges())
-        {
-            if (joinEdge.isInRange(x,y))
-            {
-                return joinEdge;
-            }
-            else
-            {
-                joinEdge.setBasicColor();
-            }
-        }
-        return null;
-    }
-            
-    /**
-     * 
-     * @param x
-     * @param y
-     * @return 
-     */
-    public UCUseCase isUseCaseUnderMouse(int x, int y) {
-       for (UCUseCase useCase : places.getUseCases())
-        {
-            if (useCase.isUseCase(x,y))
-            {
-                return useCase;
-            }
-            else
-            {
-                useCase.setBasicColor();
-            }
-        }
-        return null;
-    }
+    
     
         /**
      * 

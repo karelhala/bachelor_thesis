@@ -4,10 +4,12 @@
  */
 package BT.modules.UC.mainContent;
 
+import BT.managers.UC.UCPlaceManager;
 import BT.models.CoordinateModel;
 import BT.modules.UC.places.UCActor;
 import BT.modules.UC.places.UCJoinEdge.UCJoinEdgeController;
 import BT.modules.UC.places.UCUseCase;
+import java.awt.Point;
 import java.awt.event.MouseEvent;
 import javax.swing.event.MouseInputAdapter;
 
@@ -40,26 +42,16 @@ public class UCDrawingListeners extends MouseInputAdapter{
      */
     @Override
     public void mousePressed(java.awt.event.MouseEvent evt) {
-        final UCActor actor = this.mainContent.isActorUnderMouse(evt.getX(), evt.getY());
-        final UCUseCase useCase = this.mainContent.isUseCaseUnderMouse(evt.getX(), evt.getY());
-        final UCJoinEdgeController joinEdge = this.mainContent.isJoinEdgeUnderMouse(evt.getX(), evt.getY());
-        if (actor == null && useCase == null && joinEdge == null)
+        UCObjectChecker objectChecker = new UCObjectChecker(this.mainContent.getPlaces());
+        CoordinateModel coordObject = objectChecker.getObjectUnderMouse(evt.getPoint());
+        if (coordObject == null)
         {
             this.mainContent.drawingPaneClicked(evt);
         }
-        else if (actor != null)
+        else
         {
-            this.draggedObjec = actor;
-            this.mainContent.setSelectedObject(actor);
-        }
-        else if (useCase != null)
-        {
-            this.draggedObjec = useCase;
-            this.mainContent.setSelectedObject(useCase);
-        }
-        else if (joinEdge != null)
-        {
-            this.draggedObjec = joinEdge;
+            this.draggedObjec = coordObject;
+            this.mainContent.setSelectedObject(coordObject);
         }
     }
     
@@ -118,34 +110,18 @@ public class UCDrawingListeners extends MouseInputAdapter{
     @Override
     public void mouseClicked(MouseEvent e)
     {
-        CoordinateModel clickedObject;
-        clickedObject = getModelUnderMouse(e);
-        final UCJoinEdgeController joinEdge = this.mainContent.isJoinEdgeUnderMouse(e.getX(), e.getY());
+        UCObjectChecker objectChecker = new UCObjectChecker(this.mainContent.getPlaces());
+        CoordinateModel clickedObject = objectChecker.getObjectUnderMouse(e.getPoint());
         if (e.getClickCount()%2 == 0)
         {
-            if (clickedObject != null)
+            if (clickedObject != null && !(clickedObject instanceof UCJoinEdgeController))
             {
                 this.mainContent.objectDoubleClicked(clickedObject);
             }
         }
         else
         {
-            clickedObject = (clickedObject != null)? clickedObject:((joinEdge != null) ? joinEdge : null);
             this.mainContent.setSelectedObject(clickedObject);
         }
-    }
-    
-    /**
-     * 
-     * @param e
-     * @return 
-     */
-    private CoordinateModel getModelUnderMouse(MouseEvent e)
-    {
-        CoordinateModel coordModel;
-        final UCActor actor = this.mainContent.isActorUnderMouse(e.getX(), e.getY());
-        final UCUseCase useCase = this.mainContent.isUseCaseUnderMouse(e.getX(), e.getY());
-        coordModel = (actor != null)? actor:((useCase != null)?useCase:null);
-        return coordModel;
     }
 }
