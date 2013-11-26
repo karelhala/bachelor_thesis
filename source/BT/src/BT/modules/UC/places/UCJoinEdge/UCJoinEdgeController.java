@@ -107,12 +107,17 @@ public class UCJoinEdgeController extends CoordinateModel{
      * @param x
      * @param y 
      */
-    public void setMouseCoordinates(int x, int y)
+    public void setEndPoint(Point endPoint)
     {
-        this.endX = x;
-        this.endY = y;
+        this.endX = endPoint.x;
+        this.endY = endPoint.y;
     }
     
+    public void setStartCoordinates(Point startPoint)
+    {
+        this.startX = startPoint.x;
+        this.startY = startPoint.y;
+    }
     /**
      * 
      * @return 
@@ -137,10 +142,15 @@ public class UCJoinEdgeController extends CoordinateModel{
         PointsCalculator pointsCaluclator = new PointsCalculator(this.firstObject, this.secondObject, new Point(this.startX, this.startY), new Point(this.endX, this.endY));  
         
         UCJoinEdgeDrawer lineDrawer = new UCJoinEdgeDrawer(this, pointsCaluclator.getStartPoint(), pointsCaluclator.getEndPoint());
-        if (pointsCaluclator.getStartPoint() !=null && pointsCaluclator.getEndPoint() !=null)
+        Point startPoint = pointsCaluclator.getStartPoint();
+        Point endPoint = pointsCaluclator.getEndPoint();
+        if (startPoint !=null && endPoint !=null)
         {
             g.setStroke(new BasicStroke(2));
             lineDrawer.drawLine(g);
+            setStartCoordinates(startPoint);
+            
+            setEndPoint(endPoint);
         }
     }
     /**
@@ -150,12 +160,7 @@ public class UCJoinEdgeController extends CoordinateModel{
      * @return 
      */
     public Boolean isInRange(int x, int y) {
-        int firstPointX = this.firstObject.getX();
-        int firstPointY = this.firstObject.getY();
-        
-        int secondPointX = this.secondObject.getX();
-        int secondPointY = this.secondObject.getY();
-        double distance = this.distanceCalculator.getDistanceOfPointToSegment(firstPointX, firstPointY, secondPointX, secondPointY, x, y);
+        double distance = this.distanceCalculator.getDistanceOfPointToSegment(this.startX, this.startY, this.endX, this.endY, x, y);
         if (distance !=-1 && distance < this.tolerance)
         {
             return true;

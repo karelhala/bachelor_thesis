@@ -12,12 +12,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
-import java.awt.event.ActionEvent;
-import javax.swing.AbstractAction;
-import javax.swing.InputMap;
-import javax.swing.JComponent;
 import javax.swing.JPanel;
-import javax.swing.KeyStroke;
 
 /**
  *
@@ -41,6 +36,7 @@ public class UCDrawingPane{
     {
         drawPane = new drawing();
         this.UCPlaces = UCPlaces;
+        this.newLine = null;
     }
     
     /**

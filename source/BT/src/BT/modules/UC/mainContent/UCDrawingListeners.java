@@ -11,6 +11,7 @@ import BT.modules.UC.places.UCJoinEdge.UCJoinEdgeController;
 import BT.modules.UC.places.UCUseCase;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
+import javax.swing.JOptionPane;
 import javax.swing.event.MouseInputAdapter;
 
 /**
@@ -116,12 +117,24 @@ public class UCDrawingListeners extends MouseInputAdapter{
         {
             if (clickedObject != null && !(clickedObject instanceof UCJoinEdgeController))
             {
-                this.mainContent.objectDoubleClicked(clickedObject);
+                objectDoubleClicked(clickedObject);
             }
         }
         else
         {
             this.mainContent.setSelectedObject(clickedObject);
         }
+    }
+    
+    /**
+     * 
+     * @param pressedObject 
+     */
+    public void objectDoubleClicked(CoordinateModel pressedObject) 
+    {
+        String name = (String) JOptionPane.showInputDialog("Enter name of the object",pressedObject.getName());
+        if (name!= null && !"".equals(name))
+            pressedObject.setName(name);
+        this.mainContent.getMainContent().getDrawingPane().getDrawing().repaint();
     }
 }

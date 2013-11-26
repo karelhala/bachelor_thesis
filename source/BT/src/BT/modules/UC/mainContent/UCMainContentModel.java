@@ -13,6 +13,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
 import javax.swing.InputMap;
 import javax.swing.JComponent;
+import javax.swing.JToggleButton;
 import javax.swing.KeyStroke;
 
 /**
@@ -30,7 +31,7 @@ public class UCMainContentModel {
     {
         this.places = new UCPlaceManager();
         this.mainContent = new UCMainContent(places);
-            createMainPane();
+        createMainPane();
     }
     
     /**
@@ -88,6 +89,25 @@ public class UCMainContentModel {
         /**
      * 
      */
+    public void buttonsChanged()
+    {
+        JToggleButton selectedJoinEdgeButton = this.LeftBottomContent.getSelectedButton();
+        UCDrawingPane UCdrawing = this.mainContent.getDrawingPane();
+        if (selectedJoinEdgeButton == null)
+        {
+            this.newJoinEdge = null;
+            UCdrawing.setNewLine(null);
+        }
+        else if (this.newJoinEdge != null)
+        {
+            UCJoinEdgeManipulator.changeLineTypeByButton(this.LeftBottomContent.getSelectedButton(),this.newJoinEdge);
+        }
+        UCdrawing.getDrawing().repaint();
+    }
+    
+    /**
+     * 
+     */
     public void setButtonsListeners()
     {
         UCDrawingPane drawingPane = this.mainContent.getDrawingPane();
@@ -104,5 +124,26 @@ public class UCMainContentModel {
         );
         InputMap inputMap = drawingPane.getDrawing().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
         inputMap.put(KeyStroke.getKeyStroke("DELETE"), "removeObject");
+    }
+    
+    /**
+     * 
+     */
+    public void deselectAllObjectsAndRepaint()
+    {
+        this.places.setAllObjectDiselected();
+        this.mainContent.getDrawingPane().getDrawing().repaint();
+    }
+
+    /**
+     * 
+     * @param joinEdge 
+     */
+    public void removeLineFromArrayListAndSetNewLine(UCJoinEdgeController joinEdge) 
+    {
+        this.newJoinEdge = new UCJoinEdgeController();
+        this.newJoinEdge.setFirstObject(joinEdge.getfirstObject());
+        UCJoinEdgeManipulator.changeLineTypeByButton(this.LeftBottomContent.getSelectedButton(),this.newJoinEdge);
+        this.places.removeJoinEdge(joinEdge);
     }
 }
