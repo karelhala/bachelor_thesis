@@ -4,14 +4,10 @@
  */
 package BT.modules.UC.mainContent;
 
-import BT.managers.UC.UCPlaceManager;
+import BT.interfaces.DrawingClicks;
 import BT.models.CoordinateModel;
-import BT.modules.UC.places.UCActor;
 import BT.modules.UC.places.UCJoinEdge.UCJoinEdgeController;
-import BT.modules.UC.places.UCUseCase;
-import java.awt.Point;
 import java.awt.event.MouseEvent;
-import javax.swing.JOptionPane;
 import javax.swing.event.MouseInputAdapter;
 
 /**
@@ -33,8 +29,8 @@ public class UCDrawingListeners extends MouseInputAdapter{
      * @param drawing
      * @param mainContent 
      */
-    UCDrawingListeners(UCDrawingPane.drawing drawing, UCMainContentController mainContent) {
-        this.mainContent = mainContent;
+    UCDrawingListeners(UCDrawingPane.drawing drawing, DrawingClicks mainContent) {
+        this.mainContent = (UCMainContentController) mainContent;
     }
 
     /**
@@ -69,13 +65,13 @@ public class UCDrawingListeners extends MouseInputAdapter{
                 UCJoinEdgeController draggedJoin = (UCJoinEdgeController) this.draggedObjec;
                 if (!draggedJoin.isInRange(e.getX(), e.getY()))
                 {
-                    this.mainContent.mouseDragged(e, this.draggedObjec);
+                    this.mainContent.drawingMouseDragged(e, this.draggedObjec);
                     this.draggedObjec = null;
                 }
             }
             else
             {
-                this.mainContent.mouseDragged(e, this.draggedObjec);
+                this.mainContent.drawingMouseDragged(e, this.draggedObjec);
             }
         }
         else
@@ -117,24 +113,12 @@ public class UCDrawingListeners extends MouseInputAdapter{
         {
             if (clickedObject != null && !(clickedObject instanceof UCJoinEdgeController))
             {
-                objectDoubleClicked(clickedObject);
+                this.mainContent.drawingPaneDoubleCliked(clickedObject);
             }
         }
         else
         {
             this.mainContent.setSelectedObject(clickedObject);
         }
-    }
-    
-    /**
-     * 
-     * @param pressedObject 
-     */
-    public void objectDoubleClicked(CoordinateModel pressedObject) 
-    {
-        String name = (String) JOptionPane.showInputDialog("Enter name of the object",pressedObject.getName());
-        if (name!= null && !"".equals(name))
-            pressedObject.setName(name);
-        this.mainContent.getMainContent().getDrawingPane().getDrawing().repaint();
     }
 }
