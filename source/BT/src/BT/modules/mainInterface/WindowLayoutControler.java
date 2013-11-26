@@ -135,9 +135,9 @@ public class WindowLayoutControler {
     {
         JTabbedPane typeTab = new JTabbedPane();
         
-        typeTab.addTab("UC", getWindowLayout(UCContentModel));
-        typeTab.addTab("UML", getWindowLayout(UMLContentModel));
-        typeTab.addTab("OOPN", getWindowLayout(OOPNContentModel));
+        typeTab.addTab("UseCase", getWindowLayout(UCContentModel));
+        typeTab.addTab("ClassDiagram", getWindowLayout(UMLContentModel));
+        typeTab.addTab("OOPetriNets", getWindowLayout(OOPNContentModel));
        
         if (this.fileTab.getTabCount() > 0)
         {

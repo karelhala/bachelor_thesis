@@ -24,6 +24,7 @@ public class UCObjectChecker {
      */
     public UCObjectChecker(UCPlaceManager places)
     {
+        super();
         this.places = places;
     }
     

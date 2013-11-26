@@ -17,8 +17,6 @@ import javax.swing.JToggleButton;
  */
 public class ButtonPaneModel extends ContentPaneModel implements ToggleButtonsInterface{
     
-    private UCMainContentController UCMain;
-    
     public ButtonPaneModel()
     {
         this(null);
@@ -27,7 +25,6 @@ public class ButtonPaneModel extends ContentPaneModel implements ToggleButtonsIn
     public ButtonPaneModel(UCMainContentController UCMain)
     {
         super();
-        this.UCMain = UCMain;
     }
 
     @Override
@@ -76,7 +73,7 @@ public class ButtonPaneModel extends ContentPaneModel implements ToggleButtonsIn
                     if(ev.getStateChange()==ItemEvent.SELECTED){
                         toggleButtonSelected(toggleButton);
                     }
-                    UCMain.buttonsChanged();
+//                    UCMain.buttonsChanged();
                 }
             };
             toggleButton.addItemListener(changeListener);

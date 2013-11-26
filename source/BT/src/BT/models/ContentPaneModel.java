@@ -21,7 +21,7 @@ public class ContentPaneModel {
      * Method, that returns main pane has content of left top pane
      * @return JPanel left top pane of application
      */
-    public JPanel getMainContentPane ()
+    public JPanel getMainContentPane()
     {
         return this.mainContentPane;
     }

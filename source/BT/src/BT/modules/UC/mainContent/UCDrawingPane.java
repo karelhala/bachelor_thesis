@@ -34,7 +34,7 @@ public class UCDrawingPane{
      */
     public UCDrawingPane(UCPlaceManager UCPlaces)
     {
-        drawPane = new drawing();
+        this.drawPane = new drawing();
         this.UCPlaces = UCPlaces;
         this.newLine = null;
     }

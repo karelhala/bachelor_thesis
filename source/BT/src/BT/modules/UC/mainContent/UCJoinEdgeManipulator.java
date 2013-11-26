@@ -17,6 +17,11 @@ import javax.swing.JToggleButton;
  */
 public class UCJoinEdgeManipulator {
     
+    public UCJoinEdgeManipulator()
+    {
+        super();
+    }
+    
     /**
      * 
      * @param selectedJoinEdgeButton 

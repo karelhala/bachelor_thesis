@@ -2,28 +2,26 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package BT.modules.UC;
+package BT.modules.ClassDiagram;
 
 import BT.BT.UCLineType;
-import java.awt.Component;
 import java.awt.GridLayout;
 import javax.swing.JPanel;
 import javax.swing.JToggleButton;
 import BT.models.ButtonPaneModel;
-import BT.modules.UC.mainContent.UCMainContentController;
+import BT.modules.ClassDiagram.mainContent.CDMainContentController;
 
 /**
  * Class for creating LeftBottom pane that holds 3 jtoggle buttons
  * @author Karel Hala
  */
-public final class UCLeftBottomContent extends ButtonPaneModel{
+public final class CDLeftBottomContent extends ButtonPaneModel{
     
-    private UCMainContentController UCMain;
-    
+    private CDMainContentController cdMain;
     /**
      * contructor, that creates grid of 3 rows and 1 column a fill them with jtogglebuttons
      */
-    public UCLeftBottomContent()
+    public CDLeftBottomContent()
     {
         this(null);
     }
@@ -32,10 +30,10 @@ public final class UCLeftBottomContent extends ButtonPaneModel{
      * contructor, that creates grid of 3 rows and 1 column a fill them with jtogglebuttons
      * @param UCMainContent UCMain maincontent that will react to when buttons are selected
      */
-    public UCLeftBottomContent(UCMainContentController UCMain)
+    public CDLeftBottomContent(CDMainContentController cdMain)
     {
         super();
-        this.UCMain = UCMain;
+        this.cdMain = cdMain;
         this.mainContentPane = new JPanel(new GridLayout(3, 1));
         createMainPane();
     }

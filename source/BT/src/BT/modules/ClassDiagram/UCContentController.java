@@ -36,6 +36,7 @@ public class UCContentController {
      */
     public void createComponents()
     {
+        
         UCMainContentController UCmain = new UCMainContentController();
         
         UCLeftTopContent UCLeftTop = new UCLeftTopContent(UCmain);
