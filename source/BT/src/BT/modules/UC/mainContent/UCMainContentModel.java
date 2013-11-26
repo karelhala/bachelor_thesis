@@ -40,7 +40,7 @@ public class UCMainContentModel {
     private void createMainPane()
     {   
         UCDrawingPane UCdrawing = this.mainContent.getDrawingPane();
-        UCDrawingListeners alpha = new UCDrawingListeners(UCdrawing.getDrawing(), (UCMainContentController) this);
+        UCDrawingListeners alpha = new UCDrawingListeners((UCMainContentController) this);
         UCdrawing.getDrawing().addMouseMotionListener(alpha);
         UCdrawing.getDrawing().addMouseListener(alpha);
         setButtonsListeners();

@@ -60,7 +60,7 @@ public class UCActor extends CoordinateModel{
      */
     public int getMaxHeight()
     {
-        return getMax(this.objectHeight, this.height);
+        return this.objectHeight;
     }
     
     /**
@@ -72,10 +72,10 @@ public class UCActor extends CoordinateModel{
         Color actorColor = this.color;
         g.setFont(new Font("Arial", Font.BOLD, this.textSize));
         FontMetrics fm = g.getFontMetrics(g.getFont());
-        this.objectHeight = this.getHeight() + textSize + gap;
+        this.objectHeight = this.getHeight() +textSize;
         this.objectWidth = this.getWidth() + fm.stringWidth(this.name) + gap - textSize;
-        g.setColor(Color.WHITE);
-        g.fillRect(this.x-getMax(this.objectWidth, this.width)/2+this.gap, this.y-this.height/2+this.gap, getMax(this.objectWidth, this.width)-this.gap*2, this.height+this.textSize-this.gap);
+        g.setColor(Color.white);
+        g.fillRect(this.x-getMax(this.objectWidth, this.width)/2+this.gap, this.y-this.objectHeight/2+this.gap, getMax(this.objectWidth, this.width)-this.gap*2, this.objectHeight-this.gap*2);
         
         if (getSelected())
         {
@@ -88,19 +88,18 @@ public class UCActor extends CoordinateModel{
         g.setColor(actorColor);
         g.setStroke(new BasicStroke(2));
         int middle = this.getHeight()/2;
-        int bottom = middle/2-this.gap;
+        int bottom = (middle/2)-this.gap;
         int neck = bottom/2;
         int arm = getWidth()/2-this.gap;
         int headSize = arm/2;
-        g.drawLine(actorX, actorY, actorX, actorY-neck);
-        g.drawLine(actorX, actorY, actorX-arm, actorY);
-        g.drawLine(actorX, actorY, actorX+arm, actorY);
-        g.drawLine(actorX, actorY, actorX, actorY+bottom);
-        g.drawLine(actorX, actorY+bottom, actorX-arm, actorY+bottom+bottom);
-        g.drawLine(actorX, actorY+bottom, actorX+arm, actorY+bottom+bottom);
-        g.drawOval(actorX-neck, actorY-bottom-headSize, headSize*2, headSize*2);       
+        g.drawLine(actorX, actorY, actorX, actorY-neck-bottom);
+        g.drawLine(actorX, actorY-bottom, actorX-arm, actorY-bottom);
+        g.drawLine(actorX, actorY-bottom, actorX+arm, actorY-bottom);
+        g.drawLine(actorX, actorY, actorX-arm, actorY+bottom);
+        g.drawLine(actorX, actorY, actorX+arm, actorY+bottom);
+        g.drawOval(actorX-neck, actorY-bottom-bottom-headSize, headSize*2, headSize*2);       
         g.setColor(Color.black);
-        g.drawString(this.name, actorX-fm.stringWidth(this.name)/2, actorY+bottom+bottom+this.textSize);
+        g.drawString(this.name, actorX-fm.stringWidth(this.name)/2, actorY+this.getHeight()/2);
 
     }
     
@@ -114,7 +113,7 @@ public class UCActor extends CoordinateModel{
         int borderHeight = this.objectHeight;
         g.setStroke(new BasicStroke(1));
         g.setColor(Color.black);
-        g.drawRect(this.x-borderWidth/2, this.y-this.getHeight()/2, borderWidth, borderHeight);
+        g.drawRect(this.x-borderWidth/2, this.y-borderHeight/2, borderWidth, borderHeight);
     }
     
     /**

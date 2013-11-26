@@ -18,7 +18,8 @@ public class UCDrawingListeners extends MouseInputAdapter{
     /**
      * 
      */
-    private UCMainContentController mainContent;
+    private UCMainContentController UCMainContent;
+    
     /**
      * 
      */
@@ -29,8 +30,11 @@ public class UCDrawingListeners extends MouseInputAdapter{
      * @param drawing
      * @param mainContent 
      */
-    UCDrawingListeners(UCDrawingPane.drawing drawing, DrawingClicks mainContent) {
-        this.mainContent = (UCMainContentController) mainContent;
+    UCDrawingListeners(DrawingClicks mainContent) {
+        if (mainContent instanceof UCMainContentController)
+        {
+            this.UCMainContent = (UCMainContentController) mainContent;
+        }
     }
 
     /**
@@ -39,16 +43,16 @@ public class UCDrawingListeners extends MouseInputAdapter{
      */
     @Override
     public void mousePressed(java.awt.event.MouseEvent evt) {
-        UCObjectChecker objectChecker = new UCObjectChecker(this.mainContent.getPlaces());
+        UCObjectChecker objectChecker = new UCObjectChecker(this.UCMainContent.getPlaces());
         CoordinateModel coordObject = objectChecker.getObjectUnderMouse(evt.getPoint());
         if (coordObject == null)
         {
-            this.mainContent.drawingPaneClicked(evt);
+            this.UCMainContent.drawingPaneClicked(evt);
         }
         else
         {
             this.draggedObjec = coordObject;
-            this.mainContent.setSelectedObject(coordObject);
+            this.UCMainContent.setSelectedObject(coordObject);
         }
     }
     
@@ -65,20 +69,20 @@ public class UCDrawingListeners extends MouseInputAdapter{
                 UCJoinEdgeController draggedJoin = (UCJoinEdgeController) this.draggedObjec;
                 if (!draggedJoin.isInRange(e.getX(), e.getY()))
                 {
-                    this.mainContent.drawingMouseDragged(e, this.draggedObjec);
+                    this.UCMainContent.drawingMouseDragged(e, this.draggedObjec);
                     this.draggedObjec = null;
                 }
             }
             else
             {
-                this.mainContent.drawingMouseDragged(e, this.draggedObjec);
+                this.UCMainContent.drawingMouseDragged(e, this.draggedObjec);
             }
         }
         else
         {
-            this.mainContent.deselectAllObjectsAndRepaint();
+            this.UCMainContent.deselectAllObjectsAndRepaint();
         }
-        this.mainContent.drawingPanecheckMove(e);
+        this.UCMainContent.drawingPanecheckMove(e);
     }
     
     /**
@@ -87,7 +91,7 @@ public class UCDrawingListeners extends MouseInputAdapter{
      */
     @Override
     public void mouseMoved(MouseEvent e){
-        this.mainContent.drawingPanecheckMove(e);
+        this.UCMainContent.drawingPanecheckMove(e);
     }
     
     /**
@@ -107,18 +111,18 @@ public class UCDrawingListeners extends MouseInputAdapter{
     @Override
     public void mouseClicked(MouseEvent e)
     {
-        UCObjectChecker objectChecker = new UCObjectChecker(this.mainContent.getPlaces());
+        UCObjectChecker objectChecker = new UCObjectChecker(this.UCMainContent.getPlaces());
         CoordinateModel clickedObject = objectChecker.getObjectUnderMouse(e.getPoint());
         if (e.getClickCount()%2 == 0)
         {
             if (clickedObject != null && !(clickedObject instanceof UCJoinEdgeController))
             {
-                this.mainContent.drawingPaneDoubleCliked(clickedObject);
+                this.UCMainContent.drawingPaneDoubleCliked(clickedObject);
             }
         }
         else
         {
-            this.mainContent.setSelectedObject(clickedObject);
+            this.UCMainContent.setSelectedObject(clickedObject);
         }
     }
 }
