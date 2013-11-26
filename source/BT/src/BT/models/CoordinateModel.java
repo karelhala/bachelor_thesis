@@ -4,6 +4,8 @@
  */
 package BT.models;
 
+import BT.managers.PointsCalculator;
+import BT.modules.UC.places.UCActor;
 import java.awt.Color;
 
 /**

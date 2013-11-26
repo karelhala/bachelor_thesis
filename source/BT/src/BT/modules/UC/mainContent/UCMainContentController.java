@@ -56,6 +56,7 @@ public class UCMainContentController extends UCMainContentModel implements Drawi
                 drawingPanecheckMove(e);
             }
         }
+        this.mainContent.recalculateSize(dragged);
         UCdrawing.getDrawing().repaint();
     }
     
@@ -73,11 +74,13 @@ public class UCMainContentController extends UCMainContentModel implements Drawi
                 case "ACTOR":
                         UCActor actor = new UCActor(evt.getX(), evt.getY());
                         this.places.addObject(actor);
+                        this.mainContent.recalculateSize(actor);
                      break;
                     
                case "USECASE":
                         UCUseCase useCase = new UCUseCase(evt.getX(), evt.getY());
                         this.places.addObject(useCase);
+                        this.mainContent.recalculateSize(useCase);
                      break;
                 }
             UCdrawing.getDrawing().repaint();
@@ -106,7 +109,7 @@ public class UCMainContentController extends UCMainContentModel implements Drawi
         {
             coordModel.setHowerColor();
         }
-        
+        this.mainContent.recalculateSize(coordModel);
         UCdrawing.getDrawing().repaint();
     }
 
