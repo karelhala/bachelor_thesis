@@ -37,6 +37,7 @@ public class UCJoinEdgeManipulator {
                     joinEdge.setJoinEdgeType(BT.UCLineType.EXTENDS);
                  break;
         }
+        setLineTypeBySecondObject(joinEdge);
     }
     
     /**

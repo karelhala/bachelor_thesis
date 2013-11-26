@@ -152,7 +152,6 @@ public class UCMainContentController extends UCMainContentModel implements Drawi
     {
         this.newJoinEdge = UCJoinEdgeManipulator.createJoinEdge(this.newJoinEdge,clickedObject);
         UCJoinEdgeManipulator.changeLineTypeByButton(this.LeftBottomContent.getSelectedButton(),this.newJoinEdge);
-        UCJoinEdgeManipulator.setLineTypeBySecondObject(this.newJoinEdge);
 
         if (this.newJoinEdge.getfirstObject() != null && this.newJoinEdge.getSecondObject() != null)
         {
