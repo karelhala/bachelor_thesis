@@ -23,7 +23,7 @@ public class UCDrawingListeners extends MouseInputAdapter{
     /**
      * 
      */
-    private CoordinateModel draggedObjec;
+    private CoordinateModel draggedObject;
 
     /**
      * 
@@ -51,7 +51,7 @@ public class UCDrawingListeners extends MouseInputAdapter{
         }
         else
         {
-            this.draggedObjec = coordObject;
+            this.draggedObject = coordObject;
             this.UCMainContent.setSelectedObject(coordObject);
         }
     }
@@ -62,20 +62,21 @@ public class UCDrawingListeners extends MouseInputAdapter{
      */
     @Override
     public void mouseDragged(MouseEvent e){
-        if (draggedObjec!= null)
+        if (draggedObject!= null)
         {
-            if (this.draggedObjec instanceof UCJoinEdgeController)
+            if (this.draggedObject instanceof UCJoinEdgeController)
             {
-                UCJoinEdgeController draggedJoin = (UCJoinEdgeController) this.draggedObjec;
+                UCJoinEdgeController draggedJoin = (UCJoinEdgeController) this.draggedObject;
                 if (!draggedJoin.isInRange(e.getX(), e.getY()))
                 {
-                    this.UCMainContent.drawingMouseDragged(e, this.draggedObjec);
-                    this.draggedObjec = null;
+                    this.UCMainContent.drawingMouseDragged(e, this.draggedObject);
+                    UCJoinEdgeController draggedJoinEdge = (UCJoinEdgeController) draggedObject;
+                    draggedJoinEdge.setSecondObject(null);
                 }
             }
             else
             {
-                this.UCMainContent.drawingMouseDragged(e, this.draggedObjec);
+                this.UCMainContent.drawingMouseDragged(e, this.draggedObject);
             }
         }
         else
@@ -101,7 +102,12 @@ public class UCDrawingListeners extends MouseInputAdapter{
     @Override
     public void mouseReleased(MouseEvent e)
     {
-        this.draggedObjec = null;
+        if (this.draggedObject instanceof UCJoinEdgeController)
+        {
+            UCObjectChecker objectChecker = new UCObjectChecker(this.UCMainContent.getPlaces());
+            this.UCMainContent.setSelectedObject(objectChecker.getObjectUnderMouse(e.getPoint()));
+        }
+        this.draggedObject = null;
     }
     
     /**

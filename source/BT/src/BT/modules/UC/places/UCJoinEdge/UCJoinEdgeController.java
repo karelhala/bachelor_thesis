@@ -89,8 +89,11 @@ public class UCJoinEdgeController extends CoordinateModel{
      */
     public void setSecondObject(CoordinateModel object)
     {
-        this.endX = object.getX();
-        this.endY = object.getY();
+        if (object !=null)
+        {
+            this.endX = object.getX();
+            this.endY = object.getY();
+        }
         if (this.firstObject instanceof UCActor && object instanceof UCUseCase)
         {
             this.secondObject = this.firstObject;
