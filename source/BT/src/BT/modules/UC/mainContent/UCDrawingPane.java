@@ -7,11 +7,13 @@ package BT.modules.UC.mainContent;
 import BT.modules.UC.places.UCActor;
 import BT.modules.UC.places.UCJoinEdge.UCJoinEdgeController;
 import BT.managers.UC.UCPlaceManager;
+import BT.models.LineModel;
 import BT.modules.UC.places.UCUseCase;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import java.util.ArrayList;
 import javax.swing.JPanel;
 
 /**
@@ -65,8 +67,8 @@ public class UCDrawingPane{
                 
             }
             
-            for (UCJoinEdgeController joinEdge: UCPlaces.getJoinEdges()) {
-                joinEdge.drawJoinEdge(g);
+            for (LineModel joinEdge: UCPlaces.getJoinEdges()) {
+                ((UCJoinEdgeController)joinEdge).drawJoinEdge(g);
             }
             
             for (UCActor actor: UCPlaces.getActors()) {

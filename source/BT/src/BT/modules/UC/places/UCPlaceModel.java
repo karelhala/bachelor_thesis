@@ -5,6 +5,7 @@
 package BT.modules.UC.places;
 
 import BT.models.CoordinateModel;
+import BT.models.LineModel;
 import BT.modules.UC.places.UCJoinEdge.UCJoinEdgeController;
 import java.util.ArrayList;
 
@@ -27,15 +28,15 @@ public class UCPlaceModel {
     
     /**
     * Arraylist that contains all join edges in UC
-    * @var ArrayList<UCJoinEdge>
+    * @var ArrayList<LineModel>
     */
-    protected ArrayList<UCJoinEdgeController> joinEdges = new ArrayList<>();
+    protected ArrayList<LineModel> joinEdges = new ArrayList<>();
 
     /**
     * Method for add new join edge to array list.
     * @param UCJoinEdgeController joinEdge object to be added
     */
-    private void addJoinEdge(UCJoinEdgeController joinEdge)
+    private void addJoinEdge(LineModel joinEdge)
     {
         if (!lineExists(joinEdge))
         {
@@ -45,9 +46,9 @@ public class UCPlaceModel {
     
     /**
     * Method for returning all join edges in array list.
-    * @return ArrayList<UCJoinEdge>
+    * @return ArrayList<LineModel>
     */
-    public ArrayList<UCJoinEdgeController> getJoinEdges()
+    public ArrayList<LineModel> getJoinEdges()
     {
         return this.joinEdges;
     }
@@ -117,13 +118,13 @@ public class UCPlaceModel {
      * @return true when line exist
      * @return false when line doesn't exist
      */
-    public Boolean lineExists(UCJoinEdgeController newLine)
+    public Boolean lineExists(LineModel newLine)
     {
-        for (UCJoinEdgeController oneEdge : this.joinEdges)
+        for (LineModel oneEdge : this.joinEdges)
         {
-            if (oneEdge.getSecondObject().equals(newLine.getSecondObject()) || oneEdge.getSecondObject().equals(newLine.getfirstObject()))
+            if (oneEdge.getSecondObject().equals(newLine.getSecondObject()) || oneEdge.getSecondObject().equals(newLine.getFirstObject()))
             {
-                if (oneEdge.getfirstObject().equals(newLine.getSecondObject()) || oneEdge.getfirstObject().equals(newLine.getfirstObject()))
+                if (oneEdge.getFirstObject().equals(newLine.getSecondObject()) || oneEdge.getFirstObject().equals(newLine.getFirstObject()))
                 {
                     return true;
                 }

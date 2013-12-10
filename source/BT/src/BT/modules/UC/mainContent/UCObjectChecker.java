@@ -6,6 +6,7 @@ package BT.modules.UC.mainContent;
 
 import BT.managers.UC.UCPlaceManager;
 import BT.models.CoordinateModel;
+import BT.models.LineModel;
 import BT.modules.UC.places.UCActor;
 import BT.modules.UC.places.UCJoinEdge.UCJoinEdgeController;
 import BT.modules.UC.places.UCUseCase;
@@ -83,15 +84,15 @@ public class UCObjectChecker {
      */
     private UCJoinEdgeController isJoinEdgeUnderMouse(int x, int y)
     {
-        for (UCJoinEdgeController joinEdge : places.getJoinEdges())
+        for (LineModel joinEdge : places.getJoinEdges())
         {
-            if (joinEdge.isInRange(x,y))
+            if (((UCJoinEdgeController)joinEdge).isInRange(x,y))
             {
-                return joinEdge;
+                return ((UCJoinEdgeController)joinEdge);
             }
             else
             {
-                joinEdge.setBasicColor();
+                ((UCJoinEdgeController)joinEdge).setBasicColor();
             }
         }
         return null;

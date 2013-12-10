@@ -9,6 +9,7 @@ import BT.modules.UC.places.UCUseCase;
 import BT.modules.UC.places.UCJoinEdge.UCJoinEdgeController;
 import BT.modules.UC.places.UCActor;
 import BT.models.CoordinateModel;
+import BT.models.LineModel;
 import java.util.Iterator;
 
 /**
@@ -52,10 +53,10 @@ public class UCPlaceManager extends UCPlaceModel {
      */
     private void removeJoinEdgesWithObject(CoordinateModel removedObject)
     {
-        Iterator<UCJoinEdgeController> it = joinEdges.iterator();
+        Iterator<LineModel> it = joinEdges.iterator();
         while (it.hasNext()) {
-          UCJoinEdgeController joinEdge = it.next();
-          if (joinEdge.getfirstObject().equals(removedObject) || joinEdge.getSecondObject().equals(removedObject)) {
+          LineModel joinEdge = it.next();
+          if (joinEdge.getFirstObject().equals(removedObject) || joinEdge.getSecondObject().equals(removedObject)) {
             it.remove();
           }
         }
@@ -66,7 +67,7 @@ public class UCPlaceManager extends UCPlaceModel {
      */
     public void removeAllSelectedItems()
     {
-        for (Iterator<UCJoinEdgeController> it = joinEdges.iterator(); it.hasNext();)
+        for (Iterator<LineModel> it = joinEdges.iterator(); it.hasNext();)
         {
             CoordinateModel coorModel = it.next();
             if (coorModel.getSelected())
@@ -118,9 +119,9 @@ public class UCPlaceManager extends UCPlaceModel {
      */
     public void setSelectedLinesOnObject(CoordinateModel place)
     {
-        for (UCJoinEdgeController oneEdge : this.joinEdges)
+        for (LineModel oneEdge : this.joinEdges)
         {
-            if (oneEdge.getfirstObject().equals(place))
+            if (oneEdge.getFirstObject().equals(place))
             {
                 oneEdge.setSelected(true);
             }
