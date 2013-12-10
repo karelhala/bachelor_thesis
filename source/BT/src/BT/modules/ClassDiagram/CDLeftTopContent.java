@@ -17,8 +17,6 @@ import BT.modules.UC.mainContent.UCMainContentController;
  * @author Karel Hala
  */
 public final class CDLeftTopContent extends ButtonPaneModel{
-
-    private CDMainContentController cdMain;
     
     /**
      * Constructor, creates gridlayour and calls to create left Top pane
@@ -34,8 +32,7 @@ public final class CDLeftTopContent extends ButtonPaneModel{
      */
     public CDLeftTopContent(CDMainContentController cdMain)
     {
-        super();
-        this.cdMain = cdMain;
+        super(cdMain);
         this.mainContentPane = new JPanel(new GridLayout(1, 1));
         createMainPane();
     }

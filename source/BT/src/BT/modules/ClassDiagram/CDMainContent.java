@@ -69,7 +69,6 @@ public final class CDMainContent extends ContentPaneModel{
         if (objectWidthAndHeight != null)
             {
             int this_width = (newObject.getX() + objectWidthAndHeight.width);
-            System.out.println(newObject.getX());
             if (this_width > this.area.width) {
                 this.area.width = this_width; 
                 changed=true;

@@ -17,7 +17,6 @@ import BT.modules.ClassDiagram.mainContent.CDMainContentController;
  */
 public final class CDLeftBottomContent extends ButtonPaneModel{
     
-    private CDMainContentController cdMain;
     /**
      * contructor, that creates grid of 3 rows and 1 column a fill them with jtogglebuttons
      */
@@ -32,8 +31,7 @@ public final class CDLeftBottomContent extends ButtonPaneModel{
      */
     public CDLeftBottomContent(CDMainContentController cdMain)
     {
-        super();
-        this.cdMain = cdMain;
+        super(cdMain);
         this.mainContentPane = new JPanel(new GridLayout(5, 1));
         createMainPane();
     }
