@@ -4,9 +4,11 @@
  */
 package BT.modules.ClassDiagram;
 
+import BT.managers.CD.CDPlaceManager;
 import BT.managers.UC.UCPlaceManager;
 import BT.models.ContentPaneModel;
 import BT.models.CoordinateModel;
+import BT.modules.ClassDiagram.mainContent.CDDrawingPane;
 import BT.modules.UC.mainContent.UCDrawingPane;
 import BT.modules.UC.places.UCActor;
 import BT.modules.UC.places.UCUseCase;
@@ -22,25 +24,25 @@ import javax.swing.JScrollPane;
  */
 public final class CDMainContent extends ContentPaneModel{
     
-//    private UCDrawingPane drawingPane;
+    private CDDrawingPane drawingPane;
     private Dimension area;
 
-//    public void setDrawingPane(UCDrawingPane drawingPane) {
-//        this.drawingPane = drawingPane;
-//    }
-//
-//    public UCDrawingPane getDrawingPane() {
-//        return drawingPane;
-//    }
+    public void setDrawingPane(CDDrawingPane drawingPane) {
+        this.drawingPane = drawingPane;
+    }
+
+    public CDDrawingPane getDrawingPane() {
+        return drawingPane;
+    }
     
     /**
      * 
      */
-    public CDMainContent()
+    public CDMainContent(CDPlaceManager places)
     {
         super();
         this.mainContentPane = new JPanel(new BorderLayout());
-//        this.drawingPane = new UCDrawingPane();
+        this.drawingPane = new CDDrawingPane(places);
         this.area = new Dimension(0,0);
         createMainPane();
     }
@@ -49,11 +51,11 @@ public final class CDMainContent extends ContentPaneModel{
      * 
      */
     private void createMainPane() {
-//        this.drawingPane.getDrawing().setPreferredSize(this.area);
-//        this.drawingPane.getDrawing().setBackground(Color.WHITE);
-//        drawingPane.getDrawing().repaint();
-//        JScrollPane myScrollPane = new JScrollPane(drawingPane.getDrawing());
-//        this.mainContentPane.add(myScrollPane, BorderLayout.CENTER);
+        this.drawingPane.getDrawing().setPreferredSize(this.area);
+        this.drawingPane.getDrawing().setBackground(Color.WHITE);
+        drawingPane.getDrawing().repaint();
+        JScrollPane myScrollPane = new JScrollPane(drawingPane.getDrawing());
+        this.mainContentPane.add(myScrollPane, BorderLayout.CENTER);
     }
     
     /**
@@ -82,14 +84,14 @@ public final class CDMainContent extends ContentPaneModel{
                 //Update client's preferred size because
                 //the area taken up by the graphics has
                 //gotten larger or smaller (if cleared).
-//                this.drawingPane.getDrawing().setPreferredSize(area);
+                this.drawingPane.getDrawing().setPreferredSize(area);
 
                 //Let the scroll pane know to update itself
                 //and its scrollbars.
-//                this.drawingPane.getDrawing().revalidate();
+                this.drawingPane.getDrawing().revalidate();
             }
         }
-//        this.drawingPane.getDrawing().repaint();
+        this.drawingPane.getDrawing().repaint();
     }
     
        /**

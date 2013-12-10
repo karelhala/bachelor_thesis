@@ -4,6 +4,7 @@
  */
 package BT.modules.mainInterface;
 
+import BT.modules.ClassDiagram.CDContentController;
 import BT.modules.UC.UCContentController;
 import GUI.MainContentModel;
 import GUI.ToolBarContentModel;
@@ -82,9 +83,11 @@ public class ToolBarContentControler {
         UCContentController UCController = new UCContentController();
         UCController.createComponents();
         
-        MainContentModel UMLContenctModel = new MainContentModel();
+        CDContentController CDcontroller = new CDContentController();
+        CDcontroller.createComponents();
+        
         MainContentModel OOPNContentModel = new MainContentModel();
-        myLayout.addNewTab(UCController.getUCContent(), UMLContenctModel, OOPNContentModel);
+        myLayout.addNewTab(UCController.getUCContent(), CDcontroller.getCdContent(), OOPNContentModel);
     }
 
     /**

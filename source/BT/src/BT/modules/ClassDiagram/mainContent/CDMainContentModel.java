@@ -4,9 +4,15 @@
  */
 package BT.modules.ClassDiagram.mainContent;
 
+import BT.managers.CD.CDPlaceManager;
+import BT.managers.UC.UCPlaceManager;
 import BT.modules.ClassDiagram.CDLeftBottomContent;
 import BT.modules.ClassDiagram.CDLeftTopContent;
 import BT.modules.ClassDiagram.CDMainContent;
+import BT.modules.UC.UCMainContent;
+import BT.modules.UC.mainContent.UCDrawingListeners;
+import BT.modules.UC.mainContent.UCDrawingPane;
+import BT.modules.UC.mainContent.UCMainContentController;
 
 /**
  *
@@ -14,11 +20,17 @@ import BT.modules.ClassDiagram.CDMainContent;
  */
 class CDMainContentModel {
     protected CDMainContent mainContent;
-//    protected UCPlaceManager places;
-//    protected UCJoinEdgeController newJoinEdge;
     protected CDLeftBottomContent LeftBottomContent;
+    protected CDPlaceManager places;
     protected CDLeftTopContent LeftTopContent;
 
+    public CDMainContentModel()
+    {
+        this.places = new CDPlaceManager();
+        this.mainContent = new CDMainContent(places);
+        createMainPane();
+    }
+    
     public CDMainContent getMainContent() {
         return mainContent;
     }
@@ -43,5 +55,12 @@ class CDMainContentModel {
         this.LeftTopContent = LeftTopContent;
     }
     
-    
+    private void createMainPane()
+    {   
+        CDDrawingPane UCdrawing = this.mainContent.getDrawingPane();
+//        UCDrawingListeners alpha = new UCDrawingListeners((UCMainContentController) this);
+//        UCdrawing.getDrawing().addMouseMotionListener(alpha);
+//        UCdrawing.getDrawing().addMouseListener(alpha);
+//        setButtonsListeners();
+    }
 }
