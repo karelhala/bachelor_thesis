@@ -156,9 +156,9 @@ public class UCMainContentController extends UCMainContentModel implements Drawi
         this.newJoinEdge = UCJoinEdgeManipulator.createJoinEdge(this.newJoinEdge,clickedObject);
         UCJoinEdgeManipulator.changeLineTypeByButton(this.LeftBottomContent.getSelectedButton(),this.newJoinEdge);
 
-        if (this.newJoinEdge.getfirstObject() != null && this.newJoinEdge.getSecondObject() != null)
+        if (this.newJoinEdge.getFirstObject()!= null && this.newJoinEdge.getSecondObject() != null)
         {
-            if (this.newJoinEdge.getfirstObject().equals(clickedObject))
+            if (this.newJoinEdge.getFirstObject().equals(clickedObject))
             {
                 this.newJoinEdge.setSelected(true);
             }
@@ -185,7 +185,7 @@ public class UCMainContentController extends UCMainContentModel implements Drawi
         }
         else
         {
-            if (this.newJoinEdge!=null && this.newJoinEdge.getfirstObject().equals(clickedObject))
+            if (this.newJoinEdge!=null && this.newJoinEdge.getFirstObject().equals(clickedObject))
             {
                 this.newJoinEdge = null;
             }

@@ -53,9 +53,9 @@ public class UCJoinEdgeController extends LineModel{
      * 
      * @param object 
      */
+    @Override
     public void setFirstObject(CoordinateModel object)
     {
-        
         this.startX = object.getX();
         this.startY = object.getY();
         this.endX = object.getX();
@@ -65,26 +65,9 @@ public class UCJoinEdgeController extends LineModel{
     
     /**
      * 
-     * @return 
-     */
-    public CoordinateModel getfirstObject()
-    {
-        return this.firstObject;
-    }
-    
-    /**
-     * 
-     * @return 
-     */
-    public CoordinateModel getSecondObject()
-    {
-        return this.secondObject;
-    }
-    
-    /**
-     * 
      * @param object 
      */
+    @Override
     public void setSecondObject(CoordinateModel object)
     {
         if (object !=null)

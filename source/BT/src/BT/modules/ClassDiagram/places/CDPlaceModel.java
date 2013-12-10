@@ -95,9 +95,9 @@ public class CDPlaceModel {
     {
         for (UCJoinEdgeController oneEdge : this.joinEdges)
         {
-            if (oneEdge.getSecondObject().equals(newLine.getSecondObject()) || oneEdge.getSecondObject().equals(newLine.getfirstObject()))
+            if (oneEdge.getSecondObject().equals(newLine.getSecondObject()) || oneEdge.getSecondObject().equals(newLine.getFirstObject()))
             {
-                if (oneEdge.getfirstObject().equals(newLine.getSecondObject()) || oneEdge.getfirstObject().equals(newLine.getfirstObject()))
+                if (oneEdge.getFirstObject().equals(newLine.getSecondObject()) || oneEdge.getFirstObject().equals(newLine.getFirstObject()))
                 {
                     return true;
                 }

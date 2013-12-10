@@ -55,7 +55,7 @@ public class UCJoinEdgeManipulator {
         {
             joinEdge = new UCJoinEdgeController();
         }
-        if (joinEdge.getfirstObject() == null)
+        if (joinEdge.getFirstObject() == null)
         {
             joinEdge.setFirstObject(clickedObject);
         }
@@ -68,7 +68,7 @@ public class UCJoinEdgeManipulator {
     
     public static void setLineTypeBySecondObject(UCJoinEdgeController joinEdge)
     {
-        if (joinEdge.getfirstObject() instanceof UCUseCase && joinEdge.getSecondObject() instanceof UCActor)
+        if (joinEdge.getFirstObject() instanceof UCUseCase && joinEdge.getSecondObject() instanceof UCActor)
         {
             joinEdge.setJoinEdgeType(BT.UCLineType.ASSOCIATION);
         }

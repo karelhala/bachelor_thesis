@@ -122,7 +122,7 @@ public class UCMainContentModel {
     public void removeLineFromArrayListAndSetNewLine(UCJoinEdgeController joinEdge) 
     {
         this.newJoinEdge = new UCJoinEdgeController();
-        this.newJoinEdge.setFirstObject(joinEdge.getfirstObject());
+        this.newJoinEdge.setFirstObject(joinEdge.getFirstObject());
         UCJoinEdgeManipulator.changeLineTypeByButton(this.LeftBottomContent.getSelectedButton(),this.newJoinEdge);
         this.places.removeJoinEdge(joinEdge);
     }
