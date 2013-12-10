@@ -8,6 +8,7 @@ import BT.managers.PointsCalculator;
 import BT.BT.UCLineType;
 import BT.managers.DistanceCalculator;
 import BT.models.CoordinateModel;
+import BT.models.LineModel;
 import BT.modules.UC.places.UCActor;
 import BT.modules.UC.places.UCUseCase;
 import java.awt.BasicStroke;
@@ -20,15 +21,12 @@ import java.util.Objects;
  *
  * @author Karel Hala
  */
-public class UCJoinEdgeController extends CoordinateModel{
-    private CoordinateModel firstObject;
-    private CoordinateModel secondObject;
+public class UCJoinEdgeController extends LineModel{
     private int startX;
     private int startY;
     private int endX;
     private int endY;
     private double tolerance;
-    private DistanceCalculator distanceCalculator;
 
     private UCLineType joinEdgeType;
 
@@ -41,13 +39,13 @@ public class UCJoinEdgeController extends CoordinateModel{
      */
     public UCJoinEdgeController ()
     {
+        super();
         this.tolerance = 8;
         this.selected = true;
         this.selectedColor = Color.RED;
         this.basicColor = Color.BLACK;
         this.color = Color.BLACK;
         this.joinEdgeType = UCLineType.ASSOCIATION;
-        this.distanceCalculator = new DistanceCalculator();
         this.howerColor = Color.orange;
     }
     
