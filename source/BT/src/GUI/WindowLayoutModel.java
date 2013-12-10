@@ -74,4 +74,5 @@ public class WindowLayoutModel {
     {
         return this.leftSplitPane;
     }
+    
 }

@@ -34,7 +34,7 @@ public final class CDLeftBottomContent extends ButtonPaneModel{
     {
         super();
         this.cdMain = cdMain;
-        this.mainContentPane = new JPanel(new GridLayout(3, 1));
+        this.mainContentPane = new JPanel(new GridLayout(5, 1));
         createMainPane();
     }
     
@@ -47,14 +47,20 @@ public final class CDLeftBottomContent extends ButtonPaneModel{
         JToggleButton association = new JToggleButton("Association");
         association.setName(UCLineType.ASSOCIATION.name());
         
-        JToggleButton include = new JToggleButton("Uses");
-        include.setName(UCLineType.USES.name());
+        JToggleButton agregation = new JToggleButton("Aggregation");
+        agregation.setName(UCLineType.USES.name());
         
-        JToggleButton extend = new JToggleButton("Extend");
-        extend.setName(UCLineType.EXTENDS.name());
+        JToggleButton composition = new JToggleButton("Composition");
+        composition.setName(UCLineType.EXTENDS.name());
+        
+        JToggleButton generalization = new JToggleButton("Generalization");
+        
+        JToggleButton realization = new JToggleButton("Realization");
         
         this.mainContentPane.add(association);
-        this.mainContentPane.add(include);
-        this.mainContentPane.add(extend);
+        this.mainContentPane.add(agregation);
+        this.mainContentPane.add(composition);
+        this.mainContentPane.add(generalization);
+        this.mainContentPane.add(realization);
     }
 }

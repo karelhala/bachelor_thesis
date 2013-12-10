@@ -135,8 +135,13 @@ public class WindowLayoutControler {
     {
         JTabbedPane typeTab = new JTabbedPane();
         
-//        typeTab.addTab("UseCase", getWindowLayout(UCContentModel));
-        typeTab.addTab("ClassDiagram", getWindowLayout(UMLContentModel));
+        typeTab.addTab("UseCase", getWindowLayout(UCContentModel));
+        
+        JSplitPane CDSplitPanes = getWindowLayout(UMLContentModel);
+        JSplitPane Leftcomponent = (JSplitPane) CDSplitPanes.getLeftComponent(); 
+        Leftcomponent.setDividerLocation(100);
+        typeTab.addTab("ClassDiagram", CDSplitPanes);
+        
         typeTab.addTab("OOPetriNets", getWindowLayout(OOPNContentModel));
        
         if (this.fileTab.getTabCount() > 0)

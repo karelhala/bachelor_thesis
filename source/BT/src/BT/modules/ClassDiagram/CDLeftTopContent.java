@@ -36,7 +36,7 @@ public final class CDLeftTopContent extends ButtonPaneModel{
     {
         super();
         this.cdMain = cdMain;
-        this.mainContentPane = new JPanel(new GridLayout(2, 1));
+        this.mainContentPane = new JPanel(new GridLayout(1, 1));
         createMainPane();
     }
     
@@ -45,13 +45,9 @@ public final class CDLeftTopContent extends ButtonPaneModel{
      */
     public void createMainPane()
     {
-        JToggleButton actor = new JToggleButton("Actor");
-        actor.setName(BT.UCObjectType.ACTOR.name());
+        JToggleButton newClass = new JToggleButton("New Class");
+        newClass.setName(BT.UCObjectType.ACTOR.name());
         
-        JToggleButton useCase = new JToggleButton("Use case");
-        useCase.setName(BT.UCObjectType.USECASE.name());
-        
-        this.mainContentPane.add(actor);
-        this.mainContentPane.add(useCase);
+        this.mainContentPane.add(newClass);
     }
 }
