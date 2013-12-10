@@ -13,7 +13,6 @@ import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
 import javax.swing.InputMap;
 import javax.swing.JComponent;
-import javax.swing.JToggleButton;
 import javax.swing.KeyStroke;
 
 /**

@@ -196,6 +196,7 @@ public class UCMainContentController extends UCMainContentModel implements Drawi
     /**
      * 
      */
+    @Override
     public void buttonsChanged()
     {
         JToggleButton selectedJoinEdgeButton = this.LeftBottomContent.getSelectedButton();

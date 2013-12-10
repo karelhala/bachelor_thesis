@@ -4,15 +4,17 @@
  */
 package BT.modules.ClassDiagram.mainContent;
 
+import BT.interfaces.DrawingClicks;
 import BT.managers.CD.CDPlaceManager;
-import BT.managers.UC.UCPlaceManager;
 import BT.modules.ClassDiagram.CDLeftBottomContent;
 import BT.modules.ClassDiagram.CDLeftTopContent;
 import BT.modules.ClassDiagram.CDMainContent;
-import BT.modules.UC.UCMainContent;
-import BT.modules.UC.mainContent.UCDrawingListeners;
 import BT.modules.UC.mainContent.UCDrawingPane;
-import BT.modules.UC.mainContent.UCMainContentController;
+import java.awt.event.ActionEvent;
+import javax.swing.AbstractAction;
+import javax.swing.InputMap;
+import javax.swing.JComponent;
+import javax.swing.KeyStroke;
 
 /**
  *
@@ -58,9 +60,27 @@ class CDMainContentModel {
     private void createMainPane()
     {   
         CDDrawingPane UCdrawing = this.mainContent.getDrawingPane();
-//        UCDrawingListeners alpha = new UCDrawingListeners((UCMainContentController) this);
-//        UCdrawing.getDrawing().addMouseMotionListener(alpha);
-//        UCdrawing.getDrawing().addMouseListener(alpha);
-//        setButtonsListeners();
+        CDDrawingListeners alpha = new CDDrawingListeners((DrawingClicks) this);
+        UCdrawing.getDrawing().addMouseMotionListener(alpha);
+        UCdrawing.getDrawing().addMouseListener(alpha);
+        setButtonsListeners();
+    }
+    
+        /**
+     * 
+     */
+    public void setButtonsListeners()
+    {
+        CDDrawingPane drawingPane = this.mainContent.getDrawingPane();
+        drawingPane.getDrawing().getActionMap().put("removeObject", new AbstractAction() {
+            CDDrawingPane drawingPane = mainContent.getDrawingPane();
+            @Override
+                public void actionPerformed(ActionEvent e) {
+                    System.out.println("Delete button pressed in Class diagram");
+                }
+            }
+        );
+        InputMap inputMap = drawingPane.getDrawing().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+        inputMap.put(KeyStroke.getKeyStroke("DELETE"), "removeObject");
     }
 }
