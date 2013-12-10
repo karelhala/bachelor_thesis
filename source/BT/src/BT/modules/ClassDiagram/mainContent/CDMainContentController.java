@@ -72,4 +72,9 @@ public class CDMainContentController extends CDMainContentModel implements Drawi
     {
 
     }
+
+    @Override
+    public void buttonsChanged() {
+        System.out.println("buttons has been changed");
+    }
 }

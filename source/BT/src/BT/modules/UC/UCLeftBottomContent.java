@@ -18,8 +18,6 @@ import BT.modules.UC.mainContent.UCMainContentController;
  */
 public final class UCLeftBottomContent extends ButtonPaneModel{
     
-    private UCMainContentController UCMain;
-    
     /**
      * contructor, that creates grid of 3 rows and 1 column a fill them with jtogglebuttons
      */
@@ -34,8 +32,7 @@ public final class UCLeftBottomContent extends ButtonPaneModel{
      */
     public UCLeftBottomContent(UCMainContentController UCMain)
     {
-        super();
-        this.UCMain = UCMain;
+        super(UCMain);
         this.mainContentPane = new JPanel(new GridLayout(3, 1));
         createMainPane();
     }

@@ -17,4 +17,5 @@ public interface DrawingClicks {
     public void drawingPaneClicked(MouseEvent evt);
     public void drawingMouseDragged(MouseEvent e, CoordinateModel dragged);
     public void setSelectedObject(CoordinateModel clickedObject);
+    public void buttonsChanged();
 }

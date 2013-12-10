@@ -192,4 +192,23 @@ public class UCMainContentController extends UCMainContentModel implements Drawi
             drawJoinEdge(clickedObject);
         }
     }
+    
+    /**
+     * 
+     */
+    public void buttonsChanged()
+    {
+        JToggleButton selectedJoinEdgeButton = this.LeftBottomContent.getSelectedButton();
+        UCDrawingPane UCdrawing = this.mainContent.getDrawingPane();
+        if (selectedJoinEdgeButton == null)
+        {
+            this.newJoinEdge = null;
+            UCdrawing.setNewLine(null);
+        }
+        else if (this.newJoinEdge != null)
+        {
+            UCJoinEdgeManipulator.changeLineTypeByButton(this.LeftBottomContent.getSelectedButton(),this.newJoinEdge);
+        }
+        UCdrawing.getDrawing().repaint();
+    }
 }
