@@ -8,6 +8,7 @@ import BT.modules.mainInterface.MainInterfaceControler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.UnsupportedLookAndFeelException;
+
 /**
  *
  * @author Karel Hala
@@ -15,6 +16,8 @@ import javax.swing.UnsupportedLookAndFeelException;
 public class BT {
     public static enum UCLineType{ASSOCIATION, USES, EXTENDS};
     public static enum UCObjectType{ACTOR, USECASE};
+    public static enum CDLineType{ASSOCIATION, AGGREGATION, COMPOSITION, GENERALIZATION, REALIZATION};
+    public static enum CDObjectType{CLASS};
     /**
      * @param args the command line arguments
      */

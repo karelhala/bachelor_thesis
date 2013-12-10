@@ -4,6 +4,7 @@
  */
 package BT.modules.ClassDiagram;
 
+import BT.BT.CDLineType;
 import BT.BT.UCLineType;
 import java.awt.GridLayout;
 import javax.swing.JPanel;
@@ -43,17 +44,19 @@ public final class CDLeftBottomContent extends ButtonPaneModel{
     public void createMainPane()
     {
         JToggleButton association = new JToggleButton("Association");
-        association.setName(UCLineType.ASSOCIATION.name());
+        association.setName(CDLineType.ASSOCIATION.name());
         
         JToggleButton agregation = new JToggleButton("Aggregation");
-        agregation.setName(UCLineType.USES.name());
+        agregation.setName(CDLineType.AGGREGATION.name());
         
         JToggleButton composition = new JToggleButton("Composition");
-        composition.setName(UCLineType.EXTENDS.name());
+        composition.setName(CDLineType.COMPOSITION.name());
         
         JToggleButton generalization = new JToggleButton("Generalization");
+        composition.setName(CDLineType.GENERALIZATION.name());
         
         JToggleButton realization = new JToggleButton("Realization");
+        composition.setName(CDLineType.REALIZATION.name());
         
         this.mainContentPane.add(association);
         this.mainContentPane.add(agregation);
