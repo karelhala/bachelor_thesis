@@ -18,13 +18,7 @@ public class UCPlaceModel {
     * Arraylist that contains all actors in UC
     * @var ArrayList<UCActor>
     */
-    protected ArrayList<UCActor> actors = new ArrayList<>();
-    
-    /**
-    * Arraylist that all contains use cases in UC
-    * @var ArrayList<UCUseCase>
-    */
-    protected ArrayList<UCUseCase> UseCases = new ArrayList<>();
+    protected ArrayList<CoordinateModel> objects = new ArrayList<>();
     
     /**
     * Arraylist that contains all join edges in UC
@@ -55,38 +49,20 @@ public class UCPlaceModel {
     
     /**
     * Method for returning all actors in array list.
-    * @return ArrayList<UCActor>
+    * @return ArrayList<CoordinateModel>
     */
-    public ArrayList<UCActor> getActors()
+    public ArrayList<CoordinateModel> getObjects()
     {
-        return this.actors;
+        return this.objects;
     }
     
     /**
     * Method for adding new place to array list.
-    * @param UCActor place object to be added
+    * @param CoordinateModel place object to be added
     */
-    private void addActor(UCActor place)
+    private void addPlace(CoordinateModel place)
     {
-        this.actors.add(place);
-    }
-    
-    /**
-    * Method that returns all use cases as array list.
-    * @return ArrayList<UCUseCase>
-    */
-    public ArrayList<UCUseCase> getUseCases()
-    {
-        return this.UseCases;
-    }
-    
-    /**
-    * Method for adding new use case to array list.
-    * @param UCUseCase place object to be added
-    */
-    private void addUseCase(UCUseCase place)
-    {
-        this.UseCases.add(place);
+        this.objects.add(place);
     }
     
     /**
@@ -95,17 +71,13 @@ public class UCPlaceModel {
      */
     public void addObject (CoordinateModel coordModel)
     {
-        if (coordModel instanceof UCActor)
-        {
-            addActor((UCActor)coordModel);
-        }
-        else if (coordModel instanceof UCUseCase)
-        {
-            addUseCase((UCUseCase)coordModel);
-        }
-        else if (coordModel instanceof UCJoinEdgeController)
+        if (coordModel instanceof UCJoinEdgeController)
         {
             addJoinEdge((UCJoinEdgeController)coordModel);
+        }
+        else
+        {
+            addPlace(coordModel);
         }
     }
     

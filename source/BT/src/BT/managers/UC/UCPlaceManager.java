@@ -28,14 +28,7 @@ public class UCPlaceManager extends UCPlaceModel {
      */
     public void removePlace(CoordinateModel selectedObject) {
         removeJoinEdgesWithObject(selectedObject);
-        if (selectedObject instanceof UCActor)
-        {
-            actors.remove((UCActor)selectedObject);
-        }
-        else if (selectedObject instanceof UCUseCase)
-        {
-            UseCases.remove((UCUseCase)selectedObject);
-        }
+        this.objects.remove(selectedObject);
     }
     
     /**
@@ -76,17 +69,7 @@ public class UCPlaceManager extends UCPlaceModel {
             }
         }
         
-        for (Iterator<UCActor> it = actors.iterator(); it.hasNext();)
-        {
-            CoordinateModel coorModel = it.next();
-            if (coorModel.getSelected())
-            {
-                removeJoinEdgesWithObject(coorModel);
-                it.remove();
-            }
-        }
-        
-        for (Iterator<UCUseCase> it = UseCases.iterator(); it.hasNext();)
+        for (Iterator<CoordinateModel> it = objects.iterator(); it.hasNext();)
         {
             CoordinateModel coorModel = it.next();
             if (coorModel.getSelected())
@@ -102,12 +85,7 @@ public class UCPlaceManager extends UCPlaceModel {
      */
     public void setAllObjectDiselected()
     {
-        for (CoordinateModel oneModel : this.actors)
-        {
-            oneModel.setSelected(false);
-        }
-        
-        for (CoordinateModel oneModel : this.UseCases)
+        for (CoordinateModel oneModel : this.objects)
         {
             oneModel.setSelected(false);
         }

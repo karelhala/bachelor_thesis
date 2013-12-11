@@ -37,7 +37,7 @@ public class UCObjectChecker {
     public CoordinateModel getObjectUnderMouse(Point mousePoint)
     {
         CoordinateModel coordModel;
-        coordModel = isActorUnderMouse(mousePoint.x, mousePoint.y);
+        coordModel = isObjectunderMouse(mousePoint.x, mousePoint.y);
         if (coordModel!=null)
         {
             return coordModel;
@@ -47,11 +47,7 @@ public class UCObjectChecker {
         {
             return coordModel;
         }
-        coordModel = isUseCaseUnderMouse(mousePoint.x, mousePoint.y);
-        if (coordModel!=null)
-        {
-            return coordModel;
-        }
+
         return null;
     }
      /**
@@ -60,17 +56,31 @@ public class UCObjectChecker {
      * @param y
      * @return 
      */
-    private UCActor isActorUnderMouse(int x, int y)
+    private CoordinateModel isObjectunderMouse(int x, int y)
     {
-        for (UCActor actor : places.getActors())
+        for (CoordinateModel object : places.getObjects())
         {
-            if (actor.isActor(x,y))
+            if (object instanceof UCActor)
             {
-                return actor;
+                if (((UCActor)object).isActor(x,y))
+                {
+                    return object;
+                }
+                else
+                {
+                    ((UCActor)object).setBasicColor();
+                }
             }
-            else
+            else if (object instanceof UCUseCase)
             {
-                actor.setBasicColor();
+                if (((UCUseCase)object).isUseCase(x,y))
+                {
+                    return object;
+                }
+                else
+                {
+                    ((UCUseCase)object).setBasicColor();
+                }
             }
         }
         return null;
@@ -93,28 +103,6 @@ public class UCObjectChecker {
             else
             {
                 ((UCJoinEdgeController)joinEdge).setBasicColor();
-            }
-        }
-        return null;
-    }
-            
-    /**
-     * 
-     * @param x
-     * @param y
-     * @return 
-     */
-    private UCUseCase isUseCaseUnderMouse(int x, int y) 
-    {
-       for (UCUseCase useCase : places.getUseCases())
-        {
-            if (useCase.isUseCase(x,y))
-            {
-                return useCase;
-            }
-            else
-            {
-                useCase.setBasicColor();
             }
         }
         return null;

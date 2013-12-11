@@ -7,13 +7,13 @@ package BT.modules.UC.mainContent;
 import BT.modules.UC.places.UCActor;
 import BT.modules.UC.places.UCJoinEdge.UCJoinEdgeController;
 import BT.managers.UC.UCPlaceManager;
+import BT.models.CoordinateModel;
 import BT.models.LineModel;
 import BT.modules.UC.places.UCUseCase;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
-import java.util.ArrayList;
 import javax.swing.JPanel;
 
 /**
@@ -71,15 +71,17 @@ public class UCDrawingPane{
                 ((UCJoinEdgeController)joinEdge).drawJoinEdge(g);
             }
             
-            for (UCActor actor: UCPlaces.getActors()) {
-                actor.drawActor(g);
+            for (CoordinateModel object: UCPlaces.getObjects()) {
+                if (object instanceof UCActor)
+                {
+                    ((UCActor)object).drawActor(g);
+                }
+                else if (object instanceof UCUseCase)
+                {
+                    ((UCUseCase)object).drawUseCase(g);
+                }
             }
-            
-            for (UCUseCase useCase: UCPlaces.getUseCases()) {
-                useCase.drawUseCase(g);
-                
 //                drawX(g, useCase.getX(), useCase.getY());
-            }
         }
     }
     
