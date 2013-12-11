@@ -2,10 +2,8 @@
 * To change this template, choose Tools | Templates
 * and open the template in the editor.
 */
-package BT.modules.UC.places;
+package BT.models;
 
-import BT.models.CoordinateModel;
-import BT.models.LineModel;
 import BT.modules.UC.places.UCJoinEdge.UCJoinEdgeController;
 import java.util.ArrayList;
 
@@ -13,7 +11,7 @@ import java.util.ArrayList;
 *
 * @author Karel Hala
 */
-public class UCPlaceModel {
+public class PlaceModel {
     /**
     * Arraylist that contains all actors in UC
     * @var ArrayList<UCActor>

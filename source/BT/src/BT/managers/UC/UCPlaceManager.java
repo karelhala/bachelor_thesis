@@ -4,10 +4,8 @@
  */
 package BT.managers.UC;
 
-import BT.modules.UC.places.UCPlaceModel;
-import BT.modules.UC.places.UCUseCase;
+import BT.models.PlaceModel;
 import BT.modules.UC.places.UCJoinEdge.UCJoinEdgeController;
-import BT.modules.UC.places.UCActor;
 import BT.models.CoordinateModel;
 import BT.models.LineModel;
 import java.util.Iterator;
@@ -16,7 +14,7 @@ import java.util.Iterator;
  *
  * @author Karel Hala
  */
-public class UCPlaceManager extends UCPlaceModel {
+public class UCPlaceManager extends PlaceModel {
     public UCPlaceManager()
     {
         super();
