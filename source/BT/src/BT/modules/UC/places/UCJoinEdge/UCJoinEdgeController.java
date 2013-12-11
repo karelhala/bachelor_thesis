@@ -6,13 +6,11 @@ package BT.modules.UC.places.UCJoinEdge;
 
 import BT.managers.PointsCalculator;
 import BT.BT.UCLineType;
-import BT.managers.DistanceCalculator;
 import BT.models.CoordinateModel;
 import BT.models.LineModel;
 import BT.modules.UC.places.UCActor;
 import BT.modules.UC.places.UCUseCase;
 import java.awt.BasicStroke;
-import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.util.Objects;
@@ -22,12 +20,6 @@ import java.util.Objects;
  * @author Karel Hala
  */
 public class UCJoinEdgeController extends LineModel{
-    private int startX;
-    private int startY;
-    private int endX;
-    private int endY;
-    private double tolerance;
-
     private UCLineType joinEdgeType;
 
     public void setJoinEdgeType(UCLineType joinEdgeType) {
@@ -35,18 +27,12 @@ public class UCJoinEdgeController extends LineModel{
     }
     
     /**
-     * TODO: make model
+     *
      */
     public UCJoinEdgeController ()
     {
         super();
-        this.tolerance = 8;
-        this.selected = true;
-        this.selectedColor = Color.RED;
-        this.basicColor = Color.BLACK;
-        this.color = Color.BLACK;
         this.joinEdgeType = UCLineType.ASSOCIATION;
-        this.howerColor = Color.orange;
     }
     
     /**
@@ -56,10 +42,8 @@ public class UCJoinEdgeController extends LineModel{
     @Override
     public void setFirstObject(CoordinateModel object)
     {
-        this.startX = object.getX();
-        this.startY = object.getY();
-        this.endX = object.getX();
-        this.endY = object.getY();
+        setStartCoordinates(new Point(object.getX(), object.getY()));
+        setEndPoint(new Point(object.getX(), object.getY()));
         this.firstObject = object;
     }
     
@@ -72,8 +56,7 @@ public class UCJoinEdgeController extends LineModel{
     {
         if (object !=null)
         {
-            this.endX = object.getX();
-            this.endY = object.getY();
+            setEndPoint(new Point(object.getX(), object.getY()));
         }
         if (this.firstObject instanceof UCActor && object instanceof UCUseCase)
         {
@@ -86,22 +69,6 @@ public class UCJoinEdgeController extends LineModel{
         }
     }
     
-    /**
-     * 
-     * @param x
-     * @param y 
-     */
-    public void setEndPoint(Point endPoint)
-    {
-        this.endX = endPoint.x;
-        this.endY = endPoint.y;
-    }
-    
-    public void setStartCoordinates(Point startPoint)
-    {
-        this.startX = startPoint.x;
-        this.startY = startPoint.y;
-    }
     /**
      * 
      * @return 
@@ -136,20 +103,6 @@ public class UCJoinEdgeController extends LineModel{
             
             setEndPoint(endPoint);
         }
-    }
-    /**
-     * 
-     * @param x
-     * @param y
-     * @return 
-     */
-    public Boolean isInRange(int x, int y) {
-        double distance = this.distanceCalculator.getDistanceOfPointToSegment(this.startX, this.startY, this.endX, this.endY, x, y);
-        if (distance !=-1 && distance < this.tolerance)
-        {
-            return true;
-        }
-        return false;
     }
     
     /**

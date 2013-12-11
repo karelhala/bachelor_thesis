@@ -4,13 +4,13 @@
  */
 package BT.managers.CD;
 
-import BT.modules.ClassDiagram.places.CDPlaceModel;
+import BT.models.PlaceModel;
 
 /**
  *
  * @author Karel Hala
  */
-public class CDPlaceManager extends CDPlaceModel{
+public class CDPlaceManager extends PlaceModel{
    public CDPlaceManager()
    {
        super();
