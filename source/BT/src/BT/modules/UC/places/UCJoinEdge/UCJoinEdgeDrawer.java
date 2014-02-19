@@ -57,12 +57,12 @@ public class UCJoinEdgeDrawer {
             drawArrow(g, this.endPoint, this.startPoint);
             drawString(g, this.endPoint, this.startPoint, "<<uses>>");
         }
-        else if (this.joinEdgeController.getJoinEdgeType() == BT.UCLineType.EXTENDS)
+        else if (this.joinEdgeController.getJoinEdgeType() == BT.UCLineType.IMPLEMENTS)
         {
             g.setStroke(dashed);
             g.drawLine(startPoint.x, startPoint.y, endPoint.x, endPoint.y);
             drawArrow(g, this.endPoint, this.startPoint);
-            drawString(g, this.endPoint, this.startPoint, "<<extends>>");
+            drawString(g, this.endPoint, this.startPoint, "<<implements>>");
         }
     }
     

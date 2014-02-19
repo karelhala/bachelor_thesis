@@ -4,8 +4,7 @@
  */
 package BT.modules.ClassDiagram;
 
-import BT.managers.CD.CDPlaceManager;
-import BT.managers.UC.UCPlaceManager;
+import BT.managers.PlaceManager;
 import BT.models.ContentPaneModel;
 import BT.models.CoordinateModel;
 import BT.modules.ClassDiagram.mainContent.CDDrawingPane;
@@ -38,7 +37,7 @@ public final class CDMainContent extends ContentPaneModel{
     /**
      * 
      */
-    public CDMainContent(CDPlaceManager places)
+    public CDMainContent(PlaceManager places)
     {
         super();
         this.mainContentPane = new JPanel(new BorderLayout());

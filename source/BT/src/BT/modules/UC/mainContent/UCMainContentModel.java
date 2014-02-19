@@ -4,7 +4,7 @@
  */
 package BT.modules.UC.mainContent;
 
-import BT.managers.UC.UCPlaceManager;
+import BT.managers.PlaceManager;
 import BT.modules.UC.UCLeftBottomContent;
 import BT.modules.UC.UCLeftTopContent;
 import BT.modules.UC.UCMainContent;
@@ -21,14 +21,14 @@ import javax.swing.KeyStroke;
  */
 public class UCMainContentModel {
     protected UCMainContent mainContent;
-    protected UCPlaceManager places;
+    protected PlaceManager places;
     protected UCJoinEdgeController newJoinEdge;
     protected UCLeftBottomContent LeftBottomContent;
     protected UCLeftTopContent LeftTopContent;
     
     public UCMainContentModel()
     {
-        this.places = new UCPlaceManager();
+        this.places = new PlaceManager();
         this.mainContent = new UCMainContent(places);
         createMainPane();
     }
@@ -49,7 +49,7 @@ public class UCMainContentModel {
         this.mainContent = mainContent;
     }
 
-    public void setPlaces(UCPlaceManager places) {
+    public void setPlaces(PlaceManager places) {
         this.places = places;
     }
 
@@ -69,7 +69,7 @@ public class UCMainContentModel {
         return mainContent;
     }
 
-    public UCPlaceManager getPlaces() {
+    public PlaceManager getPlaces() {
         return places;
     }
 

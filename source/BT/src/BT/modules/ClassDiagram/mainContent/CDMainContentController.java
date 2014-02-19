@@ -30,7 +30,7 @@ public class CDMainContentController extends CDMainContentModel implements Drawi
     @Override
     public void drawingMouseDragged(MouseEvent e, CoordinateModel dragged)
     {
-        
+        System.out.println("dragged");
     }
     
     /**
@@ -40,7 +40,7 @@ public class CDMainContentController extends CDMainContentModel implements Drawi
     @Override
     public void drawingPaneClicked(MouseEvent evt) 
     {
-        
+        System.out.println("clicked");
     }
     
     /**
@@ -70,7 +70,7 @@ public class CDMainContentController extends CDMainContentModel implements Drawi
     @Override
     public void drawingPaneDoubleCliked(CoordinateModel pressedObject) 
     {
-
+        System.out.println("doublecliked");
     }
 
     @Override

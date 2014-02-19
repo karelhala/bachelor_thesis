@@ -5,6 +5,7 @@
 package BT.modules.ClassDiagram.mainContent;
 
 import BT.interfaces.DrawingClicks;
+import BT.models.CoordinateModel;
 import java.awt.event.MouseEvent;
 import javax.swing.event.MouseInputAdapter;
 
@@ -13,7 +14,15 @@ import javax.swing.event.MouseInputAdapter;
  * @author Karel Hala
  */
 public class CDDrawingListeners extends MouseInputAdapter{
+    /**
+     * 
+     */
     private CDMainContentController mainContent;
+    
+    /**
+     * 
+     */
+    private CoordinateModel selectedModel;
     
     public CDDrawingListeners(DrawingClicks mainContent)
     {
@@ -31,12 +40,12 @@ public class CDDrawingListeners extends MouseInputAdapter{
     
     @Override
     public void mouseDragged(MouseEvent e){
-        System.out.println("dragged");
+        this.mainContent.drawingMouseDragged(e, null);
     }
     
     @Override
     public void mouseMoved(MouseEvent e){
-        
+        this.mainContent.drawingPanecheckMove(e);
     }
     
     @Override
@@ -48,6 +57,10 @@ public class CDDrawingListeners extends MouseInputAdapter{
     @Override
     public void mouseClicked(MouseEvent e)
     {
-        System.out.println("clicked");
+        this.mainContent.drawingPaneClicked(e);
+        if (e.getClickCount()%2 == 0)
+        {
+            this.mainContent.drawingPaneDoubleCliked(null);
+        }
     }
 }

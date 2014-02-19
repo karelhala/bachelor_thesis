@@ -4,12 +4,8 @@
  */
 package BT.modules.ClassDiagram.mainContent;
 
-import BT.managers.CD.CDPlaceManager;
-import BT.managers.UC.UCPlaceManager;
-import BT.modules.UC.mainContent.UCDrawingPane;
-import BT.modules.UC.places.UCActor;
+import BT.managers.PlaceManager;
 import BT.modules.UC.places.UCJoinEdge.UCJoinEdgeController;
-import BT.modules.UC.places.UCUseCase;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -21,7 +17,7 @@ import javax.swing.JPanel;
  * @author Karel Hala
  */
 public class CDDrawingPane {
-    private CDPlaceManager CDplaces;
+    private PlaceManager CDplaces;
     private CDDrawingPane.drawing drawPane;
     private UCJoinEdgeController newLine;
 
@@ -34,7 +30,7 @@ public class CDDrawingPane {
      * 
      * @param UCPlaces 
      */
-    public CDDrawingPane(CDPlaceManager CDplaces)
+    public CDDrawingPane(PlaceManager CDplaces)
     {
         this.drawPane = new CDDrawingPane.drawing();
         this.CDplaces = CDplaces;
@@ -96,7 +92,7 @@ public class CDDrawingPane {
      * 
      * @param places 
      */
-    public void setPlaces(CDPlaceManager places)
+    public void setPlaces(PlaceManager places)
     {
         this.CDplaces = places;
     }

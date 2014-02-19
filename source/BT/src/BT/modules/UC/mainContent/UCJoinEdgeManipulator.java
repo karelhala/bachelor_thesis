@@ -38,8 +38,8 @@ public class UCJoinEdgeManipulator {
                     joinEdge.setJoinEdgeType(BT.UCLineType.USES);
                  break;
 
-           case "EXTENDS":  
-                    joinEdge.setJoinEdgeType(BT.UCLineType.EXTENDS);
+           case "IMPLEMENTS":  
+                    joinEdge.setJoinEdgeType(BT.UCLineType.IMPLEMENTS);
                  break;
         }
         setLineTypeBySecondObject(joinEdge);

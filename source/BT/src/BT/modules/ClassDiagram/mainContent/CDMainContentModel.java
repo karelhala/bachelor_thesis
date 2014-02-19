@@ -5,11 +5,10 @@
 package BT.modules.ClassDiagram.mainContent;
 
 import BT.interfaces.DrawingClicks;
-import BT.managers.CD.CDPlaceManager;
+import BT.managers.PlaceManager;
 import BT.modules.ClassDiagram.CDLeftBottomContent;
 import BT.modules.ClassDiagram.CDLeftTopContent;
 import BT.modules.ClassDiagram.CDMainContent;
-import BT.modules.UC.mainContent.UCDrawingPane;
 import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
 import javax.swing.InputMap;
@@ -23,12 +22,12 @@ import javax.swing.KeyStroke;
 class CDMainContentModel {
     protected CDMainContent mainContent;
     protected CDLeftBottomContent LeftBottomContent;
-    protected CDPlaceManager places;
+    protected PlaceManager places;
     protected CDLeftTopContent LeftTopContent;
 
     public CDMainContentModel()
     {
-        this.places = new CDPlaceManager();
+        this.places = new PlaceManager();
         this.mainContent = new CDMainContent(places);
         createMainPane();
     }

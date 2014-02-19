@@ -4,7 +4,7 @@
  */
 package BT.modules.UC.mainContent;
 
-import BT.managers.UC.UCPlaceManager;
+import BT.managers.PlaceManager;
 import BT.models.CoordinateModel;
 import BT.models.LineModel;
 import BT.modules.UC.places.UCActor;
@@ -17,13 +17,13 @@ import java.awt.Point;
  * @author Karel Hala
  */
 public class UCObjectChecker {
-    private UCPlaceManager places;
+    private PlaceManager places;
     
     /**
      * 
      * @param places 
      */
-    public UCObjectChecker(UCPlaceManager places)
+    public UCObjectChecker(PlaceManager places)
     {
         super();
         this.places = places;

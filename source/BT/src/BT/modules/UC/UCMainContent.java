@@ -4,7 +4,7 @@
  */
 package BT.modules.UC;
 
-import BT.managers.UC.UCPlaceManager;
+import BT.managers.PlaceManager;
 import BT.models.ContentPaneModel;
 import BT.models.CoordinateModel;
 import BT.modules.UC.mainContent.UCDrawingPane;
@@ -44,7 +44,7 @@ public final class UCMainContent extends ContentPaneModel{
     /**
      * 
      */
-    public UCMainContent(UCPlaceManager places)
+    public UCMainContent(PlaceManager places)
     {
         super();
         this.mainContentPane = new JPanel(new BorderLayout());

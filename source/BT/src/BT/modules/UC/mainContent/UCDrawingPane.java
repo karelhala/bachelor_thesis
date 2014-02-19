@@ -6,7 +6,7 @@ package BT.modules.UC.mainContent;
 
 import BT.modules.UC.places.UCActor;
 import BT.modules.UC.places.UCJoinEdge.UCJoinEdgeController;
-import BT.managers.UC.UCPlaceManager;
+import BT.managers.PlaceManager;
 import BT.models.CoordinateModel;
 import BT.models.LineModel;
 import BT.modules.UC.places.UCUseCase;
@@ -21,7 +21,7 @@ import javax.swing.JPanel;
  * @author Karel Hala
  */
 public class UCDrawingPane{
-    private UCPlaceManager UCPlaces;
+    private PlaceManager UCPlaces;
     private drawing drawPane;
     private UCJoinEdgeController newLine;
 
@@ -34,7 +34,7 @@ public class UCDrawingPane{
      * 
      * @param UCPlaces 
      */
-    public UCDrawingPane(UCPlaceManager UCPlaces)
+    public UCDrawingPane(PlaceManager UCPlaces)
     {
         this.drawPane = new drawing();
         this.UCPlaces = UCPlaces;
@@ -98,7 +98,7 @@ public class UCDrawingPane{
      * 
      * @param places 
      */
-    public void setPlaces(UCPlaceManager places)
+    public void setPlaces(PlaceManager places)
     {
         this.UCPlaces = places;
     }

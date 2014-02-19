@@ -69,9 +69,9 @@ public class PlaceModel {
      */
     public void addObject (CoordinateModel coordModel)
     {
-        if (coordModel instanceof UCJoinEdgeController)
+        if (coordModel instanceof LineModel)
         {
-            addJoinEdge((UCJoinEdgeController)coordModel);
+            addJoinEdge((LineModel)coordModel);
         }
         else
         {
@@ -84,9 +84,8 @@ public class PlaceModel {
      * second object --> first object.
      * Resolving issue with multiple lines connected to same objects.
      * Also checks if line isn't same
-     * @param UCJoinEdgeController newLine
+     * @param newLine
      * @return true when line exist
-     * @return false when line doesn't exist
      */
     public Boolean lineExists(LineModel newLine)
     {

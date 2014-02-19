@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package BT.managers.UC;
+package BT.managers;
 
 import BT.models.PlaceModel;
 import BT.modules.UC.places.UCJoinEdge.UCJoinEdgeController;
@@ -14,15 +14,15 @@ import java.util.Iterator;
  *
  * @author Karel Hala
  */
-public class UCPlaceManager extends PlaceModel {
-    public UCPlaceManager()
+public class PlaceManager extends PlaceModel {
+    public PlaceManager()
     {
         super();
     }
     
     /**
      * Method that removes selected object from any array list.
-     * @param CoordinateModel selectedObject object to be deleted
+     * @param selectedObject selectedObject object to be deleted
      */
     public void removePlace(CoordinateModel selectedObject) {
         removeJoinEdgesWithObject(selectedObject);
@@ -31,9 +31,9 @@ public class UCPlaceManager extends PlaceModel {
     
     /**
      * Method for removing join edge from array list.
-     * @param UCJoinEdgeController jointEdge object to be removed.
+     * @param jointEdge jointEdge object to be removed.
      */
-    public void removeJoinEdge(UCJoinEdgeController jointEdge)
+    public void removeJoinEdge(LineModel jointEdge)
     {
         this.joinEdges.remove(jointEdge);
     }
@@ -91,7 +91,7 @@ public class UCPlaceManager extends PlaceModel {
     
     /**
      * Method for selecting lines that come out of object.
-     * @param CoordinateModel place selected place
+     * @param place selected place
      */
     public void setSelectedLinesOnObject(CoordinateModel place)
     {
