@@ -4,6 +4,7 @@
  */
 package BT.modules.UC.mainContent;
 
+import BT.managers.ObjectChecker;
 import BT.interfaces.DrawingClicks;
 import BT.models.CoordinateModel;
 import BT.modules.UC.places.UCJoinEdge.UCJoinEdgeController;
@@ -43,7 +44,7 @@ public class UCDrawingListeners extends MouseInputAdapter{
      */
     @Override
     public void mousePressed(java.awt.event.MouseEvent evt) {
-        UCObjectChecker objectChecker = new UCObjectChecker(this.UCMainContent.getPlaces());
+        ObjectChecker objectChecker = new ObjectChecker(this.UCMainContent.getPlaces());
         CoordinateModel coordObject = objectChecker.getObjectUnderMouse(evt.getPoint());
         if (coordObject == null)
         {
@@ -104,7 +105,7 @@ public class UCDrawingListeners extends MouseInputAdapter{
     {
         if (this.draggedObject instanceof UCJoinEdgeController)
         {
-            UCObjectChecker objectChecker = new UCObjectChecker(this.UCMainContent.getPlaces());
+            ObjectChecker objectChecker = new ObjectChecker(this.UCMainContent.getPlaces());
             this.UCMainContent.setSelectedObject(objectChecker.getObjectUnderMouse(e.getPoint()));
         }
         this.draggedObject = null;
@@ -117,7 +118,7 @@ public class UCDrawingListeners extends MouseInputAdapter{
     @Override
     public void mouseClicked(MouseEvent e)
     {
-        UCObjectChecker objectChecker = new UCObjectChecker(this.UCMainContent.getPlaces());
+        ObjectChecker objectChecker = new ObjectChecker(this.UCMainContent.getPlaces());
         CoordinateModel clickedObject = objectChecker.getObjectUnderMouse(e.getPoint());
         if (e.getClickCount()%2 == 0)
         {

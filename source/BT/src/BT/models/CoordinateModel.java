@@ -13,6 +13,8 @@ import java.awt.Color;
  * @author Karel Hala
  */
 public class CoordinateModel {
+    protected int objectWidth;
+    protected int objectHeight;
     protected int x;
     protected int y;
     protected String name;
@@ -112,6 +114,45 @@ public class CoordinateModel {
     public void setHowerColor()
     {
         this.color = this.howerColor;
+    }
+
+    public int getObjectWidth() {
+        return objectWidth;
+    }
+
+    public int getObjectHeight() {
+        return objectHeight;
+    }
+
+    public void setObjectWidth(int objectWidth) {
+        this.objectWidth = objectWidth;
+    }
+
+    public void setObjectHeight(int objectHeight) {
+        this.objectHeight = objectHeight;
+    }
+    
+        /**
+     * 
+     * @param a
+     * @param b
+     * @return 
+     */
+    protected int getMax(int a, int b) {
+        return (a>b?a:b);
+    }
+    
+    /**
+     * 
+     * @param x
+     * @param y
+     * @return 
+     */
+    public boolean isObject(int x, int y)
+    {
+        int isX=Math.abs(x-this.x);
+        int isY=Math.abs(y-this.y);
+        return isX<=getMax(this.objectWidth, this.width)/2 && isY<=getMax(this.objectHeight, this.height)/2;
     }
     
 }

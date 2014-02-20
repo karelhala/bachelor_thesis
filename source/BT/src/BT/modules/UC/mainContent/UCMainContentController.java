@@ -4,6 +4,7 @@
  */
 package BT.modules.UC.mainContent;
 
+import BT.managers.ObjectChecker;
 import BT.interfaces.DrawingClicks;
 import BT.models.CoordinateModel;
 import BT.modules.UC.places.UCActor;
@@ -103,7 +104,7 @@ public class UCMainContentController extends UCMainContentModel implements Drawi
             }
             UCdrawing.setNewLine(this.newJoinEdge);
         }
-        UCObjectChecker objectUnderMouse = new UCObjectChecker(places);
+        ObjectChecker objectUnderMouse = new ObjectChecker(places);
         CoordinateModel coordModel = objectUnderMouse.getObjectUnderMouse(evt.getPoint());
         if (coordModel != null)
         {

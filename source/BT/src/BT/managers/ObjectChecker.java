@@ -2,28 +2,25 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package BT.modules.UC.mainContent;
+package BT.managers;
 
 import BT.managers.PlaceManager;
 import BT.models.CoordinateModel;
 import BT.models.LineModel;
-import BT.modules.UC.places.UCActor;
-import BT.modules.UC.places.UCJoinEdge.UCJoinEdgeController;
-import BT.modules.UC.places.UCUseCase;
 import java.awt.Point;
 
 /**
  *
  * @author Karel Hala
  */
-public class UCObjectChecker {
-    private PlaceManager places;
+public class ObjectChecker {
+    private final PlaceManager places;
     
     /**
      * 
      * @param places 
      */
-    public UCObjectChecker(PlaceManager places)
+    public ObjectChecker(PlaceManager places)
     {
         super();
         this.places = places;
@@ -60,27 +57,13 @@ public class UCObjectChecker {
     {
         for (CoordinateModel object : places.getObjects())
         {
-            if (object instanceof UCActor)
+            if (object.isObject(x,y))
             {
-                if (((UCActor)object).isActor(x,y))
-                {
-                    return object;
-                }
-                else
-                {
-                    ((UCActor)object).setBasicColor();
-                }
+                return object;
             }
-            else if (object instanceof UCUseCase)
+            else
             {
-                if (((UCUseCase)object).isUseCase(x,y))
-                {
-                    return object;
-                }
-                else
-                {
-                    ((UCUseCase)object).setBasicColor();
-                }
+                object.setBasicColor();
             }
         }
         return null;
@@ -92,17 +75,17 @@ public class UCObjectChecker {
      * @param y
      * @return 
      */
-    private UCJoinEdgeController isJoinEdgeUnderMouse(int x, int y)
+    private LineModel isJoinEdgeUnderMouse(int x, int y)
     {
         for (LineModel joinEdge : places.getJoinEdges())
         {
-            if (((UCJoinEdgeController)joinEdge).isInRange(x,y))
+            if (joinEdge.isInRange(x,y))
             {
-                return ((UCJoinEdgeController)joinEdge);
+                return joinEdge;
             }
             else
             {
-                ((UCJoinEdgeController)joinEdge).setBasicColor();
+                joinEdge.setBasicColor();
             }
         }
         return null;

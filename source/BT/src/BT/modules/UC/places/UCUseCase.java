@@ -20,8 +20,6 @@ import java.util.UUID;
 public class UCUseCase extends CoordinateModel{
 
     private int textSize;
-    private int objectWidth;
-    private int objectHeight;
     private int gap;
     private UUID id;
     
@@ -73,22 +71,6 @@ public class UCUseCase extends CoordinateModel{
     
     /**
      * 
-     * @param x
-     * @param y
-     * @return 
-     */
-    public boolean isUseCase(int x, int y)
-    {
-        int isX=Math.abs(x-this.x);
-        int isY=Math.abs(y-this.y);
-        if (isX<=getMax(this.objectWidth, this.width)/2 && isY<=getMax(this.objectHeight, this.height)/2){
-            return true;
-        }
-        return false;
-    }
-    
-    /**
-     * 
      * @param g 
      */
     public void drawRectArroundUseCase(Graphics2D g)
@@ -98,16 +80,6 @@ public class UCUseCase extends CoordinateModel{
         g.setStroke(new BasicStroke(1));
         g.setColor(Color.black);
         g.drawRect(this.x-borderWidth/2-this.gap, this.y-this.height/2-this.gap, borderWidth+this.gap, borderHeight+this.gap);
-    }
-    
-    /**
-     * 
-     * @param a
-     * @param b
-     * @return 
-     */
-    private int getMax(int a, int b) {
-        return (a>b?a:b);
     }
     
     /**

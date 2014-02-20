@@ -19,8 +19,6 @@ import java.util.UUID;
  */
 public class UCActor extends CoordinateModel{
     
-    private int objectWidth;
-    private int objectHeight;
     private int textSize;
     private int gap;
     private UUID id;
@@ -114,32 +112,6 @@ public class UCActor extends CoordinateModel{
         g.setStroke(new BasicStroke(1));
         g.setColor(Color.black);
         g.drawRect(this.x-borderWidth/2, this.y-borderHeight/2, borderWidth, borderHeight);
-    }
-    
-    /**
-     * 
-     * @param x
-     * @param y
-     * @return 
-     */
-    public boolean isActor(int x, int y)
-    {
-        int isX=Math.abs(x-this.x);
-        int isY=Math.abs(y-this.y);
-        if (isX<=getMax(this.objectWidth, this.getWidth())/2 && isY<=getMax(this.objectHeight, this.getHeight())/2){
-            return true;
-        }
-        return false;
-    }
-
-    /**
-     * 
-     * @param a
-     * @param b
-     * @return 
-     */
-    private int getMax(int a, int b) {
-        return (a>b?a:b);
     }
     
     /**
