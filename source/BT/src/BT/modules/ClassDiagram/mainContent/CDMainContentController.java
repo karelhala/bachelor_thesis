@@ -6,7 +6,9 @@ package BT.modules.ClassDiagram.mainContent;
 
 import BT.interfaces.DrawingClicks;
 import BT.models.CoordinateModel;
+import BT.modules.ClassDiagram.places.CDClass;
 import java.awt.event.MouseEvent;
+import javax.swing.JToggleButton;
 
 /**
  *
@@ -40,7 +42,12 @@ public class CDMainContentController extends CDMainContentModel implements Drawi
     @Override
     public void drawingPaneClicked(MouseEvent evt) 
     {
-        System.out.println("clicked");
+        JToggleButton selectedItemButton = this.LeftTopContent.getSelectedButton();
+        if (selectedItemButton != null && "ACTOR".equals(selectedItemButton.getName()))
+        {
+            this.places.addObject(new CDClass(evt.getX(), evt.getY()));
+            this.mainContent.getDrawingPane().getDrawing().repaint();
+        }
     }
     
     /**

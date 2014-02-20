@@ -47,7 +47,9 @@ public class UCJoinEdgeManipulator {
     
     /**
      * 
+     * @param joinEdge
      * @param clickedObject 
+     * @return  
      */
     public static UCJoinEdgeController createJoinEdge(UCJoinEdgeController joinEdge, CoordinateModel clickedObject)
     {   

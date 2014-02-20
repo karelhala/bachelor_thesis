@@ -17,8 +17,6 @@ import java.util.UUID;
  * @author Karel Hala
  */
 public class CDClass extends CoordinateModel{
-    private int objectWidth;
-    private int objectHeight;
     private int textSize;
     private int gap;
     
@@ -38,9 +36,9 @@ public class CDClass extends CoordinateModel{
         this.x = x;
         this.y = y;
         this.selectedColor = Color.GREEN;
-        this.width = 30;
+        this.width = 100;
         this.height = 60;
-        this.basicColor = Color.BLUE;
+        this.basicColor = Color.BLACK;
         this.color = this.basicColor;
         this.name = "Default";
         this.textSize = 15;
@@ -54,35 +52,27 @@ public class CDClass extends CoordinateModel{
      */
     public void drawClass(Graphics2D g)
     {
-        Color actorColor = this.color;
+        Color classColor = this.color;
         g.setFont(new Font("Arial", Font.BOLD, this.textSize));
         FontMetrics fm = g.getFontMetrics(g.getFont());
-        this.objectHeight = this.getHeight() +textSize;
-        this.objectWidth = this.getWidth() + fm.stringWidth(this.name) + gap - textSize;
         g.setColor(Color.white);
         
-        if (getSelected())
-        {
-            actorColor = this.selectedColor;
-        }
-        
-        int actorX = this.getX();
-        int actorY = this.getY();
-        g.setColor(actorColor);
-        g.setStroke(new BasicStroke(2));
-        int middle = this.getHeight()/2;
-        int bottom = (middle/2)-this.gap;
-        int neck = bottom/2;
-        int arm = getWidth()/2-this.gap;
-        int headSize = arm/2;
-        g.drawLine(actorX, actorY, actorX, actorY-neck-bottom);
-        g.drawLine(actorX, actorY-bottom, actorX-arm, actorY-bottom);
-        g.drawLine(actorX, actorY-bottom, actorX+arm, actorY-bottom);
-        g.drawLine(actorX, actorY, actorX-arm, actorY+bottom);
-        g.drawLine(actorX, actorY, actorX+arm, actorY+bottom);
-        g.drawOval(actorX-neck, actorY-bottom-bottom-headSize, headSize*2, headSize*2);       
-        g.setColor(Color.black);
-        g.drawString(this.name, actorX-fm.stringWidth(this.name)/2, actorY+this.getHeight()/2);
-
+//        if (getSelected())
+//        {
+//            classColor = this.selectedColor;
+//        }
+        g.setStroke(new BasicStroke(1));
+        g.setColor(classColor);
+        g.drawRect(x-this.width/2, this.y-this.height/2, this.width, this.height);
+    }
+    
+    /**
+     *
+     * @return
+     */
+    @Override
+    public int getHeight()
+    {
+        return this.height;
     }
 }

@@ -45,12 +45,6 @@ public class UCDrawingPane{
      * 
      */
     public class drawing extends JPanel{
-        //TODO: remove this
-        void drawX(Graphics2D g1, int x1, int y1) {
-                g1.drawLine(x1+5, y1+5, x1-5, y1-5);
-                g1.drawLine(x1+5, y1-5, x1-5, y1+5);
-            }
-        
         /**
          * 
          * @param g1 

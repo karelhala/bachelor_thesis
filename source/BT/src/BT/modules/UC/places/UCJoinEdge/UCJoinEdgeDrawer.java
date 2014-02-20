@@ -5,6 +5,7 @@
 package BT.modules.UC.places.UCJoinEdge;
 
 import BT.BT;
+import BT.models.LineModel;
 import java.awt.BasicStroke;
 import java.awt.Graphics2D;
 import java.awt.Point;
@@ -15,11 +16,11 @@ import java.awt.geom.AffineTransform;
  * @author Karel Hala
  */
 public class UCJoinEdgeDrawer {
-    UCJoinEdgeController joinEdgeController;
+    LineModel joinEdgeController;
     Point startPoint;
     Point endPoint;
 
-    public UCJoinEdgeDrawer(UCJoinEdgeController joinEdgeController, Point startPoint, Point endPoint) {
+    public UCJoinEdgeDrawer(LineModel joinEdgeController, Point startPoint, Point endPoint) {
         this.joinEdgeController = joinEdgeController;
         this.startPoint = startPoint;
         this.endPoint = endPoint;
@@ -46,23 +47,26 @@ public class UCJoinEdgeDrawer {
                         BasicStroke.CAP_BUTT,
                         BasicStroke.JOIN_MITER,
                         10.0f, dash1, 0.0f);
-        
-        if (this.joinEdgeController.getJoinEdgeType() == BT.UCLineType.ASSOCIATION)
+        if (this.joinEdgeController instanceof UCJoinEdgeController)
         {
-            g.drawLine(startPoint.x, startPoint.y, endPoint.x, endPoint.y);
-        }
-        else if (this.joinEdgeController.getJoinEdgeType() == BT.UCLineType.USES)
-        {
-            g.drawLine(startPoint.x, startPoint.y, endPoint.x, endPoint.y);
-            drawArrow(g, this.endPoint, this.startPoint);
-            drawString(g, this.endPoint, this.startPoint, "<<uses>>");
-        }
-        else if (this.joinEdgeController.getJoinEdgeType() == BT.UCLineType.IMPLEMENTS)
-        {
-            g.setStroke(dashed);
-            g.drawLine(startPoint.x, startPoint.y, endPoint.x, endPoint.y);
-            drawArrow(g, this.endPoint, this.startPoint);
-            drawString(g, this.endPoint, this.startPoint, "<<implements>>");
+            UCJoinEdgeController UCjoin = (UCJoinEdgeController) this.joinEdgeController;
+            if (UCjoin.getJoinEdgeType() == BT.UCLineType.ASSOCIATION)
+            {
+                g.drawLine(startPoint.x, startPoint.y, endPoint.x, endPoint.y);
+            }
+            else if (UCjoin.getJoinEdgeType() == BT.UCLineType.USES)
+            {
+                g.drawLine(startPoint.x, startPoint.y, endPoint.x, endPoint.y);
+                drawArrow(g, this.endPoint, this.startPoint);
+                drawString(g, this.endPoint, this.startPoint, "<<uses>>");
+            }
+            else if (UCjoin.getJoinEdgeType() == BT.UCLineType.IMPLEMENTS)
+            {
+                g.setStroke(dashed);
+                g.drawLine(startPoint.x, startPoint.y, endPoint.x, endPoint.y);
+                drawArrow(g, this.endPoint, this.startPoint);
+                drawString(g, this.endPoint, this.startPoint, "<<implements>>");
+            }
         }
     }
     

@@ -5,6 +5,10 @@
 package BT.modules.ClassDiagram.mainContent;
 
 import BT.managers.PlaceManager;
+import BT.models.CoordinateModel;
+import BT.models.LineModel;
+import BT.modules.ClassDiagram.places.CDClass;
+import BT.modules.ClassDiagram.places.joinEdge.CDJoinEdgeController;
 import BT.modules.UC.places.UCJoinEdge.UCJoinEdgeController;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -28,7 +32,7 @@ public class CDDrawingPane {
     
     /**
      * 
-     * @param UCPlaces 
+     * @param CDplaces
      */
     public CDDrawingPane(PlaceManager CDplaces)
     {
@@ -41,12 +45,6 @@ public class CDDrawingPane {
      * 
      */
     public class drawing extends JPanel{
-        //TODO: remove this
-        void drawX(Graphics2D g1, int x1, int y1) {
-                g1.drawLine(x1+5, y1+5, x1-5, y1-5);
-                g1.drawLine(x1+5, y1-5, x1-5, y1+5);
-            }
-        
         /**
          * 
          * @param g1 
@@ -63,13 +61,14 @@ public class CDDrawingPane {
                 
             }
             
-//            for (UCJoinEdgeController joinEdge: UCPlaces.getJoinEdges()) {
-//                joinEdge.drawJoinEdge(g);
-//            }
-//            
-//            for (UCActor actor: UCPlaces.getActors()) {
-//                actor.drawActor(g);
-//            }
+            for (LineModel joinEdge: CDplaces.getJoinEdges()) {
+                
+                ((CDJoinEdgeController) joinEdge).drawJoinEdge(g);
+            }
+            
+            for (CoordinateModel actor: CDplaces.getObjects()) {
+                ((CDClass) actor).drawClass(g);
+            }
 //            
 //            for (UCUseCase useCase: UCPlaces.getUseCases()) {
 //                useCase.drawUseCase(g);
@@ -85,7 +84,7 @@ public class CDDrawingPane {
      */
     public CDDrawingPane.drawing getDrawing()
     {
-        return this.drawPane;
+        return drawPane;
     }
     
     /**
@@ -94,7 +93,7 @@ public class CDDrawingPane {
      */
     public void setPlaces(PlaceManager places)
     {
-        this.CDplaces = places;
+        CDplaces = places;
     }
 
     /**
@@ -103,6 +102,6 @@ public class CDDrawingPane {
      */
     public void setNewLine(UCJoinEdgeController newLine)
     {
-        this.newLine = newLine;
+        newLine = newLine;
     }
 }
