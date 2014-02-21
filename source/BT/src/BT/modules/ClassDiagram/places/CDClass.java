@@ -18,7 +18,7 @@ import java.util.UUID;
  */
 public class CDClass extends CoordinateModel{
     private int textSize;
-    private int gap;
+    private Color background;
     
     public CDClass ()
     {
@@ -35,15 +35,15 @@ public class CDClass extends CoordinateModel{
         super();
         this.x = x;
         this.y = y;
-        this.selectedColor = Color.GREEN;
-        this.width = 100;
-        this.height = 60;
+        this.selectedColor = Color.RED;
+        this.width = 120;
+        this.height = 150;
         this.basicColor = Color.BLACK;
         this.color = this.basicColor;
         this.name = "Default";
         this.textSize = 15;
-        this.gap = 2;
-        this.howerColor = Color.red;
+        this.background = new Color(240, 209, 136);
+        this.howerColor = Color.GREEN;
     }
     
     /**
@@ -55,15 +55,20 @@ public class CDClass extends CoordinateModel{
         Color classColor = this.color;
         g.setFont(new Font("Arial", Font.BOLD, this.textSize));
         FontMetrics fm = g.getFontMetrics(g.getFont());
-        g.setColor(Color.white);
-        
-//        if (getSelected())
-//        {
-//            classColor = this.selectedColor;
-//        }
+        if (getSelected())
+        {
+            classColor = this.selectedColor;
+        }
         g.setStroke(new BasicStroke(1));
+        g.setColor(this.background);
+        g.fillRect(x-this.width/2, this.y-this.height/2, this.width, this.height);
         g.setColor(classColor);
+
+        g.drawLine(x-this.width/2, y-this.height/2+fm.getHeight(), x+this.width/2, y-this.height/2+fm.getHeight());
+        g.drawLine(x-this.width/2, y-getLineY(), x+this.width/2, y-getLineY());
         g.drawRect(x-this.width/2, this.y-this.height/2, this.width, this.height);
+        g.setColor(Color.BLACK);
+        g.drawString(name, x-(int) fm.getStringBounds(name, g).getWidth()/2, y-this.height/2+fm.getHeight()-2);
     }
     
     /**
@@ -74,5 +79,10 @@ public class CDClass extends CoordinateModel{
     public int getHeight()
     {
         return this.height;
+    }
+    
+    private int getLineY()
+    {
+        return -10;
     }
 }

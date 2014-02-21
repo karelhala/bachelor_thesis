@@ -95,6 +95,11 @@ public class CDDrawingPane {
     {
         CDplaces = places;
     }
+    
+    public PlaceManager getPlaces()
+    {
+        return CDplaces;
+    }
 
     /**
      * 

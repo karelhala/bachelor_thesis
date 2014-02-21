@@ -75,7 +75,8 @@ class CDMainContentModel {
             CDDrawingPane drawingPane = mainContent.getDrawingPane();
             @Override
                 public void actionPerformed(ActionEvent e) {
-                    System.out.println("Delete button pressed in Class diagram");
+                    mainContent.getDrawingPane().getPlaces().removeAllSelectedItems();
+                    mainContent.getDrawingPane().getDrawing().repaint();
                 }
             }
         );

@@ -5,6 +5,7 @@
 package BT.modules.ClassDiagram.mainContent;
 
 import BT.interfaces.DrawingClicks;
+import BT.managers.ObjectChecker;
 import BT.models.CoordinateModel;
 import java.awt.event.MouseEvent;
 import javax.swing.event.MouseInputAdapter;
@@ -31,16 +32,26 @@ public class CDDrawingListeners extends MouseInputAdapter{
     
      /**
      * 
-     * @param evt 
+     * @param e 
      */
     @Override
     public void mousePressed(MouseEvent e) {
-        System.out.println("Pressed");
+        ObjectChecker objectChecker = new ObjectChecker(this.mainContent.getMainContent().getDrawingPane().getPlaces());
+        CoordinateModel coordObject = objectChecker.getObjectUnderMouse(e.getPoint());
+        if (coordObject == null)
+        {
+            this.mainContent.drawingPaneClicked(e);
+        }
+        else
+        {
+            this.mainContent.setSelectedObject(coordObject);
+            this.selectedModel = coordObject;
+        }
     }
     
     @Override
     public void mouseDragged(MouseEvent e){
-        this.mainContent.drawingMouseDragged(e, null);
+        this.mainContent.drawingMouseDragged(e, this.selectedModel);
     }
     
     @Override
@@ -51,16 +62,22 @@ public class CDDrawingListeners extends MouseInputAdapter{
     @Override
     public void mouseReleased(MouseEvent e)
     {
-        System.out.println("released");
+        if (this.selectedModel != null)
+        {
+            this.selectedModel.setSelected(Boolean.FALSE);
+        }
+        this.selectedModel = null;
     }
     
     @Override
     public void mouseClicked(MouseEvent e)
     {
+        ObjectChecker objectChecker = new ObjectChecker(this.mainContent.getMainContent().getDrawingPane().getPlaces());
+        CoordinateModel coordObject = objectChecker.getObjectUnderMouse(e.getPoint());
         this.mainContent.drawingPaneClicked(e);
         if (e.getClickCount()%2 == 0)
         {
-            this.mainContent.drawingPaneDoubleCliked(null);
+            this.mainContent.drawingPaneDoubleCliked(coordObject);
         }
     }
 }
