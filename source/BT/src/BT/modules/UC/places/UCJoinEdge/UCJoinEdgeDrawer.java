@@ -5,25 +5,29 @@
 package BT.modules.UC.places.UCJoinEdge;
 
 import BT.BT;
+import BT.managers.JoinEdgeDrawer;
 import BT.models.LineModel;
 import java.awt.BasicStroke;
 import java.awt.Graphics2D;
 import java.awt.Point;
-import java.awt.geom.AffineTransform;
 
 /**
  *
  * @author Karel Hala
  */
-public class UCJoinEdgeDrawer {
-    LineModel joinEdgeController;
-    Point startPoint;
-    Point endPoint;
-
-    public UCJoinEdgeDrawer(LineModel joinEdgeController, Point startPoint, Point endPoint) {
+public class UCJoinEdgeDrawer extends JoinEdgeDrawer{
+    private final LineModel joinEdgeController;
+    
+    /**
+     * 
+     * @param joinEdgeController
+     * @param startPoint
+     * @param endPoint 
+     */
+    public UCJoinEdgeDrawer(LineModel joinEdgeController, Point startPoint, Point endPoint) 
+    {
+        super(startPoint, endPoint);
         this.joinEdgeController = joinEdgeController;
-        this.startPoint = startPoint;
-        this.endPoint = endPoint;
     }
     
     /**
@@ -52,63 +56,21 @@ public class UCJoinEdgeDrawer {
             UCJoinEdgeController UCjoin = (UCJoinEdgeController) this.joinEdgeController;
             if (UCjoin.getJoinEdgeType() == BT.UCLineType.ASSOCIATION)
             {
-                g.drawLine(startPoint.x, startPoint.y, endPoint.x, endPoint.y);
+                g.drawLine(this.startPoint.x, this.startPoint.y, this.endPoint.x, this.endPoint.y);
             }
             else if (UCjoin.getJoinEdgeType() == BT.UCLineType.USES)
             {
-                g.drawLine(startPoint.x, startPoint.y, endPoint.x, endPoint.y);
+                g.drawLine(this.startPoint.x, this.startPoint.y, this.endPoint.x, this.endPoint.y);
                 drawArrow(g, this.endPoint, this.startPoint);
                 drawString(g, this.endPoint, this.startPoint, "<<uses>>");
             }
             else if (UCjoin.getJoinEdgeType() == BT.UCLineType.IMPLEMENTS)
             {
                 g.setStroke(dashed);
-                g.drawLine(startPoint.x, startPoint.y, endPoint.x, endPoint.y);
+                g.drawLine(this.startPoint.x, this.startPoint.y, this.endPoint.x, this.endPoint.y);
                 drawArrow(g, this.endPoint, this.startPoint);
                 drawString(g, this.endPoint, this.startPoint, "<<implements>>");
             }
         }
     }
-    
-    /**
-     * Method for drawing arrow at end of the line given by 2 points.
-     * @param g2D
-     * @param A
-     * @param B 111111111111111111111111
-     */
-    private void drawArrow(Graphics2D g2D, Point A, Point B)
-    {
-        Graphics2D g = (Graphics2D) g2D.create();
-        g.setStroke(new BasicStroke(2));
-        double dx = B.x - A.x;
-        double dy = B.y - A.y;
-        double angle = Math.atan2(dy, dx);
-        AffineTransform at = AffineTransform.getTranslateInstance(A.x, A.y);
-        at.concatenate(AffineTransform.getRotateInstance(angle));
-        g.transform(at);
-
-        g.drawLine(0, 0, 0+5, 0+5);
-        g.drawLine(0, 0, 0+5, 0-5);
-    }
-    
-    private void drawString(Graphics2D g2D, Point A, Point B, String name)
-    {
-        Graphics2D g = (Graphics2D) g2D.create();
-        g.setStroke(new BasicStroke(2));
-        double dx = B.x - A.x;
-        double dy = B.y - A.y;
-        double angle = Math.atan2(dy, dx);
-        int len = (int) Math.sqrt(dx*dx + dy*dy);
-        if ((angle<=Math.PI && angle>=Math.PI/2) || (angle>=-Math.PI && angle<=-Math.PI/2))
-        {
-            len = -len*2;
-            angle = angle-Math.PI;
-        }
-        AffineTransform at = AffineTransform.getTranslateInstance(A.x, A.y);
-        at.concatenate(AffineTransform.getRotateInstance(angle));
-        g.transform(at);
-
-        g.drawString(name, len/3, -5);
-    }
-    
 }

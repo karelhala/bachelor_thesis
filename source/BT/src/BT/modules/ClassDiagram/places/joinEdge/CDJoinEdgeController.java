@@ -4,14 +4,11 @@
  */
 package BT.modules.ClassDiagram.places.joinEdge;
 
-import BT.BT;
 import BT.BT.CDLineType;
 import BT.managers.PointsCalculator;
 import BT.models.CoordinateModel;
 import BT.models.LineModel;
-import BT.modules.UC.places.UCActor;
 import BT.modules.UC.places.UCJoinEdge.UCJoinEdgeDrawer;
-import BT.modules.UC.places.UCUseCase;
 import java.awt.BasicStroke;
 import java.awt.Graphics2D;
 import java.awt.Point;

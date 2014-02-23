@@ -62,10 +62,6 @@ public class CDDrawingListeners extends MouseInputAdapter{
     @Override
     public void mouseReleased(MouseEvent e)
     {
-        if (this.selectedModel != null)
-        {
-            this.selectedModel.setSelected(Boolean.FALSE);
-        }
         this.selectedModel = null;
     }
     
