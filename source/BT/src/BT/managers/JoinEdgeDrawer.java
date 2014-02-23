@@ -6,6 +6,7 @@
 
 package BT.managers;
 
+import BT.models.LineModel;
 import java.awt.BasicStroke;
 import java.awt.Graphics2D;
 import java.awt.Point;
@@ -14,10 +15,21 @@ import java.awt.geom.AffineTransform;/**
  * @author Karel Hala
  */
 public class JoinEdgeDrawer {
+    /**
+     * 
+     */
     protected Point startPoint;
+    
+    /**
+     * 
+     */
     protected Point endPoint;
+    
+    protected LineModel joinEdgeController;
 
-    public JoinEdgeDrawer(Point startPoint, Point endPoint) {
+    public JoinEdgeDrawer(LineModel joinEdgeController, Point startPoint, Point endPoint) 
+    {
+        this.joinEdgeController = joinEdgeController;
         this.startPoint = startPoint;
         this.endPoint = endPoint;
     }
@@ -43,6 +55,13 @@ public class JoinEdgeDrawer {
         g.drawLine(0, 0, 0+5, 0-5);
     }
     
+    /**
+     * 
+     * @param g2D
+     * @param A
+     * @param B
+     * @param name 
+     */
     protected void drawString(Graphics2D g2D, Point A, Point B, String name)
     {
         Graphics2D g = (Graphics2D) g2D.create();

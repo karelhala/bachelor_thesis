@@ -6,10 +6,7 @@ package BT.modules.UC.places.UCJoinEdge;
 
 import BT.managers.PointsCalculator;
 import BT.BT.UCLineType;
-import BT.models.CoordinateModel;
 import BT.models.LineModel;
-import BT.modules.UC.places.UCActor;
-import BT.modules.UC.places.UCUseCase;
 import java.awt.BasicStroke;
 import java.awt.Graphics2D;
 import java.awt.Point;
@@ -22,7 +19,8 @@ import java.util.Objects;
 public class UCJoinEdgeController extends LineModel{
     private UCLineType joinEdgeType;
 
-    public void setJoinEdgeType(UCLineType joinEdgeType) {
+    public void setJoinEdgeType(UCLineType joinEdgeType) 
+    {
         this.joinEdgeType = joinEdgeType;
     }
     
@@ -33,40 +31,6 @@ public class UCJoinEdgeController extends LineModel{
     {
         super();
         this.joinEdgeType = UCLineType.ASSOCIATION;
-    }
-    
-    /**
-     * 
-     * @param object 
-     */
-    @Override
-    public void setFirstObject(CoordinateModel object)
-    {
-        setStartCoordinates(new Point(object.getX(), object.getY()));
-        setEndPoint(new Point(object.getX(), object.getY()));
-        this.firstObject = object;
-    }
-    
-    /**
-     * 
-     * @param object 
-     */
-    @Override
-    public void setSecondObject(CoordinateModel object)
-    {
-        if (object !=null)
-        {
-            setEndPoint(new Point(object.getX(), object.getY()));
-        }
-        if (this.firstObject instanceof UCActor && object instanceof UCUseCase)
-        {
-            this.secondObject = this.firstObject;
-            this.firstObject = object;
-        }
-        else
-        {
-            this.secondObject = object;
-        }
     }
     
     /**

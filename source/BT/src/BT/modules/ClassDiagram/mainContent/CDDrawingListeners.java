@@ -70,10 +70,13 @@ public class CDDrawingListeners extends MouseInputAdapter{
     {
         ObjectChecker objectChecker = new ObjectChecker(this.mainContent.getMainContent().getDrawingPane().getPlaces());
         CoordinateModel coordObject = objectChecker.getObjectUnderMouse(e.getPoint());
-        this.mainContent.drawingPaneClicked(e);
         if (e.getClickCount()%2 == 0)
         {
             this.mainContent.drawingPaneDoubleCliked(coordObject);
+        }
+        else
+        {
+            this.mainContent.drawingPaneClicked(e);   
         }
     }
 }

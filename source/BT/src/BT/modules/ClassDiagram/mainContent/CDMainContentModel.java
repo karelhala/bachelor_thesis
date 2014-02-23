@@ -9,6 +9,7 @@ import BT.managers.PlaceManager;
 import BT.modules.ClassDiagram.CDLeftBottomContent;
 import BT.modules.ClassDiagram.CDLeftTopContent;
 import BT.modules.ClassDiagram.CDMainContent;
+import BT.modules.ClassDiagram.places.joinEdge.CDJoinEdgeController;
 import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
 import javax.swing.InputMap;
@@ -24,6 +25,7 @@ class CDMainContentModel {
     protected CDLeftBottomContent LeftBottomContent;
     protected PlaceManager places;
     protected CDLeftTopContent LeftTopContent;
+    protected CDJoinEdgeController newJoinEdge;
 
     public CDMainContentModel()
     {
@@ -54,6 +56,14 @@ class CDMainContentModel {
 
     public void setLeftTopContent(CDLeftTopContent LeftTopContent) {
         this.LeftTopContent = LeftTopContent;
+    }
+
+    public void setNewJoinEdge(CDJoinEdgeController newJoinEdge) {
+        this.newJoinEdge = newJoinEdge;
+    }
+
+    public CDJoinEdgeController getNewJoinEdge() {
+        return newJoinEdge;
     }
     
     private void createMainPane()

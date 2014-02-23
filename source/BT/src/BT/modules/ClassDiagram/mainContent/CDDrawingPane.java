@@ -23,7 +23,7 @@ import javax.swing.JPanel;
 public class CDDrawingPane {
     private PlaceManager CDplaces;
     private CDDrawingPane.drawing drawPane;
-    private UCJoinEdgeController newLine;
+    private CDJoinEdgeController newLine;
 
      public CDDrawingPane()
     {
@@ -39,6 +39,10 @@ public class CDDrawingPane {
         this.drawPane = new CDDrawingPane.drawing();
         this.CDplaces = CDplaces;
         this.newLine = null;
+    }
+
+    void setNewLine(CDJoinEdgeController newJoinEdge) {
+        newLine = newJoinEdge;
     }
     
     /**
@@ -99,14 +103,5 @@ public class CDDrawingPane {
     public PlaceManager getPlaces()
     {
         return CDplaces;
-    }
-
-    /**
-     * 
-     * @param newLine 
-     */
-    public void setNewLine(UCJoinEdgeController newLine)
-    {
-        newLine = newLine;
     }
 }

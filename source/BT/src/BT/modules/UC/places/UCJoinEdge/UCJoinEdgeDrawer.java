@@ -16,7 +16,6 @@ import java.awt.Point;
  * @author Karel Hala
  */
 public class UCJoinEdgeDrawer extends JoinEdgeDrawer{
-    private final LineModel joinEdgeController;
     
     /**
      * 
@@ -26,8 +25,7 @@ public class UCJoinEdgeDrawer extends JoinEdgeDrawer{
      */
     public UCJoinEdgeDrawer(LineModel joinEdgeController, Point startPoint, Point endPoint) 
     {
-        super(startPoint, endPoint);
-        this.joinEdgeController = joinEdgeController;
+        super(joinEdgeController, startPoint, endPoint);
     }
     
     /**

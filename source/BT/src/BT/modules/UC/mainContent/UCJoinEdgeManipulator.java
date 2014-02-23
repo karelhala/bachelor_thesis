@@ -24,7 +24,8 @@ public class UCJoinEdgeManipulator {
     
     /**
      * 
-     * @param selectedJoinEdgeButton 
+     * @param selectedButton
+     * @param joinEdge
      */
     public static void changeLineTypeByButton(JToggleButton selectedButton, UCJoinEdgeController joinEdge)
     {
@@ -63,11 +64,20 @@ public class UCJoinEdgeManipulator {
         }
         else if (joinEdge.getSecondObject() == null)
         {
-            joinEdge.setSecondObject(clickedObject);
+            if (clickedObject instanceof UCUseCase && joinEdge.getFirstObject() instanceof UCActor)
+            {
+                joinEdge.setSecondObject(joinEdge.getFirstObject());
+                joinEdge.setFirstObject(clickedObject);
+            }
+            else
+            {
+                joinEdge.setSecondObject(clickedObject);
+            }
         }       
         return joinEdge;
     }
     
+    /* Move this to propriete class */
     public static void setLineTypeBySecondObject(UCJoinEdgeController joinEdge)
     {
         if (joinEdge.getFirstObject() instanceof UCUseCase && joinEdge.getSecondObject() instanceof UCActor)

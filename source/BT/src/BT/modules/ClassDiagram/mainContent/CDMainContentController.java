@@ -5,11 +5,11 @@
 package BT.modules.ClassDiagram.mainContent;
 
 import BT.interfaces.DrawingClicks;
-import BT.managers.ObjectChackerManager;
 import BT.managers.ObjectChecker;
 import BT.models.CoordinateModel;
 import BT.modules.ClassDiagram.places.CDClass;
-import java.awt.Color;
+import BT.modules.UC.mainContent.UCDrawingPane;
+import BT.modules.UC.mainContent.UCJoinEdgeManipulator;
 import java.awt.event.MouseEvent;
 import javax.swing.JOptionPane;
 import javax.swing.JToggleButton;
@@ -69,6 +69,10 @@ public class CDMainContentController extends CDMainContentModel implements Drawi
         else
         {
             coordObject.setSelected(Boolean.TRUE);
+            if (this.LeftBottomContent.getSelectedButton() != null)
+            {
+                drawJoinEdge(coordObject);
+            }
         }
         this.mainContent.getDrawingPane().getDrawing().repaint();
     }
@@ -82,11 +86,20 @@ public class CDMainContentController extends CDMainContentModel implements Drawi
     {
         ObjectChecker objectChecker = new ObjectChecker(this.mainContent.getDrawingPane().getPlaces());
         CoordinateModel coordObject = objectChecker.getObjectUnderMouse(evt.getPoint());
+        CDDrawingPane UCdrawing = this.mainContent.getDrawingPane();
+        if (this.newJoinEdge != null)
+        {
+            if (this.newJoinEdge.getSecondObject() == null)
+            {
+                this.newJoinEdge.setEndPoint(evt.getPoint());
+            }
+            UCdrawing.setNewLine(this.newJoinEdge);
+        }
         if (coordObject != null)
         {
             coordObject.setHowerColor();
         }
-        this.mainContent.getDrawingPane().getDrawing().repaint();
+        UCdrawing.getDrawing().repaint();
     }
 
     /**
@@ -120,9 +133,30 @@ public class CDMainContentController extends CDMainContentModel implements Drawi
             this.mainContent.getDrawingPane().getDrawing().repaint();
         }
     }
-
+    
     @Override
     public void buttonsChanged() {
-        System.out.println("buttons has been changed");
+    }
+    
+    public void drawJoinEdge(CoordinateModel clickedObject)
+    {
+        this.newJoinEdge = CDJoinEdgeManipulator.createJoinEdge(this.newJoinEdge,clickedObject);
+        CDJoinEdgeManipulator.changeLineTypeByButton(this.LeftBottomContent.getSelectedButton(),this.newJoinEdge);
+
+        if (this.newJoinEdge.getFirstObject()!= null && this.newJoinEdge.getSecondObject() != null)
+        {
+            if (this.newJoinEdge.getFirstObject().equals(clickedObject))
+            {
+                this.newJoinEdge.setSelected(true);
+            }
+            else
+            {
+                this.newJoinEdge.setSelected(false);
+            }
+            this.places.addObject(this.newJoinEdge);
+            this.newJoinEdge = null;
+        }
+        CDDrawingPane cdDrawing = this.mainContent.getDrawingPane();
+        cdDrawing.setNewLine(newJoinEdge);
     }
 }

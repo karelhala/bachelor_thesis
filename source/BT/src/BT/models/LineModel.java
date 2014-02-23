@@ -46,10 +46,16 @@ public class LineModel extends CoordinateModel{
     }
 
     public void setFirstObject(CoordinateModel firstObject) {
+        setStartCoordinates(new Point(firstObject.getX(), firstObject.getY()));
+        setEndPoint(new Point(firstObject.getX(), firstObject.getY()));
         this.firstObject = firstObject;
     }
 
     public void setSecondObject(CoordinateModel secondObject) {
+        if (secondObject != null)
+        {
+            setEndPoint(new Point(secondObject.getX(), secondObject.getY()));
+        }
         this.secondObject = secondObject;
     }
 
@@ -58,9 +64,7 @@ public class LineModel extends CoordinateModel{
     }
     
     /**
-     * 
-     * @param x
-     * @param y 
+     * @param endPoint 
      */
     public void setEndPoint(Point endPoint)
     {

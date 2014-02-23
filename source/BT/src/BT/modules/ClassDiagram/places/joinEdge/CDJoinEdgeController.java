@@ -20,8 +20,14 @@ import java.awt.Point;
 public class CDJoinEdgeController extends LineModel{
     private CDLineType joinEdgeType;
     
-    public void setJoinEdgeType(CDLineType joinEdgeType) {
+    public void setJoinEdgeType(CDLineType joinEdgeType) 
+    {
         this.joinEdgeType = joinEdgeType;
+    }
+    
+    public CDLineType getJoinEdgeType() 
+    {
+        return joinEdgeType;
     }
     
     /**
@@ -32,36 +38,6 @@ public class CDJoinEdgeController extends LineModel{
         super();
         this.joinEdgeType = CDLineType.ASSOCIATION;
     }
-    
-    /**
-     * 
-     * @param object 
-     */
-    @Override
-    public void setFirstObject(CoordinateModel object)
-    {
-        setStartCoordinates(new Point(object.getX(), object.getY()));
-        setEndPoint(new Point(object.getX(), object.getY()));
-        this.firstObject = object;
-    }
-    
-    /**
-     * 
-     * @param object 
-     */
-    @Override
-    public void setSecondObject(CoordinateModel object)
-    {
-        if (object !=null)
-        {
-            setEndPoint(new Point(object.getX(), object.getY()));
-        }
-        else
-        {
-            this.secondObject = object;
-        }
-    }
-    
     
         /**
      * 
@@ -77,13 +53,14 @@ public class CDJoinEdgeController extends LineModel{
         this.startY = this.firstObject.getY();
         PointsCalculator pointsCaluclator = new PointsCalculator(this.firstObject, this.secondObject, new Point(this.startX, this.startY), new Point(this.endX, this.endY));  
         
-        UCJoinEdgeDrawer lineDrawer = new UCJoinEdgeDrawer(this, pointsCaluclator.getStartPoint(), pointsCaluclator.getEndPoint());
+        CDJoinEdgeDrawer lineDrawer;
+        lineDrawer = new CDJoinEdgeDrawer(this, pointsCaluclator.getStartPoint(), pointsCaluclator.getEndPoint());
         Point startPoint = pointsCaluclator.getStartPoint();
         Point endPoint = pointsCaluclator.getEndPoint();
         if (startPoint !=null && endPoint !=null)
         {
             g.setStroke(new BasicStroke(2));
-//            lineDrawer.drawLine(g);
+            lineDrawer.drawLine(g);
             setStartCoordinates(startPoint);
             
             setEndPoint(endPoint);
