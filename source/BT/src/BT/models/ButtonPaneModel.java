@@ -6,7 +6,6 @@ package BT.models;
 
 import BT.interfaces.DrawingClicks;
 import BT.interfaces.ToggleButtonsInterface;
-import BT.modules.ClassDiagram.CDMainContent;
 import BT.modules.ClassDiagram.mainContent.CDMainContentController;
 import BT.modules.UC.mainContent.UCMainContentController;
 import java.awt.Component;
@@ -49,9 +48,8 @@ public class ButtonPaneModel extends ContentPaneModel implements ToggleButtonsIn
 
     /**
      * Method for getting button specified by it's name.
-     * @param String name of button that will be returned
+     * @param name
      * @return JToggleButton specified by it's name
-     * @return null if no button is found
      */
     @Override
     public JToggleButton getButtonWithName(String name) {

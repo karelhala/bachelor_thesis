@@ -29,6 +29,7 @@ public class UCJoinEdgeManipulator {
      */
     public static void changeLineTypeByButton(JToggleButton selectedButton, UCJoinEdgeController joinEdge)
     {
+        System.out.println(selectedButton);
         switch (selectedButton.getName())
         {
            case "ASSOCIATION":
@@ -41,6 +42,9 @@ public class UCJoinEdgeManipulator {
 
            case "EXTENDS":  
                     joinEdge.setJoinEdgeType(BT.UCLineType.EXTENDS);
+                 break;
+           case "GENERALIZATION":
+                    joinEdge.setJoinEdgeType(BT.UCLineType.GENERALIZATION);
                  break;
         }
         setLineTypeBySecondObject(joinEdge);
