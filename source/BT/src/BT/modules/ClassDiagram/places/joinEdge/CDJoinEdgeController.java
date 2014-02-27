@@ -39,7 +39,7 @@ public class CDJoinEdgeController extends LineModel{
         this.joinEdgeType = CDLineType.ASSOCIATION;
     }
     
-        /**
+    /**
      * 
      * @param g 
      */

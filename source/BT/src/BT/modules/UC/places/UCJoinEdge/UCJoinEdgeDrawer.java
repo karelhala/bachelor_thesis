@@ -71,10 +71,8 @@ public class UCJoinEdgeDrawer extends JoinEdgeDrawer{
             }
             else if (UCjoin.getJoinEdgeType() == BT.UCLineType.GENERALIZATION)
             {
-                g.setStroke(dashed);
                 g.drawLine(this.startPoint.x, this.startPoint.y, this.endPoint.x, this.endPoint.y);
-                drawArrow(g, this.endPoint, this.startPoint);
-                drawString(g, this.endPoint, this.startPoint, "<<generalize>>");
+                drawTriangle(g, this.endPoint, this.startPoint);
             }
         }
     }
