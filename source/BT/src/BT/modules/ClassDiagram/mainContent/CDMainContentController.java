@@ -4,12 +4,12 @@
  */
 package BT.modules.ClassDiagram.mainContent;
 
+import BT.BT;
 import BT.interfaces.DrawingClicks;
 import BT.managers.ObjectChecker;
 import BT.models.CoordinateModel;
 import BT.modules.ClassDiagram.places.CDClass;
-import BT.modules.UC.mainContent.UCDrawingPane;
-import BT.modules.UC.mainContent.UCJoinEdgeManipulator;
+import BT.modules.ClassDiagram.places.joinEdge.CDJoinEdgeController;
 import java.awt.event.MouseEvent;
 import javax.swing.JOptionPane;
 import javax.swing.JToggleButton;
@@ -36,12 +36,22 @@ public class CDMainContentController extends CDMainContentModel implements Drawi
     @Override
     public void drawingMouseDragged(MouseEvent e, CoordinateModel dragged)
     {
-        if (dragged != null)
+        if (dragged instanceof CDClass)
         {
             dragged.setX(e.getX());
             dragged.setY(e.getY());
             this.mainContent.getDrawingPane().getDrawing().repaint();
         }
+        else
+        {
+            CDJoinEdgeController draggedJoinEdge = (CDJoinEdgeController) dragged;
+            if (!draggedJoinEdge.isInRange(e.getX(), e.getY()))
+            {
+                removeLineFromArrayListAndSetNewLine(draggedJoinEdge);
+                drawingPanecheckMove(e);
+            }
+        }
+        this.mainContent.getDrawingPane().getDrawing().repaint();
     }
     
     /**
@@ -56,7 +66,7 @@ public class CDMainContentController extends CDMainContentModel implements Drawi
         if (coordObject == null)
         {
             JToggleButton selectedItemButton = this.LeftTopContent.getSelectedButton();
-            if (selectedItemButton != null && "ACTOR".equals(selectedItemButton.getName()))
+            if (selectedItemButton != null && "CLASS".equals(selectedItemButton.getName()))
             {
                 this.places.setAllObjectDiselected();
                 this.places.addObject(new CDClass(evt.getX(), evt.getY()));
@@ -66,7 +76,7 @@ public class CDMainContentController extends CDMainContentModel implements Drawi
                 this.places.setAllObjectDiselected();
             }
         }
-        else
+        else if (coordObject instanceof CDClass)
         {
             coordObject.setSelected(Boolean.TRUE);
             if (this.LeftBottomContent.getSelectedButton() != null)
@@ -134,10 +144,29 @@ public class CDMainContentController extends CDMainContentModel implements Drawi
         }
     }
     
+    /**
+     * 
+     */
     @Override
     public void buttonsChanged() {
+        JToggleButton selectedJoinEdgeButton = this.LeftBottomContent.getSelectedButton();
+        CDDrawingPane cdDrawing = this.mainContent.getDrawingPane();
+        if (selectedJoinEdgeButton == null)
+        {
+            this.newJoinEdge = null;
+            cdDrawing.setNewLine(null);
+        }
+        else if (this.newJoinEdge != null)
+        {
+            CDJoinEdgeManipulator.changeLineTypeByButton(this.LeftBottomContent.getSelectedButton(),this.newJoinEdge);
+        }
+        cdDrawing.getDrawing().repaint();
     }
     
+    /**
+     * 
+     * @param clickedObject 
+     */
     public void drawJoinEdge(CoordinateModel clickedObject)
     {
         this.newJoinEdge = CDJoinEdgeManipulator.createJoinEdge(this.newJoinEdge,clickedObject);

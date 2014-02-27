@@ -93,4 +93,16 @@ class CDMainContentModel {
         InputMap inputMap = drawingPane.getDrawing().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
         inputMap.put(KeyStroke.getKeyStroke("DELETE"), "removeObject");
     }
+    
+    /**
+     * 
+     * @param joinEdge 
+     */
+    public void removeLineFromArrayListAndSetNewLine(CDJoinEdgeController joinEdge) 
+    {
+        this.newJoinEdge = new CDJoinEdgeController();
+        this.newJoinEdge.setFirstObject(joinEdge.getFirstObject());
+        CDJoinEdgeManipulator.changeLineTypeByButton(this.LeftBottomContent.getSelectedButton(),this.newJoinEdge);
+        this.places.removeJoinEdge(joinEdge);
+    }
 }

@@ -6,6 +6,8 @@
 
 package BT.modules.ClassDiagram.mainContent;
 
+import BT.BT;
+import BT.BT.CDLineType;
 import BT.models.CoordinateModel;
 import BT.modules.ClassDiagram.places.joinEdge.CDJoinEdgeController;
 import javax.swing.JToggleButton;
@@ -31,13 +33,25 @@ public class CDJoinEdgeManipulator {
     {
         switch (selectedButton.getName())
         {
-           case "ASSOCIATION":
-                    joinEdge.setJoinEdgeType(BT.BT.CDLineType.ASSOCIATION);
+            case "AGGREGATION":
+                joinEdge.setJoinEdgeType(CDLineType.AGGREGATION);
+                break;
+            case "ASSOCIATION":
+                joinEdge.setJoinEdgeType(CDLineType.ASSOCIATION);
+                break;
+            case "COMPOSITION":
+                joinEdge.setJoinEdgeType(CDLineType.COMPOSITION);
+                break;
+            case "GENERALIZATION":
+                    joinEdge.setJoinEdgeType(CDLineType.GENERALIZATION);
                  break;
+            case "REALIZATION":
+                    joinEdge.setJoinEdgeType(CDLineType.REALIZATION);
+                break;
         }
         setLineTypeBySecondObject(joinEdge);
     }
-    
+
     /**
      * 
      * @param joinEdge

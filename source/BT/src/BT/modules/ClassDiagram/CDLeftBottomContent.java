@@ -28,7 +28,7 @@ public final class CDLeftBottomContent extends ButtonPaneModel{
 
     /**
      * contructor, that creates grid of 3 rows and 1 column a fill them with jtogglebuttons
-     * @param UCMainContent UCMain maincontent that will react to when buttons are selected
+     * @param cdMain
      */
     public CDLeftBottomContent(CDMainContentController cdMain)
     {
@@ -53,10 +53,10 @@ public final class CDLeftBottomContent extends ButtonPaneModel{
         composition.setName(CDLineType.COMPOSITION.name());
         
         JToggleButton generalization = new JToggleButton("Generalization");
-        composition.setName(CDLineType.GENERALIZATION.name());
+        generalization.setName(CDLineType.GENERALIZATION.name());
         
         JToggleButton realization = new JToggleButton("Realization");
-        composition.setName(CDLineType.REALIZATION.name());
+        realization.setName(CDLineType.REALIZATION.name());
         
         this.mainContentPane.add(association);
         this.mainContentPane.add(agregation);

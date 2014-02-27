@@ -43,7 +43,7 @@ public final class CDLeftTopContent extends ButtonPaneModel{
     public void createMainPane()
     {
         JToggleButton newClass = new JToggleButton("New Class");
-        newClass.setName(BT.UCObjectType.ACTOR.name());
+        newClass.setName(BT.CDObjectType.CLASS.name());
         
         this.mainContentPane.add(newClass);
     }
