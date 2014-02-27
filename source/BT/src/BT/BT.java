@@ -14,7 +14,7 @@ import javax.swing.UnsupportedLookAndFeelException;
  * @author Karel Hala
  */
 public class BT {
-    public static enum UCLineType{ASSOCIATION, USES, IMPLEMENTS};
+    public static enum UCLineType{ASSOCIATION, INCLUDE, EXTENDS};
     public static enum UCObjectType{ACTOR, USECASE};
     public static enum CDLineType{ASSOCIATION, AGGREGATION, COMPOSITION, GENERALIZATION, REALIZATION};
     public static enum CDObjectType{CLASS};

@@ -46,11 +46,11 @@ public final class UCLeftBottomContent extends ButtonPaneModel{
         JToggleButton association = new JToggleButton("Association");
         association.setName(UCLineType.ASSOCIATION.name());
         
-        JToggleButton include = new JToggleButton("Uses");
-        include.setName(UCLineType.USES.name());
+        JToggleButton include = new JToggleButton("Include");
+        include.setName(UCLineType.INCLUDE.name());
         
-        JToggleButton extend = new JToggleButton("Emplements");
-        extend.setName(UCLineType.IMPLEMENTS.name());
+        JToggleButton extend = new JToggleButton("Extends");
+        extend.setName(UCLineType.EXTENDS.name());
         
         this.mainContentPane.add(association);
         this.mainContentPane.add(include);

@@ -35,12 +35,12 @@ public class UCJoinEdgeManipulator {
                     joinEdge.setJoinEdgeType(BT.UCLineType.ASSOCIATION);
                  break;
 
-           case "USES":  
-                    joinEdge.setJoinEdgeType(BT.UCLineType.USES);
+           case "INCLUDE":  
+                    joinEdge.setJoinEdgeType(BT.UCLineType.INCLUDE);
                  break;
 
-           case "IMPLEMENTS":  
-                    joinEdge.setJoinEdgeType(BT.UCLineType.IMPLEMENTS);
+           case "EXTENDS":  
+                    joinEdge.setJoinEdgeType(BT.UCLineType.EXTENDS);
                  break;
         }
         setLineTypeBySecondObject(joinEdge);
@@ -77,7 +77,10 @@ public class UCJoinEdgeManipulator {
         return joinEdge;
     }
     
-    /* Move this to propriete class */
+    /**
+     * 
+     * @param joinEdge 
+     */
     public static void setLineTypeBySecondObject(UCJoinEdgeController joinEdge)
     {
         if (joinEdge.getFirstObject() instanceof UCUseCase && joinEdge.getSecondObject() instanceof UCActor)
