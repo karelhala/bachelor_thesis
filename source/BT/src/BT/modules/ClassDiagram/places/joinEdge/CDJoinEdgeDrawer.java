@@ -60,26 +60,22 @@ public class CDJoinEdgeDrawer extends JoinEdgeDrawer{
             }
             else if (cdJoin.getJoinEdgeType() == BT.CDLineType.COMPOSITION)
             {
-                g.setStroke(dashed);
                 g.drawLine(this.startPoint.x, this.startPoint.y, this.endPoint.x, this.endPoint.y);
                 drawArrow(g, this.endPoint, this.startPoint);
                 drawString(g, this.endPoint, this.startPoint, "<<composition>>");
             }
             else if (cdJoin.getJoinEdgeType() == BT.CDLineType.GENERALIZATION)
             {
-                g.setStroke(dashed);
                 g.drawLine(this.startPoint.x, this.startPoint.y, this.endPoint.x, this.endPoint.y);
-                drawArrow(g, this.endPoint, this.startPoint);
+                drawTriangle(g, this.endPoint, this.startPoint);
                 drawString(g, this.endPoint, this.startPoint, "<<generalization>>");
             }
             else if (cdJoin.getJoinEdgeType() == BT.CDLineType.REALIZATION)
             {
-                g.setStroke(dashed);
                 g.drawLine(this.startPoint.x, this.startPoint.y, this.endPoint.x, this.endPoint.y);
                 drawArrow(g, this.endPoint, this.startPoint);
                 drawString(g, this.endPoint, this.startPoint, "<<realization>>");
-            }
-            
+            }            
         }
     }
     

@@ -18,6 +18,8 @@ public class BT {
     public static enum UCObjectType{ACTOR, USECASE};
     public static enum CDLineType{ASSOCIATION, AGGREGATION, COMPOSITION, GENERALIZATION, REALIZATION};
     public static enum CDObjectType{CLASS};
+    public static enum AttributeType{PUBLIC, PRIVATE, PROTECTED};
+    
     /**
      * @param args the command line arguments
      */

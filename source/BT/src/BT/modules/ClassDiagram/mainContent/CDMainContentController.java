@@ -4,8 +4,8 @@
  */
 package BT.modules.ClassDiagram.mainContent;
 
-import BT.BT;
 import BT.interfaces.DrawingClicks;
+import BT.managers.CD.Attribute;
 import BT.managers.ObjectChecker;
 import BT.models.CoordinateModel;
 import BT.modules.ClassDiagram.places.CDClass;
@@ -42,7 +42,7 @@ public class CDMainContentController extends CDMainContentModel implements Drawi
             dragged.setY(e.getY());
             this.mainContent.getDrawingPane().getDrawing().repaint();
         }
-        else
+        else if (dragged != null)
         {
             CDJoinEdgeController draggedJoinEdge = (CDJoinEdgeController) dragged;
             if (!draggedJoinEdge.isInRange(e.getX(), e.getY()))
@@ -69,7 +69,12 @@ public class CDMainContentController extends CDMainContentModel implements Drawi
             if (selectedItemButton != null && "CLASS".equals(selectedItemButton.getName()))
             {
                 this.places.setAllObjectDiselected();
-                this.places.addObject(new CDClass(evt.getX(), evt.getY()));
+                CDClass newClass = new CDClass(evt.getX(), evt.getY());
+                newClass.addNewVariable(new Attribute("variable1", "String"));
+                newClass.addNewVariable(new Attribute("variable2", "int"));
+                newClass.addNewMethod(new Attribute("one()", "void"));
+                newClass.addNewMethod(new Attribute("two()", "void"));
+                this.places.addObject(newClass);
             }
             else
             {

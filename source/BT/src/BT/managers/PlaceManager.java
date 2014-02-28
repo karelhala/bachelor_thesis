@@ -5,7 +5,6 @@
 package BT.managers;
 
 import BT.models.PlaceModel;
-import BT.modules.UC.places.UCJoinEdge.UCJoinEdgeController;
 import BT.models.CoordinateModel;
 import BT.models.LineModel;
 import java.util.Iterator;
