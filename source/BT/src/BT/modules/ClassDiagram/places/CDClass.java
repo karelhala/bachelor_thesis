@@ -40,8 +40,6 @@ public class CDClass extends CoordinateModel{
         this.x = x;
         this.y = y;
         this.selectedColor = Color.RED;
-        this.width = 120;
-        this.height = 150;
         this.basicColor = Color.BLACK;
         this.color = this.basicColor;
         this.name = "Default";
@@ -67,6 +65,8 @@ public class CDClass extends CoordinateModel{
         }
         g.setStroke(new BasicStroke(1));
         g.setColor(this.background);
+        this.width = this.getMaximumWidth(fm);
+        this.height = this.getMaximumHeight(fm);
         g.fillRect(x-this.width/2, this.y-this.height/2, this.width, this.height);
         g.setColor(classColor);
 
@@ -103,19 +103,76 @@ public class CDClass extends CoordinateModel{
         return -10;
     }
     
+    /**
+     * 
+     * @param newVariable 
+     */
     public void addNewVariable(Attribute newVariable)
     {
         this.variables.add(newVariable);
     }
     
+    /**
+     * 
+     * @param newMethod 
+     */
     public void addNewMethod(Attribute newMethod)
     {
         this.methods.add(newMethod);
     }
 
+    /**
+     * 
+     * @param g
+     * @param attribues
+     * @param nameLinePoint
+     * @param fm 
+     */
     private void drawAttributes(Graphics2D g, ArrayList<Attribute> attribues, Point nameLinePoint, FontMetrics fm) {
         for (Attribute attribute : attribues) {
             g.drawString(attribute.getName() + ":" + attribute.getType(), x-nameLinePoint.x + 5, y-nameLinePoint.y+(attribues.indexOf(attribute) * fm.getHeight()));
         }
+    }
+    
+    private int getMaximumHeight(FontMetrics fm)
+    {
+        int textheight = fm.getHeight();
+        int shapeHeight = textheight + (textheight * this.variables.size()) + (textheight * this.methods.size());
+        return ((shapeHeight+10) > this.height)?shapeHeight+10:this.height;
+    }
+    
+    /**
+     * 
+     * @param fm
+     * @return 
+     */
+    private int getMaximumWidth(FontMetrics fm)
+    {
+        int shapewidth = fm.stringWidth(this.name);
+        int variableMaxWidth = getMaximumStringLengthOfAttribute(this.variables, fm);
+        shapewidth = ( variableMaxWidth> shapewidth)?variableMaxWidth:shapewidth;
+        int methodWidth = getMaximumStringLengthOfAttribute(this.methods, fm);
+        shapewidth = ( methodWidth> shapewidth)?methodWidth:shapewidth;
+        return ( (shapewidth + 10)>this.width)?shapewidth + 10:this.width;
+    }
+    
+    /**
+     * 
+     * @param attribues
+     * @param fm
+     * @return 
+     */
+    private int getMaximumStringLengthOfAttribute(ArrayList<Attribute> attribues, FontMetrics fm)
+    {
+        int maxWidth = 0;
+        for (Attribute attribute : attribues) 
+        {
+            int attributeWidth = fm.stringWidth(attribute.getName() + ":" + attribute.getType());
+            if (attributeWidth>maxWidth)
+            {
+                maxWidth = attributeWidth;
+            }
+        }
+        return maxWidth;
     }
 }

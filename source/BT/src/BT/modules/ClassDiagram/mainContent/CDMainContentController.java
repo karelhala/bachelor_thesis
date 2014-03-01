@@ -70,10 +70,6 @@ public class CDMainContentController extends CDMainContentModel implements Drawi
             {
                 this.places.setAllObjectDiselected();
                 CDClass newClass = new CDClass(evt.getX(), evt.getY());
-                newClass.addNewVariable(new Attribute("variable1", "String"));
-                newClass.addNewVariable(new Attribute("variable2", "int"));
-                newClass.addNewMethod(new Attribute("one()", "void"));
-                newClass.addNewMethod(new Attribute("two()", "void"));
                 this.places.addObject(newClass);
             }
             else
