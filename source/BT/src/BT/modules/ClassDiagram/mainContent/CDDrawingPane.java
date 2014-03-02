@@ -9,7 +9,6 @@ import BT.models.CoordinateModel;
 import BT.models.LineModel;
 import BT.modules.ClassDiagram.places.CDClass;
 import BT.modules.ClassDiagram.places.joinEdge.CDJoinEdgeController;
-import BT.modules.UC.places.UCJoinEdge.UCJoinEdgeController;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -61,12 +60,10 @@ public class CDDrawingPane {
             if (newLine != null)
             {
                 g.setColor(Color.GREEN);
-                newLine.drawJoinEdge(g);
-                
+                newLine.drawJoinEdge(g);   
             }
             
             for (LineModel joinEdge: CDplaces.getJoinEdges()) {
-                
                 ((CDJoinEdgeController) joinEdge).drawJoinEdge(g);
             }
             

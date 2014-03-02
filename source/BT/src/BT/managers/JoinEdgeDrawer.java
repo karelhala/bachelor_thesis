@@ -86,6 +86,42 @@ public class JoinEdgeDrawer {
     }
     
     /**
+     * Method for drawing traiangle at end of the line given by 2 points.
+     * @param g2D
+     * @param A
+     * @param B 
+     */
+    protected void drawDiamond(Graphics2D g2D, Point A, Point B, Color FillColor)
+    {
+        Graphics2D g = (Graphics2D) g2D.create();
+        g.setStroke(new BasicStroke(2));
+        double dx = B.x - A.x;
+        double dy = B.y - A.y;
+        double angle = Math.atan2(dy, dx);
+        AffineTransform at = AffineTransform.getTranslateInstance(A.x, A.y);
+        at.concatenate(AffineTransform.getRotateInstance(angle));
+        g.transform(at);
+                
+        g.drawLine(0, 0, 0+7, 0+7);
+        g.drawLine(0, 0, 0+7, 0-7);
+        g.drawLine(0+7, 0+7, 14, 0);
+        g.drawLine(0+7, 0-7, 14, 0);
+        
+        g.setColor(FillColor);
+        int xpoints[] = {0, 0+7, 0+7};
+        int ypoints[] = {0, 0+7, 0-7};
+        int npoints = 3;
+
+        g.fillPolygon(xpoints, ypoints, npoints);
+        
+        int xpoints2[] = {0+7, 0+7, 14};
+        int ypoints2[] = {0+7, 0-7, 0};
+        int npoints2 = 3;
+
+        g.fillPolygon(xpoints2, ypoints2, npoints2);
+    }
+    
+    /**
      * 
      * @param g2D
      * @param A

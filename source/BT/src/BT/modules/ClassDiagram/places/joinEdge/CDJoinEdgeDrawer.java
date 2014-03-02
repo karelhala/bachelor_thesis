@@ -10,6 +10,7 @@ import BT.BT;
 import BT.managers.JoinEdgeDrawer;
 import BT.models.LineModel;
 import java.awt.BasicStroke;
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Point;
 
@@ -55,13 +56,13 @@ public class CDJoinEdgeDrawer extends JoinEdgeDrawer{
             else if (cdJoin.getJoinEdgeType() == BT.CDLineType.AGGREGATION)
             {
                 g.drawLine(this.startPoint.x, this.startPoint.y, this.endPoint.x, this.endPoint.y);
-                drawArrow(g, this.endPoint, this.startPoint);
+                drawDiamond(g, this.endPoint, this.startPoint, Color.WHITE);
                 drawString(g, this.endPoint, this.startPoint, "<<aggregation>>");
             }
             else if (cdJoin.getJoinEdgeType() == BT.CDLineType.COMPOSITION)
             {
                 g.drawLine(this.startPoint.x, this.startPoint.y, this.endPoint.x, this.endPoint.y);
-                drawArrow(g, this.endPoint, this.startPoint);
+                drawDiamond(g, this.endPoint, this.startPoint, Color.BLACK);
                 drawString(g, this.endPoint, this.startPoint, "<<composition>>");
             }
             else if (cdJoin.getJoinEdgeType() == BT.CDLineType.GENERALIZATION)

@@ -57,6 +57,7 @@ public class CDJoinEdgeController extends LineModel{
         lineDrawer = new CDJoinEdgeDrawer(this, pointsCaluclator.getStartPoint(), pointsCaluclator.getEndPoint());
         Point startPoint = pointsCaluclator.getStartPoint();
         Point endPoint = pointsCaluclator.getEndPoint();
+        System.out.println(startPoint + " "+ this.endX);
         if (startPoint !=null && endPoint !=null)
         {
             g.setStroke(new BasicStroke(2));

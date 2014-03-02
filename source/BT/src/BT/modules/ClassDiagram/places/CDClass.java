@@ -130,7 +130,15 @@ public class CDClass extends CoordinateModel{
      */
     private void drawAttributes(Graphics2D g, ArrayList<Attribute> attribues, Point nameLinePoint, FontMetrics fm) {
         for (Attribute attribute : attribues) {
-            g.drawString(attribute.getName() + ":" + attribute.getType(), x-nameLinePoint.x + 5, y-nameLinePoint.y+(attribues.indexOf(attribute) * fm.getHeight()));
+            String visibility = "";
+            if (attribute.getVisibility() == BT.BT.AttributeType.PRIVATE) {
+                visibility = "-";
+            } else if (attribute.getVisibility() == BT.BT.AttributeType.PUBLIC) {
+                visibility = "+";
+            } else if (attribute.getVisibility() == BT.BT.AttributeType.PROTECTED) {
+                visibility = "#";
+            }
+            g.drawString(visibility +attribute.getName() + ":" + attribute.getType(), x-nameLinePoint.x + 5, y-nameLinePoint.y+(attribues.indexOf(attribute) * fm.getHeight()));
         }
     }
     
@@ -167,7 +175,7 @@ public class CDClass extends CoordinateModel{
         int maxWidth = 0;
         for (Attribute attribute : attribues) 
         {
-            int attributeWidth = fm.stringWidth(attribute.getName() + ":" + attribute.getType());
+            int attributeWidth = fm.stringWidth(" " + attribute.getName() + ":" + attribute.getType());
             if (attributeWidth>maxWidth)
             {
                 maxWidth = attributeWidth;
