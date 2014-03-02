@@ -7,6 +7,7 @@ package BT.models;
 import BT.interfaces.DrawingClicks;
 import BT.interfaces.ToggleButtonsInterface;
 import BT.modules.ClassDiagram.mainContent.CDMainContentController;
+import BT.modules.ObjectedOrientedPetriNet.mainContent.PNMainContentController;
 import BT.modules.UC.mainContent.UCMainContentController;
 import java.awt.Component;
 import java.awt.event.ItemEvent;
@@ -31,6 +32,12 @@ public class ButtonPaneModel extends ContentPaneModel implements ToggleButtonsIn
     {
         super();
         this.mainContentController = CDMain;
+    }
+    
+    public ButtonPaneModel(PNMainContentController PNMain)
+    {
+        super();
+        this.mainContentController = PNMain;
     }
 
     @Override

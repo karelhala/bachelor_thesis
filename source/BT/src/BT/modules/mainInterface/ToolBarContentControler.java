@@ -5,6 +5,7 @@
 package BT.modules.mainInterface;
 
 import BT.modules.ClassDiagram.CDContentController;
+import BT.modules.ObjectedOrientedPetriNet.PNContentController;
 import BT.modules.UC.UCContentController;
 import GUI.MainContentModel;
 import GUI.ToolBarContentModel;
@@ -86,8 +87,9 @@ public class ToolBarContentControler {
         CDContentController CDcontroller = new CDContentController();
         CDcontroller.createComponents();
         
-        MainContentModel OOPNContentModel = new MainContentModel();
-        myLayout.addNewTab(UCController.getUCContent(), CDcontroller.getCdContent(), OOPNContentModel);
+        PNContentController OOPNContentModel = new PNContentController();
+        OOPNContentModel.createComponents();
+        myLayout.addNewTab(UCController.getUCContent(), CDcontroller.getCdContent(), OOPNContentModel.getPnContent());
     }
 
     /**
