@@ -18,6 +18,8 @@ public class BT {
     public static enum UCObjectType{ACTOR, USECASE};
     public static enum CDLineType{ASSOCIATION, AGGREGATION, COMPOSITION, GENERALIZATION, REALIZATION};
     public static enum CDObjectType{CLASS};
+    public static enum OOPNObjectType{PLACE, TRANSITION};
+    public static enum OOPNLineType{JOIN};
     public static enum AttributeType{PUBLIC, PRIVATE, PROTECTED};
     
     /**

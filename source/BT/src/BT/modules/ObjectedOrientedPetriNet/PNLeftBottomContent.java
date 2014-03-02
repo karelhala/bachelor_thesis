@@ -6,11 +6,13 @@
 
 package BT.modules.ObjectedOrientedPetriNet;
 
+import BT.BT;
 import BT.models.ButtonPaneModel;
 import BT.modules.ObjectedOrientedPetriNet.mainContent.PNMainContentController;
 import BT.modules.UC.mainContent.UCMainContentController;
 import java.awt.GridLayout;
 import javax.swing.JPanel;
+import javax.swing.JToggleButton;
 
 /**
  *
@@ -42,7 +44,10 @@ public class PNLeftBottomContent extends ButtonPaneModel{
      */
     public void createMainPane()
     {
+        JToggleButton join = new JToggleButton("Join");
+        join.setName(BT.OOPNLineType.JOIN.name());
         
+        this.mainContentPane.add(join);
     }
     
 }

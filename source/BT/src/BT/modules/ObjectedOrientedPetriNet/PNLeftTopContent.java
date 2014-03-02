@@ -11,6 +11,7 @@ import BT.models.ButtonPaneModel;
 import BT.modules.ObjectedOrientedPetriNet.mainContent.PNMainContentController;
 import java.awt.GridLayout;
 import javax.swing.JPanel;
+import javax.swing.JToggleButton;
 
 /**
  *
@@ -33,7 +34,7 @@ public class PNLeftTopContent extends ButtonPaneModel{
     public PNLeftTopContent(PNMainContentController pnMain)
     {
         super(pnMain);
-        this.mainContentPane = new JPanel(new GridLayout(1, 1));
+        this.mainContentPane = new JPanel(new GridLayout(2, 1));
         createMainPane();
     }
     
@@ -42,6 +43,14 @@ public class PNLeftTopContent extends ButtonPaneModel{
      */
     public void createMainPane()
     {
+        JToggleButton place = new JToggleButton("Place");
+        place.setName(BT.OOPNObjectType.PLACE.name());
+        
+        JToggleButton transition = new JToggleButton("Tranisition");
+        transition.setName(BT.OOPNObjectType.TRANSITION.name());
+        
+        this.mainContentPane.add(place);
+        this.mainContentPane.add(transition);
     }
     
 }
