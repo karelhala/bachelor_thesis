@@ -68,7 +68,7 @@ public class CDJoinEdgeDrawer extends JoinEdgeDrawer{
             else if (cdJoin.getJoinEdgeType() == BT.CDLineType.GENERALIZATION)
             {
                 g.drawLine(this.startPoint.x, this.startPoint.y, this.endPoint.x, this.endPoint.y);
-                drawTriangle(g, this.endPoint, this.startPoint);
+                drawTriangle(g, this.endPoint, this.startPoint, Color.WHITE);
                 drawString(g, this.endPoint, this.startPoint, "<<generalization>>");
             }
             else if (cdJoin.getJoinEdgeType() == BT.CDLineType.REALIZATION)

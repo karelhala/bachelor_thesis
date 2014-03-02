@@ -62,7 +62,7 @@ public class JoinEdgeDrawer {
      * @param A
      * @param B 
      */
-    protected void drawTriangle(Graphics2D g2D, Point A, Point B)
+    protected void drawTriangle(Graphics2D g2D, Point A, Point B, Color fillColor)
     {
         Graphics2D g = (Graphics2D) g2D.create();
         g.setStroke(new BasicStroke(2));
@@ -77,7 +77,7 @@ public class JoinEdgeDrawer {
         g.drawLine(0, 0, 0+7, 0-7);
         g.drawLine(0+7, 0+7, 0+7, 0-7);
         
-        g.setColor(Color.white);
+        g.setColor(fillColor);
         int xpoints[] = {0, 0+7, 0+7};
         int ypoints[] = {0, 0+7, 0-7};
         int npoints = 3;

@@ -8,6 +8,7 @@ import BT.BT;
 import BT.managers.JoinEdgeDrawer;
 import BT.models.LineModel;
 import java.awt.BasicStroke;
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Point;
 
@@ -72,7 +73,7 @@ public class UCJoinEdgeDrawer extends JoinEdgeDrawer{
             else if (UCjoin.getJoinEdgeType() == BT.UCLineType.GENERALIZATION)
             {
                 g.drawLine(this.startPoint.x, this.startPoint.y, this.endPoint.x, this.endPoint.y);
-                drawTriangle(g, this.endPoint, this.startPoint);
+                drawTriangle(g, this.endPoint, this.startPoint, Color.WHITE);
             }
         }
     }
