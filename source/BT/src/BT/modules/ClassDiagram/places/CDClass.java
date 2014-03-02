@@ -89,21 +89,6 @@ public class CDClass extends CoordinateModel{
     }
     
     /**
-     *
-     * @return
-     */
-    @Override
-    public int getHeight()
-    {
-        return this.height;
-    }
-    
-    private int getLineY()
-    {
-        return -10;
-    }
-    
-    /**
      * 
      * @param newVariable 
      */
