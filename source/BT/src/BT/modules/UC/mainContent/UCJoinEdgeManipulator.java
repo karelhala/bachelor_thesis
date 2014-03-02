@@ -90,5 +90,12 @@ public class UCJoinEdgeManipulator {
         {
             joinEdge.setJoinEdgeType(BT.UCLineType.ASSOCIATION);
         }
+        if (joinEdge.getJoinEdgeType() == BT.UCLineType.ASSOCIATION)
+        {
+            if (joinEdge.getSecondObject() != null && joinEdge.getFirstObject().getClass().equals(joinEdge.getSecondObject().getClass()))
+            {
+                joinEdge.setSecondObject(null);
+            }
+        }
     }
 }
