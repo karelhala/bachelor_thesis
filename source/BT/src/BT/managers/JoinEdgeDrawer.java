@@ -90,8 +90,9 @@ public class JoinEdgeDrawer {
      * @param g2D
      * @param A
      * @param B 
+     * @param fillColor 
      */
-    protected void drawDiamond(Graphics2D g2D, Point A, Point B, Color FillColor)
+    protected void drawDiamond(Graphics2D g2D, Point A, Point B, Color fillColor)
     {
         Graphics2D g = (Graphics2D) g2D.create();
         g.setStroke(new BasicStroke(2));
@@ -107,7 +108,7 @@ public class JoinEdgeDrawer {
         g.drawLine(0+7, 0+7, 14, 0);
         g.drawLine(0+7, 0-7, 14, 0);
         
-        g.setColor(FillColor);
+        g.setColor(fillColor);
         int xpoints[] = {0, 0+7, 0+7};
         int ypoints[] = {0, 0+7, 0-7};
         int npoints = 3;

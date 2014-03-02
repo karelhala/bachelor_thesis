@@ -6,9 +6,7 @@ package BT.modules.ClassDiagram.places.joinEdge;
 
 import BT.BT.CDLineType;
 import BT.managers.PointsCalculator;
-import BT.models.CoordinateModel;
 import BT.models.LineModel;
-import BT.modules.UC.places.UCJoinEdge.UCJoinEdgeDrawer;
 import java.awt.BasicStroke;
 import java.awt.Graphics2D;
 import java.awt.Point;
@@ -57,7 +55,6 @@ public class CDJoinEdgeController extends LineModel{
         lineDrawer = new CDJoinEdgeDrawer(this, pointsCaluclator.getStartPoint(), pointsCaluclator.getEndPoint());
         Point startPoint = pointsCaluclator.getStartPoint();
         Point endPoint = pointsCaluclator.getEndPoint();
-        System.out.println(startPoint + " "+ this.endX);
         if (startPoint !=null && endPoint !=null)
         {
             g.setStroke(new BasicStroke(2));
