@@ -8,6 +8,7 @@ package BT.modules.ObjectedOrientedPetriNet.places;
 
 import BT.models.CoordinateModel;
 import java.awt.Color;
+import java.awt.Graphics2D;
 
 /**
  *
@@ -39,5 +40,14 @@ public class PNTransition extends CoordinateModel{
         this.name = "Default";
         this.textSize = 15;
         this.howerColor = Color.GREEN;
+    }
+    
+    /**
+     * TODO: refactor
+     * @param g 
+     */
+    public void drawPlace(Graphics2D g)
+    {
+        
     }
 }

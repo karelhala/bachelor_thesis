@@ -58,7 +58,7 @@ public class PNPlace extends CoordinateModel{
         {
             placeColor = this.selectedColor;
         }
-        g.setStroke(new BasicStroke(1));
+        g.setStroke(new BasicStroke(2));
         g.setColor(Color.BLACK);
         g.drawString(name, x-this.width/2, y+this.height/2+fm.getHeight()+2);
         

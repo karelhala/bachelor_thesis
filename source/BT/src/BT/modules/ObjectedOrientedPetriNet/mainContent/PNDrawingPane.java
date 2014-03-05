@@ -9,6 +9,7 @@ package BT.modules.ObjectedOrientedPetriNet.mainContent;
 import BT.managers.PlaceManager;
 import BT.models.CoordinateModel;
 import BT.modules.ObjectedOrientedPetriNet.places.PNPlace;
+import BT.modules.ObjectedOrientedPetriNet.places.PNTransition;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
@@ -67,7 +68,14 @@ public class PNDrawingPane {
 //            }
 //            
             for (CoordinateModel place: PNplaces.getObjects()) {
-                ((PNPlace) place).drawPlace(g);
+                if (place instanceof PNPlace)
+                {
+                    ((PNPlace) place).drawPlace(g);
+                }
+                else if (place instanceof PNTransition)
+                {
+                    ((PNPlace) place).drawTransition(g);
+                }
             }
         }
     }

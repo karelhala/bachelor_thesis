@@ -9,4 +9,7 @@ source/BT/nbproject/private/*
 source/testGUI/build/*
 source/testGUI/nbproject/private/*
 source/testGUI/dist/*
-
+latex/*.bbl
+latex/*.blg
+latex/*.log
+latex/*.toc
