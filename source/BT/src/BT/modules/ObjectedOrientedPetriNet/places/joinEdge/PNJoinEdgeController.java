@@ -18,7 +18,7 @@ import java.awt.Point;
  *
  * @author Karel
  */
-public class PNJoinedgeController extends LineModel{
+public class PNJoinEdgeController extends LineModel{
     
     private BT.OOPNLineType joinEdgeType;
     
@@ -35,7 +35,7 @@ public class PNJoinedgeController extends LineModel{
     /**
      *
      */
-    public PNJoinedgeController ()
+    public PNJoinEdgeController ()
     {
         super();
         this.joinEdgeType = OOPNLineType.JOIN;

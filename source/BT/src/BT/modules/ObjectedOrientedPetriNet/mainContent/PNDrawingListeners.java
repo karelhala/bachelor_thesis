@@ -7,6 +7,7 @@
 package BT.modules.ObjectedOrientedPetriNet.mainContent;
 
 import BT.interfaces.DrawingClicks;
+import BT.managers.ObjectChecker;
 import BT.models.CoordinateModel;
 import java.awt.event.MouseEvent;
 import javax.swing.event.MouseInputAdapter;
@@ -33,17 +34,26 @@ public class PNDrawingListeners extends MouseInputAdapter{
     
     @Override
     public void mousePressed(MouseEvent e) {
-        System.out.println("Pressed");
+         ObjectChecker objectChecker = new ObjectChecker(this.mainContent.getMainContent().getDrawingPane().getPlaces());
+        CoordinateModel coordObject = objectChecker.getObjectUnderMouse(e.getPoint());
+        if (coordObject == null)
+        {
+            this.mainContent.drawingPaneClicked(e);
+        }
+        else
+        {
+            this.mainContent.setSelectedObject(coordObject);
+            this.selectedModel = coordObject;
+        }
     }
     
     @Override
     public void mouseDragged(MouseEvent e){
-        System.out.println("Dragged");
+        this.mainContent.drawingMouseDragged(e, this.selectedModel);
     }
     
     @Override
     public void mouseMoved(MouseEvent e){
-        System.out.println("Moved");
         this.mainContent.drawingPanecheckMove(e);
     }
     
@@ -56,6 +66,15 @@ public class PNDrawingListeners extends MouseInputAdapter{
     @Override
     public void mouseClicked(MouseEvent e)
     {
-        this.mainContent.drawingPaneClicked(e);   
+        ObjectChecker objectChecker = new ObjectChecker(this.mainContent.getMainContent().getDrawingPane().getPlaces());
+        CoordinateModel coordObject = objectChecker.getObjectUnderMouse(e.getPoint());
+        if (e.getClickCount()%2 == 0)
+        {
+            this.mainContent.drawingPaneDoubleCliked(coordObject);
+        }
+        else
+        {
+            this.mainContent.drawingPaneClicked(e);   
+        }
     }
 }

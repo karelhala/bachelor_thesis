@@ -7,6 +7,8 @@
 package BT.modules.ObjectedOrientedPetriNet.mainContent;
 
 import BT.managers.PlaceManager;
+import BT.models.CoordinateModel;
+import BT.modules.ObjectedOrientedPetriNet.places.PNPlace;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
@@ -17,7 +19,7 @@ import javax.swing.JPanel;
  * @author Karel
  */
 public class PNDrawingPane {
-    private PlaceManager CDplaces;
+    private PlaceManager PNplaces;
     private PNDrawingPane.drawing drawPane;
 //    private CDJoinEdgeController newLine;
 
@@ -29,12 +31,12 @@ public class PNDrawingPane {
      
      /**
      * 
-     * @param CDplaces
+     * @param PNplaces
      */
     public PNDrawingPane(PlaceManager PNplaces)
     {
         this.drawPane = new PNDrawingPane.drawing();
-        this.CDplaces = CDplaces;
+        this.PNplaces = PNplaces;
 //        this.newLine = null;
     }
 
@@ -64,9 +66,9 @@ public class PNDrawingPane {
 //                ((CDJoinEdgeController) joinEdge).drawJoinEdge(g);
 //            }
 //            
-//            for (CoordinateModel actor: CDplaces.getObjects()) {
-//                ((CDClass) actor).drawClass(g);
-//            }
+            for (CoordinateModel place: PNplaces.getObjects()) {
+                ((PNPlace) place).drawPlace(g);
+            }
         }
     }
     
@@ -85,11 +87,11 @@ public class PNDrawingPane {
      */
     public void setPlaces(PlaceManager places)
     {
-        CDplaces = places;
+        PNplaces = places;
     }
     
     public PlaceManager getPlaces()
     {
-        return CDplaces;
+        return PNplaces;
     }
 }

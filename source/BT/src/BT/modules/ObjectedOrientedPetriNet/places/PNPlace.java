@@ -63,7 +63,7 @@ public class PNPlace extends CoordinateModel{
         g.drawString(name, x-this.width/2, y+this.height/2+fm.getHeight()+2);
         
         g.setColor(placeColor);
-        g.drawOval(x, y, this.width, this.height);
+        g.drawOval(x-this.width/2, y-this.height/2, this.width, this.height);
     }
     
 }

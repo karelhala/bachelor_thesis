@@ -1,0 +1,8 @@
+Po kliknuti pravym mysitkem, novy zahyb
+-----
+Priadani actor a activity v diagramu trid
+-----
+V OOPN pridat vytvareni novyh trid tlacitkem
+-----
+Po smazani nesmazat vsechno, jen oznacit jinou barvou
+-----

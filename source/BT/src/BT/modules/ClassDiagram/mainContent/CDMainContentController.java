@@ -40,7 +40,6 @@ public class CDMainContentController extends CDMainContentModel implements Drawi
         {
             dragged.setX(e.getX());
             dragged.setY(e.getY());
-            this.mainContent.getDrawingPane().getDrawing().repaint();
         }
         else if (dragged != null)
         {
