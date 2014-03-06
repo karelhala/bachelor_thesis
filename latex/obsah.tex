@@ -1,42 +1,31 @@
 %=========================================================================
-% (c) Michal Bidlo, Bohuslav Køena, 2008
+% (c) Karel Hala, 2014 
 
 \chapter{Úvod}
-Abychom mohli napsat odborný text jasnì a~srozumitelnì, musíme splnit nìkolik základních pøedpokladù:
-\begin{itemize}
-\item Musíme mít co øíci,
-\item musíme vìdìt, komu to chceme øíci,
-\item musíme si dokonale promyslet obsah,
-\item musíme psát strukturovanì. 
-\end{itemize}
+Pøi implementaci jakéholiv nástroje se èasto nará¾í na bariéru mezi zákazníkem a programátorem. Zákazník èasto netu¹í co chce a programátor èasto zákazníka ¹patnì pochopí. Tento nástroj bohu¾el tyto problémy nedoká¾e odstranit, nicménì mìl by napomoci odstranit nìkteré bariéry a pomoci sna¾¹í vizualizace problémù.
 
-Tyto a dal¹í pokyny jsou dostupné té¾ na ¹kolních internetových stránkách \cite{fitWeb}.
+Nástroj tohoto docílí za pou¾ití nìkolika èástí. Pøípadu u¾ití pro jednotlivé znázornìní zákazníkových potøeb, diagramu tøíd pro vlastní vizualizaci a pochopení vyvýjeného softwaru a nakonec objektovì orientované petriho sítì, slou¾ící pro porozumìní celého systému do hloubky.
 
-Pøehled základù typografie a tvorby dokumentù s vyu¾itím systému \LaTeX je 
-uveden v~\cite{Rybicka}.
+\section{Seznámení s nástrojem}
+Jak bylo ji¾ øeèeno pro porozumìní po¾adavkù zákazníka nám poslou¾í diagram pøípadu u¾ití, odsud se pøedgenerují jednotlivé tøídy a ty následnì bude mo¾né upravit a popsat v èásti objektovì orientovaných petriho sítí.
 
-\section{Musíme mít co øíci}
-Dal¹ím dùle¾itým pøedpokladem dobrého psaní je {\it psát pro nìkoho}. Pí¹eme-li si poznámky sami pro sebe, pí¹eme je jinak ne¾ výzkumnou zprávu, èlánek, diplomovou práci, knihu nebo dopis. Podle pøedpokládaného ètenáøe se rozhodneme pro zpùsob psaní, rozsah informace a~míru detailù.
+\section{Zhondocení konkurence}
+z hlediska sna¾¹ího porozumìní byl brán zøetel na konkurentní nástroje. Pøevá¾nì byl brán zøetel na jejich jednoduchost a co je dìlá tak hojnì vyu¾ívané a snadno pou6itelné. Z toho dùvodu byly prozkoumány dva nástroje Umbrello a komerèní Enterprise Architect. Na základì prozkoumání zmínìných nástrojù bylo rozhodnuto ¾e nástroj musí být intuitivní, jednoduchý na pou¾ití a mít co nejménì ru¹ivých ovladacích prvkù, ale do urèité míry.
 
-\section{Musíme vìdìt, komu to chceme øíci}
-Dal¹ím dùle¾itým pøedpokladem dobrého psaní je psát pro nìkoho. Pí¹eme-li si poznámky sami pro sebe, pí¹eme je jinak ne¾ výzkumnou zprávu, èlánek, diplomovou práci, knihu nebo dopis. Podle pøedpokládaného ètenáøe se rozhodneme pro zpùsob psaní, rozsah informace a~míru detailù.
+\section{Základní rovr¾ení aplikace}
+Jak ji¾ bylo øeèeno v pøede¹lé èásti, bylo rozhodnuto o jednoduchosti a intuitivním ovládání aplikace. Tohoto bylo docíleno sjednocením základního designu aplikace, sjednocení klávesových zkratek a porozumìní a prozkoumání moderních aplikací.
 
-\section{Musíme si dokonale promyslet obsah}
-Musíme si dokonale promyslet a~sestavit obsah sdìlení a~vytvoøit poøadí, v~jakém chceme ètenáøi své my¹lenky prezentovat. 
-Jakmile víme, co chceme øíci a~komu, musíme si rozvrhnout látku. Ideální je takové rozvr¾ení, které tvoøí logicky pøesný a~psychologicky stravitelný celek, ve kterém je pro v¹echno místo a~jeho¾ jednotlivé èásti do sebe pøesnì zapadají. Jsou jasné v¹echny souvislosti a~je zøejmé, co kam patøí.
+Hlavní okno se skládá z nìkolika panelù. Horní èást obsahuje otevøené projekty, jejich èástí a ovládací prvky. Celý hlavní obsah aplikace se nacháazí ve zbylích dvou tøetinách okna. V levé èásti se dále nacházejí tlaèítka pro mo¾nost pøepínání jednotlivých vkládaných obejktù. Dolní èást obsahuje informaèní a editaèní mo¾nosti zvoleného prvku a pro hlavní èást, je vyhranìn zbytek pracovní plochy, takzvané editaèní plátno.
 
-Abychom tohoto cíle dosáhli, musíme peèlivì organizovat látku. Rozhodneme, co budou hlavní kapitoly, co podkapitoly a~jaké jsou mezi nimi vztahy. Diagramem takové organizace je graf, který je velmi podobný stromu, ale ne øetìzci. Pøi organizaci látky je stejnì dùle¾itá otázka, co do osnovy zahrnout, jako otázka, co z~ní vypustit. Pøíli¹ mnoho podrobností mù¾e ètenáøe právì tak odradit jako ¾ádné detaily.
+Na toto plátno je mo¾né pøidávat jednotlivé prvky, spojovat je, pøesouvat je a mazat je. Po vybrání nìkterého tlaèítka v levém menu je mo¾né zaèít pøidávat prvky. Bylo zvoleno jednoduché a intuitivní chování aplikace, po kliknutí se vytvoøí objekt, po ta¾ení se pøesune objekt a pro spojení dvou objektù hranou je zapotøebí kliknout na první objekt a poté na druhý, pøièem¾ spoj je viditelný od kurzoru po první objekt. Pro zahnutí spoje je mo¾no kliknout pravým tlaèítkem my¹i, co¾ vyvolá vytvoøení ohybu spoje.
 
-Výsledkem této etapy je osnova textu, kterou tvoøí sled hlavních my¹lenek a~mezi nì zaøazené detaily.
+\chapter{Popis aplikace}
+K popisu vyvýjené aplikace slou¾í jednotlivé èásti, ka¾dá znázoròuje jiné problémy, popisuje jiné chování a zobrazuje rùzné prvky, nicménì v¹echny èásti mají mnoho spoleèeného, jako napøíklad spojování jednotlivých prvkù a vytvaøení a editace prvkù.
 
-\section{Musíme psát strukturovanì} 
-Musíme zaèít psát strukturovanì a~souèasnì pracujeme na co nejsrozumitelnìj¹í formì, vèetnì dobrého slohu a~dokonalého znaèení. 
-Máme-li tedy my¹lenku, pøedstavu o~budoucím ètenáøi, cíl a~osnovu textu, mù¾eme zaèít psát. Pøi psaní prvního konceptu se sna¾íme zaznamenat v¹echny své my¹lenky a~názory vztahující se k~jednotlivým kapitolám a~podkapitolám. Ka¾dou my¹lenku musíme vysvìtlit, popsat a~prokázat. Hlavní my¹lenku má v¾dy vyjadøovat hlavní vìta a~nikoliv vìta vedlej¹í.
+\section{Editace a chování prvkù}
 
-I k~procesu psaní textu pøistupujeme strukturovanì. Souèasnì s~tím, jak si ujasòujeme strukturu písemné práce, vytváøíme kostru textu, kterou postupnì doplòujeme. Vyu¾íváme ty prostøedky DTP programu, které podporují strukturovanou stavbu textu (pøeddefinované typy pro nadpisy a~bloky textu). 
+\section{Editace a chování spojù}
 
-
-\chapter{Nìkolik formálních pravidel}
 Na¹ím cílem je vytvoøit jasný a~srozumitelný text. Vyjadøujeme se proto pøesnì, pí¹eme dobrou èe¹tinou (nebo zpravidla angliètinou) a~dobrým slohem podle obecnì pøijatých zvyklostí. Text má upravit ètenáøi cestu k~rychlému pochopení problému, pøedvídat jeho obtí¾e a~pøedcházet jim. Dobrý sloh pøedpokládá bezvadnou gramatiku, správnou interpunkci a~vhodnou volbu slov. Sna¾íme se, aby ná¹ text nepùsobil pøíli¹ jednotvárnì pou¾íváním malého výbìru slov a~tím, ¾e nìkterá zvlá¹» oblíbená slova pou¾íváme pøíli¹ èasto. Pokud pou¾íváme cizích slov, je samozøejmým pøedpokladem, ¾e známe jejich pøesný význam. Ale i~èeských slov musíme pou¾ívat ve správném smyslu. Napø. platí jistá pravidla pøi pou¾ívání slova {\it zøejmì}. Je {\it zøejmé} opravdu zøejmé? A~pøesvìdèili jsme se, zda to, co je {\it zøejmé} opravdu platí? Pozor bychom si mìli dát i~na pøíli¹ èasté pou¾ívání zvratného se. Napøíklad obratu {\it dokázalo se}, ¾e... zásadnì nepou¾íváme. Není ¹patné pou¾ívat autorského {\it my}, tím pøedpokládáme, ¾e nìco øe¹íme, nebo napøíklad zobecòujeme spolu se ètenáøem. V~kvalifikaèních pracích pou¾ijeme autorského {\it já} (napøíklad kdy¾ vymezujeme podíl vlastní práce vùèi pøevzatému textu), ale v~bì¾ném textu se nadmìrné pou¾ívání první osoby jednotného èísla nedoporuèuje.
 
 Za peèlivý výbìr stojí i~symbolika, kterou pou¾íváme ke {\it znaèení}. Máme tím na mysli volbu zkratek a~symbolù pou¾ívaných napøíklad pro vyjádøení typù souèástek, pro oznaèení hlavních èinností programu, pro pojmenování ovládacích kláves na klávesnici, pro pojmenování promìnných v~matematických formulích a~podobnì. Výsti¾né a~dùsledné znaèení mù¾e ètenáøi pøi èetbì textu velmi pomoci. Je vhodné uvést seznam znaèení na zaèátku textu. Nejen ve znaèení, ale i~v~odkazech a~v~celkové tiskové úpravì je dùle¾itá dùslednost.
