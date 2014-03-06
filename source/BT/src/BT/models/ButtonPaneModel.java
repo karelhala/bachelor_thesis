@@ -10,7 +10,8 @@ import BT.modules.ClassDiagram.mainContent.CDMainContentController;
 import BT.modules.ObjectedOrientedPetriNet.mainContent.PNMainContentController;
 import BT.modules.UC.mainContent.UCMainContentController;
 import java.awt.Component;
-import javax.swing.ButtonGroup;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import javax.swing.JToggleButton;
 
 /**
@@ -75,10 +76,35 @@ public class ButtonPaneModel extends ContentPaneModel implements ToggleButtonsIn
      */
     public void setListeners()
     {
-        ButtonGroup groupOfButtons = new ButtonGroup();
         for (Component comp : this.mainContentPane.getComponents())
         {
-            groupOfButtons.add((JToggleButton) comp);
+            final JToggleButton toggleButton = (JToggleButton) comp;
+            ItemListener changeListener = new ItemListener(){
+                @Override
+                public void itemStateChanged(ItemEvent ev) {
+                    if(ev.getStateChange()==ItemEvent.SELECTED){
+                        toggleButtonSelected(toggleButton);
+                    }
+                    mainContentController.buttonsChanged();
+                }
+            };
+            toggleButton.addItemListener(changeListener);
+        }
+    }
+    
+    /**
+     * 
+     * @param selectedButton
+     * @param allComponents 
+     */
+    private void toggleButtonSelected(JToggleButton selectedButton) {
+        for (Component comp : this.mainContentPane.getComponents())
+        {
+            JToggleButton toggleButton = (JToggleButton) comp;
+            if (selectedButton != toggleButton)
+            {
+                toggleButton.setSelected(false);
+            }
         }
     }
     

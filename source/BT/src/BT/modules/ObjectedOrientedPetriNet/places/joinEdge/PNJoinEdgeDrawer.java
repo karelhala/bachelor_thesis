@@ -17,9 +17,9 @@ import java.awt.Point;
  *
  * @author Karel
  */
-public class PNJoindEgeDrawer extends JoinEdgeDrawer{
+public class PNJoinEdgeDrawer extends JoinEdgeDrawer{
 
-    public PNJoindEgeDrawer(LineModel joinEdgeController, Point startPoint, Point endPoint) {
+    public PNJoinEdgeDrawer(LineModel joinEdgeController, Point startPoint, Point endPoint) {
         super(joinEdgeController, startPoint, endPoint);
     }
     
@@ -44,9 +44,9 @@ public class PNJoindEgeDrawer extends JoinEdgeDrawer{
                         BasicStroke.CAP_BUTT,
                         BasicStroke.JOIN_MITER,
                         10.0f, dash1, 0.0f);
-        if (this.joinEdgeController instanceof PNJoinedgeController)
+        if (this.joinEdgeController instanceof PNJoinEdgeController)
         {
-            PNJoinedgeController pnJoin = (PNJoinedgeController) this.joinEdgeController;
+            PNJoinEdgeController pnJoin = (PNJoinEdgeController) this.joinEdgeController;
             if (pnJoin.getJoinEdgeType() == BT.BT.OOPNLineType.JOIN)
             {
                 g.drawLine(this.startPoint.x, this.startPoint.y, this.endPoint.x, this.endPoint.y);

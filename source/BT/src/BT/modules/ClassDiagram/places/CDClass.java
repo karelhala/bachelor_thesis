@@ -4,6 +4,7 @@
  */
 package BT.modules.ClassDiagram.places;
 
+import BT.BT.ClassType;
 import BT.managers.CD.Attribute;
 import BT.models.CoordinateModel;
 import java.awt.BasicStroke;
@@ -18,24 +19,24 @@ import java.util.ArrayList;
  *
  * @author Karel Hala
  */
-public class CDClass extends CoordinateModel{
+public class CDClass extends CoordinateModel {
+
     private int textSize;
     private Color background;
     private ArrayList<Attribute> variables;
     private ArrayList<Attribute> methods;
-    
-    public CDClass ()
-    {
+    private ClassType typeOfClass;
+
+    public CDClass() {
         super();
     }
-    
+
     /**
-     * 
+     *
      * @param x
-     * @param y 
+     * @param y
      */
-    public CDClass (int x, int y)
-    {
+    public CDClass(int x, int y) {
         super();
         this.x = x;
         this.y = y;
@@ -48,70 +49,78 @@ public class CDClass extends CoordinateModel{
         this.howerColor = Color.GREEN;
         this.variables = new ArrayList<>();
         this.methods = new ArrayList<>();
+        this.typeOfClass = ClassType.ACTOR;
     }
-    
+
+    public ClassType getTypeOfClass() {
+        return typeOfClass;
+    }
+
+    public void setTypeOfClass(ClassType typeOfClass) {
+        this.typeOfClass = typeOfClass;
+    }
+
     /**
      * TODO: refactor
-     * @param g 
+     *
+     * @param g
      */
-    public void drawClass(Graphics2D g)
-    {
+    public void drawClass(Graphics2D g) {
         Color classColor = this.color;
         g.setFont(new Font("Arial", Font.BOLD, this.textSize));
         FontMetrics fm = g.getFontMetrics(g.getFont());
-        if (getSelected())
-        {
+        if (getSelected()) {
             classColor = this.selectedColor;
         }
         g.setStroke(new BasicStroke(1));
         g.setColor(this.background);
         this.width = this.getMaximumWidth(fm);
         this.height = this.getMaximumHeight(fm);
-        g.fillRect(x-this.width/2, this.y-this.height/2, this.width, this.height);
+        g.fillRect(x - this.width / 2, this.y - this.height / 2, this.width, this.height);
         g.setColor(classColor);
 
-        Point nameLinePoint = new Point(this.width/2, this.height/2-fm.getHeight());
-        
-        g.drawLine(x-nameLinePoint.x, y-nameLinePoint.y, x+nameLinePoint.x, y-nameLinePoint.y);
+        Point nameLinePoint = new Point(this.width / 2, this.height / 2 - fm.getHeight());
+
+        g.drawLine(x - nameLinePoint.x, y - nameLinePoint.y, x + nameLinePoint.x, y - nameLinePoint.y);
         g.drawLine(
-                x-nameLinePoint.x, 
-                y-nameLinePoint.y+(this.variables.size() * fm.getHeight()) + 5,
-                x+nameLinePoint.x, 
-                y-nameLinePoint.y+(this.variables.size() * fm.getHeight()) + 5 
+                x - nameLinePoint.x,
+                y - nameLinePoint.y + (this.variables.size() * fm.getHeight()) + 5,
+                x + nameLinePoint.x,
+                y - nameLinePoint.y + (this.variables.size() * fm.getHeight()) + 5
         );
-        g.drawRect(x-this.width/2, this.y-this.height/2, this.width, this.height);
+        g.drawRect(x - this.width / 2, this.y - this.height / 2, this.width, this.height);
         g.setColor(Color.BLACK);
-        g.drawString(name, x-(int) fm.getStringBounds(name, g).getWidth()/2, y-this.height/2+fm.getHeight()-2);
+        String stringType = (typeOfClass == ClassType.ACTIVITY)?"<Activity>":"<Actor>";
+        g.drawString(stringType, x-fm.stringWidth(stringType)/2, y-height/2-5);
+        g.drawString(name, x - (int) fm.getStringBounds(name, g).getWidth() / 2, y - this.height / 2 + fm.getHeight() - 2);
         Point variablesPlace = new Point(nameLinePoint.x, nameLinePoint.y - fm.getHeight());
         drawAttributes(g, this.variables, variablesPlace, fm);
-        Point methodsPlace = new Point(variablesPlace.x, variablesPlace.y-(fm.getHeight() * this.variables.size())-5);
+        Point methodsPlace = new Point(variablesPlace.x, variablesPlace.y - (fm.getHeight() * this.variables.size()) - 5);
         drawAttributes(g, this.methods, methodsPlace, fm);
     }
-    
+
     /**
-     * 
-     * @param newVariable 
+     *
+     * @param newVariable
      */
-    public void addNewVariable(Attribute newVariable)
-    {
+    public void addNewVariable(Attribute newVariable) {
         this.variables.add(newVariable);
     }
-    
+
     /**
-     * 
-     * @param newMethod 
+     *
+     * @param newMethod
      */
-    public void addNewMethod(Attribute newMethod)
-    {
+    public void addNewMethod(Attribute newMethod) {
         this.methods.add(newMethod);
     }
 
     /**
-     * 
+     *
      * @param g
      * @param attribues
      * @param nameLinePoint
-     * @param fm 
+     * @param fm
      */
     private void drawAttributes(Graphics2D g, ArrayList<Attribute> attribues, Point nameLinePoint, FontMetrics fm) {
         for (Attribute attribute : attribues) {
@@ -123,46 +132,41 @@ public class CDClass extends CoordinateModel{
             } else if (attribute.getVisibility() == BT.BT.AttributeType.PROTECTED) {
                 visibility = "#";
             }
-            g.drawString(visibility +attribute.getName() + ":" + attribute.getType(), x-nameLinePoint.x + 5, y-nameLinePoint.y+(attribues.indexOf(attribute) * fm.getHeight()));
+            g.drawString(visibility + attribute.getName() + ":" + attribute.getType(), x - nameLinePoint.x + 5, y - nameLinePoint.y + (attribues.indexOf(attribute) * fm.getHeight()));
         }
     }
-    
-    private int getMaximumHeight(FontMetrics fm)
-    {
+
+    private int getMaximumHeight(FontMetrics fm) {
         int textheight = fm.getHeight();
         int shapeHeight = textheight + (textheight * this.variables.size()) + (textheight * this.methods.size());
-        return ((shapeHeight+10) > this.height)?shapeHeight+10:this.height;
+        return ((shapeHeight + 10) > this.height) ? shapeHeight + 10 : this.height;
     }
-    
+
     /**
-     * 
+     *
      * @param fm
-     * @return 
+     * @return
      */
-    private int getMaximumWidth(FontMetrics fm)
-    {
+    private int getMaximumWidth(FontMetrics fm) {
         int shapewidth = fm.stringWidth(this.name);
         int variableMaxWidth = getMaximumStringLengthOfAttribute(this.variables, fm);
-        shapewidth = ( variableMaxWidth> shapewidth)?variableMaxWidth:shapewidth;
+        shapewidth = (variableMaxWidth > shapewidth) ? variableMaxWidth : shapewidth;
         int methodWidth = getMaximumStringLengthOfAttribute(this.methods, fm);
-        shapewidth = ( methodWidth> shapewidth)?methodWidth:shapewidth;
-        return ( (shapewidth + 10)>this.width)?shapewidth + 10:this.width;
+        shapewidth = (methodWidth > shapewidth) ? methodWidth : shapewidth;
+        return ((shapewidth + 10) > this.width) ? shapewidth + 10 : this.width;
     }
-    
+
     /**
-     * 
+     *
      * @param attribues
      * @param fm
-     * @return 
+     * @return
      */
-    private int getMaximumStringLengthOfAttribute(ArrayList<Attribute> attribues, FontMetrics fm)
-    {
+    private int getMaximumStringLengthOfAttribute(ArrayList<Attribute> attribues, FontMetrics fm) {
         int maxWidth = 0;
-        for (Attribute attribute : attribues) 
-        {
+        for (Attribute attribute : attribues) {
             int attributeWidth = fm.stringWidth(" " + attribute.getName() + ":" + attribute.getType());
-            if (attributeWidth>maxWidth)
-            {
+            if (attributeWidth > maxWidth) {
                 maxWidth = attributeWidth;
             }
         }

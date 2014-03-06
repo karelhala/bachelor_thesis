@@ -21,6 +21,7 @@ public class BT {
     public static enum OOPNObjectType{PLACE, TRANSITION};
     public static enum OOPNLineType{JOIN};
     public static enum AttributeType{PUBLIC, PRIVATE, PROTECTED};
+    public static enum ClassType{ACTOR, ACTIVITY};
     
     /**
      * @param args the command line arguments

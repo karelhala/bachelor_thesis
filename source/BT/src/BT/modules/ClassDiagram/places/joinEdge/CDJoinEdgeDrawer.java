@@ -52,6 +52,7 @@ public class CDJoinEdgeDrawer extends JoinEdgeDrawer{
             if (cdJoin.getJoinEdgeType() == BT.CDLineType.ASSOCIATION)
             {
                 g.drawLine(this.startPoint.x, this.startPoint.y, this.endPoint.x, this.endPoint.y);
+                drawArrow(g, endPoint, startPoint);
             }
             else if (cdJoin.getJoinEdgeType() == BT.CDLineType.AGGREGATION)
             {

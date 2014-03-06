@@ -4,14 +4,21 @@
  */
 package BT.modules.ClassDiagram.mainContent;
 
+import BT.BT.ClassType;
 import BT.interfaces.DrawingClicks;
 import BT.managers.CD.Attribute;
 import BT.managers.ObjectChecker;
 import BT.models.CoordinateModel;
 import BT.modules.ClassDiagram.places.CDClass;
 import BT.modules.ClassDiagram.places.joinEdge.CDJoinEdgeController;
+import java.awt.BorderLayout;
 import java.awt.event.MouseEvent;
+import javax.swing.ButtonGroup;
+import javax.swing.ButtonModel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JTextField;
 import javax.swing.JToggleButton;
 
 /**
@@ -138,12 +145,28 @@ public class CDMainContentController extends CDMainContentModel implements Drawi
     @Override
     public void drawingPaneDoubleCliked(CoordinateModel pressedObject) 
     {
+        JTextField nameInput = new JTextField();
+        JRadioButton actor = new JRadioButton("actor");
+        JRadioButton activity = new JRadioButton("activity");
+        ButtonGroup classTypeGroup = new ButtonGroup();
+        classTypeGroup.add(activity);
+        classTypeGroup.add(actor);
+        JPanel dialogPanel = new JPanel(new BorderLayout());
+        dialogPanel.add(nameInput, BorderLayout.PAGE_START);
+        dialogPanel.add(actor, BorderLayout.LINE_START);
+        dialogPanel.add(activity, BorderLayout.CENTER);
         if (pressedObject != null)
         {
-            String name = (String) JOptionPane.showInputDialog("Enter name of the object",pressedObject.getName());
-            if (name!= null && !"".equals(name))
-                pressedObject.setName(name);
-            this.mainContent.getDrawingPane().getDrawing().repaint();
+            ClassType typeOfClass = ((CDClass)pressedObject).getTypeOfClass();
+            nameInput.setText(pressedObject.getName());
+            ((JRadioButton)((typeOfClass == ClassType.ACTIVITY)?activity:actor)).setSelected(true);
+            int result = JOptionPane.showConfirmDialog(null, dialogPanel, 
+               "Please Enter name of class and select type", JOptionPane.OK_CANCEL_OPTION);
+            if (result == JOptionPane.OK_OPTION)
+            {
+                pressedObject.setName(nameInput.getText());
+                ((CDClass)pressedObject).setTypeOfClass((actor.isSelected() == true)?ClassType.ACTOR:ClassType.ACTIVITY);
+            }
         }
     }
     

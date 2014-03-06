@@ -28,7 +28,7 @@ public final class CDLeftTopContent extends ButtonPaneModel{
     
     /**
      * creates gridlayour and calls to create left Top pane
-     * @param UCMainContent UCMain  it will react to button changes
+     * @param cdMain
      */
     public CDLeftTopContent(CDMainContentController cdMain)
     {
