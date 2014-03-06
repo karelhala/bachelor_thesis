@@ -4,23 +4,56 @@
 \chapter{Úvod}
 Pøi implementaci jakéholiv nástroje se èasto nará¾í na bariéru mezi zákazníkem a programátorem. Zákazník èasto netu¹í co chce a programátor èasto zákazníka ¹patnì pochopí. Tento nástroj bohu¾el tyto problémy nedoká¾e odstranit, nicménì mìl by napomoci odstranit nìkteré bariéry a pomoci sna¾¹í vizualizace problémù.
 
-Nástroj tohoto docílí za pou¾ití nìkolika èástí. Pøípadu u¾ití pro jednotlivé znázornìní zákazníkových potøeb, diagramu tøíd pro vlastní vizualizaci a pochopení vyvýjeného softwaru a nakonec objektovì orientované petriho sítì, slou¾ící pro porozumìní celého systému do hloubky.
+Nástroj tohoto docílí za pou¾ití nìkolika èástí. Pøípadu u¾ití \cite{Pripad_uziti} pro jednotlivé znázornìní zákazníkových potøeb, diagramu tøíd pro vlastní vizualizaci a pochopení vyvýjeného softwaru a nakonec objektovì orientované petriho sítì, slou¾ící pro porozumìní celého systému do hloubky.
 
 \section{Seznámení s nástrojem}
 Jak bylo ji¾ øeèeno pro porozumìní po¾adavkù zákazníka nám poslou¾í diagram pøípadu u¾ití, odsud se pøedgenerují jednotlivé tøídy a ty následnì bude mo¾né upravit a popsat v èásti objektovì orientovaných petriho sítí.
 
-\section{Zhondocení konkurence}
-z hlediska sna¾¹ího porozumìní byl brán zøetel na konkurentní nástroje. Pøevá¾nì byl brán zøetel na jejich jednoduchost a co je dìlá tak hojnì vyu¾ívané a snadno pou6itelné. Z toho dùvodu byly prozkoumány dva nástroje Umbrello a komerèní Enterprise Architect. Na základì prozkoumání zmínìných nástrojù bylo rozhodnuto ¾e nástroj musí být intuitivní, jednoduchý na pou¾ití a mít co nejménì ru¹ivých ovladacích prvkù, ale do urèité míry.
+\chapter{Zhondocení konkurence}
+Z hlediska sna¾¹ího porozumìní byl brán zøetel na konkurentní nástroje. Pøevá¾nì byl brán zøetel na jejich jednoduchost a co je dìlá tak hojnì vyu¾ívané a snadno pou¾itelné. Z toho dùvodu byly prozkoumány dva nástroje Umbrello a komerèní Enterprise Architect. Detailnìj¹í popis jednotlivých aplikací, jejich výhod, nedostatkù a pøevzatých vlastností je popsán v sekci \ref{umbrello} a \ref{enterpriseArchitect}.
 
-\section{Základní rovr¾ení aplikace}
+\section{Umbrello} \label{umbrello}
+Aplikace celým názvem \textbf{Umbrello UML Modeller} \cite{Umbrello} aplikace primárnì urèena pro Unix based systémy, nicménì je mo¾né jej bez problémù nainstalovat také na windows. Mezi její hlavní výhody patøí refaktoring pro nìkteré jazyky. Nicménì graficky zaostává za konkurencí ostatních nástrojù pro tvorbu UML diagramù.
+\subsection{Popis aplikace}
+
+\subsection{Výhody a nevýhody}
+Aplikace je napsána v C++, tudí¾ je velice svi¾ná.
+
+\subsection{Zhodnocení a pøevzaté vlastnosti}
+
+\section{Enterprise Architect} \label{enterpriseArchitect}
+Aplikace \cite{Enterprise_architect} je tvoøena firmou sparx system \url{http://www.sparxsystems.com}, tato firma se soustøeïuje na tvorbu nástrojù pro tvorbu UML grafù. Bohu¾el firmou nabízené produkty jsou placené, ale za dané slu¾by èlovìk obdr¾í opravdu robustní systém pro tvorbu UML grafù a mo¾nost refaktoringu pro nìkolik jazykù.
+
+\subsection{Popis aplikace}
+
+\subsection{Výhody a nevýhody}
+
+\subsection{Zhodnocení a pøevzaté vlastnosti}
+
+\chapter{Grafy pro popis èástí}
+Pro grafické znázornìní jednotlivých èástí byly vybrány z UML grafù pøípad u¾ití \ref{pripadUziti} pro popis jednotlivých akcí v systému, diagram tøíd \ref{diagramTrid} pro grafické znázornìní tøíd a operace mezi nimi. A jako poslední èást, která nespadá pod UML bylo vybráno objektovì orientovaných petriho sítí \ref{oopn} pro popis chování jednotlivých tøíd.
+
+\section{Pøípad ¾ití} \label{pripadUziti}
+\cite{Pripad_uziti}
+\subsection{Technický popis pøípadu u¾ití}
+\subsection{Pøidané prvky}
+
+\section{Diagram tøíd} \label{diagramTrid}
+\cite{Diagram_trid}
+\subsection{Technický popis diagramu tøíd}
+\subsection{Pøidané prvky}
+
+\section{Objektovì orientované petriho sítì} \label{oopn}
+\cite{oopn_caseStudy}
+\subsection{Technický popis objektovì orientovaných petriho sítí}
+\subsection{Pøidané prvky}
+
+\chapter{Popis aplikace}
 Jak ji¾ bylo øeèeno v pøede¹lé èásti, bylo rozhodnuto o jednoduchosti a intuitivním ovládání aplikace. Tohoto bylo docíleno sjednocením základního designu aplikace, sjednocení klávesových zkratek a porozumìní a prozkoumání moderních aplikací.
 
 Hlavní okno se skládá z nìkolika panelù. Horní èást obsahuje otevøené projekty, jejich èástí a ovládací prvky. Celý hlavní obsah aplikace se nacháazí ve zbylích dvou tøetinách okna. V levé èásti se dále nacházejí tlaèítka pro mo¾nost pøepínání jednotlivých vkládaných obejktù. Dolní èást obsahuje informaèní a editaèní mo¾nosti zvoleného prvku a pro hlavní èást, je vyhranìn zbytek pracovní plochy, takzvané editaèní plátno.
 
 Na toto plátno je mo¾né pøidávat jednotlivé prvky, spojovat je, pøesouvat je a mazat je. Po vybrání nìkterého tlaèítka v levém menu je mo¾né zaèít pøidávat prvky. Bylo zvoleno jednoduché a intuitivní chování aplikace, po kliknutí se vytvoøí objekt, po ta¾ení se pøesune objekt a pro spojení dvou objektù hranou je zapotøebí kliknout na první objekt a poté na druhý, pøièem¾ spoj je viditelný od kurzoru po první objekt. Pro zahnutí spoje je mo¾no kliknout pravým tlaèítkem my¹i, co¾ vyvolá vytvoøení ohybu spoje.
-
-\chapter{Popis aplikace}
-K popisu vyvýjené aplikace slou¾í jednotlivé èásti, ka¾dá znázoròuje jiné problémy, popisuje jiné chování a zobrazuje rùzné prvky, nicménì v¹echny èásti mají mnoho spoleèeného, jako napøíklad spojování jednotlivých prvkù a vytvaøení a editace prvkù.
 
 \section{Editace a chování prvkù}
 
