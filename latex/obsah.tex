@@ -13,20 +13,50 @@ Jak bylo ji¾ øeèeno pro porozumìní po¾adavkù zákazníka nám poslou¾í diagram pøíp
 Z hlediska sna¾¹ího porozumìní byl brán zøetel na konkurentní nástroje. Pøevá¾nì byl brán zøetel na jejich jednoduchost a co je dìlá tak hojnì vyu¾ívané a snadno pou¾itelné. Z toho dùvodu byly prozkoumány dva nástroje Umbrello a komerèní Enterprise Architect. Detailnìj¹í popis jednotlivých aplikací, jejich výhod, nedostatkù a pøevzatých vlastností je popsán v sekci \ref{umbrello} a \ref{enterpriseArchitect}.
 
 \section{Umbrello} \label{umbrello}
-Aplikace celým názvem \textbf{Umbrello UML Modeller} \cite{Umbrello} aplikace primárnì urèena pro Unix based systémy, nicménì je mo¾né jej bez problémù nainstalovat také na windows. Mezi její hlavní výhody patøí refaktoring pro nìkteré jazyky. Nicménì graficky zaostává za konkurencí ostatních nástrojù pro tvorbu UML diagramù.
+Aplikace celým názvem \textbf{Umbrello UML Modeller} \cite{Umbrello} aplikace primárnì urèena pro Unix based systémy, nicménì je mo¾né jej bez problémù nainstalovat také na windows. Za pomoci KDE installeru a vybrání po¾adovaného balíèku. Ovládání tohoto installeru, je velice jednoduché a intuitivní. Mezi její hlavní výhody patøí refaktoring pro nìkteré jazyky. Nicménì graficky zaostává za konkurencí ostatních nástrojù pro tvorbu UML diagramù.
+
 \subsection{Popis aplikace}
+Aplikace je velice robustní a poskytuje mnohov lastností. Pøi ohlédnutí na to, ¾e je volnì ke sta¾ení a volnì k pou¾ívání, aplikace pou¾ívá licenci GNU general public license \cite{gnu_license}. Co¾ umo¾òuje komunitu být zapojenou pøi vývoji, odchytávat chyby a sami je opravovat. Pokud vývojáø nicménì chce být zahrnut do vývoje, musí bý èlenem KDE komunity. Umbrello poskytuje mnoho UML grafù a práce s touto aplikací je pomìrnì jednoduchá, ale její jednoduchý design má mnoho ¹patných návrhù. Pro men¹í aplikace a pro zaèínající firmy je naprosto dokonalá, ale absence pokroèilého editoru a ne pøíli¹ jednoduché práce s editorem je opravdu ¾alostná.
 
 \subsection{Výhody a nevýhody}
-Aplikace je napsána v C++, tudí¾ je velice svi¾ná.
+Umbrello aplikace poskytuje nìkolikero UML grafù. \textbf{Class Diagram}, pro popis tøíd a provázanosti mezi nimi. \textbf{Sequence Diagram}, pro popis chodu aplikace, komunikace mezi vlákny a komunikace mezi aplikacemi. \textbf{Use Case Diagram} pro popis akcí v systému, aplikaci. \textbf{State Diagram} pro popis stavu systému a prùbìhu jednotlivých operací, pøevá¾nì zachování v urèitých momentech aplikace na dané podmínky. \textbf{Activity Diagram} popisuje akce a prùbìh celého programu graficky. \textbf{Component Diagram} pro popis spojení a komunikace mezi jednotlivými komponentami. \textbf{Deployment Diagram} popisuje fyzické ulo¾í¹tì a ma¹iny, na kterých program bude pracovat. A v neposlední øadì \textbf{Entity Relationship Diagram} pro popis vztahu dat mezi sebou.
 
+Jak je vidno Umbrello poskytuje velké mno¾ství editorù a mo¾ností, jak znázornit chod aplikace. Aplikace je také velice intuitivní, a» ji¾ díky klávesovým zkratkám, tak také díky jednoduchému grafickému designu. Umbrello, také podporuje genraci a refactoring zdrojového kódu pro nìkteré jazyky. Staèí pouze importovat jednu ji¾ vytvoøenou tøídu a Umbrello vás provede jednoduchým nastavením, výbìrem které tøídy namodelované v aplikaci se mají vygenerovat a nabídne také mo¾nost upravit mírnì zvolený kód. Celkovì funkce pro generování zdrojového kódu a jeho úprava je velice potì¹ující a s ohlédnutím na to, ¾e Umbrello je volnì ¹íøitelné, je tato vlastnost velice dobrá.
+
+Umbrello dále poskytuje mo¾nost gerevání èásteèné dokumentace, i kdy¾ nejsou poskytnu komentáøe. Pøi generování tøíd je mo¾nost, také importovat zdrojový kód a nechat umbrello v¹e vygenerovat samo. Tato vlastnost je, ale podporována pouze pro jazyky \texttt{ActionScript, Ada, C++, C\#, D IDL, Java, Javascript, MySQL}. Výbìr je tedy více ne¾ bohatý.
+
+Dále Umbrello poskytuje mo¾nost exportování objektù jako PNG obrázky. Tato funkènost je velice pøíjemná pøi psaní dokumentù staèí èást aplikace jednodu¹e okopírovat a vlo¾it jako obrázek. Exportovat jako obrázek, je také mo¾no celý diagram. A také tisknout daný diagram.
+
+hlavní nevýhoda aplikace je pravdìpodobnì ne pøíli¹ dobøe udìlaný editor. Editor je sice jednoduchý na pou¾ívání a intuitivní, nicménì dlouhodobìj¹í práce je zdlouhavá a pøíli¹ repetitvní. Nutnost vytvoøení objektu na pracovním plátnì, poté výbìru nástroje pro pøesun a editaci daného objektu je zdlouhavé a ¹patné.jednodu¹¹í pro práci by jistì bylo vytvoøení objektu a po kliknutí na ji¾ vytvoøený objekt jej pouze pøesunout. Vytvoøení nového atributu tøídy je opìt velice nároèné a neintuitivní.
+
+Co je ale nejvìt¹í slabinou Umbrello aplikace, je nevalidace daného diagramu. Je èistì na u¾ivateli hlídat si ve¹keré chyby a validitu modelované aplikace.
 \subsection{Zhodnocení a pøevzaté vlastnosti}
+Aplikace Umbrello je ¹pièkou ve své tøídì. Je zdarma a poskytuje mnoho nástrojù pøi návrhu aplikace. Mezi jeho pøednosti jistì patøí mo¾nost refactoringu a také rozsáhlé mo¾nosti ve variabilitì grafických návrhù.
+
+Aplikace Umbrello poskytla mnoho informací o vývoji editaèní aplikace. Jakým chybám se vyvarovat a co se naopak hodí. Z aplikace Umbrello bylo pøedev¹ím pou¾ita jednoduchost a intuitivní ovládání. Rozdìlení aplikace na jednotlivé èásti a poté jednoduchý grafický design. Není za potøebí ve výsledné aplikaci mnoho nároèných grafických elementù. Tyto elemnty by byly ru¹ivé, tudí¾ na základì Umbrello aplikace byl zvolen jednoduchý design.
+
+Na základì chyb a nedostatkù, pøevá¾nì tomu, ¾e Umbrello neposkutuje jakoukoliv kontrolu daného modelu, bylo v aplikaci Nástroj pro podporu vývoje softwarových systémù implementována mo¾nost kontroly editovaného grafu. A to pøesnìji kontrola spojù, zda je daný spoj mezi dvìma objekty na pracovním plátnì validní.
+
+V Umbrello nelze dané spoje nikterat ohýbat, co¾ dìlá výdledný diagram velice nepøehledný. Dále není mo¾no v Umbrello nikterak editovat dané spoje, tomuto bylo vyhnuto a pøidána editace spojù s mo¾ností jednak zmìny typu, dále také zmìny objektu na který daná hrana ukazuje a také mo¾nost jednoduchého odebrání hrany.
+
+V Umbrello není nikde vidìt, zda daný objekt má hrany, které vedou do a nebo z obejktu. Toto bylo ve výsledné aplikaci pøidáno, co¾ následnì zmìnilo grafické cítìní modelu a jednoduchou identifikaci objektù.
+
+Ve výsledné aplikaci, bylo také vyhnuto vlastnosti automatického vyskakování okna pøi pøidání nového objektu, toto bylo nahrazeno pozdìj¹í úpravou daného objektu. Bylo vzáno v potaz, ¾e u¾ivatel bude chtít v jeden moment vytvoøit více objektù a a¾ poté e pojmenovat a pospojovat.
 
 \section{Enterprise Architect} \label{enterpriseArchitect}
 Aplikace \cite{Enterprise_architect} je tvoøena firmou sparx system \url{http://www.sparxsystems.com}, tato firma se soustøeïuje na tvorbu nástrojù pro tvorbu UML grafù. Bohu¾el firmou nabízené produkty jsou placené, ale za dané slu¾by èlovìk obdr¾í opravdu robustní systém pro tvorbu UML grafù a mo¾nost refaktoringu pro nìkolik jazykù.
 
 \subsection{Popis aplikace}
+Enterprise Architect je velice roustní systém, ji¾ nemá takové nedostatky jako aplikace Umbrello a nabízí nìkolikero mo¾ností pro refaktoring projektu. Aplikace rozdìluje UML grafy do dvou skupin, skupina \textbf{Structural Diagrams} pro diagramy na popis vyvýjené aplikace a popis její struktury. A skupinu \textbf{Behavior Diagrams} pro popis chování aplikace a komunikace mezi jednotlivými èástmi aplikace. Aplikace poskytuje velkou ¹kálu grafù a diagramù od klasických diagramù pro popis chování dat mezi sebou, pøes diagramy pro návrh Win32 UI a¾ po návrh testování výsledné aplikace.
 
 \subsection{Výhody a nevýhody}
+Aplikace zastává velké mno¾ství grafù a diagramù, pro jednodu¹¹í ovládání aplikace dostane u¾ivatel mo¾nost popisu v¹ech èástí aplikace a vysvìtlení v¹ech diagramù.
+
+Grafické rozhraní ji¾ není tak jednoduché, jako tomu je u aplikace Umbrello, ale je intuitivní a jednoduché pro pou¾ívání. Vìt¹ina pokroèilých funkcí je bohu¾el schována a je nároèné ji najít. Pøidávání atributù pro jednotlivé tøídy je opìt zdlouhavé a neintuitivní. Aplikace Umbrello má vyøe¹enu tuto vlastnost lépe, ale ne dokonale.
+
+Výhodou této aplikace jistì je mo¾nost vytváøení diagramù pro jednotlivé jazyky, celkem jedenáct jazykù je podporovaných. \texttt{ActionScript, C, C\#, C++, Delphi, Java, PHP, Python, VBNet, Visual Basic, WorkFlow Script}.
+
+Nejvìt¹í výhodou je jistì mo¾nost importovat celý obsah slo¾ky se zdrojovými kódy a tento projekt poté zobrazit v diagramu tøíd. Import nicménì probíhá ponìkud slo¾itìji, ne¾ v aplikaci Umbrello.
 
 \subsection{Zhodnocení a pøevzaté vlastnosti}
 
