@@ -84,7 +84,11 @@ public class CDMainContentController extends CDMainContentModel implements Drawi
             else
             {
                 this.places.setAllObjectDiselected();
+                this.newJoinEdge = null;
+                this.mainContent.getDrawingPane().setNewLine(this.newJoinEdge);
+                this.mainContent.getDrawingPane().getDrawing().repaint();
             }
+            
         }
         else if (coordObject instanceof CDClass)
         {

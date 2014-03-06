@@ -6,7 +6,6 @@
 
 package BT.modules.ClassDiagram.mainContent;
 
-import BT.BT;
 import BT.BT.CDLineType;
 import BT.models.CoordinateModel;
 import BT.modules.ClassDiagram.places.joinEdge.CDJoinEdgeController;
@@ -49,7 +48,6 @@ public class CDJoinEdgeManipulator {
                     joinEdge.setJoinEdgeType(CDLineType.REALIZATION);
                 break;
         }
-        setLineTypeBySecondObject(joinEdge);
     }
 
     /**
@@ -73,11 +71,5 @@ public class CDJoinEdgeManipulator {
             joinEdge.setSecondObject(clickedObject);
         }       
         return joinEdge;
-    }
-    
-    /* Move this to propriete class */
-    public static void setLineTypeBySecondObject(CDJoinEdgeController joinEdge)
-    {
-        
     }
 }

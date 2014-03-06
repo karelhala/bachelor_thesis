@@ -49,7 +49,7 @@ public class CDClass extends CoordinateModel {
         this.howerColor = Color.GREEN;
         this.variables = new ArrayList<>();
         this.methods = new ArrayList<>();
-        this.typeOfClass = ClassType.ACTOR;
+        this.typeOfClass = ClassType.ACTIVITY;
     }
 
     public ClassType getTypeOfClass() {
