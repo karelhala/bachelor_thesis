@@ -4,7 +4,6 @@
 */
 package BT.models;
 
-import BT.modules.UC.places.UCJoinEdge.UCJoinEdgeController;
 import java.util.ArrayList;
 
 /**

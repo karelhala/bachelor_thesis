@@ -38,20 +38,20 @@ public class PNMainContentController extends PNMainContentModel implements Drawi
     public void drawingPanecheckMove(MouseEvent evt) {
         ObjectChecker objectChecker = new ObjectChecker(this.mainContent.getDrawingPane().getPlaces());
         CoordinateModel coordObject = objectChecker.getObjectUnderMouse(evt.getPoint());
-        PNDrawingPane UCdrawing = this.mainContent.getDrawingPane();
+        PNDrawingPane PNdrawing = this.mainContent.getDrawingPane();
         if (this.newJoinEdge != null)
         {
             if (this.newJoinEdge.getSecondObject() == null)
             {
                 this.newJoinEdge.setEndPoint(evt.getPoint());
             }
-//            UCdrawing.setNewLine(this.newJoinEdge);
+            PNdrawing.setNewLine(this.newJoinEdge);
         }
         if (coordObject != null)
         {
             coordObject.setHowerColor();
         }
-        UCdrawing.getDrawing().repaint();
+        PNdrawing.getDrawing().repaint();
     }
 
     /**
@@ -95,6 +95,15 @@ public class PNMainContentController extends PNMainContentModel implements Drawi
             else
             {
                 this.places.setAllObjectDiselected();
+                deleteNewLine();
+            }
+        }
+        else if (coordObject instanceof PNPlace || coordObject instanceof PNTransition)
+        {
+            coordObject.setSelected(Boolean.TRUE);
+            if (this.LeftBottomContent.getSelectedButton() != null)
+            {
+                drawJoinEdge(coordObject);
             }
         }
         this.mainContent.getDrawingPane().getDrawing().repaint();
@@ -146,13 +155,54 @@ public class PNMainContentController extends PNMainContentModel implements Drawi
     public void buttonsChanged() {
         System.out.println("Generated method"); //To change body of generated methods, choose Tools | Templates.
     }
+    
+        /**
+     * 
+     * @param clickedObject 
+     */
+    public void drawJoinEdge(CoordinateModel clickedObject)
+    {
+        this.newJoinEdge = createJoinEdge(this.newJoinEdge,clickedObject);
 
+        if (this.newJoinEdge.getFirstObject()!= null && this.newJoinEdge.getSecondObject() != null)
+        {
+            if (this.newJoinEdge.getFirstObject().equals(clickedObject))
+            {
+                this.newJoinEdge.setSelected(true);
+            }
+            else
+            {
+                this.newJoinEdge.setSelected(false);
+            }
+            this.places.addObject(this.newJoinEdge);
+            this.newJoinEdge = null;
+        }
+        PNDrawingPane cdDrawing = this.mainContent.getDrawingPane();
+        cdDrawing.setNewLine(newJoinEdge);
+    }
+    
     /**
      * 
-     * @param draggedJoinEdge 
+     * @param joinEdge
+     * @param clickedObject 
+     * @return  
      */
-    private void removeLineFromArrayListAndSetNewLine(PNJoinEdgeController draggedJoinEdge) {
-        System.out.println("Generated method"); //To change body of generated methods, choose Tools | Templates.
+    private PNJoinEdgeController createJoinEdge(PNJoinEdgeController joinEdge, CoordinateModel clickedObject)
+    {   
+        if (joinEdge == null)
+        {
+            joinEdge = new PNJoinEdgeController();
+        }
+        if (joinEdge.getFirstObject() == null)
+        {
+            joinEdge.setFirstObject(clickedObject);
+        }
+        else if (joinEdge.getSecondObject() == null && !joinEdge.getFirstObject().getClass().equals(clickedObject.getClass()))
+        {
+            joinEdge.setSecondObject(clickedObject);
+        }       
+        return joinEdge;
     }
+    
     
 }

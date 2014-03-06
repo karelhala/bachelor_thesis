@@ -14,7 +14,6 @@ import BT.modules.ClassDiagram.places.joinEdge.CDJoinEdgeController;
 import java.awt.BorderLayout;
 import java.awt.event.MouseEvent;
 import javax.swing.ButtonGroup;
-import javax.swing.ButtonModel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
@@ -84,9 +83,7 @@ public class CDMainContentController extends CDMainContentModel implements Drawi
             else
             {
                 this.places.setAllObjectDiselected();
-                this.newJoinEdge = null;
-                this.mainContent.getDrawingPane().setNewLine(this.newJoinEdge);
-                this.mainContent.getDrawingPane().getDrawing().repaint();
+                deleteNewLine();
             }
             
         }

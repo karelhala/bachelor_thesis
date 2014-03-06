@@ -86,6 +86,10 @@ public class PlaceManager extends PlaceModel {
         {
             oneModel.setSelected(false);
         }
+        for (CoordinateModel oneJoinEdge : this.joinEdges)
+        {
+            oneJoinEdge.setSelected(false);
+        }
     }
     
     /**

@@ -12,6 +12,7 @@ import BT.modules.ClassDiagram.places.joinEdge.CDJoinEdgeController;
 import BT.modules.ObjectedOrientedPetriNet.PNLeftBottomContent;
 import BT.modules.ObjectedOrientedPetriNet.PNLeftTopContent;
 import BT.modules.ObjectedOrientedPetriNet.PNMainContent;
+import BT.modules.ObjectedOrientedPetriNet.places.joinEdge.PNJoinEdgeController;
 import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
 import javax.swing.InputMap;
@@ -28,7 +29,7 @@ public class PNMainContentModel {
     protected PNLeftBottomContent LeftBottomContent;
     protected PlaceManager places;
     protected PNLeftTopContent LeftTopContent;
-    protected CDJoinEdgeController newJoinEdge;
+    protected PNJoinEdgeController newJoinEdge;
     
     public PNMainContentModel()
     {
@@ -53,7 +54,7 @@ public class PNMainContentModel {
         this.LeftTopContent = LeftTopContent;
     }
 
-    public void setNewJoinEdge(CDJoinEdgeController newJoinEdge) {
+    public void setNewJoinEdge(PNJoinEdgeController newJoinEdge) {
         this.newJoinEdge = newJoinEdge;
     }
     
@@ -73,7 +74,7 @@ public class PNMainContentModel {
         return LeftTopContent;
     }
 
-    public CDJoinEdgeController getNewJoinEdge() {
+    public PNJoinEdgeController getNewJoinEdge() {
         return newJoinEdge;
     }
     
@@ -97,10 +98,31 @@ public class PNMainContentModel {
                 @Override
                 public void actionPerformed(ActionEvent ae) {
                     places.removeAllSelectedItems();
+                    deleteNewLine();
+                    drawingPane.getDrawing().repaint();
                 }
             }
         );
         InputMap inputMap = drawingPane.getDrawing().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
         inputMap.put(KeyStroke.getKeyStroke("DELETE"), "removeObject");
+    }
+    
+    /**
+     * 
+     * @param draggedJoinEdge 
+     */
+    protected void removeLineFromArrayListAndSetNewLine(PNJoinEdgeController draggedJoinEdge) {
+        this.newJoinEdge = new PNJoinEdgeController();
+        this.newJoinEdge.setFirstObject(draggedJoinEdge.getFirstObject());
+        this.places.removeJoinEdge(draggedJoinEdge);
+    }
+    
+    /**
+     * 
+     */
+    protected void deleteNewLine(){
+        this.newJoinEdge = null;
+        this.mainContent.getDrawingPane().setNewLine(newJoinEdge);
+        this.mainContent.getDrawingPane().getDrawing().repaint();
     }
 }

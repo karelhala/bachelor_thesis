@@ -8,8 +8,11 @@ package BT.modules.ObjectedOrientedPetriNet.mainContent;
 
 import BT.managers.PlaceManager;
 import BT.models.CoordinateModel;
+import BT.models.LineModel;
 import BT.modules.ObjectedOrientedPetriNet.places.PNPlace;
 import BT.modules.ObjectedOrientedPetriNet.places.PNTransition;
+import BT.modules.ObjectedOrientedPetriNet.places.joinEdge.PNJoinEdgeController;
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
@@ -22,7 +25,7 @@ import javax.swing.JPanel;
 public class PNDrawingPane {
     private PlaceManager PNplaces;
     private PNDrawingPane.drawing drawPane;
-//    private CDJoinEdgeController newLine;
+    private PNJoinEdgeController newLine;
 
     public PNDrawingPane()
     {
@@ -38,12 +41,12 @@ public class PNDrawingPane {
     {
         this.drawPane = new PNDrawingPane.drawing();
         this.PNplaces = PNplaces;
-//        this.newLine = null;
+        this.newLine = null;
     }
 
-//    void setNewLine(CDJoinEdgeController newJoinEdge) {
-////        newLine = newJoinEdge;
-//    }
+    void setNewLine(PNJoinEdgeController newJoinEdge) {
+        newLine = newJoinEdge;
+    }
      /**
      * 
      */
@@ -57,16 +60,16 @@ public class PNDrawingPane {
             super.paintComponent(g1);
             Graphics2D g = (Graphics2D) g1.create();
             g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-//            if (newLine != null)
-//            {
-//                g.setColor(Color.GREEN);
-//                newLine.drawJoinEdge(g);   
-//            }
+            if (newLine != null)
+            {
+                g.setColor(Color.GREEN);
+                newLine.drawJoinEdge(g);   
+            }
             
-//            for (LineModel joinEdge: CDplaces.getJoinEdges()) {
-//                ((CDJoinEdgeController) joinEdge).drawJoinEdge(g);
-//            }
-//            
+            for (LineModel joinEdge: PNplaces.getJoinEdges()) {
+                ((PNJoinEdgeController) joinEdge).drawJoinEdge(g);
+            }
+
             for (CoordinateModel place: PNplaces.getObjects()) {
                 if (place instanceof PNPlace)
                 {

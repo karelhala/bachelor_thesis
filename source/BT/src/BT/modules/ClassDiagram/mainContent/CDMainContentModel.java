@@ -86,12 +86,21 @@ class CDMainContentModel {
             @Override
                 public void actionPerformed(ActionEvent e) {
                     mainContent.getDrawingPane().getPlaces().removeAllSelectedItems();
-                    mainContent.getDrawingPane().getDrawing().repaint();
+                    deleteNewLine();
                 }
             }
         );
         InputMap inputMap = drawingPane.getDrawing().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
         inputMap.put(KeyStroke.getKeyStroke("DELETE"), "removeObject");
+    }
+    
+    /**
+     * 
+     */
+    protected void deleteNewLine(){
+        this.newJoinEdge = null;
+        this.mainContent.getDrawingPane().setNewLine(newJoinEdge);
+        this.mainContent.getDrawingPane().getDrawing().repaint();
     }
     
     /**
