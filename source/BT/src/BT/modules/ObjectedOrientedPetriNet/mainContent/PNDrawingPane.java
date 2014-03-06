@@ -74,7 +74,7 @@ public class PNDrawingPane {
                 }
                 else if (place instanceof PNTransition)
                 {
-                    ((PNPlace) place).drawTransition(g);
+                    ((PNTransition) place).drawTransition(g);
                 }
             }
         }

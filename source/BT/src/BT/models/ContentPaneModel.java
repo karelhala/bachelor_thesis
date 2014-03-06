@@ -28,7 +28,7 @@ public class ContentPaneModel {
     
     /**
      * Method, that returns main pane has content of left top pane
-     * @return JPanel left top pane of application
+     * @param mainContentPane
      */
     public void setMainContentPane (JPanel mainContentPane)
     {

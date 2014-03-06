@@ -86,7 +86,7 @@ public class PNMainContentModel {
         setButtonsListeners();
     }
     
-            /**
+    /**
      * 
      */
     public void setButtonsListeners()
@@ -96,7 +96,7 @@ public class PNMainContentModel {
             PNDrawingPane drawingPane = mainContent.getDrawingPane();
                 @Override
                 public void actionPerformed(ActionEvent ae) {
-                    System.out.println("Pressed delete");
+                    places.removeAllSelectedItems();
                 }
             }
         );
