@@ -52,7 +52,6 @@ public class UCMainContentController extends UCMainContentModel implements Drawi
             UCJoinEdgeController draggedJoinEdge = (UCJoinEdgeController) dragged;
             if (!draggedJoinEdge.isInRange(e.getX(), e.getY()))
             {
-                this.LeftBottomContent.getButtonWithName(draggedJoinEdge.getJoinEdgeType().name()).setSelected(true);
                 removeLineFromArrayListAndSetNewLine(draggedJoinEdge);
                 drawingPanecheckMove(e);
             }
@@ -95,6 +94,8 @@ public class UCMainContentController extends UCMainContentModel implements Drawi
     @Override
     public void drawingPanecheckMove(MouseEvent evt) 
     {
+        ObjectChecker objectUnderMouse = new ObjectChecker(places);
+        CoordinateModel coordModel = objectUnderMouse.getObjectUnderMouse(evt.getPoint());
         UCDrawingPane UCdrawing = this.mainContent.getDrawingPane();
         if (this.newJoinEdge != null)
         {
@@ -104,8 +105,6 @@ public class UCMainContentController extends UCMainContentModel implements Drawi
             }
             UCdrawing.setNewLine(this.newJoinEdge);
         }
-        ObjectChecker objectUnderMouse = new ObjectChecker(places);
-        CoordinateModel coordModel = objectUnderMouse.getObjectUnderMouse(evt.getPoint());
         if (coordModel != null)
         {
             coordModel.setHowerColor();
@@ -128,7 +127,7 @@ public class UCMainContentController extends UCMainContentModel implements Drawi
             clickedObject.setSelected(true);
         }
 
-        if (this.LeftBottomContent.getSelectedButton()!=null)
+        if (this.LeftBottomContent.getSelectedButton()!=null || this.newJoinEdge != null)
         {
             clickedOnObject(clickedObject);
         }
@@ -155,7 +154,10 @@ public class UCMainContentController extends UCMainContentModel implements Drawi
     private void drawJoinEdge(CoordinateModel clickedObject)
     {
         this.newJoinEdge = UCJoinEdgeManipulator.createJoinEdge(this.newJoinEdge,clickedObject);
-        UCJoinEdgeManipulator.changeLineTypeByButton(this.LeftBottomContent.getSelectedButton(),this.newJoinEdge);
+        if (this.LeftBottomContent.getSelectedButton() != null)
+        {
+            UCJoinEdgeManipulator.changeLineTypeByButton(this.LeftBottomContent.getSelectedButton(),this.newJoinEdge);
+        }
 
         if (this.newJoinEdge.getFirstObject()!= null && this.newJoinEdge.getSecondObject() != null)
         {

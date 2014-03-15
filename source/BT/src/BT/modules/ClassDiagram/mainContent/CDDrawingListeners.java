@@ -7,6 +7,7 @@ package BT.modules.ClassDiagram.mainContent;
 import BT.interfaces.DrawingClicks;
 import BT.managers.ObjectChecker;
 import BT.models.CoordinateModel;
+import BT.models.LineModel;
 import java.awt.event.MouseEvent;
 import javax.swing.event.MouseInputAdapter;
 
@@ -51,7 +52,27 @@ public class CDDrawingListeners extends MouseInputAdapter{
     
     @Override
     public void mouseDragged(MouseEvent e){
-        this.mainContent.drawingMouseDragged(e, this.selectedModel);
+        if (selectedModel!= null)
+        {
+            if (this.selectedModel instanceof LineModel)
+            {
+                LineModel draggedJoin = (LineModel) this.selectedModel;
+                if (!draggedJoin.isInRange(e.getX(), e.getY()))
+                {
+                    this.mainContent.drawingMouseDragged(e, this.selectedModel);
+                    draggedJoin.setSecondObject(null);
+                }
+            }
+            else
+            {
+                this.mainContent.drawingMouseDragged(e, this.selectedModel);
+            }
+        }
+        else
+        {
+            this.mainContent.getMainContent().getDrawingPane().getPlaces().setAllObjectDiselected();
+        }
+        this.mainContent.drawingPanecheckMove(e);
     }
     
     @Override
@@ -62,6 +83,11 @@ public class CDDrawingListeners extends MouseInputAdapter{
     @Override
     public void mouseReleased(MouseEvent e)
     {
+        if (this.selectedModel instanceof LineModel)
+        {
+            ObjectChecker objectChecker = new ObjectChecker(this.mainContent.getMainContent().getDrawingPane().getPlaces());
+            this.mainContent.setSelectedObject(objectChecker.getObjectUnderMouse(e.getPoint()));
+        }
         this.selectedModel = null;
     }
     
@@ -69,14 +95,17 @@ public class CDDrawingListeners extends MouseInputAdapter{
     public void mouseClicked(MouseEvent e)
     {
         ObjectChecker objectChecker = new ObjectChecker(this.mainContent.getMainContent().getDrawingPane().getPlaces());
-        CoordinateModel coordObject = objectChecker.getObjectUnderMouse(e.getPoint());
+        CoordinateModel clickedObject = objectChecker.getObjectUnderMouse(e.getPoint());
         if (e.getClickCount()%2 == 0)
         {
-            this.mainContent.drawingPaneDoubleCliked(coordObject);
+            if (clickedObject != null && !(clickedObject instanceof LineModel))
+            {
+                this.mainContent.drawingPaneDoubleCliked(clickedObject);
+            }
         }
         else
         {
-            this.mainContent.drawingPaneClicked(e);   
+            this.mainContent.setSelectedObject(clickedObject);
         }
     }
 }

@@ -111,7 +111,11 @@ class CDMainContentModel {
     {
         this.newJoinEdge = new CDJoinEdgeController();
         this.newJoinEdge.setFirstObject(joinEdge.getFirstObject());
-        CDJoinEdgeManipulator.changeLineTypeByButton(this.LeftBottomContent.getSelectedButton(),this.newJoinEdge);
+        this.newJoinEdge.setJoinEdgeType(joinEdge.getJoinEdgeType());
+        if (this.LeftBottomContent.getSelectedButton() != null)
+        {
+            CDJoinEdgeManipulator.changeLineTypeByButton(this.LeftBottomContent.getSelectedButton(),this.newJoinEdge);
+        }
         this.places.removeJoinEdge(joinEdge);
     }
 }

@@ -9,6 +9,7 @@ package BT.modules.ObjectedOrientedPetriNet.mainContent;
 import BT.interfaces.DrawingClicks;
 import BT.managers.ObjectChecker;
 import BT.models.CoordinateModel;
+import BT.models.LineModel;
 import BT.modules.ObjectedOrientedPetriNet.places.PNPlace;
 import BT.modules.ObjectedOrientedPetriNet.places.PNTransition;
 import BT.modules.ObjectedOrientedPetriNet.places.joinEdge.PNJoinEdgeController;
@@ -75,36 +76,23 @@ public class PNMainContentController extends PNMainContentModel implements Drawi
      */
     @Override
     public void drawingPaneClicked(MouseEvent evt) {
-        ObjectChecker objectChecker = new ObjectChecker(this.mainContent.getDrawingPane().getPlaces());
-        CoordinateModel coordObject = objectChecker.getObjectUnderMouse(evt.getPoint());
-        if (coordObject == null)
+        JToggleButton selectedItemButton = this.LeftTopContent.getSelectedButton();
+        if (selectedItemButton != null && "PLACE".equals(selectedItemButton.getName()))
         {
-            JToggleButton selectedItemButton = this.LeftTopContent.getSelectedButton();
-            if (selectedItemButton != null && "PLACE".equals(selectedItemButton.getName()))
-            {
-                this.places.setAllObjectDiselected();
-                PNPlace newPlace = new PNPlace(evt.getX(), evt.getY());
-                this.places.addObject(newPlace);
-            }
-            else if (selectedItemButton != null && "TRANSITION".equals(selectedItemButton.getName()))
-            {
-                this.places.setAllObjectDiselected();
-                PNTransition newTrasition = new PNTransition(evt.getX(), evt.getY());
-                this.places.addObject(newTrasition);
-            }
-            else
-            {
-                this.places.setAllObjectDiselected();
-                deleteNewLine();
-            }
+            this.places.setAllObjectDiselected();
+            PNPlace newPlace = new PNPlace(evt.getX(), evt.getY());
+            this.places.addObject(newPlace);
         }
-        else if (coordObject instanceof PNPlace || coordObject instanceof PNTransition)
+        else if (selectedItemButton != null && "TRANSITION".equals(selectedItemButton.getName()))
         {
-            coordObject.setSelected(Boolean.TRUE);
-            if (this.LeftBottomContent.getSelectedButton() != null)
-            {
-                drawJoinEdge(coordObject);
-            }
+            this.places.setAllObjectDiselected();
+            PNTransition newTrasition = new PNTransition(evt.getX(), evt.getY());
+            this.places.addObject(newTrasition);
+        }
+        else
+        {
+            this.places.setAllObjectDiselected();
+            deleteNewLine();
         }
         this.mainContent.getDrawingPane().getDrawing().repaint();
     }
@@ -116,8 +104,14 @@ public class PNMainContentController extends PNMainContentModel implements Drawi
      */
     @Override
     public void drawingMouseDragged(MouseEvent e, CoordinateModel dragged) {
+        PNDrawingPane pnDrawing = this.mainContent.getDrawingPane();
         if (dragged instanceof PNPlace || dragged instanceof PNTransition)
         {
+            if (this.newJoinEdge != null)
+            {
+                this.newJoinEdge = null;
+                pnDrawing.setNewLine(null);
+            }
             dragged.setX(e.getX());
             dragged.setY(e.getY());
         }
@@ -130,7 +124,7 @@ public class PNMainContentController extends PNMainContentModel implements Drawi
                 drawingPanecheckMove(e);
             }
         }
-        this.mainContent.getDrawingPane().getDrawing().repaint();
+        pnDrawing.getDrawing().repaint();
     }
 
     /**
@@ -145,6 +139,11 @@ public class PNMainContentController extends PNMainContentModel implements Drawi
         {
             clickedObject.setSelected(true);
         }
+        
+        if (this.LeftBottomContent.getSelectedButton()!=null || this.newJoinEdge != null)
+        {
+            clickedOnObject(clickedObject);
+        }
         this.mainContent.getDrawingPane().getDrawing().repaint();
     }
 
@@ -153,7 +152,12 @@ public class PNMainContentController extends PNMainContentModel implements Drawi
      */
     @Override
     public void buttonsChanged() {
-        System.out.println("Generated method"); //To change body of generated methods, choose Tools | Templates.
+        if (this.LeftBottomContent.getSelectedButton() == null)
+        {
+            this.newJoinEdge = null;
+            this.mainContent.getDrawingPane().setNewLine(null);
+        }
+        this.mainContent.getDrawingPane().getDrawing().repaint();
     }
     
         /**
@@ -202,6 +206,26 @@ public class PNMainContentController extends PNMainContentModel implements Drawi
             joinEdge.setSecondObject(clickedObject);
         }       
         return joinEdge;
+    }
+
+    /**
+     * 
+     * @param clickedObject 
+     */
+    private void clickedOnObject(CoordinateModel clickedObject) {
+        if (clickedObject == null || clickedObject instanceof LineModel)
+        {
+            this.newJoinEdge = null;
+            this.mainContent.getDrawingPane().setNewLine(null);
+        }
+        else
+        {
+            if (this.newJoinEdge!=null && this.newJoinEdge.getFirstObject().equals(clickedObject))
+            {
+                this.newJoinEdge = null;
+            }
+            drawJoinEdge(clickedObject);
+        }
     }
     
     

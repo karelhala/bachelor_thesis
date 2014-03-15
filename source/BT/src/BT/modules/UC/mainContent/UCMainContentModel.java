@@ -105,15 +105,6 @@ public class UCMainContentModel {
         InputMap inputMap = drawingPane.getDrawing().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
         inputMap.put(KeyStroke.getKeyStroke("DELETE"), "removeObject");
     }
-    
-    /**
-     * 
-     */
-    public void deselectAllObjectsAndRepaint()
-    {
-        this.places.setAllObjectDiselected();
-        this.mainContent.getDrawingPane().getDrawing().repaint();
-    }
 
     /**
      * 
@@ -123,7 +114,11 @@ public class UCMainContentModel {
     {
         this.newJoinEdge = new UCJoinEdgeController();
         this.newJoinEdge.setFirstObject(joinEdge.getFirstObject());
-        UCJoinEdgeManipulator.changeLineTypeByButton(this.LeftBottomContent.getSelectedButton(),this.newJoinEdge);
+        this.newJoinEdge.setJoinEdgeType(joinEdge.getJoinEdgeType());
+        if (this.LeftBottomContent.getSelectedButton() != null)
+        {
+            UCJoinEdgeManipulator.changeLineTypeByButton(this.LeftBottomContent.getSelectedButton(),this.newJoinEdge);
+        }
         this.places.removeJoinEdge(joinEdge);
     }
 }

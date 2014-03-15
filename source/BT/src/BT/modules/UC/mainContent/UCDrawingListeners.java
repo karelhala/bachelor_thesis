@@ -7,7 +7,7 @@ package BT.modules.UC.mainContent;
 import BT.managers.ObjectChecker;
 import BT.interfaces.DrawingClicks;
 import BT.models.CoordinateModel;
-import BT.modules.UC.places.UCJoinEdge.UCJoinEdgeController;
+import BT.models.LineModel;
 import java.awt.event.MouseEvent;
 import javax.swing.event.MouseInputAdapter;
 
@@ -65,14 +65,13 @@ public class UCDrawingListeners extends MouseInputAdapter{
     public void mouseDragged(MouseEvent e){
         if (draggedObject!= null)
         {
-            if (this.draggedObject instanceof UCJoinEdgeController)
+            if (this.draggedObject instanceof LineModel)
             {
-                UCJoinEdgeController draggedJoin = (UCJoinEdgeController) this.draggedObject;
+                LineModel draggedJoin = (LineModel) this.draggedObject;
                 if (!draggedJoin.isInRange(e.getX(), e.getY()))
                 {
                     this.UCMainContent.drawingMouseDragged(e, this.draggedObject);
-                    UCJoinEdgeController draggedJoinEdge = (UCJoinEdgeController) draggedObject;
-                    draggedJoinEdge.setSecondObject(null);
+                    draggedJoin.setSecondObject(null);
                 }
             }
             else
@@ -82,7 +81,7 @@ public class UCDrawingListeners extends MouseInputAdapter{
         }
         else
         {
-            this.UCMainContent.deselectAllObjectsAndRepaint();
+            this.UCMainContent.getPlaces().setAllObjectDiselected();
         }
         this.UCMainContent.drawingPanecheckMove(e);
     }
@@ -103,7 +102,7 @@ public class UCDrawingListeners extends MouseInputAdapter{
     @Override
     public void mouseReleased(MouseEvent e)
     {
-        if (this.draggedObject instanceof UCJoinEdgeController)
+        if (this.draggedObject instanceof LineModel)
         {
             ObjectChecker objectChecker = new ObjectChecker(this.UCMainContent.getPlaces());
             this.UCMainContent.setSelectedObject(objectChecker.getObjectUnderMouse(e.getPoint()));
@@ -122,7 +121,7 @@ public class UCDrawingListeners extends MouseInputAdapter{
         CoordinateModel clickedObject = objectChecker.getObjectUnderMouse(e.getPoint());
         if (e.getClickCount()%2 == 0)
         {
-            if (clickedObject != null && !(clickedObject instanceof UCJoinEdgeController))
+            if (clickedObject != null && !(clickedObject instanceof LineModel))
             {
                 this.UCMainContent.drawingPaneDoubleCliked(clickedObject);
             }
