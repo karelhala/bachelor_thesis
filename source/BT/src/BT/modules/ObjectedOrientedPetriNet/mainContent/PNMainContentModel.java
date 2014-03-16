@@ -7,8 +7,8 @@
 package BT.modules.ObjectedOrientedPetriNet.mainContent;
 
 import BT.interfaces.DrawingClicks;
+import BT.managers.MainContentController;
 import BT.managers.PlaceManager;
-import BT.modules.ClassDiagram.places.joinEdge.CDJoinEdgeController;
 import BT.modules.ObjectedOrientedPetriNet.PNLeftBottomContent;
 import BT.modules.ObjectedOrientedPetriNet.PNLeftTopContent;
 import BT.modules.ObjectedOrientedPetriNet.PNMainContent;
@@ -23,12 +23,31 @@ import javax.swing.KeyStroke;
  *
  * @author Karel
  */
-public class PNMainContentModel {
+abstract public class PNMainContentModel extends MainContentController{
     
+    /**
+     * 
+     */
     protected PNMainContent mainContent;
+    
+    /**
+     * 
+     */
     protected PNLeftBottomContent LeftBottomContent;
+    
+    /**
+     * 
+     */
     protected PlaceManager places;
+    
+    /**
+     * 
+     */
     protected PNLeftTopContent LeftTopContent;
+    
+    /**
+     * 
+     */
     protected PNJoinEdgeController newJoinEdge;
     
     public PNMainContentModel()

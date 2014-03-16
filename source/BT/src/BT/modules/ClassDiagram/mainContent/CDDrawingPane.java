@@ -6,9 +6,11 @@ package BT.modules.ClassDiagram.mainContent;
 
 import BT.managers.PlaceManager;
 import BT.models.CoordinateModel;
+import BT.models.DrawingPaneModel;
 import BT.models.LineModel;
 import BT.modules.ClassDiagram.places.CDClass;
 import BT.modules.ClassDiagram.places.joinEdge.CDJoinEdgeController;
+import BT.modules.UC.mainContent.UCDrawingPane;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -19,35 +21,28 @@ import javax.swing.JPanel;
  *
  * @author Karel Hala
  */
-public class CDDrawingPane {
-    private PlaceManager CDplaces;
-    private CDDrawingPane.drawing drawPane;
-    private CDJoinEdgeController newLine;
-
-     public CDDrawingPane()
-    {
-        this(null);
-    }
-    
+public class CDDrawingPane extends DrawingPaneModel{
+    private drawing drawPane;
     /**
      * 
      * @param CDplaces
      */
     public CDDrawingPane(PlaceManager CDplaces)
     {
-        this.drawPane = new CDDrawingPane.drawing();
-        this.CDplaces = CDplaces;
-        this.newLine = null;
+        super(CDplaces);
+        this.drawPane = new drawing();
     }
 
-    void setNewLine(CDJoinEdgeController newJoinEdge) {
-        newLine = newJoinEdge;
-    }
     
     /**
      * 
      */
     public class drawing extends JPanel{
+        
+        public drawing()
+        {
+            super();
+        }
         /**
          * 
          * @param g1 
@@ -60,22 +55,16 @@ public class CDDrawingPane {
             if (newLine != null)
             {
                 g.setColor(Color.GREEN);
-                newLine.drawJoinEdge(g);   
+                ((CDJoinEdgeController)newLine).drawJoinEdge(g);   
             }
             
-            for (LineModel joinEdge: CDplaces.getJoinEdges()) {
+            for (LineModel joinEdge: places.getJoinEdges()) {
                 ((CDJoinEdgeController) joinEdge).drawJoinEdge(g);
             }
             
-            for (CoordinateModel actor: CDplaces.getObjects()) {
+            for (CoordinateModel actor: places.getObjects()) {
                 ((CDClass) actor).drawClass(g);
             }
-//            
-//            for (UCUseCase useCase: UCPlaces.getUseCases()) {
-//                useCase.drawUseCase(g);
-//                
-////                drawX(g, useCase.getX(), useCase.getY());
-//            }
         }
     }
     
@@ -86,19 +75,5 @@ public class CDDrawingPane {
     public CDDrawingPane.drawing getDrawing()
     {
         return drawPane;
-    }
-    
-    /**
-     * 
-     * @param places 
-     */
-    public void setPlaces(PlaceManager places)
-    {
-        CDplaces = places;
-    }
-    
-    public PlaceManager getPlaces()
-    {
-        return CDplaces;
     }
 }

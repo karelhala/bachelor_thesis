@@ -8,6 +8,7 @@ import BT.modules.UC.places.UCActor;
 import BT.modules.UC.places.UCJoinEdge.UCJoinEdgeController;
 import BT.managers.PlaceManager;
 import BT.models.CoordinateModel;
+import BT.models.DrawingPaneModel;
 import BT.models.LineModel;
 import BT.modules.UC.places.UCUseCase;
 import java.awt.Color;
@@ -20,15 +21,11 @@ import javax.swing.JPanel;
  *
  * @author Karel Hala
  */
-public class UCDrawingPane{
-    private PlaceManager UCPlaces;
+public class UCDrawingPane extends DrawingPaneModel{
+    /**
+     * 
+     */
     private drawing drawPane;
-    private UCJoinEdgeController newLine;
-
-     public UCDrawingPane()
-    {
-        this(null);
-    }
     
     /**
      * 
@@ -36,9 +33,8 @@ public class UCDrawingPane{
      */
     public UCDrawingPane(PlaceManager UCPlaces)
     {
+        super (UCPlaces);
         this.drawPane = new drawing();
-        this.UCPlaces = UCPlaces;
-        this.newLine = null;
     }
     
     /**
@@ -57,15 +53,15 @@ public class UCDrawingPane{
             if (newLine != null)
             {
                 g.setColor(Color.GREEN);
-                newLine.drawJoinEdge(g);
+                ((UCJoinEdgeController) newLine).drawJoinEdge(g);
                 
             }
             
-            for (LineModel joinEdge: UCPlaces.getJoinEdges()) {
+            for (LineModel joinEdge: places.getJoinEdges()) {
                 ((UCJoinEdgeController)joinEdge).drawJoinEdge(g);
             }
             
-            for (CoordinateModel object: UCPlaces.getObjects()) {
+            for (CoordinateModel object: places.getObjects()) {
                 if (object instanceof UCActor)
                 {
                     ((UCActor)object).drawActor(g);
@@ -75,7 +71,6 @@ public class UCDrawingPane{
                     ((UCUseCase)object).drawUseCase(g);
                 }
             }
-//                drawX(g, useCase.getX(), useCase.getY());
         }
     }
     
@@ -86,23 +81,5 @@ public class UCDrawingPane{
     public drawing getDrawing()
     {
         return this.drawPane;
-    }
-    
-    /**
-     * 
-     * @param places 
-     */
-    public void setPlaces(PlaceManager places)
-    {
-        this.UCPlaces = places;
-    }
-
-    /**
-     * 
-     * @param newLine 
-     */
-    public void setNewLine(UCJoinEdgeController newLine)
-    {
-        this.newLine = newLine;
     }
 }

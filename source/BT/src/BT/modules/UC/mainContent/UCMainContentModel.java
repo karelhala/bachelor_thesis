@@ -4,6 +4,7 @@
  */
 package BT.modules.UC.mainContent;
 
+import BT.managers.MainContentController;
 import BT.managers.PlaceManager;
 import BT.modules.UC.UCLeftBottomContent;
 import BT.modules.UC.UCLeftTopContent;
@@ -19,7 +20,7 @@ import javax.swing.KeyStroke;
  *
  * @author Karel Hala
  */
-public class UCMainContentModel {
+abstract public class UCMainContentModel extends MainContentController{
     protected UCMainContent mainContent;
     protected PlaceManager places;
     protected UCJoinEdgeController newJoinEdge;

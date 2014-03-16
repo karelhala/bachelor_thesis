@@ -109,8 +109,7 @@ public class PNMainContentController extends PNMainContentModel implements Drawi
         {
             if (this.newJoinEdge != null)
             {
-                this.newJoinEdge = null;
-                pnDrawing.setNewLine(null);
+                deleteNewLine();
             }
             dragged.setX(e.getX());
             dragged.setY(e.getY());
@@ -154,10 +153,8 @@ public class PNMainContentController extends PNMainContentModel implements Drawi
     public void buttonsChanged() {
         if (this.LeftBottomContent.getSelectedButton() == null)
         {
-            this.newJoinEdge = null;
-            this.mainContent.getDrawingPane().setNewLine(null);
+            deleteNewLine();
         }
-        this.mainContent.getDrawingPane().getDrawing().repaint();
     }
     
         /**
@@ -215,8 +212,7 @@ public class PNMainContentController extends PNMainContentModel implements Drawi
     private void clickedOnObject(CoordinateModel clickedObject) {
         if (clickedObject == null || clickedObject instanceof LineModel)
         {
-            this.newJoinEdge = null;
-            this.mainContent.getDrawingPane().setNewLine(null);
+            deleteNewLine();
         }
         else
         {

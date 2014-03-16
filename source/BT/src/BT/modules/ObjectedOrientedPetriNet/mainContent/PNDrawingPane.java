@@ -8,6 +8,7 @@ package BT.modules.ObjectedOrientedPetriNet.mainContent;
 
 import BT.managers.PlaceManager;
 import BT.models.CoordinateModel;
+import BT.models.DrawingPaneModel;
 import BT.models.LineModel;
 import BT.modules.ObjectedOrientedPetriNet.places.PNPlace;
 import BT.modules.ObjectedOrientedPetriNet.places.PNTransition;
@@ -22,31 +23,19 @@ import javax.swing.JPanel;
  *
  * @author Karel
  */
-public class PNDrawingPane {
-    private PlaceManager PNplaces;
+public class PNDrawingPane extends DrawingPaneModel{
     private PNDrawingPane.drawing drawPane;
-    private PNJoinEdgeController newLine;
-
-    public PNDrawingPane()
-    {
-       this(null);
-    }
-
-     
+    
      /**
      * 
      * @param PNplaces
      */
     public PNDrawingPane(PlaceManager PNplaces)
     {
+        super (PNplaces);
         this.drawPane = new PNDrawingPane.drawing();
-        this.PNplaces = PNplaces;
-        this.newLine = null;
     }
-
-    void setNewLine(PNJoinEdgeController newJoinEdge) {
-        newLine = newJoinEdge;
-    }
+    
      /**
      * 
      */
@@ -63,14 +52,14 @@ public class PNDrawingPane {
             if (newLine != null)
             {
                 g.setColor(Color.GREEN);
-                newLine.drawJoinEdge(g);   
+                ((PNJoinEdgeController) newLine).drawJoinEdge(g);   
             }
             
-            for (LineModel joinEdge: PNplaces.getJoinEdges()) {
+            for (LineModel joinEdge: places.getJoinEdges()) {
                 ((PNJoinEdgeController) joinEdge).drawJoinEdge(g);
             }
 
-            for (CoordinateModel place: PNplaces.getObjects()) {
+            for (CoordinateModel place: places.getObjects()) {
                 if (place instanceof PNPlace)
                 {
                     ((PNPlace) place).drawPlace(g);
@@ -90,19 +79,5 @@ public class PNDrawingPane {
     public PNDrawingPane.drawing getDrawing()
     {
         return drawPane;
-    }
-    
-    /**
-     * 
-     * @param places 
-     */
-    public void setPlaces(PlaceManager places)
-    {
-        PNplaces = places;
-    }
-    
-    public PlaceManager getPlaces()
-    {
-        return PNplaces;
     }
 }
