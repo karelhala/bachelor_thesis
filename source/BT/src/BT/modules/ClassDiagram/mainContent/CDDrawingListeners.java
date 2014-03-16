@@ -5,6 +5,7 @@
 package BT.modules.ClassDiagram.mainContent;
 
 import BT.interfaces.DrawingClicks;
+import BT.managers.MainContentController;
 import BT.managers.ObjectChecker;
 import BT.models.CoordinateModel;
 import BT.models.LineModel;
@@ -19,7 +20,7 @@ public class CDDrawingListeners extends MouseInputAdapter{
     /**
      * 
      */
-    private CDMainContentController mainContent;
+    private MainContentController mainContent;
     
     /**
      * 

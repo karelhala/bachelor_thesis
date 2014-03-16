@@ -24,19 +24,10 @@ import javax.swing.KeyStroke;
  * @author Karel
  */
 abstract public class PNMainContentModel extends MainContentController{
-    
-    /**
-     * 
-     */
-    protected PNMainContent mainContent;
     /**
      * 
      */
     protected PNLeftBottomContent LeftBottomContent;
-    /**
-     * 
-     */
-    protected PlaceManager places;
     
     /**
      * 
@@ -74,17 +65,9 @@ abstract public class PNMainContentModel extends MainContentController{
     public void setNewJoinEdge(PNJoinEdgeController newJoinEdge) {
         this.newJoinEdge = newJoinEdge;
     }
-    
-    public PNMainContent getMainContent() {
-        return mainContent;
-    }
 
     public PNLeftBottomContent getLeftBottomContent() {
         return LeftBottomContent;
-    }
-
-    public PlaceManager getPlaces() {
-        return places;
     }
 
     public PNLeftTopContent getLeftTopContent() {

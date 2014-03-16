@@ -7,6 +7,7 @@
 package BT.modules.ObjectedOrientedPetriNet.mainContent;
 
 import BT.interfaces.DrawingClicks;
+import BT.managers.MainContentController;
 import BT.managers.ObjectChecker;
 import BT.models.CoordinateModel;
 import BT.models.LineModel;
@@ -21,7 +22,7 @@ public class PNDrawingListeners extends MouseInputAdapter{
     /**
      * 
      */
-    private PNMainContentController mainContent;
+    private MainContentController mainContent;
     
     /**
      * 
@@ -39,7 +40,7 @@ public class PNDrawingListeners extends MouseInputAdapter{
      */
     @Override
     public void mousePressed(MouseEvent e) {
-        ObjectChecker objectChecker = new ObjectChecker(this.mainContent.getMainContent().getDrawingPane().getPlaces());
+        ObjectChecker objectChecker = new ObjectChecker(this.mainContent.getPlaces());
         CoordinateModel coordObject = objectChecker.getObjectUnderMouse(e.getPoint());
         if (coordObject == null)
         {
@@ -99,7 +100,7 @@ public class PNDrawingListeners extends MouseInputAdapter{
     {
         if (this.selectedModel instanceof LineModel)
         {
-            ObjectChecker objectChecker = new ObjectChecker(this.mainContent.getMainContent().getDrawingPane().getPlaces());
+            ObjectChecker objectChecker = new ObjectChecker(this.mainContent.getPlaces());
             this.mainContent.setSelectedObject(objectChecker.getObjectUnderMouse(e.getPoint()));
         }
         this.selectedModel = null;

@@ -21,8 +21,6 @@ import javax.swing.KeyStroke;
  * @author Karel Hala
  */
 abstract public class UCMainContentModel extends MainContentController{
-    protected UCMainContent mainContent;
-    protected PlaceManager places;
     protected UCJoinEdgeController newJoinEdge;
     protected UCLeftBottomContent LeftBottomContent;
     protected UCLeftTopContent LeftTopContent;
@@ -46,14 +44,6 @@ abstract public class UCMainContentModel extends MainContentController{
         setButtonsListeners();
     }
 
-    public void setMainContent(UCMainContent mainContent) {
-        this.mainContent = mainContent;
-    }
-
-    public void setPlaces(PlaceManager places) {
-        this.places = places;
-    }
-
     public void setNewJoinEdge(UCJoinEdgeController newJoinEdge) {
         this.newJoinEdge = newJoinEdge;
     }
@@ -64,14 +54,6 @@ abstract public class UCMainContentModel extends MainContentController{
 
     public void setLeftTopContent(UCLeftTopContent LeftTopContent) {
         this.LeftTopContent = LeftTopContent;
-    }
-
-    public UCMainContent getMainContent() {
-        return mainContent;
-    }
-
-    public PlaceManager getPlaces() {
-        return places;
     }
 
     public UCJoinEdgeController getNewJoinEdge() {

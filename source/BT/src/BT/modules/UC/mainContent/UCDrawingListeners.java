@@ -6,6 +6,7 @@ package BT.modules.UC.mainContent;
 
 import BT.managers.ObjectChecker;
 import BT.interfaces.DrawingClicks;
+import BT.managers.MainContentController;
 import BT.models.CoordinateModel;
 import BT.models.LineModel;
 import java.awt.event.MouseEvent;
@@ -19,7 +20,7 @@ public class UCDrawingListeners extends MouseInputAdapter{
     /**
      * 
      */
-    private UCMainContentController UCMainContent;
+    private MainContentController UCMainContent;
     
     /**
      * 

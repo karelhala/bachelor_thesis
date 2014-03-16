@@ -5,6 +5,7 @@
 package BT.modules.ClassDiagram.mainContent;
 
 import BT.interfaces.DrawingClicks;
+import BT.managers.MainContentController;
 import BT.managers.PlaceManager;
 import BT.modules.ClassDiagram.CDLeftBottomContent;
 import BT.modules.ClassDiagram.CDLeftTopContent;
@@ -20,10 +21,8 @@ import javax.swing.KeyStroke;
  *
  * @author Karel Hala
  */
-class CDMainContentModel {
-    protected CDMainContent mainContent;
+abstract class CDMainContentModel extends MainContentController{
     protected CDLeftBottomContent LeftBottomContent;
-    protected PlaceManager places;
     protected CDLeftTopContent LeftTopContent;
     protected CDJoinEdgeController newJoinEdge;
 
@@ -33,10 +32,6 @@ class CDMainContentModel {
         this.mainContent = new CDMainContent(places);
         createMainPane();
     }
-    
-    public CDMainContent getMainContent() {
-        return mainContent;
-    }
 
     public CDLeftBottomContent getLeftBottomContent() {
         return LeftBottomContent;
@@ -45,11 +40,6 @@ class CDMainContentModel {
     public CDLeftTopContent getLeftTopContent() {
         return LeftTopContent;
     }
-
-    public void setMainContent(CDMainContent mainContent) {
-        this.mainContent = mainContent;
-    }
-
     public void setLeftBottomContent(CDLeftBottomContent LeftBottomContent) {
         this.LeftBottomContent = LeftBottomContent;
     }
