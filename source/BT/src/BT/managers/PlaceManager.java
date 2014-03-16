@@ -34,6 +34,11 @@ public class PlaceManager extends PlaceModel {
      */
     public void removeJoinEdge(LineModel jointEdge)
     {
+        jointEdge.getFirstObject().removeOutJoin(jointEdge);
+        if (jointEdge.getSecondObject() != null)
+        {
+            jointEdge.getSecondObject().removeInJoin(jointEdge);
+        }
         this.joinEdges.remove(jointEdge);
     }
     

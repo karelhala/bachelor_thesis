@@ -21,10 +21,29 @@ import java.util.ArrayList;
  */
 public class CDClass extends CoordinateModel {
 
+    /**
+     * 
+     */
     private int textSize;
+    
+    /**
+     * 
+     */
     private Color background;
+    
+    /**
+     * 
+     */
     private ArrayList<Attribute> variables;
+    
+    /**
+     * 
+     */
     private ArrayList<Attribute> methods;
+    
+    /**
+     * 
+     */
     private ClassType typeOfClass;
 
     public CDClass() {
@@ -63,7 +82,6 @@ public class CDClass extends CoordinateModel {
     }
 
     /**
-     * TODO: refactor
      *
      * @param g
      */
@@ -74,7 +92,7 @@ public class CDClass extends CoordinateModel {
         if (getSelected()) {
             classColor = this.selectedColor;
         }
-        g.setStroke(new BasicStroke(1));
+        g.setStroke((this.inJoins.isEmpty() && this.outJoins.isEmpty())?this.dashedStroke:new BasicStroke(1));
         g.setColor(this.background);
         this.width = this.getMaximumWidth(fm);
         this.height = this.getMaximumHeight(fm);
@@ -138,6 +156,11 @@ public class CDClass extends CoordinateModel {
         }
     }
 
+    /**
+     * 
+     * @param fm
+     * @return 
+     */
     private int getMaximumHeight(FontMetrics fm) {
         int textheight = fm.getHeight();
         int shapeHeight = textheight + (textheight * this.variables.size()) + (textheight * this.methods.size());

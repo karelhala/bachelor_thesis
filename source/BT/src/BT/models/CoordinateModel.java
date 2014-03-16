@@ -4,6 +4,7 @@
  */
 package BT.models;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.util.ArrayList;
 
@@ -12,29 +13,82 @@ import java.util.ArrayList;
  * @author Karel Hala
  */
 public class CoordinateModel {
-    protected int objectWidth;
-    protected int objectHeight;
-    protected int x;
-    protected int y;
-    protected String name;
-    protected Color basicColor;
-    protected Color color;
-    protected Color selectedColor;
-    protected int width;
-    protected int height;
-    protected Boolean selected;
-    protected Color howerColor;
-    protected ArrayList<LineModel> inJoins;
-    protected ArrayList<LineModel> outJoins;
-    public CoordinateModel()
-    {
-        this.selected = true;
-    }
 
+    protected BasicStroke dashedStroke;
+    /**
+     *
+     */
+    protected int objectWidth;
+    /**
+     *
+     */
+    protected int objectHeight;
+    /**
+     *
+     */
+    protected int x;
+    /**
+     *
+     */
+    protected int y;
+    /**
+     *
+     */
+    protected String name;
+    /**
+     *
+     */
+    protected Color basicColor;
+    /**
+     *
+     */
+    protected Color color;
+    /**
+     *
+     */
+    protected Color selectedColor;
+    /**
+     *
+     */
+    protected int width;
+    /**
+     *
+     */
+    protected int height;
+    /**
+     *
+     */
+    protected Boolean selected;
+    /**
+     *
+     */
+    protected Color howerColor;
+    /**
+     *
+     */
+    protected ArrayList<LineModel> inJoins;
+    /**
+     *
+     */
+    protected ArrayList<LineModel> outJoins;
+
+    /**
+     *
+     */
+    public CoordinateModel() {
+        this.selected = true;
+        float dash1[] = {10.0f};
+        this.dashedStroke =
+                new BasicStroke(2.0f,
+                BasicStroke.CAP_BUTT,
+                BasicStroke.JOIN_MITER,
+                10.0f, dash1, 0.0f);
+    }
+    
     public ArrayList<LineModel> getInJoins() {
         return inJoins;
     }
-
+    
     public ArrayList<LineModel> getOutJoins() {
         return outJoins;
     }
@@ -42,139 +96,129 @@ public class CoordinateModel {
     public void setWidth(int width) {
         this.width = width;
     }
-
+    
     public void setHeight(int height) {
         this.height = height;
     }
     
-    public int getX()
-    {
+    public int getX() {
         return this.x;
     }
     
-    public void setX(int X)
-    {
+    public void setX(int X) {
         this.x = X;
     }
     
-    public int getY()
-    {
+    public int getY() {
         return this.y;
     }
     
-    public void setY(int Y)
-    {
+    public void setY(int Y) {
         this.y = Y;
     }
     
-    public void setName(String name)
-    {
+    public void setName(String name) {
         this.name = name;
     }
     
-    public String getName()
-    {
+    public String getName() {
         return this.name;
     }
     
-    public void setColor(Color color)
-    {
+    public void setColor(Color color) {
         this.color = color;
     }
     
-    public Color getColor()
-    {
+    public Color getColor() {
         return this.color;
     }
-
-    public int getWidth() 
-    {
+    
+    public int getWidth() {
         return width;
     }
-
-    public int getHeight() 
-    {
+    
+    public int getHeight() {
         return height;
     }
     
-    public Color getSelectedColor()
-    {
+    public Color getSelectedColor() {
         return this.selectedColor;
     }
     
-    public void setSelected(Boolean selected)
-    {
+    public void setSelected(Boolean selected) {
         this.selected = selected;
     }
     
-    public Boolean getSelected()
-    {
+    public Boolean getSelected() {
         return this.selected;
     }
-    
+
     /**
-     * 
+     *
      */
     public void setBasicColor() {
         this.color = this.basicColor;
     }
     
-    public void setHowerColor()
-    {
+    public void setHowerColor() {
         this.color = this.howerColor;
     }
-
+    
     public int getObjectWidth() {
         return objectWidth;
     }
-
+    
     public int getObjectHeight() {
         return objectHeight;
     }
-
+    
     public void setObjectWidth(int objectWidth) {
         this.objectWidth = objectWidth;
     }
-
+    
     public void setObjectHeight(int objectHeight) {
         this.objectHeight = objectHeight;
     }
-
+    
     public void addInJoin(LineModel inJoins) {
-        if (this.inJoins != null)
-        {
+        if (this.inJoins != null) {
             this.inJoins.add(inJoins);
         }
     }
-
+    
     public void addOutJoins(LineModel outJoins) {
-        if (this.outJoins != null)
-        {
+        if (this.outJoins != null) {
             this.outJoins.add(outJoins);
         }
     }
     
-        /**
-     * 
+    public void removeInJoin(LineModel inJoin) {
+        this.inJoins.remove(inJoin);
+    }
+    
+    public void removeOutJoin(LineModel outJoin) {
+        this.outJoins.remove(outJoin);
+    }
+
+    /**
+     *
      * @param a
      * @param b
-     * @return 
+     * @return
      */
     protected int getMax(int a, int b) {
-        return (a>b?a:b);
+        return (a > b ? a : b);
     }
-    
+
     /**
-     * 
+     *
      * @param x
      * @param y
-     * @return 
+     * @return
      */
-    public boolean isObject(int x, int y)
-    {
-        int isX=Math.abs(x-this.x);
-        int isY=Math.abs(y-this.y);
-        return isX<=getMax(this.objectWidth, this.width)/2 && isY<=getMax(this.objectHeight, this.height)/2;
+    public boolean isObject(int x, int y) {
+        int isX = Math.abs(x - this.x);
+        int isY = Math.abs(y - this.y);
+        return isX <= getMax(this.objectWidth, this.width) / 2 && isY <= getMax(this.objectHeight, this.height) / 2;
     }
-    
 }
