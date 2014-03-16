@@ -5,6 +5,7 @@
 package BT.modules.ClassDiagram.mainContent;
 
 import BT.interfaces.DrawingClicks;
+import BT.managers.DrawingListeners;
 import BT.managers.MainContentController;
 import BT.managers.PlaceManager;
 import BT.modules.ClassDiagram.CDLeftBottomContent;
@@ -59,7 +60,7 @@ abstract class CDMainContentModel extends MainContentController{
     private void createMainPane()
     {   
         CDDrawingPane UCdrawing = (CDDrawingPane) this.mainContent.getDrawingPane();
-        CDDrawingListeners alpha = new CDDrawingListeners((DrawingClicks) this);
+        DrawingListeners alpha = new DrawingListeners((DrawingClicks) this);
         UCdrawing.getDrawing().addMouseMotionListener(alpha);
         UCdrawing.getDrawing().addMouseListener(alpha);
         setButtonsListeners();

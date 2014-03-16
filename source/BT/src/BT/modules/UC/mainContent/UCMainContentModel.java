@@ -4,6 +4,7 @@
  */
 package BT.modules.UC.mainContent;
 
+import BT.managers.DrawingListeners;
 import BT.managers.MainContentController;
 import BT.managers.PlaceManager;
 import BT.modules.UC.UCLeftBottomContent;
@@ -38,7 +39,7 @@ abstract public class UCMainContentModel extends MainContentController{
     private void createMainPane()
     {   
         UCDrawingPane UCdrawing = (UCDrawingPane) this.mainContent.getDrawingPane();
-        UCDrawingListeners alpha = new UCDrawingListeners((UCMainContentController) this);
+        DrawingListeners alpha = new DrawingListeners((UCMainContentController) this);
         UCdrawing.getDrawing().addMouseMotionListener(alpha);
         UCdrawing.getDrawing().addMouseListener(alpha);
         setButtonsListeners();

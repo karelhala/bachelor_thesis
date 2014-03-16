@@ -7,6 +7,7 @@
 package BT.modules.ObjectedOrientedPetriNet.mainContent;
 
 import BT.interfaces.DrawingClicks;
+import BT.managers.DrawingListeners;
 import BT.managers.MainContentController;
 import BT.managers.PlaceManager;
 import BT.modules.ObjectedOrientedPetriNet.PNLeftBottomContent;
@@ -81,7 +82,7 @@ abstract public class PNMainContentModel extends MainContentController{
     private void createMainPane()
     {   
         PNDrawingPane pnDrawing = (PNDrawingPane) this.mainContent.getDrawingPane();
-        PNDrawingListeners alpha = new PNDrawingListeners((DrawingClicks) this);
+        DrawingListeners alpha = new DrawingListeners((DrawingClicks) this);
         pnDrawing.getDrawing().addMouseMotionListener(alpha);
         pnDrawing.getDrawing().addMouseListener(alpha);
         setButtonsListeners();

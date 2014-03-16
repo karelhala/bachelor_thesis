@@ -1,14 +1,10 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
+ * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
-package BT.modules.ObjectedOrientedPetriNet.mainContent;
+package BT.managers;
 
 import BT.interfaces.DrawingClicks;
-import BT.managers.MainContentController;
-import BT.managers.ObjectChecker;
 import BT.models.CoordinateModel;
 import BT.models.LineModel;
 import java.awt.event.MouseEvent;
@@ -16,9 +12,9 @@ import javax.swing.event.MouseInputAdapter;
 
 /**
  *
- * @author Karel
+ * @author Karel Hala
  */
-public class PNDrawingListeners extends MouseInputAdapter{
+public class DrawingListeners extends MouseInputAdapter{
     /**
      * 
      */
@@ -27,29 +23,33 @@ public class PNDrawingListeners extends MouseInputAdapter{
     /**
      * 
      */
-    private CoordinateModel selectedModel;
-    
-    public PNDrawingListeners(DrawingClicks mainContent)
-    {
-        this.mainContent = (PNMainContentController) mainContent;
-    }
-    
+    private CoordinateModel draggedObject;
+
     /**
      * 
-     * @param e 
+     * @param drawing
+     * @param mainContent 
+     */
+    public DrawingListeners(DrawingClicks mainContent) {
+            this.mainContent = (MainContentController) mainContent;
+    }
+
+    /**
+     * 
+     * @param evt 
      */
     @Override
-    public void mousePressed(MouseEvent e) {
+    public void mousePressed(java.awt.event.MouseEvent evt) {
         ObjectChecker objectChecker = new ObjectChecker(this.mainContent.getPlaces());
-        CoordinateModel coordObject = objectChecker.getObjectUnderMouse(e.getPoint());
+        CoordinateModel coordObject = objectChecker.getObjectUnderMouse(evt.getPoint());
         if (coordObject == null)
         {
-            this.mainContent.drawingPaneClicked(e);
+            this.mainContent.drawingPaneClicked(evt);
         }
         else
         {
+            this.draggedObject = coordObject;
             this.mainContent.setSelectedObject(coordObject);
-            this.selectedModel = coordObject;
         }
     }
     
@@ -59,25 +59,25 @@ public class PNDrawingListeners extends MouseInputAdapter{
      */
     @Override
     public void mouseDragged(MouseEvent e){
-        if (selectedModel!= null)
+        if (draggedObject!= null)
         {
-            if (this.selectedModel instanceof LineModel)
+            if (this.draggedObject instanceof LineModel)
             {
-                LineModel draggedJoin = (LineModel) this.selectedModel;
+                LineModel draggedJoin = (LineModel) this.draggedObject;
                 if (!draggedJoin.isInRange(e.getX(), e.getY()))
                 {
-                    this.mainContent.drawingMouseDragged(e, this.selectedModel);
+                    this.mainContent.drawingMouseDragged(e, this.draggedObject);
                     draggedJoin.setSecondObject(null);
                 }
             }
             else
             {
-                this.mainContent.drawingMouseDragged(e, this.selectedModel);
+                this.mainContent.drawingMouseDragged(e, this.draggedObject);
             }
         }
         else
         {
-            this.mainContent.getMainContent().getDrawingPane().getPlaces().setAllObjectDiselected();
+            this.mainContent.getPlaces().setAllObjectDiselected();
         }
         this.mainContent.drawingPanecheckMove(e);
     }
@@ -98,12 +98,12 @@ public class PNDrawingListeners extends MouseInputAdapter{
     @Override
     public void mouseReleased(MouseEvent e)
     {
-        if (this.selectedModel instanceof LineModel)
+        if (this.draggedObject instanceof LineModel)
         {
             ObjectChecker objectChecker = new ObjectChecker(this.mainContent.getPlaces());
             this.mainContent.setSelectedObject(objectChecker.getObjectUnderMouse(e.getPoint()));
         }
-        this.selectedModel = null;
+        this.draggedObject = null;
     }
     
     /**
@@ -113,7 +113,7 @@ public class PNDrawingListeners extends MouseInputAdapter{
     @Override
     public void mouseClicked(MouseEvent e)
     {
-        ObjectChecker objectChecker = new ObjectChecker(this.mainContent.getMainContent().getDrawingPane().getPlaces());
+        ObjectChecker objectChecker = new ObjectChecker(this.mainContent.getPlaces());
         CoordinateModel clickedObject = objectChecker.getObjectUnderMouse(e.getPoint());
         if (e.getClickCount()%2 == 0)
         {
