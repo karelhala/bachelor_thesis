@@ -31,6 +31,8 @@ public class PlaceModel {
     {
         if (!lineExists(joinEdge))
         {
+            joinEdge.getFirstObject().addOutJoins(joinEdge);
+            joinEdge.getSecondObject().addInJoin(joinEdge);
             this.joinEdges.add(joinEdge);
         }
     }

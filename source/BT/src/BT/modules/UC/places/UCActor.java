@@ -10,6 +10,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics2D;
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -40,6 +41,8 @@ public class UCActor extends CoordinateModel{
         this.textSize = 15;
         this.gap = 2;
         this.howerColor = Color.red;
+        this.inJoins = new ArrayList<>();
+        this.outJoins = new ArrayList<>();
         this.id = UUID.randomUUID();
     }
     

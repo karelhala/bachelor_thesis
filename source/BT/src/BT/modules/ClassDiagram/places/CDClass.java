@@ -50,6 +50,8 @@ public class CDClass extends CoordinateModel {
         this.variables = new ArrayList<>();
         this.methods = new ArrayList<>();
         this.typeOfClass = ClassType.ACTIVITY;
+        this.inJoins = new ArrayList<>();
+        this.outJoins = new ArrayList<>();
     }
 
     public ClassType getTypeOfClass() {

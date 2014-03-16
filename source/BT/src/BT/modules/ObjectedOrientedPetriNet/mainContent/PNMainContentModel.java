@@ -54,11 +54,7 @@ abstract public class PNMainContentModel extends MainContentController{
     public void setLeftBottomContent(PNLeftBottomContent LeftBottomContent) {
         this.LeftBottomContent = LeftBottomContent;
     }
-
-    public void setPlaces(PlaceManager places) {
-        this.places = places;
-    }
-
+    
     public void setLeftTopContent(PNLeftTopContent LeftTopContent) {
         this.LeftTopContent = LeftTopContent;
     }

@@ -12,6 +12,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics2D;
+import java.util.ArrayList;
 
 /**
  *
@@ -43,6 +44,8 @@ public class PNTransition extends CoordinateModel{
         this.name = "Default";
         this.textSize = 15;
         this.howerColor = Color.GREEN;
+        this.inJoins = new ArrayList<>();
+        this.outJoins = new ArrayList<>();
     }
     
     /**

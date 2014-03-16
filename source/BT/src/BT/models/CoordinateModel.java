@@ -4,9 +4,8 @@
  */
 package BT.models;
 
-import BT.managers.PointsCalculator;
-import BT.modules.UC.places.UCActor;
 import java.awt.Color;
+import java.util.ArrayList;
 
 /**
  *
@@ -25,10 +24,19 @@ public class CoordinateModel {
     protected int height;
     protected Boolean selected;
     protected Color howerColor;
-    
+    protected ArrayList<LineModel> inJoins;
+    protected ArrayList<LineModel> outJoins;
     public CoordinateModel()
     {
         this.selected = true;
+    }
+
+    public ArrayList<LineModel> getInJoins() {
+        return inJoins;
+    }
+
+    public ArrayList<LineModel> getOutJoins() {
+        return outJoins;
     }
     
     public void setWidth(int width) {
@@ -130,6 +138,20 @@ public class CoordinateModel {
 
     public void setObjectHeight(int objectHeight) {
         this.objectHeight = objectHeight;
+    }
+
+    public void addInJoin(LineModel inJoins) {
+        if (this.inJoins != null)
+        {
+            this.inJoins.add(inJoins);
+        }
+    }
+
+    public void addOutJoins(LineModel outJoins) {
+        if (this.outJoins != null)
+        {
+            this.outJoins.add(outJoins);
+        }
     }
     
         /**

@@ -223,6 +223,4 @@ public class PNMainContentController extends PNMainContentModel implements Drawi
             drawJoinEdge(clickedObject);
         }
     }
-    
-    
 }
