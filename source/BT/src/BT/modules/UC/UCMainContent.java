@@ -22,16 +22,7 @@ import javax.swing.JScrollPane;
  */
 public final class UCMainContent extends ContentPaneModel{
     
-    private UCDrawingPane drawingPane;
     private Dimension area;
-
-    public void setDrawingPane(UCDrawingPane drawingPane) {
-        this.drawingPane = drawingPane;
-    }
-
-    public UCDrawingPane getDrawingPane() {
-        return drawingPane;
-    }
     
     /**
      * 
@@ -57,10 +48,11 @@ public final class UCMainContent extends ContentPaneModel{
      * 
      */
     private void createMainPane() {
-        this.drawingPane.getDrawing().setPreferredSize(this.area);
-        this.drawingPane.getDrawing().setBackground(Color.WHITE);
-        drawingPane.getDrawing().repaint();
-        JScrollPane myScrollPane = new JScrollPane(drawingPane.getDrawing());
+        UCDrawingPane cdDrawingPane = (UCDrawingPane) this.drawingPane;
+        cdDrawingPane.getDrawing().setPreferredSize(this.area);
+        cdDrawingPane.getDrawing().setBackground(Color.WHITE);
+        cdDrawingPane.getDrawing().repaint();
+        JScrollPane myScrollPane = new JScrollPane(cdDrawingPane.getDrawing());
         this.mainContentPane.add(myScrollPane, BorderLayout.CENTER);
     }
     
@@ -89,14 +81,14 @@ public final class UCMainContent extends ContentPaneModel{
                 //Update client's preferred size because
                 //the area taken up by the graphics has
                 //gotten larger or smaller (if cleared).
-                this.drawingPane.getDrawing().setPreferredSize(area);
+                ((UCDrawingPane)this.drawingPane).getDrawing().setPreferredSize(area);
 
                 //Let the scroll pane know to update itself
                 //and its scrollbars.
-                this.drawingPane.getDrawing().revalidate();
+                ((UCDrawingPane)this.drawingPane).getDrawing().revalidate();
             }
         }
-        this.drawingPane.getDrawing().repaint();
+        ((UCDrawingPane)this.drawingPane).getDrawing().repaint();
     }
     
        /**

@@ -39,7 +39,7 @@ public class PNMainContentController extends PNMainContentModel implements Drawi
     public void drawingPanecheckMove(MouseEvent evt) {
         ObjectChecker objectChecker = new ObjectChecker(this.mainContent.getDrawingPane().getPlaces());
         CoordinateModel coordObject = objectChecker.getObjectUnderMouse(evt.getPoint());
-        PNDrawingPane PNdrawing = this.mainContent.getDrawingPane();
+        PNDrawingPane PNdrawing = (PNDrawingPane) this.mainContent.getDrawingPane();
         if (this.newJoinEdge != null)
         {
             if (this.newJoinEdge.getSecondObject() == null)
@@ -66,7 +66,7 @@ public class PNMainContentController extends PNMainContentModel implements Drawi
             String name = (String) JOptionPane.showInputDialog("Enter name of the object",pressedObject.getName());
             if (name!= null && !"".equals(name))
                 pressedObject.setName(name);
-            this.mainContent.getDrawingPane().getDrawing().repaint();
+            ((PNDrawingPane)this.mainContent.getDrawingPane()).getDrawing().repaint();
         }
     }
 
@@ -94,7 +94,7 @@ public class PNMainContentController extends PNMainContentModel implements Drawi
             this.places.setAllObjectDiselected();
             deleteNewLine();
         }
-        this.mainContent.getDrawingPane().getDrawing().repaint();
+        ((PNDrawingPane)this.mainContent.getDrawingPane()).getDrawing().repaint();
     }
 
     /**
@@ -104,7 +104,7 @@ public class PNMainContentController extends PNMainContentModel implements Drawi
      */
     @Override
     public void drawingMouseDragged(MouseEvent e, CoordinateModel dragged) {
-        PNDrawingPane pnDrawing = this.mainContent.getDrawingPane();
+        PNDrawingPane pnDrawing = (PNDrawingPane) this.mainContent.getDrawingPane();
         if (dragged instanceof PNPlace || dragged instanceof PNTransition)
         {
             if (this.newJoinEdge != null)
@@ -143,7 +143,7 @@ public class PNMainContentController extends PNMainContentModel implements Drawi
         {
             clickedOnObject(clickedObject);
         }
-        this.mainContent.getDrawingPane().getDrawing().repaint();
+        ((PNDrawingPane) this.mainContent.getDrawingPane()).getDrawing().repaint();
     }
 
     /**
@@ -178,7 +178,7 @@ public class PNMainContentController extends PNMainContentModel implements Drawi
             this.places.addObject(this.newJoinEdge);
             this.newJoinEdge = null;
         }
-        PNDrawingPane cdDrawing = this.mainContent.getDrawingPane();
+        PNDrawingPane cdDrawing = (PNDrawingPane) this.mainContent.getDrawingPane();
         cdDrawing.setNewLine(newJoinEdge);
     }
     

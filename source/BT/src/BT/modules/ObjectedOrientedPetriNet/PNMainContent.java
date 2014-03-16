@@ -8,7 +8,6 @@ package BT.modules.ObjectedOrientedPetriNet;
 
 import BT.managers.PlaceManager;
 import BT.models.ContentPaneModel;
-import BT.modules.ClassDiagram.mainContent.CDDrawingPane;
 import BT.modules.ObjectedOrientedPetriNet.mainContent.PNDrawingPane;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -21,16 +20,7 @@ import javax.swing.JScrollPane;
  * @author Karel
  */
 public class PNMainContent extends ContentPaneModel{
-    private PNDrawingPane drawingPane;
     private Dimension area;
-
-    public void setDrawingPane(PNDrawingPane drawingPane) {
-        this.drawingPane = drawingPane;
-    }
-
-    public PNDrawingPane getDrawingPane() {
-        return drawingPane;
-    }
     
     /**
      * 
@@ -49,10 +39,11 @@ public class PNMainContent extends ContentPaneModel{
      * 
      */
     private void createMainPane() {
-        this.drawingPane.getDrawing().setPreferredSize(this.area);
-        this.drawingPane.getDrawing().setBackground(Color.WHITE);
-        drawingPane.getDrawing().repaint();
-        JScrollPane myScrollPane = new JScrollPane(drawingPane.getDrawing());
+        PNDrawingPane pnDrawingPane = (PNDrawingPane) this.drawingPane;
+        pnDrawingPane.getDrawing().setPreferredSize(this.area);
+        pnDrawingPane.getDrawing().setBackground(Color.WHITE);
+        pnDrawingPane.getDrawing().repaint();
+        JScrollPane myScrollPane = new JScrollPane(pnDrawingPane.getDrawing());
         this.mainContentPane.add(myScrollPane, BorderLayout.CENTER);
     }
 }

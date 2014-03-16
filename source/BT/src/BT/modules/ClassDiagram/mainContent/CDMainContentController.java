@@ -43,7 +43,7 @@ public class CDMainContentController extends CDMainContentModel implements Drawi
     @Override
     public void drawingMouseDragged(MouseEvent e, CoordinateModel dragged)
     {
-        CDDrawingPane cdDrawing = this.mainContent.getDrawingPane();
+        CDDrawingPane cdDrawing = (CDDrawingPane) this.mainContent.getDrawingPane();
         if (dragged instanceof CDClass)
         {
             if (this.newJoinEdge != null)
@@ -88,7 +88,7 @@ public class CDMainContentController extends CDMainContentModel implements Drawi
             this.places.setAllObjectDiselected();
             deleteNewLine();
         }
-        this.mainContent.getDrawingPane().getDrawing().repaint();
+        ((CDDrawingPane)this.mainContent.getDrawingPane()).getDrawing().repaint();
     }
     
     /**
@@ -100,7 +100,7 @@ public class CDMainContentController extends CDMainContentModel implements Drawi
     {
         ObjectChecker objectChecker = new ObjectChecker(this.mainContent.getDrawingPane().getPlaces());
         CoordinateModel coordObject = objectChecker.getObjectUnderMouse(evt.getPoint());
-        CDDrawingPane UCdrawing = this.mainContent.getDrawingPane();
+        CDDrawingPane UCdrawing = (CDDrawingPane) this.mainContent.getDrawingPane();
         if (this.newJoinEdge != null)
         {
             if (this.newJoinEdge.getSecondObject() == null)
@@ -134,7 +134,7 @@ public class CDMainContentController extends CDMainContentModel implements Drawi
         {
             clickedOnObject(clickedObject);
         }
-        this.mainContent.getDrawingPane().getDrawing().repaint();
+        ((CDDrawingPane)this.mainContent.getDrawingPane()).getDrawing().repaint();
     }
     
     /**
@@ -175,7 +175,7 @@ public class CDMainContentController extends CDMainContentModel implements Drawi
     @Override
     public void buttonsChanged() {
         JToggleButton selectedJoinEdgeButton = this.LeftBottomContent.getSelectedButton();
-        CDDrawingPane cdDrawing = this.mainContent.getDrawingPane();
+        CDDrawingPane cdDrawing = (CDDrawingPane) this.mainContent.getDrawingPane();
         if (selectedJoinEdgeButton == null)
         {
             this.newJoinEdge = null;
@@ -213,7 +213,7 @@ public class CDMainContentController extends CDMainContentModel implements Drawi
             this.places.addObject(this.newJoinEdge);
             this.newJoinEdge = null;
         }
-        CDDrawingPane cdDrawing = this.mainContent.getDrawingPane();
+        CDDrawingPane cdDrawing = (CDDrawingPane) this.mainContent.getDrawingPane();
         cdDrawing.setNewLine(newJoinEdge);
     }
 

@@ -29,12 +29,10 @@ abstract public class PNMainContentModel extends MainContentController{
      * 
      */
     protected PNMainContent mainContent;
-    
     /**
      * 
      */
     protected PNLeftBottomContent LeftBottomContent;
-    
     /**
      * 
      */
@@ -99,7 +97,7 @@ abstract public class PNMainContentModel extends MainContentController{
     
     private void createMainPane()
     {   
-        PNDrawingPane pnDrawing = this.mainContent.getDrawingPane();
+        PNDrawingPane pnDrawing = (PNDrawingPane) this.mainContent.getDrawingPane();
         PNDrawingListeners alpha = new PNDrawingListeners((DrawingClicks) this);
         pnDrawing.getDrawing().addMouseMotionListener(alpha);
         pnDrawing.getDrawing().addMouseListener(alpha);
@@ -111,9 +109,9 @@ abstract public class PNMainContentModel extends MainContentController{
      */
     public void setButtonsListeners()
     {
-        PNDrawingPane drawingPane = this.mainContent.getDrawingPane();
+        PNDrawingPane drawingPane = (PNDrawingPane) this.mainContent.getDrawingPane();
         drawingPane.getDrawing().getActionMap().put("removeObject", new AbstractAction() {
-            PNDrawingPane drawingPane = mainContent.getDrawingPane();
+            PNDrawingPane drawingPane = (PNDrawingPane) mainContent.getDrawingPane();
                 @Override
                 public void actionPerformed(ActionEvent ae) {
                     places.removeAllSelectedItems();
@@ -142,6 +140,6 @@ abstract public class PNMainContentModel extends MainContentController{
     protected void deleteNewLine(){
         this.newJoinEdge = null;
         this.mainContent.getDrawingPane().setNewLine(newJoinEdge);
-        this.mainContent.getDrawingPane().getDrawing().repaint();
+        ((PNDrawingPane)this.mainContent.getDrawingPane()).getDrawing().repaint();
     }
 }

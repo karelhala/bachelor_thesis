@@ -39,7 +39,7 @@ abstract public class UCMainContentModel extends MainContentController{
      */
     private void createMainPane()
     {   
-        UCDrawingPane UCdrawing = this.mainContent.getDrawingPane();
+        UCDrawingPane UCdrawing = (UCDrawingPane) this.mainContent.getDrawingPane();
         UCDrawingListeners alpha = new UCDrawingListeners((UCMainContentController) this);
         UCdrawing.getDrawing().addMouseMotionListener(alpha);
         UCdrawing.getDrawing().addMouseListener(alpha);
@@ -91,9 +91,9 @@ abstract public class UCMainContentModel extends MainContentController{
      */
     public void setButtonsListeners()
     {
-        UCDrawingPane drawingPane = this.mainContent.getDrawingPane();
+        UCDrawingPane drawingPane = (UCDrawingPane) this.mainContent.getDrawingPane();
         drawingPane.getDrawing().getActionMap().put("removeObject", new AbstractAction() {
-            UCDrawingPane drawingPane = mainContent.getDrawingPane();
+            UCDrawingPane drawingPane = (UCDrawingPane) mainContent.getDrawingPane();
             @Override
                 public void actionPerformed(ActionEvent e) {
                 places.removeAllSelectedItems();

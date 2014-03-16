@@ -12,6 +12,11 @@ import javax.swing.JPanel;
  */
 public class ContentPaneModel {
     /**
+     * @var Model that holds drawing pane
+     */
+    protected DrawingPaneModel drawingPane;
+    
+    /**
      * @var Jpanel for storing every component of top left content 
      */
     protected JPanel mainContentPane;
@@ -25,6 +30,15 @@ public class ContentPaneModel {
     {
         return this.mainContentPane;
     }
+
+    /**
+     * 
+     * @return 
+     */
+    public DrawingPaneModel getDrawingPane() {
+        return drawingPane;
+    }
+    
     
     /**
      * Method, that returns main pane has content of left top pane
@@ -34,4 +48,13 @@ public class ContentPaneModel {
     {
         this.mainContentPane = mainContentPane;
     }
+
+    /**
+     * 
+     * @param drawingPane 
+     */
+    public void setDrawingPane(DrawingPaneModel drawingPane) {
+        this.drawingPane = drawingPane;
+    }
+    
 }

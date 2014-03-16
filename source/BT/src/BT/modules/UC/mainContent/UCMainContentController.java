@@ -36,7 +36,7 @@ public class UCMainContentController extends UCMainContentModel implements Drawi
     @Override
     public void drawingMouseDragged(MouseEvent e, CoordinateModel dragged)
     {
-        UCDrawingPane UCdrawing = this.mainContent.getDrawingPane();
+        UCDrawingPane UCdrawing = (UCDrawingPane) this.mainContent.getDrawingPane();
         if (dragged instanceof UCActor || dragged instanceof UCUseCase)
         {
             if (this.newJoinEdge != null)
@@ -69,7 +69,7 @@ public class UCMainContentController extends UCMainContentModel implements Drawi
     {
         JToggleButton selectedItemButton = this.LeftTopContent.getSelectedButton();
         if (selectedItemButton!=null){
-            UCDrawingPane UCdrawing = this.mainContent.getDrawingPane();
+            UCDrawingPane UCdrawing = (UCDrawingPane) this.mainContent.getDrawingPane();
             switch (selectedItemButton.getName()){
                 case "ACTOR":
                         UCActor actor = new UCActor(evt.getX(), evt.getY());
@@ -96,7 +96,7 @@ public class UCMainContentController extends UCMainContentModel implements Drawi
     {
         ObjectChecker objectUnderMouse = new ObjectChecker(places);
         CoordinateModel coordModel = objectUnderMouse.getObjectUnderMouse(evt.getPoint());
-        UCDrawingPane UCdrawing = this.mainContent.getDrawingPane();
+        UCDrawingPane UCdrawing = (UCDrawingPane) this.mainContent.getDrawingPane();
         if (this.newJoinEdge != null)
         {
             if (this.newJoinEdge.getSecondObject() == null)
@@ -131,7 +131,7 @@ public class UCMainContentController extends UCMainContentModel implements Drawi
         {
             clickedOnObject(clickedObject);
         }
-        this.mainContent.getDrawingPane().getDrawing().repaint();
+        ((UCDrawingPane)this.mainContent.getDrawingPane()).getDrawing().repaint();
     }
     
     /**
@@ -144,7 +144,7 @@ public class UCMainContentController extends UCMainContentModel implements Drawi
         String name = (String) JOptionPane.showInputDialog("Enter name of the object",pressedObject.getName());
         if (name!= null && !"".equals(name))
             pressedObject.setName(name);
-        this.mainContent.getDrawingPane().getDrawing().repaint();
+        ((UCDrawingPane)this.mainContent.getDrawingPane()).getDrawing().repaint();
     }
     
     /**
@@ -172,7 +172,7 @@ public class UCMainContentController extends UCMainContentModel implements Drawi
             this.places.addObject(this.newJoinEdge);
             this.newJoinEdge = null;
         }
-        UCDrawingPane UCdrawing = this.mainContent.getDrawingPane();
+        UCDrawingPane UCdrawing = (UCDrawingPane) this.mainContent.getDrawingPane();
         UCdrawing.setNewLine(newJoinEdge);
     }
     
@@ -203,7 +203,7 @@ public class UCMainContentController extends UCMainContentModel implements Drawi
     public void buttonsChanged()
     {
         JToggleButton selectedJoinEdgeButton = this.LeftBottomContent.getSelectedButton();
-        UCDrawingPane UCdrawing = this.mainContent.getDrawingPane();
+        UCDrawingPane UCdrawing = (UCDrawingPane) this.mainContent.getDrawingPane();
         if (selectedJoinEdgeButton == null)
         {
             this.newJoinEdge = null;

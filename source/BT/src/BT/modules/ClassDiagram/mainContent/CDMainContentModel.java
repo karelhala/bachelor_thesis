@@ -68,7 +68,7 @@ class CDMainContentModel {
     
     private void createMainPane()
     {   
-        CDDrawingPane UCdrawing = this.mainContent.getDrawingPane();
+        CDDrawingPane UCdrawing = (CDDrawingPane) this.mainContent.getDrawingPane();
         CDDrawingListeners alpha = new CDDrawingListeners((DrawingClicks) this);
         UCdrawing.getDrawing().addMouseMotionListener(alpha);
         UCdrawing.getDrawing().addMouseListener(alpha);
@@ -80,9 +80,9 @@ class CDMainContentModel {
      */
     public void setButtonsListeners()
     {
-        CDDrawingPane drawingPane = this.mainContent.getDrawingPane();
+        CDDrawingPane drawingPane = (CDDrawingPane) this.mainContent.getDrawingPane();
         drawingPane.getDrawing().getActionMap().put("removeObject", new AbstractAction() {
-            CDDrawingPane drawingPane = mainContent.getDrawingPane();
+            CDDrawingPane drawingPane = (CDDrawingPane) mainContent.getDrawingPane();
             @Override
                 public void actionPerformed(ActionEvent e) {
                     mainContent.getDrawingPane().getPlaces().removeAllSelectedItems();
@@ -100,7 +100,7 @@ class CDMainContentModel {
     protected void deleteNewLine(){
         this.newJoinEdge = null;
         this.mainContent.getDrawingPane().setNewLine(newJoinEdge);
-        this.mainContent.getDrawingPane().getDrawing().repaint();
+        ((CDDrawingPane)this.mainContent.getDrawingPane()).getDrawing().repaint();
     }
     
     /**

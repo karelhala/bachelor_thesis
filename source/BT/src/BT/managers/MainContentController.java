@@ -11,5 +11,4 @@ import BT.interfaces.DrawingClicks;
  * @author Karel Hala
  */
 abstract public class MainContentController implements DrawingClicks{
-    
 }
