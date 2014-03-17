@@ -50,10 +50,15 @@ public class PlaceManager extends PlaceModel {
     {
         Iterator<LineModel> it = joinEdges.iterator();
         while (it.hasNext()) {
-          LineModel joinEdge = it.next();
-          if (joinEdge.getFirstObject().equals(removedObject) || joinEdge.getSecondObject().equals(removedObject)) {
-            it.remove();
-          }
+            LineModel joinEdge = it.next();
+            if (joinEdge.getFirstObject().equals(removedObject) || joinEdge.getSecondObject().equals(removedObject)) {
+                joinEdge.getFirstObject().removeOutJoin(joinEdge);
+                if (joinEdge.getSecondObject() != null)
+                {
+                    joinEdge.getSecondObject().removeInJoin(joinEdge);
+                }
+                it.remove();
+            }
         }
     }
     
@@ -67,6 +72,11 @@ public class PlaceManager extends PlaceModel {
             CoordinateModel coorModel = it.next();
             if (coorModel.getSelected())
             {
+                ((LineModel)coorModel).getFirstObject().removeOutJoin(((LineModel)coorModel));
+                if (((LineModel)coorModel).getSecondObject() != null)
+                {
+                    ((LineModel)coorModel).getSecondObject().removeInJoin(((LineModel)coorModel));
+                }
                 it.remove();
             }
         }
