@@ -7,6 +7,7 @@ package BT.managers;
 import BT.interfaces.DrawingClicks;
 import BT.models.ContentPaneModel;
 import BT.models.LineModel;
+import java.awt.event.MouseEvent;
 
 /**
  *
@@ -39,5 +40,11 @@ abstract public class MainContentController implements DrawingClicks{
 
     public void setNewJoinEdge(LineModel newJoinEdge) {
         this.newJoinEdge = newJoinEdge;
+    }
+    
+    @Override
+    public void rightClick(MouseEvent evt)
+    {
+        System.out.println("right clicked");
     }
 }

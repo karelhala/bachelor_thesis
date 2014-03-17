@@ -8,6 +8,8 @@ import BT.interfaces.DrawingClicks;
 import BT.models.CoordinateModel;
 import BT.models.LineModel;
 import java.awt.event.MouseEvent;
+import javax.swing.SwingUtilities;
+import static javax.swing.SwingUtilities.isLeftMouseButton;
 import javax.swing.event.MouseInputAdapter;
 
 /**
@@ -27,7 +29,6 @@ public class DrawingListeners extends MouseInputAdapter{
 
     /**
      * 
-     * @param drawing
      * @param mainContent 
      */
     public DrawingListeners(DrawingClicks mainContent) {
@@ -40,16 +41,23 @@ public class DrawingListeners extends MouseInputAdapter{
      */
     @Override
     public void mousePressed(java.awt.event.MouseEvent evt) {
-        ObjectChecker objectChecker = new ObjectChecker(this.mainContent.getPlaces());
-        CoordinateModel coordObject = objectChecker.getObjectUnderMouse(evt.getPoint());
-        if (coordObject == null)
+        if (SwingUtilities.isRightMouseButton(evt))
         {
-            this.mainContent.drawingPaneClicked(evt);
+            this.mainContent.rightClick(evt);
         }
         else
         {
-            this.draggedObject = coordObject;
-            this.mainContent.setSelectedObject(coordObject);
+            ObjectChecker objectChecker = new ObjectChecker(this.mainContent.getPlaces());
+            CoordinateModel coordObject = objectChecker.getObjectUnderMouse(evt.getPoint());
+            if (coordObject == null)
+            {
+                this.mainContent.drawingPaneClicked(evt);
+            }
+            else
+            {
+                this.draggedObject = coordObject;
+                this.mainContent.setSelectedObject(coordObject);
+            }
         }
     }
     

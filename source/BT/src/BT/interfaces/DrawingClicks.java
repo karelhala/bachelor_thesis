@@ -18,4 +18,5 @@ public interface DrawingClicks {
     public void drawingMouseDragged(MouseEvent e, CoordinateModel dragged);
     public void setSelectedObject(CoordinateModel clickedObject);
     public void buttonsChanged();
+    public void rightClick(MouseEvent evt);
 }
