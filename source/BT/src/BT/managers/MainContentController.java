@@ -6,6 +6,7 @@ package BT.managers;
 
 import BT.interfaces.DrawingClicks;
 import BT.models.ContentPaneModel;
+import BT.models.LineModel;
 
 /**
  *
@@ -14,6 +15,7 @@ import BT.models.ContentPaneModel;
 abstract public class MainContentController implements DrawingClicks{
     protected ContentPaneModel mainContent;
     protected PlaceManager places;
+    protected LineModel newJoinEdge;
 
     public ContentPaneModel getMainContent() {
         return mainContent;
@@ -23,6 +25,10 @@ abstract public class MainContentController implements DrawingClicks{
         return places;
     }
 
+    public LineModel getNewJoinEdge() {
+        return newJoinEdge;
+    }
+
     public void setMainContent(ContentPaneModel mainContent) {
         this.mainContent = mainContent;
     }
@@ -30,5 +36,8 @@ abstract public class MainContentController implements DrawingClicks{
     public void setPlaces(PlaceManager places) {
         this.places = places;
     }
-    
+
+    public void setNewJoinEdge(LineModel newJoinEdge) {
+        this.newJoinEdge = newJoinEdge;
+    }
 }

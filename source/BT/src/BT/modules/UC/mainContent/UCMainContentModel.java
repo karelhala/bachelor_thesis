@@ -22,7 +22,6 @@ import javax.swing.KeyStroke;
  * @author Karel Hala
  */
 abstract public class UCMainContentModel extends MainContentController{
-    protected UCJoinEdgeController newJoinEdge;
     protected UCLeftBottomContent LeftBottomContent;
     protected UCLeftTopContent LeftTopContent;
     
@@ -44,21 +43,13 @@ abstract public class UCMainContentModel extends MainContentController{
         UCdrawing.getDrawing().addMouseListener(alpha);
         setButtonsListeners();
     }
-
-    public void setNewJoinEdge(UCJoinEdgeController newJoinEdge) {
-        this.newJoinEdge = newJoinEdge;
-    }
-
+    
     public void setLeftBottomContent(UCLeftBottomContent LeftBottomContent) {
         this.LeftBottomContent = LeftBottomContent;
     }
 
     public void setLeftTopContent(UCLeftTopContent LeftTopContent) {
         this.LeftTopContent = LeftTopContent;
-    }
-
-    public UCJoinEdgeController getNewJoinEdge() {
-        return newJoinEdge;
     }
 
     public UCLeftBottomContent getLeftBottomContent() {
@@ -98,10 +89,10 @@ abstract public class UCMainContentModel extends MainContentController{
     {
         this.newJoinEdge = new UCJoinEdgeController();
         this.newJoinEdge.setFirstObject(joinEdge.getFirstObject());
-        this.newJoinEdge.setJoinEdgeType(joinEdge.getJoinEdgeType());
+        ((UCJoinEdgeController)this.newJoinEdge).setJoinEdgeType(joinEdge.getJoinEdgeType());
         if (this.LeftBottomContent.getSelectedButton() != null)
         {
-            UCJoinEdgeManipulator.changeLineTypeByButton(this.LeftBottomContent.getSelectedButton(),this.newJoinEdge);
+            UCJoinEdgeManipulator.changeLineTypeByButton(this.LeftBottomContent.getSelectedButton(), (UCJoinEdgeController) this.newJoinEdge);
         }
         this.places.removeJoinEdge(joinEdge);
     }

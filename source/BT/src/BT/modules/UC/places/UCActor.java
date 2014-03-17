@@ -87,7 +87,7 @@ public class UCActor extends CoordinateModel{
         int actorX = this.getX();
         int actorY = this.getY();
         g.setColor(actorColor);
-        g.setStroke(new BasicStroke(2));
+        g.setStroke((this.inJoins.isEmpty() && this.outJoins.isEmpty())?this.dashedStroke:new BasicStroke(2));
         int middle = this.getHeight()/2;
         int bottom = (middle/2)-this.gap;
         int neck = bottom/2;

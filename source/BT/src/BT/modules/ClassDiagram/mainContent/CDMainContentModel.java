@@ -25,7 +25,6 @@ import javax.swing.KeyStroke;
 abstract class CDMainContentModel extends MainContentController{
     protected CDLeftBottomContent LeftBottomContent;
     protected CDLeftTopContent LeftTopContent;
-    protected CDJoinEdgeController newJoinEdge;
 
     public CDMainContentModel()
     {
@@ -47,14 +46,6 @@ abstract class CDMainContentModel extends MainContentController{
 
     public void setLeftTopContent(CDLeftTopContent LeftTopContent) {
         this.LeftTopContent = LeftTopContent;
-    }
-
-    public void setNewJoinEdge(CDJoinEdgeController newJoinEdge) {
-        this.newJoinEdge = newJoinEdge;
-    }
-
-    public CDJoinEdgeController getNewJoinEdge() {
-        return newJoinEdge;
     }
     
     private void createMainPane()
@@ -102,10 +93,10 @@ abstract class CDMainContentModel extends MainContentController{
     {
         this.newJoinEdge = new CDJoinEdgeController();
         this.newJoinEdge.setFirstObject(joinEdge.getFirstObject());
-        this.newJoinEdge.setJoinEdgeType(joinEdge.getJoinEdgeType());
+        ((CDJoinEdgeController)this.newJoinEdge).setJoinEdgeType(joinEdge.getJoinEdgeType());
         if (this.LeftBottomContent.getSelectedButton() != null)
         {
-            CDJoinEdgeManipulator.changeLineTypeByButton(this.LeftBottomContent.getSelectedButton(),this.newJoinEdge);
+            CDJoinEdgeManipulator.changeLineTypeByButton(this.LeftBottomContent.getSelectedButton(), (CDJoinEdgeController) this.newJoinEdge);
         }
         this.places.removeJoinEdge(joinEdge);
     }

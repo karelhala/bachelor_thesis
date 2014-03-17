@@ -153,10 +153,10 @@ public class UCMainContentController extends UCMainContentModel implements Drawi
      */
     private void drawJoinEdge(CoordinateModel clickedObject)
     {
-        this.newJoinEdge = UCJoinEdgeManipulator.createJoinEdge(this.newJoinEdge,clickedObject);
+        this.newJoinEdge = UCJoinEdgeManipulator.createJoinEdge((UCJoinEdgeController) this.newJoinEdge,clickedObject);
         if (this.LeftBottomContent.getSelectedButton() != null)
         {
-            UCJoinEdgeManipulator.changeLineTypeByButton(this.LeftBottomContent.getSelectedButton(),this.newJoinEdge);
+            UCJoinEdgeManipulator.changeLineTypeByButton(this.LeftBottomContent.getSelectedButton(), (UCJoinEdgeController) this.newJoinEdge);
         }
 
         if (this.newJoinEdge.getFirstObject()!= null && this.newJoinEdge.getSecondObject() != null)
@@ -211,7 +211,7 @@ public class UCMainContentController extends UCMainContentModel implements Drawi
         }
         else if (this.newJoinEdge != null)
         {
-            UCJoinEdgeManipulator.changeLineTypeByButton(this.LeftBottomContent.getSelectedButton(),this.newJoinEdge);
+            UCJoinEdgeManipulator.changeLineTypeByButton(this.LeftBottomContent.getSelectedButton(), (UCJoinEdgeController) this.newJoinEdge);
         }
         UCdrawing.getDrawing().repaint();
     }

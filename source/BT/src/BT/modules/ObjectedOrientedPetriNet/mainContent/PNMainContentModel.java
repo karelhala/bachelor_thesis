@@ -35,11 +35,6 @@ abstract public class PNMainContentModel extends MainContentController{
      */
     protected PNLeftTopContent LeftTopContent;
     
-    /**
-     * 
-     */
-    protected PNJoinEdgeController newJoinEdge;
-    
     public PNMainContentModel()
     {
         this.places = new PlaceManager();
@@ -59,20 +54,12 @@ abstract public class PNMainContentModel extends MainContentController{
         this.LeftTopContent = LeftTopContent;
     }
 
-    public void setNewJoinEdge(PNJoinEdgeController newJoinEdge) {
-        this.newJoinEdge = newJoinEdge;
-    }
-
     public PNLeftBottomContent getLeftBottomContent() {
         return LeftBottomContent;
     }
 
     public PNLeftTopContent getLeftTopContent() {
         return LeftTopContent;
-    }
-
-    public PNJoinEdgeController getNewJoinEdge() {
-        return newJoinEdge;
     }
     
     private void createMainPane()

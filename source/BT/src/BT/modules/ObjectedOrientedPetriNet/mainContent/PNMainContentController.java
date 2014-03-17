@@ -163,7 +163,7 @@ public class PNMainContentController extends PNMainContentModel implements Drawi
      */
     public void drawJoinEdge(CoordinateModel clickedObject)
     {
-        this.newJoinEdge = createJoinEdge(this.newJoinEdge,clickedObject);
+        this.newJoinEdge = createJoinEdge((PNJoinEdgeController) this.newJoinEdge,clickedObject);
 
         if (this.newJoinEdge.getFirstObject()!= null && this.newJoinEdge.getSecondObject() != null)
         {

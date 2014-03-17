@@ -53,7 +53,6 @@ public class UCUseCase extends CoordinateModel{
     public void drawUseCase(Graphics2D g)
     {
         Color useCaseColor = this.color;
-        g.setStroke(new BasicStroke(2));
         g.setFont(new Font("Arial", Font.BOLD, this.textSize));
         FontMetrics fm = g.getFontMetrics(g.getFont());
         this.width = fm.stringWidth(name)+this.textSize*2;
@@ -64,6 +63,7 @@ public class UCUseCase extends CoordinateModel{
             useCaseColor = selectedColor;
             drawRectArroundUseCase(g);
         }
+        g.setStroke((this.inJoins.isEmpty() && this.outJoins.isEmpty())?this.dashedStroke:new BasicStroke(2));
         g.setColor(useCaseColor);
         g.fillOval(this.x-width/2, y-height/2, this.width, this.height);
         g.setColor(Color.red);

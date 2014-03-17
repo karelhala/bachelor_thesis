@@ -183,7 +183,7 @@ public class CDMainContentController extends CDMainContentModel implements Drawi
         }
         else if (this.newJoinEdge != null)
         {
-            CDJoinEdgeManipulator.changeLineTypeByButton(this.LeftBottomContent.getSelectedButton(),this.newJoinEdge);
+            CDJoinEdgeManipulator.changeLineTypeByButton(this.LeftBottomContent.getSelectedButton(), (CDJoinEdgeController) this.newJoinEdge);
         }
         cdDrawing.getDrawing().repaint();
     }
@@ -194,10 +194,10 @@ public class CDMainContentController extends CDMainContentModel implements Drawi
      */
     public void drawJoinEdge(CoordinateModel clickedObject)
     {
-        this.newJoinEdge = CDJoinEdgeManipulator.createJoinEdge(this.newJoinEdge,clickedObject);
+        this.newJoinEdge = CDJoinEdgeManipulator.createJoinEdge((CDJoinEdgeController) this.newJoinEdge,clickedObject);
         if (this.LeftBottomContent.getSelectedButton() != null)
         {
-            CDJoinEdgeManipulator.changeLineTypeByButton(this.LeftBottomContent.getSelectedButton(),this.newJoinEdge);
+            CDJoinEdgeManipulator.changeLineTypeByButton(this.LeftBottomContent.getSelectedButton(), (CDJoinEdgeController) this.newJoinEdge);
         }
 
         if (this.newJoinEdge.getFirstObject()!= null && this.newJoinEdge.getSecondObject() != null)
