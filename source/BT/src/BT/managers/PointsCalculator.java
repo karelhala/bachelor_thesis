@@ -4,8 +4,8 @@
  */
 package BT.managers;
 
-import BT.managers.DistanceCalculator;
 import BT.models.CoordinateModel;
+import BT.models.MyArrayList;
 import BT.modules.UC.places.UCActor;
 import java.awt.Point;
 
@@ -21,6 +21,7 @@ public class PointsCalculator {
     private DistanceCalculator distanceCalculator;
     private Point startPoint;
     private Point endPoint;
+    private MyArrayList<Point> breakPoints;
 
     public Point getStartPoint() {
         return startPoint;
@@ -28,6 +29,17 @@ public class PointsCalculator {
 
     public Point getEndPoint() {
         return endPoint;
+    }
+    
+    public PointsCalculator (CoordinateModel firstObject, CoordinateModel secondObject, Point startPoint, Point endPoint, MyArrayList<Point> breakPoints)
+    {
+        this.firstObject = firstObject;
+        this.secondObject = secondObject;
+        this.startPoint = startPoint;
+        this.endPoint = endPoint;
+        this.distanceCalculator = new DistanceCalculator();
+        this.breakPoints = breakPoints;
+        calculatePoints();
     }
     
     public PointsCalculator(CoordinateModel firstObject, CoordinateModel secondObject, Point startPoint, Point endPoint)
@@ -44,14 +56,6 @@ public class PointsCalculator {
      * 
      */
     private void calculatePoints() {
-        if (this.secondObject != null)
-        {
-            this.endPoint.x = this.secondObject.getX();
-            this.endPoint.y = this.secondObject.getY();
-        }
-        this.startPoint.x = this.firstObject.getX();
-        this.startPoint.y = this.firstObject.getY();
-        
         this.endPoint = calculateEndPoint();
         
         this.startPoint = calculateStartPoint();
@@ -64,7 +68,7 @@ public class PointsCalculator {
      */
     private Point calculateStartPoint()
     {
-        Point pointA = this.endPoint;
+        Point pointA = (this.breakPoints != null && !this.breakPoints.isEmpty())?this.breakPoints.getFirst():this.endPoint;
         Point pointB = this.startPoint;
         Point calculatedPoint;
         WidthHeight widthHeight = getObjectWidthAndheight(this.firstObject);
@@ -105,11 +109,13 @@ public class PointsCalculator {
      */
     private Point calculateEndPoint()
     {
-        Point pointA = this.startPoint;
-        Point pointB = this.endPoint;
         if (this.secondObject != null)
         {
+            Point pointA;
+            Point pointB;
             WidthHeight widthHeight = getObjectWidthAndheight(this.secondObject);
+            pointB = this.endPoint;
+            pointA = (this.breakPoints != null && !this.breakPoints.isEmpty())?this.breakPoints.getLast():this.startPoint;
             return this.distanceCalculator.getPointOfIntersectionLineSegments(pointA, pointB, widthHeight.width, widthHeight.height);
         }
         return this.endPoint;

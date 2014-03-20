@@ -46,14 +46,7 @@ public class PNJoinEdgeController extends LineModel{
      * @param g 
      */
     public void drawJoinEdge(Graphics2D g) {
-        if (this.secondObject != null)
-        {
-            this.endX = this.secondObject.getX();
-            this.endY = this.secondObject.getY();
-        }
-        this.startX = this.firstObject.getX();
-        this.startY = this.firstObject.getY();
-        PointsCalculator pointsCaluclator = new PointsCalculator(this.firstObject, this.secondObject, new Point(this.startX, this.startY), new Point(this.endX, this.endY));  
+        PointsCalculator pointsCaluclator = new PointsCalculator(this.firstObject, this.secondObject, getStartPoint(), getEndPoint(),this.breakPoints);  
         
         PNJoinEdgeDrawer lineDrawer;
         lineDrawer = new PNJoinEdgeDrawer(this, pointsCaluclator.getStartPoint(), pointsCaluclator.getEndPoint());

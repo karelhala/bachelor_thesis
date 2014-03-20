@@ -50,7 +50,7 @@ public class UCMainContentController extends UCMainContentModel implements Drawi
         else if (dragged instanceof UCJoinEdgeController)
         {
             UCJoinEdgeController draggedJoinEdge = (UCJoinEdgeController) dragged;
-            if (!draggedJoinEdge.isInRange(e.getX(), e.getY()))
+            if (!draggedJoinEdge.isInRange(e.getX(), e.getY()) && this.newJoinEdge == null)
             {
                 removeLineFromArrayListAndSetNewLine(draggedJoinEdge);
                 drawingPanecheckMove(e);

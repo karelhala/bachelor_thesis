@@ -49,34 +49,37 @@ public class CDJoinEdgeDrawer extends JoinEdgeDrawer{
         if (this.joinEdgeController instanceof CDJoinEdgeController)
         {
             CDJoinEdgeController cdJoin = (CDJoinEdgeController) this.joinEdgeController;
+            Point arrowStartPoint = (cdJoin.getBreakPoints() != null && !cdJoin.getBreakPoints().isEmpty())?cdJoin.getBreakPoints().getLast():this.startPoint;
+            Point textStartPoint = (cdJoin.getBreakPoints() != null && !cdJoin.getBreakPoints().isEmpty())?cdJoin.getBreakPoints().getLeftMiddle():this.startPoint;
+            Point textEndPoint = (cdJoin.getBreakPoints() != null && !cdJoin.getBreakPoints().isEmpty() && cdJoin.getBreakPoints().size()>1)?cdJoin.getBreakPoints().getRightMiddle():this.endPoint;
             if (cdJoin.getJoinEdgeType() == BT.CDLineType.ASSOCIATION)
             {
-                g.drawLine(this.startPoint.x, this.startPoint.y, this.endPoint.x, this.endPoint.y);
-                drawArrow(g, endPoint, startPoint);
+                drawbreakedLine(g, this.startPoint, this.endPoint, cdJoin.getBreakPoints());
+                drawArrow(g, endPoint, arrowStartPoint);
             }
             else if (cdJoin.getJoinEdgeType() == BT.CDLineType.AGGREGATION)
             {
-                g.drawLine(this.startPoint.x, this.startPoint.y, this.endPoint.x, this.endPoint.y);
-                drawDiamond(g, this.endPoint, this.startPoint, Color.WHITE);
-                drawString(g, this.endPoint, this.startPoint, "<<aggregation>>");
+                drawbreakedLine(g, this.startPoint, this.endPoint, cdJoin.getBreakPoints());
+                drawDiamond(g, this.endPoint, arrowStartPoint, Color.WHITE);
+                drawString(g, textEndPoint, textStartPoint, "<<aggregation>>");
             }
             else if (cdJoin.getJoinEdgeType() == BT.CDLineType.COMPOSITION)
             {
-                g.drawLine(this.startPoint.x, this.startPoint.y, this.endPoint.x, this.endPoint.y);
-                drawDiamond(g, this.endPoint, this.startPoint, Color.BLACK);
-                drawString(g, this.endPoint, this.startPoint, "<<composition>>");
+                drawbreakedLine(g, this.startPoint, this.endPoint, cdJoin.getBreakPoints());
+                drawDiamond(g, this.endPoint, arrowStartPoint, Color.BLACK);
+                drawString(g, textEndPoint, textStartPoint, "<<composition>>");
             }
             else if (cdJoin.getJoinEdgeType() == BT.CDLineType.GENERALIZATION)
             {
-                g.drawLine(this.startPoint.x, this.startPoint.y, this.endPoint.x, this.endPoint.y);
-                drawTriangle(g, this.endPoint, this.startPoint, Color.WHITE);
-                drawString(g, this.endPoint, this.startPoint, "<<generalization>>");
+                drawbreakedLine(g, this.startPoint, this.endPoint, cdJoin.getBreakPoints());
+                drawTriangle(g, this.endPoint, arrowStartPoint, Color.WHITE);
+                drawString(g, textEndPoint, textStartPoint, "<<generalization>>");
             }
             else if (cdJoin.getJoinEdgeType() == BT.CDLineType.REALIZATION)
             {
-                g.drawLine(this.startPoint.x, this.startPoint.y, this.endPoint.x, this.endPoint.y);
-                drawArrow(g, this.endPoint, this.startPoint);
-                drawString(g, this.endPoint, this.startPoint, "<<realization>>");
+                drawbreakedLine(g, this.startPoint, this.endPoint, cdJoin.getBreakPoints());
+                drawArrow(g, this.endPoint, arrowStartPoint);
+                drawString(g, textEndPoint, textStartPoint, "<<realization>>");
             }            
         }
     }

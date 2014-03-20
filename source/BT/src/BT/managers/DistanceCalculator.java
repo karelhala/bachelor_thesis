@@ -40,8 +40,8 @@ public class DistanceCalculator extends DistanceCalculatorModel{
     
     /**
      * Method enveloping the calculation of distance from point to line segment
-     * @param int x1 x coordinate of first point determining line segment
-     * @param int y1 y coordinate of first point determining line segment
+     * @param x1
+     * @param y1
      * @param x2 x coordinate of second point determining line segment
      * @param y2 y coordinate of second point determining line segment
      * @param pointX x coordinate of clicked point
@@ -64,7 +64,6 @@ public class DistanceCalculator extends DistanceCalculatorModel{
      * @param lineA
      * @param lineB
      * @return DoublePoint calculated point if success
-     * @return if error
      */
     public DoublePoint getIntersectionPointLineVert(LineSegment lineA, LineSegment lineB)
     {
@@ -84,10 +83,9 @@ public class DistanceCalculator extends DistanceCalculatorModel{
     /**
      * Method for calculating intersect point to object with hrtizontal lines.
      * Horizontal lines in object needs to be calculated differently from vertical.
-     * @param LineSegment lineA
-     * @param LineSegment lineB
+     * @param lineA
+     * @param lineB
      * @return DoublePoint calculated point if success
-     * @return if error
      */
     public DoublePoint getIntersectionPointLineHoriz(LineSegment lineA, LineSegment lineB)
     {

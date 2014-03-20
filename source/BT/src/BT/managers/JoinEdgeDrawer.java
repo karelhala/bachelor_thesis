@@ -7,11 +7,13 @@
 package BT.managers;
 
 import BT.models.LineModel;
+import BT.models.MyArrayList;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Point;
-import java.awt.geom.AffineTransform;/**
+import java.awt.geom.AffineTransform;import java.util.ArrayList;
+/**
  *
  * @author Karel Hala
  */
@@ -149,4 +151,31 @@ public class JoinEdgeDrawer {
         g.drawString(name, len/3, -5);
     }
     
+    /**
+     * 
+     * @param g
+     * @param startPoint
+     * @param endPoint
+     * @param breakPoints 
+     */
+    protected void drawbreakedLine(Graphics2D g, Point startPoint, Point endPoint, MyArrayList<Point> breakPoints)
+    {        
+        g.setStroke(new BasicStroke(2));
+        Color lineColor = g.getColor();
+        for (Point point : breakPoints) {
+            g.drawLine(startPoint.x, startPoint.y, point.x, point.y);
+            startPoint = point;
+            g.setColor(Color.BLACK);
+            g.drawOval(point.x-2, point.y-2, 5, 5);
+            g.setColor(lineColor);
+        }
+        if (breakPoints != null && !breakPoints.isEmpty())
+        {
+            g.drawLine(breakPoints.getLast().x, breakPoints.getLast().y, endPoint.x, endPoint.y);
+        }
+        else
+        {
+            g.drawLine(startPoint.x, startPoint.y, endPoint.x, endPoint.y);
+        }
+    }
 }

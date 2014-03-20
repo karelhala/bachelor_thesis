@@ -8,6 +8,7 @@ import BT.managers.PointsCalculator;
 import BT.BT.UCLineType;
 import BT.models.LineModel;
 import java.awt.BasicStroke;
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.util.Objects;
@@ -47,24 +48,16 @@ public class UCJoinEdgeController extends LineModel{
      * @param g 
      */
     public void drawJoinEdge(Graphics2D g) {
-        if (this.secondObject != null)
-        {
-            this.endX = this.secondObject.getX();
-            this.endY = this.secondObject.getY();
-        }
-        this.startX = this.firstObject.getX();
-        this.startY = this.firstObject.getY();
-        PointsCalculator pointsCaluclator = new PointsCalculator(this.firstObject, this.secondObject, new Point(this.startX, this.startY), new Point(this.endX, this.endY));  
+        PointsCalculator pointsCaluclator = new PointsCalculator(this.firstObject, this.secondObject, getStartPoint(), getEndPoint(), this.breakPoints);  
         
-        UCJoinEdgeDrawer lineDrawer = new UCJoinEdgeDrawer(this, pointsCaluclator.getStartPoint(), pointsCaluclator.getEndPoint());
         Point startPoint = pointsCaluclator.getStartPoint();
         Point endPoint = pointsCaluclator.getEndPoint();
+        UCJoinEdgeDrawer lineDrawer = new UCJoinEdgeDrawer(this, startPoint, endPoint);
         if (startPoint !=null && endPoint !=null)
         {
             g.setStroke(new BasicStroke(2));
             lineDrawer.drawLine(g);
             setStartCoordinates(startPoint);
-            
             setEndPoint(endPoint);
         }
     }

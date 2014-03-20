@@ -9,7 +9,6 @@ import BT.models.CoordinateModel;
 import BT.models.LineModel;
 import java.awt.event.MouseEvent;
 import javax.swing.SwingUtilities;
-import static javax.swing.SwingUtilities.isLeftMouseButton;
 import javax.swing.event.MouseInputAdapter;
 
 /**
@@ -106,12 +105,15 @@ public class DrawingListeners extends MouseInputAdapter{
     @Override
     public void mouseReleased(MouseEvent e)
     {
-        if (this.draggedObject instanceof LineModel)
+        if (SwingUtilities.isLeftMouseButton(e))
         {
-            ObjectChecker objectChecker = new ObjectChecker(this.mainContent.getPlaces());
-            this.mainContent.setSelectedObject(objectChecker.getObjectUnderMouse(e.getPoint()));
+            if (this.draggedObject instanceof LineModel)
+            {
+                ObjectChecker objectChecker = new ObjectChecker(this.mainContent.getPlaces());
+                this.mainContent.setSelectedObject(objectChecker.getObjectUnderMouse(e.getPoint()));
+            }
+            this.draggedObject = null;
         }
-        this.draggedObject = null;
     }
     
     /**
@@ -121,18 +123,21 @@ public class DrawingListeners extends MouseInputAdapter{
     @Override
     public void mouseClicked(MouseEvent e)
     {
-        ObjectChecker objectChecker = new ObjectChecker(this.mainContent.getPlaces());
-        CoordinateModel clickedObject = objectChecker.getObjectUnderMouse(e.getPoint());
-        if (e.getClickCount()%2 == 0)
+        if (SwingUtilities.isLeftMouseButton(e))
         {
-            if (clickedObject != null && !(clickedObject instanceof LineModel))
+            ObjectChecker objectChecker = new ObjectChecker(this.mainContent.getPlaces());
+            CoordinateModel clickedObject = objectChecker.getObjectUnderMouse(e.getPoint());
+            if (e.getClickCount()%2 == 0)
             {
-                this.mainContent.drawingPaneDoubleCliked(clickedObject);
+                if (clickedObject != null && !(clickedObject instanceof LineModel))
+                {
+                    this.mainContent.drawingPaneDoubleCliked(clickedObject);
+                }
             }
-        }
-        else
-        {
-            this.mainContent.setSelectedObject(clickedObject);
+            else
+            {
+                this.mainContent.setSelectedObject(clickedObject);
+            }
         }
     }
 }

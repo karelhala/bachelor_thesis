@@ -16,6 +16,7 @@ public class LineModel extends CoordinateModel{
     protected CoordinateModel firstObject;
     protected CoordinateModel secondObject;
     protected DistanceCalculator distanceCalculator;
+    protected MyArrayList<Point> breakPoints;
     protected int startX;
     protected int startY;
     protected int endX;
@@ -31,6 +32,7 @@ public class LineModel extends CoordinateModel{
         this.color = Color.BLACK;
         this.howerColor = Color.orange;
         this.distanceCalculator = new DistanceCalculator();
+        this.breakPoints = new MyArrayList<>();
     }
 
     public CoordinateModel getFirstObject() {
@@ -78,6 +80,28 @@ public class LineModel extends CoordinateModel{
         this.startY = startPoint.y;
     }
     
+    public MyArrayList<Point> getBreakPoints()
+    {
+        return this.breakPoints;
+    }
+
+    
+    public void addBreakPoint(Point breakPoint)
+    {
+        if (this.breakPoints != null)
+        {
+            this.breakPoints.add(breakPoint);
+        }
+    }
+    
+    public void removeBreakPoint(Point breakPoint)
+    {
+        if (this.breakPoints != null)
+        {
+            this.breakPoints.remove(breakPoint);
+        }
+    }
+    
     /**
      * 
      * @param x
@@ -85,11 +109,45 @@ public class LineModel extends CoordinateModel{
      * @return 
      */
     public Boolean isInRange(int x, int y) {
-        double distance = this.distanceCalculator.getDistanceOfPointToSegment(this.startX, this.startY, this.endX, this.endY, x, y);
-        if (distance !=-1 && distance < this.tolerance)
+        MyArrayList<Point> wholeArrayList = new MyArrayList<>();
+        if (this.breakPoints !=null && !this.breakPoints.isEmpty())
         {
-            return true;
+            wholeArrayList.addAll(this.breakPoints);
+        }
+        wholeArrayList.add(new Point(this.endX, this.endY));
+        Point startPoint = new Point(this.startX, this.startY);
+        for (Point point: wholeArrayList)
+        {
+            double distance = this.distanceCalculator.getDistanceOfPointToSegment(startPoint.x, startPoint.y, point.x, point.y, x, y);
+            if (distance !=-1 && distance < this.tolerance)
+            {
+                return true;
+            }
+            startPoint.x = point.x;
+            startPoint.y = point.y;
         }
         return false;
+    }
+    
+    /**
+     * 
+     * @return 
+     */
+    public Point getStartPoint()
+    {
+        return new Point(this.firstObject.getX(), this.firstObject.getY());
+    }
+    
+    /**
+     * 
+     * @return 
+     */
+    public Point getEndPoint()
+    {
+        if (this.secondObject != null)
+        {
+            return new Point(this.getSecondObject().getX(), this.getSecondObject().getY());
+        }
+        return new Point(this.endX, this.endY);
     }
 }

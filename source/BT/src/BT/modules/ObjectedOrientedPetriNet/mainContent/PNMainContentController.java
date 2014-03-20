@@ -117,7 +117,7 @@ public class PNMainContentController extends PNMainContentModel implements Drawi
         else if (dragged != null)
         {
             PNJoinEdgeController draggedJoinEdge = (PNJoinEdgeController) dragged;
-            if (!draggedJoinEdge.isInRange(e.getX(), e.getY()))
+            if (!draggedJoinEdge.isInRange(e.getX(), e.getY()) && this.newJoinEdge == null)
             {
                 removeLineFromArrayListAndSetNewLine(draggedJoinEdge);
                 drawingPanecheckMove(e);

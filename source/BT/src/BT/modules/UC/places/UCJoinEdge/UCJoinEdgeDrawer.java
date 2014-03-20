@@ -53,26 +53,29 @@ public class UCJoinEdgeDrawer extends JoinEdgeDrawer{
         if (this.joinEdgeController instanceof UCJoinEdgeController)
         {
             UCJoinEdgeController UCjoin = (UCJoinEdgeController) this.joinEdgeController;
+            Point arrowStartPoint = (UCjoin.getBreakPoints() != null && !UCjoin.getBreakPoints().isEmpty())?UCjoin.getBreakPoints().getLast():this.startPoint;
+            Point textStartPoint = (UCjoin.getBreakPoints() != null && !UCjoin.getBreakPoints().isEmpty())?UCjoin.getBreakPoints().getLeftMiddle():this.startPoint;
+            Point textEndPoint = (UCjoin.getBreakPoints() != null && !UCjoin.getBreakPoints().isEmpty() && UCjoin.getBreakPoints().size()>1)?UCjoin.getBreakPoints().getRightMiddle():this.endPoint;
             if (UCjoin.getJoinEdgeType() == BT.UCLineType.ASSOCIATION)
             {
-                g.drawLine(this.startPoint.x, this.startPoint.y, this.endPoint.x, this.endPoint.y);
+                drawbreakedLine(g, this.startPoint,this.endPoint, UCjoin.getBreakPoints());
             }
             else if (UCjoin.getJoinEdgeType() == BT.UCLineType.INCLUDE)
             {
-                g.drawLine(this.startPoint.x, this.startPoint.y, this.endPoint.x, this.endPoint.y);
-                drawArrow(g, this.endPoint, this.startPoint);
-                drawString(g, this.endPoint, this.startPoint, "<<include>>");
+                drawbreakedLine(g, this.startPoint,this.endPoint, UCjoin.getBreakPoints());
+                drawArrow(g, this.endPoint, arrowStartPoint);
+                drawString(g, textEndPoint, textStartPoint, "<<include>>");
             }
             else if (UCjoin.getJoinEdgeType() == BT.UCLineType.EXTENDS)
             {
                 g.setStroke(dashed);
-                g.drawLine(this.startPoint.x, this.startPoint.y, this.endPoint.x, this.endPoint.y);
+                drawbreakedLine(g, this.startPoint,this.endPoint, UCjoin.getBreakPoints());
                 drawArrow(g, this.endPoint, this.startPoint);
                 drawString(g, this.endPoint, this.startPoint, "<<extend>>");
             }
             else if (UCjoin.getJoinEdgeType() == BT.UCLineType.GENERALIZATION)
             {
-                g.drawLine(this.startPoint.x, this.startPoint.y, this.endPoint.x, this.endPoint.y);
+                drawbreakedLine(g, this.startPoint,this.endPoint, UCjoin.getBreakPoints());
                 drawTriangle(g, this.endPoint, this.startPoint, Color.WHITE);
             }
         }

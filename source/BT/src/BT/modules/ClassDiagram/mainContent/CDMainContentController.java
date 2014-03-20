@@ -57,7 +57,7 @@ public class CDMainContentController extends CDMainContentModel implements Drawi
         else if (dragged != null)
         {
             CDJoinEdgeController draggedJoinEdge = (CDJoinEdgeController) dragged;
-            if (!draggedJoinEdge.isInRange(e.getX(), e.getY()))
+            if (!draggedJoinEdge.isInRange(e.getX(), e.getY()) && this.newJoinEdge == null)
             {
                 removeLineFromArrayListAndSetNewLine(draggedJoinEdge);
                 drawingPanecheckMove(e);

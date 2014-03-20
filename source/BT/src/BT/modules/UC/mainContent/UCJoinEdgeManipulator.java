@@ -9,6 +9,7 @@ import BT.models.CoordinateModel;
 import BT.modules.UC.places.UCActor;
 import BT.modules.UC.places.UCJoinEdge.UCJoinEdgeController;
 import BT.modules.UC.places.UCUseCase;
+import java.util.Collections;
 import javax.swing.JToggleButton;
 
 /**
@@ -71,6 +72,10 @@ public class UCJoinEdgeManipulator {
             {
                 joinEdge.setSecondObject(joinEdge.getFirstObject());
                 joinEdge.setFirstObject(clickedObject);
+                if (joinEdge.getBreakPoints()!= null && !joinEdge.getBreakPoints().isEmpty())
+                {
+                    joinEdge.getBreakPoints().swapWholeArrayList();
+                }
             }
             else
             {
