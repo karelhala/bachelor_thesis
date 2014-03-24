@@ -33,7 +33,7 @@ Co je ale nejvìt¹í slabinou Umbrello aplikace, je nevalidace daného diagramu. Je
 \subsection{Zhodnocení a pøevzaté vlastnosti}
 Aplikace Umbrello je ¹pièkou ve své tøídì. Je zdarma a poskytuje mnoho nástrojù pøi návrhu aplikace. Mezi jeho pøednosti jistì patøí mo¾nost refactoringu a také rozsáhlé mo¾nosti ve variabilitì grafických návrhù.
 
-Aplikace Umbrello poskytla mnoho informací o vývoji editaèní aplikace. Jakým chybám se vyvarovat a co se naopak hodí. Z aplikace Umbrello bylo pøedev¹ím pou¾ita jednoduchost a intuitivní ovládání. Rozdìlení aplikace na jednotlivé èásti a poté jednoduchý grafický design. Není za potøebí ve výsledné aplikaci mnoho nároèných grafických elementù. Tyto elemnty by byly ru¹ivé, tudí¾ na základì Umbrello aplikace byl zvolen jednoduchý design.
+Aplikace poskytla mnoho informací o vývoji editaèní aplikace, jakým chybám se vyvarovat a co se naopak hodí. Z aplikace Umbrello bylo pøedev¹ím pou¾ita jednoduchost a intuitivní ovládání. Rozdìlení aplikace na jednotlivé èásti a poté jednoduchý grafický design. Není za potøebí ve výsledné aplikaci mnoho nároèných grafických elementù. Tyto elemnty by byly ru¹ivé, tudí¾ na základì Umbrello aplikace byl zvolen jednoduchý design.
 
 Na základì chyb a nedostatkù, pøevá¾nì tomu, ¾e Umbrello neposkutuje jakoukoliv kontrolu daného modelu, bylo v aplikaci Nástroj pro podporu vývoje softwarových systémù implementována mo¾nost kontroly editovaného grafu. A to pøesnìji kontrola spojù, zda je daný spoj mezi dvìma objekty na pracovním plátnì validní.
 
@@ -47,18 +47,36 @@ Ve výsledné aplikaci, bylo také vyhnuto vlastnosti automatického vyskakování okn
 Aplikace \cite{Enterprise_architect} je tvoøena firmou sparx system \url{http://www.sparxsystems.com}, tato firma se soustøeïuje na tvorbu nástrojù pro tvorbu UML grafù. Bohu¾el firmou nabízené produkty jsou placené, ale za dané slu¾by èlovìk obdr¾í opravdu robustní systém pro tvorbu UML grafù a mo¾nost refaktoringu pro nìkolik jazykù.
 
 \subsection{Popis aplikace}
-Enterprise Architect je velice roustní systém, ji¾ nemá takové nedostatky jako aplikace Umbrello a nabízí nìkolikero mo¾ností pro refaktoring projektu. Aplikace rozdìluje UML grafy do dvou skupin, skupina \textbf{Structural Diagrams} pro diagramy na popis vyvýjené aplikace a popis její struktury. A skupinu \textbf{Behavior Diagrams} pro popis chování aplikace a komunikace mezi jednotlivými èástmi aplikace. Aplikace poskytuje velkou ¹kálu grafù a diagramù od klasických diagramù pro popis chování dat mezi sebou, pøes diagramy pro návrh Win32 UI a¾ po návrh testování výsledné aplikace.
+Enterprise Architect (dále jen EA) je velice roustní systém, ji¾ nemá takové nedostatky jako aplikace Umbrello a nabízí nìkolikero mo¾ností pro refaktoring projektu. Aplikace rozdìluje UML grafy do dvou skupin, skupina \textbf{Structural Diagrams} pro diagramy na popis vyvýjené aplikace a popis její struktury. A skupinu \textbf{Behavior Diagrams} pro popis chování aplikace a komunikace mezi jednotlivými èástmi aplikace. Aplikace poskytuje velkou ¹kálu grafù a diagramù od klasických diagramù pro popis chování dat mezi sebou, pøes diagramy pro návrh Win32 UI a¾ po návrh testování výsledné aplikace.
 
 \subsection{Výhody a nevýhody}
-Aplikace zastává velké mno¾ství grafù a diagramù, pro jednodu¹¹í ovládání aplikace dostane u¾ivatel mo¾nost popisu v¹ech èástí aplikace a vysvìtlení v¹ech diagramù.
-
-Grafické rozhraní ji¾ není tak jednoduché, jako tomu je u aplikace Umbrello, ale je intuitivní a jednoduché pro pou¾ívání. Vìt¹ina pokroèilých funkcí je bohu¾el schována a je nároèné ji najít. Pøidávání atributù pro jednotlivé tøídy je opìt zdlouhavé a neintuitivní. Aplikace Umbrello má vyøe¹enu tuto vlastnost lépe, ale ne dokonale.
+V aplikaci je mo¾né vytvoøit velké mno¾ství grafù a diagramù. Grafické rozhraní ji¾ není tak jednoduché, jako tomu je u aplikace Umbrello, ale je intuitivní a jednoduché pro pou¾ívání. Vìt¹ina pokroèilých funkcí je bohu¾el schována a je nároèné ji najít. Pøidávání atributù pro jednotlivé tøídy je opìt zdlouhavé a neintuitivní.
 
 Výhodou této aplikace jistì je mo¾nost vytváøení diagramù pro jednotlivé jazyky, celkem jedenáct jazykù je podporovaných. \texttt{ActionScript, C, C\#, C++, Delphi, Java, PHP, Python, VBNet, Visual Basic, WorkFlow Script}.
 
-Nejvìt¹í výhodou je jistì mo¾nost importovat celý obsah slo¾ky se zdrojovými kódy a tento projekt poté zobrazit v diagramu tøíd. Import nicménì probíhá ponìkud slo¾itìji, ne¾ v aplikaci Umbrello.
+Nejvìt¹í výhodou je jistì mo¾nost importovat celý obsah slo¾ky se zdrojovými kódy a tento projekt poté zobrazit v diagramu tøíd. Pro import aplikace je mo¾né pou¾ít také binární soubor výsledného programu. Generování dokumentace je jednoduché a pøehledné.
+
+Pro jednodu¹¹í a rychlej¹í mo¾nost spojení jednotlivých objektù na pracovní plo¹e, lze pou¾ít rychlého nástroje vedle objektu. Na stejném místì lze nalést také funkce pro ryhclou editaci a zmìnu stylu objektu.
+
+Pøeta¾ení spoje mezi dvìma objekty lze pomocí uchopení za jeden konec a ta¾ení k dal¹ímu objektu. Bohu¾el pùvodní spoj se neztratí do doby, ne¾ u¾ivatel pustí my¹. Pøi kliknutí mimo jakýkoliv objekt spoj zùstane u pùvodního objektu.
 
 \subsection{Zhodnocení a pøevzaté vlastnosti}
+Aplikace poslou¾ila pro dal¹í zhodnocení po¾adavkù a vyvarování se chyb. Pøedev¹ím nároènost a komplexnost aplikace se nehodí pro výslednou aplikaci.
+
+Ve výsledné aplikaci bude za potøebí mo¾nosti jednoduchého zalomení hran a mo¾nosti jejich jednoduché editace. Takté¾ pøesun po pracovním plátnì ve výsledné aplikaci je vyøe¹en elegantnìji a intuitivnìji.
+
+Umístnìní otevøených souborù je v aplikaci EA ponìkud netradièní v dolní èásti aplikace. U¾ivatel èasto nevidí otevøený projekt a èasto se mù¾e stát, ¾e zavøe stávající, jen kvùli tomu aby na¹el ji¾ otevøený soubor. Tudí¾ bylo ve výsledné aplikaci zvoleno umístnìní otevøených oken se soubory v horní èásti aplikace, lépe pøístupné u¾ivateli.
+
+Takté¾ diagramy a grafy, se kterými se pracuje v danou chvíli mají umístnìní v EA své místo, ale pro vyvýjený projekt naprosto nepou¾itelné. V EA jsou diagramy umístnìny ve stromové struktuøe, z pochopitelných dùvodù rozsáhlosti aplikace a mo¾nostem grafù. Pro pozdìj¹í vývoj bylo zvoleno umístnìní otevøených diagramù pod zálo¾kami souborrù. Takto má u¾ivatel pøepínání mezi èástmi aplikace velice pohodlnì umístnìné a jednoduché pro pøepínání.
+
+\section{Zhodnocení konkurentních nástrojù}
+Pøi testování nástrojù urèených pro tvorbu UML grafù bylo zji¹tìno mnoho detailù a dùle¾itých vlastností, které bude výsledná aplikace potøebovat. Nìkteré výhody tìchto aplikací, jako napøíklad generování kódu, nebude potøeba implementovat ve výsledné aplikaci vzhledem na to, ¾e aplikace se soustøedí èistì jenom na vytváøení a editaci diagramù a UML grafù. 
+
+Bìhem testování nebylo v ¾ádné aplikaci mo¾no udìlat Objektovì orientované Petriho sítì, nebo jakýkoliv jiný roz¹íøený pohled na implementaci jednotlivých tøíd a komunikaci mezi nimi. Dále v testovaných aplikacích nebylo mo¾né pøedgenerovat si tøídy na základì Pøípadu u¾ití, nebo naopak editovat tyto tøídy popøípadì smazat.
+ 
+Grafický prvek celé aplikace bude za potøebí jednoduchý a snadný k pou¾ívání, ale dùle¾itým prvkem je dobré zviditelnìní nìkterých objektù. Jako napøíklad znázornìní tøíd, které nemají odpovídající prvky v pøípadu u¾ití. Nebo znázornit prvky, které nemají ¾ádné spojení s ostratními objekty. Takovéto znázornìní nebylo nalezeno v ¾ádné z testovaných aplikací, ale je dùle¾itým prvkem v rozpoznávání editovaného diagramu.
+
+V testovaných aplikacích chybìla mo¾nost, nebo byla nedostateèná, pro zalomení hran. Tato vlastnost velice napomù¾e pro zpøehlednìní výsledného diagramu. Editace hran byla ve vìt¹inì editorù nepøíli¹ kvalitní. Zmìna typu hrany a zmìna objektù pro danou hranu je zapotøebí pro jednodu¹¹í práci s editorem.
 
 \chapter{Grafy pro popis èástí}
 Pro grafické znázornìní jednotlivých èástí byly vybrány z UML grafù pøípad u¾ití \ref{pripadUziti} pro popis jednotlivých akcí v systému, diagram tøíd \ref{diagramTrid} pro grafické znázornìní tøíd a operace mezi nimi. A jako poslední èást, která nespadá pod UML bylo vybráno objektovì orientovaných petriho sítí \ref{oopn} pro popis chování jednotlivých tøíd.
