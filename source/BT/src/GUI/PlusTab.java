@@ -18,14 +18,14 @@ import javax.swing.JTabbedPane;
  * @author Karel Hala
  */
 public class PlusTab {
+
     private JButton buttonPlus;
-    
+
     /**
-     * 
-     * @param tabPane 
+     *
+     * @param tabPane
      */
-    public void AddPlusTab(JTabbedPane tabPane)
-    {
+    public void AddPlusTab(JTabbedPane tabPane) {
         JPanel closePanel = new JPanel(new BorderLayout());
         closePanel.setOpaque(false);
         tabPane.addTab(null, null);
@@ -37,33 +37,31 @@ public class PlusTab {
         tabPane.setEnabledAt(index, false);
         tabPane.setSelectedIndex(index - 1);
     }
-    
+
     /**
-     * 
-     * @return 
+     *
+     * @return
      */
-    private JButton createPlusButton()
-    {
-        JButton plusButton = new JButton(); 
-        
+    private JButton createPlusButton() {
+        JButton plusButton = new JButton();
+
         plusButton.setBorder(null);
         plusButton.setFocusable(false);
         plusButton.setContentAreaFilled(false);
         createIconsForButton(plusButton);
         return plusButton;
     }
-    
+
     /**
-     * 
-     * @param button 
+     *
+     * @param button
      */
-    private void createIconsForButton(JButton button)
-    {
+    private void createIconsForButton(JButton button) {
         ImageIcon icon = new ImageIcon(CloseTabbedPane.class.getResource("/resources/greenPlus.png"));
         Image normalImage = icon.getImage();
         Image grayImage = GrayFilter.createDisabledImage(normalImage);
         ImageIcon greyIcon = new ImageIcon(grayImage);
-        
+
         button.setRolloverEnabled(true);
         button.setContentAreaFilled(false);
         button.setRolloverIcon(icon);
@@ -71,8 +69,8 @@ public class PlusTab {
     }
 
     /**
-     * 
-     * @param addNewTabListener 
+     *
+     * @param addNewTabListener
      */
     public void addMouseClickedListenerToPlus(MouseAdapter addNewTabListener) {
         this.buttonPlus.addMouseListener(addNewTabListener);

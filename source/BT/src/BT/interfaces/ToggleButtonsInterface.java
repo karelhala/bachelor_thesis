@@ -4,7 +4,6 @@
  */
 package BT.interfaces;
 
-import javax.swing.ButtonGroup;
 import javax.swing.JToggleButton;
 
 /**
@@ -12,6 +11,8 @@ import javax.swing.JToggleButton;
  * @author Karel Hala
  */
 public interface ToggleButtonsInterface {
+
     public JToggleButton getSelectedButton();
+
     public JToggleButton getButtonWithName(String name);
 }

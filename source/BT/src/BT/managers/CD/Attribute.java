@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package BT.managers.CD;
 
 import BT.BT;
@@ -13,6 +12,7 @@ import BT.BT;
  * @author Karel
  */
 public class Attribute {
+
     private BT.AttributeType visibility;
     private String name;
     private String type;
@@ -28,7 +28,7 @@ public class Attribute {
         this.name = name;
         this.type = type;
     }
-    
+
     public void setVisibility(BT.AttributeType visibility) {
         this.visibility = visibility;
     }
@@ -40,7 +40,7 @@ public class Attribute {
     public void setType(String type) {
         this.type = type;
     }
-    
+
     public BT.AttributeType getVisibility() {
         return visibility;
     }
@@ -52,6 +52,5 @@ public class Attribute {
     public String getType() {
         return type;
     }
-    
-    
+
 }

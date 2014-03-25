@@ -14,21 +14,27 @@ import java.awt.event.MouseEvent;
  *
  * @author Karel Hala
  */
-abstract public class MainContentController implements DrawingClicks{
+abstract public class MainContentController implements DrawingClicks {
+
     /**
-     * 
+     *
      */
     protected ContentPaneModel mainContent;
-    
+
     /**
-     * 
+     *
      */
     protected PlaceManager places;
+
+    /**
+     *
+     */
+    protected LineModel newJoinEdge;
     
     /**
      * 
      */
-    protected LineModel newJoinEdge;
+    protected DiagramPlacesManager diagramPlaces;
 
     public ContentPaneModel getMainContent() {
         return mainContent;
@@ -53,16 +59,14 @@ abstract public class MainContentController implements DrawingClicks{
     public void setNewJoinEdge(LineModel newJoinEdge) {
         this.newJoinEdge = newJoinEdge;
     }
-    
+
     /**
-     * 
-     * @param evt 
+     *
+     * @param evt
      */
     @Override
-    public void rightClick(MouseEvent evt)
-    {
-        if (this.newJoinEdge != null)
-        {
+    public void rightClick(MouseEvent evt) {
+        if (this.newJoinEdge != null) {
             this.newJoinEdge.addBreakPoint(new Point(evt.getX(), evt.getY()));
             System.out.println(this.newJoinEdge.getBreakPoints());
         }

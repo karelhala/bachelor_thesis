@@ -12,35 +12,33 @@ import java.awt.event.MouseAdapter;
  *
  * @author Karel Hala
  */
-public class MainInterfaceControler{
+public class MainInterfaceControler {
 
     String programName;
-    
+
     /**
-     * 
-     * @param programName 
+     *
+     * @param programName
      */
-    public MainInterfaceControler (String programName)
-    {
+    public MainInterfaceControler(String programName) {
         this.programName = programName;
     }
-    
+
     /**
-     * 
+     *
      */
-    public void runTheMainWindow()
-    {
+    public void runTheMainWindow() {
         ToolBarContentControler ToolBarContent = new ToolBarContentControler();
         MyToolBar toolBar = new MyToolBar();
         WindowLayoutControler myLayout = new WindowLayoutControler(toolBar);
-        
+
         ToolBarContent.addBasicButtons(myLayout);
         MouseAdapter addNewFileMouseclicked = ToolBarContent.getNewFileMouseClicked();
         myLayout.setAddNewTabListener(addNewFileMouseclicked);
         myLayout.setMouseClickedOnPlusButton();
-        
+
         toolBar.setPaneToolbar(ToolBarContent.getToolBarcontent().getToolBarPane());
-                
+
         MainWindowModel mainWindowModel = new MainWindowModel("tOOl", myLayout);
         mainWindowModel.initComponents();
     }

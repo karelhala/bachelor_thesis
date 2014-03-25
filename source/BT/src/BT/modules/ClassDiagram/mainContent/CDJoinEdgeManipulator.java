@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package BT.modules.ClassDiagram.mainContent;
 
 import BT.BT.CDLineType;
@@ -15,23 +14,19 @@ import javax.swing.JToggleButton;
  *
  * @author Karel
  */
-
 public class CDJoinEdgeManipulator {
-    
-    public CDJoinEdgeManipulator()
-    {
+
+    public CDJoinEdgeManipulator() {
         super();
     }
-    
+
     /**
-     * 
+     *
      * @param selectedButton
      * @param joinEdge
      */
-    public static void changeLineTypeByButton(JToggleButton selectedButton, CDJoinEdgeController joinEdge)
-    {
-        switch (selectedButton.getName())
-        {
+    public static void changeLineTypeByButton(JToggleButton selectedButton, CDJoinEdgeController joinEdge) {
+        switch (selectedButton.getName()) {
             case "AGGREGATION":
                 joinEdge.setJoinEdgeType(CDLineType.AGGREGATION);
                 break;
@@ -42,34 +37,29 @@ public class CDJoinEdgeManipulator {
                 joinEdge.setJoinEdgeType(CDLineType.COMPOSITION);
                 break;
             case "GENERALIZATION":
-                    joinEdge.setJoinEdgeType(CDLineType.GENERALIZATION);
-                 break;
+                joinEdge.setJoinEdgeType(CDLineType.GENERALIZATION);
+                break;
             case "REALIZATION":
-                    joinEdge.setJoinEdgeType(CDLineType.REALIZATION);
+                joinEdge.setJoinEdgeType(CDLineType.REALIZATION);
                 break;
         }
     }
 
     /**
-     * 
+     *
      * @param joinEdge
-     * @param clickedObject 
-     * @return  
+     * @param clickedObject
+     * @return
      */
-    public static CDJoinEdgeController createJoinEdge(CDJoinEdgeController joinEdge, CoordinateModel clickedObject)
-    {   
-        if (joinEdge == null)
-        {
+    public static CDJoinEdgeController createJoinEdge(CDJoinEdgeController joinEdge, CoordinateModel clickedObject) {
+        if (joinEdge == null) {
             joinEdge = new CDJoinEdgeController();
         }
-        if (joinEdge.getFirstObject() == null)
-        {
+        if (joinEdge.getFirstObject() == null) {
             joinEdge.setFirstObject(clickedObject);
-        }
-        else if (joinEdge.getSecondObject() == null)
-        {
+        } else if (joinEdge.getSecondObject() == null) {
             joinEdge.setSecondObject(clickedObject);
-        }       
+        }
         return joinEdge;
     }
 }

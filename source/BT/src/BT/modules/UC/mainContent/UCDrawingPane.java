@@ -21,65 +21,61 @@ import javax.swing.JPanel;
  *
  * @author Karel Hala
  */
-public class UCDrawingPane extends DrawingPaneModel{
+public class UCDrawingPane extends DrawingPaneModel {
+
     /**
-     * 
+     *
      */
     private drawing drawPane;
-    
+
     /**
-     * 
-     * @param UCPlaces 
+     *
+     * @param UCPlaces
      */
-    public UCDrawingPane(PlaceManager UCPlaces)
-    {
-        super (UCPlaces);
+    public UCDrawingPane(PlaceManager UCPlaces) {
+        super(UCPlaces);
         this.drawPane = new drawing();
     }
-    
+
     /**
-     * 
+     *
      */
-    public class drawing extends JPanel{
+    public class drawing extends JPanel {
+
         /**
-         * 
-         * @param g1 
+         *
+         * @param g1
          */
         @Override
         protected void paintComponent(Graphics g1) {
             super.paintComponent(g1);
             Graphics2D g = (Graphics2D) g1.create();
             g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-            if (newLine != null)
-            {
+            if (newLine != null) {
                 g.setColor(Color.GREEN);
                 ((UCJoinEdgeController) newLine).drawJoinEdge(g);
-                
+
             }
-            
-            for (LineModel joinEdge: places.getJoinEdges()) {
-                ((UCJoinEdgeController)joinEdge).drawJoinEdge(g);
+
+            for (LineModel joinEdge : places.getJoinEdges()) {
+                ((UCJoinEdgeController) joinEdge).drawJoinEdge(g);
             }
-            
-            for (CoordinateModel object: places.getObjects()) {
-                if (object instanceof UCActor)
-                {
-                    ((UCActor)object).drawActor(g);
-                }
-                else if (object instanceof UCUseCase)
-                {
-                    ((UCUseCase)object).drawUseCase(g);
+
+            for (CoordinateModel object : places.getObjects()) {
+                if (object instanceof UCActor) {
+                    ((UCActor) object).drawActor(g);
+                } else if (object instanceof UCUseCase) {
+                    ((UCUseCase) object).drawUseCase(g);
                 }
             }
         }
     }
-    
+
     /**
-     * 
-     * @return 
+     *
+     * @return
      */
-    public drawing getDrawing()
-    {
+    public drawing getDrawing() {
         return this.drawPane;
     }
 }

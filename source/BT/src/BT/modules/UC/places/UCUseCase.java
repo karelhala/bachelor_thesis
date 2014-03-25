@@ -18,17 +18,15 @@ import java.util.UUID;
  *
  * @author Karel Hala
  */
-public class UCUseCase extends CoordinateModel{
+public class UCUseCase extends CoordinateModel {
 
-    private int textSize;
     private int gap;
     private UUID id;
-    
+
     /**
      * TODO: make model
      */
-    public UCUseCase (int x, int y)
-    {
+    public UCUseCase(int x, int y) {
         super();
         this.x = x;
         this.y = y;
@@ -45,66 +43,64 @@ public class UCUseCase extends CoordinateModel{
         this.outJoins = new ArrayList<>();
         this.id = UUID.randomUUID();
     }
-    
+
     /**
      * TODO: refactor
-     * @param g 
+     *
+     * @param g
      */
-    public void drawUseCase(Graphics2D g)
-    {
+    public void drawUseCase(Graphics2D g) {
         Color useCaseColor = this.color;
         g.setFont(new Font("Arial", Font.BOLD, this.textSize));
         FontMetrics fm = g.getFontMetrics(g.getFont());
-        this.width = fm.stringWidth(name)+this.textSize*2;
+        this.width = fm.stringWidth(name) + this.textSize * 2;
         this.objectHeight = this.height + gap;
         this.objectWidth = this.width + gap;
-        if (this.selected)
-        {
+        if (this.selected) {
             useCaseColor = selectedColor;
             drawRectArroundUseCase(g);
         }
-        g.setStroke((this.inJoins.isEmpty() && this.outJoins.isEmpty())?this.dashedStroke:new BasicStroke(2));
+        g.setStroke((this.inJoins.isEmpty() && this.outJoins.isEmpty()) ? this.dashedStroke : new BasicStroke(2));
         g.setColor(useCaseColor);
-        g.fillOval(this.x-width/2, y-height/2, this.width, this.height);
+        g.fillOval(this.x - width / 2, y - height / 2, this.width, this.height);
         g.setColor(Color.red);
-        g.drawOval(this.x-width/2, y-height/2, this.width, this.height);
+        g.drawOval(this.x - width / 2, y - height / 2, this.width, this.height);
         g.setColor(Color.black);
-        g.drawString(this.name, this.x-width/2+this.textSize, y+this.textSize/2);
+        g.drawString(this.name, this.x - width / 2 + this.textSize, y + this.textSize / 2);
+        drawNoObjectString(g, "/no class/");
     }
-    
+
     /**
-     * 
-     * @param g 
+     *
+     * @param g
      */
-    public void drawRectArroundUseCase(Graphics2D g)
-    {
+    public void drawRectArroundUseCase(Graphics2D g) {
         int borderWidth = getMax(this.objectWidth, this.width);
         int borderHeight = this.objectHeight;
         g.setStroke(new BasicStroke(1));
         g.setColor(Color.black);
-        g.drawRect(this.x-borderWidth/2-this.gap, this.y-this.height/2-this.gap, borderWidth+this.gap, borderHeight+this.gap);
+        g.drawRect(this.x - borderWidth / 2 - this.gap, this.y - this.height / 2 - this.gap, borderWidth + this.gap, borderHeight + this.gap);
     }
-    
+
     /**
-     * 
+     *
      * @param other
-     * @return 
+     * @return
      */
     @Override
-    public boolean equals(Object other)
-    {
-        if (other instanceof UCUseCase)
-        {
+    public boolean equals(Object other) {
+        if (other instanceof UCUseCase) {
             UCUseCase object = (UCUseCase) other;
-            if (this.hashCode()==object.hashCode())
+            if (this.hashCode() == object.hashCode()) {
                 return true;
+            }
         }
         return false;
     }
 
     /**
-     * 
-     * @return 
+     *
+     * @return
      */
     @Override
     public int hashCode() {

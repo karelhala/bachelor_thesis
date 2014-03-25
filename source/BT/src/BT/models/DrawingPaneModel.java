@@ -11,12 +11,11 @@ import BT.managers.PlaceManager;
  * @author Karel Hala
  */
 public class DrawingPaneModel {
+
     protected PlaceManager places;
     protected LineModel newLine;
-    
-    
-    public DrawingPaneModel(PlaceManager places)
-    {
+
+    public DrawingPaneModel(PlaceManager places) {
         super();
         this.places = places;
         this.newLine = null;

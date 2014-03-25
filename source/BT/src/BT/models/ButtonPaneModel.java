@@ -18,35 +18,30 @@ import javax.swing.JToggleButton;
  *
  * @author Karel Hala
  */
-public class ButtonPaneModel extends ContentPaneModel implements ToggleButtonsInterface{
-    
+public class ButtonPaneModel extends ContentPaneModel implements ToggleButtonsInterface {
+
     DrawingClicks mainContentController;
-    
-    public ButtonPaneModel(UCMainContentController UCMain)
-    {
+
+    public ButtonPaneModel(UCMainContentController UCMain) {
         super();
         this.mainContentController = UCMain;
     }
-    
-    public ButtonPaneModel(CDMainContentController CDMain)
-    {
+
+    public ButtonPaneModel(CDMainContentController CDMain) {
         super();
         this.mainContentController = CDMain;
     }
-    
-    public ButtonPaneModel(PNMainContentController PNMain)
-    {
+
+    public ButtonPaneModel(PNMainContentController PNMain) {
         super();
         this.mainContentController = PNMain;
     }
 
     @Override
     public JToggleButton getSelectedButton() {
-        for (Component comp : this.mainContentPane.getComponents())
-        {
+        for (Component comp : this.mainContentPane.getComponents()) {
             JToggleButton toggleButton = (JToggleButton) comp;
-            if (toggleButton.isSelected())
-            {
+            if (toggleButton.isSelected()) {
                 return toggleButton;
             }
         }
@@ -55,34 +50,31 @@ public class ButtonPaneModel extends ContentPaneModel implements ToggleButtonsIn
 
     /**
      * Method for getting button specified by it's name.
+     *
      * @param name
      * @return JToggleButton specified by it's name
      */
     @Override
     public JToggleButton getButtonWithName(String name) {
-        for (Component comp : this.mainContentPane.getComponents())
-        {
+        for (Component comp : this.mainContentPane.getComponents()) {
             JToggleButton toggleButton = (JToggleButton) comp;
-            if (toggleButton.getName() == null ? name == null : toggleButton.getName().equals(name))
-            {
+            if (toggleButton.getName() == null ? name == null : toggleButton.getName().equals(name)) {
                 return toggleButton;
             }
         }
         return null;
     }
-    
+
     /**
-     * 
+     *
      */
-    public void setListeners()
-    {
-        for (Component comp : this.mainContentPane.getComponents())
-        {
+    public void setListeners() {
+        for (Component comp : this.mainContentPane.getComponents()) {
             final JToggleButton toggleButton = (JToggleButton) comp;
-            ItemListener changeListener = new ItemListener(){
+            ItemListener changeListener = new ItemListener() {
                 @Override
                 public void itemStateChanged(ItemEvent ev) {
-                    if(ev.getStateChange()==ItemEvent.SELECTED){
+                    if (ev.getStateChange() == ItemEvent.SELECTED) {
                         toggleButtonSelected(toggleButton);
                     }
                     mainContentController.buttonsChanged();
@@ -91,21 +83,19 @@ public class ButtonPaneModel extends ContentPaneModel implements ToggleButtonsIn
             toggleButton.addItemListener(changeListener);
         }
     }
-    
+
     /**
-     * 
+     *
      * @param selectedButton
-     * @param allComponents 
+     * @param allComponents
      */
     private void toggleButtonSelected(JToggleButton selectedButton) {
-        for (Component comp : this.mainContentPane.getComponents())
-        {
+        for (Component comp : this.mainContentPane.getComponents()) {
             JToggleButton toggleButton = (JToggleButton) comp;
-            if (selectedButton != toggleButton)
-            {
+            if (selectedButton != toggleButton) {
                 toggleButton.setSelected(false);
             }
         }
     }
-    
+
 }

@@ -20,29 +20,23 @@ import java.util.ArrayList;
  * @author Karel Hala
  */
 public class CDClass extends CoordinateModel {
-
     /**
-     * 
-     */
-    private int textSize;
-    
-    /**
-     * 
+     *
      */
     private Color background;
-    
+
     /**
-     * 
+     *
      */
     private ArrayList<Attribute> variables;
-    
+
     /**
-     * 
+     *
      */
     private ArrayList<Attribute> methods;
-    
+
     /**
-     * 
+     *
      */
     private ClassType typeOfClass;
 
@@ -92,7 +86,7 @@ public class CDClass extends CoordinateModel {
         if (getSelected()) {
             classColor = this.selectedColor;
         }
-        g.setStroke((this.inJoins.isEmpty() && this.outJoins.isEmpty())?this.dashedStroke:new BasicStroke(1));
+        g.setStroke((this.inJoins.isEmpty() && this.outJoins.isEmpty()) ? this.dashedStroke : new BasicStroke(1));
         g.setColor(this.background);
         this.width = this.getMaximumWidth(fm);
         this.height = this.getMaximumHeight(fm);
@@ -110,13 +104,14 @@ public class CDClass extends CoordinateModel {
         );
         g.drawRect(x - this.width / 2, this.y - this.height / 2, this.width, this.height);
         g.setColor(Color.BLACK);
-        String stringType = (typeOfClass == ClassType.ACTIVITY)?"<Activity>":"<Actor>";
-        g.drawString(stringType, x-fm.stringWidth(stringType)/2, y-height/2-5);
+        String stringType = (typeOfClass == ClassType.ACTIVITY) ? "<Activity>" : "<Actor>";
+        g.drawString(stringType, x - fm.stringWidth(stringType) / 2, y - height / 2 - 5);
         g.drawString(name, x - (int) fm.getStringBounds(name, g).getWidth() / 2, y - this.height / 2 + fm.getHeight() - 2);
         Point variablesPlace = new Point(nameLinePoint.x, nameLinePoint.y - fm.getHeight());
         drawAttributes(g, this.variables, variablesPlace, fm);
         Point methodsPlace = new Point(variablesPlace.x, variablesPlace.y - (fm.getHeight() * this.variables.size()) - 5);
         drawAttributes(g, this.methods, methodsPlace, fm);
+        drawNoObjectString(g, "/no Use Case/");
     }
 
     /**
@@ -157,9 +152,9 @@ public class CDClass extends CoordinateModel {
     }
 
     /**
-     * 
+     *
      * @param fm
-     * @return 
+     * @return
      */
     private int getMaximumHeight(FontMetrics fm) {
         int textheight = fm.getHeight();

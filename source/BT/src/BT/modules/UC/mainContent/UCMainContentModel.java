@@ -4,6 +4,7 @@
  */
 package BT.modules.UC.mainContent;
 
+import BT.managers.DiagramPlacesManager;
 import BT.managers.DrawingListeners;
 import BT.managers.MainContentController;
 import BT.managers.PlaceManager;
@@ -21,29 +22,29 @@ import javax.swing.KeyStroke;
  *
  * @author Karel Hala
  */
-abstract public class UCMainContentModel extends MainContentController{
+abstract public class UCMainContentModel extends MainContentController {
+
     protected UCLeftBottomContent LeftBottomContent;
     protected UCLeftTopContent LeftTopContent;
-    
-    public UCMainContentModel()
-    {
-        this.places = new PlaceManager();
-        this.mainContent = new UCMainContent(places);
+
+    public UCMainContentModel(DiagramPlacesManager diagramPlaces) {
+        this.diagramPlaces = diagramPlaces;
+        this.places = diagramPlaces.getUcPlaces();
+        this.mainContent = new UCMainContent(this.places);
         createMainPane();
     }
-    
+
     /**
-     * 
+     *
      */
-    private void createMainPane()
-    {   
+    private void createMainPane() {
         UCDrawingPane UCdrawing = (UCDrawingPane) this.mainContent.getDrawingPane();
         DrawingListeners alpha = new DrawingListeners((UCMainContentController) this);
         UCdrawing.getDrawing().addMouseMotionListener(alpha);
         UCdrawing.getDrawing().addMouseListener(alpha);
         setButtonsListeners();
     }
-    
+
     public void setLeftBottomContent(UCLeftBottomContent LeftBottomContent) {
         this.LeftBottomContent = LeftBottomContent;
     }
@@ -59,39 +60,37 @@ abstract public class UCMainContentModel extends MainContentController{
     public UCLeftTopContent getLeftTopContent() {
         return LeftTopContent;
     }
-    
+
     /**
-     * 
+     *
      */
-    public void setButtonsListeners()
-    {
+    public void setButtonsListeners() {
         UCDrawingPane drawingPane = (UCDrawingPane) this.mainContent.getDrawingPane();
         drawingPane.getDrawing().getActionMap().put("removeObject", new AbstractAction() {
             UCDrawingPane drawingPane = (UCDrawingPane) mainContent.getDrawingPane();
+
             @Override
-                public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent e) {
                 places.removeAllSelectedItems();
                 newJoinEdge = null;
                 drawingPane.setNewLine(null);
                 drawingPane.getDrawing().repaint();
-                }
             }
+        }
         );
         InputMap inputMap = drawingPane.getDrawing().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
         inputMap.put(KeyStroke.getKeyStroke("DELETE"), "removeObject");
     }
 
     /**
-     * 
-     * @param joinEdge 
+     *
+     * @param joinEdge
      */
-    public void removeLineFromArrayListAndSetNewLine(UCJoinEdgeController joinEdge) 
-    {
+    public void removeLineFromArrayListAndSetNewLine(UCJoinEdgeController joinEdge) {
         this.newJoinEdge = new UCJoinEdgeController();
         this.newJoinEdge.setFirstObject(joinEdge.getFirstObject());
-        ((UCJoinEdgeController)this.newJoinEdge).setJoinEdgeType(joinEdge.getJoinEdgeType());
-        if (this.LeftBottomContent.getSelectedButton() != null)
-        {
+        ((UCJoinEdgeController) this.newJoinEdge).setJoinEdgeType(joinEdge.getJoinEdgeType());
+        if (this.LeftBottomContent.getSelectedButton() != null) {
             UCJoinEdgeManipulator.changeLineTypeByButton(this.LeftBottomContent.getSelectedButton(), (UCJoinEdgeController) this.newJoinEdge);
         }
         this.places.removeJoinEdge(joinEdge);

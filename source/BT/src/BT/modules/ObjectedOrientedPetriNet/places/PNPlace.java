@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package BT.modules.ObjectedOrientedPetriNet.places;
 
 import BT.models.CoordinateModel;
@@ -18,21 +17,18 @@ import java.util.ArrayList;
  *
  * @author Karel
  */
-public class PNPlace extends CoordinateModel{
-    private int textSize;
-    
-    public PNPlace ()
-    {
+public class PNPlace extends CoordinateModel {
+
+    public PNPlace() {
         super();
     }
-    
+
     /**
-     * 
+     *
      * @param x
-     * @param y 
+     * @param y
      */
-    public PNPlace (int x, int y)
-    {
+    public PNPlace(int x, int y) {
         super();
         this.x = x;
         this.y = y;
@@ -47,26 +43,25 @@ public class PNPlace extends CoordinateModel{
         this.inJoins = new ArrayList<>();
         this.outJoins = new ArrayList<>();
     }
-    
+
     /**
      * TODO: refactor
-     * @param g 
+     *
+     * @param g
      */
-    public void drawPlace(Graphics2D g)
-    {
+    public void drawPlace(Graphics2D g) {
         Color placeColor = this.color;
         g.setFont(new Font("Arial", Font.BOLD, this.textSize));
         FontMetrics fm = g.getFontMetrics(g.getFont());
-        if (getSelected())
-        {
+        if (getSelected()) {
             placeColor = this.selectedColor;
         }
-        g.setStroke((this.inJoins.isEmpty() && this.outJoins.isEmpty())?this.dashedStroke:new BasicStroke(2));
+        g.setStroke((this.inJoins.isEmpty() && this.outJoins.isEmpty()) ? this.dashedStroke : new BasicStroke(2));
         g.setColor(Color.BLACK);
-        g.drawString(name, x-this.width/2, y+this.height/2+fm.getHeight()+2);
-        
+        g.drawString(name, x - this.width / 2, y + this.height / 2 + fm.getHeight() + 2);
+
         g.setColor(placeColor);
-        g.drawOval(x-this.width/2, y-this.height/2, this.width, this.height);
+        g.drawOval(x - this.width / 2, y - this.height / 2, this.width, this.height);
     }
-    
+
 }

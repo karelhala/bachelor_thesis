@@ -14,55 +14,48 @@ import java.awt.Point;
  * @author Karel Hala
  */
 public class ObjectChecker {
+
     private final PlaceManager places;
-    
+
     /**
-     * 
-     * @param places 
+     *
+     * @param places
      */
-    public ObjectChecker(PlaceManager places)
-    {
+    public ObjectChecker(PlaceManager places) {
         super();
         this.places = places;
     }
-    
+
     /**
-     * 
+     *
      * @param mousePoint
-     * @return 
+     * @return
      */
-    public CoordinateModel getObjectUnderMouse(Point mousePoint)
-    {
+    public CoordinateModel getObjectUnderMouse(Point mousePoint) {
         CoordinateModel coordModel;
         coordModel = isObjectunderMouse(mousePoint.x, mousePoint.y);
-        if (coordModel!=null)
-        {
+        if (coordModel != null) {
             return coordModel;
         }
         coordModel = isJoinEdgeUnderMouse(mousePoint.x, mousePoint.y);
-        if (coordModel!=null)
-        {
+        if (coordModel != null) {
             return coordModel;
         }
 
         return null;
     }
-     /**
-     * 
+
+    /**
+     *
      * @param x
      * @param y
-     * @return 
+     * @return
      */
-    private CoordinateModel isObjectunderMouse(int x, int y)
-    {
-        for (CoordinateModel object : places.getObjects())
-        {
-            if (object.isObject(x,y))
-            {
+    private CoordinateModel isObjectunderMouse(int x, int y) {
+        for (CoordinateModel object : places.getObjects()) {
+            if (object.isObject(x, y)) {
                 return object;
-            }
-            else
-            {
+            } else {
                 object.setBasicColor();
             }
         }
@@ -70,21 +63,16 @@ public class ObjectChecker {
     }
 
     /**
-     * 
+     *
      * @param x
      * @param y
-     * @return 
+     * @return
      */
-    private LineModel isJoinEdgeUnderMouse(int x, int y)
-    {
-        for (LineModel joinEdge : places.getJoinEdges())
-        {
-            if (joinEdge.isInRange(x,y))
-            {
+    private LineModel isJoinEdgeUnderMouse(int x, int y) {
+        for (LineModel joinEdge : places.getJoinEdges()) {
+            if (joinEdge.isInRange(x, y)) {
                 return joinEdge;
-            }
-            else
-            {
+            } else {
                 joinEdge.setBasicColor();
             }
         }

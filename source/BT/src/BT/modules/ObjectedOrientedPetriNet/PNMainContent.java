@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package BT.modules.ObjectedOrientedPetriNet;
 
 import BT.managers.PlaceManager;
@@ -19,24 +18,24 @@ import javax.swing.JScrollPane;
  *
  * @author Karel
  */
-public class PNMainContent extends ContentPaneModel{
+public class PNMainContent extends ContentPaneModel {
+
     private Dimension area;
-    
+
     /**
-     * 
+     *
      * @param places
      */
-    public PNMainContent(PlaceManager places)
-    {
+    public PNMainContent(PlaceManager places) {
         super();
         this.mainContentPane = new JPanel(new BorderLayout());
         this.drawingPane = new PNDrawingPane(places);
-        this.area = new Dimension(0,0);
+        this.area = new Dimension(0, 0);
         createMainPane();
     }
-    
+
     /**
-     * 
+     *
      */
     private void createMainPane() {
         PNDrawingPane pnDrawingPane = (PNDrawingPane) this.drawingPane;

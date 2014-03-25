@@ -3,11 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package BT.modules.ObjectedOrientedPetriNet.mainContent;
 
 import BT.interfaces.DrawingClicks;
+import BT.managers.DiagramPlacesManager;
 import BT.managers.ObjectChecker;
+import BT.managers.PlaceManager;
 import BT.models.CoordinateModel;
 import BT.models.LineModel;
 import BT.modules.ObjectedOrientedPetriNet.places.PNPlace;
@@ -21,104 +22,91 @@ import javax.swing.JToggleButton;
  *
  * @author Karel
  */
-public class PNMainContentController extends PNMainContentModel implements DrawingClicks{
+public class PNMainContentController extends PNMainContentModel implements DrawingClicks {
 
     /**
-     * 
+     *
+     * @param diagramPlaces
      */
-    public PNMainContentController()
-    {
-        super();
+    public PNMainContentController(DiagramPlacesManager diagramPlaces) {
+        super(diagramPlaces);
     }
-    
+
     /**
-     * 
-     * @param evt 
+     *
+     * @param evt
      */
     @Override
     public void drawingPanecheckMove(MouseEvent evt) {
         ObjectChecker objectChecker = new ObjectChecker(this.mainContent.getDrawingPane().getPlaces());
         CoordinateModel coordObject = objectChecker.getObjectUnderMouse(evt.getPoint());
         PNDrawingPane PNdrawing = (PNDrawingPane) this.mainContent.getDrawingPane();
-        if (this.newJoinEdge != null)
-        {
-            if (this.newJoinEdge.getSecondObject() == null)
-            {
+        if (this.newJoinEdge != null) {
+            if (this.newJoinEdge.getSecondObject() == null) {
                 this.newJoinEdge.setEndPoint(evt.getPoint());
             }
             PNdrawing.setNewLine(this.newJoinEdge);
         }
-        if (coordObject != null)
-        {
+        if (coordObject != null) {
             coordObject.setHowerColor();
         }
         PNdrawing.getDrawing().repaint();
     }
 
     /**
-     * 
-     * @param pressedObject 
+     *
+     * @param pressedObject
      */
     @Override
     public void drawingPaneDoubleCliked(CoordinateModel pressedObject) {
-        if (pressedObject != null)
-        {
-            String name = (String) JOptionPane.showInputDialog("Enter name of the object",pressedObject.getName());
-            if (name!= null && !"".equals(name))
+        if (pressedObject != null) {
+            String name = (String) JOptionPane.showInputDialog("Enter name of the object", pressedObject.getName());
+            if (name != null && !"".equals(name)) {
                 pressedObject.setName(name);
-            ((PNDrawingPane)this.mainContent.getDrawingPane()).getDrawing().repaint();
+            }
+            ((PNDrawingPane) this.mainContent.getDrawingPane()).getDrawing().repaint();
         }
     }
 
     /**
-     * 
-     * @param evt 
+     *
+     * @param evt
      */
     @Override
     public void drawingPaneClicked(MouseEvent evt) {
         JToggleButton selectedItemButton = this.LeftTopContent.getSelectedButton();
-        if (selectedItemButton != null && "PLACE".equals(selectedItemButton.getName()))
-        {
+        if (selectedItemButton != null && "PLACE".equals(selectedItemButton.getName())) {
             this.places.setAllObjectDiselected();
             PNPlace newPlace = new PNPlace(evt.getX(), evt.getY());
             this.places.addObject(newPlace);
-        }
-        else if (selectedItemButton != null && "TRANSITION".equals(selectedItemButton.getName()))
-        {
+        } else if (selectedItemButton != null && "TRANSITION".equals(selectedItemButton.getName())) {
             this.places.setAllObjectDiselected();
             PNTransition newTrasition = new PNTransition(evt.getX(), evt.getY());
             this.places.addObject(newTrasition);
-        }
-        else
-        {
+        } else {
             this.places.setAllObjectDiselected();
             deleteNewLine();
         }
-        ((PNDrawingPane)this.mainContent.getDrawingPane()).getDrawing().repaint();
+        ((PNDrawingPane) this.mainContent.getDrawingPane()).getDrawing().repaint();
     }
 
     /**
-     * 
+     *
      * @param e
-     * @param dragged 
+     * @param dragged
      */
     @Override
     public void drawingMouseDragged(MouseEvent e, CoordinateModel dragged) {
         PNDrawingPane pnDrawing = (PNDrawingPane) this.mainContent.getDrawingPane();
-        if (dragged instanceof PNPlace || dragged instanceof PNTransition)
-        {
-            if (this.newJoinEdge != null)
-            {
+        if (dragged instanceof PNPlace || dragged instanceof PNTransition) {
+            if (this.newJoinEdge != null) {
                 deleteNewLine();
             }
             dragged.setX(e.getX());
             dragged.setY(e.getY());
-        }
-        else if (dragged != null)
-        {
+        } else if (dragged != null) {
             PNJoinEdgeController draggedJoinEdge = (PNJoinEdgeController) dragged;
-            if (!draggedJoinEdge.isInRange(e.getX(), e.getY()) && this.newJoinEdge == null)
-            {
+            if (!draggedJoinEdge.isInRange(e.getX(), e.getY()) && this.newJoinEdge == null) {
                 removeLineFromArrayListAndSetNewLine(draggedJoinEdge);
                 drawingPanecheckMove(e);
             }
@@ -127,52 +115,44 @@ public class PNMainContentController extends PNMainContentModel implements Drawi
     }
 
     /**
-     * 
-     * @param clickedObject 
+     *
+     * @param clickedObject
      */
     @Override
     public void setSelectedObject(CoordinateModel clickedObject) {
         this.places.setAllObjectDiselected();
         places.setSelectedLinesOnObject(clickedObject);
-        if (clickedObject!=null)
-        {
+        if (clickedObject != null) {
             clickedObject.setSelected(true);
         }
-        
-        if (this.LeftBottomContent.getSelectedButton()!=null || this.newJoinEdge != null)
-        {
+
+        if (this.LeftBottomContent.getSelectedButton() != null || this.newJoinEdge != null) {
             clickedOnObject(clickedObject);
         }
         ((PNDrawingPane) this.mainContent.getDrawingPane()).getDrawing().repaint();
     }
 
     /**
-     * 
+     *
      */
     @Override
     public void buttonsChanged() {
-        if (this.LeftBottomContent.getSelectedButton() == null)
-        {
+        if (this.LeftBottomContent.getSelectedButton() == null) {
             deleteNewLine();
         }
     }
-    
-        /**
-     * 
-     * @param clickedObject 
-     */
-    public void drawJoinEdge(CoordinateModel clickedObject)
-    {
-        this.newJoinEdge = createJoinEdge((PNJoinEdgeController) this.newJoinEdge,clickedObject);
 
-        if (this.newJoinEdge.getFirstObject()!= null && this.newJoinEdge.getSecondObject() != null)
-        {
-            if (this.newJoinEdge.getFirstObject().equals(clickedObject))
-            {
+    /**
+     *
+     * @param clickedObject
+     */
+    public void drawJoinEdge(CoordinateModel clickedObject) {
+        this.newJoinEdge = createJoinEdge((PNJoinEdgeController) this.newJoinEdge, clickedObject);
+
+        if (this.newJoinEdge.getFirstObject() != null && this.newJoinEdge.getSecondObject() != null) {
+            if (this.newJoinEdge.getFirstObject().equals(clickedObject)) {
                 this.newJoinEdge.setSelected(true);
-            }
-            else
-            {
+            } else {
                 this.newJoinEdge.setSelected(false);
             }
             this.places.addObject(this.newJoinEdge);
@@ -181,43 +161,34 @@ public class PNMainContentController extends PNMainContentModel implements Drawi
         PNDrawingPane cdDrawing = (PNDrawingPane) this.mainContent.getDrawingPane();
         cdDrawing.setNewLine(newJoinEdge);
     }
-    
+
     /**
-     * 
+     *
      * @param joinEdge
-     * @param clickedObject 
-     * @return  
+     * @param clickedObject
+     * @return
      */
-    private PNJoinEdgeController createJoinEdge(PNJoinEdgeController joinEdge, CoordinateModel clickedObject)
-    {   
-        if (joinEdge == null)
-        {
+    private PNJoinEdgeController createJoinEdge(PNJoinEdgeController joinEdge, CoordinateModel clickedObject) {
+        if (joinEdge == null) {
             joinEdge = new PNJoinEdgeController();
         }
-        if (joinEdge.getFirstObject() == null)
-        {
+        if (joinEdge.getFirstObject() == null) {
             joinEdge.setFirstObject(clickedObject);
-        }
-        else if (joinEdge.getSecondObject() == null && !joinEdge.getFirstObject().getClass().equals(clickedObject.getClass()))
-        {
+        } else if (joinEdge.getSecondObject() == null && !joinEdge.getFirstObject().getClass().equals(clickedObject.getClass())) {
             joinEdge.setSecondObject(clickedObject);
-        }       
+        }
         return joinEdge;
     }
 
     /**
-     * 
-     * @param clickedObject 
+     *
+     * @param clickedObject
      */
     private void clickedOnObject(CoordinateModel clickedObject) {
-        if (clickedObject == null || clickedObject instanceof LineModel)
-        {
+        if (clickedObject == null || clickedObject instanceof LineModel) {
             deleteNewLine();
-        }
-        else
-        {
-            if (this.newJoinEdge!=null && this.newJoinEdge.getFirstObject().equals(clickedObject))
-            {
+        } else {
+            if (this.newJoinEdge != null && this.newJoinEdge.getFirstObject().equals(clickedObject)) {
                 this.newJoinEdge = null;
             }
             drawJoinEdge(clickedObject);
