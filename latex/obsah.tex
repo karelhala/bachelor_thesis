@@ -2,84 +2,216 @@
 % (c) Karel Hala, 2014 
 
 \chapter{Úvod}
-Pøi implementaci jakéholiv nástroje se èasto nará¾í na bariéru mezi zákazníkem a programátorem. Zákazník èasto netu¹í co chce a programátor èasto zákazníka ¹patnì pochopí. Tento nástroj bohu¾el tyto problémy nedoká¾e odstranit, nicménì mìl by napomoci odstranit nìkteré bariéry a pomoci sna¾¹í vizualizace problémù.
+Pøi implementaci jakéholiv nástroje se èasto nará¾í na bariéru mezi zákazníkem a 
+programátorem. Zákazník èasto netu¹í co chce a programátor èasto zákazníka 
+¹patnì pochopí. Tento nástroj bohu¾el tyto problémy nedoká¾e odstranit, nicménì 
+mìl by napomoci odstranit nìkteré bariéry a pomoci sna¾¹í vizualizace problémù.
 
-Nástroj tohoto docílí za pou¾ití nìkolika èástí. Pøípadu u¾ití \cite{Pripad_uziti} pro jednotlivé znázornìní zákazníkových potøeb, diagramu tøíd pro vlastní vizualizaci a pochopení vyvýjeného softwaru a nakonec objektovì orientované petriho sítì, slou¾ící pro porozumìní celého systému do hloubky.
+Nástroj tohoto docílí za pou¾ití nìkolika èástí. Pøípadu u¾ití 
+\cite{Pripad_uziti} pro jednotlivé znázornìní zákazníkových potøeb, diagramu 
+tøíd pro vlastní vizualizaci a pochopení vyvýjeného softwaru a nakonec objektovì 
+orientované petriho sítì, slou¾ící pro porozumìní celého systému do hloubky.
 
 \section{Seznámení s nástrojem}
-Jak bylo ji¾ øeèeno pro porozumìní po¾adavkù zákazníka nám poslou¾í diagram pøípadu u¾ití, odsud se pøedgenerují jednotlivé tøídy a ty následnì bude mo¾né upravit a popsat v èásti objektovì orientovaných petriho sítí.
+Jak bylo ji¾ øeèeno pro porozumìní po¾adavkù zákazníka nám poslou¾í diagram 
+pøípadu u¾ití, odsud se pøedgenerují jednotlivé tøídy a ty následnì bude mo¾né 
+upravit a popsat v èásti objektovì orientovaných petriho sítí.
 
 \chapter{Zhondocení konkurence}
-Z hlediska sna¾¹ího porozumìní byl brán zøetel na konkurentní nástroje. Pøevá¾nì byl brán zøetel na jejich jednoduchost a co je dìlá tak hojnì vyu¾ívané a snadno pou¾itelné. Z toho dùvodu byly prozkoumány dva nástroje Umbrello a komerèní Enterprise Architect. Detailnìj¹í popis jednotlivých aplikací, jejich výhod, nedostatkù a pøevzatých vlastností je popsán v sekci \ref{umbrello} a \ref{enterpriseArchitect}.
+Z hlediska sna¾¹ího porozumìní byl brán zøetel na konkurentní nástroje. Pøevá¾nì 
+byl brán zøetel na jejich jednoduchost a co je dìlá tak hojnì vyu¾ívané a snadno 
+pou¾itelné. Z toho dùvodu byly prozkoumány dva nástroje Umbrello a komerèní 
+Enterprise Architect. Detailnìj¹í popis jednotlivých aplikací, jejich výhod, 
+nedostatkù a pøevzatých vlastností je popsán v sekci \ref{umbrello} a 
+\ref{enterpriseArchitect}.
 
 \section{Umbrello} \label{umbrello}
-Aplikace celým názvem \textbf{Umbrello UML Modeller} \cite{Umbrello} aplikace primárnì urèena pro Unix based systémy, nicménì je mo¾né jej bez problémù nainstalovat také na windows. Za pomoci KDE installeru a vybrání po¾adovaného balíèku. Ovládání tohoto installeru, je velice jednoduché a intuitivní. Mezi její hlavní výhody patøí refaktoring pro nìkteré jazyky. Nicménì graficky zaostává za konkurencí ostatních nástrojù pro tvorbu UML diagramù.
+Aplikace celým názvem \textbf{Umbrello UML Modeller} \cite{Umbrello} aplikace 
+primárnì urèena pro Unix based systémy, nicménì je mo¾né jej bez problémù 
+nainstalovat také na windows. Za pomoci KDE installeru a vybrání po¾adovaného 
+balíèku. Ovládání tohoto installeru, je velice jednoduché a intuitivní. Mezi 
+její hlavní výhody patøí refaktoring pro nìkteré jazyky. Nicménì graficky 
+zaostává za konkurencí ostatních nástrojù pro tvorbu UML diagramù.
 
 \subsection{Popis aplikace}
-Aplikace je velice robustní a poskytuje mnohov lastností. Pøi ohlédnutí na to, ¾e je volnì ke sta¾ení a volnì k pou¾ívání, aplikace pou¾ívá licenci GNU general public license \cite{gnu_license}. Co¾ umo¾òuje komunitu být zapojenou pøi vývoji, odchytávat chyby a sami je opravovat. Pokud vývojáø nicménì chce být zahrnut do vývoje, musí bý èlenem KDE komunity. Umbrello poskytuje mnoho UML grafù a práce s touto aplikací je pomìrnì jednoduchá, ale její jednoduchý design má mnoho ¹patných návrhù. Pro men¹í aplikace a pro zaèínající firmy je naprosto dokonalá, ale absence pokroèilého editoru a ne pøíli¹ jednoduché práce s editorem je opravdu ¾alostná.
+Aplikace je velice robustní a poskytuje mnohov lastností. Pøi ohlédnutí na to, 
+¾e je volnì ke sta¾ení a volnì k pou¾ívání, aplikace pou¾ívá licenci GNU general 
+public license \cite{gnu_license}. Co¾ umo¾òuje komunitu být zapojenou pøi 
+vývoji, odchytávat chyby a sami je opravovat. Pokud vývojáø nicménì chce být 
+zahrnut do vývoje, musí bý èlenem KDE komunity. Umbrello poskytuje mnoho UML 
+grafù a práce s touto aplikací je pomìrnì jednoduchá, ale její jednoduchý design 
+má mnoho ¹patných návrhù. Pro men¹í aplikace a pro zaèínající firmy je naprosto 
+dokonalá, ale absence pokroèilého editoru a ne pøíli¹ jednoduché práce s 
+editorem je opravdu ¾alostná.
 
 \subsection{Výhody a nevýhody}
-Umbrello aplikace poskytuje nìkolikero UML grafù. \textbf{Class Diagram}, pro popis tøíd a provázanosti mezi nimi. \textbf{Sequence Diagram}, pro popis chodu aplikace, komunikace mezi vlákny a komunikace mezi aplikacemi. \textbf{Use Case Diagram} pro popis akcí v systému, aplikaci. \textbf{State Diagram} pro popis stavu systému a prùbìhu jednotlivých operací, pøevá¾nì zachování v urèitých momentech aplikace na dané podmínky. \textbf{Activity Diagram} popisuje akce a prùbìh celého programu graficky. \textbf{Component Diagram} pro popis spojení a komunikace mezi jednotlivými komponentami. \textbf{Deployment Diagram} popisuje fyzické ulo¾í¹tì a ma¹iny, na kterých program bude pracovat. A v neposlední øadì \textbf{Entity Relationship Diagram} pro popis vztahu dat mezi sebou.
+Umbrello aplikace poskytuje nìkolikero UML grafù. \textbf{Class Diagram}, pro 
+popis tøíd a provázanosti mezi nimi. \textbf{Sequence Diagram}, pro popis chodu 
+aplikace, komunikace mezi vlákny a komunikace mezi aplikacemi. \textbf{Use Case 
+Diagram} pro popis akcí v systému, aplikaci. \textbf{State Diagram} pro popis 
+stavu systému a prùbìhu jednotlivých operací, pøevá¾nì zachování v urèitých 
+momentech aplikace na dané podmínky. \textbf{Activity Diagram} popisuje akce a 
+prùbìh celého programu graficky. \textbf{Component Diagram} pro popis spojení a 
+komunikace mezi jednotlivými komponentami. \textbf{Deployment Diagram} popisuje 
+fyzické ulo¾í¹tì a ma¹iny, na kterých program bude pracovat. A v neposlední øadì 
+\textbf{Entity Relationship Diagram} pro popis vztahu dat mezi sebou.
 
-Jak je vidno Umbrello poskytuje velké mno¾ství editorù a mo¾ností, jak znázornit chod aplikace. Aplikace je také velice intuitivní, a» ji¾ díky klávesovým zkratkám, tak také díky jednoduchému grafickému designu. Umbrello, také podporuje genraci a refactoring zdrojového kódu pro nìkteré jazyky. Staèí pouze importovat jednu ji¾ vytvoøenou tøídu a Umbrello vás provede jednoduchým nastavením, výbìrem které tøídy namodelované v aplikaci se mají vygenerovat a nabídne také mo¾nost upravit mírnì zvolený kód. Celkovì funkce pro generování zdrojového kódu a jeho úprava je velice potì¹ující a s ohlédnutím na to, ¾e Umbrello je volnì ¹íøitelné, je tato vlastnost velice dobrá.
+Jak je vidno Umbrello poskytuje velké mno¾ství editorù a mo¾ností, jak znázornit 
+chod aplikace. Aplikace je také velice intuitivní, a» ji¾ díky klávesovým 
+zkratkám, tak také díky jednoduchému grafickému designu. Umbrello, také 
+podporuje genraci a refactoring zdrojového kódu pro nìkteré jazyky. Staèí pouze 
+importovat jednu ji¾ vytvoøenou tøídu a Umbrello vás provede jednoduchým 
+nastavením, výbìrem které tøídy namodelované v aplikaci se mají vygenerovat a 
+nabídne také mo¾nost upravit mírnì zvolený kód. Celkovì funkce pro generování 
+zdrojového kódu a jeho úprava je velice potì¹ující a s ohlédnutím na to, ¾e 
+Umbrello je volnì ¹íøitelné, je tato vlastnost velice dobrá.
 
-Umbrello dále poskytuje mo¾nost gerevání èásteèné dokumentace, i kdy¾ nejsou poskytnu komentáøe. Pøi generování tøíd je mo¾nost, také importovat zdrojový kód a nechat umbrello v¹e vygenerovat samo. Tato vlastnost je, ale podporována pouze pro jazyky \texttt{ActionScript, Ada, C++, C\#, D IDL, Java, Javascript, MySQL}. Výbìr je tedy více ne¾ bohatý.
+Umbrello dále poskytuje mo¾nost gerevání èásteèné dokumentace, i kdy¾ nejsou 
+poskytnu komentáøe. Pøi generování tøíd je mo¾nost, také importovat zdrojový kód 
+a nechat umbrello v¹e vygenerovat samo. Tato vlastnost je, ale podporována pouze 
+pro jazyky \texttt{ActionScript, Ada, C++, C\#, D IDL, Java, Javascript, MySQL}. 
+Výbìr je tedy více ne¾ bohatý.
 
-Dále Umbrello poskytuje mo¾nost exportování objektù jako PNG obrázky. Tato funkènost je velice pøíjemná pøi psaní dokumentù staèí èást aplikace jednodu¹e okopírovat a vlo¾it jako obrázek. Exportovat jako obrázek, je také mo¾no celý diagram. A také tisknout daný diagram.
+Dále Umbrello poskytuje mo¾nost exportování objektù jako PNG obrázky. Tato 
+funkènost je velice pøíjemná pøi psaní dokumentù staèí èást aplikace jednodu¹e 
+okopírovat a vlo¾it jako obrázek. Exportovat jako obrázek, je také mo¾no celý 
+diagram. A také tisknout daný diagram.
 
-hlavní nevýhoda aplikace je pravdìpodobnì ne pøíli¹ dobøe udìlaný editor. Editor je sice jednoduchý na pou¾ívání a intuitivní, nicménì dlouhodobìj¹í práce je zdlouhavá a pøíli¹ repetitvní. Nutnost vytvoøení objektu na pracovním plátnì, poté výbìru nástroje pro pøesun a editaci daného objektu je zdlouhavé a ¹patné.jednodu¹¹í pro práci by jistì bylo vytvoøení objektu a po kliknutí na ji¾ vytvoøený objekt jej pouze pøesunout. Vytvoøení nového atributu tøídy je opìt velice nároèné a neintuitivní.
+hlavní nevýhoda aplikace je pravdìpodobnì ne pøíli¹ dobøe udìlaný editor. Editor 
+je sice jednoduchý na pou¾ívání a intuitivní, nicménì dlouhodobìj¹í práce je 
+zdlouhavá a pøíli¹ repetitvní. Nutnost vytvoøení objektu na pracovním plátnì, 
+poté výbìru nástroje pro pøesun a editaci daného objektu je zdlouhavé a 
+¹patné.jednodu¹¹í pro práci by jistì bylo vytvoøení objektu a po kliknutí na ji¾ 
+vytvoøený objekt jej pouze pøesunout. Vytvoøení nového atributu tøídy je opìt 
+velice nároèné a neintuitivní.
 
-Co je ale nejvìt¹í slabinou Umbrello aplikace, je nevalidace daného diagramu. Je èistì na u¾ivateli hlídat si ve¹keré chyby a validitu modelované aplikace.
+Co je ale nejvìt¹í slabinou Umbrello aplikace, je nevalidace daného diagramu. Je 
+èistì na u¾ivateli hlídat si ve¹keré chyby a validitu modelované aplikace.
 \subsection{Zhodnocení a pøevzaté vlastnosti}
-Aplikace Umbrello je ¹pièkou ve své tøídì. Je zdarma a poskytuje mnoho nástrojù pøi návrhu aplikace. Mezi jeho pøednosti jistì patøí mo¾nost refactoringu a také rozsáhlé mo¾nosti ve variabilitì grafických návrhù.
+Aplikace Umbrello je ¹pièkou ve své tøídì. Je zdarma a poskytuje mnoho nástrojù 
+pøi návrhu aplikace. Mezi jeho pøednosti jistì patøí mo¾nost refactoringu a také 
+rozsáhlé mo¾nosti ve variabilitì grafických návrhù.
 
-Aplikace poskytla mnoho informací o vývoji editaèní aplikace, jakým chybám se vyvarovat a co se naopak hodí. Z aplikace Umbrello bylo pøedev¹ím pou¾ita jednoduchost a intuitivní ovládání. Rozdìlení aplikace na jednotlivé èásti a poté jednoduchý grafický design. Není za potøebí ve výsledné aplikaci mnoho nároèných grafických elementù. Tyto elemnty by byly ru¹ivé, tudí¾ na základì Umbrello aplikace byl zvolen jednoduchý design.
+Aplikace poskytla mnoho informací o vývoji editaèní aplikace, jakým chybám se 
+vyvarovat a co se naopak hodí. Z aplikace Umbrello bylo pøedev¹ím pou¾ita 
+jednoduchost a intuitivní ovládání. Rozdìlení aplikace na jednotlivé èásti a 
+poté jednoduchý grafický design. Není za potøebí ve výsledné aplikaci mnoho 
+nároèných grafických elementù. Tyto elemnty by byly ru¹ivé, tudí¾ na základì 
+Umbrello aplikace byl zvolen jednoduchý design.
 
-Na základì chyb a nedostatkù, pøevá¾nì tomu, ¾e Umbrello neposkutuje jakoukoliv kontrolu daného modelu, bylo v aplikaci Nástroj pro podporu vývoje softwarových systémù implementována mo¾nost kontroly editovaného grafu. A to pøesnìji kontrola spojù, zda je daný spoj mezi dvìma objekty na pracovním plátnì validní.
+Na základì chyb a nedostatkù, pøevá¾nì tomu, ¾e Umbrello neposkutuje jakoukoliv 
+kontrolu daného modelu, bylo v aplikaci Nástroj pro podporu vývoje softwarových 
+systémù implementována mo¾nost kontroly editovaného grafu. A to pøesnìji 
+kontrola spojù, zda je daný spoj mezi dvìma objekty na pracovním plátnì validní.
 
-V Umbrello nelze dané spoje nikterat ohýbat, co¾ dìlá výdledný diagram velice nepøehledný. Dále není mo¾no v Umbrello nikterak editovat dané spoje, tomuto bylo vyhnuto a pøidána editace spojù s mo¾ností jednak zmìny typu, dále také zmìny objektu na který daná hrana ukazuje a také mo¾nost jednoduchého odebrání hrany.
+V Umbrello nelze dané spoje nikterat ohýbat, co¾ dìlá výdledný diagram velice 
+nepøehledný. Dále není mo¾no v Umbrello nikterak editovat dané spoje, tomuto 
+bylo vyhnuto a pøidána editace spojù s mo¾ností jednak zmìny typu, dále také 
+zmìny objektu na který daná hrana ukazuje a také mo¾nost jednoduchého odebrání 
+hrany.
 
-V Umbrello není nikde vidìt, zda daný objekt má hrany, které vedou do a nebo z obejktu. Toto bylo ve výsledné aplikaci pøidáno, co¾ následnì zmìnilo grafické cítìní modelu a jednoduchou identifikaci objektù.
+V Umbrello není nikde vidìt, zda daný objekt má hrany, které vedou do a nebo z 
+obejktu. Toto bylo ve výsledné aplikaci pøidáno, co¾ následnì zmìnilo grafické 
+cítìní modelu a jednoduchou identifikaci objektù.
 
-Ve výsledné aplikaci, bylo také vyhnuto vlastnosti automatického vyskakování okna pøi pøidání nového objektu, toto bylo nahrazeno pozdìj¹í úpravou daného objektu. Bylo vzáno v potaz, ¾e u¾ivatel bude chtít v jeden moment vytvoøit více objektù a a¾ poté e pojmenovat a pospojovat.
+Ve výsledné aplikaci, bylo také vyhnuto vlastnosti automatického vyskakování 
+okna pøi pøidání nového objektu, toto bylo nahrazeno pozdìj¹í úpravou daného 
+objektu. Bylo vzáno v potaz, ¾e u¾ivatel bude chtít v jeden moment vytvoøit více 
+objektù a a¾ poté e pojmenovat a pospojovat.
 
 \section{Enterprise Architect} \label{enterpriseArchitect}
-Aplikace \cite{Enterprise_architect} je tvoøena firmou sparx system \url{http://www.sparxsystems.com}, tato firma se soustøeïuje na tvorbu nástrojù pro tvorbu UML grafù. Bohu¾el firmou nabízené produkty jsou placené, ale za dané slu¾by èlovìk obdr¾í opravdu robustní systém pro tvorbu UML grafù a mo¾nost refaktoringu pro nìkolik jazykù.
+Aplikace \cite{Enterprise_architect} je tvoøena firmou sparx system 
+\url{http://www.sparxsystems.com}, tato firma se soustøeïuje na tvorbu nástrojù 
+pro tvorbu UML grafù. Bohu¾el firmou nabízené produkty jsou placené, ale za dané 
+slu¾by èlovìk obdr¾í opravdu robustní systém pro tvorbu UML grafù a mo¾nost 
+refaktoringu pro nìkolik jazykù.
 
 \subsection{Popis aplikace}
-Enterprise Architect (dále jen EA) je velice roustní systém, ji¾ nemá takové nedostatky jako aplikace Umbrello a nabízí nìkolikero mo¾ností pro refaktoring projektu. Aplikace rozdìluje UML grafy do dvou skupin, skupina \textbf{Structural Diagrams} pro diagramy na popis vyvýjené aplikace a popis její struktury. A skupinu \textbf{Behavior Diagrams} pro popis chování aplikace a komunikace mezi jednotlivými èástmi aplikace. Aplikace poskytuje velkou ¹kálu grafù a diagramù od klasických diagramù pro popis chování dat mezi sebou, pøes diagramy pro návrh Win32 UI a¾ po návrh testování výsledné aplikace.
+Enterprise Architect (dále jen EA) je velice roustní systém, ji¾ nemá takové 
+nedostatky jako aplikace Umbrello a nabízí nìkolikero mo¾ností pro refaktoring 
+projektu. Aplikace rozdìluje UML grafy do dvou skupin, skupina 
+\textbf{Structural Diagrams} pro diagramy na popis vyvýjené aplikace a popis 
+její struktury. A skupinu \textbf{Behavior Diagrams} pro popis chování aplikace 
+a komunikace mezi jednotlivými èástmi aplikace. Aplikace poskytuje velkou ¹kálu 
+grafù a diagramù od klasických diagramù pro popis chování dat mezi sebou, pøes 
+diagramy pro návrh Win32 UI a¾ po návrh testování výsledné aplikace.
 
 \subsection{Výhody a nevýhody}
-V aplikaci je mo¾né vytvoøit velké mno¾ství grafù a diagramù. Grafické rozhraní ji¾ není tak jednoduché, jako tomu je u aplikace Umbrello, ale je intuitivní a jednoduché pro pou¾ívání. Vìt¹ina pokroèilých funkcí je bohu¾el schována a je nároèné ji najít. Pøidávání atributù pro jednotlivé tøídy je opìt zdlouhavé a neintuitivní.
+V aplikaci je mo¾né vytvoøit velké mno¾ství grafù a diagramù. Grafické rozhraní 
+ji¾ není tak jednoduché, jako tomu je u aplikace Umbrello, ale je intuitivní a 
+jednoduché pro pou¾ívání. Vìt¹ina pokroèilých funkcí je bohu¾el schována a je 
+nároèné ji najít. Pøidávání atributù pro jednotlivé tøídy je opìt zdlouhavé a 
+neintuitivní.
 
-Výhodou této aplikace jistì je mo¾nost vytváøení diagramù pro jednotlivé jazyky, celkem jedenáct jazykù je podporovaných. \texttt{ActionScript, C, C\#, C++, Delphi, Java, PHP, Python, VBNet, Visual Basic, WorkFlow Script}.
+Výhodou této aplikace jistì je mo¾nost vytváøení diagramù pro jednotlivé jazyky, 
+celkem jedenáct jazykù je podporovaných. \texttt{ActionScript, C, C\#, C++, 
+Delphi, Java, PHP, Python, VBNet, Visual Basic, WorkFlow Script}.
 
-Nejvìt¹í výhodou je jistì mo¾nost importovat celý obsah slo¾ky se zdrojovými kódy a tento projekt poté zobrazit v diagramu tøíd. Pro import aplikace je mo¾né pou¾ít také binární soubor výsledného programu. Generování dokumentace je jednoduché a pøehledné.
+Nejvìt¹í výhodou je jistì mo¾nost importovat celý obsah slo¾ky se zdrojovými 
+kódy a tento projekt poté zobrazit v diagramu tøíd. Pro import aplikace je mo¾né 
+pou¾ít také binární soubor výsledného programu. Generování dokumentace je 
+jednoduché a pøehledné.
 
-Pro jednodu¹¹í a rychlej¹í mo¾nost spojení jednotlivých objektù na pracovní plo¹e, lze pou¾ít rychlého nástroje vedle objektu. Na stejném místì lze nalést také funkce pro ryhclou editaci a zmìnu stylu objektu.
+Pro jednodu¹¹í a rychlej¹í mo¾nost spojení jednotlivých objektù na pracovní 
+plo¹e, lze pou¾ít rychlého nástroje vedle objektu. Na stejném místì lze nalést 
+také funkce pro ryhclou editaci a zmìnu stylu objektu.
 
-Pøeta¾ení spoje mezi dvìma objekty lze pomocí uchopení za jeden konec a ta¾ení k dal¹ímu objektu. Bohu¾el pùvodní spoj se neztratí do doby, ne¾ u¾ivatel pustí my¹. Pøi kliknutí mimo jakýkoliv objekt spoj zùstane u pùvodního objektu.
+Pøeta¾ení spoje mezi dvìma objekty lze pomocí uchopení za jeden konec a ta¾ení k 
+dal¹ímu objektu. Bohu¾el pùvodní spoj se neztratí do doby, ne¾ u¾ivatel pustí 
+my¹. Pøi kliknutí mimo jakýkoliv objekt spoj zùstane u pùvodního objektu.
 
 \subsection{Zhodnocení a pøevzaté vlastnosti}
-Aplikace poslou¾ila pro dal¹í zhodnocení po¾adavkù a vyvarování se chyb. Pøedev¹ím nároènost a komplexnost aplikace se nehodí pro výslednou aplikaci.
+Aplikace poslou¾ila pro dal¹í zhodnocení po¾adavkù a vyvarování se chyb. 
+Pøedev¹ím nároènost a komplexnost aplikace se nehodí pro výslednou aplikaci.
 
-Ve výsledné aplikaci bude za potøebí mo¾nosti jednoduchého zalomení hran a mo¾nosti jejich jednoduché editace. Takté¾ pøesun po pracovním plátnì ve výsledné aplikaci je vyøe¹en elegantnìji a intuitivnìji.
+Ve výsledné aplikaci bude za potøebí mo¾nosti jednoduchého zalomení hran a 
+mo¾nosti jejich jednoduché editace. Takté¾ pøesun po pracovním plátnì ve 
+výsledné aplikaci je vyøe¹en elegantnìji a intuitivnìji.
 
-Umístnìní otevøených souborù je v aplikaci EA ponìkud netradièní v dolní èásti aplikace. U¾ivatel èasto nevidí otevøený projekt a èasto se mù¾e stát, ¾e zavøe stávající, jen kvùli tomu aby na¹el ji¾ otevøený soubor. Tudí¾ bylo ve výsledné aplikaci zvoleno umístnìní otevøených oken se soubory v horní èásti aplikace, lépe pøístupné u¾ivateli.
+Umístnìní otevøených souborù je v aplikaci EA ponìkud netradièní v dolní èásti 
+aplikace. U¾ivatel èasto nevidí otevøený projekt a èasto se mù¾e stát, ¾e zavøe 
+stávající, jen kvùli tomu aby na¹el ji¾ otevøený soubor. Tudí¾ bylo ve výsledné 
+aplikaci zvoleno umístnìní otevøených oken se soubory v horní èásti aplikace, 
+lépe pøístupné u¾ivateli.
 
-Takté¾ diagramy a grafy, se kterými se pracuje v danou chvíli mají umístnìní v EA své místo, ale pro vyvýjený projekt naprosto nepou¾itelné. V EA jsou diagramy umístnìny ve stromové struktuøe, z pochopitelných dùvodù rozsáhlosti aplikace a mo¾nostem grafù. Pro pozdìj¹í vývoj bylo zvoleno umístnìní otevøených diagramù pod zálo¾kami souborrù. Takto má u¾ivatel pøepínání mezi èástmi aplikace velice pohodlnì umístnìné a jednoduché pro pøepínání.
+Takté¾ diagramy a grafy, se kterými se pracuje v danou chvíli mají umístnìní v 
+EA své místo, ale pro vyvýjený projekt naprosto nepou¾itelné. V EA jsou diagramy 
+umístnìny ve stromové struktuøe, z pochopitelných dùvodù rozsáhlosti aplikace a 
+mo¾nostem grafù. Pro pozdìj¹í vývoj bylo zvoleno umístnìní otevøených diagramù 
+pod zálo¾kami souborrù. Takto má u¾ivatel pøepínání mezi èástmi aplikace velice 
+pohodlnì umístnìné a jednoduché pro pøepínání.
 
 \section{Zhodnocení konkurentních nástrojù}
-Pøi testování nástrojù urèených pro tvorbu UML grafù bylo zji¹tìno mnoho detailù a dùle¾itých vlastností, které bude výsledná aplikace potøebovat. Nìkteré výhody tìchto aplikací, jako napøíklad generování kódu, nebude potøeba implementovat ve výsledné aplikaci vzhledem na to, ¾e aplikace se soustøedí èistì jenom na vytváøení a editaci diagramù a UML grafù. 
+Pøi testování nástrojù urèených pro tvorbu UML grafù bylo zji¹tìno mnoho detailù 
+a dùle¾itých vlastností, které bude výsledná aplikace potøebovat. Nìkteré výhody 
+tìchto aplikací, jako napøíklad generování kódu, nebude potøeba implementovat ve 
+výsledné aplikaci vzhledem na to, ¾e aplikace se soustøedí èistì jenom na 
+vytváøení a editaci diagramù a UML grafù. 
 
-Bìhem testování nebylo v ¾ádné aplikaci mo¾no udìlat Objektovì orientované Petriho sítì, nebo jakýkoliv jiný roz¹íøený pohled na implementaci jednotlivých tøíd a komunikaci mezi nimi. Dále v testovaných aplikacích nebylo mo¾né pøedgenerovat si tøídy na základì Pøípadu u¾ití, nebo naopak editovat tyto tøídy popøípadì smazat.
+Bìhem testování nebylo v ¾ádné aplikaci mo¾no udìlat Objektovì orientované 
+Petriho sítì, nebo jakýkoliv jiný roz¹íøený pohled na implementaci jednotlivých 
+tøíd a komunikaci mezi nimi. Dále v testovaných aplikacích nebylo mo¾né 
+pøedgenerovat si tøídy na základì Pøípadu u¾ití, nebo naopak editovat tyto tøídy 
+popøípadì smazat.
  
-Grafický prvek celé aplikace bude za potøebí jednoduchý a snadný k pou¾ívání, ale dùle¾itým prvkem je dobré zviditelnìní nìkterých objektù. Jako napøíklad znázornìní tøíd, které nemají odpovídající prvky v pøípadu u¾ití. Nebo znázornit prvky, které nemají ¾ádné spojení s ostratními objekty. Takovéto znázornìní nebylo nalezeno v ¾ádné z testovaných aplikací, ale je dùle¾itým prvkem v rozpoznávání editovaného diagramu.
+Grafický prvek celé aplikace bude za potøebí jednoduchý a snadný k pou¾ívání, 
+ale dùle¾itým prvkem je dobré zviditelnìní nìkterých objektù. Jako napøíklad 
+znázornìní tøíd, které nemají odpovídající prvky v pøípadu u¾ití. Nebo znázornit 
+prvky, které nemají ¾ádné spojení s ostratními objekty. Takovéto znázornìní 
+nebylo nalezeno v ¾ádné z testovaných aplikací, ale je dùle¾itým prvkem v 
+rozpoznávání editovaného diagramu.
 
-V testovaných aplikacích chybìla mo¾nost, nebo byla nedostateèná, pro zalomení hran. Tato vlastnost velice napomù¾e pro zpøehlednìní výsledného diagramu. Editace hran byla ve vìt¹inì editorù nepøíli¹ kvalitní. Zmìna typu hrany a zmìna objektù pro danou hranu je zapotøebí pro jednodu¹¹í práci s editorem.
+V testovaných aplikacích chybìla mo¾nost, nebo byla nedostateèná, pro zalomení 
+hran. Tato vlastnost velice napomù¾e pro zpøehlednìní výsledného diagramu. 
+Editace hran byla ve vìt¹inì editorù nepøíli¹ kvalitní. Zmìna typu hrany a zmìna 
+objektù pro danou hranu je zapotøebí pro jednodu¹¹í práci s editorem.
 
 \chapter{Grafy pro popis èástí}
-Pro grafické znázornìní jednotlivých èástí byly vybrány z UML grafù pøípad u¾ití \ref{pripadUziti} pro popis jednotlivých akcí v systému, diagram tøíd \ref{diagramTrid} pro grafické znázornìní tøíd a operace mezi nimi. A jako poslední èást, která nespadá pod UML bylo vybráno objektovì orientovaných petriho sítí \ref{oopn} pro popis chování jednotlivých tøíd.
+Pro grafické znázornìní jednotlivých èástí byly vybrány z UML grafù pøípad u¾ití 
+\ref{pripadUziti} pro popis jednotlivých akcí v systému, diagram tøíd 
+\ref{diagramTrid} pro grafické znázornìní tøíd a operace mezi nimi. A jako 
+poslední èást, která nespadá pod UML bylo vybráno objektovì orientovaných 
+petriho sítí \ref{oopn} pro popis chování jednotlivých tøíd.
 
 \section{Pøípad ¾ití} \label{pripadUziti}
 \cite{Pripad_uziti}
@@ -97,73 +229,34 @@ Pro grafické znázornìní jednotlivých èástí byly vybrány z UML grafù pøípad u¾ití
 \subsection{Pøidané prvky}
 
 \chapter{Popis aplikace}
-Jak ji¾ bylo øeèeno v pøede¹lé èásti, bylo rozhodnuto o jednoduchosti a intuitivním ovládání aplikace. Tohoto bylo docíleno sjednocením základního designu aplikace, sjednocení klávesových zkratek a porozumìní a prozkoumání moderních aplikací.
+Jak ji¾ bylo øeèeno v pøede¹lé èásti, bylo rozhodnuto o jednoduchosti a 
+intuitivním ovládání aplikace. Tohoto bylo docíleno sjednocením základního 
+designu aplikace, sjednocení klávesových zkratek a porozumìní a prozkoumání 
+moderních aplikací.
 
-Hlavní okno se skládá z nìkolika panelù. Horní èást obsahuje otevøené projekty, jejich èástí a ovládací prvky. Celý hlavní obsah aplikace se nacháazí ve zbylích dvou tøetinách okna. V levé èásti se dále nacházejí tlaèítka pro mo¾nost pøepínání jednotlivých vkládaných obejktù. Dolní èást obsahuje informaèní a editaèní mo¾nosti zvoleného prvku a pro hlavní èást, je vyhranìn zbytek pracovní plochy, takzvané editaèní plátno.
+Hlavní okno se skládá z nìkolika panelù. Horní èást obsahuje otevøené projekty, 
+jejich èástí a ovládací prvky. Celý hlavní obsah aplikace se nacháazí ve zbylích 
+dvou tøetinách okna. V levé èásti se dále nacházejí tlaèítka pro mo¾nost 
+pøepínání jednotlivých vkládaných obejktù. Dolní èást obsahuje informaèní a 
+editaèní mo¾nosti zvoleného prvku a pro hlavní èást, je vyhranìn zbytek pracovní 
+plochy, takzvané editaèní plátno.
 
-Na toto plátno je mo¾né pøidávat jednotlivé prvky, spojovat je, pøesouvat je a mazat je. Po vybrání nìkterého tlaèítka v levém menu je mo¾né zaèít pøidávat prvky. Bylo zvoleno jednoduché a intuitivní chování aplikace, po kliknutí se vytvoøí objekt, po ta¾ení se pøesune objekt a pro spojení dvou objektù hranou je zapotøebí kliknout na první objekt a poté na druhý, pøièem¾ spoj je viditelný od kurzoru po první objekt. Pro zahnutí spoje je mo¾no kliknout pravým tlaèítkem my¹i, co¾ vyvolá vytvoøení ohybu spoje.
+Na toto plátno je mo¾né pøidávat jednotlivé prvky, spojovat je, pøesouvat je a 
+mazat je. Po vybrání nìkterého tlaèítka v levém menu je mo¾né zaèít pøidávat 
+prvky. Bylo zvoleno jednoduché a intuitivní chování aplikace, po kliknutí se 
+vytvoøí objekt, po ta¾ení se pøesune objekt a pro spojení dvou objektù hranou je 
+zapotøebí kliknout na první objekt a poté na druhý, pøièem¾ spoj je viditelný od 
+kurzoru po první objekt. Pro zahnutí spoje je mo¾no kliknout pravým tlaèítkem 
+my¹i, co¾ vyvolá vytvoøení ohybu spoje.
 
 \section{Editace a chování prvkù}
 
 \section{Editace a chování spojù}
 
-Na¹ím cílem je vytvoøit jasný a~srozumitelný text. Vyjadøujeme se proto pøesnì, pí¹eme dobrou èe¹tinou (nebo zpravidla angliètinou) a~dobrým slohem podle obecnì pøijatých zvyklostí. Text má upravit ètenáøi cestu k~rychlému pochopení problému, pøedvídat jeho obtí¾e a~pøedcházet jim. Dobrý sloh pøedpokládá bezvadnou gramatiku, správnou interpunkci a~vhodnou volbu slov. Sna¾íme se, aby ná¹ text nepùsobil pøíli¹ jednotvárnì pou¾íváním malého výbìru slov a~tím, ¾e nìkterá zvlá¹» oblíbená slova pou¾íváme pøíli¹ èasto. Pokud pou¾íváme cizích slov, je samozøejmým pøedpokladem, ¾e známe jejich pøesný význam. Ale i~èeských slov musíme pou¾ívat ve správném smyslu. Napø. platí jistá pravidla pøi pou¾ívání slova {\it zøejmì}. Je {\it zøejmé} opravdu zøejmé? A~pøesvìdèili jsme se, zda to, co je {\it zøejmé} opravdu platí? Pozor bychom si mìli dát i~na pøíli¹ èasté pou¾ívání zvratného se. Napøíklad obratu {\it dokázalo se}, ¾e... zásadnì nepou¾íváme. Není ¹patné pou¾ívat autorského {\it my}, tím pøedpokládáme, ¾e nìco øe¹íme, nebo napøíklad zobecòujeme spolu se ètenáøem. V~kvalifikaèních pracích pou¾ijeme autorského {\it já} (napøíklad kdy¾ vymezujeme podíl vlastní práce vùèi pøevzatému textu), ale v~bì¾ném textu se nadmìrné pou¾ívání první osoby jednotného èísla nedoporuèuje.
-
-Za peèlivý výbìr stojí i~symbolika, kterou pou¾íváme ke {\it znaèení}. Máme tím na mysli volbu zkratek a~symbolù pou¾ívaných napøíklad pro vyjádøení typù souèástek, pro oznaèení hlavních èinností programu, pro pojmenování ovládacích kláves na klávesnici, pro pojmenování promìnných v~matematických formulích a~podobnì. Výsti¾né a~dùsledné znaèení mù¾e ètenáøi pøi èetbì textu velmi pomoci. Je vhodné uvést seznam znaèení na zaèátku textu. Nejen ve znaèení, ale i~v~odkazech a~v~celkové tiskové úpravì je dùle¾itá dùslednost.
-
-S tím souvisí i~pojem z~typografie nazývaný {\it vyznaèování}. Zde máme na mysli zpùsob sazby textu pro jeho zvýraznìní. Pro zvolené znaèení by mìl být zvolen i~zpùsob vyznaèování v~textu. Tak napøíklad klávesy mohou být umístìny do obdélníèku, identifikátory ze zdrojového textu mohou být vypisovány {\tt písmem typu psací stroj} a~podobnì.
-
-Uvádíme-li nìkterá fakta, neskrýváme jejich pùvod a~ná¹ vztah k~nim. Kdy¾ nìco tvrdíme, v¾dycky výslovnì uvedeme, co z~toho bylo dokázáno, co teprve bude dokázáno v~na¹em textu a~co pøebíráme z~literatury s~uvedením odkazu na pøíslu¹ný zdroj. V~tomto smìru nenecháváme ètenáøe nikdy na pochybách, zda jde o~my¹lenku na¹i nebo pøevzatou z~literatury.
-
-Nikdy neplýtváme ètenáøovým èasem výkladem triviálních a~nepodstatných informací. Neuvádíme rovnì¾ nìkolikrát toté¾ jen jinými slovy. Pøi pozdìj¹ích úpravách textu se nám mù¾e nìkterá døíve napsaná pasá¾ jevit jako zbyteènì podrobná nebo dokonce zcela zbyteèná. Vypu¹tìní takové pasá¾e nebo alespoò její zestruènìní pøispìje k~lep¹í èitelnosti práce! Tento krok ale vy¾aduje odvahu zahodit èas, který jsme jejímu vytvoøení vìnovali. 
-
-
-\chapter{Nikdy to nebude naprosto dokonalé}
-Kdy¾ jsme u¾ napsali v¹e, o~èem jsme pøemý¹leli, udìláme si den nebo dva dny volna a~pak si pøeèteme sami rukopis znovu. Udìláme je¹tì poslední úpravy a~skonèíme. Jsme si vìdomi toho, ¾e v¾dy zùstane nìco nedokonèeno, v¾dy existuje lep¹í zpùsob, jak nìco vysvìtlit, ale ka¾dá etapa úprav musí být koneèná.
-
-
-\chapter{Typografické a~jazykové zásady}
-Pøi tisku odborného textu typu {\it technická zpráva} (anglicky {\it technical report}), ke kterému patøí napøíklad i~text kvalifikaèních prací, se èasto volí formát A4 a~èasto se tiskne pouze po jedné stranì papíru. V~takovém pøípadì volte levý okraj v¹ech stránek o~nìco vìt¹í ne¾ pravý -- v~tomto místì budou papíry svázány a~technologie vazby si tento po¾adavek vynucuje. Pøi vazbì s~pevným høbetem by se levý okraj mìl dìlat o~nìco ¹ir¹í pro tlusté svazky, proto¾e se stránky budou hùøe rozevírat a~levý okraj se tak bude oku ménì odhalovat.
-
-Horní a~spodní okraj volte stejnì veliký, pøípadnì poti¹tìnou èást posuòte mírnì nahoru (horní okraj men¹í ne¾ dolní). Poèítejte s~tím, ¾e pøi vazbì budou okraje mírnì oøíznuty.
-
-Pro sazbu na stránku formátu A4 je vhodné pou¾ívat pro základní text písmo stupnì (velikosti) 11 bodù. Volte ¹íøku sazby 15 a¾ 16 centimetrù a~vý¹ku 22 a¾ 23 centimetrù (vèetnì pøípadných hlavièek a~patièek). Proklad mezi øádky se volí 120 procent stupnì pou¾itého základního písma, co¾ je optimální hodnota pro rychlost ètení souvislého textu. V~pøípadì pou¾ití systému LaTeX ponecháme implicitní nastavení. Pøi psaní kvalifikaèní práce se øiïte pøíslu¹nými závaznými po¾adavky.
-
-Stupeò písma u~nadpisù rùzné úrovnì volíme podle standardních typografických pravidel. 
-Pro v¹echny uvedené druhy nadpisù se obvykle pou¾ívá polotuèné nebo tuèné písmo (jednotnì buï v¹ude polotuèné nebo v¹ude tuèné). Proklad se volí tak, aby se následující text bì¾ných odstavcù sázel pokud mo¾no na {\it pevný rejstøík}, to znamená jakoby na linky s~pøedem definovanou a~pevnou rozteèí.
-
-Uspoøádání jednotlivých èástí textu musí být pøehledné a~logické. Je tøeba odli¹it názvy kapitol a~podkapitol -- pí¹eme je malými písmeny kromì velkých zaèáteèních písmen. U~jednotlivých odstavcù textu odsazujeme první øádek odstavce asi o~jeden a¾ dva ètverèíky (v¾dy o~stejnou, pøedem zvolenou hodnotu), tedy pøibli¾nì o~dvì ¹íøky velkého písmene M základního textu. Poslední øádek pøedchozího odstavce a~první øádek následujícího odstavce se v~takovém pøípadì neoddìlují svislou mezerou. Proklad mezi tìmito øádky je stejný jako proklad mezi øádky uvnitø odstavce.
-
-Pøi vkládání obrázkù volte jejich rozmìry tak, aby nepøesáhly oblast, do které se tiskne text (tj. okraje textu ze v¹ech stran). Pro velké obrázky vyèleòte samostatnou stránku. Obrázky nebo tabulky o~rozmìrech vìt¹ích ne¾ A4 umístìte do písemné zprávy formou skládanky v¹ité do pøílohy nebo vlo¾ené do zálo¾ek na zadní desce.
-
-Obrázky i~tabulky musí být poøadovì oèíslovány. Èíslování se volí buï prùbì¾né v~rámci celého textu, nebo -- co¾ bývá praktiètìj¹í -- prùbì¾né v~rámci kapitoly. V~druhém pøípadì se èíslo tabulky nebo obrázku skládá z~èísla kapitoly a~èísla obrázku/tabulky v~rámci kapitoly -- èísla jsou oddìlena teèkou. Èísla podkapitol nemají na èíslování obrázkù a~tabulek ¾ádný vliv.
-
-Tabulky a~obrázky pou¾ívají své vlastní, nezávislé èíselné øady. Z toho vyplývá, ¾e v~odkazech uvnitø textu musíme kromì èísla udat i~informaci o~tom, zda se jedná o~obrázek èi tabulku (napøíklad ``... {\it viz tabulka 2.7} ...''). Dodr¾ování této zásady je ostatnì velmi pøirozené.
-
-Pro odkazy na stránky, na èísla kapitol a~podkapitol, na èísla obrázkù a~tabulek a~v~dal¹ích podobných pøíkladech vyu¾íváme speciálních prostøedkù DTP programu, které zajistí vygenerování správného èísla i~v~pøípadì, ¾e se text posune díky zmìnám samotného textu nebo díky úpravì parametrù sazby. Pøíkladem takového prostøedku v~systému LaTeX je odkaz na èíslo odpovídající umístìní znaèky v~textu, napøíklad návì¹tí ($\backslash${\tt ref\{navesti\}} -- podle umístìní návì¹tí se bude jednat o~èíslo kapitoly, podkapitoly, obrázku, tabulky nebo podobného èíslovaného prvku), na stránku, která obsahuje danou znaèku ($\backslash${\tt pageref\{navesti\}}), nebo na literární odkaz ($\backslash${\tt cite\{identifikator\}}).
-
-Rovnice, na které se budeme v~textu odvolávat, opatøíme poøadovými èísly pøi pravém okraji pøíslu¹ného øádku. Tato poøadová èísla se pí¹í v~kulatých závorkách. Èíslování rovnic mù¾e být prùbì¾né v~textu nebo v~jednotlivých kapitolách.
-
-Jste-li na pochybách pøi sazbì matematického textu, sna¾te se dodr¾et zpùsob sazby definovaný systémem LaTeX. Obsahuje-li va¹e práce velké mno¾ství matematických formulí, doporuèujeme dát pøednost pou¾ití systému LaTeX.
-
-Mezeru nedìláme tam, kde se spojují èíslice s~písmeny v~jedno slovo nebo v~jeden znak -- napøíklad {\it 25krát}.
-
-Èlenicí (interpunkèní) znaménka teèka, èárka, støedník, dvojteèka, otazník a~vykøièník, jako¾ i~uzavírací závorky a~uvozovky se pøimykají k~pøedcházejícímu slovu bez mezery. Mezera se dìlá a¾ za nimi. To se ov¹em netýká desetinné èárky (nebo desetinné teèky). Otevírací závorka a~pøední uvozovky se pøimykají k~následujícímu slovu a~mezera se vynechává pøed nimi -- (takto) a~``takto''.
-
-Pro spojovací a~rozdìlovací èárku a~pomlèku nepou¾íváme stejný znak. Pro pomlèku je vyhrazen jiný znak (del¹í). V~systému TeX (LaTeX) se spojovací èárka zapisuje jako jeden znak ``pomlèka'' (napøíklad ``Brno-mìsto''), pro sázení textu ve smyslu intervalu nebo dvojic, soupeøù a~podobnì se ve zdrojovém textu pou¾ívá dvojice znakù ``pomlèka'' (napøíklad ``zápas Sparta -- Slavie''; ``cena 23--25 korun''), pro výrazné oddìlení èásti vìty, pro výrazné oddìlení vlo¾ené vìty, pro vyjádøení nevyslovené my¹lenky a~v~dal¹ích situacích (viz Pravidla èeského pravopisu) se pou¾ívá nejdel¹í typ pomlèky, která se ve zdrojovém textu zapisuje jako trojice znakù ``pomlèka'' (napøíklad ``Dal¹í pojem --- jakkoliv se mù¾e zdát nevýznamný --- bude neformálnì definován v~následujícím odstavci.''). Pøi sazbì matematického mínus se pøi sazbì pou¾ívá rovnì¾ odli¹ný znak. V~systému TeX je ve zdrojovém textu zapsán jako normální mínus (tj. znak ``pomlèka''). Sazba v~matematickém prostøedí, kdy se vzoreèek uzavírá mezi dolary, zajistí vygenerování správného výstupu.
-
-Lomítko se pí¹e bez mezer. Napøíklad ¹kolní rok 2008/2009.
-
-Pravidla pro psaní zkratek jsou uvedena v~Pravidlech èeského pravopisu \cite{Pravidla}. I~z~jiných dùvodù je vhodné, abyste tuto knihu mìli po ruce. 
-
-
-\section{Co to je normovaná stránka?}
-Pojem {\it normovaná stránka} se vztahuje k~posuzování objemu práce, nikoliv k~poètu vyti¹tìných listù. Z historického hlediska jde o~poèet stránek rukopisu, který se psal psacím strojem na speciální pøedti¹tìné formuláøe pøi dodr¾ení prùmìrné délky øádku 60 znakù a~pøi 30 øádcích na stránku rukopisu. Vzhledem k~zápisu korekturních znaèek se pou¾ívalo øádkování 2 (ob jeden øádek). Tyto údaje (poèet znakù na øádek, poèet øádkù a~proklad mezi nimi) se nijak nevztahují ke koneènému vyti¹tìnému výsledku. Pou¾ívají se pouze pro posouzení rozsahu. Jednou normovanou stránkou se tedy rozumí 60*30 = 1800 znakù. Obrázky zaøazené do textu se zapoèítávají do rozsahu písemné práce odhadem jako mno¾ství textu, které by ve výsledném dokumentu potisklo stejnì velkou plochu.
-
-Orientaèní rozsah práce v~normostranách lze v~programu Microsoft Word zjistit pomocí funkce {\it Poèet slov} v~menu {\it Nástroje}, kdy¾ hodnotu {\it Znaky (vèetnì mezer)} vydìlíte konstantou 1800. Do rozsahu práce se zapoèítává pouze text uvedený v~jádru práce. Èásti jako abstrakt, klíèová slova, prohlá¹ení, obsah, literatura nebo pøílohy se do rozsahu práce nepoèítají. Je proto nutné nejdøíve oznaèit jádro práce a~teprve pak si nechat spoèítat poèet znakù. Pøibli¾ný rozsah obrázkù odhadnete ruènì. Podobnì lze postupovat i~pøi pou¾ití OpenOffice. Pøi pou¾ití systému LaTeX pro sazbu je situace trochu slo¾itìj¹í. Pro hrubý odhad poètu normostran lze vyu¾ít souèet velikostí zdrojových souborù práce podìlený konstantou cca 2000 (normálnì bychom dìlili konstantou 1800, jen¾e ve zdrojových souborech jsou i~vyznaèovací pøíkazy, které se do rozsahu nepoèítají). Pro pøesnìj¹í odhad lze pak vyextrahovat holý text z~PDF (napø. metodou cut-and-paste nebo {\it Save as Text...}) a~jeho velikost podìlit konstantou 1800. 
-
-
 \chapter{Závìr}
-Závìreèná kapitola obsahuje zhodnocení dosa¾ených výsledkù se zvlá¹» vyznaèeným vlastním pøínosem studenta. Povinnì se zde objeví i zhodnocení z pohledu dal¹ího vývoje projektu, student uvede námìty vycházející ze zku¹eností s øe¹eným projektem a uvede rovnì¾ návaznosti na právì dokonèené projekty.
+Závìreèná kapitola obsahuje zhodnocení dosa¾ených výsledkù se zvlá¹» vyznaèeným 
+vlastním pøínosem studenta. Povinnì se zde objeví i zhodnocení z pohledu dal¹ího 
+vývoje projektu, student uvede námìty vycházející ze zku¹eností s øe¹eným 
+projektem a uvede rovnì¾ návaznosti na právì dokonèené projekty.
 
 %=========================================================================
