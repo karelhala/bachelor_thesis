@@ -4,6 +4,7 @@
  */
 package BT.modules.UC.mainContent;
 
+import BT.managers.DiagramPlacesManager;
 import BT.managers.DrawingListeners;
 import BT.managers.MainContentController;
 import BT.managers.PlaceManager;
@@ -26,9 +27,10 @@ abstract public class UCMainContentModel extends MainContentController {
     protected UCLeftBottomContent LeftBottomContent;
     protected UCLeftTopContent LeftTopContent;
 
-    public UCMainContentModel() {
-        this.places = new PlaceManager();
-        this.mainContent = new UCMainContent(places);
+    public UCMainContentModel(DiagramPlacesManager diagramPlaces) {
+        this.diagramPlaces = diagramPlaces;
+        this.places = diagramPlaces.getUcPlaces();
+        this.mainContent = new UCMainContent(this.places);
         createMainPane();
     }
 

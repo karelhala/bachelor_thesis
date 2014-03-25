@@ -6,6 +6,7 @@
 package BT.modules.ObjectedOrientedPetriNet.mainContent;
 
 import BT.interfaces.DrawingClicks;
+import BT.managers.DiagramPlacesManager;
 import BT.managers.DrawingListeners;
 import BT.managers.MainContentController;
 import BT.managers.PlaceManager;
@@ -35,9 +36,10 @@ abstract public class PNMainContentModel extends MainContentController {
      */
     protected PNLeftTopContent LeftTopContent;
 
-    public PNMainContentModel() {
-        this.places = new PlaceManager();
-        this.mainContent = new PNMainContent(places);
+    public PNMainContentModel(DiagramPlacesManager diagramPlaces) {
+        this.diagramPlaces = diagramPlaces;
+        this.places = diagramPlaces.getPnPlaces();
+        this.mainContent = new PNMainContent(this.places);
         createMainPane();
     }
 

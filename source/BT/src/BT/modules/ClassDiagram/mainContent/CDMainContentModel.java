@@ -5,6 +5,7 @@
 package BT.modules.ClassDiagram.mainContent;
 
 import BT.interfaces.DrawingClicks;
+import BT.managers.DiagramPlacesManager;
 import BT.managers.DrawingListeners;
 import BT.managers.MainContentController;
 import BT.managers.PlaceManager;
@@ -27,9 +28,10 @@ abstract class CDMainContentModel extends MainContentController {
     protected CDLeftBottomContent LeftBottomContent;
     protected CDLeftTopContent LeftTopContent;
 
-    public CDMainContentModel() {
-        this.places = new PlaceManager();
-        this.mainContent = new CDMainContent(places);
+    public CDMainContentModel(DiagramPlacesManager diagramPlaces) {
+        this.diagramPlaces = diagramPlaces;
+        this.places = diagramPlaces.getCdPlaces();
+        this.mainContent = new CDMainContent(this.places);
         createMainPane();
     }
 

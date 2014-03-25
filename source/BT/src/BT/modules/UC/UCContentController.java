@@ -4,6 +4,8 @@
  */
 package BT.modules.UC;
 
+import BT.managers.DiagramPlacesManager;
+import BT.managers.PlaceManager;
 import BT.modules.UC.mainContent.UCMainContentController;
 import GUI.MainContentModel;
 
@@ -32,9 +34,10 @@ public class UCContentController {
 
     /**
      *
+     * @param diagramPlaces
      */
-    public void createComponents() {
-        UCMainContentController UCmain = new UCMainContentController();
+    public void createComponents(DiagramPlacesManager diagramPlaces) {
+        UCMainContentController UCmain = new UCMainContentController(diagramPlaces);
 
         UCLeftTopContent UCLeftTop = new UCLeftTopContent(UCmain);
         UCLeftTop.setListeners();

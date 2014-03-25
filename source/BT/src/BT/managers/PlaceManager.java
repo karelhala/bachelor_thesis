@@ -26,6 +26,10 @@ public class PlaceManager extends PlaceModel {
      */
     public void removePlace(CoordinateModel selectedObject) {
         removeJoinEdgesWithObject(selectedObject);
+        if (selectedObject.getAssignedObject() != null)
+        {
+            (selectedObject.getAssignedObject()).setAssignedObject(null);
+        }
         this.objects.remove(selectedObject);
     }
 
@@ -81,6 +85,10 @@ public class PlaceManager extends PlaceModel {
             CoordinateModel coorModel = it.next();
             if (coorModel.getSelected()) {
                 removeJoinEdgesWithObject(coorModel);
+                if (coorModel.getAssignedObject() != null)
+                {
+                    (coorModel.getAssignedObject()).setAssignedObject(null);
+                }
                 it.remove();
             }
         }

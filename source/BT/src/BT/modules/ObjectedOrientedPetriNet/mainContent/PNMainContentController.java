@@ -6,7 +6,9 @@
 package BT.modules.ObjectedOrientedPetriNet.mainContent;
 
 import BT.interfaces.DrawingClicks;
+import BT.managers.DiagramPlacesManager;
 import BT.managers.ObjectChecker;
+import BT.managers.PlaceManager;
 import BT.models.CoordinateModel;
 import BT.models.LineModel;
 import BT.modules.ObjectedOrientedPetriNet.places.PNPlace;
@@ -24,9 +26,10 @@ public class PNMainContentController extends PNMainContentModel implements Drawi
 
     /**
      *
+     * @param diagramPlaces
      */
-    public PNMainContentController() {
-        super();
+    public PNMainContentController(DiagramPlacesManager diagramPlaces) {
+        super(diagramPlaces);
     }
 
     /**

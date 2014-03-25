@@ -4,6 +4,8 @@
  */
 package BT.modules.ClassDiagram;
 
+import BT.managers.DiagramPlacesManager;
+import BT.managers.PlaceManager;
 import BT.modules.ClassDiagram.mainContent.CDMainContentController;
 import GUI.MainContentModel;
 
@@ -28,9 +30,10 @@ public class CDContentController {
 
     /**
      *
+     * @param diagramPlaces
      */
-    public void createComponents() {
-        CDMainContentController cdMain = new CDMainContentController();
+    public void createComponents(DiagramPlacesManager diagramPlaces) {
+        CDMainContentController cdMain = new CDMainContentController(diagramPlaces);
 
         CDLeftTopContent cdLeftTop = new CDLeftTopContent(cdMain);
         cdLeftTop.setListeners();

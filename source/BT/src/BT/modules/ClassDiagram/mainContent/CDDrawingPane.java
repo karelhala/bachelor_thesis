@@ -62,7 +62,10 @@ public class CDDrawingPane extends DrawingPaneModel {
             }
 
             for (CoordinateModel actor : places.getObjects()) {
-                ((CDClass) actor).drawClass(g);
+                if (actor instanceof CDClass)
+                {
+                    ((CDClass) actor).drawClass(g);
+                }
             }
         }
     }

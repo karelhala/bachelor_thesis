@@ -5,6 +5,8 @@
  */
 package BT.modules.ObjectedOrientedPetriNet;
 
+import BT.managers.DiagramPlacesManager;
+import BT.managers.PlaceManager;
 import BT.modules.ObjectedOrientedPetriNet.mainContent.PNMainContentController;
 import GUI.MainContentModel;
 
@@ -29,9 +31,10 @@ public class PNContentController {
 
     /**
      *
+     * @param diagramPlaces
      */
-    public void createComponents() {
-        PNMainContentController pnMain = new PNMainContentController();
+    public void createComponents(DiagramPlacesManager diagramPlaces) {
+        PNMainContentController pnMain = new PNMainContentController(diagramPlaces);
 
         PNLeftTopContent cdLeftTop = new PNLeftTopContent(pnMain);
         cdLeftTop.setListeners();

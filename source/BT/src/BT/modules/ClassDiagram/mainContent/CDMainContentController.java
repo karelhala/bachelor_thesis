@@ -7,7 +7,9 @@ package BT.modules.ClassDiagram.mainContent;
 import BT.BT.ClassType;
 import BT.interfaces.DrawingClicks;
 import BT.managers.CD.Attribute;
+import BT.managers.DiagramPlacesManager;
 import BT.managers.ObjectChecker;
+import BT.managers.PlaceManager;
 import BT.models.CoordinateModel;
 import BT.models.LineModel;
 import BT.modules.ClassDiagram.places.CDClass;
@@ -29,9 +31,10 @@ public class CDMainContentController extends CDMainContentModel implements Drawi
 
     /**
      *
+     * @param diagramPlaces
      */
-    public CDMainContentController() {
-        super();
+    public CDMainContentController(DiagramPlacesManager diagramPlaces) {
+        super(diagramPlaces);
     }
 
     /**

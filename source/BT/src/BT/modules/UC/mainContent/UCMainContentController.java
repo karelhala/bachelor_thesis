@@ -4,9 +4,12 @@
  */
 package BT.modules.UC.mainContent;
 
+import BT.BT;
 import BT.managers.ObjectChecker;
 import BT.interfaces.DrawingClicks;
+import BT.managers.DiagramPlacesManager;
 import BT.models.CoordinateModel;
+import BT.modules.ClassDiagram.places.CDClass;
 import BT.modules.UC.places.UCActor;
 import BT.modules.UC.places.UCJoinEdge.UCJoinEdgeController;
 import BT.modules.UC.places.UCUseCase;
@@ -22,9 +25,10 @@ public class UCMainContentController extends UCMainContentModel implements Drawi
 
     /**
      *
+     * @param diagramPlaces
      */
-    public UCMainContentController() {
-        super();
+    public UCMainContentController(DiagramPlacesManager diagramPlaces) {
+        super(diagramPlaces);
     }
 
     /**
@@ -62,19 +66,27 @@ public class UCMainContentController extends UCMainContentModel implements Drawi
         JToggleButton selectedItemButton = this.LeftTopContent.getSelectedButton();
         if (selectedItemButton != null) {
             UCDrawingPane UCdrawing = (UCDrawingPane) this.mainContent.getDrawingPane();
+            CDClass newClass = new CDClass(evt.getX(), evt.getY());
             switch (selectedItemButton.getName()) {
                 case "ACTOR":
                     UCActor actor = new UCActor(evt.getX(), evt.getY());
+                    actor.setAssignedObject(newClass);
+                    newClass.setTypeOfClass(BT.ClassType.ACTOR);
+                    newClass.setAssignedObject(actor);
                     this.places.addObject(actor);
 //                        this.mainContent.recalculateSize(actor);
                     break;
 
                 case "USECASE":
                     UCUseCase useCase = new UCUseCase(evt.getX(), evt.getY());
+                    useCase.setAssignedObject(newClass);
+                    newClass.setTypeOfClass(BT.ClassType.ACTIVITY);
                     this.places.addObject(useCase);
+                    newClass.setAssignedObject(useCase);
 //                        this.mainContent.recalculateSize(useCase);
                     break;
             }
+            this.diagramPlaces.getCdPlaces().addObject(newClass);
             UCdrawing.getDrawing().repaint();
         }
     }

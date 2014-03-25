@@ -4,6 +4,8 @@
  */
 package BT.modules.mainInterface;
 
+import BT.managers.DiagramPlacesManager;
+import BT.managers.PlaceManager;
 import BT.modules.ClassDiagram.CDContentController;
 import BT.modules.ObjectedOrientedPetriNet.PNContentController;
 import BT.modules.UC.UCContentController;
@@ -80,14 +82,16 @@ public class ToolBarContentControler {
      * @param myLayout
      */
     private void addNewTab(WindowLayoutControler myLayout) {
+        DiagramPlacesManager diagramPlaces = new DiagramPlacesManager();
+        
         UCContentController UCController = new UCContentController();
-        UCController.createComponents();
+        UCController.createComponents(diagramPlaces);
 
         CDContentController CDcontroller = new CDContentController();
-        CDcontroller.createComponents();
+        CDcontroller.createComponents(diagramPlaces);
 
         PNContentController OOPNContentModel = new PNContentController();
-        OOPNContentModel.createComponents();
+        OOPNContentModel.createComponents(diagramPlaces);
         myLayout.addNewTab(UCController.getUCContent(), CDcontroller.getCdContent(), OOPNContentModel.getPnContent());
     }
 

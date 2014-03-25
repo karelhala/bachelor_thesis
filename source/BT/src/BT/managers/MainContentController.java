@@ -30,6 +30,11 @@ abstract public class MainContentController implements DrawingClicks {
      *
      */
     protected LineModel newJoinEdge;
+    
+    /**
+     * 
+     */
+    protected DiagramPlacesManager diagramPlaces;
 
     public ContentPaneModel getMainContent() {
         return mainContent;
