@@ -13,7 +13,7 @@ public class DistanceCalculatorModel {
     /**
      * Method for sqaure of x.
      *
-     * @param double x number to be squared
+     * @param x
      * @return sqr as double
      */
     protected double sqr(double x) {
@@ -23,8 +23,8 @@ public class DistanceCalculatorModel {
     /**
      * Method for calculating distance between 2 points.
      *
-     * @param DoublePoint firstPoin point containing double x and double y
-     * @param DoublePoint secondPoint point containing double x and double y
+     * @param firstPoin point containing double x and double y
+     * @param secondPoint point containing double x and double y
      * @return distance as double
      */
     protected double distanceFromTwoPoints(DoublePoint firstPoin, DoublePoint secondPoint) {
@@ -34,8 +34,8 @@ public class DistanceCalculatorModel {
     /**
      * Method for calculating magnitude of vector.
      *
-     * @param DoublePoint A first point
-     * @param DoublePoint B second point
+     * @param A first point
+     * @param B second point
      * @return DoublePoint magnitude of vector
      */
     protected DoublePoint vectorMagnitude(DoublePoint A, DoublePoint B) {
@@ -45,8 +45,8 @@ public class DistanceCalculatorModel {
     /**
      * Dot product function used in vectors
      *
-     * @param DoublePoint A first point
-     * @param DoublePoint B second point
+     * @param A first point
+     * @param B second point
      * @return double calculaation of dot-product function
      */
     protected double dotProductFunction(DoublePoint A, DoublePoint B) {

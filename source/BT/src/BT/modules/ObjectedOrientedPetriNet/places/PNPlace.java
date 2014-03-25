@@ -19,8 +19,6 @@ import java.util.ArrayList;
  */
 public class PNPlace extends CoordinateModel {
 
-    private int textSize;
-
     public PNPlace() {
         super();
     }

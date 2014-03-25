@@ -20,12 +20,12 @@ import java.util.UUID;
  */
 public class UCActor extends CoordinateModel {
 
-    private int textSize;
     private int gap;
     private UUID id;
 
     /**
-     * TODO: create model
+     * @param x
+     * @param y
      */
     public UCActor(int x, int y) {
         super();
@@ -97,7 +97,7 @@ public class UCActor extends CoordinateModel {
         g.drawOval(actorX - neck, actorY - bottom - bottom - headSize, headSize * 2, headSize * 2);
         g.setColor(Color.black);
         g.drawString(this.name, actorX - fm.stringWidth(this.name) / 2, actorY + this.getHeight() / 2);
-
+        drawNoObjectString(g, "/no class/");
     }
 
     /**

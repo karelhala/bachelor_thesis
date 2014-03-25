@@ -19,8 +19,6 @@ import java.util.ArrayList;
  */
 public class PNTransition extends CoordinateModel {
 
-    private int textSize;
-
     public PNTransition() {
         super();
     }

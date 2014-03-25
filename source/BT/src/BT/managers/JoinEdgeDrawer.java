@@ -64,6 +64,7 @@ public class JoinEdgeDrawer {
      * @param g2D
      * @param A
      * @param B
+     * @param fillColor
      */
     protected void drawTriangle(Graphics2D g2D, Point A, Point B, Color fillColor) {
         Graphics2D g = (Graphics2D) g2D.create();

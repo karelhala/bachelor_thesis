@@ -20,7 +20,6 @@ import java.util.UUID;
  */
 public class UCUseCase extends CoordinateModel {
 
-    private int textSize;
     private int gap;
     private UUID id;
 
@@ -68,6 +67,7 @@ public class UCUseCase extends CoordinateModel {
         g.drawOval(this.x - width / 2, y - height / 2, this.width, this.height);
         g.setColor(Color.black);
         g.drawString(this.name, this.x - width / 2 + this.textSize, y + this.textSize / 2);
+        drawNoObjectString(g, "/no class/");
     }
 
     /**

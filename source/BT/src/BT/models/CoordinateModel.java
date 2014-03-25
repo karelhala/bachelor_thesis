@@ -6,6 +6,9 @@ package BT.models;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontMetrics;
+import java.awt.Graphics2D;
 import java.util.ArrayList;
 
 /**
@@ -14,6 +17,9 @@ import java.util.ArrayList;
  */
 public class CoordinateModel {
 
+    /**
+     * 
+     */
     protected BasicStroke dashedStroke;
     /**
      *
@@ -71,6 +77,14 @@ public class CoordinateModel {
      *
      */
     protected ArrayList<LineModel> outJoins;
+    /**
+     * 
+     */
+    protected CoordinateModel assignedObject;
+    /**
+     * 
+     */
+    protected int textSize;
 
     /**
      *
@@ -153,9 +167,6 @@ public class CoordinateModel {
         return this.selected;
     }
 
-    /**
-     *
-     */
     public void setBasicColor() {
         this.color = this.basicColor;
     }
@@ -184,6 +195,14 @@ public class CoordinateModel {
         if (this.inJoins != null) {
             this.inJoins.add(inJoins);
         }
+    }
+
+    public CoordinateModel getAssignedObject() {
+        return assignedObject;
+    }
+
+    public void setAssignedObject(CoordinateModel assignedObject) {
+        this.assignedObject = assignedObject;
     }
 
     public void addOutJoins(LineModel outJoins) {
@@ -220,5 +239,20 @@ public class CoordinateModel {
         int isX = Math.abs(x - this.x);
         int isY = Math.abs(y - this.y);
         return isX <= getMax(this.objectWidth, this.width) / 2 && isY <= getMax(this.objectHeight, this.height) / 2;
+    }
+    
+    /**
+     * 
+     * @param g
+     * @param text 
+     */
+    protected void drawNoObjectString(Graphics2D g, String text)
+    {
+        if (this.assignedObject == null)
+        {
+            g.setFont(new Font("Arial", Font.ITALIC, this.textSize));
+            FontMetrics fm = g.getFontMetrics(g.getFont());
+            g.drawString(text, this.x-fm.stringWidth(text)/2, this.y+getMax(this.objectHeight, this.height)/2+fm.getHeight());
+        }
     }
 }

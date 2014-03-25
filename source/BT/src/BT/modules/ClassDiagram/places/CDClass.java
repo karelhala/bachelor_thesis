@@ -20,12 +20,6 @@ import java.util.ArrayList;
  * @author Karel Hala
  */
 public class CDClass extends CoordinateModel {
-
-    /**
-     *
-     */
-    private int textSize;
-
     /**
      *
      */
@@ -117,6 +111,7 @@ public class CDClass extends CoordinateModel {
         drawAttributes(g, this.variables, variablesPlace, fm);
         Point methodsPlace = new Point(variablesPlace.x, variablesPlace.y - (fm.getHeight() * this.variables.size()) - 5);
         drawAttributes(g, this.methods, methodsPlace, fm);
+        drawNoObjectString(g, "/no Use Case/");
     }
 
     /**
