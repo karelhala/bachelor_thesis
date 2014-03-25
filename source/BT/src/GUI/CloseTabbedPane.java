@@ -21,16 +21,16 @@ import javax.swing.JTabbedPane;
  *
  * @author Karel Hala
  */
-public class CloseTabbedPane extends JTabbedPane{
-    public CloseTabbedPane ()
-    {
+public class CloseTabbedPane extends JTabbedPane {
+
+    public CloseTabbedPane() {
         super();
     }
-    
+
     /**
-     * 
+     *
      * @param title
-     * @param component 
+     * @param component
      */
     public void addCloseTab(String title, final JComponent component) {
         JPanel closePanel = new JPanel();
@@ -50,36 +50,31 @@ public class CloseTabbedPane extends JTabbedPane{
 
         this.setSelectedComponent(component);
     }
-    
+
     /**
-     * 
-     * @param component 
+     *
+     * @param component
      */
-    public void removeTab(Component component)
-    {
-        if (this.indexOfComponent(component) != -1)
-        {
-            if (this.indexOfComponent(component) == this.getSelectedIndex())
-            {
-                
-                this.setSelectedIndex(this.getTabCount()-3);
+    public void removeTab(Component component) {
+        if (this.indexOfComponent(component) != -1) {
+            if (this.indexOfComponent(component) == this.getSelectedIndex()) {
+
+                this.setSelectedIndex(this.getTabCount() - 3);
             }
         }
-        if (this.getTabCount() == 1)
-        {
+        if (this.getTabCount() == 1) {
             this.setSelectedIndex(-1);
         }
-        
+
         this.remove(component);
     }
-    
+
     /**
-     * 
+     *
      * @param component
-     * @return 
+     * @return
      */
-    private JButton createCloseButton(final Component component)
-    {
+    private JButton createCloseButton(final Component component) {
         JButton buttonClose = new JButton();
         buttonClose.setToolTipText("Close this tab");
         buttonClose.setBorder(null);
@@ -91,37 +86,35 @@ public class CloseTabbedPane extends JTabbedPane{
             }
         };
         buttonClose.addMouseListener(mouseListener);
-        
+
         createIconsForButton(buttonClose);
-        
+
         return buttonClose;
     }
-    
+
     /**
-     * 
+     *
      * @param evt
-     * @param component 
+     * @param component
      */
-    private void buttonCloseMouseClicked (MouseEvent evt, Component component)
-    {
+    private void buttonCloseMouseClicked(MouseEvent evt, Component component) {
         removeTab(component);
     }
-    
+
     /**
-     * 
-     * @param buttonClose 
+     *
+     * @param buttonClose
      */
-    private void createIconsForButton(JButton buttonClose)
-    {
+    private void createIconsForButton(JButton buttonClose) {
         ImageIcon icon = new ImageIcon(CloseTabbedPane.class.getResource("/resources/redSmallX.png"));
         Image normalImage = icon.getImage();
         Image grayImage = GrayFilter.createDisabledImage(normalImage);
         ImageIcon greyIcon = new ImageIcon(grayImage);
-        
+
         buttonClose.setRolloverEnabled(true);
         buttonClose.setContentAreaFilled(false);
         buttonClose.setRolloverIcon(icon);
         buttonClose.setIcon(greyIcon);
     }
-    
+
 }

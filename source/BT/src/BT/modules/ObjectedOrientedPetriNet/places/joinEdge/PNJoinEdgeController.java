@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package BT.modules.ObjectedOrientedPetriNet.places.joinEdge;
 
 import BT.BT;
@@ -18,48 +17,44 @@ import java.awt.Point;
  *
  * @author Karel
  */
-public class PNJoinEdgeController extends LineModel{
-    
+public class PNJoinEdgeController extends LineModel {
+
     private BT.OOPNLineType joinEdgeType;
-    
-    public void setJoinEdgeType(OOPNLineType joinEdgeType) 
-    {
+
+    public void setJoinEdgeType(OOPNLineType joinEdgeType) {
         this.joinEdgeType = joinEdgeType;
     }
-    
-    public OOPNLineType getJoinEdgeType() 
-    {
+
+    public OOPNLineType getJoinEdgeType() {
         return joinEdgeType;
     }
-    
+
     /**
      *
      */
-    public PNJoinEdgeController ()
-    {
+    public PNJoinEdgeController() {
         super();
         this.joinEdgeType = OOPNLineType.JOIN;
     }
-    
+
     /**
-     * 
-     * @param g 
+     *
+     * @param g
      */
     public void drawJoinEdge(Graphics2D g) {
-        PointsCalculator pointsCaluclator = new PointsCalculator(this.firstObject, this.secondObject, getStartPoint(), getEndPoint(),this.breakPoints);  
-        
+        PointsCalculator pointsCaluclator = new PointsCalculator(this.firstObject, this.secondObject, getStartPoint(), getEndPoint(), this.breakPoints);
+
         PNJoinEdgeDrawer lineDrawer;
         lineDrawer = new PNJoinEdgeDrawer(this, pointsCaluclator.getStartPoint(), pointsCaluclator.getEndPoint());
         Point startPoint = pointsCaluclator.getStartPoint();
         Point endPoint = pointsCaluclator.getEndPoint();
-        if (startPoint !=null && endPoint !=null)
-        {
+        if (startPoint != null && endPoint != null) {
             g.setStroke(new BasicStroke(2));
             lineDrawer.drawLine(g);
             setStartCoordinates(startPoint);
-            
+
             setEndPoint(endPoint);
         }
     }
-    
+
 }

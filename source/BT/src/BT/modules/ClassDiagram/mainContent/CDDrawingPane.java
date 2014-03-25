@@ -21,59 +21,57 @@ import javax.swing.JPanel;
  *
  * @author Karel Hala
  */
-public class CDDrawingPane extends DrawingPaneModel{
+public class CDDrawingPane extends DrawingPaneModel {
+
     private drawing drawPane;
+
     /**
-     * 
+     *
      * @param CDplaces
      */
-    public CDDrawingPane(PlaceManager CDplaces)
-    {
+    public CDDrawingPane(PlaceManager CDplaces) {
         super(CDplaces);
         this.drawPane = new drawing();
     }
 
-    
     /**
-     * 
+     *
      */
-    public class drawing extends JPanel{
-        
-        public drawing()
-        {
+    public class drawing extends JPanel {
+
+        public drawing() {
             super();
         }
+
         /**
-         * 
-         * @param g1 
+         *
+         * @param g1
          */
         @Override
         protected void paintComponent(Graphics g1) {
             super.paintComponent(g1);
             Graphics2D g = (Graphics2D) g1.create();
             g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-            if (newLine != null)
-            {
+            if (newLine != null) {
                 g.setColor(Color.GREEN);
-                ((CDJoinEdgeController)newLine).drawJoinEdge(g);   
+                ((CDJoinEdgeController) newLine).drawJoinEdge(g);
             }
-            
-            for (LineModel joinEdge: places.getJoinEdges()) {
+
+            for (LineModel joinEdge : places.getJoinEdges()) {
                 ((CDJoinEdgeController) joinEdge).drawJoinEdge(g);
             }
-            
-            for (CoordinateModel actor: places.getObjects()) {
+
+            for (CoordinateModel actor : places.getObjects()) {
                 ((CDClass) actor).drawClass(g);
             }
         }
     }
-    
+
     /**
-     * 
-     * @return 
+     *
+     * @return
      */
-    public CDDrawingPane.drawing getDrawing()
-    {
+    public CDDrawingPane.drawing getDrawing() {
         return drawPane;
     }
 }

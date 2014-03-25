@@ -18,17 +18,16 @@ import java.util.UUID;
  *
  * @author Karel Hala
  */
-public class UCActor extends CoordinateModel{
-    
+public class UCActor extends CoordinateModel {
+
     private int textSize;
     private int gap;
     private UUID id;
-    
+
     /**
      * TODO: create model
      */
-    public UCActor (int x, int y)
-    {
+    public UCActor(int x, int y) {
         super();
         this.x = x;
         this.y = y;
@@ -45,98 +44,93 @@ public class UCActor extends CoordinateModel{
         this.outJoins = new ArrayList<>();
         this.id = UUID.randomUUID();
     }
-    
+
     /**
-     * 
-     * @return 
+     *
+     * @return
      */
-    public int getMaxWidth()
-    {
+    public int getMaxWidth() {
         return getMax(this.objectWidth, this.width);
     }
-    
+
     /**
-     * 
-     * @return 
+     *
+     * @return
      */
-    public int getMaxHeight()
-    {
+    public int getMaxHeight() {
         return this.objectHeight;
     }
-    
+
     /**
      * TODO: refactor
-     * @param g 
+     *
+     * @param g
      */
-    public void drawActor(Graphics2D g)
-    {
+    public void drawActor(Graphics2D g) {
         Color actorColor = this.color;
         g.setFont(new Font("Arial", Font.BOLD, this.textSize));
         FontMetrics fm = g.getFontMetrics(g.getFont());
-        this.objectHeight = this.getHeight() +textSize;
+        this.objectHeight = this.getHeight() + textSize;
         this.objectWidth = this.getWidth() + fm.stringWidth(this.name) + gap - textSize;
         g.setColor(Color.white);
-        g.fillRect(this.x-getMax(this.objectWidth, this.width)/2+this.gap, this.y-this.objectHeight/2+this.gap, getMax(this.objectWidth, this.width)-this.gap*2, this.objectHeight-this.gap*2);
-        
-        if (getSelected())
-        {
+        g.fillRect(this.x - getMax(this.objectWidth, this.width) / 2 + this.gap, this.y - this.objectHeight / 2 + this.gap, getMax(this.objectWidth, this.width) - this.gap * 2, this.objectHeight - this.gap * 2);
+
+        if (getSelected()) {
             drawRectArroundActor(g);
             actorColor = this.selectedColor;
         }
-        
+
         int actorX = this.getX();
         int actorY = this.getY();
         g.setColor(actorColor);
-        g.setStroke((this.inJoins.isEmpty() && this.outJoins.isEmpty())?this.dashedStroke:new BasicStroke(2));
-        int middle = this.getHeight()/2;
-        int bottom = (middle/2)-this.gap;
-        int neck = bottom/2;
-        int arm = getWidth()/2-this.gap;
-        int headSize = arm/2;
-        g.drawLine(actorX, actorY, actorX, actorY-neck-bottom);
-        g.drawLine(actorX, actorY-bottom, actorX-arm, actorY-bottom);
-        g.drawLine(actorX, actorY-bottom, actorX+arm, actorY-bottom);
-        g.drawLine(actorX, actorY, actorX-arm, actorY+bottom);
-        g.drawLine(actorX, actorY, actorX+arm, actorY+bottom);
-        g.drawOval(actorX-neck, actorY-bottom-bottom-headSize, headSize*2, headSize*2);       
+        g.setStroke((this.inJoins.isEmpty() && this.outJoins.isEmpty()) ? this.dashedStroke : new BasicStroke(2));
+        int middle = this.getHeight() / 2;
+        int bottom = (middle / 2) - this.gap;
+        int neck = bottom / 2;
+        int arm = getWidth() / 2 - this.gap;
+        int headSize = arm / 2;
+        g.drawLine(actorX, actorY, actorX, actorY - neck - bottom);
+        g.drawLine(actorX, actorY - bottom, actorX - arm, actorY - bottom);
+        g.drawLine(actorX, actorY - bottom, actorX + arm, actorY - bottom);
+        g.drawLine(actorX, actorY, actorX - arm, actorY + bottom);
+        g.drawLine(actorX, actorY, actorX + arm, actorY + bottom);
+        g.drawOval(actorX - neck, actorY - bottom - bottom - headSize, headSize * 2, headSize * 2);
         g.setColor(Color.black);
-        g.drawString(this.name, actorX-fm.stringWidth(this.name)/2, actorY+this.getHeight()/2);
+        g.drawString(this.name, actorX - fm.stringWidth(this.name) / 2, actorY + this.getHeight() / 2);
 
     }
-    
+
     /**
-     * 
-     * @param g 
+     *
+     * @param g
      */
-    public void drawRectArroundActor(Graphics2D g)
-    {
+    public void drawRectArroundActor(Graphics2D g) {
         int borderWidth = getMax(this.objectWidth, this.getWidth());
         int borderHeight = this.objectHeight;
         g.setStroke(new BasicStroke(1));
         g.setColor(Color.black);
-        g.drawRect(this.x-borderWidth/2, this.y-borderHeight/2, borderWidth, borderHeight);
+        g.drawRect(this.x - borderWidth / 2, this.y - borderHeight / 2, borderWidth, borderHeight);
     }
-    
+
     /**
-     * 
+     *
      * @param other
-     * @return 
+     * @return
      */
     @Override
-    public boolean equals(Object other)
-    {
-        if (other instanceof UCActor)
-        {
+    public boolean equals(Object other) {
+        if (other instanceof UCActor) {
             UCActor object = (UCActor) other;
-            if (this.hashCode()==object.hashCode())
+            if (this.hashCode() == object.hashCode()) {
                 return true;
+            }
         }
         return false;
     }
 
     /**
-     * 
-     * @return 
+     *
+     * @return
      */
     @Override
     public int hashCode() {
@@ -144,5 +138,5 @@ public class UCActor extends CoordinateModel{
         hash = 67 * hash + Objects.hashCode(this.id);
         return hash;
     }
-    
+
 }

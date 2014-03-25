@@ -11,34 +11,33 @@ import GUI.MainContentModel;
  *
  * @author Karel Hala
  */
-public class CDContentController{
+public class CDContentController {
+
     private MainContentModel cdContent;
-    
+
     /**
-     * 
+     *
      */
-    public CDContentController()
-    {
+    public CDContentController() {
         this.cdContent = new MainContentModel();
     }
-    
+
     public MainContentModel getCdContent() {
         return cdContent;
     }
-    
+
     /**
-     * 
+     *
      */
-    public void createComponents()
-    {
+    public void createComponents() {
         CDMainContentController cdMain = new CDMainContentController();
-        
+
         CDLeftTopContent cdLeftTop = new CDLeftTopContent(cdMain);
         cdLeftTop.setListeners();
-        
+
         CDLeftBottomContent cdLeftBottom = new CDLeftBottomContent(cdMain);
         cdLeftBottom.setListeners();
-        
+
         this.cdContent.setCenterPane(cdMain.getMainContent().getMainContentPane());
         this.cdContent.setLeftTopPane(cdLeftTop.getMainContentPane());
         this.cdContent.setLeftBottomPane(cdLeftBottom.getMainContentPane());

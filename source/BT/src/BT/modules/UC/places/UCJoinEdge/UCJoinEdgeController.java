@@ -17,64 +17,58 @@ import java.util.Objects;
  *
  * @author Karel Hala
  */
-public class UCJoinEdgeController extends LineModel{
+public class UCJoinEdgeController extends LineModel {
+
     private UCLineType joinEdgeType;
 
-    public void setJoinEdgeType(UCLineType joinEdgeType) 
-    {
+    public void setJoinEdgeType(UCLineType joinEdgeType) {
         this.joinEdgeType = joinEdgeType;
     }
-    
+
     /**
      *
      */
-    public UCJoinEdgeController ()
-    {
+    public UCJoinEdgeController() {
         super();
         this.joinEdgeType = UCLineType.ASSOCIATION;
     }
-    
+
     /**
-     * 
-     * @return 
+     *
+     * @return
      */
-    public UCLineType getJoinEdgeType()
-    {
+    public UCLineType getJoinEdgeType() {
         return this.joinEdgeType;
     }
-    
+
     /**
-     * 
-     * @param g 
+     *
+     * @param g
      */
     public void drawJoinEdge(Graphics2D g) {
-        PointsCalculator pointsCaluclator = new PointsCalculator(this.firstObject, this.secondObject, getStartPoint(), getEndPoint(), this.breakPoints);  
-        
+        PointsCalculator pointsCaluclator = new PointsCalculator(this.firstObject, this.secondObject, getStartPoint(), getEndPoint(), this.breakPoints);
+
         Point startPoint = pointsCaluclator.getStartPoint();
         Point endPoint = pointsCaluclator.getEndPoint();
         UCJoinEdgeDrawer lineDrawer = new UCJoinEdgeDrawer(this, startPoint, endPoint);
-        if (startPoint !=null && endPoint !=null)
-        {
+        if (startPoint != null && endPoint != null) {
             g.setStroke(new BasicStroke(2));
             lineDrawer.drawLine(g);
             setStartCoordinates(startPoint);
             setEndPoint(endPoint);
         }
     }
-    
+
     /**
-     * 
+     *
      * @param other
-     * @return 
+     * @return
      */
     @Override
-    public boolean equals(Object other)
-    {
-        if (other instanceof UCJoinEdgeController)
-        {
+    public boolean equals(Object other) {
+        if (other instanceof UCJoinEdgeController) {
             UCJoinEdgeController object = (UCJoinEdgeController) other;
-            if (this.hashCode()==object.hashCode())
-            {
+            if (this.hashCode() == object.hashCode()) {
                 return true;
             }
         }
@@ -82,8 +76,8 @@ public class UCJoinEdgeController extends LineModel{
     }
 
     /**
-     * 
-     * @return 
+     *
+     * @return
      */
     @Override
     public int hashCode() {
@@ -92,5 +86,5 @@ public class UCJoinEdgeController extends LineModel{
         hash = 67 * hash + Objects.hashCode(this.secondObject);
         hash = 67 * hash + Objects.hashCode(this.joinEdgeType);
         return hash;
-    } 
+    }
 }

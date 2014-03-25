@@ -17,88 +17,72 @@ import javax.swing.JToggleButton;
  * @author Karel Hala
  */
 public class UCJoinEdgeManipulator {
-    
-    public UCJoinEdgeManipulator()
-    {
+
+    public UCJoinEdgeManipulator() {
         super();
     }
-    
+
     /**
-     * 
+     *
      * @param selectedButton
      * @param joinEdge
      */
-    public static void changeLineTypeByButton(JToggleButton selectedButton, UCJoinEdgeController joinEdge)
-    {
-        switch (selectedButton.getName())
-        {
-           case "ASSOCIATION":
-                    joinEdge.setJoinEdgeType(BT.UCLineType.ASSOCIATION);
-                 break;
+    public static void changeLineTypeByButton(JToggleButton selectedButton, UCJoinEdgeController joinEdge) {
+        switch (selectedButton.getName()) {
+            case "ASSOCIATION":
+                joinEdge.setJoinEdgeType(BT.UCLineType.ASSOCIATION);
+                break;
 
-           case "INCLUDE":  
-                    joinEdge.setJoinEdgeType(BT.UCLineType.INCLUDE);
-                 break;
+            case "INCLUDE":
+                joinEdge.setJoinEdgeType(BT.UCLineType.INCLUDE);
+                break;
 
-           case "EXTENDS":  
-                    joinEdge.setJoinEdgeType(BT.UCLineType.EXTENDS);
-                 break;
-           case "GENERALIZATION":
-                    joinEdge.setJoinEdgeType(BT.UCLineType.GENERALIZATION);
-                 break;
+            case "EXTENDS":
+                joinEdge.setJoinEdgeType(BT.UCLineType.EXTENDS);
+                break;
+            case "GENERALIZATION":
+                joinEdge.setJoinEdgeType(BT.UCLineType.GENERALIZATION);
+                break;
         }
         setLineTypeBySecondObject(joinEdge);
     }
-    
+
     /**
-     * 
+     *
      * @param joinEdge
-     * @param clickedObject 
-     * @return  
+     * @param clickedObject
+     * @return
      */
-    public static UCJoinEdgeController createJoinEdge(UCJoinEdgeController joinEdge, CoordinateModel clickedObject)
-    {   
-        if (joinEdge == null)
-        {
+    public static UCJoinEdgeController createJoinEdge(UCJoinEdgeController joinEdge, CoordinateModel clickedObject) {
+        if (joinEdge == null) {
             joinEdge = new UCJoinEdgeController();
         }
-        if (joinEdge.getFirstObject() == null)
-        {
+        if (joinEdge.getFirstObject() == null) {
             joinEdge.setFirstObject(clickedObject);
-        }
-        else if (joinEdge.getSecondObject() == null)
-        {
-            if (clickedObject instanceof UCUseCase && joinEdge.getFirstObject() instanceof UCActor)
-            {
+        } else if (joinEdge.getSecondObject() == null) {
+            if (clickedObject instanceof UCActor && joinEdge.getFirstObject() instanceof UCUseCase) {
                 joinEdge.setSecondObject(joinEdge.getFirstObject());
                 joinEdge.setFirstObject(clickedObject);
-                if (joinEdge.getBreakPoints()!= null && !joinEdge.getBreakPoints().isEmpty())
-                {
+                if (joinEdge.getBreakPoints() != null && !joinEdge.getBreakPoints().isEmpty()) {
                     joinEdge.getBreakPoints().swapWholeArrayList();
                 }
-            }
-            else
-            {
+            } else {
                 joinEdge.setSecondObject(clickedObject);
             }
-        }       
+        }
         return joinEdge;
     }
-    
+
     /**
-     * 
-     * @param joinEdge 
+     *
+     * @param joinEdge
      */
-    public static void setLineTypeBySecondObject(UCJoinEdgeController joinEdge)
-    {
-        if (joinEdge.getFirstObject() instanceof UCUseCase && joinEdge.getSecondObject() instanceof UCActor)
-        {
+    public static void setLineTypeBySecondObject(UCJoinEdgeController joinEdge) {
+        if (joinEdge.getFirstObject() instanceof UCUseCase && joinEdge.getSecondObject() instanceof UCActor) {
             joinEdge.setJoinEdgeType(BT.UCLineType.ASSOCIATION);
         }
-        if (joinEdge.getJoinEdgeType() == BT.UCLineType.ASSOCIATION)
-        {
-            if (joinEdge.getSecondObject() != null && joinEdge.getFirstObject().getClass().equals(joinEdge.getSecondObject().getClass()))
-            {
+        if (joinEdge.getJoinEdgeType() == BT.UCLineType.ASSOCIATION) {
+            if (joinEdge.getSecondObject() != null && joinEdge.getFirstObject().getClass().equals(joinEdge.getSecondObject().getClass())) {
                 joinEdge.setSecondObject(null);
             }
         }

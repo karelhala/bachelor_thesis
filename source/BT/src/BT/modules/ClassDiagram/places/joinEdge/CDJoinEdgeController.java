@@ -15,45 +15,42 @@ import java.awt.Point;
  *
  * @author Karel Hala
  */
-public class CDJoinEdgeController extends LineModel{
+public class CDJoinEdgeController extends LineModel {
+
     private CDLineType joinEdgeType;
-    
-    public void setJoinEdgeType(CDLineType joinEdgeType) 
-    {
+
+    public void setJoinEdgeType(CDLineType joinEdgeType) {
         this.joinEdgeType = joinEdgeType;
     }
-    
-    public CDLineType getJoinEdgeType() 
-    {
+
+    public CDLineType getJoinEdgeType() {
         return joinEdgeType;
     }
-    
+
     /**
      *
      */
-    public CDJoinEdgeController ()
-    {
+    public CDJoinEdgeController() {
         super();
         this.joinEdgeType = CDLineType.ASSOCIATION;
     }
-    
+
     /**
-     * 
-     * @param g 
+     *
+     * @param g
      */
     public void drawJoinEdge(Graphics2D g) {
-        PointsCalculator pointsCaluclator = new PointsCalculator(this.firstObject, this.secondObject, getStartPoint(), getEndPoint(),this.breakPoints);  
-        
+        PointsCalculator pointsCaluclator = new PointsCalculator(this.firstObject, this.secondObject, getStartPoint(), getEndPoint(), this.breakPoints);
+
         CDJoinEdgeDrawer lineDrawer;
         lineDrawer = new CDJoinEdgeDrawer(this, pointsCaluclator.getStartPoint(), pointsCaluclator.getEndPoint());
         Point startPoint = pointsCaluclator.getStartPoint();
         Point endPoint = pointsCaluclator.getEndPoint();
-        if (startPoint !=null && endPoint !=null)
-        {
+        if (startPoint != null && endPoint != null) {
             g.setStroke(new BasicStroke(2));
             lineDrawer.drawLine(g);
             setStartCoordinates(startPoint);
-            
+
             setEndPoint(endPoint);
         }
     }

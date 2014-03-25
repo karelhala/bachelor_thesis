@@ -14,37 +14,36 @@ import BT.modules.UC.mainContent.UCMainContentController;
 
 /**
  * Class for sotring and managing left top panel, that consists of buttons
+ *
  * @author Karel Hala
  */
-public final class CDLeftTopContent extends ButtonPaneModel{
-    
+public final class CDLeftTopContent extends ButtonPaneModel {
+
     /**
      * Constructor, creates gridlayour and calls to create left Top pane
      */
-    public CDLeftTopContent()
-    {
+    public CDLeftTopContent() {
         this(null);
     }
-    
+
     /**
      * creates gridlayour and calls to create left Top pane
+     *
      * @param cdMain
      */
-    public CDLeftTopContent(CDMainContentController cdMain)
-    {
+    public CDLeftTopContent(CDMainContentController cdMain) {
         super(cdMain);
         this.mainContentPane = new JPanel(new GridLayout(1, 1));
         createMainPane();
     }
-    
+
     /**
      * Method for creating main page. It will add 2 jtoggleButtons to main pane.
      */
-    public void createMainPane()
-    {
+    public void createMainPane() {
         JToggleButton newClass = new JToggleButton("New Class");
         newClass.setName(BT.CDObjectType.CLASS.name());
-        
+
         this.mainContentPane.add(newClass);
     }
 }

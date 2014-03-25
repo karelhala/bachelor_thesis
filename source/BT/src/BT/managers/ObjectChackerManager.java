@@ -12,34 +12,29 @@ import BT.modules.UC.places.UCJoinEdge.UCJoinEdgeController;
  * @author Karel Hala
  */
 public class ObjectChackerManager {
+
     protected PlaceManager places;
-    
+
     /**
-     * 
-     * @param places 
+     *
+     * @param places
      */
-    public ObjectChackerManager(PlaceManager places)
-    {
+    public ObjectChackerManager(PlaceManager places) {
         this.places = places;
     }
 
     /**
-     * 
+     *
      * @param x
      * @param y
-     * @return 
+     * @return
      */
-    private UCJoinEdgeController isJoinEdgeUnderMouse(int x, int y)
-    {
-        for (LineModel joinEdge : places.getJoinEdges())
-        {
-            if (((UCJoinEdgeController)joinEdge).isInRange(x,y))
-            {
-                return ((UCJoinEdgeController)joinEdge);
-            }
-            else
-            {
-                ((UCJoinEdgeController)joinEdge).setBasicColor();
+    private UCJoinEdgeController isJoinEdgeUnderMouse(int x, int y) {
+        for (LineModel joinEdge : places.getJoinEdges()) {
+            if (((UCJoinEdgeController) joinEdge).isInRange(x, y)) {
+                return ((UCJoinEdgeController) joinEdge);
+            } else {
+                ((UCJoinEdgeController) joinEdge).setBasicColor();
             }
         }
         return null;

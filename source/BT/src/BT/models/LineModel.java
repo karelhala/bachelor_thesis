@@ -12,7 +12,8 @@ import java.awt.Point;
  *
  * @author Karel Hala
  */
-public class LineModel extends CoordinateModel{
+public class LineModel extends CoordinateModel {
+
     protected CoordinateModel firstObject;
     protected CoordinateModel secondObject;
     protected DistanceCalculator distanceCalculator;
@@ -22,9 +23,8 @@ public class LineModel extends CoordinateModel{
     protected int endX;
     protected int endY;
     protected double tolerance;
-    
-    public LineModel ()
-    {
+
+    public LineModel() {
         this.tolerance = 8;
         this.selected = true;
         this.selectedColor = Color.RED;
@@ -54,8 +54,7 @@ public class LineModel extends CoordinateModel{
     }
 
     public void setSecondObject(CoordinateModel secondObject) {
-        if (secondObject != null)
-        {
+        if (secondObject != null) {
             setEndPoint(new Point(secondObject.getX(), secondObject.getY()));
         }
         this.secondObject = secondObject;
@@ -64,63 +63,52 @@ public class LineModel extends CoordinateModel{
     public void setDistanceCalculator(DistanceCalculator distanceCalculator) {
         this.distanceCalculator = distanceCalculator;
     }
-    
+
     /**
-     * @param endPoint 
+     * @param endPoint
      */
-    public void setEndPoint(Point endPoint)
-    {
+    public void setEndPoint(Point endPoint) {
         this.endX = endPoint.x;
         this.endY = endPoint.y;
     }
-    
-    public void setStartCoordinates(Point startPoint)
-    {
+
+    public void setStartCoordinates(Point startPoint) {
         this.startX = startPoint.x;
         this.startY = startPoint.y;
     }
-    
-    public MyArrayList<Point> getBreakPoints()
-    {
+
+    public MyArrayList<Point> getBreakPoints() {
         return this.breakPoints;
     }
 
-    
-    public void addBreakPoint(Point breakPoint)
-    {
-        if (this.breakPoints != null)
-        {
+    public void addBreakPoint(Point breakPoint) {
+        if (this.breakPoints != null) {
             this.breakPoints.add(breakPoint);
         }
     }
-    
-    public void removeBreakPoint(Point breakPoint)
-    {
-        if (this.breakPoints != null)
-        {
+
+    public void removeBreakPoint(Point breakPoint) {
+        if (this.breakPoints != null) {
             this.breakPoints.remove(breakPoint);
         }
     }
-    
+
     /**
-     * 
+     *
      * @param x
      * @param y
-     * @return 
+     * @return
      */
     public Boolean isInRange(int x, int y) {
         MyArrayList<Point> wholeArrayList = new MyArrayList<>();
-        if (this.breakPoints !=null && !this.breakPoints.isEmpty())
-        {
+        if (this.breakPoints != null && !this.breakPoints.isEmpty()) {
             wholeArrayList.addAll(this.breakPoints);
         }
         wholeArrayList.add(new Point(this.endX, this.endY));
         Point startPoint = new Point(this.startX, this.startY);
-        for (Point point: wholeArrayList)
-        {
+        for (Point point : wholeArrayList) {
             double distance = this.distanceCalculator.getDistanceOfPointToSegment(startPoint.x, startPoint.y, point.x, point.y, x, y);
-            if (distance !=-1 && distance < this.tolerance)
-            {
+            if (distance != -1 && distance < this.tolerance) {
                 return true;
             }
             startPoint.x = point.x;
@@ -128,24 +116,21 @@ public class LineModel extends CoordinateModel{
         }
         return false;
     }
-    
+
     /**
-     * 
-     * @return 
+     *
+     * @return
      */
-    public Point getStartPoint()
-    {
+    public Point getStartPoint() {
         return new Point(this.firstObject.getX(), this.firstObject.getY());
     }
-    
+
     /**
-     * 
-     * @return 
+     *
+     * @return
      */
-    public Point getEndPoint()
-    {
-        if (this.secondObject != null)
-        {
+    public Point getEndPoint() {
+        if (this.secondObject != null) {
             return new Point(this.getSecondObject().getX(), this.getSecondObject().getY());
         }
         return new Point(this.endX, this.endY);

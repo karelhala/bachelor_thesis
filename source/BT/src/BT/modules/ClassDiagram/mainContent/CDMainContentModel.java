@@ -22,12 +22,12 @@ import javax.swing.KeyStroke;
  *
  * @author Karel Hala
  */
-abstract class CDMainContentModel extends MainContentController{
+abstract class CDMainContentModel extends MainContentController {
+
     protected CDLeftBottomContent LeftBottomContent;
     protected CDLeftTopContent LeftTopContent;
 
-    public CDMainContentModel()
-    {
+    public CDMainContentModel() {
         this.places = new PlaceManager();
         this.mainContent = new CDMainContent(places);
         createMainPane();
@@ -40,6 +40,7 @@ abstract class CDMainContentModel extends MainContentController{
     public CDLeftTopContent getLeftTopContent() {
         return LeftTopContent;
     }
+
     public void setLeftBottomContent(CDLeftBottomContent LeftBottomContent) {
         this.LeftBottomContent = LeftBottomContent;
     }
@@ -47,55 +48,52 @@ abstract class CDMainContentModel extends MainContentController{
     public void setLeftTopContent(CDLeftTopContent LeftTopContent) {
         this.LeftTopContent = LeftTopContent;
     }
-    
-    private void createMainPane()
-    {   
+
+    private void createMainPane() {
         CDDrawingPane UCdrawing = (CDDrawingPane) this.mainContent.getDrawingPane();
         DrawingListeners alpha = new DrawingListeners((DrawingClicks) this);
         UCdrawing.getDrawing().addMouseMotionListener(alpha);
         UCdrawing.getDrawing().addMouseListener(alpha);
         setButtonsListeners();
     }
-    
-        /**
-     * 
+
+    /**
+     *
      */
-    public void setButtonsListeners()
-    {
+    public void setButtonsListeners() {
         CDDrawingPane drawingPane = (CDDrawingPane) this.mainContent.getDrawingPane();
         drawingPane.getDrawing().getActionMap().put("removeObject", new AbstractAction() {
             CDDrawingPane drawingPane = (CDDrawingPane) mainContent.getDrawingPane();
+
             @Override
-                public void actionPerformed(ActionEvent e) {
-                    mainContent.getDrawingPane().getPlaces().removeAllSelectedItems();
-                    deleteNewLine();
-                }
+            public void actionPerformed(ActionEvent e) {
+                mainContent.getDrawingPane().getPlaces().removeAllSelectedItems();
+                deleteNewLine();
             }
+        }
         );
         InputMap inputMap = drawingPane.getDrawing().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
         inputMap.put(KeyStroke.getKeyStroke("DELETE"), "removeObject");
     }
-    
+
     /**
-     * 
+     *
      */
-    protected void deleteNewLine(){
+    protected void deleteNewLine() {
         this.newJoinEdge = null;
         this.mainContent.getDrawingPane().setNewLine(newJoinEdge);
-        ((CDDrawingPane)this.mainContent.getDrawingPane()).getDrawing().repaint();
+        ((CDDrawingPane) this.mainContent.getDrawingPane()).getDrawing().repaint();
     }
-    
+
     /**
-     * 
-     * @param joinEdge 
+     *
+     * @param joinEdge
      */
-    public void removeLineFromArrayListAndSetNewLine(CDJoinEdgeController joinEdge) 
-    {
+    public void removeLineFromArrayListAndSetNewLine(CDJoinEdgeController joinEdge) {
         this.newJoinEdge = new CDJoinEdgeController();
         this.newJoinEdge.setFirstObject(joinEdge.getFirstObject());
-        ((CDJoinEdgeController)this.newJoinEdge).setJoinEdgeType(joinEdge.getJoinEdgeType());
-        if (this.LeftBottomContent.getSelectedButton() != null)
-        {
+        ((CDJoinEdgeController) this.newJoinEdge).setJoinEdgeType(joinEdge.getJoinEdgeType());
+        if (this.LeftBottomContent.getSelectedButton() != null) {
             CDJoinEdgeManipulator.changeLineTypeByButton(this.LeftBottomContent.getSelectedButton(), (CDJoinEdgeController) this.newJoinEdge);
         }
         this.places.removeJoinEdge(joinEdge);

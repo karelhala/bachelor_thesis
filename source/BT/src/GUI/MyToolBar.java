@@ -12,25 +12,22 @@ import javax.swing.JToolBar;
  * @author Karel Hala
  */
 public class MyToolBar {
+
     private javax.swing.JToolBar jToolBar;
-    
-    public MyToolBar ()
-    {
+
+    public MyToolBar() {
         initializeToolBar();
     }
-    
-    public JToolBar getToolbar()
-    {
+
+    public JToolBar getToolbar() {
         return this.jToolBar;
     }
-    
-    public void setToolbar(JToolBar jToolBar)
-    {
+
+    public void setToolbar(JToolBar jToolBar) {
         this.jToolBar = jToolBar;
     }
-    
-    public void setPaneToolbar(JPanel mypanel)
-    {
+
+    public void setPaneToolbar(JPanel mypanel) {
         this.jToolBar.add(mypanel);
     }
 

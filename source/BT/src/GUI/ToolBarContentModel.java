@@ -13,39 +13,37 @@ import javax.swing.JPanel;
  * @author Karel Hala
  */
 public class ToolBarContentModel {
+
     private JPanel toolBarPane;
-    public ToolBarContentModel(){
+
+    public ToolBarContentModel() {
         this.toolBarPane = new JPanel();
     }
-    
-    public JPanel getToolBarPane()
-    {
+
+    public JPanel getToolBarPane() {
         return this.toolBarPane;
     }
-    
-    public void setToolBarPane(JPanel toolBarPane)
-    {
+
+    public void setToolBarPane(JPanel toolBarPane) {
         this.toolBarPane = toolBarPane;
     }
-    
+
     /**
-     * 
+     *
      * @param name
-     * @return 
+     * @return
      */
-    public JButton addNewButton (String name)
-    {
-        return addNewButton(name, Color.PINK); 
+    public JButton addNewButton(String name) {
+        return addNewButton(name, Color.PINK);
     }
-    
+
     /**
-     * 
+     *
      * @param name
      * @param buttonColor
-     * @return 
+     * @return
      */
-    public JButton addNewButton (String name, Color buttonColor)
-    {
+    public JButton addNewButton(String name, Color buttonColor) {
         JButton jButton1 = new javax.swing.JButton();
         jButton1.setText(name);
         jButton1.setFocusable(false);

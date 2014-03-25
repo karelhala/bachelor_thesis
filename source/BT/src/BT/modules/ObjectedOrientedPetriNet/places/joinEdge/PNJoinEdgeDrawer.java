@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package BT.modules.ObjectedOrientedPetriNet.places.joinEdge;
 
 import BT.managers.JoinEdgeDrawer;
@@ -17,44 +16,39 @@ import java.awt.Point;
  *
  * @author Karel
  */
-public class PNJoinEdgeDrawer extends JoinEdgeDrawer{
+public class PNJoinEdgeDrawer extends JoinEdgeDrawer {
 
     public PNJoinEdgeDrawer(LineModel joinEdgeController, Point startPoint, Point endPoint) {
         super(joinEdgeController, startPoint, endPoint);
     }
-    
+
     /**
      * Method for drawing each type of line.
-     * @param g 
+     *
+     * @param g
      */
-    public void drawLine(Graphics2D g)
-    {
-        if (this.joinEdgeController.getSelected())
-        {
+    public void drawLine(Graphics2D g) {
+        if (this.joinEdgeController.getSelected()) {
             g.setColor(this.joinEdgeController.getSelectedColor());
-        }
-        else
-        {
+        } else {
             g.setColor(this.joinEdgeController.getColor());
         }
-        
+
         float dash1[] = {10.0f};
-        BasicStroke dashed =
-        new BasicStroke(2.0f,
+        BasicStroke dashed
+                = new BasicStroke(2.0f,
                         BasicStroke.CAP_BUTT,
                         BasicStroke.JOIN_MITER,
                         10.0f, dash1, 0.0f);
-        if (this.joinEdgeController instanceof PNJoinEdgeController)
-        {
+        if (this.joinEdgeController instanceof PNJoinEdgeController) {
             PNJoinEdgeController pnJoin = (PNJoinEdgeController) this.joinEdgeController;
-            Point arrowStartPoint = (pnJoin.getBreakPoints() != null && !pnJoin.getBreakPoints().isEmpty())?pnJoin.getBreakPoints().getLast():this.startPoint;
-            if (pnJoin.getJoinEdgeType() == BT.BT.OOPNLineType.JOIN)
-            {
-                drawbreakedLine(g,this.startPoint, this.endPoint,pnJoin.getBreakPoints());
+            Point arrowStartPoint = (pnJoin.getBreakPoints() != null && !pnJoin.getBreakPoints().isEmpty()) ? pnJoin.getBreakPoints().getLast() : this.startPoint;
+            if (pnJoin.getJoinEdgeType() == BT.BT.OOPNLineType.JOIN) {
+                drawbreakedLine(g, this.startPoint, this.endPoint, pnJoin.getBreakPoints());
                 drawTriangle(g, this.endPoint, arrowStartPoint, Color.BLACK);
             }
-                    
+
         }
     }
-    
+
 }

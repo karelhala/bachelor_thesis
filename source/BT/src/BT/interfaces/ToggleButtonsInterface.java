@@ -12,6 +12,8 @@ import javax.swing.JToggleButton;
  * @author Karel Hala
  */
 public interface ToggleButtonsInterface {
+
     public JToggleButton getSelectedButton();
+
     public JToggleButton getButtonWithName(String name);
 }
