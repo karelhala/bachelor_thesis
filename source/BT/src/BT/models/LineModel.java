@@ -26,7 +26,6 @@ public class LineModel extends CoordinateModel {
 
     public LineModel() {
         this.tolerance = 8;
-        this.selected = true;
         this.selectedColor = Color.RED;
         this.basicColor = Color.BLACK;
         this.color = Color.BLACK;

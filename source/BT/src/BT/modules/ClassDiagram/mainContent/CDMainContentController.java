@@ -14,6 +14,9 @@ import BT.models.CoordinateModel;
 import BT.models.LineModel;
 import BT.modules.ClassDiagram.places.CDClass;
 import BT.modules.ClassDiagram.places.joinEdge.CDJoinEdgeController;
+import BT.modules.UC.places.UCActor;
+import BT.modules.UC.places.UCJoinEdge.UCJoinEdgeController;
+import BT.modules.UC.places.UCUseCase;
 import java.awt.BorderLayout;
 import java.awt.event.MouseEvent;
 import javax.swing.ButtonGroup;
@@ -128,27 +131,98 @@ public class CDMainContentController extends CDMainContentModel implements Drawi
      */
     @Override
     public void drawingPaneDoubleCliked(CoordinateModel pressedObject) {
-        JTextField nameInput = new JTextField();
-        JRadioButton actor = new JRadioButton("actor");
-        JRadioButton activity = new JRadioButton("activity");
-        ButtonGroup classTypeGroup = new ButtonGroup();
-        classTypeGroup.add(activity);
-        classTypeGroup.add(actor);
-        JPanel dialogPanel = new JPanel(new BorderLayout());
-        dialogPanel.add(nameInput, BorderLayout.PAGE_START);
-        dialogPanel.add(actor, BorderLayout.LINE_START);
-        dialogPanel.add(activity, BorderLayout.CENTER);
-        if (pressedObject != null) {
-            ClassType typeOfClass = ((CDClass) pressedObject).getTypeOfClass();
+        if (pressedObject != null)
+        {
+            JTextField nameInput = new JTextField();
+            JPanel dialogPanel = new JPanel(new BorderLayout());
+            dialogPanel.add(nameInput, BorderLayout.PAGE_START);
             nameInput.setText(pressedObject.getName());
-            ((JRadioButton) ((typeOfClass == ClassType.ACTIVITY) ? activity : actor)).setSelected(true);
+            JRadioButton actor = new JRadioButton("actor");
+            JRadioButton activity = new JRadioButton("activity");
+            JRadioButton none = new JRadioButton("none");
+            ButtonGroup classTypeGroup = new ButtonGroup();
+            classTypeGroup.add(activity);
+            classTypeGroup.add(actor);
+            classTypeGroup.add(none);
+            ClassType typeOfClass = ((CDClass) pressedObject).getTypeOfClass();
+            ((JRadioButton) ((typeOfClass == ClassType.ACTIVITY) ? activity : (typeOfClass == ClassType.NONE)?none:actor)).setSelected(true);
+            if (pressedObject.getInJoins().isEmpty() && pressedObject.getOutJoins().isEmpty())
+            {
+                dialogPanel.add(actor, BorderLayout.LINE_START);
+                dialogPanel.add(activity, BorderLayout.CENTER);
+                dialogPanel.add(none, BorderLayout.LINE_END);
+            }
             int result = JOptionPane.showConfirmDialog(null, dialogPanel,
                     "Please Enter name of class and select type", JOptionPane.OK_CANCEL_OPTION);
             if (result == JOptionPane.OK_OPTION) {
                 pressedObject.setName(nameInput.getText());
-                ((CDClass) pressedObject).setTypeOfClass((actor.isSelected() == true) ? ClassType.ACTOR : ClassType.ACTIVITY);
+                ((CDClass) pressedObject).setTypeOfClass((actor.isSelected() == true) ? ClassType.ACTOR : (activity.isSelected() == true)?ClassType.ACTIVITY:ClassType.NONE);
+                createNewUseCase(pressedObject, nameInput.getText());
             }
         }
+    }
+    
+    /**
+     * 
+     * @param pressedObject
+     * @param useCaseName 
+     */
+    private void createNewUseCase(CoordinateModel pressedObject, String useCaseName)
+    {
+        CDClass selectedClass = (CDClass) pressedObject;
+        if (selectedClass.getTypeOfClass()!=ClassType.NONE && selectedClass.getAssignedObject() != null)
+        {
+            if (selectedClass.getTypeOfClass()==ClassType.ACTOR && !(selectedClass.getAssignedObject() instanceof UCActor))
+            {
+                this.diagramPlaces.getUcPlaces().removePlace(selectedClass.getAssignedObject());
+                createNewActor(selectedClass);
+            }
+            else if (selectedClass.getTypeOfClass()==ClassType.ACTIVITY && !(selectedClass.getAssignedObject() instanceof UCUseCase))
+            {
+                this.diagramPlaces.getUcPlaces().removePlace(selectedClass.getAssignedObject());
+                createNewUseCase(selectedClass);
+            }
+            selectedClass.getAssignedObject().setName(useCaseName);
+        }
+        else if (selectedClass.getTypeOfClass()==ClassType.ACTOR && selectedClass.getAssignedObject() == null)
+        {
+            createNewActor(selectedClass);
+            selectedClass.getAssignedObject().setName(useCaseName);
+        }
+        else if (selectedClass.getTypeOfClass()==ClassType.ACTIVITY && selectedClass.getAssignedObject() == null)
+        {
+            createNewUseCase(selectedClass);
+            selectedClass.getAssignedObject().setName(useCaseName);
+        }
+        else if (selectedClass.getTypeOfClass()==ClassType.NONE && selectedClass.getAssignedObject() != null)
+        {
+            selectedClass.getAssignedObject().setAssignedObject(null);
+            selectedClass.setAssignedObject(null);
+        }
+    }
+    
+    /**
+     * 
+     * @param selectedClass 
+     */
+    private void createNewActor(CDClass selectedClass)
+    {
+        UCActor newActor = new UCActor(selectedClass.getX(), selectedClass.getY());
+        this.diagramPlaces.getUcPlaces().addObject(newActor);
+        selectedClass.setAssignedObject(newActor);
+        selectedClass.getAssignedObject().setAssignedObject(selectedClass);
+    }
+    
+    /**
+     * 
+     * @param selectedClass 
+     */
+    private void createNewUseCase(CDClass selectedClass)
+    {
+        UCUseCase newUsecase = new UCUseCase(selectedClass.getX(), selectedClass.getY());
+        this.diagramPlaces.getUcPlaces().addObject(newUsecase);
+        selectedClass.setAssignedObject(newUsecase);
+        selectedClass.getAssignedObject().setAssignedObject(selectedClass);
     }
 
     /**
@@ -184,6 +258,8 @@ public class CDMainContentController extends CDMainContentModel implements Drawi
                 this.newJoinEdge.setSelected(false);
             }
             this.places.addObject(this.newJoinEdge);
+            UCJoinEdgeController newLine = new UCJoinEdgeController(this.newJoinEdge.getFirstObject(), this.newJoinEdge.getSecondObject());
+            this.diagramPlaces.getUcPlaces().addObject(newLine);
             this.newJoinEdge = null;
         }
         CDDrawingPane cdDrawing = (CDDrawingPane) this.mainContent.getDrawingPane();

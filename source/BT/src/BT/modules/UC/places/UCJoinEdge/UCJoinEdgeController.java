@@ -6,6 +6,7 @@ package BT.modules.UC.places.UCJoinEdge;
 
 import BT.managers.PointsCalculator;
 import BT.BT.UCLineType;
+import BT.models.CoordinateModel;
 import BT.models.LineModel;
 import java.awt.BasicStroke;
 import java.awt.Color;
@@ -21,6 +22,13 @@ public class UCJoinEdgeController extends LineModel {
 
     private UCLineType joinEdgeType;
 
+    public UCJoinEdgeController(CoordinateModel firstObject, CoordinateModel secondObject)
+    {
+        super();
+        this.firstObject = firstObject;
+        this.secondObject = secondObject;
+    }
+    
     public void setJoinEdgeType(UCLineType joinEdgeType) {
         this.joinEdgeType = joinEdgeType;
     }

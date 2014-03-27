@@ -6,8 +6,10 @@
 package BT.modules.ClassDiagram.places.joinEdge;
 
 import BT.BT;
+import BT.BT.ClassType;
 import BT.managers.JoinEdgeDrawer;
 import BT.models.LineModel;
+import BT.modules.ClassDiagram.places.CDClass;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -52,21 +54,26 @@ public class CDJoinEdgeDrawer extends JoinEdgeDrawer {
             } else if (cdJoin.getJoinEdgeType() == BT.CDLineType.AGGREGATION) {
                 drawbreakedLine(g, this.startPoint, this.endPoint, cdJoin.getBreakPoints());
                 drawDiamond(g, this.endPoint, arrowStartPoint, Color.WHITE);
-                drawString(g, textEndPoint, textStartPoint, "<<aggregation>>");
             } else if (cdJoin.getJoinEdgeType() == BT.CDLineType.COMPOSITION) {
                 drawbreakedLine(g, this.startPoint, this.endPoint, cdJoin.getBreakPoints());
                 drawDiamond(g, this.endPoint, arrowStartPoint, Color.BLACK);
-                drawString(g, textEndPoint, textStartPoint, "<<composition>>");
             } else if (cdJoin.getJoinEdgeType() == BT.CDLineType.GENERALIZATION) {
                 drawbreakedLine(g, this.startPoint, this.endPoint, cdJoin.getBreakPoints());
                 drawTriangle(g, this.endPoint, arrowStartPoint, Color.WHITE);
-                drawString(g, textEndPoint, textStartPoint, "<<generalization>>");
             } else if (cdJoin.getJoinEdgeType() == BT.CDLineType.REALIZATION) {
                 drawbreakedLine(g, this.startPoint, this.endPoint, cdJoin.getBreakPoints());
                 drawArrow(g, this.endPoint, arrowStartPoint);
-                drawString(g, textEndPoint, textStartPoint, "<<realization>>");
+            }
+            if (checkClassTypes(cdJoin) && cdJoin.getAssignedObject()==null)
+            {
+                drawString(g, textEndPoint, textStartPoint, "/No Use Case/");
             }
         }
+    }
+    
+    private boolean checkClassTypes(LineModel cdJoin)
+    {
+        return ((CDClass)cdJoin.getFirstObject()).getTypeOfClass() != ClassType.NONE &&  ((CDClass)cdJoin.getSecondObject()).getTypeOfClass() != ClassType.NONE;
     }
 
 }

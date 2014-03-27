@@ -43,6 +43,10 @@ public class PlaceManager extends PlaceModel {
         if (jointEdge.getSecondObject() != null) {
             jointEdge.getSecondObject().removeInJoin(jointEdge);
         }
+        if (jointEdge.getAssignedObject().getAssignedObject() != null)
+        {
+            jointEdge.getAssignedObject().setAssignedObject(null);
+        }
         this.joinEdges.remove(jointEdge);
     }
 

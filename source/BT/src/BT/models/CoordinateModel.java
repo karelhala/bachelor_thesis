@@ -90,7 +90,7 @@ public class CoordinateModel {
      *
      */
     public CoordinateModel() {
-        this.selected = true;
+        this.selected = false;
         float dash1[] = {10.0f};
         this.dashedStroke
                 = new BasicStroke(2.0f,

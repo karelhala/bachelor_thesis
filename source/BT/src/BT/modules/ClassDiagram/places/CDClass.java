@@ -62,7 +62,7 @@ public class CDClass extends CoordinateModel {
         this.howerColor = Color.GREEN;
         this.variables = new ArrayList<>();
         this.methods = new ArrayList<>();
-        this.typeOfClass = ClassType.ACTIVITY;
+        this.typeOfClass = ClassType.NONE;
         this.inJoins = new ArrayList<>();
         this.outJoins = new ArrayList<>();
     }
@@ -104,14 +104,17 @@ public class CDClass extends CoordinateModel {
         );
         g.drawRect(x - this.width / 2, this.y - this.height / 2, this.width, this.height);
         g.setColor(Color.BLACK);
-        String stringType = (typeOfClass == ClassType.ACTIVITY) ? "<Activity>" : "<Actor>";
-        g.drawString(stringType, x - fm.stringWidth(stringType) / 2, y - height / 2 - 5);
+        if (typeOfClass != ClassType.NONE)
+        {
+            String stringType = (typeOfClass == ClassType.ACTIVITY) ? "<Activity>" : "<Actor>";
+            g.drawString(stringType, x - fm.stringWidth(stringType) / 2, y - height / 2 - 5);
+            drawNoObjectString(g, "/no Use Case/");
+        }
         g.drawString(name, x - (int) fm.getStringBounds(name, g).getWidth() / 2, y - this.height / 2 + fm.getHeight() - 2);
         Point variablesPlace = new Point(nameLinePoint.x, nameLinePoint.y - fm.getHeight());
         drawAttributes(g, this.variables, variablesPlace, fm);
         Point methodsPlace = new Point(variablesPlace.x, variablesPlace.y - (fm.getHeight() * this.variables.size()) - 5);
         drawAttributes(g, this.methods, methodsPlace, fm);
-        drawNoObjectString(g, "/no Use Case/");
     }
 
     /**

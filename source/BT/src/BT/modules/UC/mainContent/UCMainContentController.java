@@ -5,11 +5,14 @@
 package BT.modules.UC.mainContent;
 
 import BT.BT;
+import BT.BT.CDLineType;
+import BT.BT.UCLineType;
 import BT.managers.ObjectChecker;
 import BT.interfaces.DrawingClicks;
 import BT.managers.DiagramPlacesManager;
 import BT.models.CoordinateModel;
 import BT.modules.ClassDiagram.places.CDClass;
+import BT.modules.ClassDiagram.places.joinEdge.CDJoinEdgeController;
 import BT.modules.UC.places.UCActor;
 import BT.modules.UC.places.UCJoinEdge.UCJoinEdgeController;
 import BT.modules.UC.places.UCUseCase;
@@ -140,6 +143,7 @@ public class UCMainContentController extends UCMainContentModel implements Drawi
         String name = (String) JOptionPane.showInputDialog("Enter name of the object", pressedObject.getName());
         if (name != null && !"".equals(name)) {
             pressedObject.setName(name);
+            pressedObject.getAssignedObject().setName(name);
         }
         ((UCDrawingPane) this.mainContent.getDrawingPane()).getDrawing().repaint();
     }
@@ -161,12 +165,42 @@ public class UCMainContentController extends UCMainContentModel implements Drawi
                 this.newJoinEdge.setSelected(false);
             }
             this.places.addObject(this.newJoinEdge);
+            createNewClassJoinEdge((UCJoinEdgeController)this.newJoinEdge);
             this.newJoinEdge = null;
         }
         UCDrawingPane UCdrawing = (UCDrawingPane) this.mainContent.getDrawingPane();
         UCdrawing.setNewLine(newJoinEdge);
     }
 
+    /**
+     * 
+     * @param useCaseJoin 
+     */
+    private void createNewClassJoinEdge(UCJoinEdgeController useCaseJoin)
+    {
+        CDJoinEdgeController newLine = new CDJoinEdgeController(useCaseJoin.getFirstObject().getAssignedObject(), useCaseJoin.getSecondObject().getAssignedObject());
+        UCLineType useCaseLineType = useCaseJoin.getJoinEdgeType();
+        if (useCaseLineType == UCLineType.ASSOCIATION)
+        {
+            newLine.setJoinEdgeType(CDLineType.ASSOCIATION);
+        }
+        else if (useCaseLineType == UCLineType.GENERALIZATION)
+        {
+            newLine.setJoinEdgeType(CDLineType.GENERALIZATION);
+        }
+        else if (useCaseLineType == UCLineType.EXTENDS)
+        {
+            System.out.println("extends");
+        }
+        else if (useCaseLineType == UCLineType.INCLUDE)
+        {
+            System.out.println("include");
+        }
+        newLine.setAssignedObject(useCaseJoin);
+        useCaseJoin.setAssignedObject(newLine);
+        this.diagramPlaces.getCdPlaces().addObject(newLine);
+    }
+    
     /**
      *
      * @param clickedObject

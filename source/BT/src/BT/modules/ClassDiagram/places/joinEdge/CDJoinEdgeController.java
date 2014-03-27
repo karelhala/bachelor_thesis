@@ -6,6 +6,7 @@ package BT.modules.ClassDiagram.places.joinEdge;
 
 import BT.BT.CDLineType;
 import BT.managers.PointsCalculator;
+import BT.models.CoordinateModel;
 import BT.models.LineModel;
 import java.awt.BasicStroke;
 import java.awt.Graphics2D;
@@ -18,6 +19,13 @@ import java.awt.Point;
 public class CDJoinEdgeController extends LineModel {
 
     private CDLineType joinEdgeType;
+    
+    public CDJoinEdgeController(CoordinateModel firstObject, CoordinateModel secondObject)
+    {
+        super();
+        this.firstObject = firstObject;
+        this.secondObject = secondObject;
+    }
 
     public void setJoinEdgeType(CDLineType joinEdgeType) {
         this.joinEdgeType = joinEdgeType;
