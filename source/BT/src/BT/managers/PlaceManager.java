@@ -43,7 +43,7 @@ public class PlaceManager extends PlaceModel {
         if (jointEdge.getSecondObject() != null) {
             jointEdge.getSecondObject().removeInJoin(jointEdge);
         }
-        if (jointEdge.getAssignedObject().getAssignedObject() != null)
+        if (jointEdge.getAssignedObject() != null)
         {
             jointEdge.getAssignedObject().setAssignedObject(null);
         }
@@ -64,6 +64,10 @@ public class PlaceManager extends PlaceModel {
                 if (joinEdge.getSecondObject() != null) {
                     joinEdge.getSecondObject().removeInJoin(joinEdge);
                 }
+                if (joinEdge.getAssignedObject() != null)
+                {
+                    joinEdge.getAssignedObject().setAssignedObject(null);
+                }
                 it.remove();
             }
         }
@@ -77,9 +81,14 @@ public class PlaceManager extends PlaceModel {
         for (Iterator<LineModel> it = joinEdges.iterator(); it.hasNext();) {
             CoordinateModel coorModel = it.next();
             if (coorModel.getSelected()) {
-                ((LineModel) coorModel).getFirstObject().removeOutJoin(((LineModel) coorModel));
-                if (((LineModel) coorModel).getSecondObject() != null) {
-                    ((LineModel) coorModel).getSecondObject().removeInJoin(((LineModel) coorModel));
+                LineModel selectedLine = (LineModel) coorModel;
+                selectedLine.getFirstObject().removeOutJoin(selectedLine);
+                if (selectedLine.getSecondObject() != null) {
+                    selectedLine.getSecondObject().removeInJoin(selectedLine);
+                }
+                if (selectedLine.getAssignedObject() != null)
+                {
+                    selectedLine.getAssignedObject().setAssignedObject(null);
                 }
                 it.remove();
             }

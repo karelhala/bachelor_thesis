@@ -4,7 +4,10 @@
  */
 package BT.modules.ClassDiagram.mainContent;
 
+import BT.BT;
+import BT.BT.CDLineType;
 import BT.BT.ClassType;
+import BT.BT.UCLineType;
 import BT.interfaces.DrawingClicks;
 import BT.managers.CD.Attribute;
 import BT.managers.DiagramPlacesManager;
@@ -75,8 +78,8 @@ public class CDMainContentController extends CDMainContentModel implements Drawi
         if (selectedItemButton != null && "CLASS".equals(selectedItemButton.getName())) {
             this.places.setAllObjectDiselected();
             CDClass newClass = new CDClass(evt.getX(), evt.getY());
-            newClass.addNewVariable(new Attribute(BT.BT.AttributeType.PUBLIC, "variable1", "String"));
-            newClass.addNewVariable(new Attribute(BT.BT.AttributeType.PROTECTED, "variable1", "String"));
+            newClass.addNewVariable(new Attribute(BT.AttributeType.PUBLIC, "variable1", "String"));
+            newClass.addNewVariable(new Attribute(BT.AttributeType.PROTECTED, "variable1", "String"));
             newClass.addNewMethod(new Attribute("MethodOne()", "void"));
             this.places.addObject(newClass);
         } else {
@@ -258,12 +261,46 @@ public class CDMainContentController extends CDMainContentModel implements Drawi
                 this.newJoinEdge.setSelected(false);
             }
             this.places.addObject(this.newJoinEdge);
-            UCJoinEdgeController newLine = new UCJoinEdgeController(this.newJoinEdge.getFirstObject(), this.newJoinEdge.getSecondObject());
-            this.diagramPlaces.getUcPlaces().addObject(newLine);
+            if (((CDClass)this.newJoinEdge.getSecondObject()).getTypeOfClass() != ClassType.NONE && ((CDClass)this.newJoinEdge.getFirstObject()).getTypeOfClass() != ClassType.NONE)
+            {
+                createNewUseCaseJoin((CDJoinEdgeController) this.newJoinEdge);
+            }            
             this.newJoinEdge = null;
         }
         CDDrawingPane cdDrawing = (CDDrawingPane) this.mainContent.getDrawingPane();
         cdDrawing.setNewLine(newJoinEdge);
+    }
+    
+    /**
+     * 
+     * @param cdJoin 
+     */
+    private void createNewUseCaseJoin(CDJoinEdgeController cdJoin)
+    {
+        UCJoinEdgeController newLine = new UCJoinEdgeController(cdJoin.getFirstObject().getAssignedObject(), cdJoin.getSecondObject().getAssignedObject());
+        if (cdJoin.getJoinEdgeType() == CDLineType.ASSOCIATION)
+        {
+            newLine.setJoinEdgeType(UCLineType.ASSOCIATION);
+        }
+        else if (cdJoin.getJoinEdgeType() == CDLineType.GENERALIZATION)
+        {
+            newLine.setJoinEdgeType(UCLineType.GENERALIZATION);
+        }
+        else if (cdJoin.getJoinEdgeType() == CDLineType.AGGREGATION)
+        {
+            System.out.println("aggregation");
+        }
+        else if (cdJoin.getJoinEdgeType() == CDLineType.COMPOSITION)
+        {
+            System.out.println("composition");
+        }
+        else if (cdJoin.getJoinEdgeType() == CDLineType.REALIZATION)
+        {
+            System.out.println("realization");
+        }
+        newLine.setAssignedObject(cdJoin);
+        cdJoin.setAssignedObject(newLine);
+        this.diagramPlaces.getUcPlaces().addObject(newLine);
     }
 
     /**

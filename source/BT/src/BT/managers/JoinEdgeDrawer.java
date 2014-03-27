@@ -158,7 +158,6 @@ public class JoinEdgeDrawer {
      * @param breakPoints
      */
     protected void drawbreakedLine(Graphics2D g, Point startPoint, Point endPoint, MyArrayList<Point> breakPoints) {
-        g.setStroke(new BasicStroke(2));
         Color lineColor = g.getColor();
         for (Point point : breakPoints) {
             g.drawLine(startPoint.x, startPoint.y, point.x, point.y);

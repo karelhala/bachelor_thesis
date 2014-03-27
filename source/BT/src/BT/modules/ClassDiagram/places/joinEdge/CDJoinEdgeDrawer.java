@@ -49,18 +49,23 @@ public class CDJoinEdgeDrawer extends JoinEdgeDrawer {
             Point textStartPoint = (cdJoin.getBreakPoints() != null && !cdJoin.getBreakPoints().isEmpty()) ? cdJoin.getBreakPoints().getLeftMiddle() : this.startPoint;
             Point textEndPoint = (cdJoin.getBreakPoints() != null && !cdJoin.getBreakPoints().isEmpty() && cdJoin.getBreakPoints().size() > 1) ? cdJoin.getBreakPoints().getRightMiddle() : this.endPoint;
             if (cdJoin.getJoinEdgeType() == BT.CDLineType.ASSOCIATION) {
+                g.setStroke(new BasicStroke(2));
                 drawbreakedLine(g, this.startPoint, this.endPoint, cdJoin.getBreakPoints());
                 drawArrow(g, endPoint, arrowStartPoint);
             } else if (cdJoin.getJoinEdgeType() == BT.CDLineType.AGGREGATION) {
+                g.setStroke(new BasicStroke(2));
                 drawbreakedLine(g, this.startPoint, this.endPoint, cdJoin.getBreakPoints());
                 drawDiamond(g, this.endPoint, arrowStartPoint, Color.WHITE);
             } else if (cdJoin.getJoinEdgeType() == BT.CDLineType.COMPOSITION) {
+                g.setStroke(new BasicStroke(2));
                 drawbreakedLine(g, this.startPoint, this.endPoint, cdJoin.getBreakPoints());
                 drawDiamond(g, this.endPoint, arrowStartPoint, Color.BLACK);
             } else if (cdJoin.getJoinEdgeType() == BT.CDLineType.GENERALIZATION) {
+                g.setStroke(new BasicStroke(2));
                 drawbreakedLine(g, this.startPoint, this.endPoint, cdJoin.getBreakPoints());
                 drawTriangle(g, this.endPoint, arrowStartPoint, Color.WHITE);
             } else if (cdJoin.getJoinEdgeType() == BT.CDLineType.REALIZATION) {
+                g.setStroke(dashed);
                 drawbreakedLine(g, this.startPoint, this.endPoint, cdJoin.getBreakPoints());
                 drawArrow(g, this.endPoint, arrowStartPoint);
             }
@@ -73,7 +78,11 @@ public class CDJoinEdgeDrawer extends JoinEdgeDrawer {
     
     private boolean checkClassTypes(LineModel cdJoin)
     {
-        return ((CDClass)cdJoin.getFirstObject()).getTypeOfClass() != ClassType.NONE &&  ((CDClass)cdJoin.getSecondObject()).getTypeOfClass() != ClassType.NONE;
+        if (cdJoin.getFirstObject() != null && cdJoin.getSecondObject() != null)
+        {
+            return ((CDClass)cdJoin.getFirstObject()).getTypeOfClass() != ClassType.NONE &&  ((CDClass)cdJoin.getSecondObject()).getTypeOfClass() != ClassType.NONE;
+        }
+        return false;
     }
 
 }

@@ -22,19 +22,23 @@ public class UCUseCase extends CoordinateModel {
 
     private int gap;
     private UUID id;
+    private Color outLineColor;
 
     /**
      * TODO: make model
+     * @param x
+     * @param y
      */
     public UCUseCase(int x, int y) {
         super();
         this.x = x;
         this.y = y;
-        this.selectedColor = Color.GRAY;
+        this.selectedColor = Color.YELLOW;
         this.width = 60;
         this.height = 30;
         this.basicColor = Color.ORANGE;
         this.color = this.basicColor;
+        this.outLineColor = Color.BLACK;
         this.name = "Default";
         this.textSize = 15;
         this.gap = 2;
@@ -63,7 +67,7 @@ public class UCUseCase extends CoordinateModel {
         g.setStroke((this.inJoins.isEmpty() && this.outJoins.isEmpty()) ? this.dashedStroke : new BasicStroke(2));
         g.setColor(useCaseColor);
         g.fillOval(this.x - width / 2, y - height / 2, this.width, this.height);
-        g.setColor(Color.red);
+        g.setColor(this.outLineColor);
         g.drawOval(this.x - width / 2, y - height / 2, this.width, this.height);
         g.setColor(Color.black);
         g.drawString(this.name, this.x - width / 2 + this.textSize, y + this.textSize / 2);

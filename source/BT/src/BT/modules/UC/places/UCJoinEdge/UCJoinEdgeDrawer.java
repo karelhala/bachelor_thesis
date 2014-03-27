@@ -52,19 +52,24 @@ public class UCJoinEdgeDrawer extends JoinEdgeDrawer {
             Point textStartPoint = (UCjoin.getBreakPoints() != null && !UCjoin.getBreakPoints().isEmpty()) ? UCjoin.getBreakPoints().getLeftMiddle() : this.startPoint;
             Point textEndPoint = (UCjoin.getBreakPoints() != null && !UCjoin.getBreakPoints().isEmpty() && UCjoin.getBreakPoints().size() > 1) ? UCjoin.getBreakPoints().getRightMiddle() : this.endPoint;
             if (UCjoin.getJoinEdgeType() == BT.UCLineType.ASSOCIATION) {
+                g.setStroke(new BasicStroke(2));
                 drawbreakedLine(g, this.startPoint, this.endPoint, UCjoin.getBreakPoints());
             } else if (UCjoin.getJoinEdgeType() == BT.UCLineType.INCLUDE) {
+                g.setStroke(dashed);
                 drawbreakedLine(g, this.startPoint, this.endPoint, UCjoin.getBreakPoints());
+                g.setStroke(new BasicStroke(2));
                 drawArrow(g, this.endPoint, arrowStartPoint);
                 drawString(g, textEndPoint, textStartPoint, "<<include>>");
             } else if (UCjoin.getJoinEdgeType() == BT.UCLineType.EXTENDS) {
                 g.setStroke(dashed);
                 drawbreakedLine(g, this.startPoint, this.endPoint, UCjoin.getBreakPoints());
-                drawArrow(g, this.endPoint, this.startPoint);
-                drawString(g, this.endPoint, this.startPoint, "<<extend>>");
+                drawArrow(g, this.endPoint, arrowStartPoint);
+                g.setStroke(new BasicStroke(2));
+                drawString(g, textEndPoint, textStartPoint, "<<extend>>");
             } else if (UCjoin.getJoinEdgeType() == BT.UCLineType.GENERALIZATION) {
+                g.setStroke(new BasicStroke(2));
                 drawbreakedLine(g, this.startPoint, this.endPoint, UCjoin.getBreakPoints());
-                drawTriangle(g, this.endPoint, this.startPoint, Color.WHITE);
+                drawTriangle(g, this.endPoint, arrowStartPoint, Color.WHITE);
             }
         }
     }
