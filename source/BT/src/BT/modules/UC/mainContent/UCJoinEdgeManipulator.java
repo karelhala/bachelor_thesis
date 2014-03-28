@@ -9,7 +9,6 @@ import BT.models.CoordinateModel;
 import BT.modules.UC.places.UCActor;
 import BT.modules.UC.places.UCJoinEdge.UCJoinEdgeController;
 import BT.modules.UC.places.UCUseCase;
-import java.util.Collections;
 import javax.swing.JToggleButton;
 
 /**
@@ -35,10 +34,12 @@ public class UCJoinEdgeManipulator {
 
             case "INCLUDE":
                 joinEdge.setJoinEdgeType(BT.UCLineType.INCLUDE);
+                checkObjects(joinEdge);
                 break;
 
             case "EXTENDS":
                 joinEdge.setJoinEdgeType(BT.UCLineType.EXTENDS);
+                checkObjects(joinEdge);
                 break;
             case "GENERALIZATION":
                 joinEdge.setJoinEdgeType(BT.UCLineType.GENERALIZATION);
@@ -85,6 +86,22 @@ public class UCJoinEdgeManipulator {
             if (joinEdge.getSecondObject() != null && joinEdge.getFirstObject().getClass().equals(joinEdge.getSecondObject().getClass())) {
                 joinEdge.setSecondObject(null);
             }
+        }
+    }
+    
+    /**
+     * 
+     * @param joinEdge 
+     */
+    public static void checkObjects(UCJoinEdgeController joinEdge)
+    {
+        if (joinEdge.getFirstObject() != null && joinEdge.getFirstObject() instanceof UCActor)
+        {
+            joinEdge.setFirstObject(null);
+        }
+        if (joinEdge.getSecondObject()!= null && joinEdge.getSecondObject() instanceof UCActor)
+        {
+            joinEdge.setSecondObject(null);
         }
     }
 }

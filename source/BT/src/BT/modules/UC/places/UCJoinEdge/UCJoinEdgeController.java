@@ -54,16 +54,19 @@ public class UCJoinEdgeController extends LineModel {
      * @param g
      */
     public void drawJoinEdge(Graphics2D g) {
-        PointsCalculator pointsCaluclator = new PointsCalculator(this.firstObject, this.secondObject, getStartPoint(), getEndPoint(), this.breakPoints);
+        if (this.firstObject != null)
+        {
+            PointsCalculator pointsCaluclator = new PointsCalculator(this.firstObject, this.secondObject, getStartPoint(), getEndPoint(), this.breakPoints);
 
-        Point startPoint = pointsCaluclator.getStartPoint();
-        Point endPoint = pointsCaluclator.getEndPoint();
-        UCJoinEdgeDrawer lineDrawer = new UCJoinEdgeDrawer(this, startPoint, endPoint);
-        if (startPoint != null && endPoint != null) {
-            g.setStroke(new BasicStroke(2));
-            lineDrawer.drawLine(g);
-            setStartCoordinates(startPoint);
-            setEndPoint(endPoint);
+            Point startPoint = pointsCaluclator.getStartPoint();
+            Point endPoint = pointsCaluclator.getEndPoint();
+            UCJoinEdgeDrawer lineDrawer = new UCJoinEdgeDrawer(this, startPoint, endPoint);
+            if (startPoint != null && endPoint != null) {
+                g.setStroke(new BasicStroke(2));
+                lineDrawer.drawLine(g);
+                setStartCoordinates(startPoint);
+                setEndPoint(endPoint);
+            }
         }
     }
 

@@ -5,7 +5,6 @@
 package BT.modules.UC;
 
 import BT.BT.UCLineType;
-import java.awt.Component;
 import java.awt.GridLayout;
 import javax.swing.JPanel;
 import javax.swing.JToggleButton;

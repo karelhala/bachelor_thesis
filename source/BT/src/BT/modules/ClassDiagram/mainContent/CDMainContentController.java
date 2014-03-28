@@ -12,7 +12,6 @@ import BT.interfaces.DrawingClicks;
 import BT.managers.CD.Attribute;
 import BT.managers.DiagramPlacesManager;
 import BT.managers.ObjectChecker;
-import BT.managers.PlaceManager;
 import BT.models.CoordinateModel;
 import BT.models.LineModel;
 import BT.modules.ClassDiagram.places.CDClass;

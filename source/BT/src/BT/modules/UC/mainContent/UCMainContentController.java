@@ -126,6 +126,21 @@ public class UCMainContentController extends UCMainContentModel implements Drawi
         places.setSelectedLinesOnObject(clickedObject);
         if (clickedObject != null) {
             clickedObject.setSelected(true);
+            if (clickedObject instanceof UCActor)
+            {
+                this.LeftBottomContent.getButtonWithName(UCLineType.EXTENDS.name()).setEnabled(false);
+                this.LeftBottomContent.getButtonWithName(UCLineType.INCLUDE.name()).setEnabled(false);
+            }
+            else
+            {
+                this.LeftBottomContent.getButtonWithName(UCLineType.EXTENDS.name()).setEnabled(true);
+                this.LeftBottomContent.getButtonWithName(UCLineType.INCLUDE.name()).setEnabled(true);
+            }
+        }
+        else
+        {
+            this.LeftBottomContent.getButtonWithName(UCLineType.EXTENDS.name()).setEnabled(true);
+            this.LeftBottomContent.getButtonWithName(UCLineType.INCLUDE.name()).setEnabled(true);
         }
 
         if (this.LeftBottomContent.getSelectedButton() != null || this.newJoinEdge != null) {
@@ -156,20 +171,20 @@ public class UCMainContentController extends UCMainContentModel implements Drawi
         this.newJoinEdge = UCJoinEdgeManipulator.createJoinEdge((UCJoinEdgeController) this.newJoinEdge, clickedObject);
         if (this.LeftBottomContent.getSelectedButton() != null) {
             UCJoinEdgeManipulator.changeLineTypeByButton(this.LeftBottomContent.getSelectedButton(), (UCJoinEdgeController) this.newJoinEdge);
-        }
 
-        if (this.newJoinEdge.getFirstObject() != null && this.newJoinEdge.getSecondObject() != null) {
-            if (this.newJoinEdge.getFirstObject().equals(clickedObject)) {
-                this.newJoinEdge.setSelected(true);
-            } else {
-                this.newJoinEdge.setSelected(false);
+            if (this.newJoinEdge.getFirstObject() != null && this.newJoinEdge.getSecondObject() != null) {
+                if (this.newJoinEdge.getFirstObject().equals(clickedObject)) {
+                    this.newJoinEdge.setSelected(true);
+                } else {
+                    this.newJoinEdge.setSelected(false);
+                }
+                this.places.addObject(this.newJoinEdge);
+                if (this.newJoinEdge.getFirstObject().getAssignedObject() != null && this.newJoinEdge.getSecondObject().getAssignedObject() != null)
+                {
+                    createNewClassJoinEdge((UCJoinEdgeController)this.newJoinEdge);
+                }
+                this.newJoinEdge = null;
             }
-            this.places.addObject(this.newJoinEdge);
-            if (this.newJoinEdge.getFirstObject().getAssignedObject() != null && this.newJoinEdge.getSecondObject().getAssignedObject() != null)
-            {
-                createNewClassJoinEdge((UCJoinEdgeController)this.newJoinEdge);
-            }
-            this.newJoinEdge = null;
         }
         UCDrawingPane UCdrawing = (UCDrawingPane) this.mainContent.getDrawingPane();
         UCdrawing.setNewLine(newJoinEdge);
@@ -213,7 +228,7 @@ public class UCMainContentController extends UCMainContentModel implements Drawi
             this.newJoinEdge = null;
             this.mainContent.getDrawingPane().setNewLine(null);
         } else {
-            if (this.newJoinEdge != null && this.newJoinEdge.getFirstObject().equals(clickedObject)) {
+            if (this.newJoinEdge != null && this.newJoinEdge.getFirstObject() != null && this.newJoinEdge.getFirstObject().equals(clickedObject)) {
                 this.newJoinEdge = null;
             }
             drawJoinEdge(clickedObject);
