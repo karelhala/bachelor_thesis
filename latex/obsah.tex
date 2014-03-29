@@ -206,18 +206,82 @@ hran. Tato vlastnost velice napomù¾e pro zpøehlednìní výsledného diagramu.
 Editace hran byla ve vìt¹inì editorù nepøíli¹ kvalitní. Zmìna typu hrany a zmìna 
 objektù pro danou hranu je zapotøebí pro jednodu¹¹í práci s editorem.
 
+Dále chybìla jakákoliv provázanost mezi jednotlivými èástmi aplikace, vytvoøení nìkolika
+pøípadù u¾ití nevedlo k pøedvytvoøení tøíd a naopak. Pokud ov¹em chybìl nìkterý
+objekt v pøipadu u¾ití a nebo tøída v diagramu tøíd nebylo toto opìt viditelné.
+Tyto vlastnosti byli implementovány a znázornìny, tak¾e u¾ivatel je schopný
+upravit jednotlivé èásti a velice jednodu¹e spozorovat chybìjící, nebo neprovázané
+objekty.
+
 \chapter{Grafy pro popis èástí}
-Pro grafické znázornìní jednotlivých èástí byly vybrány z UML grafù pøípad u¾ití 
-\ref{pripadUziti} pro popis jednotlivých akcí v systému, diagram tøíd 
+Pro grafické znázornìní jednotlivých èástí byly vybrány z UML grafù Diagram pøípadù u¾ití 
+\ref{pripadUziti} pro popis jednotlivých akcí v systému, Diagram tøíd 
 \ref{diagramTrid} pro grafické znázornìní tøíd a operace mezi nimi. A jako 
 poslední èást, která nespadá pod UML bylo vybráno objektovì orientovaných 
 petriho sítí \ref{oopn} pro popis chování jednotlivých tøíd.
 
-\section{Pøípad ¾ití} \label{pripadUziti}
-\cite{Pripad_uziti}
-\subsection{Technický popis pøípadu u¾ití}
-\subsection{Pøidané prvky}
+\section{Pøípad u¾ití} \label{pripadUziti}
+Pøípady u¾ití jsou èasto modelovány a pou¾ívány ke komunikaci mezi zákazníkem,
+který nemá pøili¹ mnoho zku¹eností s vývojem systému, ale rozumí danému problému
+a svému oboru. A programátorem, èlovìkem který naopak má zku¹enosti s vývojem 
+aplikace, ale nechápe do hloubky zákazníkùv problém a jeho obor.
 
+Základními prvky Diagramu pøípadù u¾ití jsou pøípady u¾ití a aktéøi. V po¾adavcích na
+systém rozpoznáváme takzvané \uv{Stakeholdery} jsou to osoby, nebo vìci, které mají 
+zájem na provedení systému. Pøípady u¾ití popisují jak se má systém zachovat na 
+reakce stakeholderù, akterù, a dodat urèité výsledky. Aktéøi na druhou stranu, jsou 
+pøímí u¾ivatelé nebo veci s urèitým chováním. Hlavní aktér je èasto stakeholderem 
+daného systému a hlavní spou¹tìè tohoto systému. Obèas je zapotøebí aktér, který není 
+pøímo v systému, tomuto se øíká \uv{Podpùrný aktér}. Aktér není pøímo chápán jako jedinec, 
+nýbr¾ jako role v systému. \cite{Pripad_uziti}
+
+\subsection{Diagram pøipadù u¾ití}
+Tyto diagramy se pou¾ívají pro grafický popis pøípadù u¾ití a zahrnuje nìkolik pravidel.
+Aktéøi jsou znázoròováni ve tvaru postav a pøípady u¾ití jako elipsy obsahující 
+název provádìného úkonu. Spoje mezi pøípady u¾ití a aktéry jsou znázornìny úseèkou vedoucí
+od aktéra k pøípadu u¾ití.
+
+Mezi pøípady u¾ití mohou být vedeny dále spoje pro jejich roz¹íøení a upravení. Jsou to
+\uv{include}, \uv{extends} a \uv{generalizace}. Poslední jmenovaný spoj je mo¾ný také
+vést mezi aktéry.
+
+Include znamená to, ¾e pro správný chod daného nadøazeného pøípadu u¾ití je zapotøebí
+pou¾ití ni¾¹ího pøípadu u¾ití.
+Pro vykonání vy¹¹ího pøípadu u¾ití je zapotøebí nejdøíve vykonat ni¾¹í pøípad u¾ití.
+Pokud pøi vykonávání nìkolika pøípadù u¾ití je vykonávána stejná funkcionalita, je vhodné
+tuto funkcionalitu oddìlit z daného pøípadu u¾ití a spojit se v¹emi pøípady u¾ití 
+spojem include. Spoj include je znázornìn pøeru¹ovanou ¹ipkou doprovázené textem
+\uv{\<\<include\>\>}. Spoj je veden z nadøazeného pøípadu u¾ití k ni¾¹ímu pøípadu.
+
+Extends slou¾í pro roz¹íøení urèitých pøípadù u¾ití. Toto znamená, ¾e je roz¹íøením
+hlavního pøípadu u¾ití a toto roz¹íøení bylo vyjmuto z pùvodního pøípadu.
+V pøekladu tento spoj znamená, ¾e jeden pøípad u¾ití je roz¹íøen dal¹ím pøípadem
+u¾ití. Spoj je znázoròován pøeru¹ovanou ¹ipkou vedenou do roz¹iøovaného 
+\(hlavního\) pøípadu u¾ití.
+
+Generalizaci lze pou¾ít jak v pøípadech u¾ití, tak mezi aktéry. Slou¾í ke znázornìní
+rodièù a potomkù. Pøi pou¾ití tohoto spoje znamená, ¾e potomek pøebírá ve¹kerou funckinalitu
+svého rodièe a mù¾e, tuto funkcionalitu poupravit, nebo pøidat vlastní. Tento spoj je
+znázornìn spojem ukonèeným prázdnou ¹ipkou a je veden od potomka k rodièi.
+
+Pro lep¹í znázornìní a oddìlení pøípadù u¾ití je vhodné pou¾ít organizaci, ta se
+znázoròuje rámeèkem okolo nìkolika pøípadù u¾ití.
+
+\subsection{Pu¾itì vlastnosti}
+Ve výsledné aplikaci byl pou¾it Diagram pøipadù u¾ití pro jednoduché znázornìní
+a zanesení zákazníkových po¾adavkù. Tento diagram byl roz¹íøen o nìkolik u¾iteèných
+vlastností.
+
+Pokud Diagram pøípadu u¾ití nemá odpovídající tøídu v Diagramu tøíd je toto znázornìno
+pod pøípadem u¾ití, nebo po akterém a to formou textu \uv{\/No Class\/}. Pokud daný spoj
+mezi objekty nemá odpovídající spoj mezi tøídamy je toto znázornìno odli¹nou barvou 
+od normálních spojù. Tyto kontroly je ov¹em mo¾né vypnout.
+
+Dále pokud objekt není nijak spojen s ostatními objekty je znázornìn pøeru¹ovaným okrajem.
+
+Vybraný objekt je znázornìn odli¹nou barvou a jeho okolí je ohranièeno rámeèkem.
+Pokud je ojekt spojen s nìjakými jinými objekty tyto spoje jsou znázornìny po vybrání
+tohoto objektu. Zvýraznìné spoje jsou pouze ty spoje, které vedou z vybraného objektu.
 \section{Diagram tøíd} \label{diagramTrid}
 \cite{Diagram_trid}
 \subsection{Technický popis diagramu tøíd}
