@@ -6,7 +6,6 @@
 package BT.modules.ObjectedOrientedPetriNet;
 
 import BT.managers.DiagramPlacesManager;
-import BT.managers.PlaceManager;
 import BT.modules.ObjectedOrientedPetriNet.mainContent.PNMainContentController;
 import GUI.MainContentModel;
 
@@ -17,6 +16,7 @@ import GUI.MainContentModel;
 public class PNContentController {
 
     private MainContentModel pnContent;
+    private PNMainContentController pnMain;
 
     /**
      *
@@ -29,12 +29,16 @@ public class PNContentController {
         return pnContent;
     }
 
+    public PNMainContentController getPnMain() {
+        return pnMain;
+    }
+
     /**
      *
      * @param diagramPlaces
      */
     public void createComponents(DiagramPlacesManager diagramPlaces) {
-        PNMainContentController pnMain = new PNMainContentController(diagramPlaces);
+        this.pnMain = new PNMainContentController(diagramPlaces);
 
         PNLeftTopContent cdLeftTop = new PNLeftTopContent(pnMain);
         cdLeftTop.setListeners();
@@ -42,10 +46,10 @@ public class PNContentController {
         PNLeftBottomContent pnLeftBottom = new PNLeftBottomContent(pnMain);
         pnLeftBottom.setListeners();
 
-        this.pnContent.setCenterPane(pnMain.getMainContent().getMainContentPane());
+        this.pnContent.setCenterPane(this.pnMain.getMainContent().getMainContentPane());
         this.pnContent.setLeftTopPane(cdLeftTop.getMainContentPane());
         this.pnContent.setLeftBottomPane(pnLeftBottom.getMainContentPane());
-        pnMain.setLeftBottomContent(pnLeftBottom);
-        pnMain.setLeftTopContent(cdLeftTop);
+        this.pnMain.setLeftBottomContent(pnLeftBottom);
+        this.pnMain.setLeftTopContent(cdLeftTop);
     }
 }

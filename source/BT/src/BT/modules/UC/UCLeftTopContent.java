@@ -28,7 +28,7 @@ public final class UCLeftTopContent extends ButtonPaneModel {
     /**
      * creates gridlayour and calls to create left Top pane
      *
-     * @param UCMainContent UCMain it will react to button changes
+     * @param UCMain it will react to button changes
      */
     public UCLeftTopContent(UCMainContentController UCMain) {
         super(UCMain);

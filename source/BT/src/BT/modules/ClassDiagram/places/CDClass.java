@@ -6,6 +6,7 @@ package BT.modules.ClassDiagram.places;
 
 import BT.BT.ClassType;
 import BT.managers.CD.Attribute;
+import BT.managers.PlaceManager;
 import BT.models.CoordinateModel;
 import java.awt.BasicStroke;
 import java.awt.Color;
@@ -39,6 +40,11 @@ public class CDClass extends CoordinateModel {
      *
      */
     private ClassType typeOfClass;
+    
+    /**
+     * 
+     */
+    private PlaceManager pnNetwork;
 
     public CDClass() {
         super();
@@ -65,6 +71,7 @@ public class CDClass extends CoordinateModel {
         this.typeOfClass = ClassType.NONE;
         this.inJoins = new ArrayList<>();
         this.outJoins = new ArrayList<>();
+        this.pnNetwork = new PlaceManager();
     }
 
     public ClassType getTypeOfClass() {
@@ -73,6 +80,11 @@ public class CDClass extends CoordinateModel {
 
     public void setTypeOfClass(ClassType typeOfClass) {
         this.typeOfClass = typeOfClass;
+    }
+    
+    public PlaceManager getPnNetwork()
+    {
+        return this.pnNetwork;
     }
 
     /**

@@ -32,7 +32,7 @@ public class DiagramPlacesManager {
         this.cdPlaces = new PlaceManager();
         this.pnPlaces = new PlaceManager();
     }
-    
+
     public PlaceManager getCdPlaces() {
         return cdPlaces;
     }

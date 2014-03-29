@@ -7,8 +7,11 @@ package BT.modules.mainInterface;
 import BT.managers.DiagramPlacesManager;
 import BT.managers.PlaceManager;
 import BT.modules.ClassDiagram.CDContentController;
+import BT.modules.ClassDiagram.places.CDClass;
 import BT.modules.ObjectedOrientedPetriNet.PNContentController;
+import BT.modules.ObjectedOrientedPetriNet.mainContent.PNDrawingPane;
 import BT.modules.UC.UCContentController;
+import GUI.CloseTabbedPane;
 import GUI.MainContentModel;
 import GUI.ToolBarContentModel;
 import java.awt.event.ActionEvent;
@@ -21,6 +24,8 @@ import javax.swing.InputMap;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
 import javax.swing.KeyStroke;
 
 /**
@@ -81,18 +86,37 @@ public class ToolBarContentControler {
      *
      * @param myLayout
      */
-    private void addNewTab(WindowLayoutControler myLayout) {
-        DiagramPlacesManager diagramPlaces = new DiagramPlacesManager();
-        
+    private void addNewTab(final WindowLayoutControler myLayout) {
+        final DiagramPlacesManager diagramPlaces = new DiagramPlacesManager();
         UCContentController UCController = new UCContentController();
         UCController.createComponents(diagramPlaces);
 
         CDContentController CDcontroller = new CDContentController();
         CDcontroller.createComponents(diagramPlaces);
 
-        PNContentController OOPNContentModel = new PNContentController();
+        final PNContentController OOPNContentModel = new PNContentController();
         OOPNContentModel.createComponents(diagramPlaces);
         myLayout.addNewTab(UCController.getUCContent(), CDcontroller.getCdContent(), OOPNContentModel.getPnContent());
+        ((JTabbedPane)((CloseTabbedPane)myLayout.getFileTab()).getSelectedComponent()).addMouseListener(new MouseAdapter() {
+                @Override
+                public void mousePressed(MouseEvent me) {
+                    if (((JTabbedPane)((CloseTabbedPane)myLayout.getFileTab()).getSelectedComponent()).getSelectedIndex() == 2)
+                    {
+                        if (diagramPlaces.getCdPlaces().getSelectedObject() != null && diagramPlaces.getCdPlaces().getSelectedObject() instanceof CDClass)
+                        {
+                            OOPNContentModel.getPnMain().setPlaces(((CDClass)diagramPlaces.getCdPlaces().getSelectedObject()).getPnNetwork());
+                            OOPNContentModel.getPnMain().getMainContent().getDrawingPane().setPlaces(((CDClass)diagramPlaces.getCdPlaces().getSelectedObject()).getPnNetwork());
+                            ((PNDrawingPane)OOPNContentModel.getPnMain().getMainContent().getDrawingPane()).getDrawing().repaint();
+                        }
+                        else
+                        {
+                            OOPNContentModel.getPnMain().getMainContent().getDrawingPane().setPlaces(diagramPlaces.getPnPlaces());
+                            OOPNContentModel.getPnMain().setPlaces(diagramPlaces.getPnPlaces());
+                            ((PNDrawingPane)OOPNContentModel.getPnMain().getMainContent().getDrawingPane()).getDrawing().repaint();
+                        }
+                    }
+                }
+            });
     }
 
     /**

@@ -133,4 +133,15 @@ public class PlaceManager extends PlaceModel {
             }
         }
     }
+    
+    public CoordinateModel getSelectedObject()
+    {
+        for (CoordinateModel oneObject : this.objects) {
+            if (oneObject.getSelected())
+            {
+                return oneObject;
+            }
+        }
+        return null;
+    }
 }
