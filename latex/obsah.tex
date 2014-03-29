@@ -251,23 +251,23 @@ Pro vykonání vy¹¹ího pøípadu u¾ití je zapotøebí nejdøíve vykonat ni¾¹í pøípad u¾
 Pokud pøi vykonávání nìkolika pøípadù u¾ití je vykonávána stejná funkcionalita, je vhodné
 tuto funkcionalitu oddìlit z daného pøípadu u¾ití a spojit se v¹emi pøípady u¾ití 
 spojem include. Spoj include je znázornìn pøeru¹ovanou ¹ipkou doprovázené textem
-\uv{\<\<include\>\>}. Spoj je veden z nadøazeného pøípadu u¾ití k ni¾¹ímu pøípadu.
+\uv{\<\<include\>\>}. Spoj je veden z nadøazeného pøípadu u¾ití k ni¾¹ímu pøípadu. \cite{Pripad_uziti}
 
 Extends slou¾í pro roz¹íøení urèitých pøípadù u¾ití. Toto znamená, ¾e je roz¹íøením
 hlavního pøípadu u¾ití a toto roz¹íøení bylo vyjmuto z pùvodního pøípadu.
 V pøekladu tento spoj znamená, ¾e jeden pøípad u¾ití je roz¹íøen dal¹ím pøípadem
 u¾ití. Spoj je znázoròován pøeru¹ovanou ¹ipkou vedenou do roz¹iøovaného 
-\(hlavního\) pøípadu u¾ití.
+\(hlavního\) pøípadu u¾ití. \cite{Pripad_uziti}
 
 Generalizaci lze pou¾ít jak v pøípadech u¾ití, tak mezi aktéry. Slou¾í ke znázornìní
 rodièù a potomkù. Pøi pou¾ití tohoto spoje znamená, ¾e potomek pøebírá ve¹kerou funckinalitu
 svého rodièe a mù¾e, tuto funkcionalitu poupravit, nebo pøidat vlastní. Tento spoj je
-znázornìn spojem ukonèeným prázdnou ¹ipkou a je veden od potomka k rodièi.
+znázornìn spojem ukonèeným prázdnou ¹ipkou a je veden od potomka k rodièi. \cite{Pripad_uziti}
 
 Pro lep¹í znázornìní a oddìlení pøípadù u¾ití je vhodné pou¾ít organizaci, ta se
 znázoròuje rámeèkem okolo nìkolika pøípadù u¾ití.
 
-\subsection{Pu¾itì vlastnosti}
+\subsection{Pu¾ité vlastnosti}
 Ve výsledné aplikaci byl pou¾it Diagram pøipadù u¾ití pro jednoduché znázornìní
 a zanesení zákazníkových po¾adavkù. Tento diagram byl roz¹íøen o nìkolik u¾iteèných
 vlastností.
@@ -282,9 +282,65 @@ Dále pokud objekt není nijak spojen s ostatními objekty je znázornìn pøeru¹ovaný
 Vybraný objekt je znázornìn odli¹nou barvou a jeho okolí je ohranièeno rámeèkem.
 Pokud je ojekt spojen s nìjakými jinými objekty tyto spoje jsou znázornìny po vybrání
 tohoto objektu. Zvýraznìné spoje jsou pouze ty spoje, které vedou z vybraného objektu.
+
 \section{Diagram tøíd} \label{diagramTrid}
+Rozdíl mezi tøídou a objektem je ten, ¾e tøída je pøedpis pro objekt. Objekt je datová 
+reprezentace pøedepsaných dat a práce s tìmito datami. V UML jsou tøídy popsány poomcí
+diagramu tøíd a tyto diagramy se skládají z attributù, pøedpis pro formát dat. Dále se 
+skládají z metod, pøedpis pro práci s daty a relací mezi tøídami. \cite{Diagram_trid}
+
+\subsection{Prvky Diagramu tøíd}
+Hlavní slo¾kou diagramu jsou tøídy, ty jsou znázornìny pomocí obdìlínkù obsahující dal¹í 
+informace o dané tøídì. V horní èásti je název tøídy, první písmeno v tøídì by mìlo být velké.
+Poté tøída obsahuje attributy, jednotlivá slova neoddìlujeme podtr¾ítky, ale velkým písmenem.
+A poslední èást tøíd jsou operace, metody. Pro operace platí stejné pravidla jak pro attributy.
+Omezení v názvosloví je èistì doporuèení a ne nutnost.\cite{Diagram_trid}
+
+Zápis attributù a operací tøíd je stanove, tak ¾e za jménem následuje dvojteèka a její typ.
+V pøípadì operací za jménem následuje závorka obsahující seznam argumentù a a¾ poté dvojteèka
+a návratový typ. Pokud operace nic nevrací je mo¾né indikovat toto pomocí nastavení návratové
+hodnoty na \uv{void} Dále je mo¾né omezit vyditelnost attributù a operací pomocí identifikátoru.
+\textbf{Private} oznaèované \uv{-}, \textbf{protected} jako \uv{\#} a \textbf{public} 
+znázornìné pomocí \uv{+}. Tyto identifikátory se pí¹í pøed attribut, nebo operaci.
 \cite{Diagram_trid}
-\subsection{Technický popis diagramu tøíd}
+
+Jednotlivé hrany pro spojení se dìlí na \textbf{Generalization}, \textbf{Association},
+\textbf{Aggregation}, \textbf{Composition} a \textbf{Implementation}.
+
+\subsubsection{Generalization hrana}
+Hrana \textbf{Generalization} popisuje spojení mezi tøídou, která je více generická
+a tøídou, která je specifická. Generická tøída se nazývá \textbf{superclass}, nebo také 
+\textbf{rodiè} a více specifická tøída se nazývá \textbf{subclass}, známá té¾ jako
+\textbf{potomek}. \cite{Diagram_trid}
+
+V UML je tato hrana popsána ¹ipkou ukonèenou bílím trojúhelníkem na konci,
+je vedena smìrem od generické tøídy k více specifické. \cite{Diagram_trid}
+
+Je také mo¾né nìkolikanásobná dìdiènost, ale v pøípadì implementace takovéto dìdiènosti
+se musí vzít v potaz to, zda daný jazyk nìkolikanásobnou dìdiènost podporuje.
+Proto¾e pøi takovéto dìdiènosti èasto mù¾e nastat problém. Pøedev¹ím díky tomu,
+¾e pokud tøída A dìdí od tøíd B a C a tøída B i tøída C obsahují stejnou metodu,
+programátor musí øe¹it, která metoda se má v tøídì A pou¾ít. Napøíklad
+v jazyce Java\texttrademark nìkolikanásobná dìdiènost není povolena, ale
+je mo¾né pou¾ít \textbf{interface}. \cite{Diagram_trid}
+
+\subsubsection{Association hrana}
+Vztah mezi tøídami urèující, ¾e objekty jedné tøídy jsou pou¾ívány v objektech druhé 
+tøídy. \cite{Diagram_trid}
+
+Association je kresleno v UML pomocí hrany s obìma konci opatøenými ¹ipkou.
+Takovýto vztah se jmenuje \textbf{bidirectional} a znamená, ¾e obì tøídy se 
+pou¾ívají navzájem, je mo¾né také pou¾it \textbf{unidirectional} spoj,
+co¾ znamená ¾e tøída, ze které ¹ipka vede je pou¾ita tøídou do které ¹ipka ukazuje,
+ale ne naopak. \cite{Diagram_trid}
+
+Dále jsou tyto hrany opatøeny násobností, neboli oznaèením kolik objektù je
+pou¾ito kolika objekty.
+\subsubsection{Aggregation hrana}
+
+\subsubsection{Composition hrana}
+
+\subsubsection{Implementation hrana}
 \subsection{Pøidané prvky}
 
 \section{Objektovì orientované petriho sítì} \label{oopn}
