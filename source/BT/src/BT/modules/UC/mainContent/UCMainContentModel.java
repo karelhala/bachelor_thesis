@@ -7,7 +7,6 @@ package BT.modules.UC.mainContent;
 import BT.managers.DiagramPlacesManager;
 import BT.managers.DrawingListeners;
 import BT.managers.MainContentController;
-import BT.managers.PlaceManager;
 import BT.modules.UC.UCLeftBottomContent;
 import BT.modules.UC.UCLeftTopContent;
 import BT.modules.UC.UCMainContent;

@@ -32,7 +32,7 @@ public class BT {
 
     public static enum CDObjectType {
 
-        CLASS
+        CLASS, INTERFACE
     };
 
     public static enum OOPNObjectType {

@@ -8,6 +8,7 @@ import BT.managers.DiagramPlacesManager;
 import BT.managers.PlaceManager;
 import BT.modules.ClassDiagram.mainContent.CDMainContentController;
 import GUI.MainContentModel;
+import java.awt.Dimension;
 
 /**
  *

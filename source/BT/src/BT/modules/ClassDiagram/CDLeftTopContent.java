@@ -10,7 +10,6 @@ import javax.swing.JPanel;
 import javax.swing.JToggleButton;
 import BT.models.ButtonPaneModel;
 import BT.modules.ClassDiagram.mainContent.CDMainContentController;
-import BT.modules.UC.mainContent.UCMainContentController;
 
 /**
  * Class for sotring and managing left top panel, that consists of buttons
@@ -33,7 +32,7 @@ public final class CDLeftTopContent extends ButtonPaneModel {
      */
     public CDLeftTopContent(CDMainContentController cdMain) {
         super(cdMain);
-        this.mainContentPane = new JPanel(new GridLayout(1, 1));
+        this.mainContentPane = new JPanel(new GridLayout(2, 1));
         createMainPane();
     }
 
@@ -43,7 +42,13 @@ public final class CDLeftTopContent extends ButtonPaneModel {
     public void createMainPane() {
         JToggleButton newClass = new JToggleButton("New Class");
         newClass.setName(BT.CDObjectType.CLASS.name());
+        
+        JToggleButton newInterface = new JToggleButton("New Interface");
+        newClass.setName(BT.CDObjectType.INTERFACE.name());
 
         this.mainContentPane.add(newClass);
+        
+        this.mainContentPane.add(newInterface);
+        
     }
 }
