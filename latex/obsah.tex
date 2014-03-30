@@ -296,6 +296,16 @@ Poté tøída obsahuje attributy, jednotlivá slova neoddìlujeme podtr¾ítky, ale vel
 A poslední èást tøíd jsou operace, metody. Pro operace platí stejné pravidla jak pro attributy.
 Omezení v názvosloví je èistì doporuèení a ne nutnost.\cite{Diagram_trid}
 
+Urèitou podmno¾inou tøídy jsou abstraktní tøídy, tyto tøídy nemohou bıt incializovány,
+pouze slou¾í k pøedpisu pro potomky. To znamená, ¾e tøída A je abstraktní
+a je pøedkem tøídy B, v systému se nenachází objekt tøídy A, ale pouze objekt tøídy B.
+\cite{Diagram_trid}
+
+V diagramu tøíd lze také namodelovat interface. Toto je speciální tøída
+obsahující pøedpis pro attributy a operace, ale nenachází se v takovıch
+tøídách implementace tìchto operací. Tato implementace se nachází a¾ ve
+tøídách, které implementují takovı interface. \cite{Diagram_trid}
+
 Zápis attributù a operací tøíd je stanove, tak ¾e za jménem následuje dvojteèka a její typ.
 V pøípadì operací za jménem následuje závorka obsahující seznam argumentù a a¾ poté dvojteèka
 a návratovı typ. Pokud operace nic nevrací je mo¾né indikovat toto pomocí nastavení návratové
@@ -336,16 +346,63 @@ ale ne naopak. \cite{Diagram_trid}
 
 Dále jsou tyto hrany opatøeny násobností, neboli oznaèením kolik objektù je
 pou¾ito kolika objekty.
-\subsubsection{Aggregation hrana}
 
+\subsubsection{Aggregation hrana}
+Pou¾ití spoje Aggregation znaèí, ¾e urèitı objekt potøebuje, ke svému chodu
+dal¹í objekt. Pokud ov¹em pøestane existovat pùvodní objekt, dal¹í objekt
+lze nadále v systému pou¾ít. To znamená, ¾e objekt tøídy A potøebuje ke svému
+chodu objekt tøídy B. V momentì odstranìní objektu tøídy A ze systému, ale
+objekt tøídy B nezaniká. Tomuto se øíká slabá agregace. \cite{Diagram_trid}
+
+Tato hrana je kreslena souvislou hranou opatøenou bílım diamantem na konci. 
+\cite{Diagram_trid}
 \subsubsection{Composition hrana}
+Tato hrana je z èásti stejná, jako hrana Aggregation, s tím rozdílem ¾e
+reprezentuje silnou agregaci. To znamená ¾e pokud objekt tøídy A potøebuje
+ke svému chodu objekt tøídy B v momentì odstranìní objektu tøídy A je ze 
+systému odtranìn objekt tøídy B. \cite{Diagram_trid}
+
+Tato hrana je kreslena souvislou hranou opatøenou èernım diamantem na konci. 
+\cite{Diagram_trid}
 
 \subsubsection{Implementation hrana}
-\subsection{Pøidané prvky}
+Tato hrana je specifická v tom, ¾e se kreslí pouze mezi tøídou a interfacem.
+Slou¾í ke znázornìní, ¾e tøída A implementuje interface B, pøevezme v¹echny
+attributy tøídy B a pøetí¾í operace tøídy B, které implementuje. \cite{Diagram_trid}
+
+Hrana je kreslena pøeru¹ovanou ¹ipkou ve smìru od implementovanì tøídy k
+interfacu.
+\subsection{Pou¾ité a upravené èásti z Diagramu tøíd}
+Ve vısledné aplikaci bylo pou¾ito pro popis vztahù mezi jednotlivımi tøídami
+diagramu tøíd. Tento diagram byl z èásti upraven pro jednodu¹¹í práci a snadnìj¹í
+pou¾ívání u¾ivatelem.
+
+Tøídy byli rozdìleny na tøi druhy. Tøída \textbf{Actor}, která odpovídá
+objektu aktér v diagramu pøípadù u¾ití. Tøída \textbf{Activity}, tato 
+tøída odpovídá pøípadu u¾ití. A tøída, bez jakékoliv role znázoròující
+ostatní podpùrné tøídy. Název druhu tøídy se nachází nad danou tøídou
+a u základní tøídy, tedy tøídy bez jakékoliv role, je tento název skryt.
+
+Podobnì jako tomu je v pøípade Diagramu pøípadù u¾ití i zde je názornì vidìt,
+zda nìkterá hrana vede z a nebo do tøídy a to tak, ¾e je tøída ohranièena
+èárkovanım orámováním.
+
+Zvıraznìná tøída je oddìlena od ostatních odli¹nou barvou orámování
+a hrany, které vedou z dané tøídy jsou znázornìny jinou barvou, ne¾ ostatní 
+hrany.
+
+Tøídy, které nemají odpovídající pøedpis v èásti Diagramu pøípadù u¾ití,
+jsou znázornìny, tak ¾e jejich obsah je psán nahnutım písmem a pod tøídou,
+se nachází text \uv{\/No UseCase\/}. Pokud hrana spojující tøídy nemá
+odpovídající spoj v Diagramu pøipadù u¾ití, je odli¹ena rozdílnou barvou.
+Tyto kontroly je mo¾né vypnout.
 
 \section{Objektovì orientované petriho sítì} \label{oopn}
+
 \cite{oopn_caseStudy}
+
 \subsection{Technickı popis objektovì orientovanıch petriho sítí}
+
 \subsection{Pøidané prvky}
 
 \chapter{Popis aplikace}
