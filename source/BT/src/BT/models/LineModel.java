@@ -110,7 +110,7 @@ public class LineModel extends CoordinateModel {
         Point startPoint = new Point(this.startX, this.startY);
         for (Point point : wholeArrayList) {
             double distance = this.distanceCalculator.getDistanceOfPointToSegment(startPoint.x, startPoint.y, point.x, point.y, x, y);
-            if (distance != -1 && distance < this.tolerance) {
+            if (distance != -1 && distance <= this.tolerance) {
                 return true;
             }
             startPoint.x = point.x;

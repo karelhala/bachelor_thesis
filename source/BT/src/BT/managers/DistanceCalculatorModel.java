@@ -4,12 +4,18 @@
  */
 package BT.managers;
 
+import java.awt.Point;
+
 /**
  *
  * @author Karel Hala
  */
 public class DistanceCalculatorModel {
 
+    protected Point pointA;
+    protected Point pointB;
+    protected int objectHeight;
+    protected int objectWidth;
     /**
      * Method for sqaure of x.
      *

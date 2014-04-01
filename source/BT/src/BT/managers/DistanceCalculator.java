@@ -59,50 +59,6 @@ public class DistanceCalculator extends DistanceCalculatorModel {
     }
 
     /**
-     * Method for calculating intersect point to object with vertical lines.
-     * Vertical lines in object needs to be calculated differently from
-     * hotizontal.
-     *
-     * @param lineA
-     * @param lineB
-     * @return DoublePoint calculated point if success
-     */
-    public DoublePoint getIntersectionPointLineVert(LineSegment lineA, LineSegment lineB) {
-        DoublePoint s1 = vectorMagnitude(lineA.pointB, lineA.pointA);
-        DoublePoint s2 = vectorMagnitude(lineB.pointB, lineB.pointA);
-        double underline = -s2.x * s1.y + s1.x * s2.y;
-        double s = (-s1.y * (lineA.pointA.x - lineB.pointA.x) + s1.x * (lineA.pointA.y - lineB.pointA.y)) / underline;
-        double t = (s2.x * (lineA.pointA.y - lineB.pointA.y) - s2.y * (lineA.pointA.x - lineB.pointA.x)) / underline;
-
-        if (s >= 0 && s <= 1 && t >= 0 && t <= 1) {
-            return new DoublePoint(lineA.pointA.x + (t * s1.x), lineA.pointA.y + (t * s1.y));
-        }
-        return null;
-    }
-
-    /**
-     * Method for calculating intersect point to object with hrtizontal lines.
-     * Horizontal lines in object needs to be calculated differently from
-     * vertical.
-     *
-     * @param lineA
-     * @param lineB
-     * @return DoublePoint calculated point if success
-     */
-    public DoublePoint getIntersectionPointLineHoriz(LineSegment lineA, LineSegment lineB) {
-        DoublePoint s1 = vectorMagnitude(lineA.pointB, lineA.pointA);
-        DoublePoint s2 = vectorMagnitude(lineB.pointB, lineB.pointA);
-        double underline = s1.x * s2.y - s2.x * s1.y;
-        double s = (s1.x * (lineA.pointA.y - lineB.pointA.y) - s1.y * (lineA.pointA.x - lineB.pointA.x)) / underline;
-        double t = (s2.x * (lineA.pointA.y - lineB.pointA.y) - s2.y * (lineA.pointA.x - lineB.pointA.x)) / underline;
-
-        if (s >= 0 && s <= 1 && t >= 0 && t <= 1) {
-            return new DoublePoint(lineA.pointA.x + (t * s1.x), lineA.pointA.y + (t * s1.y));
-        }
-        return null;
-    }
-
-    /**
      *
      * @param pointA
      * @param pointB
@@ -111,137 +67,177 @@ public class DistanceCalculator extends DistanceCalculatorModel {
      * @return double as distance of point to line segment
      */
     public Point getPointOfIntersectionLineSegments(Point pointA, Point pointB, int width, int height) {
-        LineSegment segmentLine;
-        if (pointA != null && pointB != null) {
-            segmentLine = new LineSegment(pointA.x, pointA.y, pointB.x, pointB.y);
-        } else {
-            return null;
-        }
-        
-        return checkStuff(pointA, pointB, width, height);
-        
-//        LineSegment lineA = new LineSegment(pointB.x - width / 2, pointB.y + height / 2, pointB.x + width / 2, pointB.y + height / 2);
-//        LineSegment lineB = new LineSegment(pointB.x + width / 2, pointB.y - height / 2, pointB.x + width / 2, pointB.y + height / 2);
-//        LineSegment lineC = new LineSegment(pointB.x + width / 2, pointB.y - height / 2, pointB.x - width / 2, pointB.y - height / 2);
-//        LineSegment lineD = new LineSegment(pointB.x - width / 2, pointB.y - height / 2, pointB.x - width / 2, pointB.y + height / 2);
-//        DoublePoint intesectionPoint;
-//        
-//        if ((intesectionPoint = getIntersectionPointLineVert(lineB, segmentLine)) != null) {
-//            return new Point((int) intesectionPoint.x, (int) intesectionPoint.y);
-//        } else if ((intesectionPoint = getIntersectionPointLineVert(lineD, segmentLine)) != null) {
-//            return new Point((int) intesectionPoint.x, (int) intesectionPoint.y);
-//        } else if ((intesectionPoint = getIntersectionPointLineHoriz(lineA, segmentLine)) != null) {
-//            return new Point((int) intesectionPoint.x, (int) intesectionPoint.y);
-//        } else if ((intesectionPoint = getIntersectionPointLineHoriz(lineC, segmentLine)) != null) {
-//            return new Point((int) intesectionPoint.x, (int) intesectionPoint.y);
-//        }
-//
-//        return null;
-    }
-    
-    private Point checkStuff(Point pointA, Point pointB, int width, int height)
-    {
-        int resultX = 0;
-        int resultY = 0;
-        System.out.println(pointB);
-        if (diagonalRising(pointB, new Point(pointB.x+(width/2), pointB.y-(height/2)), pointA.x)<pointA.y)
+        this.pointA = pointA;
+        this.pointB = pointB;
+        this.objectHeight = height;
+        this.objectWidth = width;
+        if (this.pointA.x != this.pointB.x && pointA.y != pointB.y)
         {
-            if (diagonalDecreesing(pointB, new Point(pointB.x-width, pointB.y-height), pointA.x)<pointA.y)
-            {
-                double distanceY = Math.abs(pointA.y-pointB.y);
-                if (distanceY > 0)
-                {
-                    double ratio = height/distanceY;
-                    double distanceX = ratio*Math.abs(pointA.x-pointB.x);
-                    if (pointA.x > pointB.x)
-                    {
-                        resultX = pointB.x + (int)distanceX/2;
-                        resultY = pointB.y + height/2;
-                    }
-                    else
-                    {
-                        resultX = pointB.x - (int)distanceX/2;
-                        resultY = pointB.y + height/2;
-                    }
-                }
-            }
-            else
-            {
-                double distanceX = Math.abs(pointA.x-pointB.x);
-                if (distanceX > 0)
-                {
-                    double ratio = width/distanceX;
-                    double distanceY = ratio*Math.abs(pointA.y-pointB.y);
-                    if (pointA.y > pointB.y)
-                    {
-                        resultX = pointB.x + width/2;
-                        resultY = pointB.y + (int)distanceY/2;
-                    }
-                    else
-                    {
-                        resultX = pointB.x + width/2;
-                        resultY = pointB.y - (int)distanceY/2;
-                    }
-                }
-            }
-        }
-        else
-        {
-            if (diagonalDecreesing(pointB, new Point(pointB.x-width, pointB.y-height), pointA.x)<pointA.y)
-            {
-                double distanceX = Math.abs(pointA.x-pointB.x);
-                if (distanceX > 0)
-                {
-                    double ratio = width/distanceX;
-                    double distanceY = ratio*Math.abs(pointA.y-pointB.y);
-                    if (pointA.y > pointB.y)
-                    {
-                        resultX = pointB.x - width/2;
-                        resultY = pointB.y + (int)distanceY/2;
-                    }
-                    else
-                    {
-                        resultX = pointB.x - width/2;
-                        resultY = pointB.y - (int)distanceY/2;
-                    }
-                }
-            }
-            else
-            {
-                double distanceY = Math.abs(pointA.y-pointB.y);
-                if (distanceY > 0)
-                {
-                    double ratio = height/distanceY;
-                    double distanceX = ratio*Math.abs(pointA.x-pointB.x);
-                    if (pointA.x > pointB.x)
-                    {
-                        resultX = pointB.x + (int)distanceX/2;
-                        resultY = pointB.y - height/2;
-                    }
-                    else
-                    {
-                        resultX = pointB.x - (int)distanceX/2;
-                        resultY = pointB.y - height/2;
-                    }
-                }
-            }
-        }
-        
-        if (resultX != 0 && resultY != 0)
-        {
-            return new Point(resultX, resultY);
+            return calculatePoints();
         }
         return null;
     }
     
-    private double diagonalRising(Point pointA, Point pointB,  int x)
+    /**
+     * 
+     * @return 
+     */
+    private Point calculatePoints()
     {
-        return -(double)Math.abs((pointA.y - pointB.y)) /(double) Math.abs((pointA.x - pointB.x))* ( (double)x - (double)pointA.x) + (double)pointA.y;
+        if (diagonalYforX(this.pointB, new Point(this.pointB.x+(objectWidth/2), this.pointB.y-(this.objectHeight/2)), this.pointA.x)<this.pointA.y)
+        {
+            if (diagonalYforX(this.pointB, new Point(this.pointB.x-this.objectWidth, this.pointB.y-this.objectHeight), this.pointA.x)<this.pointA.y)
+            {
+                //down
+                return calculateBottomPoint();
+            }
+            else
+            {
+                //right
+                return calculateRightPoint();
+            }
+        }
+        else
+        {
+            if (diagonalYforX(this.pointB, new Point(this.pointB.x-objectWidth, this.pointB.y-this.objectHeight), this.pointA.x)<this.pointA.y)
+            {
+                //left
+                return calculateLeftPoint();
+            }
+            else
+            {
+                //top
+                return calculateTopPoint();
+            }
+        }
     }
     
-    private double diagonalDecreesing(Point pointA, Point pointB, int x)
+    /**
+     * 
+     * @return 
+     */
+    private Point calculateRightPoint()
     {
-        return (double)Math.abs((pointA.y - pointB.y)) /(double) Math.abs((pointA.x - pointB.x))* ( (double)x - (double)pointA.x) + (double)pointA.y;
+        Point resultPoint = new Point();
+        double distanceX = Math.abs(this.pointA.x-this.pointB.x);
+        if (distanceX > 0)
+        {
+            double ratio = this.objectWidth/distanceX;
+            double distanceY = ratio*Math.abs(this.pointA.y-this.pointB.y);
+            if (this.pointA.y > this.pointB.y)
+            {
+                resultPoint.x = this.pointB.x + this.objectWidth/2;
+                resultPoint.y = this.pointB.y + (int)distanceY/2;
+            }
+            else
+            {
+                resultPoint.x = this.pointB.x + objectWidth/2;
+                resultPoint.y = this.pointB.y - (int)distanceY/2;
+            }
+        }
+        return resultPoint;
+    }
+    
+    /**
+     * 
+     * @return 
+     */
+    private Point calculateLeftPoint()
+    {
+        Point resultPoint = new Point();
+        double distanceX = Math.abs(this.pointA.x-this.pointB.x);
+        if (distanceX > 0)
+        {
+            double ratio = objectWidth/distanceX;
+            double distanceY = ratio*Math.abs(this.pointA.y-this.pointB.y);
+            if (this.pointA.y > this.pointB.y)
+            {
+                resultPoint.x = this.pointB.x - objectWidth/2;
+                resultPoint.y = this.pointB.y + (int)distanceY/2;
+            }
+            else
+            {
+                resultPoint.x = this.pointB.x - objectWidth/2;
+                resultPoint.y = this.pointB.y - (int)distanceY/2;
+            }
+        }
+        return resultPoint;
+    }
+    
+    /**
+     * 
+     * @return 
+     */
+    private Point calculateBottomPoint()
+    {
+        Point resultPoint = new Point();
+        double distanceY = Math.abs(this.pointA.y-this.pointB.y);
+        if (distanceY > 0)
+        {
+            double ratio = objectHeight/distanceY;
+            double distanceX = ratio*Math.abs(this.pointA.x-this.pointB.x);
+            if (this.pointA.x > this.pointB.x)
+            {
+                resultPoint.x = this.pointB.x + (int)distanceX/2;
+                resultPoint.y = this.pointB.y + this.objectHeight/2;
+            }
+            else
+            {
+                resultPoint.x = this.pointB.x - (int)distanceX/2;
+                resultPoint.y = this.pointB.y + this.objectHeight/2;
+            }
+        }
+        return resultPoint;
+    }
+    
+    /**
+     * 
+     * @return 
+     */
+    private Point calculateTopPoint()
+    {
+        Point resultPoint = new Point();
+        double distanceY = Math.abs(this.pointA.y-this.pointB.y);
+        if (distanceY > 0)
+        {
+            double ratio = this.objectHeight/distanceY;
+            double distanceX = ratio*Math.abs(this.pointA.x-this.pointB.x);
+            if (this.pointA.x > this.pointB.x)
+            {
+                resultPoint.x = this.pointB.x + (int)distanceX/2;
+                resultPoint.y = this.pointB.y - this.objectHeight/2;
+            }
+            else
+            {
+                resultPoint.x = this.pointB.x - (int)distanceX/2;
+                resultPoint.y = this.pointB.y - this.objectHeight/2;
+            }
+        }
+        return resultPoint;
+    }
+    
+    /**
+     * 
+     * @param pointA
+     * @param pointB
+     * @param x
+     * @return 
+     */
+    private double diagonalYforX(Point pointA, Point pointB,  int x)
+    {
+        return (double)((pointA.y - pointB.y)) /(double) ((pointA.x - pointB.x))* ( (double)x - (double)pointA.x) + (double)pointA.y;
+    }
+    
+    /**
+     * 
+     * @param pointA
+     * @param pointB
+     * @param y
+     * @return 
+     */
+    private double diagonalXforY(Point pointA, Point pointB, int y)
+    {
+        return (y-(double)pointA.y)/((double)((pointA.y - pointB.y)) /(double) ((pointA.x - pointB.x))) + (double)pointA.x;
     }
 
 }
