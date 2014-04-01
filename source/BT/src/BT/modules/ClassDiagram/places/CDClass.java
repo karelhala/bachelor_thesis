@@ -24,22 +24,22 @@ public class CDClass extends CoordinateModel {
     /**
      *
      */
-    private Color background;
+    protected Color background;
 
     /**
      *
      */
-    private ArrayList<Attribute> variables;
+    protected ArrayList<Attribute> variables;
 
     /**
      *
      */
-    private ArrayList<Attribute> methods;
+    protected ArrayList<Attribute> methods;
 
     /**
      *
      */
-    private ClassType typeOfClass;
+    protected ClassType typeOfClass;
     
     /**
      * 
@@ -49,7 +49,7 @@ public class CDClass extends CoordinateModel {
     public CDClass() {
         super();
     }
-
+    
     /**
      *
      * @param x
@@ -116,7 +116,7 @@ public class CDClass extends CoordinateModel {
         );
         g.drawRect(x - this.width / 2, this.y - this.height / 2, this.width, this.height);
         g.setColor(Color.BLACK);
-        if (typeOfClass != ClassType.NONE)
+        if (typeOfClass != ClassType.NONE && typeOfClass != ClassType.INTERFACE)
         {
             String stringType = (typeOfClass == ClassType.ACTIVITY) ? "<Activity>" : "<Actor>";
             g.drawString(stringType, x - fm.stringWidth(stringType) / 2, y - height / 2 - 5);
@@ -152,7 +152,7 @@ public class CDClass extends CoordinateModel {
      * @param nameLinePoint
      * @param fm
      */
-    private void drawAttributes(Graphics2D g, ArrayList<Attribute> attribues, Point nameLinePoint, FontMetrics fm) {
+    protected void drawAttributes(Graphics2D g, ArrayList<Attribute> attribues, Point nameLinePoint, FontMetrics fm) {
         for (Attribute attribute : attribues) {
             String visibility = "";
             if (attribute.getVisibility() == BT.BT.AttributeType.PRIVATE) {
@@ -171,7 +171,7 @@ public class CDClass extends CoordinateModel {
      * @param fm
      * @return
      */
-    private int getMaximumHeight(FontMetrics fm) {
+    protected int getMaximumHeight(FontMetrics fm) {
         int textheight = fm.getHeight();
         int shapeHeight = textheight + (textheight * this.variables.size()) + (textheight * this.methods.size());
         return ((shapeHeight + 10) > this.height) ? shapeHeight + 10 : this.height;
@@ -182,7 +182,7 @@ public class CDClass extends CoordinateModel {
      * @param fm
      * @return
      */
-    private int getMaximumWidth(FontMetrics fm) {
+    protected int getMaximumWidth(FontMetrics fm) {
         int shapewidth = fm.stringWidth(this.name);
         int variableMaxWidth = getMaximumStringLengthOfAttribute(this.variables, fm);
         shapewidth = (variableMaxWidth > shapewidth) ? variableMaxWidth : shapewidth;
@@ -197,7 +197,7 @@ public class CDClass extends CoordinateModel {
      * @param fm
      * @return
      */
-    private int getMaximumStringLengthOfAttribute(ArrayList<Attribute> attribues, FontMetrics fm) {
+    protected int getMaximumStringLengthOfAttribute(ArrayList<Attribute> attribues, FontMetrics fm) {
         int maxWidth = 0;
         for (Attribute attribute : attribues) {
             int attributeWidth = fm.stringWidth(" " + attribute.getName() + ":" + attribute.getType());

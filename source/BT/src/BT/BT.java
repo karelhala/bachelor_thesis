@@ -52,7 +52,7 @@ public class BT {
 
     public static enum ClassType {
 
-        ACTOR, ACTIVITY, NONE
+        ACTOR, ACTIVITY, NONE, INTERFACE
     };
 
     /**

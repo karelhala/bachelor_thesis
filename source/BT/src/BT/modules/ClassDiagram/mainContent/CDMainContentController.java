@@ -6,6 +6,7 @@ package BT.modules.ClassDiagram.mainContent;
 
 import BT.BT;
 import BT.BT.CDLineType;
+import BT.BT.CDObjectType;
 import BT.BT.ClassType;
 import BT.BT.UCLineType;
 import BT.interfaces.DrawingClicks;
@@ -74,15 +75,19 @@ public class CDMainContentController extends CDMainContentModel implements Drawi
     @Override
     public void drawingPaneClicked(MouseEvent evt) {
         JToggleButton selectedItemButton = this.LeftTopContent.getSelectedButton();
-        if (selectedItemButton != null && "CLASS".equals(selectedItemButton.getName())) {
-            this.places.setAllObjectDiselected();
+        this.places.setAllObjectDiselected();
+        if (selectedItemButton != null && CDObjectType.CLASS.name().equals(selectedItemButton.getName())) {
             CDClass newClass = new CDClass(evt.getX(), evt.getY());
             newClass.addNewVariable(new Attribute(BT.AttributeType.PUBLIC, "variable1", "String"));
             newClass.addNewVariable(new Attribute(BT.AttributeType.PROTECTED, "variable1", "String"));
             newClass.addNewMethod(new Attribute("MethodOne()", "void"));
             this.places.addObject(newClass);
+        }else if(selectedItemButton != null && CDObjectType.INTERFACE.name().equals(selectedItemButton.getName())){
+            CDClass newInterface = new CDClass(evt.getX(), evt.getY());
+            newInterface.setTypeOfClass(ClassType.INTERFACE);
+            newInterface.setName("interface");
+            this.places.addObject(newInterface);
         } else {
-            this.places.setAllObjectDiselected();
             deleteNewLine();
         }
         ((CDDrawingPane) this.mainContent.getDrawingPane()).getDrawing().repaint();
@@ -146,10 +151,10 @@ public class CDMainContentController extends CDMainContentModel implements Drawi
             classTypeGroup.add(activity);
             classTypeGroup.add(actor);
             classTypeGroup.add(none);
-            ClassType typeOfClass = ((CDClass) pressedObject).getTypeOfClass();
-            ((JRadioButton) ((typeOfClass == ClassType.ACTIVITY) ? activity : (typeOfClass == ClassType.NONE)?none:actor)).setSelected(true);
-            if (pressedObject.getInJoins().isEmpty() && pressedObject.getOutJoins().isEmpty())
+            if (pressedObject.getInJoins().isEmpty() && pressedObject.getOutJoins().isEmpty() && ((CDClass)pressedObject).getTypeOfClass() != ClassType.INTERFACE)
             {
+                ClassType typeOfClass = ((CDClass) pressedObject).getTypeOfClass();
+                ((JRadioButton) ((typeOfClass == ClassType.ACTIVITY) ? activity : (typeOfClass == ClassType.NONE)?none:actor)).setSelected(true);
                 dialogPanel.add(actor, BorderLayout.LINE_START);
                 dialogPanel.add(activity, BorderLayout.CENTER);
                 dialogPanel.add(none, BorderLayout.LINE_END);

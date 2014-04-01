@@ -125,10 +125,7 @@ public class WindowLayoutControler {
 
         typeTab.addTab("UseCase", getWindowLayout(UCContentModel));
 
-        JSplitPane CDSplitPanes = getWindowLayout(UMLContentModel);
-        JSplitPane Leftcomponent = (JSplitPane) CDSplitPanes.getLeftComponent();
-        Leftcomponent.setDividerLocation(100);
-        typeTab.addTab("ClassDiagram", CDSplitPanes);
+        typeTab.addTab("ClassDiagram", getWindowLayout(UMLContentModel));
 
         typeTab.addTab("OOPetriNets", getWindowLayout(OOPNContentModel));
 
