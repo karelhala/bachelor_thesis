@@ -31,11 +31,7 @@ public class CDJoinEdgeDrawer extends JoinEdgeDrawer {
      * @param g
      */
     public void drawLine(Graphics2D g) {
-        if (this.joinEdgeController.getSelected()) {
-            g.setColor(this.joinEdgeController.getSelectedColor());
-        } else {
-            g.setColor(this.joinEdgeController.getColor());
-        }
+        setBasicColors(g);
 
         float dash1[] = {10.0f};
         BasicStroke dashed
@@ -56,22 +52,22 @@ public class CDJoinEdgeDrawer extends JoinEdgeDrawer {
                 g.setStroke(new BasicStroke(2));
                 drawbreakedLine(g, this.startPoint, this.endPoint, cdJoin.getBreakPoints());
                 drawDiamond(g, this.endPoint, arrowStartPoint, Color.WHITE);
+                drawString(g, textEndPoint, textStartPoint, "aggregation");
             } else if (cdJoin.getJoinEdgeType() == BT.CDLineType.COMPOSITION) {
                 g.setStroke(new BasicStroke(2));
                 drawbreakedLine(g, this.startPoint, this.endPoint, cdJoin.getBreakPoints());
                 drawDiamond(g, this.endPoint, arrowStartPoint, Color.BLACK);
+                drawString(g, textEndPoint, textStartPoint, "composition");
             } else if (cdJoin.getJoinEdgeType() == BT.CDLineType.GENERALIZATION) {
                 g.setStroke(new BasicStroke(2));
                 drawbreakedLine(g, this.startPoint, this.endPoint, cdJoin.getBreakPoints());
                 drawTriangle(g, this.endPoint, arrowStartPoint, Color.WHITE);
+                drawString(g, textEndPoint, textStartPoint, "generalization");
             } else if (cdJoin.getJoinEdgeType() == BT.CDLineType.REALIZATION) {
                 g.setStroke(dashed);
                 drawbreakedLine(g, this.startPoint, this.endPoint, cdJoin.getBreakPoints());
                 drawArrow(g, this.endPoint, arrowStartPoint);
-            }
-            if (checkClassTypes(cdJoin) && cdJoin.getAssignedObject()==null)
-            {
-                drawString(g, textEndPoint, textStartPoint, "/No Use Case/");
+                drawString(g, textEndPoint, textStartPoint, "realization");
             }
         }
     }

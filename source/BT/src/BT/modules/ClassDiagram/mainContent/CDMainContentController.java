@@ -124,6 +124,27 @@ public class CDMainContentController extends CDMainContentModel implements Drawi
         places.setSelectedLinesOnObject(clickedObject);
         if (clickedObject != null) {
             clickedObject.setSelected(true);
+            if (((CDClass)clickedObject).getTypeOfClass() == ClassType.INTERFACE)
+            {
+                this.LeftBottomContent.getButtonWithName(CDLineType.AGGREGATION.name()).setEnabled(false);
+                this.LeftBottomContent.getButtonWithName(CDLineType.ASSOCIATION.name()).setEnabled(false);
+                this.LeftBottomContent.getButtonWithName(CDLineType.COMPOSITION.name()).setEnabled(false);
+                this.LeftBottomContent.getButtonWithName(CDLineType.REALIZATION.name()).setEnabled(false);
+            }
+            else
+            {
+                this.LeftBottomContent.getButtonWithName(CDLineType.AGGREGATION.name()).setEnabled(true);
+                this.LeftBottomContent.getButtonWithName(CDLineType.ASSOCIATION.name()).setEnabled(true);
+                this.LeftBottomContent.getButtonWithName(CDLineType.COMPOSITION.name()).setEnabled(true);
+                this.LeftBottomContent.getButtonWithName(CDLineType.REALIZATION.name()).setEnabled(true);
+            }
+        }
+        else
+        {
+            this.LeftBottomContent.getButtonWithName(CDLineType.AGGREGATION.name()).setEnabled(true);
+            this.LeftBottomContent.getButtonWithName(CDLineType.ASSOCIATION.name()).setEnabled(true);
+            this.LeftBottomContent.getButtonWithName(CDLineType.COMPOSITION.name()).setEnabled(true);
+            this.LeftBottomContent.getButtonWithName(CDLineType.REALIZATION.name()).setEnabled(true);
         }
 
         if (this.LeftBottomContent.getSelectedButton() != null || this.newJoinEdge != null) {
@@ -316,7 +337,7 @@ public class CDMainContentController extends CDMainContentModel implements Drawi
             this.newJoinEdge = null;
             this.mainContent.getDrawingPane().setNewLine(null);
         } else {
-            if (this.newJoinEdge != null && this.newJoinEdge.getFirstObject().equals(clickedObject)) {
+            if (this.newJoinEdge != null && (this.newJoinEdge.getFirstObject()==null || this.newJoinEdge.getFirstObject().equals(clickedObject))) {
                 this.newJoinEdge = null;
             }
             drawJoinEdge(clickedObject);

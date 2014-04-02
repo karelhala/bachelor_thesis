@@ -23,6 +23,7 @@ import javax.swing.AbstractAction;
 import javax.swing.InputMap;
 import javax.swing.JButton;
 import javax.swing.JComponent;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
@@ -110,9 +111,11 @@ public class ToolBarContentControler {
                         }
                         else
                         {
-                            OOPNContentModel.getPnMain().getMainContent().getDrawingPane().setPlaces(diagramPlaces.getPnPlaces());
-                            OOPNContentModel.getPnMain().setPlaces(diagramPlaces.getPnPlaces());
-                            ((PNDrawingPane)OOPNContentModel.getPnMain().getMainContent().getDrawingPane()).getDrawing().repaint();
+                            ((JTabbedPane)((CloseTabbedPane)myLayout.getFileTab()).getSelectedComponent()).setSelectedIndex(1);
+                            JOptionPane.showMessageDialog(null, "No class has been selected, please select class for objected oriented petrinets.");
+//                            OOPNContentModel.getPnMain().getMainContent().getDrawingPane().setPlaces(diagramPlaces.getPnPlaces());
+//                            OOPNContentModel.getPnMain().setPlaces(diagramPlaces.getPnPlaces());
+//                            ((PNDrawingPane)OOPNContentModel.getPnMain().getMainContent().getDrawingPane()).getDrawing().repaint();
                         }
                     }
                 }

@@ -22,12 +22,14 @@ public class LineModel extends CoordinateModel {
     protected int startY;
     protected int endX;
     protected int endY;
+    protected Color noParentLine;
     protected double tolerance;
 
     public LineModel() {
         this.tolerance = 8;
         this.selectedColor = Color.RED;
         this.basicColor = Color.BLACK;
+        this.noParentLine = Color.GRAY;
         this.color = Color.BLACK;
         this.howerColor = Color.orange;
         this.distanceCalculator = new DistanceCalculator();
@@ -95,6 +97,14 @@ public class LineModel extends CoordinateModel {
         }
     }
 
+    public Color getNoParentLine() {
+        return noParentLine;
+    }
+
+    public void setNoParentLine(Color noParentLine) {
+        this.noParentLine = noParentLine;
+    }
+    
     /**
      *
      * @param x

@@ -172,4 +172,16 @@ public class JoinEdgeDrawer {
             g.drawLine(startPoint.x, startPoint.y, endPoint.x, endPoint.y);
         }
     }
+
+    protected void setBasicColors(Graphics2D g) {
+        if (this.joinEdgeController.getSelected()) {
+            g.setColor(this.joinEdgeController.getSelectedColor());
+        } else {
+            if (this.joinEdgeController.getAssignedObject() == null) {
+                g.setColor(this.joinEdgeController.getNoParentLine());
+            } else {
+                g.setColor(this.joinEdgeController.getColor());
+            }
+        }
+    }
 }

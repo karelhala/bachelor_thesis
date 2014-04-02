@@ -34,12 +34,7 @@ public class UCJoinEdgeDrawer extends JoinEdgeDrawer {
      * @param g
      */
     public void drawLine(Graphics2D g) {
-        if (this.joinEdgeController.getSelected()) {
-            g.setColor(this.joinEdgeController.getSelectedColor());
-        } else {
-            g.setColor(this.joinEdgeController.getColor());
-        }
-
+        setBasicColors(g);
         float dash1[] = {10.0f};
         BasicStroke dashed
                 = new BasicStroke(2.0f,

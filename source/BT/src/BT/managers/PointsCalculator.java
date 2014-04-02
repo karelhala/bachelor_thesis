@@ -72,9 +72,12 @@ public class PointsCalculator {
         Point pointB = this.startPoint;
         Point calculatedPoint;
         WidthHeight widthHeight = getObjectWidthAndheight(this.firstObject);
-        calculatedPoint = this.distanceCalculator.getPointOfIntersectionLineSegments(pointA, pointB, widthHeight.width, widthHeight.height);
-        if (calculatedPoint != null) {
-            return calculatedPoint;
+        if (widthHeight != null)
+        {
+            calculatedPoint = this.distanceCalculator.getPointOfIntersectionLineSegments(pointA, pointB, widthHeight.width, widthHeight.height);
+            if (calculatedPoint != null) {
+                return calculatedPoint;
+            }
         }
         return this.startPoint;
     }
@@ -87,15 +90,19 @@ public class PointsCalculator {
     private WidthHeight getObjectWidthAndheight(CoordinateModel object) {
         int width;
         int height;
-        if (object instanceof UCActor) {
-            UCActor actor = (UCActor) object;
-            width = actor.getMaxWidth();
-            height = actor.getMaxHeight();
-        } else {
-            width = object.getWidth();
-            height = object.getHeight();
+        if (object != null)
+        {
+            if (object instanceof UCActor) {
+                UCActor actor = (UCActor) object;
+                width = actor.getMaxWidth();
+                height = actor.getMaxHeight();
+            } else {
+                width = object.getWidth();
+                height = object.getHeight();
+            }
+            return new WidthHeight(width, height);
         }
-        return new WidthHeight(width, height);
+        return null;
     }
 
     /**
