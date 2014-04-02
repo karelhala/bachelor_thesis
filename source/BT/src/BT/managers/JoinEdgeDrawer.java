@@ -173,11 +173,16 @@ public class JoinEdgeDrawer {
         }
     }
 
-    protected void setBasicColors(Graphics2D g) {
+    protected void setBasicColors(Graphics2D g)
+    {
+        setBasicColors(g, true);
+    }
+    
+    protected void setBasicColors(Graphics2D g, Boolean searchForAssignedObject) {
         if (this.joinEdgeController.getSelected()) {
             g.setColor(this.joinEdgeController.getSelectedColor());
         } else {
-            if (this.joinEdgeController.getAssignedObject() == null) {
+            if (this.joinEdgeController.getAssignedObject() == null && searchForAssignedObject == true) {
                 g.setColor(this.joinEdgeController.getNoParentLine());
             } else {
                 g.setColor(this.joinEdgeController.getColor());

@@ -71,9 +71,12 @@ public class DistanceCalculator extends DistanceCalculatorModel {
         this.pointB = pointB;
         this.objectHeight = height;
         this.objectWidth = width;
-        if (this.pointA.x != this.pointB.x && pointA.y != pointB.y)
+        if (this.pointA != null && this.pointB != null)
         {
-            return calculatePoints();
+            if (this.pointA.x != this.pointB.x && pointA.y != pointB.y)
+            {
+                return calculatePoints();
+            }
         }
         return null;
     }

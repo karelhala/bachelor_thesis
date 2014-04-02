@@ -35,12 +35,14 @@ import javax.swing.JToggleButton;
  */
 public class CDMainContentController extends CDMainContentModel implements DrawingClicks {
 
+    private final CDUseCaseConnector useCaseConnector;
     /**
      *
      * @param diagramPlaces
      */
     public CDMainContentController(DiagramPlacesManager diagramPlaces) {
         super(diagramPlaces);
+        this.useCaseConnector = new CDUseCaseConnector(diagramPlaces.getUcPlaces());
     }
 
     /**
@@ -122,33 +124,17 @@ public class CDMainContentController extends CDMainContentModel implements Drawi
     public void setSelectedObject(CoordinateModel clickedObject) {
         this.places.setAllObjectDiselected();
         places.setSelectedLinesOnObject(clickedObject);
+        if (this.LeftBottomContent.getSelectedButton() != null || this.newJoinEdge != null && !this.newJoinEdge.getFirstObject().equals(clickedObject)) {
+            clickedOnObject(clickedObject);
+        }
+        
         if (clickedObject != null) {
             clickedObject.setSelected(true);
-            if (((CDClass)clickedObject).getTypeOfClass() == ClassType.INTERFACE)
-            {
-                this.LeftBottomContent.getButtonWithName(CDLineType.AGGREGATION.name()).setEnabled(false);
-                this.LeftBottomContent.getButtonWithName(CDLineType.ASSOCIATION.name()).setEnabled(false);
-                this.LeftBottomContent.getButtonWithName(CDLineType.COMPOSITION.name()).setEnabled(false);
-                this.LeftBottomContent.getButtonWithName(CDLineType.REALIZATION.name()).setEnabled(false);
-            }
-            else
-            {
-                this.LeftBottomContent.getButtonWithName(CDLineType.AGGREGATION.name()).setEnabled(true);
-                this.LeftBottomContent.getButtonWithName(CDLineType.ASSOCIATION.name()).setEnabled(true);
-                this.LeftBottomContent.getButtonWithName(CDLineType.COMPOSITION.name()).setEnabled(true);
-                this.LeftBottomContent.getButtonWithName(CDLineType.REALIZATION.name()).setEnabled(true);
-            }
+            disableButtons(clickedObject);
         }
         else
         {
-            this.LeftBottomContent.getButtonWithName(CDLineType.AGGREGATION.name()).setEnabled(true);
-            this.LeftBottomContent.getButtonWithName(CDLineType.ASSOCIATION.name()).setEnabled(true);
-            this.LeftBottomContent.getButtonWithName(CDLineType.COMPOSITION.name()).setEnabled(true);
-            this.LeftBottomContent.getButtonWithName(CDLineType.REALIZATION.name()).setEnabled(true);
-        }
-
-        if (this.LeftBottomContent.getSelectedButton() != null || this.newJoinEdge != null) {
-            clickedOnObject(clickedObject);
+            disableButtons(null);
         }
         ((CDDrawingPane) this.mainContent.getDrawingPane()).getDrawing().repaint();
     }
@@ -185,72 +171,10 @@ public class CDMainContentController extends CDMainContentModel implements Drawi
             if (result == JOptionPane.OK_OPTION) {
                 pressedObject.setName(nameInput.getText());
                 ((CDClass) pressedObject).setTypeOfClass((actor.isSelected() == true) ? ClassType.ACTOR : (activity.isSelected() == true)?ClassType.ACTIVITY:ClassType.NONE);
-                createNewUseCase(pressedObject, nameInput.getText());
+                this.useCaseConnector.setSelectedModel(pressedObject);
+                this.useCaseConnector.createNewUseCase(nameInput.getText());
             }
         }
-    }
-    
-    /**
-     * 
-     * @param pressedObject
-     * @param useCaseName 
-     */
-    private void createNewUseCase(CoordinateModel pressedObject, String useCaseName)
-    {
-        CDClass selectedClass = (CDClass) pressedObject;
-        if (selectedClass.getTypeOfClass()!=ClassType.NONE && selectedClass.getAssignedObject() != null)
-        {
-            if (selectedClass.getTypeOfClass()==ClassType.ACTOR && !(selectedClass.getAssignedObject() instanceof UCActor))
-            {
-                this.diagramPlaces.getUcPlaces().removePlace(selectedClass.getAssignedObject());
-                createNewActor(selectedClass);
-            }
-            else if (selectedClass.getTypeOfClass()==ClassType.ACTIVITY && !(selectedClass.getAssignedObject() instanceof UCUseCase))
-            {
-                this.diagramPlaces.getUcPlaces().removePlace(selectedClass.getAssignedObject());
-                createNewUseCase(selectedClass);
-            }
-            selectedClass.getAssignedObject().setName(useCaseName);
-        }
-        else if (selectedClass.getTypeOfClass()==ClassType.ACTOR && selectedClass.getAssignedObject() == null)
-        {
-            createNewActor(selectedClass);
-            selectedClass.getAssignedObject().setName(useCaseName);
-        }
-        else if (selectedClass.getTypeOfClass()==ClassType.ACTIVITY && selectedClass.getAssignedObject() == null)
-        {
-            createNewUseCase(selectedClass);
-            selectedClass.getAssignedObject().setName(useCaseName);
-        }
-        else if (selectedClass.getTypeOfClass()==ClassType.NONE && selectedClass.getAssignedObject() != null)
-        {
-            selectedClass.getAssignedObject().setAssignedObject(null);
-            selectedClass.setAssignedObject(null);
-        }
-    }
-    
-    /**
-     * 
-     * @param selectedClass 
-     */
-    private void createNewActor(CDClass selectedClass)
-    {
-        UCActor newActor = new UCActor(selectedClass.getX(), selectedClass.getY());
-        this.diagramPlaces.getUcPlaces().addObject(newActor);
-        selectedClass.setAssignedObject(newActor);
-        selectedClass.getAssignedObject().setAssignedObject(selectedClass);
-    }
-    
-    /**
-     * 
-     * @param selectedClass 
-     */
-    private void createNewUseCase(CDClass selectedClass)
-    {
-        UCUseCase newUsecase = new UCUseCase(selectedClass.getX(), selectedClass.getY());
-        this.diagramPlaces.getUcPlaces().addObject(newUsecase);
-        selectedClass.setAssignedObject(newUsecase);
-        selectedClass.getAssignedObject().setAssignedObject(selectedClass);
     }
 
     /**
@@ -288,44 +212,13 @@ public class CDMainContentController extends CDMainContentModel implements Drawi
             this.places.addObject(this.newJoinEdge);
             if (((CDClass)this.newJoinEdge.getSecondObject()).getTypeOfClass() != ClassType.NONE && ((CDClass)this.newJoinEdge.getFirstObject()).getTypeOfClass() != ClassType.NONE)
             {
-                createNewUseCaseJoin((CDJoinEdgeController) this.newJoinEdge);
+                this.useCaseConnector.setNewline(this.newJoinEdge);
+                this.useCaseConnector.createNewUseCaseJoin();
             }            
             this.newJoinEdge = null;
         }
         CDDrawingPane cdDrawing = (CDDrawingPane) this.mainContent.getDrawingPane();
-        cdDrawing.setNewLine(newJoinEdge);
-    }
-    
-    /**
-     * 
-     * @param cdJoin 
-     */
-    private void createNewUseCaseJoin(CDJoinEdgeController cdJoin)
-    {
-        UCJoinEdgeController newLine = new UCJoinEdgeController(cdJoin.getFirstObject().getAssignedObject(), cdJoin.getSecondObject().getAssignedObject());
-        if (cdJoin.getJoinEdgeType() == CDLineType.ASSOCIATION)
-        {
-            newLine.setJoinEdgeType(UCLineType.ASSOCIATION);
-        }
-        else if (cdJoin.getJoinEdgeType() == CDLineType.GENERALIZATION)
-        {
-            newLine.setJoinEdgeType(UCLineType.GENERALIZATION);
-        }
-        else if (cdJoin.getJoinEdgeType() == CDLineType.AGGREGATION)
-        {
-            System.out.println("aggregation");
-        }
-        else if (cdJoin.getJoinEdgeType() == CDLineType.COMPOSITION)
-        {
-            System.out.println("composition");
-        }
-        else if (cdJoin.getJoinEdgeType() == CDLineType.REALIZATION)
-        {
-            System.out.println("realization");
-        }
-        newLine.setAssignedObject(cdJoin);
-        cdJoin.setAssignedObject(newLine);
-        this.diagramPlaces.getUcPlaces().addObject(newLine);
+        cdDrawing.setNewLine(this.newJoinEdge);
     }
 
     /**
@@ -340,7 +233,36 @@ public class CDMainContentController extends CDMainContentModel implements Drawi
             if (this.newJoinEdge != null && (this.newJoinEdge.getFirstObject()==null || this.newJoinEdge.getFirstObject().equals(clickedObject))) {
                 this.newJoinEdge = null;
             }
+            else
+            {
+                this.places.setAllObjectDiselected();
+                disableButtons(null);
+            }
             drawJoinEdge(clickedObject);
+        }
+    }
+    
+    /**
+     * Method for disabling or reanabling buttons based on selected object
+     * @param selectedObject object that has been selected.
+     */
+    private void disableButtons(CoordinateModel selectedObject)
+    {
+        if (selectedObject != null && selectedObject instanceof CDClass && ((CDClass)selectedObject).getTypeOfClass() == ClassType.INTERFACE)
+        {
+            for (CDLineType lineType : CDLineType.values()) {
+                if (lineType != CDLineType.GENERALIZATION)
+                {
+                    this.LeftBottomContent.getButtonWithName(lineType.name()).setEnabled(false);
+                    this.LeftBottomContent.getButtonWithName(lineType.name()).setSelected(false);
+                }
+            }
+        }
+        else
+        {
+            for (CDLineType lineType : CDLineType.values()) {
+                this.LeftBottomContent.getButtonWithName(lineType.name()).setEnabled(true);
+            }
         }
     }
 }

@@ -78,6 +78,11 @@ public class CDJoinEdgeManipulator {
                 joinEdge.setFirstObject(null);
                 joinEdge.setSecondObject(null);
             }
+            if (((CDClass)joinEdge.getFirstObject()).getTypeOfClass() != ClassType.INTERFACE && joinEdge.getSecondObject() != null && ((CDClass)joinEdge.getSecondObject()).getTypeOfClass() == ClassType.INTERFACE &&
+                    joinEdge.getJoinEdgeType() != CDLineType.REALIZATION)
+            {
+                joinEdge.setSecondObject(null);
+            }
         }catch (NullPointerException exep){
             
         }

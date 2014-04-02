@@ -8,6 +8,7 @@ package BT.modules.ClassDiagram.places.joinEdge;
 import BT.BT;
 import BT.BT.ClassType;
 import BT.managers.JoinEdgeDrawer;
+import BT.models.CoordinateModel;
 import BT.models.LineModel;
 import BT.modules.ClassDiagram.places.CDClass;
 import java.awt.BasicStroke;
@@ -26,12 +27,42 @@ public class CDJoinEdgeDrawer extends JoinEdgeDrawer {
     }
 
     /**
+     * Method that checks if both objects with join edge are not nulls
+     * @return true or false
+     */
+    private Boolean checkForObjects()
+    {
+        return this.joinEdgeController != null && this.joinEdgeController.getFirstObject() != null && this.joinEdgeController.getSecondObject() != null;
+    }
+    
+    /**
+     * Method that checks if both objects at ends of line are ither actor or activity
+     * @return true or false
+     */
+    private Boolean checkForTypes()
+    {
+        CDClass firstObj = (CDClass)this.joinEdgeController.getFirstObject();
+        CDClass secondObj = (CDClass)this.joinEdgeController.getSecondObject();
+        return (firstObj.getTypeOfClass() == ClassType.ACTIVITY || firstObj.getTypeOfClass() == ClassType.ACTOR) && (secondObj.getTypeOfClass() == ClassType.ACTIVITY || secondObj.getTypeOfClass() == ClassType.ACTOR);
+    }
+    /**
      * Method for drawing each type of line.
      *
      * @param g
      */
     public void drawLine(Graphics2D g) {
-        setBasicColors(g);
+        if (checkForObjects() && !checkForTypes())
+        {
+            setBasicColors(g, false);
+        }
+        else if (!checkForObjects())
+        {
+            setBasicColors(g, false);
+        }
+        else
+        {
+            setBasicColors(g);
+        }
 
         float dash1[] = {10.0f};
         BasicStroke dashed
