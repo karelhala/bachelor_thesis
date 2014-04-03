@@ -17,7 +17,7 @@ import java.util.Collections;
 public class MyArrayList<E> extends ArrayList<E> {
 
     /**
-     * method that will swap whole array by middle element
+     * Method that will swap whole array by middle element.
      */
     public void swapWholeArrayList() {
         if (!this.isEmpty()) {
@@ -30,7 +30,6 @@ public class MyArrayList<E> extends ArrayList<E> {
     /**
      * Method for returning first elemnt. It will return element at position 0
      * if arrayList is not empty
-     *
      * @return element at first position
      */
     public E getFirst() {
@@ -42,8 +41,7 @@ public class MyArrayList<E> extends ArrayList<E> {
 
     /**
      * Method for returning last elemnt. It will return element at position
-     * arrayList.size()-1 if arrayList is not empty
-     *
+     * arrayList.size()-1 if arrayList is not empty.
      * @return element at last position
      */
     public E getLast() {
@@ -57,7 +55,6 @@ public class MyArrayList<E> extends ArrayList<E> {
      * Method for returning left muiddle element. It will return element at
      * position arrayList.size()/2-1 if arrayList is not empty. If size of
      * arrayList is bellow or equal 2 return first elemnt.
-     *
      * @return element at left middle position
      */
     public E getLeftMiddle() {
