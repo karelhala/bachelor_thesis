@@ -32,7 +32,14 @@ public class CDJoinEdgeDrawer extends JoinEdgeDrawer {
      * @param g
      */
     public void drawLine(Graphics2D g) {
-        setBasicColors(g);
+        if (this.joinEdgeController.getSecondObject() == null)
+        {
+            setBasicColors(g, false);
+        }
+        else
+        {
+            setBasicColors(g);
+        }
 
         float dash1[] = {10.0f};
         BasicStroke dashed

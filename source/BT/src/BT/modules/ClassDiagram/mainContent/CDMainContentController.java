@@ -23,6 +23,7 @@ import BT.modules.UC.places.UCUseCase;
 import java.awt.BorderLayout;
 import java.awt.event.MouseEvent;
 import javax.swing.ButtonGroup;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
@@ -158,14 +159,16 @@ public class CDMainContentController extends CDMainContentModel implements Drawi
             classTypeGroup.add(activity);
             classTypeGroup.add(actor);
             classTypeGroup.add(none);
+            ClassType typeOfClass = ((CDClass) pressedObject).getTypeOfClass();
+            ((JRadioButton) ((typeOfClass == ClassType.ACTIVITY) ? activity : (typeOfClass == ClassType.NONE)?none:actor)).setSelected(true);
             if (pressedObject.getInJoins().isEmpty() && pressedObject.getOutJoins().isEmpty() && ((CDClass)pressedObject).getTypeOfClass() != ClassType.INTERFACE)
             {
-                ClassType typeOfClass = ((CDClass) pressedObject).getTypeOfClass();
-                ((JRadioButton) ((typeOfClass == ClassType.ACTIVITY) ? activity : (typeOfClass == ClassType.NONE)?none:actor)).setSelected(true);
                 dialogPanel.add(actor, BorderLayout.LINE_START);
                 dialogPanel.add(activity, BorderLayout.CENTER);
                 dialogPanel.add(none, BorderLayout.LINE_END);
             }
+            this.useCaseConnector.setSelectedModel(pressedObject);
+            this.useCaseConnector.addButtonsToDialog(dialogPanel);
             int result = JOptionPane.showConfirmDialog(null, dialogPanel,
                     "Please Enter name of class and select type", JOptionPane.OK_CANCEL_OPTION);
             if (result == JOptionPane.OK_OPTION) {

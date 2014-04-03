@@ -7,6 +7,7 @@
 package BT.modules.ClassDiagram.mainContent;
 
 import BT.BT;
+import BT.BT.ClassType;
 import BT.managers.PlaceManager;
 import BT.models.CoordinateModel;
 import BT.models.LineModel;
@@ -15,6 +16,17 @@ import BT.modules.ClassDiagram.places.joinEdge.CDJoinEdgeController;
 import BT.modules.UC.places.UCActor;
 import BT.modules.UC.places.UCJoinEdge.UCJoinEdgeController;
 import BT.modules.UC.places.UCUseCase;
+import java.awt.BorderLayout;
+import java.awt.Button;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -81,8 +93,8 @@ public class CDUseCaseConnector {
         }
         else if (selectedClass.getTypeOfClass()==BT.ClassType.NONE && selectedClass.getAssignedObject() != null)
         {
-            selectedClass.getAssignedObject().setAssignedObject(null);
-            selectedClass.setAssignedObject(null);
+            selectedClass.getAssignedObject().setAssignedObject(selectedClass);
+            selectedClass.setAssignedObject(selectedClass);
         }
     }
     
@@ -93,6 +105,7 @@ public class CDUseCaseConnector {
     {
         CDClass selectedClass = (CDClass) this.selectedModel;
         UCActor newActor = new UCActor(selectedClass.getX(), selectedClass.getY());
+        newActor.setName(this.selectedModel.getName());
         ucPlaces.addObject(newActor);
         selectedClass.setAssignedObject(newActor);
         selectedClass.getAssignedObject().setAssignedObject(selectedClass);
@@ -105,6 +118,7 @@ public class CDUseCaseConnector {
     {
         CDClass selectedClass = (CDClass) this.selectedModel;
         UCUseCase newUsecase = new UCUseCase(selectedClass.getX(), selectedClass.getY());
+        newUsecase.setName(this.selectedModel.getName());
         ucPlaces.addObject(newUsecase);
         selectedClass.setAssignedObject(newUsecase);
         selectedClass.getAssignedObject().setAssignedObject(selectedClass);
@@ -136,5 +150,81 @@ public class CDUseCaseConnector {
         newUseCaseLine.setAssignedObject(cdJoin);
         cdJoin.setAssignedObject(newUseCaseLine);
         this.ucPlaces.addObject(newUseCaseLine);
+    }
+    
+    /**
+     * Method that adds buttons based on whether user can reactivate or activate with selected class.
+     * @param dialogPanel pane, that hold these buttons
+     */
+    public void addButtonsToDialog(final JPanel dialogPanel)
+    {
+        JButton reactivate = new JButton("reactivate");
+        reactivate.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                selectedModel.setName(((JTextField)dialogPanel.getComponent(0)).getText());
+                reactivateButtonclicked();
+                JDialog frame = (JDialog)dialogPanel.getRootPane().getParent();
+                frame.setDefaultCloseOperation(JOptionPane.OK_OPTION);
+                System.out.println();
+                frame.dispose();
+            }
+        }); 
+        JButton reactivateWith = new JButton("reactivate with");
+        reactivateWith.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                reactivateWithButtonClickes();
+            }
+        }); 
+        if (this.selectedModel.getAssignedObject() == null)
+        {
+            if (!this.selectedModel.getInJoins().isEmpty() || !this.selectedModel.getOutJoins().isEmpty())
+            {
+                if (((CDClass)this.selectedModel).getTypeOfClass() == ClassType.ACTIVITY || ((CDClass)this.selectedModel).getTypeOfClass() == ClassType.ACTOR)
+                {
+                    dialogPanel.add(reactivate, BorderLayout.LINE_START);
+                    dialogPanel.add(reactivateWith, BorderLayout.LINE_END);
+                }
+                else
+                {
+                    dialogPanel.add(reactivateWith, BorderLayout.LINE_END);
+                }
+            }
+        }
+    }
+    
+    /**
+     * Method that is called when user clickes on reactivate button.
+     */
+    private void reactivateButtonclicked()
+    {
+        CDClass selectedClass = (CDClass) this.selectedModel;
+        for (LineModel oneOutJoin : selectedClass.getOutJoins()) {
+            this.newline = oneOutJoin;
+            createNewUseCaseJoin();
+        }
+        
+        for (LineModel oneInJoin : selectedClass.getInJoins()) {
+            this.newline = oneInJoin;
+            createNewUseCaseJoin();
+        }
+        
+        if (selectedClass.getTypeOfClass() == ClassType.ACTIVITY)
+        {
+            createNewUseCase();
+        }
+        else if (selectedClass.getTypeOfClass() == ClassType.ACTOR)
+        {
+            createNewActor();
+        }
+    }
+    
+    /**
+     * Method that is called when user clickes on reactivate button.
+     */
+    private void reactivateWithButtonClickes()
+    {
+        System.out.println("reactivate with clicked");
     }
 }
