@@ -203,18 +203,25 @@ public class CDMainContentController extends CDMainContentModel implements Drawi
             CDJoinEdgeManipulator.changeLineTypeByButton(this.LeftBottomContent.getSelectedButton(), (CDJoinEdgeController) this.newJoinEdge);
         }
 
-        if (this.newJoinEdge.getFirstObject() != null && this.newJoinEdge.getSecondObject() != null) {
+        if (!this.newJoinEdge.isLineEmpty()) {
             if (this.newJoinEdge.getFirstObject().equals(clickedObject)) {
                 this.newJoinEdge.setSelected(true);
             } else {
                 this.newJoinEdge.setSelected(false);
             }
-            this.places.addObject(this.newJoinEdge);
-            if (((CDClass)this.newJoinEdge.getSecondObject()).getTypeOfClass() != ClassType.NONE && ((CDClass)this.newJoinEdge.getFirstObject()).getTypeOfClass() != ClassType.NONE)
+            
+            if (!((CDJoinEdgeController)this.newJoinEdge).areObjectsOfType(ClassType.NONE) 
+                    && !((CDJoinEdgeController)this.newJoinEdge).areObjectsOfType(ClassType.INTERFACE))
             {
                 this.useCaseConnector.setNewline(this.newJoinEdge);
                 this.useCaseConnector.createNewUseCaseJoin();
-            }            
+            }
+            else
+            {
+                this.newJoinEdge.setAssignedObject(this.newJoinEdge);
+            }
+            this.places.addObject(this.newJoinEdge);
+            
             this.newJoinEdge = null;
         }
         CDDrawingPane cdDrawing = (CDDrawingPane) this.mainContent.getDrawingPane();

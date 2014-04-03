@@ -27,42 +27,12 @@ public class CDJoinEdgeDrawer extends JoinEdgeDrawer {
     }
 
     /**
-     * Method that checks if both objects with join edge are not nulls
-     * @return true or false
-     */
-    private Boolean checkForObjects()
-    {
-        return this.joinEdgeController != null && this.joinEdgeController.getFirstObject() != null && this.joinEdgeController.getSecondObject() != null;
-    }
-    
-    /**
-     * Method that checks if both objects at ends of line are ither actor or activity
-     * @return true or false
-     */
-    private Boolean checkForTypes()
-    {
-        CDClass firstObj = (CDClass)this.joinEdgeController.getFirstObject();
-        CDClass secondObj = (CDClass)this.joinEdgeController.getSecondObject();
-        return (firstObj.getTypeOfClass() == ClassType.ACTIVITY || firstObj.getTypeOfClass() == ClassType.ACTOR) && (secondObj.getTypeOfClass() == ClassType.ACTIVITY || secondObj.getTypeOfClass() == ClassType.ACTOR);
-    }
-    /**
      * Method for drawing each type of line.
      *
      * @param g
      */
     public void drawLine(Graphics2D g) {
-        if (checkForObjects() && !checkForTypes())
-        {
-            setBasicColors(g, false);
-        }
-        else if (!checkForObjects())
-        {
-            setBasicColors(g, false);
-        }
-        else
-        {
-            setBasicColors(g);
-        }
+        setBasicColors(g);
 
         float dash1[] = {10.0f};
         BasicStroke dashed

@@ -151,4 +151,13 @@ public class LineModel extends CoordinateModel {
         }
         return new Point(this.endX, this.endY);
     }
+    
+    /**
+     * Checks if both objects at the end of line are null
+     * @return true if both objects are null
+     */
+    public Boolean isLineEmpty()
+    {
+        return this.firstObject == null || this.secondObject ==null;
+    }
 }
