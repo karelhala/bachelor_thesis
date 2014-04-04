@@ -39,6 +39,7 @@ public class ToolBarContentControler {
     private ToolBarContentModel toolBarcontent;
     private MouseAdapter newFileMouseClicked;
     private ActionListener newFileAction;
+    private ActionListener closeFileAction;
 
     /**
      *
@@ -64,7 +65,6 @@ public class ToolBarContentControler {
         };
 	
 	this.newFileAction = new ActionListener() {
-
 	    @Override
 	    public void actionPerformed(ActionEvent e) {
 		NewFileButtonMouseClicked(myLayout);
@@ -73,10 +73,17 @@ public class ToolBarContentControler {
 	
         NewFileButton.addMouseListener(this.newFileMouseClicked);
 
+	this.closeFileAction = new ActionListener() {
+	    @Override
+	    public void actionPerformed(ActionEvent e) {
+		CloseButtonMouseClicked(myLayout);
+	    }
+	};
+	
         Closebutton.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                CloseButtonMouseClicked(evt, myLayout);
+                CloseButtonMouseClicked(myLayout);
             }
         });
         myPanel.add(NewFileButton);
@@ -138,7 +145,7 @@ public class ToolBarContentControler {
      * @param evt
      * @param myLayout
      */
-    private void CloseButtonMouseClicked(MouseEvent evt, WindowLayoutControler myLayout) {
+    private void CloseButtonMouseClicked(WindowLayoutControler myLayout) {
         myLayout.removeTab(myLayout.getSelectedTab());
     }
 
@@ -161,6 +168,11 @@ public class ToolBarContentControler {
     public ActionListener getNewFileAction() {
 	return newFileAction;
     }
+
+    public ActionListener getCloseFileAction() {
+	return closeFileAction;
+    }
+    
     /**
      *
      * @param myLayout

@@ -113,4 +113,73 @@ public class MyMenuBar extends MyMenyBarModel{
 	this.newFile.addActionListener(newFileListener);
 	this.newFile.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK));
     }
+    
+    /**
+     * Method for close file listener to close file item
+     * @param closeFileListener 
+     */
+    public void addActionListenerToCloseFileItem(ActionListener closeFileListener)
+    {
+	this.closeFile.addActionListener(closeFileListener);
+    }
+    
+    /**
+     * Method for open file listener to open file item
+     * @param openFileListener 
+     */
+    public void addActionListenerToOpenNewFileItem(ActionListener openFileListener)
+    {
+	this.openFile.addActionListener(openFileListener);
+	this.openFile.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, ActionEvent.CTRL_MASK));
+    }
+    
+    /**
+     * Method for back action listener to take back action
+     * @param backActionListener 
+     */
+    public void addActionListenerToBackActionItem(ActionListener backActionListener)
+    {
+	this.backAction.addActionListener(backActionListener);
+	this.backAction.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Z, ActionEvent.CTRL_MASK));
+    }
+    
+    /**
+     * Method for forward action listener do again action.
+     * @param forwardActionListener 
+     */
+    public void addActionListenerToForwardActionItem(ActionListener forwardActionListener)
+    {
+	this.backAction.addActionListener(forwardActionListener);
+	this.backAction.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Y, ActionEvent.CTRL_MASK));
+    }
+    
+    /**
+     * Method for adding listener to export to pdf.
+     * @param exportPdfListener 
+     */
+    public void addActionListenerToExportPdf(ActionListener exportPdfListener)
+    {
+	this.exportToPdf.addActionListener(exportPdfListener);
+	this.exportToPdf.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, ActionEvent.ALT_MASK));
+    }
+    
+    /**
+     * Method for adding listener to export to eps.
+     * @param exportEpsListener 
+     */
+    public void addActionListenerToExportEps(ActionListener exportEpsListener)
+    {
+	this.exportToEps.addActionListener(exportEpsListener);
+	this.exportToEps.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, ActionEvent.ALT_MASK));
+    }
+    
+    /**
+     * Method for adding listener to export to xml.
+     * @param exportXmlListener 
+     */
+    public void addActionListenerToExportXml(ActionListener exportXmlListener)
+    {
+	this.exportToXml.addActionListener(exportXmlListener);
+	this.exportToXml.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X, ActionEvent.ALT_MASK));
+    }
 }
