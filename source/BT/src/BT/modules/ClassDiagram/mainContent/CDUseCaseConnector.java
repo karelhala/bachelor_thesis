@@ -7,7 +7,9 @@
 package BT.modules.ClassDiagram.mainContent;
 
 import BT.BT;
+import BT.BT.CDLineType;
 import BT.BT.ClassType;
+import BT.managers.ClassTypeException;
 import BT.managers.PlaceManager;
 import BT.models.CoordinateModel;
 import BT.models.LineModel;
@@ -20,6 +22,9 @@ import java.awt.BorderLayout;
 import java.awt.Button;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
@@ -57,6 +62,10 @@ public class CDUseCaseConnector {
     public void setNewline(LineModel newline) {
         this.newline = newline;
     }
+
+    public PlaceManager getUcPlaces() {
+        return ucPlaces;
+    }
     
     /**
      * Method that creates new actor or use case from new class. 
@@ -64,7 +73,7 @@ public class CDUseCaseConnector {
      * use case diagram and create new one. If new class was created create appropriate object in use case.
      * @param useCaseName name of created use case
      */
-    public void createNewUseCase(String useCaseName)
+    public void createNewUseCaseObject(String useCaseName)
     {
         CDClass selectedClass = (CDClass) selectedModel;
         if (selectedClass.getTypeOfClass()!=BT.ClassType.NONE && selectedClass.getAssignedObject() != null)
@@ -150,81 +159,5 @@ public class CDUseCaseConnector {
         newUseCaseLine.setAssignedObject(cdJoin);
         cdJoin.setAssignedObject(newUseCaseLine);
         this.ucPlaces.addObject(newUseCaseLine);
-    }
-    
-    /**
-     * Method that adds buttons based on whether user can reactivate or activate with selected class.
-     * @param dialogPanel pane, that hold these buttons
-     */
-    public void addButtonsToDialog(final JPanel dialogPanel)
-    {
-        JButton reactivate = new JButton("reactivate");
-        reactivate.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                selectedModel.setName(((JTextField)dialogPanel.getComponent(0)).getText());
-                reactivateButtonclicked();
-                JDialog frame = (JDialog)dialogPanel.getRootPane().getParent();
-                frame.setDefaultCloseOperation(JOptionPane.OK_OPTION);
-                System.out.println();
-                frame.dispose();
-            }
-        }); 
-        JButton reactivateWith = new JButton("reactivate with");
-        reactivateWith.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                reactivateWithButtonClickes();
-            }
-        }); 
-        if (this.selectedModel.getAssignedObject() == null)
-        {
-            if (!this.selectedModel.getInJoins().isEmpty() || !this.selectedModel.getOutJoins().isEmpty())
-            {
-                if (((CDClass)this.selectedModel).getTypeOfClass() == ClassType.ACTIVITY || ((CDClass)this.selectedModel).getTypeOfClass() == ClassType.ACTOR)
-                {
-                    dialogPanel.add(reactivate, BorderLayout.LINE_START);
-                    dialogPanel.add(reactivateWith, BorderLayout.LINE_END);
-                }
-                else
-                {
-                    dialogPanel.add(reactivateWith, BorderLayout.LINE_END);
-                }
-            }
-        }
-    }
-    
-    /**
-     * Method that is called when user clickes on reactivate button.
-     */
-    private void reactivateButtonclicked()
-    {
-        CDClass selectedClass = (CDClass) this.selectedModel;
-        for (LineModel oneOutJoin : selectedClass.getOutJoins()) {
-            this.newline = oneOutJoin;
-            createNewUseCaseJoin();
-        }
-        
-        for (LineModel oneInJoin : selectedClass.getInJoins()) {
-            this.newline = oneInJoin;
-            createNewUseCaseJoin();
-        }
-        
-        if (selectedClass.getTypeOfClass() == ClassType.ACTIVITY)
-        {
-            createNewUseCase();
-        }
-        else if (selectedClass.getTypeOfClass() == ClassType.ACTOR)
-        {
-            createNewActor();
-        }
-    }
-    
-    /**
-     * Method that is called when user clickes on reactivate button.
-     */
-    private void reactivateWithButtonClickes()
-    {
-        System.out.println("reactivate with clicked");
     }
 }

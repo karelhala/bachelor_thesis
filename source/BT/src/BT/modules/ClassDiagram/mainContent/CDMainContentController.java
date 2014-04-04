@@ -8,7 +8,6 @@ import BT.BT;
 import BT.BT.CDLineType;
 import BT.BT.CDObjectType;
 import BT.BT.ClassType;
-import BT.BT.UCLineType;
 import BT.interfaces.DrawingClicks;
 import BT.managers.CD.Attribute;
 import BT.managers.DiagramPlacesManager;
@@ -17,13 +16,9 @@ import BT.models.CoordinateModel;
 import BT.models.LineModel;
 import BT.modules.ClassDiagram.places.CDClass;
 import BT.modules.ClassDiagram.places.joinEdge.CDJoinEdgeController;
-import BT.modules.UC.places.UCActor;
-import BT.modules.UC.places.UCJoinEdge.UCJoinEdgeController;
-import BT.modules.UC.places.UCUseCase;
 import java.awt.BorderLayout;
 import java.awt.event.MouseEvent;
 import javax.swing.ButtonGroup;
-import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
@@ -37,6 +32,7 @@ import javax.swing.JToggleButton;
 public class CDMainContentController extends CDMainContentModel implements DrawingClicks {
 
     private final CDUseCaseConnector useCaseConnector;
+    private final CDUseCaseReactivator useCaseReactivator;
     /**
      *
      * @param diagramPlaces
@@ -44,6 +40,7 @@ public class CDMainContentController extends CDMainContentModel implements Drawi
     public CDMainContentController(DiagramPlacesManager diagramPlaces) {
         super(diagramPlaces);
         this.useCaseConnector = new CDUseCaseConnector(diagramPlaces.getUcPlaces());
+        this.useCaseReactivator = new CDUseCaseReactivator(useCaseConnector);
     }
 
     /**
@@ -168,14 +165,14 @@ public class CDMainContentController extends CDMainContentModel implements Drawi
                 dialogPanel.add(none, BorderLayout.LINE_END);
             }
             this.useCaseConnector.setSelectedModel(pressedObject);
-            this.useCaseConnector.addButtonsToDialog(dialogPanel);
+            this.useCaseReactivator.addButtonsToDialog(dialogPanel);
             int result = JOptionPane.showConfirmDialog(null, dialogPanel,
                     "Please Enter name of class and select type", JOptionPane.OK_CANCEL_OPTION);
             if (result == JOptionPane.OK_OPTION) {
                 pressedObject.setName(nameInput.getText());
                 ((CDClass) pressedObject).setTypeOfClass((actor.isSelected() == true) ? ClassType.ACTOR : (activity.isSelected() == true)?ClassType.ACTIVITY:ClassType.NONE);
                 this.useCaseConnector.setSelectedModel(pressedObject);
-                this.useCaseConnector.createNewUseCase(nameInput.getText());
+                this.useCaseConnector.createNewUseCaseObject(nameInput.getText());
             }
         }
     }
