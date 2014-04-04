@@ -16,6 +16,7 @@ public class MainWindowModel extends javax.swing.JFrame {
     private int width = 1200;
     private int height = 750;
     private WindowLayoutControler myLayout;
+    private MyMenuBar myMenu;
 
     public MainWindowModel(String programName, int width, int height, WindowLayoutControler myLayout) {
         super(programName);
@@ -37,8 +38,8 @@ public class MainWindowModel extends javax.swing.JFrame {
         this.setPreferredSize(new Dimension(this.width, this.height));
 //        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 
-        MyMenuBar myMenu = new MyMenuBar();
-        this.setJMenuBar(myMenu.getMainMenu());
+        this.myMenu = new MyMenuBar();
+        this.setJMenuBar(this.myMenu.getMainMenu());
 
         this.myLayout.addComponentsToPane(this.getContentPane());
 
@@ -48,4 +49,7 @@ public class MainWindowModel extends javax.swing.JFrame {
 
     }
 
+    public MyMenuBar getMyMenu() {
+	return myMenu;
+    }
 }

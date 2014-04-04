@@ -15,6 +15,7 @@ import GUI.CloseTabbedPane;
 import GUI.MainContentModel;
 import GUI.ToolBarContentModel;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
@@ -37,6 +38,7 @@ public class ToolBarContentControler {
 
     private ToolBarContentModel toolBarcontent;
     private MouseAdapter newFileMouseClicked;
+    private ActionListener newFileAction;
 
     /**
      *
@@ -57,9 +59,18 @@ public class ToolBarContentControler {
         this.newFileMouseClicked = new MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                NewFileButtonMouseClicked(evt, myLayout);
+                NewFileButtonMouseClicked(myLayout);
             }
         };
+	
+	this.newFileAction = new ActionListener() {
+
+	    @Override
+	    public void actionPerformed(ActionEvent e) {
+		NewFileButtonMouseClicked(myLayout);
+	    }
+	};
+	
         NewFileButton.addMouseListener(this.newFileMouseClicked);
 
         Closebutton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -79,7 +90,7 @@ public class ToolBarContentControler {
      * @param evt
      * @param myLayout
      */
-    private void NewFileButtonMouseClicked(MouseEvent evt, WindowLayoutControler myLayout) {
+    private void NewFileButtonMouseClicked(WindowLayoutControler myLayout) {
         addNewTab(myLayout);
     }
 
@@ -147,6 +158,9 @@ public class ToolBarContentControler {
         return this.newFileMouseClicked;
     }
 
+    public ActionListener getNewFileAction() {
+	return newFileAction;
+    }
     /**
      *
      * @param myLayout

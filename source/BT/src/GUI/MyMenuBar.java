@@ -4,9 +4,13 @@
  */
 package GUI;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.KeyStroke;
 
 /**
  *
@@ -39,7 +43,7 @@ public class MyMenuBar extends MyMenyBarModel{
     }
 
     /**
-     *
+     * Method for creating and initializing file menu.
      */
     private void initializeItems() {
         this.jMenu1 = new JMenu();
@@ -92,7 +96,7 @@ public class MyMenuBar extends MyMenyBarModel{
     }
     
     /**
-     *
+     * Method for adding menus to menu bar
      */
     private void addItemsToMenu() {
         this.jMenuBar1.add(this.jMenu1);
@@ -100,4 +104,13 @@ public class MyMenuBar extends MyMenyBarModel{
 	this.jMenuBar1.add(this.jMenu3);
     }
 
+    /**
+     * Method for add new file listener to new file item
+     * @param newFileListener 
+     */
+    public void addActionListenerToNewFileItem(ActionListener newFileListener)
+    {
+	this.newFile.addActionListener(newFileListener);
+	this.newFile.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK));
+    }
 }
