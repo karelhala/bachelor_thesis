@@ -28,7 +28,7 @@ public class PlusTab {
      * Method that creates pane for plus button, insert this button in it and insert this panel in tab Pane.
      * @param tabPane tab pane that holds this plus button
      */
-    public void AddPlusTab(JTabbedPane tabPane) {
+    public void addPlusTab(JTabbedPane tabPane) {
         JPanel closePanel = new JPanel(new BorderLayout());
         closePanel.setOpaque(false);
         closePanel.add(createPlusButton(), BorderLayout.CENTER);

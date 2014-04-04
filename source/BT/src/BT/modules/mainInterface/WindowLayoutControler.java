@@ -36,7 +36,7 @@ public class WindowLayoutControler {
         this.toolBar = toolBar;
         fileTab = new CloseTabbedPane();
         plusTab = new PlusTab();
-        this.plusTab.AddPlusTab(this.fileTab);
+        this.plusTab.addPlusTab(this.fileTab);
     }
 
     /**
@@ -133,7 +133,7 @@ public class WindowLayoutControler {
             removeTab(this.fileTab.getComponentAt(this.fileTab.getTabCount() - 1), false);
         }
         this.fileTab.addCloseTab(name, typeTab);
-        this.plusTab.AddPlusTab(this.fileTab);
+        this.plusTab.addPlusTab(this.fileTab);
         setMouseClickedOnPlusButton();
         this.fileTab.setEnabledAt(this.fileTab.getTabCount() - 1, false);
     }
