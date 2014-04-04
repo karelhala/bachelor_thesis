@@ -23,6 +23,7 @@ import BT.modules.UC.places.UCUseCase;
 import java.awt.BorderLayout;
 import java.awt.event.MouseEvent;
 import javax.swing.ButtonGroup;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
@@ -158,14 +159,16 @@ public class CDMainContentController extends CDMainContentModel implements Drawi
             classTypeGroup.add(activity);
             classTypeGroup.add(actor);
             classTypeGroup.add(none);
+            ClassType typeOfClass = ((CDClass) pressedObject).getTypeOfClass();
+            ((JRadioButton) ((typeOfClass == ClassType.ACTIVITY) ? activity : (typeOfClass == ClassType.NONE)?none:actor)).setSelected(true);
             if (pressedObject.getInJoins().isEmpty() && pressedObject.getOutJoins().isEmpty() && ((CDClass)pressedObject).getTypeOfClass() != ClassType.INTERFACE)
             {
-                ClassType typeOfClass = ((CDClass) pressedObject).getTypeOfClass();
-                ((JRadioButton) ((typeOfClass == ClassType.ACTIVITY) ? activity : (typeOfClass == ClassType.NONE)?none:actor)).setSelected(true);
                 dialogPanel.add(actor, BorderLayout.LINE_START);
                 dialogPanel.add(activity, BorderLayout.CENTER);
                 dialogPanel.add(none, BorderLayout.LINE_END);
             }
+            this.useCaseConnector.setSelectedModel(pressedObject);
+            this.useCaseConnector.addButtonsToDialog(dialogPanel);
             int result = JOptionPane.showConfirmDialog(null, dialogPanel,
                     "Please Enter name of class and select type", JOptionPane.OK_CANCEL_OPTION);
             if (result == JOptionPane.OK_OPTION) {
@@ -203,18 +206,25 @@ public class CDMainContentController extends CDMainContentModel implements Drawi
             CDJoinEdgeManipulator.changeLineTypeByButton(this.LeftBottomContent.getSelectedButton(), (CDJoinEdgeController) this.newJoinEdge);
         }
 
-        if (this.newJoinEdge.getFirstObject() != null && this.newJoinEdge.getSecondObject() != null) {
+        if (!this.newJoinEdge.isLineEmpty()) {
             if (this.newJoinEdge.getFirstObject().equals(clickedObject)) {
                 this.newJoinEdge.setSelected(true);
             } else {
                 this.newJoinEdge.setSelected(false);
             }
-            this.places.addObject(this.newJoinEdge);
-            if (((CDClass)this.newJoinEdge.getSecondObject()).getTypeOfClass() != ClassType.NONE && ((CDClass)this.newJoinEdge.getFirstObject()).getTypeOfClass() != ClassType.NONE)
+            
+            if (!((CDJoinEdgeController)this.newJoinEdge).areObjectsOfType(ClassType.NONE) 
+                    && !((CDJoinEdgeController)this.newJoinEdge).areObjectsOfType(ClassType.INTERFACE))
             {
                 this.useCaseConnector.setNewline(this.newJoinEdge);
                 this.useCaseConnector.createNewUseCaseJoin();
-            }            
+            }
+            else
+            {
+                this.newJoinEdge.setAssignedObject(this.newJoinEdge);
+            }
+            this.places.addObject(this.newJoinEdge);
+            
             this.newJoinEdge = null;
         }
         CDDrawingPane cdDrawing = (CDDrawingPane) this.mainContent.getDrawingPane();
