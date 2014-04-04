@@ -10,46 +10,70 @@ import java.util.logging.Logger;
 import javax.swing.UnsupportedLookAndFeelException;
 
 /**
- *
+ * Main of bachelor's thesis project
  * @author Karel Hala
  */
 public class BT {
 
+    /**
+     * Enum of lines for usecase diagram
+     */
     public static enum UCLineType {
 
         ASSOCIATION, INCLUDE, EXTENDS, GENERALIZATION
     };
 
+    /**
+     * Enum of types of objects in usecase diagram
+     */
     public static enum UCObjectType {
 
         ACTOR, USECASE
     };
 
+    /**
+     * Enum of lines for class diagram
+     */
     public static enum CDLineType {
 
         ASSOCIATION, AGGREGATION, COMPOSITION, GENERALIZATION, REALIZATION
     };
 
+    /**
+     * Enum of types of objects for class diagram
+     */
     public static enum CDObjectType {
 
         CLASS, INTERFACE
     };
 
+    /**
+     * Enum of types of objects for OOPN
+     */
     public static enum OOPNObjectType {
 
         PLACE, TRANSITION
     };
 
+    /**
+     * Enum of lines for OOPN
+     */
     public static enum OOPNLineType {
 
         JOIN
     };
 
+    /**
+     * Enum of attributes used in class diagram
+     */
     public static enum AttributeType {
 
         PUBLIC, PRIVATE, PROTECTED
     };
 
+    /**
+     * Enum of types of class used in class diagram
+     */
     public static enum ClassType {
 
         ACTOR, ACTIVITY, NONE, INTERFACE
