@@ -6,30 +6,51 @@
 package BT.managers.CD;
 
 import BT.BT;
+import BT.BT.AttributeType;
 
 /**
- *
+ * Class for working with attributes of class on class diagram.
  * @author Karel
  */
 public class Attribute {
 
-    private BT.AttributeType visibility;
+    /**
+     * Variable holding visibility of attribute.
+     */
+    private AttributeType visibility;
+    
+    /**
+     * Variable holding name of attribute.
+     */
     private String name;
+    
+    /**
+     * Variable holding type of attribute
+     */
     private String type;
 
-    public Attribute(BT.AttributeType visibility, String name, String type) {
+    /**
+     * Basic constructor
+     * @param visibility set visibility to this value
+     * @param name set name to this value
+     * @param type set type to this value
+     */ 
+    public Attribute(AttributeType visibility, String name, String type) {
         this.visibility = visibility;
         this.name = name;
         this.type = type;
     }
 
+    /**
+     * Constructor that sets visibility to private.
+     * @param name set name to this value
+     * @param type set type to this value
+     */
     public Attribute(String name, String type) {
-        visibility = BT.AttributeType.PRIVATE;
-        this.name = name;
-        this.type = type;
+	this(AttributeType.PRIVATE, name, type);
     }
 
-    public void setVisibility(BT.AttributeType visibility) {
+    public void setVisibility(AttributeType visibility) {
         this.visibility = visibility;
     }
 
