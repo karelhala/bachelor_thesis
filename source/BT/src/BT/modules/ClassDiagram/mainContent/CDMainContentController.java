@@ -40,7 +40,7 @@ public class CDMainContentController extends CDMainContentModel implements Drawi
     public CDMainContentController(DiagramPlacesManager diagramPlaces) {
         super(diagramPlaces);
         this.useCaseConnector = new CDUseCaseConnector(diagramPlaces.getUcPlaces());
-        this.useCaseReactivator = new CDUseCaseReactivator(useCaseConnector);
+        this.useCaseReactivator = new CDUseCaseReactivator(useCaseConnector, diagramPlaces.getCdPlaces());
     }
 
     /**

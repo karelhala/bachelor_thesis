@@ -7,12 +7,17 @@
 package BT.modules.ClassDiagram.mainContent;
 
 import BT.BT;
+import BT.BT.CDLineType;
+import BT.BT.ClassType;
+import BT.BT.UCLineType;
 import BT.managers.ClassTypeException;
+import BT.managers.PlaceManager;
 import BT.models.CoordinateModel;
 import BT.models.LineModel;
 import BT.modules.ClassDiagram.places.CDClass;
 import BT.modules.ClassDiagram.places.joinEdge.CDJoinEdgeController;
 import BT.modules.UC.places.UCActor;
+import BT.modules.UC.places.UCJoinEdge.UCJoinEdgeController;
 import BT.modules.UC.places.UCUseCase;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
@@ -30,20 +35,14 @@ import javax.swing.JTextField;
  * @author Karel
  */
 public class CDUseCaseReactivator {
-    private CDUseCaseConnector useCaseconnector;
+    final private CDUseCaseConnector useCaseconnector;
     private ArrayList<CoordinateModel> allModels;
+    final private PlaceManager cdModels;
     
-    public CDUseCaseReactivator(CDUseCaseConnector useCaseconnector)
+    public CDUseCaseReactivator(CDUseCaseConnector useCaseconnector, PlaceManager cdModels)
     {
-        this.useCaseconnector = useCaseconnector; 
-    }
-
-    public CDUseCaseConnector getUseCaseconnector() {
-        return useCaseconnector;
-    }
-
-    public void setUseCaseconnector(CDUseCaseConnector useCaseconnector) {
         this.useCaseconnector = useCaseconnector;
+        this.cdModels = cdModels;
     }
     
      /**
@@ -60,7 +59,6 @@ public class CDUseCaseReactivator {
                 reactivateButtonclicked();
                 JDialog frame = (JDialog)dialogPanel.getRootPane().getParent();
                 frame.setDefaultCloseOperation(JOptionPane.OK_OPTION);
-                System.out.println();
                 frame.dispose();
             }
         }); 
@@ -69,6 +67,9 @@ public class CDUseCaseReactivator {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 reactivateWithButtonClickes();
+                JDialog frame = (JDialog)dialogPanel.getRootPane().getParent();
+                frame.setDefaultCloseOperation(JOptionPane.OK_OPTION);
+                frame.dispose();
             }
         }); 
         if (useCaseconnector.getSelectedModel().getAssignedObject() == null)
@@ -94,6 +95,15 @@ public class CDUseCaseReactivator {
     private void reactivateButtonclicked()
     {
         CDClass selectedClass = (CDClass) useCaseconnector.getSelectedModel();
+        if (selectedClass.getTypeOfClass() == BT.ClassType.ACTIVITY)
+        {
+            useCaseconnector.createNewUseCaseObject(selectedClass.getName());
+        }
+        else if (selectedClass.getTypeOfClass() == BT.ClassType.ACTOR)
+        {
+            useCaseconnector.createNewUseCaseObject(selectedClass.getName());
+        }
+        
         for (LineModel oneOutJoin : selectedClass.getOutJoins()) {
             useCaseconnector.setNewline(oneOutJoin);
             useCaseconnector.createNewUseCaseJoin();
@@ -102,15 +112,6 @@ public class CDUseCaseReactivator {
         for (LineModel oneInJoin : selectedClass.getInJoins()) {
             useCaseconnector.setNewline(oneInJoin);
             useCaseconnector.createNewUseCaseJoin();
-        }
-        
-        if (selectedClass.getTypeOfClass() == BT.ClassType.ACTIVITY)
-        {
-            useCaseconnector.createNewUseCaseObject(selectedClass.getName());
-        }
-        else if (selectedClass.getTypeOfClass() == BT.ClassType.ACTOR)
-        {
-            useCaseconnector.createNewUseCaseObject(selectedClass.getName());
         }
     }
     
@@ -146,18 +147,107 @@ public class CDUseCaseReactivator {
         {
             this.allModels = getActorsFromUseCase();
         }
+        String[] modelsArray = new String[this.allModels.size()];
+        for (int i = 0; i < this.allModels.size(); i++) {
+            modelsArray[i] = ((this.allModels.get(i) instanceof UCUseCase)?"Use case":"Actor")+": "+this.allModels.get(i).getName();
+        }
+        int selectedId = createOptionPaneWithSelectBox(modelsArray);
+        if (selectedId != -1)
+        {
+            this.useCaseconnector.getSelectedModel().setName(this.allModels.get(selectedId).getName());
+            reactivateClassWithUseCase(this.allModels.get(selectedId));
+        }
     }
 
-    private CoordinateModel createOptionPaneWithSelectBox()
+    /**
+     * Method for reactivating class with selected use case.
+     * @param selectedUseCase selected class will be reactivated with this object
+     */
+    private void reactivateClassWithUseCase(CoordinateModel selectedUseCase)
+    {
+        CDClass selectedClass = (CDClass)this.useCaseconnector.getSelectedModel();
+        selectedUseCase.getAssignedObject().setAssignedObject(null);
+        selectedUseCase.setAssignedObject(selectedClass);
+        selectedClass.setAssignedObject(selectedUseCase);
+        selectedClass.setTypeOfClass((selectedUseCase instanceof UCUseCase)?ClassType.ACTIVITY:ClassType.ACTOR);
+        for (LineModel inJoin : selectedUseCase.getInJoins()) {
+            CoordinateModel firstObject = inJoin.getFirstObject();
+            if (firstObject != null && firstObject.getAssignedObject() != null)
+            {
+                inJoin.getAssignedObject().setAssignedObject(null);
+                CDJoinEdgeController newLine = new CDJoinEdgeController(firstObject.getAssignedObject(), selectedClass);
+                LineModel existingLine = cdModels.getExistingLine(newLine);
+                if  (existingLine !=null)
+                {
+                    cdModels.removeJoinEdge(existingLine);
+                }
+                inJoin.setAssignedObject(newLine);
+                newLine.setAssignedObject(inJoin);
+                newLine.setJoinEdgeType(getCDLineTypeByUCLineTyp(inJoin));
+                cdModels.addObject(newLine);
+            }
+        }
+        
+        for (LineModel outJoin : selectedUseCase.getOutJoins()) {
+            CoordinateModel secondObject = outJoin.getSecondObject();
+            if (secondObject != null && secondObject.getAssignedObject() != null)
+            {
+                outJoin.getAssignedObject().setAssignedObject(null);
+                CDJoinEdgeController newLine = new CDJoinEdgeController(selectedClass, secondObject.getAssignedObject());
+                LineModel existingLine = cdModels.getExistingLine(newLine);
+                if  (existingLine !=null)
+                {
+                    cdModels.removeJoinEdge(existingLine);
+                }
+                outJoin.setAssignedObject(newLine);
+                newLine.setAssignedObject(outJoin);
+                newLine.setJoinEdgeType(getCDLineTypeByUCLineTyp(outJoin));
+                cdModels.addObject(newLine);
+            }
+        }
+    }
+    
+    /**
+     * Method for getting class line type by use case line type.
+     * @param selectedUseCaseLine join edge in use case diagram
+     * @return CDLineType by usecase line
+     */
+    private CDLineType getCDLineTypeByUCLineTyp(LineModel selectedUseCaseLine)
+    {
+        UCJoinEdgeController ucJoinEdge = (UCJoinEdgeController) selectedUseCaseLine;
+        CDLineType selectedLineType = null;
+        if (ucJoinEdge.getJoinEdgeType() == UCLineType.ASSOCIATION)
+        {
+            selectedLineType = CDLineType.ASSOCIATION;
+        }
+        else if (ucJoinEdge.getJoinEdgeType() == UCLineType.GENERALIZATION)
+        {
+            selectedLineType = CDLineType.GENERALIZATION;
+        }
+        return selectedLineType;
+    }
+    
+    /**
+     * Method that creates option pane, that lets you select which object should be connected.
+     * @return int based on selected item
+     */
+    private int createOptionPaneWithSelectBox(String[] modelsArray)
     {
         JPanel dialogPanel = new JPanel(new BorderLayout());
-//        JComboBox petList = new JComboBox()
-//        for (CoordinateModel coordinateModel : allModels) {
-//            JComboBox petList = new JComboBox(coordinateModel.getName());
-//        }
-        JOptionPane.showConfirmDialog(null, dialogPanel,
+        JComboBox petList = new JComboBox(modelsArray);
+        dialogPanel.add(petList);
+        int result = JOptionPane.showConfirmDialog(null, dialogPanel,
                     "Please Select object you want to reactivate from", JOptionPane.OK_CANCEL_OPTION);
-        return null;
+        if (result == JOptionPane.OK_OPTION)
+        {   
+            if ((JOptionPane.showConfirmDialog(null, "Are you sure you want to reactivate this object with selected object?",
+                    "Please confirm", JOptionPane.YES_NO_OPTION)) == JOptionPane.OK_OPTION)
+            {
+                return petList.getSelectedIndex();
+            }
+            
+        }
+        return -1;
     }
     
     /**

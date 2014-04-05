@@ -99,4 +99,24 @@ public class PlaceModel {
         }
         return false;
     }
+    
+    /**
+     * Method for fetching existing class.
+     * @param newLine check if this line doeasn't exists.
+     * @return line that allready exists or null.
+     */
+    public LineModel getExistingLine(LineModel newLine)
+    {
+        if (lineExists(newLine))
+        {
+            for (LineModel oneEdge : this.joinEdges) {
+            if (oneEdge.getSecondObject().equals(newLine.getSecondObject()) || oneEdge.getSecondObject().equals(newLine.getFirstObject())) {
+                if (oneEdge.getFirstObject().equals(newLine.getSecondObject()) || oneEdge.getFirstObject().equals(newLine.getFirstObject())) {
+                    return oneEdge;
+                }
+            }
+        }
+        }
+        return null;
+    }
 }

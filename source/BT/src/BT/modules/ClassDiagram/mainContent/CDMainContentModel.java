@@ -8,7 +8,6 @@ import BT.interfaces.DrawingClicks;
 import BT.managers.DiagramPlacesManager;
 import BT.managers.DrawingListeners;
 import BT.managers.MainContentController;
-import BT.managers.PlaceManager;
 import BT.modules.ClassDiagram.CDLeftBottomContent;
 import BT.modules.ClassDiagram.CDLeftTopContent;
 import BT.modules.ClassDiagram.CDMainContent;

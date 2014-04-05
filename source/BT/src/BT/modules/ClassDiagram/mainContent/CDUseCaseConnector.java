@@ -7,9 +7,6 @@
 package BT.modules.ClassDiagram.mainContent;
 
 import BT.BT;
-import BT.BT.CDLineType;
-import BT.BT.ClassType;
-import BT.managers.ClassTypeException;
 import BT.managers.PlaceManager;
 import BT.models.CoordinateModel;
 import BT.models.LineModel;
@@ -18,20 +15,6 @@ import BT.modules.ClassDiagram.places.joinEdge.CDJoinEdgeController;
 import BT.modules.UC.places.UCActor;
 import BT.modules.UC.places.UCJoinEdge.UCJoinEdgeController;
 import BT.modules.UC.places.UCUseCase;
-import java.awt.BorderLayout;
-import java.awt.Button;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
 
 /**
  *
@@ -156,6 +139,8 @@ public class CDUseCaseConnector {
         {
             System.out.println("composition");
         }
+        this.newline.getFirstObject().getAssignedObject().addOutJoins(newUseCaseLine);
+        this.newline.getSecondObject().getAssignedObject().addInJoin(newUseCaseLine);
         newUseCaseLine.setAssignedObject(cdJoin);
         cdJoin.setAssignedObject(newUseCaseLine);
         this.ucPlaces.addObject(newUseCaseLine);
