@@ -4,9 +4,14 @@
  */
 package BT.managers;
 
+import BT.BT;
 import BT.models.PlaceModel;
 import BT.models.CoordinateModel;
 import BT.models.LineModel;
+import BT.modules.ClassDiagram.places.CDClass;
+import BT.modules.UC.places.UCActor;
+import BT.modules.UC.places.UCUseCase;
+import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
@@ -143,5 +148,71 @@ public class PlaceManager extends PlaceModel {
             }
         }
         return null;
+    }
+    
+    /**
+     * Method for fetching all use case actors.
+     * @return ArrayList<CoordinateModel> of actors
+     */
+    public ArrayList<CoordinateModel> getActorsFromUseCase()
+    {
+        ArrayList<CoordinateModel> useCasemodels = new ArrayList<>();
+        for (CoordinateModel oneObject : this.getObjects()) {
+            if (oneObject instanceof UCActor)
+            {
+                useCasemodels.add(oneObject);
+            }
+        }
+        return useCasemodels;
+    }
+    
+    
+    /**
+     * Method for fetching all use case useCases.
+     * @return ArrayList<CoordinateModel> of useCases
+     */
+    public ArrayList<CoordinateModel> getUsecasesFromUseCase()
+    {
+        ArrayList<CoordinateModel> useCasemodels = new ArrayList<>();
+        for (CoordinateModel oneObject : this.getObjects()) {
+            if (oneObject instanceof UCUseCase)
+            {
+                useCasemodels.add(oneObject);
+            }
+        }
+        return useCasemodels;
+    }
+    
+    /**
+     * Method for fetching all activities from class diagram.
+     * @return ArrayList<CoordinateModel> of actors
+     */
+    public ArrayList<CoordinateModel> getActivitiesFromClassDiagram()
+    {
+        ArrayList<CoordinateModel> classModels = new ArrayList<>();
+        for (CoordinateModel oneObject : this.getObjects()) {
+            if (oneObject instanceof CDClass && ((CDClass)oneObject).getTypeOfClass() == BT.ClassType.ACTIVITY)
+            {
+                classModels.add(oneObject);
+            }
+        }
+        return classModels;
+    }
+    
+    
+    /**
+     * Method for fetching all actors from class diagram.
+     * @return ArrayList<CoordinateModel> of useCases
+     */
+    public ArrayList<CoordinateModel> getActorsFromClassDiagram()
+    {
+        ArrayList<CoordinateModel> classModels = new ArrayList<>();
+        for (CoordinateModel oneObject : this.getObjects()) {
+            if (oneObject instanceof CDClass && ((CDClass)oneObject).getTypeOfClass() == BT.ClassType.ACTOR)
+            {
+                classModels.add(oneObject);
+            }
+        }
+        return classModels;
     }
 }

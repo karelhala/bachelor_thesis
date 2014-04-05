@@ -136,16 +136,16 @@ public class CDUseCaseReactivator {
         }
         if (selectedClassType == BT.ClassType.NONE)
         {
-            this.allModels = getActorsFromUseCase();
-            this.allModels.addAll(getUsecasesFromUseCase());
+            this.allModels = this.useCaseconnector.getUcPlaces().getActorsFromUseCase();
+            this.allModels.addAll(this.useCaseconnector.getUcPlaces().getUsecasesFromUseCase());
         }
         else if (selectedClassType == BT.ClassType.ACTIVITY)
         {
-            this.allModels = getUsecasesFromUseCase();
+            this.allModels = this.useCaseconnector.getUcPlaces().getUsecasesFromUseCase();
         }
         else if (selectedClassType == BT.ClassType.ACTOR)
         {
-            this.allModels = getActorsFromUseCase();
+            this.allModels = this.useCaseconnector.getUcPlaces().getActorsFromUseCase();
         }
         String[] modelsArray = new String[this.allModels.size()];
         for (int i = 0; i < this.allModels.size(); i++) {
@@ -250,38 +250,6 @@ public class CDUseCaseReactivator {
         return -1;
     }
     
-    /**
-     * Method for fetching all use case actors.
-     * @return ArrayList<CoordinateModel> of actors
-     */
-    private ArrayList<CoordinateModel> getActorsFromUseCase()
-    {
-        ArrayList<CoordinateModel> useCasemodels = new ArrayList<>();
-        for (CoordinateModel oneObject : useCaseconnector.getUcPlaces().getObjects()) {
-            if (oneObject instanceof UCActor)
-            {
-                useCasemodels.add(oneObject);
-            }
-        }
-        return useCasemodels;
-    }
-    
-    
-    /**
-     * Method for fetching all use case useCases.
-     * @return ArrayList<CoordinateModel> of useCases
-     */
-    private ArrayList<CoordinateModel> getUsecasesFromUseCase()
-    {
-        ArrayList<CoordinateModel> useCasemodels = new ArrayList<>();
-        for (CoordinateModel oneObject : useCaseconnector.getUcPlaces().getObjects()) {
-            if (oneObject instanceof UCUseCase)
-            {
-                useCasemodels.add(oneObject);
-            }
-        }
-        return useCasemodels;
-    }
     /**
      * Method for deciding what type of object can be reinitilize with
      * @param selectedClass
