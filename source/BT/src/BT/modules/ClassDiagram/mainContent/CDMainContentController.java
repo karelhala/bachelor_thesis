@@ -17,6 +17,7 @@ import BT.models.LineModel;
 import BT.modules.ClassDiagram.places.CDClass;
 import BT.modules.ClassDiagram.places.joinEdge.CDJoinEdgeController;
 import GUI.BottomRightContentModel;
+import GUI.ClassDiagramAttributesPanel;
 import java.awt.BorderLayout;
 import java.awt.event.MouseEvent;
 import javax.swing.ButtonGroup;
@@ -35,16 +36,19 @@ public class CDMainContentController extends CDMainContentModel implements Drawi
     private final CDUseCaseConnector useCaseConnector;
     private final CDUseCaseReactivator useCaseReactivator;
     private final BottomRightContentModel BottomRightContent;
+    private final ClassDiagramAttributesPanel attributesPanel;
     /**
      *
      * @param diagramPlaces
      * @param BottomRightContent
+     * @param attributesPanel
      */
-    public CDMainContentController(DiagramPlacesManager diagramPlaces, BottomRightContentModel BottomRightContent) {
+    public CDMainContentController(DiagramPlacesManager diagramPlaces, BottomRightContentModel BottomRightContent, ClassDiagramAttributesPanel attributesPanel) {
         super(diagramPlaces);
         this.BottomRightContent = BottomRightContent;
         this.useCaseConnector = new CDUseCaseConnector(diagramPlaces.getUcPlaces());
         this.useCaseReactivator = new CDUseCaseReactivator(useCaseConnector, diagramPlaces.getCdPlaces());
+        this.attributesPanel = attributesPanel;
     }
 
     /**
@@ -214,8 +218,7 @@ public class CDMainContentController extends CDMainContentModel implements Drawi
                 this.newJoinEdge.setSelected(false);
             }
             
-            if (!((CDJoinEdgeController)this.newJoinEdge).areObjectsOfType(ClassType.NONE) 
-                    && !((CDJoinEdgeController)this.newJoinEdge).areObjectsOfType(ClassType.INTERFACE))
+            if (((CDJoinEdgeController)this.newJoinEdge).checkBothObjects())
             {
                 if (this.newJoinEdge.getFirstObject().getAssignedObject() != null && this.newJoinEdge.getSecondObject().getAssignedObject() != null)
                 {

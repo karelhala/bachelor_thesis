@@ -22,7 +22,7 @@ import javax.swing.JTextField;
  *
  * @author Karel
  */
-public class ClassDiagramAttributespanel {
+public class ClassDiagramAttributesPanel {
     
     private final JPanel contentPanel;
     private final JTextField variableName;
@@ -34,7 +34,7 @@ public class ClassDiagramAttributespanel {
     private final JButton addVariable;
     private final JButton addMethod;
     
-    public ClassDiagramAttributespanel()
+    public ClassDiagramAttributesPanel()
     {
         this.contentPanel = new JPanel(new GridBagLayout());
         this.variableName = new JTextField();
