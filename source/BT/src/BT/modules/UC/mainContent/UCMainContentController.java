@@ -18,6 +18,8 @@ import BT.modules.UC.places.UCJoinEdge.UCJoinEdgeController;
 import BT.modules.UC.places.UCUseCase;
 import GUI.BottomRightContentModel;
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -41,6 +43,29 @@ public class UCMainContentController extends UCMainContentModel implements Drawi
         super(diagramPlaces);
         this.bottomRightContent = bottomRightContent;
         this.classDiagramConnector = new UCClassDiagramConnector(diagramPlaces.getCdPlaces(), diagramPlaces.getUcPlaces());
+        addButtonClickListeners();
+    }
+    
+    /**
+     * 
+     */
+    private void addButtonClickListeners()
+    {
+        this.bottomRightContent.getDeleteAllNonValidButton().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                places.deleteAllUnassignedObjects();
+                ((UCDrawingPane) mainContent.getDrawingPane()).getDrawing().repaint();
+            }
+        });
+        
+        this.bottomRightContent.getReactivateAllButton().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                classDiagramConnector.reactivateAllObjects();
+                ((UCDrawingPane) mainContent.getDrawingPane()).getDrawing().repaint();
+            }
+        });
     }
 
     /**

@@ -283,4 +283,23 @@ public class UCClassDiagramConnector {
             ucPlaces.addObject(newJoinEdge);
         }
     }
+    
+    /**
+     * 
+     */
+    public void reactivateAllObjects()
+    {
+        for (CoordinateModel oneObject : ucPlaces.getObjects()) {
+            if (oneObject.getAssignedObject() == null)
+            {
+                this.selectedObject = oneObject;
+                createNewClassdiagramObject();
+            }
+        }
+        
+        for (LineModel oneJoin : ucPlaces.getJoinEdges()) {
+            this.newLine = oneJoin;
+            createNewClassJoinEdge();
+        }
+    }
 }
