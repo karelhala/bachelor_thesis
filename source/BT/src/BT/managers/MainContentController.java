@@ -7,6 +7,7 @@ package BT.managers;
 import BT.interfaces.DrawingClicks;
 import BT.models.ContentPaneModel;
 import BT.models.LineModel;
+import GUI.BottomRightContentModel;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
 
@@ -35,7 +36,7 @@ abstract public class MainContentController implements DrawingClicks {
      * 
      */
     protected DiagramPlacesManager diagramPlaces;
-
+    
     public ContentPaneModel getMainContent() {
         return mainContent;
     }
@@ -68,7 +69,6 @@ abstract public class MainContentController implements DrawingClicks {
     public void rightClick(MouseEvent evt) {
         if (this.newJoinEdge != null) {
             this.newJoinEdge.addBreakPoint(new Point(evt.getX(), evt.getY()));
-            System.out.println(this.newJoinEdge.getBreakPoints());
         }
     }
 }

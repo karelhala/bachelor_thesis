@@ -16,6 +16,7 @@ import BT.models.CoordinateModel;
 import BT.models.LineModel;
 import BT.modules.ClassDiagram.places.CDClass;
 import BT.modules.ClassDiagram.places.joinEdge.CDJoinEdgeController;
+import GUI.BottomRightContentModel;
 import java.awt.BorderLayout;
 import java.awt.event.MouseEvent;
 import javax.swing.ButtonGroup;
@@ -33,12 +34,15 @@ public class CDMainContentController extends CDMainContentModel implements Drawi
 
     private final CDUseCaseConnector useCaseConnector;
     private final CDUseCaseReactivator useCaseReactivator;
+    private final BottomRightContentModel BottomRightContent;
     /**
      *
      * @param diagramPlaces
+     * @param BottomRightContent
      */
-    public CDMainContentController(DiagramPlacesManager diagramPlaces) {
+    public CDMainContentController(DiagramPlacesManager diagramPlaces, BottomRightContentModel BottomRightContent) {
         super(diagramPlaces);
+        this.BottomRightContent = BottomRightContent;
         this.useCaseConnector = new CDUseCaseConnector(diagramPlaces.getUcPlaces());
         this.useCaseReactivator = new CDUseCaseReactivator(useCaseConnector, diagramPlaces.getCdPlaces());
     }

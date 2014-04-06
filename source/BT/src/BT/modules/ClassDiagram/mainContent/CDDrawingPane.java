@@ -10,7 +10,6 @@ import BT.models.DrawingPaneModel;
 import BT.models.LineModel;
 import BT.modules.ClassDiagram.places.CDClass;
 import BT.modules.ClassDiagram.places.joinEdge.CDJoinEdgeController;
-import BT.modules.UC.mainContent.UCDrawingPane;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -23,7 +22,7 @@ import javax.swing.JPanel;
  */
 public class CDDrawingPane extends DrawingPaneModel {
 
-    private drawing drawPane;
+    private final drawing drawPane;
 
     /**
      *

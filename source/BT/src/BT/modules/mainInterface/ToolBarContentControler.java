@@ -131,9 +131,6 @@ public class ToolBarContentControler {
                         {
                             ((JTabbedPane)((CloseTabbedPane)myLayout.getFileTab()).getSelectedComponent()).setSelectedIndex(1);
                             JOptionPane.showMessageDialog(null, "No class has been selected, please select class for objected oriented petrinets.");
-//                            OOPNContentModel.getPnMain().getMainContent().getDrawingPane().setPlaces(diagramPlaces.getPnPlaces());
-//                            OOPNContentModel.getPnMain().setPlaces(diagramPlaces.getPnPlaces());
-//                            ((PNDrawingPane)OOPNContentModel.getPnMain().getMainContent().getDrawingPane()).getDrawing().repaint();
                         }
                     }
                 }

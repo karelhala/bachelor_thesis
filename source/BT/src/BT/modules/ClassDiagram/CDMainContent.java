@@ -26,6 +26,7 @@ public final class CDMainContent extends ContentPaneModel {
 
     /**
      *
+     * @param places
      */
     public CDMainContent(PlaceManager places) {
         super();
