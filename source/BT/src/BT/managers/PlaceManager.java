@@ -11,8 +11,12 @@ import BT.models.LineModel;
 import BT.modules.ClassDiagram.places.CDClass;
 import BT.modules.UC.places.UCActor;
 import BT.modules.UC.places.UCUseCase;
+import java.awt.BorderLayout;
 import java.util.ArrayList;
 import java.util.Iterator;
+import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 /**
  *
@@ -214,5 +218,29 @@ public class PlaceManager extends PlaceModel {
             }
         }
         return classModels;
+    }
+    
+    /**
+     * Method that creates option pane, that lets you select which object should be connected.
+     * @param modelsArray
+     * @return int based on selected item
+     */
+    public int createOptionPaneWithSelectBox(String[] modelsArray)
+    {
+        JPanel dialogPanel = new JPanel(new BorderLayout());
+        JComboBox comboBoxObjects = new JComboBox(modelsArray);
+        dialogPanel.add(comboBoxObjects);
+        int result = JOptionPane.showConfirmDialog(null, dialogPanel,
+                    "Please Select object you want to reactivate from", JOptionPane.OK_CANCEL_OPTION);
+        if (result == JOptionPane.OK_OPTION)
+        {   
+            if ((JOptionPane.showConfirmDialog(null, "Are you sure you want to reactivate this object with selected object?",
+                    "Please confirm", JOptionPane.YES_NO_OPTION)) == JOptionPane.OK_OPTION)
+            {
+                return comboBoxObjects.getSelectedIndex();
+            }
+            
+        }
+        return -1;
     }
 }

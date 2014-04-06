@@ -65,10 +65,13 @@ public class CDUseCaseReactivator {
         reactivateWith.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                reactivateWithButtonClickes();
-                JDialog frame = (JDialog)dialogPanel.getRootPane().getParent();
-                frame.setDefaultCloseOperation(JOptionPane.OK_OPTION);
-                frame.dispose();
+                int result = reactivateWithButtonClickes();
+                if (result == JOptionPane.OK_OPTION)
+                {
+                    JDialog frame = (JDialog)dialogPanel.getRootPane().getParent();
+                    frame.setDefaultCloseOperation(JOptionPane.OK_OPTION);
+                    frame.dispose();
+                }
             }
         }); 
         if (useCaseconnector.getSelectedModel().getAssignedObject() == null)
@@ -123,7 +126,7 @@ public class CDUseCaseReactivator {
     /**
      * Method that is called when user clickes on reactivate button.
      */
-    private void reactivateWithButtonClickes()
+    private int reactivateWithButtonClickes()
     {
         CDClass selectedClass = (CDClass) useCaseconnector.getSelectedModel();
         BT.ClassType selectedClassType = null;
@@ -152,15 +155,25 @@ public class CDUseCaseReactivator {
         {
             this.allModels = this.useCaseconnector.getUcPlaces().getActorsFromUseCase();
         }
-        String[] modelsArray = new String[this.allModels.size()];
-        for (int i = 0; i < this.allModels.size(); i++) {
-            modelsArray[i] = ((this.allModels.get(i) instanceof UCUseCase)?"Use case":"Actor")+": "+this.allModels.get(i).getName();
-        }
-        int selectedId = createOptionPaneWithSelectBox(modelsArray);
-        if (selectedId != -1)
+        if (allModels!= null && !allModels.isEmpty())
         {
-            this.useCaseconnector.getSelectedModel().setName(this.allModels.get(selectedId).getName());
-            reactivateClassWithUseCase(this.allModels.get(selectedId));
+            String[] modelsArray = new String[this.allModels.size()];
+            for (int i = 0; i < this.allModels.size(); i++) {
+                modelsArray[i] = ((this.allModels.get(i) instanceof UCUseCase)?"Use case":"Actor")+": "+this.allModels.get(i).getName();
+            }
+            int selectedId = this.cdModels.createOptionPaneWithSelectBox(modelsArray);
+            if (selectedId != -1)
+            {
+                this.useCaseconnector.getSelectedModel().setName(this.allModels.get(selectedId).getName());
+                reactivateClassWithUseCase(this.allModels.get(selectedId));
+                return JOptionPane.OK_OPTION;
+            }
+            return JOptionPane.CLOSED_OPTION;
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "No suitable use case to reactivate with");
+            return JOptionPane.CLOSED_OPTION;
         }
     }
 
@@ -230,29 +243,6 @@ public class CDUseCaseReactivator {
             selectedLineType = CDLineType.GENERALIZATION;
         }
         return selectedLineType;
-    }
-    
-    /**
-     * Method that creates option pane, that lets you select which object should be connected.
-     * @return int based on selected item
-     */
-    private int createOptionPaneWithSelectBox(String[] modelsArray)
-    {
-        JPanel dialogPanel = new JPanel(new BorderLayout());
-        JComboBox petList = new JComboBox(modelsArray);
-        dialogPanel.add(petList);
-        int result = JOptionPane.showConfirmDialog(null, dialogPanel,
-                    "Please Select object you want to reactivate from", JOptionPane.OK_CANCEL_OPTION);
-        if (result == JOptionPane.OK_OPTION)
-        {   
-            if ((JOptionPane.showConfirmDialog(null, "Are you sure you want to reactivate this object with selected object?",
-                    "Please confirm", JOptionPane.YES_NO_OPTION)) == JOptionPane.OK_OPTION)
-            {
-                return petList.getSelectedIndex();
-            }
-            
-        }
-        return -1;
     }
     
     /**

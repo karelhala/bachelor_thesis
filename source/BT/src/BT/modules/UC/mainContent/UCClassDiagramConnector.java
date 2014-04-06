@@ -18,6 +18,7 @@ import BT.modules.UC.places.UCUseCase;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
@@ -137,19 +138,19 @@ public class UCClassDiagramConnector {
         reactivateWith.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                reactivateWithButtonClickes();
-                JDialog frame = (JDialog)dialogPanel.getRootPane().getParent();
-                frame.setDefaultCloseOperation(JOptionPane.OK_OPTION);
-                frame.dispose();
+                int result = reactivateWithButtonClickes();
+                if (result == JOptionPane.OK_OPTION)
+                {
+                    JDialog frame = (JDialog)dialogPanel.getRootPane().getParent();
+                    frame.setDefaultCloseOperation(JOptionPane.OK_OPTION);
+                    frame.dispose();
+                }
             }
         }); 
         if (this.selectedObject.getAssignedObject() == null)
         {
-            if (!this.selectedObject.getInJoins().isEmpty() || !this.selectedObject.getOutJoins().isEmpty())
-            {
-                dialogPanel.add(reactivate, BorderLayout.LINE_START);
-                dialogPanel.add(reactivateWith, BorderLayout.LINE_END);
-            }
+            dialogPanel.add(reactivate, BorderLayout.LINE_START);
+            dialogPanel.add(reactivateWith, BorderLayout.LINE_END);
         }
         else
         {
@@ -174,7 +175,41 @@ public class UCClassDiagramConnector {
         }
     }
     
-    private void reactivateWithButtonClickes() {
-        System.out.println("Generated method"); //To change body of generated methods, choose Tools | Templates.
+    /**
+     * Method thas is called when reactivate with button is called.
+     */
+    private int reactivateWithButtonClickes() {
+        ArrayList<CoordinateModel> allModels = null;
+        if (this.selectedObject instanceof UCActor)
+        {
+            allModels = this.cdPlaces.getActorsFromClassDiagram();
+        }
+        else if (this.selectedObject instanceof UCUseCase)
+        {
+            allModels = this.cdPlaces.getActivitiesFromClassDiagram();
+        }
+        if (allModels != null && !allModels.isEmpty())
+        {
+            String[] allClasses = new String[allModels.size()];
+            for (int i=0; i<allModels.size();i++) {
+                allClasses[i] = allModels.get(i).getName();
+            }
+            int result = this.cdPlaces.createOptionPaneWithSelectBox(allClasses);
+            if (result != -1)
+            {
+                CoordinateModel selectedClass = this.cdPlaces.getObjects().get(result);
+                if (!selectedClass.equals(this.selectedObject.getAssignedObject()))
+                {
+                    System.out.println("ruzne");
+                }
+                return JOptionPane.OK_OPTION;
+            }
+            return JOptionPane.CLOSED_OPTION;
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "No suitable class to reactivate with");
+            return JOptionPane.CLOSED_OPTION;
+        }
     }
 }

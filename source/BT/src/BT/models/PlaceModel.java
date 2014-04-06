@@ -52,8 +52,7 @@ public class PlaceModel {
     }
 
     /**
-     * Method for returning all actors in array list.
-     *
+     * Method for returning all objects in array list.
      * @return ArrayList<CoordinateModel>
      */
     public ArrayList<CoordinateModel> getObjects() {
