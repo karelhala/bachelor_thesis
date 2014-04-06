@@ -77,6 +77,22 @@ public class DistanceCalculator extends DistanceCalculatorModel {
             {
                 return calculatePoints();
             }
+            else if (this.pointA.x != this.pointB.x && pointA.y == pointB.y)
+            {
+                if (this.pointA.x > this.pointB.x)
+                {
+                    return(calculateRightPoint());
+                }
+                return(calculateLeftPoint());
+            }
+            else if (this.pointA.x == this.pointB.x && pointA.y != pointB.y)
+            {
+                if (pointA.y > pointB.y)
+                {
+                    return(calculateBottomPoint());
+                }
+                return calculateTopPoint();
+            }
         }
         return null;
     }
@@ -137,7 +153,7 @@ public class DistanceCalculator extends DistanceCalculatorModel {
                 resultPoint.x = this.pointB.x + objectWidth/2;
                 resultPoint.y = this.pointB.y - (int)distanceY/2;
             }
-        }
+        }        
         return resultPoint;
     }
     
