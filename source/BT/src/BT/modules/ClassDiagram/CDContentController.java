@@ -46,6 +46,7 @@ public class CDContentController {
         cdLeftBottom.setListeners();
 
         JPanel additional = new JPanel();
+        additional.setBackground(Color.yellow);
         cdBottomRightContent.setAdditionalContent(additional);
         cdBottomRightContent.addAdditionalcontent();
         this.cdContent.setCenterPane(cdMain.getMainContent().getMainContentPane());

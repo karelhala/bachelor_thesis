@@ -8,8 +8,7 @@ package GUI;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
@@ -22,14 +21,12 @@ public class BottomRightContentModel {
     final private JButton reactivateAllButton;
     final private JButton deleteAllNonValidButton;
     private JPanel additionalContent;
-    final private GridBagConstraints c;
     
     public BottomRightContentModel()
     {
-        this.contentPane = new JPanel(new GridBagLayout());
+        this.contentPane = new JPanel(new BorderLayout());
         this.reactivateAllButton = new JButton("Reactivate all inactive");
         this.deleteAllNonValidButton = new JButton("Delete all inactive");
-        this.c = new GridBagConstraints();
         insertBasicbuttons();
     }
 
@@ -38,19 +35,12 @@ public class BottomRightContentModel {
      */
     private void insertBasicbuttons()
     {
-        c.anchor = GridBagConstraints.FIRST_LINE_END;
-        c.weightx = 0.5;
-	c.gridx = 1;
-	c.gridy = 0;
+        JPanel buttonPanel = new JPanel(new GridLayout(2, 1));
         this.deleteAllNonValidButton.setPreferredSize(new Dimension(200, 50));
-	this.contentPane.add(this.deleteAllNonValidButton, c);
-        
-        c.anchor = GridBagConstraints.LAST_LINE_END;
-        c.weightx = 0.5;
-	c.gridx = 1;
-	c.gridy = 1;
+	buttonPanel.add(this.deleteAllNonValidButton);
         this.reactivateAllButton.setPreferredSize(new Dimension(200, 50));
-	this.contentPane.add(this.reactivateAllButton, c);
+        buttonPanel.add(this.reactivateAllButton);
+	this.contentPane.add(buttonPanel, BorderLayout.LINE_START);
     }
     
     /**
@@ -58,13 +48,7 @@ public class BottomRightContentModel {
      */
     public void addAdditionalcontent()
     {
-        c.fill = GridBagConstraints.BOTH;
-	c.weightx = 0.5;
-	c.gridx = 0;
-	c.gridy = 0;
-        c.gridheight = GridBagConstraints.REMAINDER;
-        c.gridwidth = GridBagConstraints.REMAINDER;
-        this.contentPane.add(this.additionalContent, c);
+        this.contentPane.add(this.additionalContent,BorderLayout.CENTER);
     }
     
     public JPanel getContentPane() {
