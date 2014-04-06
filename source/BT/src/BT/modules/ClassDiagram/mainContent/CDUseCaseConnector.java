@@ -139,8 +139,11 @@ public class CDUseCaseConnector {
         {
             System.out.println("composition");
         }
-        this.newline.getFirstObject().getAssignedObject().addOutJoins(newUseCaseLine);
-        this.newline.getSecondObject().getAssignedObject().addInJoin(newUseCaseLine);
+        if (this.newline.getFirstObject().getAssignedObject() != null && this.newline.getSecondObject().getAssignedObject() != null)
+        {
+            this.newline.getFirstObject().getAssignedObject().addOutJoins(newUseCaseLine);
+            this.newline.getSecondObject().getAssignedObject().addInJoin(newUseCaseLine);
+        }
         newUseCaseLine.setAssignedObject(cdJoin);
         cdJoin.setAssignedObject(newUseCaseLine);
         this.ucPlaces.addObject(newUseCaseLine);

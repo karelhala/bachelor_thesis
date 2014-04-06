@@ -213,8 +213,11 @@ public class CDMainContentController extends CDMainContentModel implements Drawi
             if (!((CDJoinEdgeController)this.newJoinEdge).areObjectsOfType(ClassType.NONE) 
                     && !((CDJoinEdgeController)this.newJoinEdge).areObjectsOfType(ClassType.INTERFACE))
             {
-                this.useCaseConnector.setNewline(this.newJoinEdge);
-                this.useCaseConnector.createNewUseCaseJoin();
+                if (this.newJoinEdge.getFirstObject().getAssignedObject() != null && this.newJoinEdge.getSecondObject().getAssignedObject() != null)
+                {
+                    this.useCaseConnector.setNewline(this.newJoinEdge);
+                    this.useCaseConnector.createNewUseCaseJoin();
+                }
             }
             else
             {

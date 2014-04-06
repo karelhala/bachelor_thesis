@@ -16,8 +16,11 @@ import BT.modules.ClassDiagram.places.joinEdge.CDJoinEdgeController;
 import BT.modules.UC.places.UCActor;
 import BT.modules.UC.places.UCJoinEdge.UCJoinEdgeController;
 import BT.modules.UC.places.UCUseCase;
+import java.awt.BorderLayout;
 import java.awt.event.MouseEvent;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.JToggleButton;
 
 /**
@@ -26,12 +29,14 @@ import javax.swing.JToggleButton;
  */
 public class UCMainContentController extends UCMainContentModel implements DrawingClicks {
 
+    private final UCClassDiagramConnector classDiagramConnector;
     /**
      *
      * @param diagramPlaces
      */
     public UCMainContentController(DiagramPlacesManager diagramPlaces) {
         super(diagramPlaces);
+        this.classDiagramConnector = new UCClassDiagramConnector(diagramPlaces.getCdPlaces());
     }
 
     /**
@@ -69,27 +74,23 @@ public class UCMainContentController extends UCMainContentModel implements Drawi
         JToggleButton selectedItemButton = this.LeftTopContent.getSelectedButton();
         if (selectedItemButton != null) {
             UCDrawingPane UCdrawing = (UCDrawingPane) this.mainContent.getDrawingPane();
-            CDClass newClass = new CDClass(evt.getX(), evt.getY());
             switch (selectedItemButton.getName()) {
                 case "ACTOR":
                     UCActor actor = new UCActor(evt.getX(), evt.getY());
-                    actor.setAssignedObject(newClass);
-                    newClass.setTypeOfClass(BT.ClassType.ACTOR);
-                    newClass.setAssignedObject(actor);
+                    this.classDiagramConnector.setSelectedObject(actor);
+                    this.classDiagramConnector.createNewClassdiagramObject();
                     this.places.addObject(actor);
 //                        this.mainContent.recalculateSize(actor);
                     break;
 
                 case "USECASE":
                     UCUseCase useCase = new UCUseCase(evt.getX(), evt.getY());
-                    useCase.setAssignedObject(newClass);
-                    newClass.setTypeOfClass(BT.ClassType.ACTIVITY);
+                    this.classDiagramConnector.setSelectedObject(useCase);
+                    this.classDiagramConnector.createNewClassdiagramObject();
                     this.places.addObject(useCase);
-                    newClass.setAssignedObject(useCase);
 //                        this.mainContent.recalculateSize(useCase);
                     break;
             }
-            this.diagramPlaces.getCdPlaces().addObject(newClass);
             UCdrawing.getDrawing().repaint();
         }
     }
@@ -155,10 +156,17 @@ public class UCMainContentController extends UCMainContentModel implements Drawi
      */
     @Override
     public void drawingPaneDoubleCliked(CoordinateModel pressedObject) {
-        String name = (String) JOptionPane.showInputDialog("Enter name of the object", pressedObject.getName());
-        if (name != null && !"".equals(name)) {
-            pressedObject.setName(name);
-            pressedObject.getAssignedObject().setName(name);
+        JPanel dialogPanel = new JPanel(new BorderLayout());
+        JTextField nameInput = new JTextField();
+        nameInput.setText(pressedObject.getName());
+        dialogPanel.add(nameInput, BorderLayout.PAGE_START);
+        this.classDiagramConnector.setSelectedObject(pressedObject);
+        this.classDiagramConnector.addButtonsToDialog(dialogPanel);
+        int result = (int) JOptionPane.showConfirmDialog(null, dialogPanel, "Enter name of the object", JOptionPane.OK_CANCEL_OPTION);
+        if (result == JOptionPane.OK_OPTION)
+        {
+            pressedObject.setName(nameInput.getText());
+            pressedObject.getAssignedObject().setName(nameInput.getText());
         }
         ((UCDrawingPane) this.mainContent.getDrawingPane()).getDrawing().repaint();
     }
@@ -181,42 +189,14 @@ public class UCMainContentController extends UCMainContentModel implements Drawi
                 this.places.addObject(this.newJoinEdge);
                 if (this.newJoinEdge.getFirstObject().getAssignedObject() != null && this.newJoinEdge.getSecondObject().getAssignedObject() != null)
                 {
-                    createNewClassJoinEdge((UCJoinEdgeController)this.newJoinEdge);
+                    this.classDiagramConnector.setNewLine(this.newJoinEdge);
+                    this.classDiagramConnector.createNewClassJoinEdge();
                 }
                 this.newJoinEdge = null;
             }
         }
         UCDrawingPane UCdrawing = (UCDrawingPane) this.mainContent.getDrawingPane();
         UCdrawing.setNewLine(newJoinEdge);
-    }
-
-    /**
-     * 
-     * @param useCaseJoin 
-     */
-    private void createNewClassJoinEdge(UCJoinEdgeController useCaseJoin)
-    {
-        CDJoinEdgeController newLine = new CDJoinEdgeController(useCaseJoin.getFirstObject().getAssignedObject(), useCaseJoin.getSecondObject().getAssignedObject());
-        UCLineType useCaseLineType = useCaseJoin.getJoinEdgeType();
-        if (useCaseLineType == UCLineType.ASSOCIATION)
-        {
-            newLine.setJoinEdgeType(CDLineType.ASSOCIATION);
-        }
-        else if (useCaseLineType == UCLineType.GENERALIZATION)
-        {
-            newLine.setJoinEdgeType(CDLineType.GENERALIZATION);
-        }
-        else if (useCaseLineType == UCLineType.EXTENDS)
-        {
-            System.out.println("extends");
-        }
-        else if (useCaseLineType == UCLineType.INCLUDE)
-        {
-            System.out.println("include");
-        }
-        newLine.setAssignedObject(useCaseJoin);
-        useCaseJoin.setAssignedObject(newLine);
-        this.diagramPlaces.getCdPlaces().addObject(newLine);
     }
     
     /**

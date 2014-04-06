@@ -45,7 +45,7 @@ public class CDUseCaseReactivator {
         this.cdModels = cdModels;
     }
     
-     /**
+    /**
      * Method that adds buttons based on whether user can reactivate or activate with selected class.
      * @param dialogPanel pane, that hold these buttons
      */
@@ -105,13 +105,19 @@ public class CDUseCaseReactivator {
         }
         
         for (LineModel oneOutJoin : selectedClass.getOutJoins()) {
-            useCaseconnector.setNewline(oneOutJoin);
-            useCaseconnector.createNewUseCaseJoin();
+            if (oneOutJoin.getFirstObject().getAssignedObject() !=null && oneOutJoin.getSecondObject().getAssignedObject() !=null)
+            {
+                useCaseconnector.setNewline(oneOutJoin);
+                useCaseconnector.createNewUseCaseJoin();
+            }
         }
         
         for (LineModel oneInJoin : selectedClass.getInJoins()) {
-            useCaseconnector.setNewline(oneInJoin);
-            useCaseconnector.createNewUseCaseJoin();
+            if (oneInJoin.getFirstObject().getAssignedObject() !=null && oneInJoin.getSecondObject().getAssignedObject() !=null)
+            {
+                useCaseconnector.setNewline(oneInJoin);
+                useCaseconnector.createNewUseCaseJoin();
+            }
         }
     }
     
