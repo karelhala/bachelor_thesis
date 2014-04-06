@@ -5,8 +5,8 @@
 package BT.modules.UC;
 
 import BT.managers.DiagramPlacesManager;
-import BT.managers.PlaceManager;
 import BT.modules.UC.mainContent.UCMainContentController;
+import GUI.BottomRightContentModel;
 import GUI.MainContentModel;
 
 /**
@@ -15,7 +15,7 @@ import GUI.MainContentModel;
  */
 public class UCContentController {
 
-    private MainContentModel UCContent;
+    private final MainContentModel UCContent;
 
     /**
      *
@@ -37,7 +37,9 @@ public class UCContentController {
      * @param diagramPlaces
      */
     public void createComponents(DiagramPlacesManager diagramPlaces) {
-        UCMainContentController UCmain = new UCMainContentController(diagramPlaces);
+        BottomRightContentModel ucBottomRightContent = new BottomRightContentModel();
+        
+        UCMainContentController UCmain = new UCMainContentController(diagramPlaces, ucBottomRightContent);
 
         UCLeftTopContent UCLeftTop = new UCLeftTopContent(UCmain);
         UCLeftTop.setListeners();
@@ -48,6 +50,7 @@ public class UCContentController {
         this.UCContent.setCenterPane(UCmain.getMainContent().getMainContentPane());
         this.UCContent.setLeftTopPane(UCLeftTop.getMainContentPane());
         this.UCContent.setLeftBottomPane(UCLeftBottom.getMainContentPane());
+        this.UCContent.setBottomRightPane(ucBottomRightContent.getContentPane());
         UCmain.setLeftBottomContent(UCLeftBottom);
         UCmain.setLeftTopContent(UCLeftTop);
     }

@@ -16,6 +16,7 @@ import BT.modules.ClassDiagram.places.joinEdge.CDJoinEdgeController;
 import BT.modules.UC.places.UCActor;
 import BT.modules.UC.places.UCJoinEdge.UCJoinEdgeController;
 import BT.modules.UC.places.UCUseCase;
+import GUI.BottomRightContentModel;
 import java.awt.BorderLayout;
 import java.awt.event.MouseEvent;
 import javax.swing.JOptionPane;
@@ -30,12 +31,15 @@ import javax.swing.JToggleButton;
 public class UCMainContentController extends UCMainContentModel implements DrawingClicks {
 
     private final UCClassDiagramConnector classDiagramConnector;
+    private final BottomRightContentModel bottomRightContent;
     /**
      *
      * @param diagramPlaces
+     * @param bottomRightContent
      */
-    public UCMainContentController(DiagramPlacesManager diagramPlaces) {
+    public UCMainContentController(DiagramPlacesManager diagramPlaces, BottomRightContentModel bottomRightContent) {
         super(diagramPlaces);
+        this.bottomRightContent = bottomRightContent;
         this.classDiagramConnector = new UCClassDiagramConnector(diagramPlaces.getCdPlaces(), diagramPlaces.getUcPlaces());
     }
 
