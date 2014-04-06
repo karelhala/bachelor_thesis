@@ -89,10 +89,16 @@ public class UCClassDiagramConnector {
         this.cdPlaces.addObject(newClassJoin);
     }
     
+    public void createNewClassdiagramObject()
+    {
+        createNewClassdiagramObject(this.selectedObject.getName());
+    }
+    
     /**
      * Method for creating new object in class diagram based on use case.
+     * @param className
      */
-    public void createNewClassdiagramObject()
+    public void createNewClassdiagramObject(String className)
     {
         CDClass newClass = new CDClass(this.selectedObject.getX(), this.selectedObject.getY());
         this.selectedObject.setAssignedObject(newClass);
@@ -105,6 +111,7 @@ public class UCClassDiagramConnector {
             newClass.setTypeOfClass(BT.ClassType.ACTIVITY);
         }
         newClass.setAssignedObject(this.selectedObject);
+        newClass.setName(className);
         this.cdPlaces.addObject(newClass);
     }
     
@@ -150,8 +157,21 @@ public class UCClassDiagramConnector {
         }
     }
     
+    /**
+     * Method that is called when reactivate button is clicked.
+     * It creates new class and add join edges to it.
+     */
     private void reactivateButtonclicked() {
-        System.out.println("Generated method"); //To change body of generated methods, choose Tools | Templates.
+        createNewClassdiagramObject();
+        for (LineModel inJoin : this.selectedObject.getInJoins()) {
+            this.newLine = inJoin;
+            createNewClassJoinEdge();
+        }
+        
+        for (LineModel outJoin : this.selectedObject.getOutJoins()) {
+            this.newLine = outJoin;
+            createNewClassJoinEdge();
+        }
     }
     
     private void reactivateWithButtonClickes() {

@@ -16,7 +16,6 @@ import BT.models.CoordinateModel;
 import BT.models.LineModel;
 import BT.modules.ClassDiagram.places.CDClass;
 import BT.modules.ClassDiagram.places.joinEdge.CDJoinEdgeController;
-import BT.modules.UC.places.UCActor;
 import BT.modules.UC.places.UCJoinEdge.UCJoinEdgeController;
 import BT.modules.UC.places.UCUseCase;
 import java.awt.BorderLayout;
