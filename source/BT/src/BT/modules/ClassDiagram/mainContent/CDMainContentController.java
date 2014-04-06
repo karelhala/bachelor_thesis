@@ -19,6 +19,8 @@ import BT.modules.ClassDiagram.places.joinEdge.CDJoinEdgeController;
 import GUI.BottomRightContentModel;
 import GUI.ClassDiagramAttributesPanel;
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
@@ -49,8 +51,28 @@ public class CDMainContentController extends CDMainContentModel implements Drawi
         this.useCaseConnector = new CDUseCaseConnector(diagramPlaces.getUcPlaces());
         this.useCaseReactivator = new CDUseCaseReactivator(useCaseConnector, diagramPlaces.getCdPlaces());
         this.attributesPanel = attributesPanel;
+        addButtonListeners();
     }
-
+    
+    private void addButtonListeners()
+    {
+        this.BottomRightContent.getDeleteAllNonValidButton().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                places.deleteAllUnassignedObjects();
+                ((CDDrawingPane) mainContent.getDrawingPane()).getDrawing().repaint();
+            }
+        });
+        
+        this.BottomRightContent.getReactivateAllButton().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                useCaseReactivator.reactivateAllEmpty();
+                ((CDDrawingPane) mainContent.getDrawingPane()).getDrawing().repaint();
+            }
+        });
+    }
+    
     /**
      *
      * @param e
@@ -90,11 +112,13 @@ public class CDMainContentController extends CDMainContentModel implements Drawi
             newClass.addNewVariable(new Attribute(BT.AttributeType.PROTECTED, "variable1", "String"));
             newClass.addNewMethod(new Attribute("MethodOne()", "void"));
             this.places.addObject(newClass);
+            newClass.setAssignedObject(newClass);
         }else if(selectedItemButton != null && CDObjectType.INTERFACE.name().equals(selectedItemButton.getName())){
             CDClass newInterface = new CDClass(evt.getX(), evt.getY());
             newInterface.setTypeOfClass(ClassType.INTERFACE);
             newInterface.setName("interface");
             this.places.addObject(newInterface);
+            newInterface.setAssignedObject(newInterface);
         } else {
             deleteNewLine();
         }

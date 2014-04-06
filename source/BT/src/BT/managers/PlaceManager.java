@@ -115,6 +115,32 @@ public class PlaceManager extends PlaceModel {
             }
         }
     }
+    
+    /**
+     * Method that deletes all lines and objects, that has no assigned object in use case.
+     */
+    public void deleteAllUnassignedObjects()
+    {
+        for (Iterator<LineModel> it = joinEdges.iterator(); it.hasNext();) {
+            CoordinateModel coorModel = it.next();
+            if (coorModel.getAssignedObject() == null) {
+                LineModel selectedLine = (LineModel) coorModel;
+                selectedLine.getFirstObject().removeOutJoin(selectedLine);
+                if (selectedLine.getSecondObject() != null) {
+                    selectedLine.getSecondObject().removeInJoin(selectedLine);
+                }
+                it.remove();
+            }
+        }
+        
+        for (Iterator<CoordinateModel> it = objects.iterator(); it.hasNext();) {
+            CoordinateModel coorModel = it.next();
+            if (coorModel.getAssignedObject() == null) {
+                removeJoinEdgesWithObject(coorModel);
+                it.remove();
+            }
+        }
+    }
 
     /**
      * Method that sets all obejct to be not selected.
@@ -130,7 +156,6 @@ public class PlaceManager extends PlaceModel {
 
     /**
      * Method for selecting lines that come out of object.
-     *
      * @param place selected place
      */
     public void setSelectedLinesOnObject(CoordinateModel place) {

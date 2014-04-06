@@ -7,7 +7,6 @@ package BT.managers;
 import BT.interfaces.DrawingClicks;
 import BT.models.ContentPaneModel;
 import BT.models.LineModel;
-import GUI.BottomRightContentModel;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
 

@@ -88,6 +88,10 @@ public class CDUseCaseConnector {
             selectedClass.getAssignedObject().setAssignedObject(selectedClass);
             selectedClass.setAssignedObject(selectedClass);
         }
+        else
+        {
+            selectedClass.setAssignedObject(selectedClass);
+        }
     }
     
     /**

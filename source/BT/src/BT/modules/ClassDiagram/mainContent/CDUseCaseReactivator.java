@@ -300,4 +300,26 @@ public class CDUseCaseReactivator {
         }
         return decidedClassType;
     }
+    
+    /**
+     * Method for reactivating all inactive models and lines.
+     */    
+    public void reactivateAllEmpty()
+    {
+        for (CoordinateModel object : cdModels.getObjects()) {
+            if (object.getAssignedObject() == null)
+            {
+                this.useCaseconnector.setSelectedModel(object);
+                this.useCaseconnector.createNewUseCaseObject(object.getName());
+            }
+        }
+        
+        for (CoordinateModel oneJoin : cdModels.getJoinEdges()) {
+            if (oneJoin.getAssignedObject() == null)
+            {
+                this.useCaseconnector.setNewline((LineModel) oneJoin);
+                this.useCaseconnector.createNewUseCaseJoin();
+            }
+        }
+    }
 }
