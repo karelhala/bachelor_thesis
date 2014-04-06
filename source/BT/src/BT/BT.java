@@ -5,8 +5,13 @@
 package BT;
 
 import BT.modules.mainInterface.MainInterfaceControler;
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JComponent;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.UnsupportedLookAndFeelException;
 
 /**
@@ -100,5 +105,19 @@ public class BT {
                 mainWindow.runTheMainWindow();
             }
         });
+    }
+    
+    /**
+     * Method that creates Jpanel containing Jcomponent and label for this component.
+     * @param element
+     * @param label
+     * @return JPanel
+     */
+    public static JPanel elementWithLabelAbove(JComponent element, JLabel label)
+    {
+        JPanel newPanel = new JPanel(new BorderLayout());
+        newPanel.add(label, BorderLayout.NORTH);
+        newPanel.add(element, BorderLayout.CENTER);
+        return newPanel;
     }
 }

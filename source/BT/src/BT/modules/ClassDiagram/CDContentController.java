@@ -7,6 +7,7 @@ package BT.modules.ClassDiagram;
 import BT.managers.DiagramPlacesManager;
 import BT.modules.ClassDiagram.mainContent.CDMainContentController;
 import GUI.BottomRightContentModel;
+import GUI.ClassDiagramAttributespanel;
 import GUI.MainContentModel;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -45,9 +46,8 @@ public class CDContentController {
         CDLeftBottomContent cdLeftBottom = new CDLeftBottomContent(cdMain);
         cdLeftBottom.setListeners();
 
-        JPanel additional = new JPanel();
-        additional.setBackground(Color.yellow);
-        cdBottomRightContent.setAdditionalContent(additional);
+        ClassDiagramAttributespanel attributesPanel = new ClassDiagramAttributespanel();
+        cdBottomRightContent.setAdditionalContent(attributesPanel.getContentPanel());
         cdBottomRightContent.addAdditionalcontent();
         this.cdContent.setCenterPane(cdMain.getMainContent().getMainContentPane());
         this.cdContent.setLeftTopPane(cdLeftTop.getMainContentPane());
