@@ -255,4 +255,35 @@ public class CoordinateModel {
             g.drawString(text, this.x-fm.stringWidth(text)/2, this.y+getMax(this.objectHeight, this.height)/2+fm.getHeight());
         }
     }
+    
+    /**
+     * Method for deleting all assigned objects with selected object.
+     * It will also delete assigned objects to every line.
+     */
+    public void disMemberObject()
+    {
+        if (this.getAssignedObject() != null)
+        {
+            this.getAssignedObject().setAssignedObject(null);
+            this.setAssignedObject(null);
+        }
+        if (this.getOutJoins() != null && !this.getOutJoins().isEmpty())
+        {
+            for (CoordinateModel oneLine : this.getOutJoins()) {
+                if (oneLine.getAssignedObject() != null && !oneLine.getAssignedObject().equals(oneLine))
+                {
+                    oneLine.setAssignedObject(null);
+                }
+            }
+        }
+        if (this.getInJoins()!= null && !this.getInJoins().isEmpty())
+        {
+            for (CoordinateModel oneLine : this.getInJoins()) {
+                if (oneLine.getAssignedObject() != null && !oneLine.getAssignedObject().equals(oneLine))
+                {
+                    oneLine.setAssignedObject(null);
+                }
+            }
+        }
+    }
 }

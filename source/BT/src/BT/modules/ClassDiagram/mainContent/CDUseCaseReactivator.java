@@ -23,7 +23,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -74,9 +73,9 @@ public class CDUseCaseReactivator {
                 }
             }
         }); 
-        if (useCaseconnector.getSelectedModel().getAssignedObject() == null)
+        if (!useCaseconnector.getSelectedModel().getInJoins().isEmpty() || !useCaseconnector.getSelectedModel().getOutJoins().isEmpty())
         {
-            if (!useCaseconnector.getSelectedModel().getInJoins().isEmpty() || !useCaseconnector.getSelectedModel().getOutJoins().isEmpty())
+            if (useCaseconnector.getSelectedModel().getAssignedObject() == null)
             {
                 if (((CDClass)useCaseconnector.getSelectedModel()).getTypeOfClass() == BT.ClassType.ACTIVITY || ((CDClass)useCaseconnector.getSelectedModel()).getTypeOfClass() == BT.ClassType.ACTOR)
                 {
@@ -87,6 +86,10 @@ public class CDUseCaseReactivator {
                 {
                     dialogPanel.add(reactivateWith, BorderLayout.LINE_END);
                 }
+            }
+            else
+            {
+                dialogPanel.add(reactivateWith, BorderLayout.LINE_END);
             }
         }
     }
@@ -184,7 +187,11 @@ public class CDUseCaseReactivator {
     private void reactivateClassWithUseCase(CoordinateModel selectedUseCase)
     {
         CDClass selectedClass = (CDClass)this.useCaseconnector.getSelectedModel();
-        selectedUseCase.getAssignedObject().setAssignedObject(null);
+        if (selectedUseCase.getAssignedObject() != null)
+        {
+            selectedUseCase.getAssignedObject().setAssignedObject(null);
+        }
+        selectedClass.disMemberObject();
         selectedUseCase.setAssignedObject(selectedClass);
         selectedClass.setAssignedObject(selectedUseCase);
         selectedClass.setTypeOfClass((selectedUseCase instanceof UCUseCase)?ClassType.ACTIVITY:ClassType.ACTOR);
@@ -192,7 +199,10 @@ public class CDUseCaseReactivator {
             CoordinateModel firstObject = inJoin.getFirstObject();
             if (firstObject != null && firstObject.getAssignedObject() != null)
             {
-                inJoin.getAssignedObject().setAssignedObject(null);
+                if (inJoin.getAssignedObject() != null)
+                {
+                    inJoin.getAssignedObject().setAssignedObject(null);
+                }
                 CDJoinEdgeController newLine = new CDJoinEdgeController(firstObject.getAssignedObject(), selectedClass);
                 LineModel existingLine = cdModels.getExistingLine(newLine);
                 if  (existingLine !=null)
@@ -210,7 +220,10 @@ public class CDUseCaseReactivator {
             CoordinateModel secondObject = outJoin.getSecondObject();
             if (secondObject != null && secondObject.getAssignedObject() != null)
             {
-                outJoin.getAssignedObject().setAssignedObject(null);
+                if (outJoin.getAssignedObject() != null)
+                {
+                    outJoin.getAssignedObject().setAssignedObject(null);
+                }
                 CDJoinEdgeController newLine = new CDJoinEdgeController(selectedClass, secondObject.getAssignedObject());
                 LineModel existingLine = cdModels.getExistingLine(newLine);
                 if  (existingLine !=null)
