@@ -147,15 +147,18 @@ public class ClassDiagramAttributesPanel {
      */
     public void addObjectsToAttributeType(ArrayList<CoordinateModel> allClasses)
     {
-        for (final CoordinateModel object : allClasses) {
-            Object addedobject = new Object() {
-                @Override
-                public String toString() {
-                    return object.getName(); 
-                } 
-            };
-            this.attributeTypeVariable.addItem(addedobject);
-            this.attributeTypeMethod.addItem(addedobject);
+        for (CoordinateModel object : allClasses) {
+            this.attributeTypeVariable.insertItemAt(object.getName(), allClasses.indexOf(object));
+            this.attributeTypeMethod.insertItemAt(object.getName(), allClasses.indexOf(object));
         }
+    }
+    
+    /**
+     * Method for removing all objects from attribute type selectors.
+     */
+    public void removeAllObjectsFromAttributeType()
+    {
+        this.attributeTypeMethod.removeAllItems();
+        this.attributeTypeVariable.removeAllItems();
     }
 }

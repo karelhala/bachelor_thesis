@@ -28,6 +28,8 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.JToggleButton;
+import javax.swing.event.PopupMenuEvent;
+import javax.swing.event.PopupMenuListener;
 
 /**
  *
@@ -39,6 +41,7 @@ public class CDMainContentController extends CDMainContentModel implements Drawi
     private final CDUseCaseReactivator useCaseReactivator;
     private final BottomRightContentModel BottomRightContent;
     private final ClassDiagramAttributesPanel attributesPanel;
+    private final CDBottomRightController rightBottomController;
     /**
      *
      * @param diagramPlaces
@@ -51,26 +54,7 @@ public class CDMainContentController extends CDMainContentModel implements Drawi
         this.useCaseConnector = new CDUseCaseConnector(diagramPlaces.getUcPlaces());
         this.useCaseReactivator = new CDUseCaseReactivator(useCaseConnector, diagramPlaces.getCdPlaces());
         this.attributesPanel = attributesPanel;
-        addButtonListeners();
-    }
-    
-    private void addButtonListeners()
-    {
-        this.BottomRightContent.getDeleteAllNonValidButton().addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                places.deleteAllUnassignedObjects();
-                ((CDDrawingPane) mainContent.getDrawingPane()).getDrawing().repaint();
-            }
-        });
-        
-        this.BottomRightContent.getReactivateAllButton().addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                useCaseReactivator.reactivateAllEmpty();
-                ((CDDrawingPane) mainContent.getDrawingPane()).getDrawing().repaint();
-            }
-        });
+        this.rightBottomController = new CDBottomRightController(useCaseReactivator, diagramPlaces.getCdPlaces(), BottomRightContent, attributesPanel, ((CDDrawingPane) this.mainContent.getDrawingPane()).getDrawing());
     }
     
     /**
@@ -108,9 +92,6 @@ public class CDMainContentController extends CDMainContentModel implements Drawi
         this.places.setAllObjectDiselected();
         if (selectedItemButton != null && CDObjectType.CLASS.name().equals(selectedItemButton.getName())) {
             CDClass newClass = new CDClass(evt.getX(), evt.getY());
-            newClass.addNewVariable(new Attribute(BT.AttributeType.PUBLIC, "variable1", "String"));
-            newClass.addNewVariable(new Attribute(BT.AttributeType.PROTECTED, "variable1", "String"));
-            newClass.addNewMethod(new Attribute("MethodOne()", "void"));
             this.places.addObject(newClass);
             newClass.setAssignedObject(newClass);
         }else if(selectedItemButton != null && CDObjectType.INTERFACE.name().equals(selectedItemButton.getName())){
