@@ -14,7 +14,7 @@ import GUI.BottomRightContentModel;
 import GUI.ClassDiagramAttributesPanel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.event.PopupMenuEvent;
 import javax.swing.event.PopupMenuListener;
 
@@ -143,6 +143,10 @@ public class CDBottomRightController {
                 selectedClass.addNewVariable(newAttribute);
             }
         }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "No class selected please select class.");
+        }
     }
     
     /**
@@ -172,6 +176,10 @@ public class CDBottomRightController {
                 Attribute newAttribute = new Attribute(selectedAtttributeType, this.attributesPanel.getMethodName().getText(), (String) this.attributesPanel.getAttributeTypeMethod().getSelectedItem());
                 selectedClass.addNewMethod(newAttribute);
             }
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "No class selected please select class.");
         }
     }
 }
