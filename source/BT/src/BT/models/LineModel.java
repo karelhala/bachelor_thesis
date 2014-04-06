@@ -142,8 +142,9 @@ public class LineModel extends CoordinateModel {
     }
 
     /**
-     *
-     * @return
+     * Method for fetching end point of line based on second object.
+     * If line has no second object, return endX and endY of this line.
+     * @return Point
      */
     public Point getEndPoint() {
         if (this.secondObject != null) {
@@ -154,7 +155,7 @@ public class LineModel extends CoordinateModel {
     
     /**
      * Checks if both objects at the end of line are null
-     * @return true if both objects are null
+     * @return true if one of these objects is null
      */
     public Boolean isLineEmpty()
     {

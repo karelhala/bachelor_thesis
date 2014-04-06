@@ -7,6 +7,8 @@
 package BT.modules.UC.mainContent;
 
 import BT.BT;
+import BT.BT.CDLineType;
+import BT.BT.UCLineType;
 import BT.managers.PlaceManager;
 import BT.models.CoordinateModel;
 import BT.models.LineModel;
@@ -33,10 +35,12 @@ public class UCClassDiagramConnector {
     private CoordinateModel selectedObject;
     private LineModel newLine;
     private final PlaceManager cdPlaces;
+    private final PlaceManager ucPlaces;
     
-    public UCClassDiagramConnector(PlaceManager cdPlaces)
+    public UCClassDiagramConnector(PlaceManager cdPlaces, PlaceManager ucPlaces)
     {
         this.cdPlaces = cdPlaces;
+        this.ucPlaces = ucPlaces;
     }
 
     public void setNewLine(LineModel newLine) {
@@ -192,7 +196,7 @@ public class UCClassDiagramConnector {
         {
             String[] allClasses = new String[allModels.size()];
             for (int i=0; i<allModels.size();i++) {
-                allClasses[i] = allModels.get(i).getName();
+                allClasses[i] = ((CDClass)allModels.get(i)).getTypeOfClass()+": "+ allModels.get(i).getName();
             }
             int result = this.cdPlaces.createOptionPaneWithSelectBox(allClasses);
             if (result != -1)
@@ -200,7 +204,7 @@ public class UCClassDiagramConnector {
                 CoordinateModel selectedClass = this.cdPlaces.getObjects().get(result);
                 if (!selectedClass.equals(this.selectedObject.getAssignedObject()))
                 {
-                    System.out.println("ruzne");
+                    reactivateUseCaseWithSelectedClass((CDClass)selectedClass);
                 }
                 return JOptionPane.OK_OPTION;
             }
@@ -210,6 +214,69 @@ public class UCClassDiagramConnector {
         {
             JOptionPane.showMessageDialog(null, "No suitable class to reactivate with");
             return JOptionPane.CLOSED_OPTION;
+        }
+    }
+    
+    /**
+     * Method that lets you reactivate selected use case with class from class diagram.
+     * First dismamber both assigned object to use case and dismeber use case off each other.
+     * Then join selected class and selected use case together, also connect their in/out joins
+     * @param selectedClass class that is being ractivated with.
+     */
+    private void reactivateUseCaseWithSelectedClass(CDClass selectedClass)
+    {
+        this.selectedObject.disMemberObject();
+        
+        this.selectedObject.setAssignedObject(selectedClass);
+        this.selectedObject.getAssignedObject().setAssignedObject(selectedObject);
+        this.selectedObject.setName(selectedClass.getName());
+        for (LineModel inJoin : selectedClass.getInJoins()) {
+            if (!inJoin.isLineEmpty())
+            {
+                createNewUseCasejoinFromClassJoin((CDJoinEdgeController)inJoin);
+            }
+        }
+        
+        for (LineModel outJoin : selectedClass.getOutJoins()) {
+            if (!outJoin.isLineEmpty())
+            {
+                createNewUseCasejoinFromClassJoin((CDJoinEdgeController)outJoin);
+            }
+        }
+    }
+    
+    /**
+     * Method that lets you make use case join from class join.
+     * Create new Use case line, if both objects from class diagram can be in use case diagram.
+     * If similar line exist, delete it.
+     * Set type of new line based on class line type and inesrt it in place manager.
+     * @param classLine object that is used to determine the type of join.
+     */
+    private void createNewUseCasejoinFromClassJoin(CDJoinEdgeController classLine)
+    {
+        if (classLine.checkBothObjects())
+        {
+            UCJoinEdgeController newJoinEdge = new UCJoinEdgeController(classLine.getFirstObject().getAssignedObject(), classLine.getSecondObject().getAssignedObject());
+            if (ucPlaces.lineExists(newJoinEdge))
+            {
+                ucPlaces.removeJoinEdge(ucPlaces.getExistingLine(newJoinEdge));
+            }
+            
+            if (classLine.getJoinEdgeType() == CDLineType.ASSOCIATION)
+            {
+                newJoinEdge.setJoinEdgeType(UCLineType.ASSOCIATION);
+            }
+            else if (classLine.getJoinEdgeType() == CDLineType.GENERALIZATION)
+            {
+                newJoinEdge.setJoinEdgeType(UCLineType.GENERALIZATION);
+            }
+            if (classLine.getAssignedObject() != null)
+            {
+                classLine.getAssignedObject().setAssignedObject(null);
+            }
+            classLine.setAssignedObject(newJoinEdge);
+            newJoinEdge.setAssignedObject(classLine);
+            ucPlaces.addObject(newJoinEdge);
         }
     }
 }

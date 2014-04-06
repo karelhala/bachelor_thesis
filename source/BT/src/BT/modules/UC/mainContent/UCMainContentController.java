@@ -36,7 +36,7 @@ public class UCMainContentController extends UCMainContentModel implements Drawi
      */
     public UCMainContentController(DiagramPlacesManager diagramPlaces) {
         super(diagramPlaces);
-        this.classDiagramConnector = new UCClassDiagramConnector(diagramPlaces.getCdPlaces());
+        this.classDiagramConnector = new UCClassDiagramConnector(diagramPlaces.getCdPlaces(), diagramPlaces.getUcPlaces());
     }
 
     /**

@@ -9,7 +9,6 @@ import BT.BT.UCLineType;
 import BT.models.CoordinateModel;
 import BT.models.LineModel;
 import java.awt.BasicStroke;
-import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.util.Objects;

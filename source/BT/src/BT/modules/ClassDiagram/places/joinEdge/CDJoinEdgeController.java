@@ -91,4 +91,38 @@ public class CDJoinEdgeController extends LineModel {
             setEndPoint(endPoint);
         }
     }
+    
+    /**
+     * Method that gives you classType of first object.
+     * @return classType
+     */
+    private ClassType getFirstObjectType()
+    {
+        return ((CDClass)this.getFirstObject()).getTypeOfClass();
+    }
+    
+    /**
+     * Method that gives you classType of second object.
+     * @return classType
+     */
+    private ClassType getSecondObjectType()
+    {
+        return ((CDClass)this.getSecondObject()).getTypeOfClass();
+    }
+    
+    /**
+     * Method that lets you check if both objects are joinable with use case.
+     * @return true if both object are activity and or actor
+     */
+    public Boolean checkBothObjects()
+    {
+        if (getFirstObjectType() == ClassType.ACTIVITY || getFirstObjectType() == ClassType.ACTOR)
+        {
+            if (getSecondObjectType() == ClassType.ACTIVITY || getSecondObjectType() == ClassType.ACTOR)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 }
