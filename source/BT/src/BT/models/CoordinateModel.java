@@ -265,8 +265,8 @@ public class CoordinateModel {
         if (this.getAssignedObject() != null)
         {
             this.getAssignedObject().setAssignedObject(null);
-            this.setAssignedObject(null);
         }
+        this.setAssignedObject(null);
         if (this.getOutJoins() != null && !this.getOutJoins().isEmpty())
         {
             for (CoordinateModel oneLine : this.getOutJoins()) {

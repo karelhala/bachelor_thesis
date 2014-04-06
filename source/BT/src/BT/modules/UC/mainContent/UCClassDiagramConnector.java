@@ -225,6 +225,10 @@ public class UCClassDiagramConnector {
      */
     private void reactivateUseCaseWithSelectedClass(CDClass selectedClass)
     {
+        if (selectedClass.getAssignedObject() != null)
+        {
+            selectedClass.getAssignedObject().setAssignedObject(null);
+        }
         this.selectedObject.disMemberObject();
         
         this.selectedObject.setAssignedObject(selectedClass);
