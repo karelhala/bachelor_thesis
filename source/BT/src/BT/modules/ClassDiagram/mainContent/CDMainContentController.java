@@ -81,6 +81,8 @@ public class CDMainContentController extends CDBottomRightController implements 
      */
     @Override
     public void drawingPaneClicked(MouseEvent evt) {
+        this.leftBottomController.setSelectedObject(null);
+        this.leftBottomController.objectSelected();
         JToggleButton selectedItemButton = this.LeftTopContent.getSelectedButton();
         this.places.setAllObjectDiselected();
         if (selectedItemButton != null && CDObjectType.CLASS.name().equals(selectedItemButton.getName())) {
@@ -131,11 +133,11 @@ public class CDMainContentController extends CDBottomRightController implements 
         if (this.LeftBottomContent.getSelectedButton() != null || this.newJoinEdge != null && !this.newJoinEdge.getFirstObject().equals(clickedObject)) {
             clickedOnObject(clickedObject);
         }
+        this.leftBottomController.setSelectedObject(clickedObject);
+        this.leftBottomController.objectSelected();
         
         if (clickedObject != null) {
             clickedObject.setSelected(true);
-            this.leftBottomController.setSelectedObject(clickedObject);
-            this.leftBottomController.objectSelected();
             disableButtons(clickedObject);
         }
         else

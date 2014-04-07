@@ -136,7 +136,7 @@ public class CDClass extends CoordinateModel {
         Point methodsPlace = new Point(variablesPlace.x, variablesPlace.y - (fm.getHeight() * this.variables.size()) - 5);
         drawAttributes(g, this.methods, methodsPlace, fm);
     }
-
+    
     /**
      *
      * @param newVariable
@@ -151,6 +151,28 @@ public class CDClass extends CoordinateModel {
      */
     public void addNewMethod(Attribute newMethod) {
         this.methods.add(newMethod);
+    }
+    
+    public void removeMethod(Attribute method)
+    {
+        this.methods.remove(method);
+    }
+    
+    public void removeVariable(Attribute variable)
+    {
+        this.variables.remove(variable);
+    }
+    
+    public void removeAttribute(Attribute remmovingAttr)
+    {
+        if (this.methods.indexOf(remmovingAttr) != -1)
+        {
+            removeMethod(remmovingAttr);
+        }
+        else if (this.variables.indexOf(remmovingAttr) != -1)
+        {
+            removeVariable(remmovingAttr);
+        }
     }
 
     /**
@@ -182,7 +204,7 @@ public class CDClass extends CoordinateModel {
     protected int getMaximumHeight(FontMetrics fm) {
         int textheight = fm.getHeight();
         int shapeHeight = textheight + (textheight * this.variables.size()) + (textheight * this.methods.size());
-        return ((shapeHeight + 10) > this.height) ? shapeHeight + 10 : this.height;
+        return shapeHeight + 10;
     }
 
     /**
@@ -196,7 +218,7 @@ public class CDClass extends CoordinateModel {
         shapewidth = (variableMaxWidth > shapewidth) ? variableMaxWidth : shapewidth;
         int methodWidth = getMaximumStringLengthOfAttribute(this.methods, fm);
         shapewidth = (methodWidth > shapewidth) ? methodWidth : shapewidth;
-        return ((shapewidth + 10) > this.width) ? shapewidth + 10 : this.width;
+        return shapewidth + 10;
     }
 
     /**

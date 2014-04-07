@@ -10,6 +10,9 @@ import BT.managers.CD.Attribute;
 import BT.models.CoordinateModel;
 import BT.modules.ClassDiagram.places.CDClass;
 import GUI.BottomLeftContentModel;
+import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
@@ -41,16 +44,32 @@ public class CDBottomLeftController {
      */
     public void objectSelected()
     {
+        this.leftContentmodel.getContentPane().removeAll();
+        this.leftContentmodel.getContentPane().repaint();
+        this.leftContentmodel.getContentPane().revalidate();
         if (this.selectedObject instanceof CDClass)
         {
             CDClass selectedClass = (CDClass) this.selectedObject;
             for (Attribute oneVariable : selectedClass.getVariables()) {
-                this.leftContentmodel.addObjectsToPane(oneVariable.getVisibility().name() + oneVariable.getName() + oneVariable.getType(), new JButton("+"));
+                addAttributeWithButton(oneVariable);
             }
             for (Attribute oneMethod : selectedClass.getMethods()) {
-                this.leftContentmodel.addObjectsToPane(oneMethod.getVisibility().name() + oneMethod.getName() + oneMethod.getType(), new JButton("+"));
+                addAttributeWithButton(oneMethod);
             }
             this.leftContentmodel.getContentPane().revalidate();
         }
+    }
+    
+    private void addAttributeWithButton(final Attribute insertedAttribute)
+    {
+        JButton deleteButton = new JButton("x");
+        deleteButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                ((CDClass) selectedObject).removeAttribute(insertedAttribute);
+                objectSelected();
+            }
+        });
+        this.leftContentmodel.addObjectsToPane(insertedAttribute.getVisibility().name()+ " " + insertedAttribute.getName() + ":" + insertedAttribute.getType(), deleteButton);
     }
 }
