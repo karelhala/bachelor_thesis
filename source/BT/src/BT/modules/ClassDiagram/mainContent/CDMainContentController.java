@@ -4,23 +4,20 @@
  */
 package BT.modules.ClassDiagram.mainContent;
 
-import BT.BT;
 import BT.BT.CDLineType;
 import BT.BT.CDObjectType;
 import BT.BT.ClassType;
 import BT.interfaces.DrawingClicks;
-import BT.managers.CD.Attribute;
 import BT.managers.DiagramPlacesManager;
 import BT.managers.ObjectChecker;
 import BT.models.CoordinateModel;
 import BT.models.LineModel;
 import BT.modules.ClassDiagram.places.CDClass;
 import BT.modules.ClassDiagram.places.joinEdge.CDJoinEdgeController;
+import GUI.BottomLeftContentModel;
 import GUI.BottomRightContentModel;
 import GUI.ClassDiagramAttributesPanel;
 import java.awt.BorderLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
@@ -28,33 +25,29 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.JToggleButton;
-import javax.swing.event.PopupMenuEvent;
-import javax.swing.event.PopupMenuListener;
 
 /**
  *
  * @author Karel Hala
  */
-public class CDMainContentController extends CDMainContentModel implements DrawingClicks {
+public class CDMainContentController extends CDBottomRightController implements DrawingClicks {
 
-    private final CDUseCaseConnector useCaseConnector;
-    private final CDUseCaseReactivator useCaseReactivator;
-    private final BottomRightContentModel BottomRightContent;
-    private final ClassDiagramAttributesPanel attributesPanel;
-    private final CDBottomRightController rightBottomController;
     /**
      *
      * @param diagramPlaces
-     * @param BottomRightContent
+     * @param bottomRightContent
      * @param attributesPanel
+     * @param leftContentModel
      */
-    public CDMainContentController(DiagramPlacesManager diagramPlaces, BottomRightContentModel BottomRightContent, ClassDiagramAttributesPanel attributesPanel) {
-        super(diagramPlaces);
-        this.BottomRightContent = BottomRightContent;
-        this.useCaseConnector = new CDUseCaseConnector(diagramPlaces.getUcPlaces());
-        this.useCaseReactivator = new CDUseCaseReactivator(useCaseConnector, diagramPlaces.getCdPlaces());
-        this.attributesPanel = attributesPanel;
-        this.rightBottomController = new CDBottomRightController(useCaseReactivator, diagramPlaces.getCdPlaces(), BottomRightContent, attributesPanel, ((CDDrawingPane) this.mainContent.getDrawingPane()).getDrawing());
+    public CDMainContentController(
+            DiagramPlacesManager diagramPlaces, 
+            BottomRightContentModel bottomRightContent, 
+            ClassDiagramAttributesPanel attributesPanel, 
+            BottomLeftContentModel leftContentModel) {
+        
+        super(diagramPlaces, bottomRightContent, attributesPanel);
+        this.leftBottomController = new CDBottomLeftController(leftContentModel, ((CDDrawingPane) this.mainContent.getDrawingPane()).getDrawing());
+        this.leftContentModel = leftContentModel;
     }
     
     /**
@@ -141,6 +134,8 @@ public class CDMainContentController extends CDMainContentModel implements Drawi
         
         if (clickedObject != null) {
             clickedObject.setSelected(true);
+            this.leftBottomController.setSelectedObject(clickedObject);
+            this.leftBottomController.objectSelected();
             disableButtons(clickedObject);
         }
         else

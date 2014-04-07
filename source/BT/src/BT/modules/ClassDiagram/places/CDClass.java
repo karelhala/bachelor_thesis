@@ -87,6 +87,14 @@ public class CDClass extends CoordinateModel {
         return this.pnNetwork;
     }
 
+    public ArrayList<Attribute> getVariables() {
+        return variables;
+    }
+
+    public ArrayList<Attribute> getMethods() {
+        return methods;
+    }
+
     /**
      *
      * @param g

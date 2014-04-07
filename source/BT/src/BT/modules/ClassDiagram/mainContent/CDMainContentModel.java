@@ -12,6 +12,9 @@ import BT.modules.ClassDiagram.CDLeftBottomContent;
 import BT.modules.ClassDiagram.CDLeftTopContent;
 import BT.modules.ClassDiagram.CDMainContent;
 import BT.modules.ClassDiagram.places.joinEdge.CDJoinEdgeController;
+import GUI.BottomLeftContentModel;
+import GUI.BottomRightContentModel;
+import GUI.ClassDiagramAttributesPanel;
 import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
 import javax.swing.InputMap;
@@ -26,11 +29,21 @@ abstract class CDMainContentModel extends MainContentController {
 
     protected CDLeftBottomContent LeftBottomContent;
     protected CDLeftTopContent LeftTopContent;
+    protected CDUseCaseConnector useCaseConnector;
+    protected CDUseCaseReactivator useCaseReactivator;
+    protected BottomRightContentModel bottomRightContent;
+    protected ClassDiagramAttributesPanel attributesPanel;
+    protected BottomLeftContentModel leftContentModel;
+    protected CDBottomLeftController leftBottomController;
 
-    public CDMainContentModel(DiagramPlacesManager diagramPlaces) {
+    public CDMainContentModel(DiagramPlacesManager diagramPlaces, BottomRightContentModel bottomRightContent, ClassDiagramAttributesPanel attributesPanel) {
         this.diagramPlaces = diagramPlaces;
         this.places = diagramPlaces.getCdPlaces();
         this.mainContent = new CDMainContent(this.places);
+        this.bottomRightContent = bottomRightContent;
+        this.attributesPanel = attributesPanel;
+        this.useCaseConnector = new CDUseCaseConnector(diagramPlaces.getUcPlaces());
+        this.useCaseReactivator = new CDUseCaseReactivator(useCaseConnector, diagramPlaces.getCdPlaces());
         createMainPane();
     }
 

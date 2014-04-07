@@ -33,6 +33,7 @@ public final class UCMainContent extends ContentPaneModel {
 
     /**
      *
+     * @param places
      */
     public UCMainContent(PlaceManager places) {
         super();
@@ -46,11 +47,12 @@ public final class UCMainContent extends ContentPaneModel {
      *
      */
     private void createMainPane() {
-        UCDrawingPane cdDrawingPane = (UCDrawingPane) this.drawingPane;
-        cdDrawingPane.getDrawing().setPreferredSize(this.area);
-        cdDrawingPane.getDrawing().setBackground(Color.WHITE);
-        cdDrawingPane.getDrawing().repaint();
-        JScrollPane myScrollPane = new JScrollPane(cdDrawingPane.getDrawing());
+        UCDrawingPane ucDrawing = (UCDrawingPane) this.drawingPane;
+        ucDrawing.getDrawing().setPreferredSize(this.area);
+        ucDrawing.getDrawing().setBackground(Color.WHITE);
+        ucDrawing.getDrawing().repaint();
+        JScrollPane myScrollPane = new JScrollPane();
+        myScrollPane.setViewportView(ucDrawing.getDrawing());
         this.mainContentPane.add(myScrollPane, BorderLayout.CENTER);
     }
 

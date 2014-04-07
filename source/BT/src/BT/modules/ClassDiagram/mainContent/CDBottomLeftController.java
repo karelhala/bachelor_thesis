@@ -6,8 +6,12 @@
 
 package BT.modules.ClassDiagram.mainContent;
 
-import BT.managers.PlaceManager;
+import BT.managers.CD.Attribute;
+import BT.models.CoordinateModel;
+import BT.modules.ClassDiagram.places.CDClass;
 import GUI.BottomLeftContentModel;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 
 /**
  *
@@ -15,11 +19,38 @@ import GUI.BottomLeftContentModel;
  */
 public class CDBottomLeftController {
     final private BottomLeftContentModel leftContentmodel;
-    final private PlaceManager cdPlaces;
+    final private CDDrawingPane.drawing drawingPane;
+    private CoordinateModel selectedObject;
     
-    public CDBottomLeftController (BottomLeftContentModel leftContentmodel, PlaceManager cdPlaces)
+    public CDBottomLeftController (BottomLeftContentModel leftContentmodel, CDDrawingPane.drawing drawingPane)
     {
         this.leftContentmodel = leftContentmodel;
-        this.cdPlaces = cdPlaces;
+        this.drawingPane = drawingPane;
+    }
+
+    public CoordinateModel getSelectedObject() {
+        return selectedObject;
+    }
+
+    public void setSelectedObject(CoordinateModel selectedobject) {
+        this.selectedObject = selectedobject;
+    }
+    
+    /**
+     * 
+     */
+    public void objectSelected()
+    {
+        if (this.selectedObject instanceof CDClass)
+        {
+            CDClass selectedClass = (CDClass) this.selectedObject;
+            for (Attribute oneVariable : selectedClass.getVariables()) {
+                this.leftContentmodel.addObjectsToPane(oneVariable.getVisibility().name() + oneVariable.getName() + oneVariable.getType(), new JButton("+"));
+            }
+            for (Attribute oneMethod : selectedClass.getMethods()) {
+                this.leftContentmodel.addObjectsToPane(oneMethod.getVisibility().name() + oneMethod.getName() + oneMethod.getType(), new JButton("+"));
+            }
+            this.leftContentmodel.getContentPane().revalidate();
+        }
     }
 }

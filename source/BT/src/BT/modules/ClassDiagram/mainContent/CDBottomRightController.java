@@ -8,7 +8,7 @@ package BT.modules.ClassDiagram.mainContent;
 
 import BT.BT.AttributeType;
 import BT.managers.CD.Attribute;
-import BT.managers.PlaceManager;
+import BT.managers.DiagramPlacesManager;
 import BT.modules.ClassDiagram.places.CDClass;
 import GUI.BottomRightContentModel;
 import GUI.ClassDiagramAttributesPanel;
@@ -22,20 +22,13 @@ import javax.swing.event.PopupMenuListener;
  *
  * @author Karel
  */
-public class CDBottomRightController {
-    private final CDUseCaseReactivator reactivator;
-    private final PlaceManager cdPlaces;
-    private final BottomRightContentModel bottomRightContent;
-    private final ClassDiagramAttributesPanel attributesPanel;
+abstract public class CDBottomRightController extends CDMainContentModel {
     private final CDDrawingPane.drawing drawingPane;
     
-    public CDBottomRightController(CDUseCaseReactivator reactivator, PlaceManager cdPlaces, BottomRightContentModel bottomRightContent, ClassDiagramAttributesPanel attributesPanel, CDDrawingPane.drawing drawingPane)
+    public CDBottomRightController(DiagramPlacesManager diagramPlaces, BottomRightContentModel bottomRightContent, ClassDiagramAttributesPanel attributesPanel)
     {
-        this.reactivator = reactivator;
-        this.cdPlaces = cdPlaces;
-        this.bottomRightContent = bottomRightContent;
-        this.attributesPanel = attributesPanel;
-        this.drawingPane = drawingPane;
+        super(diagramPlaces, bottomRightContent, attributesPanel);
+        this.drawingPane = ((CDDrawingPane) this.mainContent.getDrawingPane()).getDrawing();
         addButtonListeners();
     }
     
@@ -47,7 +40,7 @@ public class CDBottomRightController {
         bottomRightContent.getDeleteAllNonValidButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                cdPlaces.deleteAllUnassignedObjects();
+                places.deleteAllUnassignedObjects();
                 drawingPane.repaint();
             }
         });
@@ -55,7 +48,7 @@ public class CDBottomRightController {
         bottomRightContent.getReactivateAllButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                reactivator.reactivateAllEmpty();
+                useCaseReactivator.reactivateAllEmpty();
                 drawingPane.repaint();
             }
         });
@@ -65,6 +58,8 @@ public class CDBottomRightController {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 addNewmethodToClass();
+                leftBottomController.setSelectedObject(places.getSelectedObject());
+                leftBottomController.objectSelected();
                 drawingPane.repaint();
             }
         });
@@ -74,6 +69,8 @@ public class CDBottomRightController {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 addNewVariableToClass();
+                leftBottomController.setSelectedObject(places.getSelectedObject());
+                leftBottomController.objectSelected();
                 drawingPane.repaint();
             }
         });
@@ -83,7 +80,7 @@ public class CDBottomRightController {
             @Override
             public void popupMenuWillBecomeVisible(PopupMenuEvent pme) {
                 attributesPanel.removeAllObjectsFromAttributeType();
-                attributesPanel.addObjectsToAttributeType(cdPlaces.getObjects());
+                attributesPanel.addObjectsToAttributeType(places.getObjects());
             }
 
             @Override
@@ -101,7 +98,7 @@ public class CDBottomRightController {
             @Override
             public void popupMenuWillBecomeVisible(PopupMenuEvent pme) {
                 attributesPanel.removeAllObjectsFromAttributeType();
-                attributesPanel.addObjectsToAttributeType(cdPlaces.getObjects());
+                attributesPanel.addObjectsToAttributeType(places.getObjects());
             }
 
             @Override
@@ -121,9 +118,9 @@ public class CDBottomRightController {
     private void addNewVariableToClass()
     {
         
-        if (cdPlaces.getSelectedObject() != null && cdPlaces.getSelectedObject() instanceof CDClass)
+        if (places.getSelectedObject() != null && places.getSelectedObject() instanceof CDClass)
         {
-            CDClass selectedClass = (CDClass) cdPlaces.getSelectedObject();
+            CDClass selectedClass = (CDClass) places.getSelectedObject();
             AttributeType selectedAtttributeType = null;
             if (attributesPanel.getVisibilityVariable().getSelectedItem() == "-")
             {
@@ -139,7 +136,7 @@ public class CDBottomRightController {
             }
             if (selectedAtttributeType != null)
             {
-                Attribute newAttribute = new Attribute(selectedAtttributeType, this.attributesPanel.getVariableName().getText()+"()", (String) this.attributesPanel.getAttributeTypeVariable().getSelectedItem());
+                Attribute newAttribute = new Attribute(selectedAtttributeType, this.attributesPanel.getVariableName().getText(), (String) this.attributesPanel.getAttributeTypeVariable().getSelectedItem());
                 selectedClass.addNewVariable(newAttribute);
             }
         }
@@ -155,9 +152,9 @@ public class CDBottomRightController {
     private void addNewmethodToClass()
     {
         
-        if (cdPlaces.getSelectedObject() != null && cdPlaces.getSelectedObject() instanceof CDClass)
+        if (places.getSelectedObject() != null && places.getSelectedObject() instanceof CDClass)
         {
-            CDClass selectedClass = (CDClass) cdPlaces.getSelectedObject();
+            CDClass selectedClass = (CDClass) places.getSelectedObject();
             AttributeType selectedAtttributeType = null;
             if (attributesPanel.getVisibilityMethod().getSelectedItem() == "-")
             {
@@ -173,7 +170,7 @@ public class CDBottomRightController {
             }
             if (selectedAtttributeType != null)
             {
-                Attribute newAttribute = new Attribute(selectedAtttributeType, this.attributesPanel.getMethodName().getText(), (String) this.attributesPanel.getAttributeTypeMethod().getSelectedItem());
+                Attribute newAttribute = new Attribute(selectedAtttributeType, this.attributesPanel.getMethodName().getText()+"()", (String) this.attributesPanel.getAttributeTypeMethod().getSelectedItem());
                 selectedClass.addNewMethod(newAttribute);
             }
         }

@@ -6,12 +6,10 @@ package BT.modules.ClassDiagram;
 
 import BT.managers.DiagramPlacesManager;
 import BT.modules.ClassDiagram.mainContent.CDMainContentController;
+import GUI.BottomLeftContentModel;
 import GUI.BottomRightContentModel;
 import GUI.ClassDiagramAttributesPanel;
 import GUI.MainContentModel;
-import java.awt.Color;
-import java.awt.Dimension;
-import javax.swing.JPanel;
 
 /**
  *
@@ -39,7 +37,8 @@ public class CDContentController {
     public void createComponents(DiagramPlacesManager diagramPlaces) {
         BottomRightContentModel cdBottomRightContent = new BottomRightContentModel();
         ClassDiagramAttributesPanel attributesPanel = new ClassDiagramAttributesPanel();
-        CDMainContentController cdMain = new CDMainContentController(diagramPlaces, cdBottomRightContent, attributesPanel);
+        BottomLeftContentModel bottomLeftContentModel = new BottomLeftContentModel();
+        CDMainContentController cdMain = new CDMainContentController(diagramPlaces, cdBottomRightContent, attributesPanel, bottomLeftContentModel);
 
         CDLeftTopContent cdLeftTop = new CDLeftTopContent(cdMain);
         cdLeftTop.setListeners();
@@ -53,6 +52,7 @@ public class CDContentController {
         this.cdContent.setLeftTopPane(cdLeftTop.getMainContentPane());
         this.cdContent.setLeftBottomPane(cdLeftBottom.getMainContentPane());
         this.cdContent.setBottomRightPane(cdBottomRightContent.getContentPane());
+        this.cdContent.setBottomLeftPane(bottomLeftContentModel.getMainPane());
         cdMain.setLeftBottomContent(cdLeftBottom);
         cdMain.setLeftTopContent(cdLeftTop);
     }
