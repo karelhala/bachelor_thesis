@@ -68,6 +68,7 @@ public class CDBottomLeftController {
             public void actionPerformed(ActionEvent ae) {
                 ((CDClass) selectedObject).removeAttribute(insertedAttribute);
                 objectSelected();
+                drawingPane.repaint();
             }
         });
         this.leftContentmodel.addObjectsToPane(insertedAttribute.getVisibility().name()+ " " + insertedAttribute.getName() + ":" + insertedAttribute.getType(), deleteButton);
