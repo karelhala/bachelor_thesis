@@ -26,6 +26,7 @@ public class MyMenyBarModel {
     protected JMenuItem openFile;
     protected JMenuItem backAction;
     protected JMenuItem frontAction;
+    protected JMenuItem saveAction;
     protected JMenuBar jMenuBar1;
 
     public JMenu getjMenu1() {
@@ -75,6 +76,10 @@ public class MyMenyBarModel {
     public JMenuBar getjMenuBar1() {
 	return jMenuBar1;
     }
+
+    public JMenuItem getSaveAction() {
+        return saveAction;
+    }
     
     public void setjMenu1(JMenu jMenu1) {
 	this.jMenu1 = jMenu1;
@@ -123,4 +128,9 @@ public class MyMenyBarModel {
     public void setjMenuBar1(JMenuBar jMenuBar1) {
 	this.jMenuBar1 = jMenuBar1;
     }
+
+    public void setSaveAction(JMenuItem saveAction) {
+        this.saveAction = saveAction;
+    }
+    
 }

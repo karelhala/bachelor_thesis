@@ -27,8 +27,10 @@ import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JSeparator;
 import javax.swing.JTabbedPane;
 import javax.swing.KeyStroke;
+import javax.swing.SwingConstants;
 
 /**
  *
@@ -40,12 +42,19 @@ public class ToolBarContentControler {
     private MouseAdapter newFileMouseClicked;
     private ActionListener newFileAction;
     private ActionListener closeFileAction;
+    private ActionListener openFileAction;
+    private ActionListener exportEpsAction;
+    private ActionListener exportPdfAction;
+    private ActionListener exportXmlAction;
+    private ActionListener saveAction;
+    final private DiagramPlacesManager diagramPlaces;
 
     /**
      *
      */
     public ToolBarContentControler() {
         this.toolBarcontent = new ToolBarContentModel();
+        this.diagramPlaces = new DiagramPlacesManager();
     }
 
     /**
@@ -56,6 +65,11 @@ public class ToolBarContentControler {
         JPanel myPanel = this.toolBarcontent.getToolBarPane();
         JButton NewFileButton = toolBarcontent.addNewButton("New File");
         JButton Closebutton = toolBarcontent.addNewButton("Close File");
+        JButton openButton = toolBarcontent.addNewButton("Open File");
+        JButton saveButton = toolBarcontent.addNewButton("Save File");
+        JButton exportEps = toolBarcontent.addNewButton("Export to Eps");
+        JButton exportPdf = toolBarcontent.addNewButton("Export to PDF");
+        JButton exportXml = toolBarcontent.addNewButton("Export to XML");
 
         this.newFileMouseClicked = new MouseAdapter() {
             @Override
@@ -86,8 +100,21 @@ public class ToolBarContentControler {
                 CloseButtonMouseClicked(myLayout);
             }
         });
+        
+        openButton.addActionListener(openFileAction);
+        saveButton.addActionListener(saveAction);
+        exportEps.addActionListener(exportEpsAction);
+        exportPdf.addActionListener(exportPdfAction);
+        exportXml.addActionListener(exportXmlAction);
+        
         myPanel.add(NewFileButton);
+        myPanel.add(saveButton);
+        myPanel.add(openButton);
         myPanel.add(Closebutton);
+        myPanel.add(new JSeparator(SwingConstants.VERTICAL));
+        myPanel.add(exportEps);
+        myPanel.add(exportPdf);
+        myPanel.add(exportXml);
         this.toolBarcontent.setToolBarPane(myPanel);
         setCloseAndOpenShortCuts(myLayout);
     }
@@ -106,7 +133,6 @@ public class ToolBarContentControler {
      * @param myLayout
      */
     private void addNewTab(final WindowLayoutControler myLayout) {
-        final DiagramPlacesManager diagramPlaces = new DiagramPlacesManager();
         UCContentController UCController = new UCContentController();
         UCController.createComponents(diagramPlaces);
 
