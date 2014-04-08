@@ -5,7 +5,10 @@
 package BT.modules.mainInterface;
 
 import GUI.MainWindowModel;
+import GUI.MyMenuBar;
 import GUI.MyToolBar;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 
 /**
@@ -32,7 +35,6 @@ public class MainInterfaceControler {
         MyToolBar toolBar = new MyToolBar();
         WindowLayoutControler myLayout = new WindowLayoutControler(toolBar);
 
-        ToolBarContent.addBasicButtons(myLayout);
         MouseAdapter addNewFileMouseclicked = ToolBarContent.getNewFileMouseClicked();
         myLayout.setAddNewTabListener(addNewFileMouseclicked);
         myLayout.setMouseClickedOnPlusButton();
@@ -43,6 +45,28 @@ public class MainInterfaceControler {
         mainWindowModel.initComponents();
 	mainWindowModel.getMyMenu().addActionListenerToNewFileItem(ToolBarContent.getNewFileAction());
 	mainWindowModel.getMyMenu().addActionListenerToCloseFileItem(ToolBarContent.getCloseFileAction());
+        createButtonListeners(mainWindowModel.getMyMenu(), ToolBarContent);
+        ToolBarContent.addBasicButtons(myLayout);
+    }
+    
+    private void createButtonListeners(MyMenuBar menu, final ToolBarContentControler toolbarContent)
+    {
+        ActionListener saveAction = new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                toolbarContent.setFileName("asdf");
+                saveFile();
+                System.out.println(toolbarContent.getFileName());
+            }
+        };
+        toolbarContent.setSaveAction(saveAction);
+        menu.addActionListenerToSave(saveAction);
+    }
+    
+    private void saveFile()
+    {
+        
     }
 
 }

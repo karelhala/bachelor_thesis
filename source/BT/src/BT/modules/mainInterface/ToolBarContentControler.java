@@ -5,14 +5,12 @@
 package BT.modules.mainInterface;
 
 import BT.managers.DiagramPlacesManager;
-import BT.managers.PlaceManager;
 import BT.modules.ClassDiagram.CDContentController;
 import BT.modules.ClassDiagram.places.CDClass;
 import BT.modules.ObjectedOrientedPetriNet.PNContentController;
 import BT.modules.ObjectedOrientedPetriNet.mainContent.PNDrawingPane;
 import BT.modules.UC.UCContentController;
 import GUI.CloseTabbedPane;
-import GUI.MainContentModel;
 import GUI.ToolBarContentModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -26,7 +24,6 @@ import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JTabbedPane;
 import javax.swing.KeyStroke;
@@ -47,14 +44,13 @@ public class ToolBarContentControler {
     private ActionListener exportPdfAction;
     private ActionListener exportXmlAction;
     private ActionListener saveAction;
-    final private DiagramPlacesManager diagramPlaces;
+    private String fileName;
 
     /**
      *
      */
     public ToolBarContentControler() {
         this.toolBarcontent = new ToolBarContentModel();
-        this.diagramPlaces = new DiagramPlacesManager();
     }
 
     /**
@@ -133,6 +129,7 @@ public class ToolBarContentControler {
      * @param myLayout
      */
     private void addNewTab(final WindowLayoutControler myLayout) {
+        final DiagramPlacesManager diagramPlaces = new DiagramPlacesManager();
         UCContentController UCController = new UCContentController();
         UCController.createComponents(diagramPlaces);
 
@@ -172,6 +169,42 @@ public class ToolBarContentControler {
         myLayout.removeTab(myLayout.getSelectedTab());
     }
 
+    public void setNewFileAction(ActionListener newFileAction) {
+        this.newFileAction = newFileAction;
+    }
+
+    public void setCloseFileAction(ActionListener closeFileAction) {
+        this.closeFileAction = closeFileAction;
+    }
+
+    public void setOpenFileAction(ActionListener openFileAction) {
+        this.openFileAction = openFileAction;
+    }
+
+    public void setExportEpsAction(ActionListener exportEpsAction) {
+        this.exportEpsAction = exportEpsAction;
+    }
+
+    public void setExportPdfAction(ActionListener exportPdfAction) {
+        this.exportPdfAction = exportPdfAction;
+    }
+
+    public void setExportXmlAction(ActionListener exportXmlAction) {
+        this.exportXmlAction = exportXmlAction;
+    }
+
+    public void setSaveAction(ActionListener saveAction) {
+        this.saveAction = saveAction;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+    
     /**
      *
      * @return
@@ -194,6 +227,26 @@ public class ToolBarContentControler {
 
     public ActionListener getCloseFileAction() {
 	return closeFileAction;
+    }
+
+    public ActionListener getOpenFileAction() {
+        return openFileAction;
+    }
+
+    public ActionListener getExportEpsAction() {
+        return exportEpsAction;
+    }
+
+    public ActionListener getExportPdfAction() {
+        return exportPdfAction;
+    }
+
+    public ActionListener getExportXmlAction() {
+        return exportXmlAction;
+    }
+
+    public ActionListener getSaveAction() {
+        return saveAction;
     }
     
     /**
