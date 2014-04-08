@@ -15,6 +15,16 @@ public class DiagramPlacesManager {
     /**
      * 
      */
+    private String fileName;
+    
+    /**
+     * 
+     */
+    private int diagramNumber;
+    
+    /**
+     * 
+     */
     private PlaceManager ucPlaces;
     
     /**
@@ -55,5 +65,21 @@ public class DiagramPlacesManager {
 
     public void setUcPlaces(PlaceManager ucPlaces) {
         this.ucPlaces = ucPlaces;
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
+
+    public int getDiagramNumber() {
+        return diagramNumber;
+    }
+
+    public void setDiagramNumber(int diagramNumber) {
+        this.diagramNumber = diagramNumber;
     }
 }

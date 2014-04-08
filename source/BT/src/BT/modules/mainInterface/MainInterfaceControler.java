@@ -35,38 +35,16 @@ public class MainInterfaceControler {
         MyToolBar toolBar = new MyToolBar();
         WindowLayoutControler myLayout = new WindowLayoutControler(toolBar);
 
-        MouseAdapter addNewFileMouseclicked = ToolBarContent.getNewFileMouseClicked();
-        myLayout.setAddNewTabListener(addNewFileMouseclicked);
-        myLayout.setMouseClickedOnPlusButton();
-
         toolBar.setPaneToolbar(ToolBarContent.getToolBarcontent().getToolBarPane());
-
         MainWindowModel mainWindowModel = new MainWindowModel("tOOl", myLayout);
         mainWindowModel.initComponents();
+        ToolBarContent.setBasicListeners(myLayout);
+        ToolBarContent.addBasicButtons();
+        ActionListener addNewFileMouseclicked = ToolBarContent.getNewFileAction();
+        myLayout.setAddNewTabListener(addNewFileMouseclicked);
+        myLayout.setMouseClickedOnPlusButton();
 	mainWindowModel.getMyMenu().addActionListenerToNewFileItem(ToolBarContent.getNewFileAction());
 	mainWindowModel.getMyMenu().addActionListenerToCloseFileItem(ToolBarContent.getCloseFileAction());
-        createButtonListeners(mainWindowModel.getMyMenu(), ToolBarContent);
-        ToolBarContent.addBasicButtons(myLayout);
-    }
-    
-    private void createButtonListeners(MyMenuBar menu, final ToolBarContentControler toolbarContent)
-    {
-        ActionListener saveAction = new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                toolbarContent.setFileName("asdf");
-                saveFile();
-                System.out.println(toolbarContent.getFileName());
-            }
-        };
-        toolbarContent.setSaveAction(saveAction);
-        menu.addActionListenerToSave(saveAction);
-    }
-    
-    private void saveFile()
-    {
-        
     }
 
 }

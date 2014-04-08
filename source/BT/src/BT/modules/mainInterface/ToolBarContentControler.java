@@ -5,27 +5,21 @@
 package BT.modules.mainInterface;
 
 import BT.managers.DiagramPlacesManager;
-import BT.modules.ClassDiagram.CDContentController;
-import BT.modules.ClassDiagram.places.CDClass;
-import BT.modules.ObjectedOrientedPetriNet.PNContentController;
-import BT.modules.ObjectedOrientedPetriNet.mainContent.PNDrawingPane;
-import BT.modules.UC.UCContentController;
-import GUI.CloseTabbedPane;
+import BT.models.CoordinateModel;
+import GUI.MyMenuBar;
 import GUI.ToolBarContentModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import java.util.Iterator;
 import javax.swing.AbstractAction;
 import javax.swing.InputMap;
 import javax.swing.JButton;
 import javax.swing.JComponent;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
-import javax.swing.JTabbedPane;
 import javax.swing.KeyStroke;
 import javax.swing.SwingConstants;
 
@@ -36,7 +30,6 @@ import javax.swing.SwingConstants;
 public class ToolBarContentControler {
 
     private ToolBarContentModel toolBarcontent;
-    private MouseAdapter newFileMouseClicked;
     private ActionListener newFileAction;
     private ActionListener closeFileAction;
     private ActionListener openFileAction;
@@ -44,20 +37,20 @@ public class ToolBarContentControler {
     private ActionListener exportPdfAction;
     private ActionListener exportXmlAction;
     private ActionListener saveAction;
-    private String fileName;
+    private final ArrayList<DiagramPlacesManager> diagramPlaces;
 
     /**
      *
      */
     public ToolBarContentControler() {
         this.toolBarcontent = new ToolBarContentModel();
+        diagramPlaces = new ArrayList<>();
     }
 
     /**
      *
-     * @param myLayout
      */
-    public void addBasicButtons(final WindowLayoutControler myLayout) {
+    public void addBasicButtons() {
         JPanel myPanel = this.toolBarcontent.getToolBarPane();
         JButton NewFileButton = toolBarcontent.addNewButton("New File");
         JButton Closebutton = toolBarcontent.addNewButton("Close File");
@@ -66,39 +59,11 @@ public class ToolBarContentControler {
         JButton exportEps = toolBarcontent.addNewButton("Export to Eps");
         JButton exportPdf = toolBarcontent.addNewButton("Export to PDF");
         JButton exportXml = toolBarcontent.addNewButton("Export to XML");
-
-        this.newFileMouseClicked = new MouseAdapter() {
-            @Override
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                NewFileButtonMouseClicked(myLayout);
-            }
-        };
-	
-	this.newFileAction = new ActionListener() {
-	    @Override
-	    public void actionPerformed(ActionEvent e) {
-		NewFileButtonMouseClicked(myLayout);
-	    }
-	};
-	
-        NewFileButton.addMouseListener(this.newFileMouseClicked);
-
-	this.closeFileAction = new ActionListener() {
-	    @Override
-	    public void actionPerformed(ActionEvent e) {
-		CloseButtonMouseClicked(myLayout);
-	    }
-	};
-	
-        Closebutton.addMouseListener(new java.awt.event.MouseAdapter() {
-            @Override
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                CloseButtonMouseClicked(myLayout);
-            }
-        });
         
-        openButton.addActionListener(openFileAction);
+        NewFileButton.addActionListener(newFileAction);
+        Closebutton.addActionListener(closeFileAction);
         saveButton.addActionListener(saveAction);
+        openButton.addActionListener(openFileAction);
         exportEps.addActionListener(exportEpsAction);
         exportPdf.addActionListener(exportPdfAction);
         exportXml.addActionListener(exportXmlAction);
@@ -112,7 +77,31 @@ public class ToolBarContentControler {
         myPanel.add(exportPdf);
         myPanel.add(exportXml);
         this.toolBarcontent.setToolBarPane(myPanel);
+    }
+    
+    /**
+     * 
+     * @param myLayout
+     * @return 
+     */
+    public ToolBarContentControler setBasicListeners(final WindowLayoutControler myLayout)
+    {
+        this.newFileAction = new ActionListener() {
+	    @Override
+	    public void actionPerformed(ActionEvent e) {
+		NewFileButtonMouseClicked(myLayout);
+	    }
+	};
+        
+        this.closeFileAction = new ActionListener() {
+	    @Override
+	    public void actionPerformed(ActionEvent e) {
+		CloseButtonMouseClicked(myLayout);
+	    }
+	};
+        
         setCloseAndOpenShortCuts(myLayout);
+        return this;
     }
 
     /**
@@ -121,43 +110,8 @@ public class ToolBarContentControler {
      * @param myLayout
      */
     private void NewFileButtonMouseClicked(WindowLayoutControler myLayout) {
-        addNewTab(myLayout);
-    }
-
-    /**
-     *
-     * @param myLayout
-     */
-    private void addNewTab(final WindowLayoutControler myLayout) {
-        final DiagramPlacesManager diagramPlaces = new DiagramPlacesManager();
-        UCContentController UCController = new UCContentController();
-        UCController.createComponents(diagramPlaces);
-
-        CDContentController CDcontroller = new CDContentController();
-        CDcontroller.createComponents(diagramPlaces);
-
-        final PNContentController OOPNContentModel = new PNContentController();
-        OOPNContentModel.createComponents(diagramPlaces);
-        myLayout.addNewTab(UCController.getUCContent(), CDcontroller.getCdContent(), OOPNContentModel.getPnContent());
-        ((JTabbedPane)((CloseTabbedPane)myLayout.getFileTab()).getSelectedComponent()).addMouseListener(new MouseAdapter() {
-                @Override
-                public void mousePressed(MouseEvent me) {
-                    if (((JTabbedPane)((CloseTabbedPane)myLayout.getFileTab()).getSelectedComponent()).getSelectedIndex() == 2)
-                    {
-                        if (diagramPlaces.getCdPlaces().getSelectedObject() != null && diagramPlaces.getCdPlaces().getSelectedObject() instanceof CDClass)
-                        {
-                            OOPNContentModel.getPnMain().setPlaces(((CDClass)diagramPlaces.getCdPlaces().getSelectedObject()).getPnNetwork());
-                            OOPNContentModel.getPnMain().getMainContent().getDrawingPane().setPlaces(((CDClass)diagramPlaces.getCdPlaces().getSelectedObject()).getPnNetwork());
-                            ((PNDrawingPane)OOPNContentModel.getPnMain().getMainContent().getDrawingPane()).getDrawing().repaint();
-                        }
-                        else
-                        {
-                            ((JTabbedPane)((CloseTabbedPane)myLayout.getFileTab()).getSelectedComponent()).setSelectedIndex(1);
-                            JOptionPane.showMessageDialog(null, "No class has been selected, please select class for objected oriented petrinets.");
-                        }
-                    }
-                }
-            });
+        NewTabController newTab = new NewTabController(myLayout);
+        diagramPlaces.add(newTab.getDiagramPlaces());
     }
 
     /**
@@ -167,6 +121,12 @@ public class ToolBarContentControler {
      */
     private void CloseButtonMouseClicked(WindowLayoutControler myLayout) {
         myLayout.removeTab(myLayout.getSelectedTab());
+        for (Iterator<DiagramPlacesManager> it = diagramPlaces.iterator(); it.hasNext();) {
+            DiagramPlacesManager model = it.next();
+            if (model.getDiagramNumber() == myLayout.getFileTab().getSelectedIndex()) {
+                it.remove();
+            }
+        }
     }
 
     public void setNewFileAction(ActionListener newFileAction) {
@@ -196,14 +156,6 @@ public class ToolBarContentControler {
     public void setSaveAction(ActionListener saveAction) {
         this.saveAction = saveAction;
     }
-
-    public void setFileName(String fileName) {
-        this.fileName = fileName;
-    }
-
-    public String getFileName() {
-        return fileName;
-    }
     
     /**
      *
@@ -211,14 +163,6 @@ public class ToolBarContentControler {
      */
     public ToolBarContentModel getToolBarcontent() {
         return this.toolBarcontent;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public MouseAdapter getNewFileMouseClicked() {
-        return this.newFileMouseClicked;
     }
 
     public ActionListener getNewFileAction() {
@@ -254,10 +198,11 @@ public class ToolBarContentControler {
      * @param myLayout
      */
     private void setCloseAndOpenShortCuts(final WindowLayoutControler myLayout) {
+        final ToolBarContentControler parent = this;
         myLayout.getFileTab().getActionMap().put("closeTab", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                myLayout.removeTab(myLayout.getSelectedTab());
+                CloseButtonMouseClicked(myLayout);
             }
         }
         );
@@ -265,7 +210,7 @@ public class ToolBarContentControler {
         myLayout.getFileTab().getActionMap().put("newTab", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                addNewTab(myLayout);
+                NewFileButtonMouseClicked(myLayout);
             }
         }
         );

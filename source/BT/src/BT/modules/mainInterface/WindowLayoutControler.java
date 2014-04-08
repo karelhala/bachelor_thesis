@@ -15,6 +15,7 @@ import javax.swing.JSplitPane;
 import javax.swing.JTabbedPane;
 import GUI.WindowLayoutModel;
 import java.awt.Component;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 
 /**
@@ -26,7 +27,7 @@ public class WindowLayoutControler {
     private CloseTabbedPane fileTab;
     private MyToolBar toolBar;
     private PlusTab plusTab;
-    private MouseAdapter addNewTabListener;
+    private ActionListener addNewTabListener;
 
     /**
      *
@@ -43,7 +44,7 @@ public class WindowLayoutControler {
      *
      * @param addNewTabListener
      */
-    public void setAddNewTabListener(MouseAdapter addNewTabListener) {
+    public void setAddNewTabListener(ActionListener addNewTabListener) {
         this.addNewTabListener = addNewTabListener;
     }
 

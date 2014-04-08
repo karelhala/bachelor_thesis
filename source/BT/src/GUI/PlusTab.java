@@ -6,6 +6,7 @@ package GUI;
 
 import java.awt.BorderLayout;
 import java.awt.Image;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import javax.swing.GrayFilter;
 import javax.swing.ImageIcon;
@@ -81,7 +82,7 @@ public class PlusTab {
      * Method for adding mouse listener to plus button.
      * @param addNewTabListener that will be triggered on button clicked.
      */
-    public void addMouseClickedListenerToPlus(MouseAdapter addNewTabListener) {
-        this.buttonPlus.addMouseListener(addNewTabListener);
+    public void addMouseClickedListenerToPlus(ActionListener addNewTabListener) {
+        this.buttonPlus.addActionListener(addNewTabListener);
     }
 }
