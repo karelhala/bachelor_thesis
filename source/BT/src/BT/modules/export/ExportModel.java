@@ -9,7 +9,7 @@ package BT.modules.export;
 import BT.managers.DiagramPlacesManager;
 
 /**
- *
+ * Class for setting basic model for exports.
  * @author Karel
  */
 public class ExportModel {

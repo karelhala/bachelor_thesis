@@ -7,6 +7,9 @@
 package BT.modules.mainInterface;
 
 import BT.managers.DiagramPlacesManager;
+import BT.modules.export.ExportToEps;
+import BT.modules.export.ExportToPdf;
+import BT.modules.export.ExportToXml;
 import javax.swing.JOptionPane;
 
 /**
@@ -56,6 +59,7 @@ public class MainInterfaceListeners {
     {
         if (toolBarContent.getDiagramById(tabId) != null)
         {
+            ExportToEps epsExport = new ExportToEps(toolBarContent.getDiagramById(tabId));
             System.out.println("ExportEpsClicked");
         }
         else
@@ -72,6 +76,7 @@ public class MainInterfaceListeners {
     {
         if (toolBarContent.getDiagramById(tabId) != null)
         {
+            ExportToXml xmlExporter = new ExportToXml(toolBarContent.getDiagramById(tabId));
             System.out.println("ExportXmlClicked");
         }
         else
@@ -88,6 +93,7 @@ public class MainInterfaceListeners {
     {
         if (toolBarContent.getDiagramById(tabId) != null)
         {
+            ExportToPdf pdfExporter = new ExportToPdf(toolBarContent.getDiagramById(tabId));
             System.out.println("ExoprtToPdfClicked");
         }
         else
