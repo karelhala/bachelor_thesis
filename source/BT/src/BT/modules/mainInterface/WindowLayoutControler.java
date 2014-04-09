@@ -25,9 +25,9 @@ import java.awt.event.MouseAdapter;
  */
 public class WindowLayoutControler {
 
-    private CloseTabbedPane fileTab;
-    private MyToolBar toolBar;
-    private PlusTab plusTab;
+    private final CloseTabbedPane fileTab;
+    private final MyToolBar toolBar;
+    private final PlusTab plusTab;
     private ActionListener addNewTabListener;
 
     /**

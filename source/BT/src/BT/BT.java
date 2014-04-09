@@ -98,7 +98,7 @@ public class BT {
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
             Logger.getLogger(BT.class.getName()).log(Level.SEVERE, null, ex);
         }
-        final MainInterfaceControler mainWindow = new MainInterfaceControler("BT");
+        final MainInterfaceControler mainWindow = new MainInterfaceControler("Tool for Software Systems Design");
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {

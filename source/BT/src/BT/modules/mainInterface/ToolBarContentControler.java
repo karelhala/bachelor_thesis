@@ -37,6 +37,7 @@ public class ToolBarContentControler {
     private ActionListener exportPdfAction;
     private ActionListener exportXmlAction;
     private ActionListener saveAction;
+    private ActionListener saveAsAction;
     private final ArrayList<DiagramPlacesManager> diagramPlaces;
 
     /**
@@ -56,6 +57,7 @@ public class ToolBarContentControler {
         JButton Closebutton = toolBarcontent.addNewButton("Close File");
         JButton openButton = toolBarcontent.addNewButton("Open File");
         JButton saveButton = toolBarcontent.addNewButton("Save File");
+        JButton saveAsButton = toolBarcontent.addNewButton("Save As");
         JButton exportEps = toolBarcontent.addNewButton("Export to Eps");
         JButton exportPdf = toolBarcontent.addNewButton("Export to PDF");
         JButton exportXml = toolBarcontent.addNewButton("Export to XML");
@@ -63,6 +65,7 @@ public class ToolBarContentControler {
         NewFileButton.addActionListener(newFileAction);
         Closebutton.addActionListener(closeFileAction);
         saveButton.addActionListener(saveAction);
+        saveAsButton.addActionListener(saveAsAction);
         openButton.addActionListener(openFileAction);
         exportEps.addActionListener(exportEpsAction);
         exportPdf.addActionListener(exportPdfAction);
@@ -70,6 +73,7 @@ public class ToolBarContentControler {
         
         myPanel.add(NewFileButton);
         myPanel.add(saveButton);
+        myPanel.add(saveAsButton);
         myPanel.add(openButton);
         myPanel.add(Closebutton);
         myPanel.add(new JSeparator(SwingConstants.VERTICAL));
@@ -85,41 +89,25 @@ public class ToolBarContentControler {
      * @return 
      */
     public ToolBarContentControler setBasicListeners(final WindowLayoutControler myLayout)
-    {
-        this.newFileAction = new ActionListener() {
-	    @Override
-	    public void actionPerformed(ActionEvent e) {
-		NewFileButtonMouseClicked(myLayout);
-	    }
-	};
-        
-        this.closeFileAction = new ActionListener() {
-	    @Override
-	    public void actionPerformed(ActionEvent e) {
-		CloseButtonMouseClicked(myLayout);
-	    }
-	};
-        
+    {   
         setCloseAndOpenShortCuts(myLayout);
         return this;
     }
 
     /**
      *
-     * @param evt
      * @param myLayout
      */
-    private void NewFileButtonMouseClicked(WindowLayoutControler myLayout) {
+    public void NewFileButtonMouseClicked(WindowLayoutControler myLayout) {
         NewTabController newTab = new NewTabController(myLayout, this);
-        diagramPlaces.add(newTab.getDiagramPlaces());
+        this.diagramPlaces.add(newTab.getDiagramPlaces());
     }
 
     /**
      *
-     * @param evt
      * @param myLayout
      */
-    private void CloseButtonMouseClicked(WindowLayoutControler myLayout) {
+    public void CloseButtonMouseClicked(WindowLayoutControler myLayout) {
         myLayout.removeTab(myLayout.getSelectedTab());
         removeDiagramPlaceById(myLayout.getFileTab().getSelectedIndex());
     }
@@ -130,7 +118,7 @@ public class ToolBarContentControler {
      */
     public void removeDiagramPlaceById(int id)
     {
-        for (Iterator<DiagramPlacesManager> it = diagramPlaces.iterator(); it.hasNext();) {
+        for (Iterator<DiagramPlacesManager> it = this.diagramPlaces.iterator(); it.hasNext();) {
             DiagramPlacesManager model = it.next();
             if (model.getDiagramNumber() == id) {
                 it.remove();
@@ -140,6 +128,10 @@ public class ToolBarContentControler {
     
     public DiagramPlacesManager getDiagramById(int id)
     {
+        if (id < 0)
+        {
+            return null;
+        }
         return this.diagramPlaces.get(id);
     }
     
@@ -170,11 +162,11 @@ public class ToolBarContentControler {
     public void setSaveAction(ActionListener saveAction) {
         this.saveAction = saveAction;
     }
+
+    public void setSaveAsAction(ActionListener saveAsAction) {
+        this.saveAsAction = saveAsAction;
+    }
     
-    /**
-     *
-     * @return
-     */
     public ToolBarContentModel getToolBarcontent() {
         return this.toolBarcontent;
     }
@@ -206,13 +198,16 @@ public class ToolBarContentControler {
     public ActionListener getSaveAction() {
         return saveAction;
     }
+
+    public ActionListener getSaveAsAction() {
+        return saveAsAction;
+    }
     
     /**
      *
      * @param myLayout
      */
     private void setCloseAndOpenShortCuts(final WindowLayoutControler myLayout) {
-        final ToolBarContentControler parent = this;
         myLayout.getFileTab().getActionMap().put("closeTab", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {

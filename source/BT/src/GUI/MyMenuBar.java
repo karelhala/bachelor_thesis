@@ -64,9 +64,13 @@ public class MyMenuBar extends MyMenyBarModel{
 	this.openFile = new JMenuItem("Open File");
 	this.closeFile = new JMenuItem("Close File");
         this.saveAction = new JMenuItem("Save File");
+        this.saveAsAction = new JMenuItem("Save As...");
 	
 	this.jMenu1.add(this.newFile);
+        this.jMenu1.addSeparator();
         this.jMenu1.add(this.saveAction);
+        this.jMenu1.add(this.saveAsAction);
+        this.jMenu1.addSeparator();
 	this.jMenu1.add(this.openFile);
 	this.jMenu1.add(this.closeFile);
     }
@@ -123,6 +127,7 @@ public class MyMenuBar extends MyMenyBarModel{
     public void addActionListenerToCloseFileItem(ActionListener closeFileListener)
     {
 	this.closeFile.addActionListener(closeFileListener);
+        this.closeFile.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X, ActionEvent.CTRL_MASK));
     }
     
     /**
@@ -185,9 +190,22 @@ public class MyMenuBar extends MyMenyBarModel{
 	this.exportToXml.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X, ActionEvent.ALT_MASK));
     }
     
+    /**
+     * Method for adding save action listener to save option.
+     * @param saveAction 
+     */
     public void addActionListenerToSave(ActionListener saveAction)
     {
         this.saveAction.addActionListener(saveAction);
         this.saveAction.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, ActionEvent.CTRL_MASK));
+    }
+    
+    /**
+     * Method for setting listener to save as.
+     * @param saveAsAction 
+     */
+    public void addActionListenerToSaveAs(ActionListener saveAsAction)
+    {
+        this.saveAsAction.addActionListener(saveAsAction);
     }
 }
