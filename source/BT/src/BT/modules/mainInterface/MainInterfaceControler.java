@@ -33,7 +33,7 @@ public class MainInterfaceControler {
     public void runTheMainWindow() {
         ToolBarContentControler ToolBarContent = new ToolBarContentControler();
         MyToolBar toolBar = new MyToolBar();
-        WindowLayoutControler myLayout = new WindowLayoutControler(toolBar);
+        WindowLayoutControler myLayout = new WindowLayoutControler(toolBar, ToolBarContent);
 
         toolBar.setPaneToolbar(ToolBarContent.getToolBarcontent().getToolBarPane());
         MainWindowModel mainWindowModel = new MainWindowModel("tOOl", myLayout);

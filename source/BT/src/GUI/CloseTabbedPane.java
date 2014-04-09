@@ -4,6 +4,8 @@
  */
 package GUI;
 
+import BT.managers.DiagramPlacesManager;
+import BT.modules.mainInterface.ToolBarContentControler;
 import java.awt.Component;
 import java.awt.FlowLayout;
 import java.awt.Image;
@@ -23,8 +25,10 @@ import javax.swing.JTabbedPane;
  */
 public class CloseTabbedPane extends JTabbedPane {
 
-    public CloseTabbedPane() {
+    final private ToolBarContentControler toolBarContent ;
+    public CloseTabbedPane(ToolBarContentControler toolBarContent) {
         super();
+        this.toolBarContent = toolBarContent;
     }
 
     /**
@@ -66,6 +70,7 @@ public class CloseTabbedPane extends JTabbedPane {
             this.setSelectedIndex(-1);
         }
 
+        this.toolBarContent.removeDiagramPlaceById(this.indexOfComponent(component));
         this.remove(component);
     }
 

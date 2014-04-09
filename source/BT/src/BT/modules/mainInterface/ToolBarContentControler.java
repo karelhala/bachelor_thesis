@@ -110,7 +110,7 @@ public class ToolBarContentControler {
      * @param myLayout
      */
     private void NewFileButtonMouseClicked(WindowLayoutControler myLayout) {
-        NewTabController newTab = new NewTabController(myLayout);
+        NewTabController newTab = new NewTabController(myLayout, this);
         diagramPlaces.add(newTab.getDiagramPlaces());
     }
 
@@ -121,14 +121,28 @@ public class ToolBarContentControler {
      */
     private void CloseButtonMouseClicked(WindowLayoutControler myLayout) {
         myLayout.removeTab(myLayout.getSelectedTab());
+        removeDiagramPlaceById(myLayout.getFileTab().getSelectedIndex());
+    }
+
+    /**
+     * Method for removing diagramplaces by it's id
+     * @param id 
+     */
+    public void removeDiagramPlaceById(int id)
+    {
         for (Iterator<DiagramPlacesManager> it = diagramPlaces.iterator(); it.hasNext();) {
             DiagramPlacesManager model = it.next();
-            if (model.getDiagramNumber() == myLayout.getFileTab().getSelectedIndex()) {
+            if (model.getDiagramNumber() == id) {
                 it.remove();
             }
         }
     }
-
+    
+    public DiagramPlacesManager getDiagramById(int id)
+    {
+        return this.diagramPlaces.get(id);
+    }
+    
     public void setNewFileAction(ActionListener newFileAction) {
         this.newFileAction = newFileAction;
     }

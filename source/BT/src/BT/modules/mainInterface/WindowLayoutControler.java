@@ -4,6 +4,7 @@
  */
 package BT.modules.mainInterface;
 
+import BT.managers.DiagramPlacesManager;
 import GUI.MainContentModel;
 import GUI.CloseTabbedPane;
 import GUI.MyToolBar;
@@ -32,10 +33,11 @@ public class WindowLayoutControler {
     /**
      *
      * @param toolBar
+     * @param toolBarContent
      */
-    public WindowLayoutControler(MyToolBar toolBar) {
+    public WindowLayoutControler(MyToolBar toolBar, ToolBarContentControler toolBarContent) {
         this.toolBar = toolBar;
-        fileTab = new CloseTabbedPane();
+        fileTab = new CloseTabbedPane(toolBarContent);
         plusTab = new PlusTab();
         this.plusTab.addPlusTab(this.fileTab);
     }
@@ -75,8 +77,9 @@ public class WindowLayoutControler {
      * @param UCContentModel
      * @param UMLContentModel
      * @param OOPNContentModel
+     * @param diagramPlaces
      */
-    public void addNewTab(MainContentModel UCContentModel, MainContentModel UMLContentModel, MainContentModel OOPNContentModel) {
+    public void addNewTab(MainContentModel UCContentModel, MainContentModel UMLContentModel, MainContentModel OOPNContentModel, DiagramPlacesManager diagramPlaces) {
         addNewTab(UCContentModel, UMLContentModel, OOPNContentModel, "new file");
     }
 
@@ -120,6 +123,7 @@ public class WindowLayoutControler {
      * @param UMLContentModel
      * @param OOPNContentModel
      * @param name
+     * @param diagramPlaces
      */
     public void addNewTab(MainContentModel UCContentModel, MainContentModel UMLContentModel, MainContentModel OOPNContentModel, String name) {
         JTabbedPane typeTab = new JTabbedPane();

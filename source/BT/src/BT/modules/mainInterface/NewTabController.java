@@ -25,7 +25,7 @@ import javax.swing.JTabbedPane;
 public class NewTabController {
     private DiagramPlacesManager diagramPlaces;
     
-    public NewTabController(WindowLayoutControler myLayout)
+    public NewTabController(WindowLayoutControler myLayout, ToolBarContentControler toolbar)
     {
         addNewTab(myLayout);
     }
@@ -44,7 +44,7 @@ public class NewTabController {
 
         final PNContentController OOPNContentModel = new PNContentController();
         OOPNContentModel.createComponents(diagramPlaces);
-        myLayout.addNewTab(UCController.getUCContent(), CDcontroller.getCdContent(), OOPNContentModel.getPnContent());
+        myLayout.addNewTab(UCController.getUCContent(), CDcontroller.getCdContent(), OOPNContentModel.getPnContent(), diagramPlaces);
         ((JTabbedPane)((CloseTabbedPane)myLayout.getFileTab()).getSelectedComponent()).addMouseListener(new MouseAdapter() {
                 @Override
                 public void mousePressed(MouseEvent me) {
