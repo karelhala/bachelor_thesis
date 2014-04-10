@@ -1,0 +1,28 @@
+\begin{thebibliography}{1}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\urlprefix}{URL }
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else
+  \providecommand{\doi}{doi:\discretionary{}{}{}\begingroup
+  \urlstyle{rm}\Url}\fi
+\providecommand{\selectlanguage}[1]{\relax}
+\providecommand{\eprint}[2][]{\url{#2}}
+
+\bibitem{enterpriseArchitect}
+\emph{Enterprise Architect User Guide}. Accessed: 12.04.2014.
+
+\bibitem{umbrelloDocumentation}
+\emph{Umbrello UML Modeller Handbook}. Accessed: 12.04.2014.
+
+\bibitem{ModelovaniOOPN}
+janou¹ek, V.: \emph{Modelování objektù petriho sítìmi}. Dizertaèní práce, 2008.
+
+\bibitem{Diagram_trid}
+Kettenis, J.: \emph{Getting Started With UML Class Modeling}. Oracle, May 2007,
+  accessed: 22.03.2014.
+
+\bibitem{Pripad_uziti}
+Kettenis, J.: \emph{Getting Started With Use Case Modeling}. Oracle, May 2007,
+  accessed: 22.03.2014.
+
+\end{thebibliography}

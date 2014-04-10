@@ -54,48 +54,52 @@ editoru a ne pøíli¹ jednoduché práce s editorem jako napøíklad
 pøidání nové metody, zalomení èar a také vytvoøení jiného souboru.
 
 \subsection{Výhody a nevýhody}
-Umbrello aplikace poskytuje nìkolikero UML grafù. \textbf{Class Diagram}, pro 
-popis tøíd a provázanosti mezi nimi. \textbf{Sequence Diagram}, pro popis chodu 
-aplikace, komunikace mezi vlákny a komunikace mezi aplikacemi. \textbf{Use Case 
-Diagram} pro popis akcí v systému, aplikaci. \textbf{State Diagram} pro popis 
+Umbrello aplikace poskytuje nìkolik UML grafù mezi které patøí:
+\begin{itemize}
+  \item \textbf{ClassDiagram} pro popis tøíd a provázanosti mezi nimi.
+  \item \textbf{Sequence Diagram}, pro 
+popis chodu aplikace, komunikace mezi vlákny a komunikace mezi aplikacemi.
+  \item \textbf{Use Case Diagram} pro popis akcí v systému, aplikaci.
+  \item \textbf{State Diagram} pro popis 
 stavu systému a prùbìhu jednotlivých operací, pøevá¾nì zachování v urèitých 
-momentech aplikace na dané podmínky. \textbf{Activity Diagram} popisuje akce a 
-prùbìh celého programu graficky. \textbf{Component Diagram} pro popis spojení a 
-komunikace mezi jednotlivými komponentami. \textbf{Deployment Diagram} popisuje 
-fyzické ulo¾í¹tì a ma¹iny, na kterých program bude pracovat. A v neposlední øadì 
-\textbf{Entity Relationship Diagram} pro popis vztahu dat mezi sebou.
+momentech aplikace na dané podmínky.
+  \item \textbf{Activity Diagram} popisuje akce a 
+prùbìh celého programu graficky.
+  \item \textbf{Component Diagram} pro popis spojení a 
+komunikace mezi jednotlivými komponentami.
+  \item \textbf{Deployment Diagram} popisuje 
+fyzické ulo¾í¹tì a ma¹iny, na kterých program bude pracovat.
+  \item \textbf{Entity Relationship Diagram} pro popis vztahu dat mezi sebou.
+\end{itemize}
 
-Jak je vidno Umbrello poskytuje velké mno¾ství editorù a mo¾ností, jak znázornit 
+Umbrello poskytuje velké mno¾ství diagramù a mo¾ností, jak znázornit 
 chod aplikace. Aplikace je také velice intuitivní, a» ji¾ díky klávesovým 
 zkratkám, tak také díky jednoduchému grafickému designu. Umbrello, také 
-podporuje genraci a refactoring zdrojového kódu pro nìkteré jazyky. Staèí pouze 
-importovat jednu ji¾ vytvoøenou tøídu a Umbrello vás provede jednoduchým 
-nastavením, výbìrem které tøídy namodelované v aplikaci se mají vygenerovat a 
-nabídne také mo¾nost upravit mírnì zvolený kód. Celkovì funkce pro generování 
-zdrojového kódu a jeho úprava je velice potì¹ující a s ohlédnutím na to, ¾e 
-Umbrello je volnì ¹íøitelné, je tato vlastnost velice dobrá.
+podporuje generaci a refactoring zdrojového kódu pro nìkteré jazyky. Staèí 
+pouze importovat jednu ji¾ vytvoøenou tøídu a Umbrello u¾ivatele provede 
+jednoduchým nastavením, výbìrem které tøídy namodelované v aplikaci se mají 
+vygenerovat a nabídne také mo¾nost upravit mírnì zvolený kód. Vzhledem na to, 
+¾e aplikace je plnì zdarma je tato vlastnost velice pøínosná.
 
-Umbrello dále poskytuje mo¾nost gerevání èásteèné dokumentace, i kdy¾ nejsou 
-poskytnu komentáøe. Pøi generování tøíd je mo¾nost, také importovat zdrojový kód 
-a nechat umbrello v¹e vygenerovat samo. Tato vlastnost je, ale podporována pouze 
-pro jazyky \texttt{ActionScript, Ada, C++, C\#, D IDL, Java, Javascript, MySQL}. 
-Výbìr je tedy více ne¾ bohatý.
+Umbrello dále poskytuje mo¾nost èásteèné generace i v pøípadì, ¾e kdy¾ nejsou 
+poskytnu komentáøe na základì kterých by tato dokumentace mohla být vytvoøena. 
+Pøi generování tøíd je mo¾nost, také importovat zdrojový kód a nechat umbrello 
+v¹e vygenerovat samo. Tato vlastnost je, ale podporována pouze pro jazyky 
+\texttt{ActionScript, Ada, C++, C\#, D IDL, Java, Javascript, MySQL}.
 
-Dále Umbrello poskytuje mo¾nost exportování objektù jako PNG obrázky. Tato 
-funkènost je velice pøíjemná pøi psaní dokumentù staèí èást aplikace jednodu¹e 
-okopírovat a vlo¾it jako obrázek. Exportovat jako obrázek, je také mo¾no celý 
-diagram. A také tisknout daný diagram.
+Dále Umbrello poskytuje mo¾nost exportování objektù jako PNG obrázky. Pøi 
+psaní dokumentù je mo¾né vytvoøený diagram zkopírovat a vlo¾it pøímo do 
+dokumentu. Pro export do formátu PNG je mo¾né vybrat èást diagramu, nebo celou 
+sí». s touto mo¾ností také pøichází mo¾nost tisku celého diagramu. 
+\cite{umbrelloDocumentation}
 
-hlavní nevýhoda aplikace je pravdìpodobnì ne pøíli¹ dobøe udìlaný editor. Editor 
-je sice jednoduchý na pou¾ívání a intuitivní, nicménì dlouhodobìj¹í práce je 
-zdlouhavá a pøíli¹ repetitvní. Nutnost vytvoøení objektu na pracovním plátnì, 
-poté výbìru nástroje pro pøesun a editaci daného objektu je zdlouhavé a 
-¹patné.jednodu¹¹í pro práci by jistì bylo vytvoøení objektu a po kliknutí na ji¾ 
-vytvoøený objekt jej pouze pøesunout. Vytvoøení nového atributu tøídy je opìt 
-velice nároèné a neintuitivní.
-
-Co je ale nejvìt¹í slabinou Umbrello aplikace, je nevalidace daného diagramu. Je 
-èistì na u¾ivateli hlídat si ve¹keré chyby a validitu modelované aplikace.
+Umbrello je sice jednoduché na pou¾ívání a intuitivní, nicménì dlouhodobìj¹í 
+práce je zdlouhavá a pøíli¹ repetitvní. Nutnost vytvoøení objektu na pracovním 
+plátnì, poté výbìru nástroje pro pøesun a editaci daného objektu je zdlouhavá a 
+¹patná. Jednodu¹¹í pro práci by jistì bylo vytvoøení objektu a po kliknutí na 
+ji¾ vytvoøený objekt jej pouze pøesunout. Vytvoøení nového atributu tøídy je 
+opìt velice nároèné a neintuitivní. Takté¾ nemo¾nost zalomení spojù mezi 
+objekty je velice limitující.
 
 \subsection{Zhodnocení a pøevzaté vlastnosti}
 Aplikace Umbrello je ¹pièkou ve své tøídì. Je zdarma a poskytuje mnoho nástrojù 
@@ -103,64 +107,80 @@ pøi návrhu aplikace. Mezi jeho pøednosti jistì patøí mo¾nost refactoringu a také
 rozsáhlé mo¾nosti ve variabilitì grafických návrhù.
 
 Aplikace poskytla mnoho informací o vývoji editaèní aplikace, jakým chybám se 
-vyvarovat a co se naopak hodí. Z aplikace Umbrello bylo pøedev¹ím pou¾ita 
-jednoduchost a intuitivní ovládání. Rozdìlení aplikace na jednotlivé èásti a 
-poté jednoduchý grafický design. Není za potøebí ve výsledné aplikaci mnoho 
-nároèných grafických elementù. Tyto elemnty by byly ru¹ivé, tudí¾ na základì 
-Umbrello aplikace byl zvolen jednoduchý design.
+vyvarovat a co je naopak nezbytné k vytvoøení kvalitní aplikace zamìøené na 
+tvorbu diagramù. Není za potøebí ve výsledné aplikaci mnoho nároèných 
+grafických elementù, tyto elementy by byly ru¹ivé. Grafické rolo¾ení a 
+dosa¾itelnost vìt¹iny editaèních prvkù je v aplikaci Umbrello je velice 
+jednoduché a intuitvní z tohoto dùvodu bylo ve výsledné aplikaci pøihlí¾eno na 
+tyto vlastnosti.
 
-Na základì chyb a nedostatkù, pøevá¾nì tomu, ¾e Umbrello neposkutuje jakoukoliv 
-kontrolu daného modelu, bylo v aplikaci Nástroj pro podporu vývoje softwarových 
-systémù implementována mo¾nost kontroly editovaného grafu. A to pøesnìji 
-kontrola spojù, zda je daný spoj mezi dvìma objekty na pracovním plátnì validní.
+Ve výsledné aplikaci bylo vyvarováno nìkterým neduhùm aplikace Umbrello. Jako 
+napøíklad zdlouhavé a repetetivní vytváøení tøíd, jejich pøesun po pracovní 
+plo¹e, nebo spojení tìchto tøíd.
 
-V Umbrello nelze dané spoje nikterat ohýbat, co¾ dìlá výdledný diagram velice 
-nepøehledný. Dále není mo¾no v Umbrello nikterak editovat dané spoje, tomuto 
-bylo vyhnuto a pøidána editace spojù s mo¾ností jednak zmìny typu, dále také 
-zmìny objektu na který daná hrana ukazuje a také mo¾nost jednoduchého odebrání 
-hrany.
+V Umbrello nelze dané spoje ohýbat, lze dané spoje ohýbat, ale tato 
+funkcionalita je velice ¹patnì navrhnutá. Dále není mo¾no v Umbrello nikterak 
+editovat dané spoje, tomuto bylo vyhnuto a pøidána editace spojù s mo¾ností 
+jednak zmìny typu, dále také zmìny objektu na který daná hrana ukazuje a také 
+mo¾nost jednoduchého odebrání hrany.
 
-V Umbrello není nikde vidìt, zda daný objekt má hrany, které vedou do a nebo z 
-obejktu. Toto bylo ve výsledné aplikaci pøidáno, co¾ následnì zmìnilo grafické 
-cítìní modelu a jednoduchou identifikaci objektù.
+K nepøehlednosti aplikaci Umbrello pøispívá také skuteènost, ¾e není vidìt 
+hrany výcházející z a nebo do daného objektu. K zpøehlednìní výsledného 
+diagramu bylo proto navrhnuto zvýraznìní tìchto hran. Co¾ vedlo jednak k 
+spøehlednìní a také k lep¹ímu cítìní a pou¾itelnosti.
 
-Ve výsledné aplikaci, bylo také vyhnuto vlastnosti automatického vyskakování 
-okna pøi pøidání nového objektu, toto bylo nahrazeno pozdìj¹í úpravou daného 
-objektu. Bylo vzáno v potaz, ¾e u¾ivatel bude chtít v jeden moment vytvoøit více 
-objektù a a¾ poté e pojmenovat a pospojovat.
+Aplikace Umbrello pøi pøidání nového objektu donutí u¾ivatele zadat jméno, co¾ 
+opìt vede ke zdlouhavé práci a repetetivním akcím, které u¾ivatele zbyteènì 
+zdr¾ují od práce. Toto bylo vyhodnoceno jako nepøínosné a nutnost zadat jméno 
+objektu pøi jeho vytvoøení bylo nahrazeno pozdìj¹í úpravou. Kdy si u¾ivatel 
+vytvoøí objekt a a¾ poté urèí jeho jméno.
+
+\subsection{Motivace}
+Aplikace Umbrello je hojnì vyu¾ívána a chválena mezi u¾ivateli, z toho dùvodu 
+byl brán zøetel na tuto aplikaci. Také jednoduché pou¾ívání této aplikace bylo 
+velice pøínosné pro pozdìj¹í pochopení potøebných vlastností aplikace zamìøené 
+na dané téma.
 
 \section{Enterprise Architect} \label{enterpriseArchitect}
-Aplikace \cite{Enterprise_architect} je tvoøena firmou sparx system 
-\url{http://www.sparxsystems.com}, tato firma se soustøeïuje na tvorbu nástrojù 
-pro tvorbu UML grafù. Bohu¾el firmou nabízené produkty jsou placené, ale za dané 
-slu¾by èlovìk obdr¾í opravdu robustní systém pro tvorbu UML grafù a mo¾nost 
-refaktoringu pro nìkolik jazykù.
+S ohlédnutím na Aplikaci Umbrello a nìkteré její nedostatky, bylo nutné pro 
+pozdìj¹í vývoj aplikace prozkoumat dal¹í systém. Tato aplikace se jmenuje 
+Enterprise Architect a je tvoøena firmou \textbf{Sparx Systems} 
+\footnote{\url{http://www.sparxsystems.com}}, tato firma se soustøeïuje na 
+tvorbu nástrojù pro tvorbu UML grafù. Bohu¾el firmou nabízené produkty jsou 
+placené, ale u¾ivatel obdr¾í opravdu robustní systémy pro tvorbu UML grafù a 
+mo¾nost refaktoringu pro nìkolik jazykù.
 
 \subsection{Popis aplikace}
-Enterprise Architect (dále jen EA) je velice roustní systém, ji¾ nemá takové 
+Enterprise Architect (dále jen EA) je velice robustní systém, ji¾ nemá takové 
 nedostatky jako aplikace Umbrello a nabízí nìkolikero mo¾ností pro refaktoring 
 projektu. Aplikace rozdìluje UML grafy do dvou skupin, skupina 
-\textbf{Structural Diagrams} pro diagramy na popis vyvýjené aplikace a popis 
-její struktury. A skupinu \textbf{Behavior Diagrams} pro popis chování aplikace 
-a komunikace mezi jednotlivými èástmi aplikace. Aplikace poskytuje velkou ¹kálu 
-grafù a diagramù od klasických diagramù pro popis chování dat mezi sebou, pøes 
-diagramy pro návrh Win32 UI a¾ po návrh testování výsledné aplikace.
+\begin{itemize}
+  \item \textbf{Structural Diagrams} pro diagramy na popis vyvýjené aplikace a 
+popis 
+její struktury.
+  \item \textbf{Behavior Diagrams} pro popis chování aplikace 
+a komunikace mezi jednotlivými èástmi aplikace. 
+\end{itemize}
+ Dále aplikace poskytuje velkou ¹kálu grafù a diagramù od klasických diagramù 
+pro popis chování dat mezi sebou (ERD), pøes diagramy pro návrh Win32 UI a¾ po 
+návrh testování výsledné aplikace. \cite{enterpriseArchitect}
 
 \subsection{Výhody a nevýhody}
 V aplikaci je mo¾né vytvoøit velké mno¾ství grafù a diagramù. Grafické rozhraní 
-ji¾ není tak jednoduché, jako tomu je u aplikace Umbrello, ale je intuitivní a 
-jednoduché pro pou¾ívání. Vìt¹ina pokroèilých funkcí je bohu¾el schována a je 
-nároèné ji najít. Pøidávání atributù pro jednotlivé tøídy je opìt zdlouhavé a 
-neintuitivní.
+ji¾ není tak jednoduché, jako tomu je u aplikace Umbrello, ale je stále velice 
+intuitivní a jednoduché pro pou¾ívání. Vìt¹ina pokroèilých funkcí je bohu¾el 
+schována a je nároèné ji najít, jako napøíklad pøidání a editace atributù 
+tøídy.
 
-Výhodou této aplikace jistì je mo¾nost vytváøení diagramù pro jednotlivé jazyky, 
-celkem jedenáct jazykù je podporovaných. \texttt{ActionScript, C, C\#, C++, 
+Výhodou této aplikace je jistì mo¾nost vytváøení diagramù pro 
+jednotlivé jazyky, a poté tyto diagramy exportovat do zdrojového textu.
+Na výbìr je celkem jedenáct jazykù \texttt{ActionScript, C, C\#, C++, 
 Delphi, Java, PHP, Python, VBNet, Visual Basic, WorkFlow Script}.
 
 Nejvìt¹í výhodou je jistì mo¾nost importovat celý obsah slo¾ky se zdrojovými 
-kódy a tento projekt poté zobrazit v diagramu tøíd. Pro import aplikace je mo¾né 
-pou¾ít také binární soubor výsledného programu. Generování dokumentace je 
-jednoduché a pøehledné.
+kódy a tento projekt poté zobrazit v diagramu tøíd, toto lze také provést 
+importem binárního souboru, napøíklad \texttt{.jar} souboru a aplikace se mù¾e 
+postarat o vygenerování jak dokumentace, tak výsledného diagramu tøíd.
 
 Pro jednodu¹¹í a rychlej¹í mo¾nost spojení jednotlivých objektù na pracovní 
 plo¹e, lze pou¾ít rychlého nástroje vedle objektu. Na stejném místì lze nalést 
@@ -168,41 +188,40 @@ také funkce pro ryhclou editaci a zmìnu stylu objektu.
 
 Pøeta¾ení spoje mezi dvìma objekty lze pomocí uchopení za jeden konec a ta¾ení k 
 dal¹ímu objektu. Bohu¾el pùvodní spoj se neztratí do doby, ne¾ u¾ivatel pustí 
-my¹. Pøi kliknutí mimo jakýkoliv objekt spoj zùstane u pùvodního objektu.
+my¹. Pøi kliknutí mimo jakýkoliv objekt spoj zùstane u pùvodního objektu. 
+\cite{enterpriseArchitect}
 
 \subsection{Zhodnocení a pøevzaté vlastnosti}
 Aplikace poslou¾ila pro dal¹í zhodnocení po¾adavkù a vyvarování se chyb. 
 Pøedev¹ím nároènost a komplexnost aplikace se nehodí pro výslednou aplikaci.
 
 Ve výsledné aplikaci bude za potøebí mo¾nosti jednoduchého zalomení hran a 
-mo¾nosti jejich jednoduché editace. Takté¾ pøesun po pracovním plátnì ve 
-výsledné aplikaci je vyøe¹en elegantnìji a intuitivnìji.
+mo¾nosti jejich jednoduché editace. Takté¾ pøesun po pracovním plátnì je v 
+aplikace EA øe¹en pomìrnì chaoticky a nahodile.
 
 Umístnìní otevøených souborù je v aplikaci EA ponìkud netradièní v dolní èásti 
 aplikace. U¾ivatel èasto nevidí otevøený projekt a èasto se mù¾e stát, ¾e zavøe 
-stávající, jen kvùli tomu aby na¹el ji¾ otevøený soubor. Tudí¾ bylo ve výsledné 
-aplikaci zvoleno umístnìní otevøených oken se soubory v horní èásti aplikace, 
-lépe pøístupné u¾ivateli.
+stávající jen kvùli tomu aby na¹el ji¾ otevøený soubor. Pøi porovnání s 
+aplikací Umbrello, která toto øe¹í více standartním zpùsobem, umístnìní zálo¾ek 
+v horní èásti okna, je tento zpùsob ponìkuk nepraktický.
 
-Takté¾ diagramy a grafy, se kterými se pracuje v danou chvíli mají umístnìní v 
-EA své místo, ale pro vyvýjený projekt naprosto nepou¾itelné. V EA jsou diagramy 
-umístnìny ve stromové struktuøe, z pochopitelných dùvodù rozsáhlosti aplikace a 
-mo¾nostem grafù. Pro pozdìj¹í vývoj bylo zvoleno umístnìní otevøených diagramù 
-pod zálo¾kami souborrù. Takto má u¾ivatel pøepínání mezi èástmi aplikace velice 
-pohodlnì umístnìné a jednoduché pro pøepínání.
+V Enterprise Architect jsou druhy diagramù a grafù umístnìny ve stromové 
+struktuøe, z pochopitelných dùvodù rozsáhlosti aplikace. Opìt nepou¾itelné v 
+men¹ích aplikacích a zbyteènì nároèné na hledání a pøidání nového diagramu, 
+nebo grafu.
 
 \section{Zhodnocení konkurentních nástrojù}
 Pøi testování nástrojù urèených pro tvorbu UML grafù bylo zji¹tìno mnoho detailù 
 a dùle¾itých vlastností, které bude výsledná aplikace potøebovat. Nìkteré výhody 
-tìchto aplikací, jako napøíklad generování kódu, nebude potøeba implementovat ve 
-výsledné aplikaci vzhledem na to, ¾e aplikace se soustøedí èistì jenom na 
-vytváøení a editaci diagramù a UML grafù. 
+tìchto aplikací, jako napøíklad generování kódu, nebude potøeba implementovat  
+vzhledem na to, ¾e aplikace se soustøedí èistì jenom na vytváøení a editaci 
+diagramù a UML grafù.
 
-Bìhem testování nebylo v ¾ádné aplikaci mo¾no udìlat Objektovì orientované 
-Petriho sítì, nebo jakýkoliv jiný roz¹íøený pohled na implementaci jednotlivých 
-tøíd a komunikaci mezi nimi. Dále v testovaných aplikacích nebylo mo¾né 
-pøedgenerovat si tøídy na základì Pøípadu u¾ití, nebo naopak editovat tyto tøídy 
-popøípadì smazat.
+V testovaných aplikacích nebyla nikde mo¾nost èásteèné pøedgenerace dal¹ích 
+èástí návrhu pomocí pøede¹lé. Napøíklad provázanost mezi diagramy pøípadù u¾ití 
+a diagramem tøíd nebyla mo¾ná. V tomto ohledu bylo rozhodnuto, ¾e je potøeba 
+tyto èásti propojit a více zautomatizovat pro rychlej¹í a svi¾nej¹í práci s 
+výslednou aplikací.
  
 Grafický prvek celé aplikace bude za potøebí jednoduchý a snadný k pou¾ívání, 
 ale dùle¾itým prvkem je dobré zviditelnìní nìkterých objektù. Jako napøíklad 
@@ -212,31 +231,23 @@ nebylo nalezeno v ¾ádné z testovaných aplikací, ale je dùle¾itým prvkem v
 rozpoznávání editovaného diagramu.
 
 V testovaných aplikacích chybìla mo¾nost, nebo byla nedostateèná, pro zalomení 
-hran. Tato vlastnost velice napomù¾e pro zpøehlednìní výsledného diagramu. 
-Editace hran byla ve vìt¹inì editorù nepøíli¹ kvalitní. Zmìna typu hrany a zmìna 
-objektù pro danou hranu je zapotøebí pro jednodu¹¹í práci s editorem.
-
-Dále chybìla jakákoliv provázanost mezi jednotlivými èástmi aplikace, vytvoøení nìkolika
-pøípadù u¾ití nevedlo k pøedvytvoøení tøíd a naopak. Pokud ov¹em chybìl nìkterý
-objekt v pøipadu u¾ití a nebo tøída v diagramu tøíd nebylo toto opìt viditelné.
-Tyto vlastnosti byli implementovány a znázornìny, tak¾e u¾ivatel je schopný
-upravit jednotlivé èásti a velice jednodu¹e spozorovat chybìjící, nebo neprovázané
-objekty.
+hran. Tato vlastnost velice napomù¾e pro zpøehlednìní výsledného diagramu, 
+podobnì tomu bylo s editací hran. Zmìna typu hrany a zmìna objektù pro danou 
+hranu je zapotøebí pro jednodu¹¹í práci s editorem a pøedev¹ím pro rychlej¹í 
+práci.
 
 \chapter{Grafy pro popis èástí}\label{grafy}
 Pro grafické znázornìní jednotlivých èástí byly vybrány z UML grafù Diagram pøípadù u¾ití 
 \ref{pripadUziti} pro popis jednotlivých akcí v systému, Diagram tøíd 
 \ref{diagramTrid} pro grafické znázornìní tøíd a operace mezi nimi. A jako 
-poslední èást, která nespadá pod UML bylo vybráno objektovì orientovaných 
-petriho sítí \ref{oopn} pro popis chování jednotlivých tøíd.
+poslední èást, která nespadá pod UML, bylo vybráno Objektovì orientovaných 
+Petriho sítí \ref{oopn} pro popis chování jednotlivých tøíd.
 
-\section{Objektovì orientované programování}
+\section{Objektovì orientované programování}\label{obejktoveProgram}
 Pøedtím, ne¾ rozebereme grafy, které slou¾í pro popis vývoje a 
 vytvoøení návrhu je potøeba rozebrat objìktovì orientované 
 programování. Toto je speciální styl programování pou¾ívaný 
-pøevá¾nì pøi vývojí vìt¹ích a nároènìjèích aplikací. 
-Tento nástroj se soustøïuje na toto programování a proto je 
-potøeba ho dále rozebrat a popsat.
+pøevá¾nì pøi vývojí vìt¹ích a nároènìjèích aplikací.
 
 \subsection{èásti objìktovì orientovaného programování}
 Objektovì orientovaná programování se skládá z nìkolika èástí 
@@ -292,22 +303,24 @@ Mù¾e být dìdìna reprezentace, nebo chování. Dìdìní mù¾e
 být implementování èásteènì, nebo úplnì. A v neposlední 
 øadì lze rozli¹it dìdìní násobné a jednoduché podle poètu dìdìní. \cite{ModelovaniOOPN}
 
-\section{Pøípad u¾ití} \label{pripadUziti}
-Pøípady u¾ití jsou èasto modelovány a pou¾ívány ke komunikaci mezi zákazníkem,
-který nemá pøili¹ mnoho zku¹eností s vývojem systému, ale rozumí danému problému
-a svému oboru. A programátorem, èlovìkem který naopak má zku¹enosti s vývojem 
-aplikace, ale nechápe do hloubky zákazníkùv problém a jeho obor.
+\section{Diagram pøípadù u¾ití} \label{pripadUziti}
+Diagram pøípadù u¾ití jsou èasto modelovány a pou¾ívány ke komunikaci mezi 
+zákazníkem, který nemá pøili¹ mnoho zku¹eností s vývojem systému, ale rozumí 
+danému problému a svému oboru a programátorem, èlovìkem který naopak má 
+zku¹enosti s vývojem aplikace, ale nechápe do hloubky zákazníkùv problém a jeho 
+obor.
 
 Základními prvky Diagramu pøípadù u¾ití jsou pøípady u¾ití a aktéøi. V po¾adavcích na
 systém rozpoznáváme takzvané \uv{Stakeholdery} jsou to osoby, nebo vìci, které mají 
-zájem na provedení systému. Pøípady u¾ití popisují jak se má systém zachovat na 
-reakce stakeholderù, akterù, a dodat urèité výsledky. Aktéøi na druhou stranu, jsou 
-pøímí u¾ivatelé nebo veci s urèitým chováním. Hlavní aktér je èasto stakeholderem 
-daného systému a hlavní spou¹tìè tohoto systému. Obèas je zapotøebí aktér, který není 
-pøímo v systému, tomuto se øíká \uv{Podpùrný aktér}. Aktér není pøímo chápán jako jedinec, 
-nýbr¾ jako role v systému. \cite{Pripad_uziti}
+zájem na úspì¹né provedení systému. Pøípady u¾ití popisují jak se má systém 
+zachovat na reakce stakeholderù, akterù, a dodat urèité výsledky. Aktéøi na 
+druhou stranu, jsou pøímí u¾ivatelé nebo vìci s urèitým chováním. Hlavní aktér 
+je èasto stakeholderem daného systému a hlavní spou¹tìè tohoto systému. Obèas je 
+zapotøebí aktér, který není pøímo v systému, tomuto se øíká \uv{Podpùrný aktér}. 
+Aktér není pøímo chápán jako jedinec, nýbr¾ jako role v systému. 
+\cite{Pripad_uziti}
 
-\subsection{Diagram pøipadù u¾ití}
+\subsection{Rozbor Diagramu pøipadù u¾ití}
 Tyto diagramy se pou¾ívají pro grafický popis pøípadù u¾ití a zahrnuje nìkolik pravidel.
 Aktéøi jsou znázoròováni ve tvaru postav a pøípady u¾ití jako elipsy obsahující 
 název provádìného úkonu. Spoje mezi pøípady u¾ití a aktéry jsou znázornìny úseèkou vedoucí
@@ -317,83 +330,85 @@ Mezi pøípady u¾ití mohou být vedeny dále spoje pro jejich roz¹íøení a upravení. 
 \uv{include}, \uv{extends} a \uv{generalizace}. Poslední jmenovaný spoj je mo¾ný také
 vést mezi aktéry.
 
-Include znamená to, ¾e pro správný chod daného nadøazeného pøípadu u¾ití je zapotøebí
+\textbf{Include} znamená to, ¾e pro správný chod daného nadøazeného pøípadu 
+u¾ití je zapotøebí
 pou¾ití ni¾¹ího pøípadu u¾ití.
 Pro vykonání vy¹¹ího pøípadu u¾ití je zapotøebí nejdøíve vykonat ni¾¹í pøípad u¾ití.
 Pokud pøi vykonávání nìkolika pøípadù u¾ití je vykonávána stejná funkcionalita, je vhodné
 tuto funkcionalitu oddìlit z daného pøípadu u¾ití a spojit se v¹emi pøípady u¾ití 
 spojem include. Spoj include je znázornìn pøeru¹ovanou ¹ipkou doprovázené textem
-\uv{includeq}. Spoj je veden z nadøazeného pøípadu u¾ití k ni¾¹ímu 
-pøípadu.
+\uv{include}. Spoj je veden z nadøazeného pøípadu u¾ití k ni¾¹ímu pøípadu.
 
-Extends slou¾í pro roz¹íøení urèitých pøípadù u¾ití. Toto znamená, ¾e je roz¹íøením
-hlavního pøípadu u¾ití a toto roz¹íøení bylo vyjmuto z pùvodního pøípadu.
-V pøekladu tento spoj znamená, ¾e jeden pøípad u¾ití je roz¹íøen dal¹ím pøípadem
-u¾ití. Spoj je znázoròován pøeru¹ovanou ¹ipkou vedenou do roz¹iøovaného 
-\(hlavního\) pøípadu u¾ití.
+\textbf{Extends} slou¾í pro roz¹íøení urèitých pøípadù u¾ití. Toto znamená, ¾e 
+je roz¹íøením hlavního pøípadu u¾ití a toto roz¹íøení bylo vyjmuto z pùvodního 
+pøípadu. V pøekladu tento spoj znamená, ¾e jeden pøípad u¾ití je roz¹íøen 
+dal¹ím pøípadem u¾ití. Spoj je znázoròován pøeru¹ovanou ¹ipkou vedenou do 
+roz¹iøovaného (hlavního) pøípadu u¾ití.
 
-Generalizaci lze pou¾ít jak v pøípadech u¾ití, tak mezi aktéry. Slou¾í ke znázornìní
-rodièù a potomkù. Pøi pou¾ití tohoto spoje znamená, ¾e potomek pøebírá ve¹kerou funckinalitu
-svého rodièe a mù¾e, tuto funkcionalitu poupravit, nebo pøidat vlastní. Tento spoj je
-znázornìn spojem ukonèeným prázdnou ¹ipkou a je veden od potomka k rodièi. \cite{Pripad_uziti}
+\textbf{Generalizaci} lze pou¾ít jak v pøípadech u¾ití, tak mezi aktéry. Slou¾í 
+ke znázornìní rodièù a potomkù. Pøi pou¾ití tohoto spoje znamená, ¾e potomek 
+pøebírá ve¹kerou funckinalitu svého rodièe a mù¾e, tuto funkcionalitu 
+poupravit, nebo pøidat vlastní. Tento spoj je znázornìn spojem ukonèeným 
+prázdnou ¹ipkou a je veden od potomka k rodièi.
 
 Pro lep¹í znázornìní a oddìlení pøípadù u¾ití je vhodné pou¾ít organizaci, ta se
-znázoròuje rámeèkem okolo nìkolika pøípadù u¾ití.
+znázoròuje rámeèkem okolo nìkolika pøípadù u¾ití.\cite{Pripad_uziti}
 
 \subsection{Pu¾ité vlastnosti}
 Ve výsledné aplikaci byl pou¾it Diagram pøipadù u¾ití pro jednoduché znázornìní
 a zanesení zákazníkových po¾adavkù. Tento diagram byl roz¹íøen o nìkolik u¾iteèných
 vlastností.
 
-Pokud Diagram pøípadu u¾ití nemá odpovídající tøídu v Diagramu tøíd je toto znázornìno
-pod pøípadem u¾ití, nebo po akterém a to formou textu \uv{\/No Class\/}. Pokud daný spoj
-mezi objekty nemá odpovídající spoj mezi tøídamy je toto znázornìno odli¹nou barvou 
-od normálních spojù. Tyto kontroly je ov¹em mo¾né vypnout.
-
-Dále pokud objekt není nijak spojen s ostatními objekty je znázornìn pøeru¹ovaným okrajem.
+Pokud pøípadu u¾ití, nebo aktér nemá odpovídající tøídu v Diagramu tøíd je toto 
+znázornìno pod pøípadem u¾ití, nebo po akterém a to formou textu \uv{\/No 
+Class\/}. Pokud daný spoj mezi objekty nemá odpovídající spoj mezi tøídamy je 
+toto znázornìno odli¹nou barvou od normálních spojù. Dále pokud objekt není 
+nijak spojen s ostatními objekty je znázornìn pøeru¹ovaným okrajem.
 
 Vybraný objekt je znázornìn odli¹nou barvou a jeho okolí je ohranièeno rámeèkem.
-Pokud je ojekt spojen s nìjakými jinými objekty tyto spoje jsou znázornìny po vybrání
-tohoto objektu. Zvýraznìné spoje jsou pouze ty spoje, které vedou z vybraného objektu.
+Pokud je ojekt spojen s nìkterým jiným objektem tyto spoje jsou znázornìny po 
+vybrání tohoto objektu. Zvýraznìné spoje jsou pouze ty spoje, které vedou z 
+vybraného objektu. Toto vede ke zpøehlednìní celého diagramu pøípadù u¾ití.
 
 \section{Diagram tøíd} \label{diagramTrid}
-Rozdíl mezi tøídou a objektem je ten, ¾e tøída je pøedpis pro objekt. Objekt je datová 
-reprezentace pøedepsaných dat a práce s tìmito datami. V UML jsou tøídy popsány poomcí
-diagramu tøíd a tyto diagramy se skládají z attributù, pøedpis pro formát dat. Dále se 
-skládají z metod, pøedpis pro práci s daty a relací mezi tøídami. 
+Po znázornìní aplikace pomocí Diagramu pøípadù u¾ití se nabízí dal¹í nástroj z 
+UML rodiny a tím je \textbf{Diagram tøíd}. Tento diagram slou¾í pro grafické 
+znázornìní objektù a kominakci mezi nimi, tyto objekty a zprávy jsou popsány v 
+kapitole \ref{obejktoveProgram}. 
 
 \subsection{Prvky Diagramu tøíd}
 Hlavní slo¾kou diagramu jsou tøídy, ty jsou znázornìny pomocí obdìlínkù obsahující dal¹í 
-informace o dané tøídì. V horní èásti je název tøídy, první písmeno v tøídì by mìlo být velké.
-Poté tøída obsahuje attributy, jednotlivá slova neoddìlujeme podtr¾ítky, ale velkým písmenem.
-A poslední èást tøíd jsou operace, metody. Pro operace platí stejné pravidla jak pro attributy.
-Omezení v názvosloví je èistì doporuèení a ne nutnost.
+informace o dané tøídì. V horní èásti je název tøídy. Poté tøída obsahuje 
+instaèní promìnné, attributy. A poslední èást tøíd jsou operace, metody.
 
-Urèitou podmno¾inou tøídy jsou abstraktní tøídy, tyto tøídy nemohou být incializovány,
-pouze slou¾í k pøedpisu pro potomky. To znamená, ¾e tøída A je abstraktní
-a je pøedkem tøídy B, v systému se nenachází objekt tøídy A, ale pouze objekt tøídy B.
+Urèitou podmno¾inou tøídy jsou abstraktní tøídy, tyto tøídy nemohou být 
+inicializovány, pouze slou¾í k pøedpisu pro potomky. To znamená, ¾e tøída A je 
+abstraktní a je pøedkem tøídy B, v systému se nenachází objekt tøídy A, ale 
+pouze objekt tøídy B.
 
 V diagramu tøíd lze také namodelovat interface. Toto je speciální tøída
 obsahující pøedpis pro attributy a operace, ale nenachází se v takových
 tøídách implementace tìchto operací. Tato implementace se nachází a¾ ve
 tøídách, které implementují takový interface.
 
-Zápis attributù a operací tøíd je stanove, tak ¾e za jménem následuje dvojteèka a její typ.
-V pøípadì operací za jménem následuje závorka obsahující seznam argumentù a a¾ poté dvojteèka
-a návratový typ. Pokud operace nic nevrací je mo¾né indikovat toto pomocí nastavení návratové
-hodnoty na \uv{void} Dále je mo¾né omezit vyditelnost attributù a operací pomocí identifikátoru.
-\textbf{Private} oznaèované \uv{-}, \textbf{protected} jako \uv{\#} a \textbf{public} 
-znázornìné pomocí \uv{+}. Tyto identifikátory se pí¹í pøed attribut, nebo operaci.
-\cite{Diagram_trid}
+Zápis attributù a operací tøíd je stanoven tak, ¾e za jménem následuje 
+dvojteèka a její typ. V pøípadì operací za jménem následuje závorka obsahující 
+seznam argumentù a a¾ poté dvojteèka a návratový typ. Pokud operace nic nevrací 
+je mo¾né indikovat toto pomocí nastavení návratové hodnoty na \uv{void} Dále je 
+mo¾né omezit vyditelnost attributù a operací pomocí identifikátoru. 
+\textbf{Private} oznaèované \uv{-}, \textbf{protected} jako \uv{\#} a 
+\textbf{public} znázornìné pomocí \uv{+}. Tyto identifikátory se pí¹í pøed 
+jméno attributu, nebo operace. \cite{Diagram_trid}
 
-Jednotlivé hrany pro spojení se dìlí na \textbf{Generalization}, \textbf{Association},
-\textbf{Aggregation}, \textbf{Composition} a \textbf{Implementation}.
+Jednotlivé hrany pro spojení se dìlí na \textbf{Generalizaci}, 
+\textbf{Asociaci}, \textbf{Agregaci}, \textbf{Compozici} a \textbf{Hrana 
+Implementace}.
 
-\subsubsection{Generalization hrana}
-Hrana \textbf{Generalization} popisuje spojení mezi tøídou, která je více generická
-a tøídou, která je specifická. Generická tøída se nazývá \textbf{superclass}, nebo také 
-\textbf{rodiè} a více specifická tøída se nazývá \textbf{subclass}, známá té¾ jako
-\textbf{potomek}.
+\subsubsection{Generalizaèní hrana}
+Hrana \textbf{Generalizace} popisuje spojení mezi tøídou, která je více 
+generická a tøídou, která je specifická. Generická tøída se nazývá 
+\textbf{superclass}, nebo také \textbf{rodiè} a více specifická tøída se nazývá 
+\textbf{subclass}, známá té¾ jako \textbf{potomek}.
 
 V UML je tato hrana popsána ¹ipkou ukonèenou bílím trojúhelníkem na konci,
 je vedena smìrem od generické tøídy k více specifické.
@@ -406,65 +421,69 @@ programátor musí øe¹it, která metoda se má v tøídì A pou¾ít. Napøíklad
 v jazyce Java\texttrademark nìkolikanásobná dìdiènost není povolena, ale
 je mo¾né pou¾ít \textbf{interface}. \cite{Diagram_trid}
 
-\subsubsection{Association hrana}
+\subsubsection{Asociaèní hrana}
 Vztah mezi tøídami urèující, ¾e objekty jedné tøídy jsou pou¾ívány v objektech druhé 
 tøídy.
 
-Association je kresleno v UML pomocí hrany s obìma konci opatøenými ¹ipkou.
+Asociace je kreslena v UML pomocí hrany s obìma konci opatøenými ¹ipkou.
 Takovýto vztah se jmenuje \textbf{bidirectional} a znamená, ¾e obì tøídy se 
-pou¾ívají navzájem, je mo¾né také pou¾it \textbf{unidirectional} spoj,
-co¾ znamená ¾e tøída, ze které ¹ipka vede je pou¾ita tøídou do které ¹ipka ukazuje,
-ale ne naopak. Dále jsou tyto hrany opatøeny násobností, neboli oznaèením kolik objektù je
-pou¾ito kolika objekty.\cite{Diagram_trid}
+pou¾ívají navzájem, je mo¾né také pou¾it \textbf{unidirectional} (èastìji 
+pou¾ívaný) spoj, co¾ znamená ¾e tøída, ze které ¹ipka vede je pou¾ita tøídou do 
+které ¹ipka ukazuje, ale ne naopak. Dále je mo¾né tyto hrany opatøit 
+násobností, neboli oznaèením kolik objektù je pou¾ito kolika objekty. 
+\cite{Diagram_trid}
 
-\subsubsection{Aggregation hrana}
-Pou¾ití spoje Aggregation znaèí, ¾e urèitý objekt potøebuje, ke svému chodu
+\subsubsection{Agregaèní hrana}
+Pou¾ití spoje Agregace znaèí, ¾e urèitý objekt potøebuje, ke svému chodu
 dal¹í objekt. Pokud ov¹em pøestane existovat pùvodní objekt, dal¹í objekt
 lze nadále v systému pou¾ít. To znamená, ¾e objekt tøídy A potøebuje ke svému
 chodu objekt tøídy B. V momentì odstranìní objektu tøídy A ze systému, ale
-objekt tøídy B nezaniká. Tomuto se øíká slabá agregace.
-Tato hrana je kreslena souvislou hranou opatøenou bílým diamantem na konci. 
-\cite{Diagram_trid}
-\subsubsection{Composition hrana}
-Tato hrana je z èásti stejná, jako hrana Aggregation, s tím rozdílem ¾e
+objekt tøídy B nezaniká. Tomuto se øíká slabá agregace. Tato hrana je kreslena 
+souvislou hranou opatøenou bílým diamantem na konci. \cite{Diagram_trid}
+
+\subsubsection{Kompozièní hrana}
+Tato hrana je z èásti stejná, jako hrana Agregaèní, s tím rozdílem ¾e
 reprezentuje silnou agregaci. To znamená ¾e pokud objekt tøídy A potøebuje
 ke svému chodu objekt tøídy B v momentì odstranìní objektu tøídy A je ze 
-systému odtranìn objekt tøídy B. \cite{Diagram_trid}
+systému odtranìn objekt tøídy B. Tato hrana je kreslena souvislou hranou 
+opatøenou èerným diamantem na konci. \cite{Diagram_trid}
 
-Tato hrana je kreslena souvislou hranou opatøenou èerným diamantem na konci. 
-\cite{Diagram_trid}
-
-\subsubsection{Implementation hrana}
+\subsubsection{Implementaèní hrana}
 Tato hrana je specifická v tom, ¾e se kreslí pouze mezi tøídou a interfacem.
 Slou¾í ke znázornìní, ¾e tøída A implementuje interface B, pøevezme v¹echny
-attributy tøídy B a pøetí¾í operace tøídy B, které implementuje. \cite{Diagram_trid}
+attributy tøídy B a pøetí¾í operace tøídy B, které implementuje. Hrana je 
+kreslena pøeru¹ovanou ¹ipkou ve smìru od implementovanì tøídy k
+interfacu. \cite{Diagram_trid} 
 
-Hrana je kreslena pøeru¹ovanou ¹ipkou ve smìru od implementovanì tøídy k
-interfacu.
 \subsection{Pou¾ité a upravené èásti z Diagramu tøíd}
 Ve výsledné aplikaci bylo pou¾ito pro popis vztahù mezi jednotlivými tøídami
 diagramu tøíd. Tento diagram byl z èásti upraven pro jednodu¹¹í práci a snadnìj¹í
 pou¾ívání u¾ivatelem.
 
-Tøídy byli rozdìleny na tøi druhy. Tøída \textbf{Actor}, která odpovídá
-objektu aktér v diagramu pøípadù u¾ití. Tøída \textbf{Activity}, tato 
-tøída odpovídá pøípadu u¾ití. A tøída, bez jakékoliv role znázoròující
-ostatní podpùrné tøídy. Název druhu tøídy se nachází nad danou tøídou
-a u základní tøídy, tedy tøídy bez jakékoliv role, je tento název skryt.
+Kvùli provázanosti s Diagramem pøípadù u¾ití musely být tøídy rozdìleny do 
+ètyø druhù:
+\begin{itemize}
+  \item \textbf{Actor} odpovídá bjektu aktér v Diagramu pøípadù u¾ití.
+  \item \textbf{Activity} tato tøída je spojena s pøípadem u¾ití.
+  \item \textbf{None} pro popis tøídy, která se nepromítne v Diagramu pøípadù 
+u¾ití.
+  \item \textbf{Interface} speciální druh tøídy.
+\end{itemize}
+Typ tøídy se nachází nad danou tøídou, v pøípade interface a None tøídy jsou 
+tyto názvy skryty.
 
 Podobnì jako tomu je v pøípade Diagramu pøípadù u¾ití i zde je názornì vidìt,
-zda nìkterá hrana vede z a nebo do tøídy a to tak, ¾e je tøída ohranièena
-èárkovaným orámováním.
+zda nìkterá hrana vede z a nebo do tøídy a to tak, ¾e tøída bez jakýhkoliv hran 
+je ohranièena èárkovaným orámováním.
 
 Zvýraznìná tøída je oddìlena od ostatních odli¹nou barvou orámování
-a hrany, které vedou z dané tøídy jsou znázornìny jinou barvou, ne¾ ostatní 
-hrany.
+a hrany, které vedou z, nebo do dané tøídy jsou znázornìny jinou barvou, ne¾ 
+ostatní hrany.
 
 Tøídy, které nemají odpovídající pøedpis v èásti Diagramu pøípadù u¾ití,
 jsou znázornìny tak, ¾e jejich obsah je psán nahnutým písmem a pod tøídou,
 se nachází text \uv{\/No UseCase\/}. Pokud hrana spojující tøídy nemá
 odpovídající spoj v Diagramu pøipadù u¾ití, je odli¹ena rozdílnou barvou.
-Tyto kontroly je mo¾né vypnout.
 
 \section{Objektovì orientované Petriho sítì} \label{oopn}
 Pro popis chování objektù a komunikace mezi nimi ve výsledné aplikaci  
@@ -548,14 +567,14 @@ tìchto tøíd obshauje tyto prvky:
 
 Sítì metod mohou sdílet attributy objektu. Mají navíc parametrová 
 místa, do kterých se pøi invokaci takové sítì vlo¾í parametry 
-ze zprávy, dále mají výstupní místo \texttt{return}, coè je 
+ze zprávy, dále mají výstupní místo \textbf{return}, coè je 
 místo do kterého se ulo¾í výstupní hodnota.
 
 Znaèky v sítích nereprezentují samotné objekty, ale pouze 
 reference na tyto objekty. V objektovì orientovaných Petriho sítích 
 jsou tøi druhy objektù.  Primitivní tøídy to jsou èísla znaky, 
 øetìzce, symboly a seznamy. Dal¹í objekty jsou tøídy, tyto 
-objekty se v prùbìhu nemìní a rozumìjí na volání \texttt{new}, 
+objekty se v prùbìhu nemìní a rozumìjí na volání \textbf{new}, 
 co¾ vede k vytvoøení nové instance.  Ostatní objekty jsou instancemi 
 tøídy.
 
@@ -587,6 +606,7 @@ Pøechody jsou znázornìny obdélníkem obshaujícím strá¾ a akci.
 Akce se nachází pod èarou a nad èarou se nachází strá¾.
 
 \section{Spojení diagramù}\label{spojeni}
+
 
 \section{Shrnutí}
 V této kapitole byly pøiblí¾eny nástroje slou¾ící ke 
@@ -623,14 +643,6 @@ zapotøebí kliknout na první objekt a poté na druhý, pøièem¾ spoj je viditelný od
 kurzoru po první objekt. Pro zahnutí spoje je mo¾no kliknout pravým tlaèítkem 
 my¹i, co¾ vyvolá vytvoøení ohybu spoje.
 
-\section{Editace a chování prvkù}
-
-\section{Editace a chování spojù}
-
 \chapter{Závìr}
-Závìreèná kapitola obsahuje zhodnocení dosa¾ených výsledkù se zvlá¹» vyznaèeným 
-vlastním pøínosem studenta. Povinnì se zde objeví i zhodnocení z pohledu dal¹ího 
-vývoje projektu, student uvede námìty vycházející ze zku¹eností s øe¹eným 
-projektem a uvede rovnì¾ návaznosti na právì dokonèené projekty.
 
 %=========================================================================
