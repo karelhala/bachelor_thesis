@@ -238,7 +238,7 @@ specifický pohled na fyzikální a konceptální jednotky reálného svìta.
 \begin{itemize}
   \item Stav nese informaci o tom v jakém stavu se objekt v daném 
   èase nachází. 
-  \item Choví popisuje reakce na vnìj¹í a vnitøní události.
+  \item Chování popisuje reakce na vnìj¹í a vnitøní události.
   \item Identita ka¾dý objekt je jednoznaènì identifikovatelný v 
   rámci systému -- má jméno, kterým se li¹í od ka¾dého jiného.
 \end{itemize}
@@ -464,8 +464,27 @@ odpovídající spoj v Diagramu pøipadù u¾ití, je odli¹ena rozdílnou barvou.
 Tyto kontroly je mo¾né vypnout.
 
 \section{Objektovì orientované Petriho sítì} \label{oopn}
-\subsection{Objektovì orientované programování}
+Pro popis chování objektù a komunikace mezi nimi ve výsledné aplikaci  
+bylo zvoleno pou¾ití objektovì orientovaných Petriho sítí.
+
 \subsection{Petriho sítì}
+Objektovì orientované Petriho sítì jsou roz¹íøením Petriho 
+sítí. Základní Petriho sítì jsou vhodné pro modelování a 
+teoretické zkoumání paralerních systémù.
+
+Chování dynamického systému je v podstatì sledování stavové 
+promìnné a zaznamenávání její hodnoty v èase.
+
+Petriho sí» lze matematicky zapsat jako \(N = (P_N, T_N, PI_N, 
+TI_N)\) kde:
+\begin{itemize}
+  \item \(P_N\) je koneèná mno¾ina \textbf{míst}.
+  \item \(T_N\) je koneèná mno¾ina \textbf{pøechodù}, \(P_N 
+  \bigcap T_N = \emptyset\).
+  \item \(PI_N\) : \(P_N \to \mathbb{N}\) \textbf{inicializaèní funkce}.
+  \item \(TI_N\) je \textbf{popis pøechodù}.
+\end{itemize}
+
 \subsection{Objektovì orientované Petriho sítì}
 
 \cite{oopn_caseStudy}
