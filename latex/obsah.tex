@@ -402,24 +402,21 @@ je mo¾né pou¾ít \textbf{interface}. \cite{Diagram_trid}
 
 \subsubsection{Association hrana}
 Vztah mezi tøídami urèující, ¾e objekty jedné tøídy jsou pou¾ívány v objektech druhé 
-tøídy. \cite{Diagram_trid}
+tøídy.
 
 Association je kresleno v UML pomocí hrany s obìma konci opatøenými ¹ipkou.
 Takovýto vztah se jmenuje \textbf{bidirectional} a znamená, ¾e obì tøídy se 
 pou¾ívají navzájem, je mo¾né také pou¾it \textbf{unidirectional} spoj,
 co¾ znamená ¾e tøída, ze které ¹ipka vede je pou¾ita tøídou do které ¹ipka ukazuje,
-ale ne naopak. \cite{Diagram_trid}
-
-Dále jsou tyto hrany opatøeny násobností, neboli oznaèením kolik objektù je
-pou¾ito kolika objekty.
+ale ne naopak. Dále jsou tyto hrany opatøeny násobností, neboli oznaèením kolik objektù je
+pou¾ito kolika objekty.\cite{Diagram_trid}
 
 \subsubsection{Aggregation hrana}
 Pou¾ití spoje Aggregation znaèí, ¾e urèitý objekt potøebuje, ke svému chodu
 dal¹í objekt. Pokud ov¹em pøestane existovat pùvodní objekt, dal¹í objekt
 lze nadále v systému pou¾ít. To znamená, ¾e objekt tøídy A potøebuje ke svému
 chodu objekt tøídy B. V momentì odstranìní objektu tøídy A ze systému, ale
-objekt tøídy B nezaniká. Tomuto se øíká slabá agregace. \cite{Diagram_trid}
-
+objekt tøídy B nezaniká. Tomuto se øíká slabá agregace.
 Tato hrana je kreslena souvislou hranou opatøenou bílým diamantem na konci. 
 \cite{Diagram_trid}
 \subsubsection{Composition hrana}
@@ -467,7 +464,7 @@ Tyto kontroly je mo¾né vypnout.
 Pro popis chování objektù a komunikace mezi nimi ve výsledné aplikaci  
 bylo zvoleno pou¾ití objektovì orientovaných Petriho sítí.
 
-\subsection{Petriho sítì}
+\subsection{Petriho sítì}\label{PN}
 Objektovì orientované Petriho sítì jsou roz¹íøením Petriho 
 sítí. Základní Petriho sítì jsou vhodné pro modelování a 
 teoretické zkoumání paralerních systémù.
@@ -482,10 +479,79 @@ TI_N)\) kde:
   \item \(T_N\) je koneèná mno¾ina \textbf{pøechodù}, \(P_N 
   \bigcap T_N = \emptyset\).
   \item \(PI_N\) : \(P_N \to \mathbb{N}\) \textbf{inicializaèní funkce}.
-  \item \(TI_N\) je \textbf{popis pøechodù}.
+  \item \(TI_N\) je \textbf{popis pøechodù}. Je to funkce definovaná 
+  na \(T_N\), taková, ¾e \(\forall t \in T_N\):
+  \(TI_N = (PRECOND_t^N, POSTCOND_t^N) \), kde
+  \begin{enumerate}
+	\item \(RECOND_t^N : PN \to \mathbb{N}\) jsou \textbf{vstupní 
+	podmínky} pøechodu.
+	\item \(POSTCOND_t^N: P_N \to \mathbb{N}\) jsou \textbf{výstupní 
+	podmínky} pøechodu t.
+  \end{enumerate}
 \end{itemize}
 
+Petriho sítì se skládají z míst a pøechodù, tyto prvky jsou 
+spojeny orientovanými hranami. Nemohou být spojeny dvì místa mezi 
+sebou a stejnì, tak nemohou být spojeny dva pøechody pøímým spojem.
+
+Procesy jsou v Petriho sítích znázornìny teèkou uvnitø míst, v 
+prùbìhu provádìní simulace se tento bod pøesouvá mezi 
+jednotlivímy místy. Tyto pøesuny jsou provedeny na základì 
+splnìní pravidel zanesená v pøechodech. Tyto pravidla jsou 
+atomická, co¾ znamená ¾e se buï toto pravidlo provede, nebo ne.
+Jednoduché roz¹íøení je pøidání kapacity pro jednotlivá místa.
+
+Pøechody mohou být okam¾ité, pøi splnìný zanesených pravidel se 
+okam¾itì provedou. Nebo mohou být èasované, co¾ znamená ¾e po 
+urèitém èase se daný pøechod provede. Toto je opìt velice 
+jednoduché ro¹íøení základních Petriho sítí.
+
+úspì¹né provádìní pøehodù probíhá v poøadí odebrání 
+znaèek ze vstupního místa, pøídání znaèek na výstupní místo.
+
+Dále mù¾eme sítì roz¹íøit o jednoduché oprioritizování 
+spojení mezi místy a pøechody, nebo vlo¾ením procentuální 
+pravdìpodobností provedení daného spoje.
+\cite{ModelovaniOOPN}
+
+\subsubsection{Roz¹íøení Petriho sítí}
+Základní Petriho sítì pøedstavují pøíli¹ nízkoúrovòový 
+model pro modelování reálných systémù. Z toho dùvodu bylo 
+zavedeno nìkolik roz¹íøení. Pro pozdìj¹í pou¾ití nás 
+nejvíce zajímá roz¹íøení petriho sítí na funkcionální. Co¾ 
+je rozdìlení pøechodu na strá¾ a akci a do místa akce mo¾nost 
+volat jednotlivé èásti sítí.
+
+Toto lze poté roz¹íøit o objektové rozdìlení, s tím ¾e v 
+místì akce lze volat vytvoøení nového objektu jiné sítì a poté 
+zaslání zprávy tomuto objektu.
+
 \subsection{Objektovì orientované Petriho sítì}
+Model systému, ve kterém mohou dynamicky vznikat a zanikat objekty, 
+komunikující pøedáváním zpráv lze vhodnì znázornit pomocí 
+Objektovì orientovaných Petriho sítí, jako model je mno¾ina 
+tøíd, hierarchicky organitována podle dìdiènosti. Ka¾dá z 
+tìchto tøíd obshauje tyto prvky:
+\begin{itemize}
+	\item sí» objektu, definuje reprezentaci instance tøídy (atributy)
+	\item mno¾inu sítí metod, tyto sítì modelují reakce na zaslané 
+	zprávy
+	\item mno¾inu synchronních portù, definující reakce na 
+	synchronní zprávy
+\end{itemize}
+
+Sítì metod mohou sdílet attributy objektu. Mají navíc parametrová 
+místa, do kterých se pøi invokaci takové sítì vlo¾í parametry 
+ze zprávy, dále mají výstupní místo \texttt{return}, coè je 
+místo do kterého se ulo¾í výstupní hodnota.
+
+Znaèky v sítích nereprezentují samotné objekty, ale pouze 
+reference na tyto objekty. V objektovì orientovaných Petriho sítích 
+jsou tøi druhy objektù.  Primitivní tøídy to jsou èísla znaky, 
+øetìzce, symboly a seznamy. Dal¹í objekty jsou tøídy, tyto 
+objekty se v prùbìhu nemìní a rozumìjí na volání \texttt{new}, 
+co¾ vede k vytvoøení nové instance.  Ostatní objekty jsou instancemi 
+tøídy.
 
 \cite{oopn_caseStudy}
 \cite{UML2}
