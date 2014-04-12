@@ -220,6 +220,72 @@ Pro grafické znázornìní jednotlivých èástí byly vybrány z UML grafù Diagram pøíp
 poslední èást, která nespadá pod UML bylo vybráno objektovì orientovaných 
 petriho sítí \ref{oopn} pro popis chování jednotlivých tøíd.
 
+\section{Objektovì orientované programování}
+Pøedtím, ne¾ rozebereme grafy, které slou¾í pro popis vývoje a 
+vytvoøení návrhu je potøeba rozebrat objìktovì orientované 
+programování. Toto je speciální styl programování pou¾ívaný 
+pøevá¾nì pøi vývojí vìt¹ích a nároènìjèích aplikací. 
+Tento nástroj se soustøïuje na toto programování a proto je 
+potøeba ho dále rozebrat a popsat.
+
+\subsection{èásti objìktovì orientovaného programování}
+Objektovì orientovaná programování se skládá z nìkolika èástí 
+a nìkolika principù, jak programovat.
+
+\subsection{Objekt}
+Základ takovéhoto programování je samozøejmì objekt, je to 
+specifický pohled na fyzikální a konceptální jednotky reálného svìta. 
+\begin{itemize}
+  \item Stav nese informaci o tom v jakém stavu se objekt v daném 
+  èase nachází. 
+  \item Choví popisuje reakce na vnìj¹í a vnitøní události.
+  \item Identita ka¾dý objekt je jednoznaènì identifikovatelný v 
+  rámci systému -- má jméno, kterým se li¹í od ka¾dého jiného.
+\end{itemize}
+
+Jako jeden z hlavních rysù objektovì orientovaného programování 
+je zapouzdøení, skrytí ve¹kerých dat a práci s daty pøed 
+ostatními objekty. Ostatní objekty jsou schopné komunikovat mezi 
+sebou pomocí zasílání zpráv. Tyto zprávy obsahují jméno 
+operace, parametry -- data potøebná pro zpracování a jméno objektu 
+obsahujícího tuto operaci. Zaslaná zpráva mù¾e slou¾it jak ke 
+zpracování a navrácení dat, tak k vnitøní zmìnì objektu, který 
+tuto zprávu pøijal.
+
+Veøejné rozhraní objektu je urèeno mno¾inou operací, co¾ je 
+výèet schopností objektu. Popis provádìní operace je schován 
+uvnitø objektu a je popsán metodami. Uvnitø objektu se také 
+nachází atributy, co¾e je popis uchování dat. \cite{ModelovaniOOPN}
+
+\subsection{Instanciace, tøídy}
+Ve vìt¹inì programovacích jazykù se vytváøení objektù 
+provádí specílní konstrukcí, takzvanou tøídou. Tøída je 
+ pøedpis pro objekt.
+ 
+ Tøída definuje viditelnost instanèních promìnných (atributù) a 
+ metod. Dále definuje metody a jejich provádìní. 
+ 
+ Objekty mohou být instanciovány staticky a dynamicky. Staticky 
+ instanciované tøídy se vytvoøí pøi spustìní programu a 
+ zanikají a¾ pøi jeho ukonèení. Dynamicky instanciované 
+ promìnné vznikají a zanikají v prùbìhu chodu aplikace na 
+ po¾adavky u¾ivatele. \cite{ModelovaniOOPN}
+
+\subsection{Dìdiènost}
+Dal¹í ze silných vlastností objektovì orientovaného 
+programování je dìdìní. Slou¾í ke sdílení jisté 
+charakteristiky jednoho objektu s druhým.
+
+Ka¾dý jazyk má tuto vlastnost implementovanou rùznì. Dynamické a 
+statické dìdìní. Mù¾e být zamìøeno na tøídy nebo objekty. 
+Mù¾e být dìdìna reprezentace, nebo chování. Dìdìní mù¾e 
+být implementování èásteènì, nebo úplnì. A v neposlední 
+øadì lze rozli¹it dìdìní násobné a jednoduché podle poètu dìdìní. \cite{ModelovaniOOPN}
+
+\subsection{Shrnutí}
+Z hlediska objektovì orientovaného programování potøebného pro 
+pochopení dal¹ích èástí aplikace je toto v¹e.
+
 \section{Pøípad u¾ití} \label{pripadUziti}
 Pøípady u¾ití jsou èasto modelovány a pou¾ívány ke komunikaci mezi zákazníkem,
 který nemá pøili¹ mnoho zku¹eností s vývojem systému, ale rozumí danému problému
@@ -252,13 +318,13 @@ Pokud pøi vykonávání nìkolika pøípadù u¾ití je vykonávána stejná funkcionalita, 
 tuto funkcionalitu oddìlit z daného pøípadu u¾ití a spojit se v¹emi pøípady u¾ití 
 spojem include. Spoj include je znázornìn pøeru¹ovanou ¹ipkou doprovázené textem
 \uv{includeq}. Spoj je veden z nadøazeného pøípadu u¾ití k ni¾¹ímu 
-pøípadu. \cite{Pripad_uziti}
+pøípadu.
 
 Extends slou¾í pro roz¹íøení urèitých pøípadù u¾ití. Toto znamená, ¾e je roz¹íøením
 hlavního pøípadu u¾ití a toto roz¹íøení bylo vyjmuto z pùvodního pøípadu.
 V pøekladu tento spoj znamená, ¾e jeden pøípad u¾ití je roz¹íøen dal¹ím pøípadem
 u¾ití. Spoj je znázoròován pøeru¹ovanou ¹ipkou vedenou do roz¹iøovaného 
-\(hlavního\) pøípadu u¾ití. \cite{Pripad_uziti}
+\(hlavního\) pøípadu u¾ití.
 
 Generalizaci lze pou¾ít jak v pøípadech u¾ití, tak mezi aktéry. Slou¾í ke znázornìní
 rodièù a potomkù. Pøi pou¾ití tohoto spoje znamená, ¾e potomek pøebírá ve¹kerou funckinalitu
@@ -288,24 +354,23 @@ tohoto objektu. Zvýraznìné spoje jsou pouze ty spoje, které vedou z vybraného ob
 Rozdíl mezi tøídou a objektem je ten, ¾e tøída je pøedpis pro objekt. Objekt je datová 
 reprezentace pøedepsaných dat a práce s tìmito datami. V UML jsou tøídy popsány poomcí
 diagramu tøíd a tyto diagramy se skládají z attributù, pøedpis pro formát dat. Dále se 
-skládají z metod, pøedpis pro práci s daty a relací mezi tøídami. \cite{Diagram_trid}
+skládají z metod, pøedpis pro práci s daty a relací mezi tøídami. 
 
 \subsection{Prvky Diagramu tøíd}
 Hlavní slo¾kou diagramu jsou tøídy, ty jsou znázornìny pomocí obdìlínkù obsahující dal¹í 
 informace o dané tøídì. V horní èásti je název tøídy, první písmeno v tøídì by mìlo být velké.
 Poté tøída obsahuje attributy, jednotlivá slova neoddìlujeme podtr¾ítky, ale velkým písmenem.
 A poslední èást tøíd jsou operace, metody. Pro operace platí stejné pravidla jak pro attributy.
-Omezení v názvosloví je èistì doporuèení a ne nutnost.\cite{Diagram_trid}
+Omezení v názvosloví je èistì doporuèení a ne nutnost.
 
 Urèitou podmno¾inou tøídy jsou abstraktní tøídy, tyto tøídy nemohou být incializovány,
 pouze slou¾í k pøedpisu pro potomky. To znamená, ¾e tøída A je abstraktní
 a je pøedkem tøídy B, v systému se nenachází objekt tøídy A, ale pouze objekt tøídy B.
-\cite{Diagram_trid}
 
 V diagramu tøíd lze také namodelovat interface. Toto je speciální tøída
 obsahující pøedpis pro attributy a operace, ale nenachází se v takových
 tøídách implementace tìchto operací. Tato implementace se nachází a¾ ve
-tøídách, které implementují takový interface. \cite{Diagram_trid}
+tøídách, které implementují takový interface.
 
 Zápis attributù a operací tøíd je stanove, tak ¾e za jménem následuje dvojteèka a její typ.
 V pøípadì operací za jménem následuje závorka obsahující seznam argumentù a a¾ poté dvojteèka
@@ -322,10 +387,10 @@ Jednotlivé hrany pro spojení se dìlí na \textbf{Generalization}, \textbf{Associa
 Hrana \textbf{Generalization} popisuje spojení mezi tøídou, která je více generická
 a tøídou, která je specifická. Generická tøída se nazývá \textbf{superclass}, nebo také 
 \textbf{rodiè} a více specifická tøída se nazývá \textbf{subclass}, známá té¾ jako
-\textbf{potomek}. \cite{Diagram_trid}
+\textbf{potomek}.
 
 V UML je tato hrana popsána ¹ipkou ukonèenou bílím trojúhelníkem na konci,
-je vedena smìrem od generické tøídy k více specifické. \cite{Diagram_trid}
+je vedena smìrem od generické tøídy k více specifické.
 
 Je také mo¾né nìkolikanásobná dìdiènost, ale v pøípadì implementace takovéto dìdiènosti
 se musí vzít v potaz to, zda daný jazyk nìkolikanásobnou dìdiènost podporuje.
