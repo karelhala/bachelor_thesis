@@ -7,17 +7,24 @@ programátorem. Zákazník èasto netu¹í co chce a programátor èasto zákazníka
 ¹patnì pochopí. Tento nástroj bohu¾el tyto problémy nedoká¾e odstranit, nicménì 
 mìl by napomoci odstranit nìkteré bariéry a pomoci sna¾¹í vizualizace problémù.
 
-Nástroj tohoto docílí za pou¾ití nìkolika èástí. Pøípadu u¾ití 
-\cite{Pripad_uziti} pro jednotlivé znázornìní zákazníkových potøeb, diagramu 
-tøíd pro vlastní vizualizaci a pochopení vyvýjeného softwaru a nakonec objektovì 
-orientované petriho sítì, slou¾ící pro porozumìní celého systému do hloubky.
+V kapitole \ref{konkurence} se nejdøíve podíváme na konkurentní 
+nástroje, které doká¾í vizualizovat vyvýjený software pomocí 
+rùzných grafù. Rozebereme jejich pøednosti a jejich slabiny. Poté 
+si vybemere nìkteré jejich vlastnosti a vysvìtlíme pøípadné 
+øe¹ení jejich nedostatkù.
+
+Navá¾eme kapitolou \ref{grafy} kde vysvìtlíme druhy grafù, které 
+se hodí pro implementaci námi zvolených èástí. Zamìøíme se na 
+tojici diagramù \textbf{Diagram pøipadù u¾ití, Diagram tøíd, 
+Objektovì orientované Petriho sítì}. Provázání mezi tìmito 
+diagramy poté vysvìtlíme v kapitole \ref{spojeni}.
 
 \section{Seznámení s nástrojem}
 Jak bylo ji¾ øeèeno pro porozumìní po¾adavkù zákazníka nám poslou¾í diagram 
 pøípadu u¾ití, odsud se pøedgenerují jednotlivé tøídy a ty následnì bude mo¾né 
 upravit a popsat v èásti objektovì orientovaných petriho sítí.
 
-\chapter{Zhondocení konkurence}
+\chapter{Zhondocení konkurence} \label{konkurence}
 Z hlediska sna¾¹ího porozumìní byl brán zøetel na konkurentní nástroje. Pøevá¾nì 
 byl brán zøetel na jejich jednoduchost a co je dìlá tak hojnì vyu¾ívané a snadno 
 pou¾itelné. Z toho dùvodu byly prozkoumány dva nástroje Umbrello a komerèní 
@@ -87,6 +94,7 @@ velice nároèné a neintuitivní.
 
 Co je ale nejvìt¹í slabinou Umbrello aplikace, je nevalidace daného diagramu. Je 
 èistì na u¾ivateli hlídat si ve¹keré chyby a validitu modelované aplikace.
+
 \subsection{Zhodnocení a pøevzaté vlastnosti}
 Aplikace Umbrello je ¹pièkou ve své tøídì. Je zdarma a poskytuje mnoho nástrojù 
 pøi návrhu aplikace. Mezi jeho pøednosti jistì patøí mo¾nost refactoringu a také 
@@ -213,7 +221,7 @@ Tyto vlastnosti byli implementovány a znázornìny, tak¾e u¾ivatel je schopný
 upravit jednotlivé èásti a velice jednodu¹e spozorovat chybìjící, nebo neprovázané
 objekty.
 
-\chapter{Grafy pro popis èástí}
+\chapter{Grafy pro popis èástí}\label{grafy}
 Pro grafické znázornìní jednotlivých èástí byly vybrány z UML grafù Diagram pøípadù u¾ití 
 \ref{pripadUziti} pro popis jednotlivých akcí v systému, Diagram tøíd 
 \ref{diagramTrid} pro grafické znázornìní tøíd a operace mezi nimi. A jako 
@@ -281,10 +289,6 @@ statické dìdìní. Mù¾e být zamìøeno na tøídy nebo objekty.
 Mù¾e být dìdìna reprezentace, nebo chování. Dìdìní mù¾e 
 být implementování èásteènì, nebo úplnì. A v neposlední 
 øadì lze rozli¹it dìdìní násobné a jednoduché podle poètu dìdìní. \cite{ModelovaniOOPN}
-
-\subsection{Shrnutí}
-Z hlediska objektovì orientovaného programování potøebného pro 
-pochopení dal¹ích èástí aplikace je toto v¹e.
 
 \section{Pøípad u¾ití} \label{pripadUziti}
 Pøípady u¾ití jsou èasto modelovány a pou¾ívány ke komunikaci mezi zákazníkem,
@@ -553,11 +557,48 @@ objekty se v prùbìhu nemìní a rozumìjí na volání \texttt{new},
 co¾ vede k vytvoøení nové instance.  Ostatní objekty jsou instancemi 
 tøídy.
 
-\cite{oopn_caseStudy}
-\cite{UML2}
-\cite{ModelovaniOOPN}
+Proveditelnost pøechodu v objektovì orientovaných Petriho sítích 
+je rozdìleno na strá¾ pøechodu a akci. Strá¾ pøechodu obsahuje 
+sekvenci výrazù a ka¾dý z nich je zaslání zprávy. Pokud ka¾dá 
+dálèí zpráva vrací \textbf{true}, strá¾ je vyhodnocena jako \textbf{true}.
 
-\subsection{Pøidané prvky}
+Akce pøechodu specifikuje zaslání zprávy. Budeme uva¾ovat tvar 
+zaslání ve tvaru \ref{zprava}:
+
+\begin{equation}\label{zprava}
+y := x_0.msg(x_1, \dots, x_n)
+\end{equation}
+kde \(y\) je promìnná, \(x_i\) je term a \(msg\) je jméno zprávy. 
+Objekt se jménem \(x_0\) je adresátem zaslané zprávy a \(x_i\) jsou 
+argumenty této zprávy. V tìchto akcích je zapotøebí definovat 
+také speciální zprávu \(new\), která vede k vytvoøení nové 
+instance tøídy \(x_0\).
+
+Výsledná objektovì orientovaná petriho sí» má v¹echny atributy 
+objektovì orientovaného jazyka. Umo¾òuje zapouzdøení, 
+polymorfismus a dìdiènost. \cite{ModelovaniOOPN}
+
+\subsection{Grafické znázornìní}
+Jednotlivé místa se znázoròují v Objektovì orientovaných Petriho 
+sítích jako koleèka obsahující procesy, reference na objekty. 
+Pøechody jsou znázornìny obdélníkem obshaujícím strá¾ a akci. 
+Akce se nachází pod èarou a nad èarou se nachází strá¾.
+
+\section{Spojení diagramù}\label{spojeni}
+
+\section{Shrnutí}
+V této kapitole byly pøiblí¾eny nástroje slou¾ící ke 
+znázornìní postupného vývoje aplikace. Ke zjednodu¹ení vývoje a 
+pøevá¾nì k zpøehlednìní komunikace uvnitø aplikace.
+
+Motivací pro výbìr tìchto nástrojù byla skuteènost, ¾e se v 
+moderním programování pou¾ívá pøevá¾nì objektovì 
+orientovaných postupù. Dále také mo¾nost jednoduché provázanosti 
+mezi tìmito nástroji, co¾ vede ke zjednodu¹ení a urychlení 
+vývoje. S ohledem na moderní zpùsob agilního vývoje jsou tyto 
+nástroje velice vhodné. A to pøevá¾nì z hlediska jednoduché 
+integrace zákazníka do vývoje a promítnutí zmìn od zákazníka 
+okam¾itì na celý systém.
 
 \chapter{Popis aplikace}
 Jak ji¾ bylo øeèeno v pøede¹lé èásti, bylo rozhodnuto o jednoduchosti a 
