@@ -111,15 +111,23 @@ public class CloseTabbedPane extends JTabbedPane {
      * @param buttonClose
      */
     private void createIconsForButton(JButton buttonClose) {
-        ImageIcon icon = new ImageIcon(CloseTabbedPane.class.getResource("/resources/redSmallX.png"));
-        Image normalImage = icon.getImage();
-        Image grayImage = GrayFilter.createDisabledImage(normalImage);
-        ImageIcon greyIcon = new ImageIcon(grayImage);
+        try{
+            ClassLoader cl = this.getClass().getClassLoader();
+            ImageIcon icon = new ImageIcon(cl.getResource("resources/redSmallX.png"));
+            Image normalImage = icon.getImage();
+            Image grayImage = GrayFilter.createDisabledImage(normalImage);
+            ImageIcon greyIcon = new ImageIcon(grayImage);
+            buttonClose.setRolloverIcon(icon);
+            buttonClose.setIcon(greyIcon);
+        }
+        catch (NullPointerException exception)
+        {
+            buttonClose.setText("X");
+        }
 
         buttonClose.setRolloverEnabled(true);
         buttonClose.setContentAreaFilled(false);
-        buttonClose.setRolloverIcon(icon);
-        buttonClose.setIcon(greyIcon);
+        
     }
 
 }

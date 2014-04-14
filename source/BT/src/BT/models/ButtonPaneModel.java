@@ -97,5 +97,4 @@ public class ButtonPaneModel extends ContentPaneModel implements ToggleButtonsIn
             }
         }
     }
-
 }

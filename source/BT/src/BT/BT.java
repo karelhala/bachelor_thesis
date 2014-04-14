@@ -6,7 +6,6 @@ package BT;
 
 import BT.modules.mainInterface.MainInterfaceControler;
 import java.awt.BorderLayout;
-import java.awt.GridLayout;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComponent;
