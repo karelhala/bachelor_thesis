@@ -16,4 +16,4 @@ To run this project run:
 ant run
 
 
-Link to pdf version of text: https://github.com/ch4rlien/bachelor_thesis/blob/master/latex/projekt.pdf?raw=true
+Link to pdf version of text: https://github.com/ch4rlien/bachelor_thesis/blob/master/latex/bachelorsThesis.pdf?raw=true
