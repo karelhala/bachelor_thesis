@@ -7,9 +7,8 @@
 package GUI;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -66,5 +65,15 @@ public class BottomLeftContentModel {
         newPanel.add(newLabel, BorderLayout.CENTER);
         newPanel.add(deletebutton, BorderLayout.LINE_END);
         this.contentPane.add(newPanel);
+    }
+    
+    public BottomLeftContentModel addClassLabel(JLabel attributeLabel)    
+    {
+        return this;
+    }
+    
+    public BottomLeftContentModel addAttributesToPane(JLabel attributeLabel)
+    {
+        return this;
     }
 }
