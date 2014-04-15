@@ -50,12 +50,15 @@ public class CDJoinEdgeManipulator {
      * and add to it on first or second place new object. Based on which part is epmty.
      * @param joinEdge edge that is being created
      * @param clickedObject object that is inserted either on first or second place in join edge.
+     * @param selectedButton
      * @return
      */
-    public static CDJoinEdgeController createJoinEdge(CDJoinEdgeController joinEdge, CoordinateModel clickedObject) {
+    public static CDJoinEdgeController createJoinEdge(CDJoinEdgeController joinEdge, CoordinateModel clickedObject, JToggleButton selectedButton) {
         if (joinEdge == null) {
             joinEdge = new CDJoinEdgeController();
         }
+        
+        changeLineTypeByButton(selectedButton, joinEdge);
         if (joinEdge.getFirstObject() == null) {
             joinEdge.setFirstObject(clickedObject);
             joinEdge = checkObjects(joinEdge);
@@ -93,6 +96,15 @@ public class CDJoinEdgeManipulator {
             {
                 errorMessage = "You can't connect any other class with  interface, than with REALIZATION join.";
                 joinEdge.setSecondObject(null);
+            }
+            
+            //check if class can have another parent
+            if (joinEdge.getJoinEdgeType() == CDLineType.GENERALIZATION)
+            {
+                if (joinEdge.getFirstObject()!= null && ((CDClass)joinEdge.getFirstObject()).hasParent())
+                {
+                    joinEdge.setFirstObject(null);
+                }
             }
             
             //check for connection bewteen activity and actor

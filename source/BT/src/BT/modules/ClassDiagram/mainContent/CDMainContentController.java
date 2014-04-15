@@ -208,9 +208,8 @@ public class CDMainContentController extends CDBottomRightController implements 
      * @param clickedObject
      */
     public void drawJoinEdge(CoordinateModel clickedObject) {
-        this.newJoinEdge = CDJoinEdgeManipulator.createJoinEdge((CDJoinEdgeController) this.newJoinEdge, clickedObject);
         if (this.LeftBottomContent.getSelectedButton() != null) {
-            CDJoinEdgeManipulator.changeLineTypeByButton(this.LeftBottomContent.getSelectedButton(), (CDJoinEdgeController) this.newJoinEdge);
+            this.newJoinEdge = CDJoinEdgeManipulator.createJoinEdge((CDJoinEdgeController) this.newJoinEdge, clickedObject,this.LeftBottomContent.getSelectedButton());
         }
 
         if (!this.newJoinEdge.isLineEmpty()) {

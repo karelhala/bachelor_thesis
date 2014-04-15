@@ -6,9 +6,7 @@
 
 package GUI;
 
-import BT.managers.CD.Attribute;
-import BT.managers.PlaceManager;
-import java.util.ArrayList;
+import BT.managers.CD.Method;
 import javax.swing.JLabel;
 
 /**
@@ -16,14 +14,14 @@ import javax.swing.JLabel;
  * @author Karel
  */
 public class MethodLabel extends JLabel{
-    private final PlaceManager petriNet;
+    private final Method objectMethod;    
     
-    public MethodLabel()
+    public MethodLabel(Method objectMethod)
     {
-        petriNet = new PlaceManager();
+        this.objectMethod = objectMethod;
     }
 
-    public PlaceManager getPetriNet() {
-        return petriNet;
+    public Method getObjectMethod() {
+        return objectMethod;
     }
 }

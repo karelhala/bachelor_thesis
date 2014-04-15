@@ -8,6 +8,7 @@ package BT.modules.ClassDiagram.mainContent;
 
 import BT.BT.AttributeType;
 import BT.managers.CD.Attribute;
+import BT.managers.CD.Method;
 import BT.managers.DiagramPlacesManager;
 import BT.modules.ClassDiagram.places.CDClass;
 import GUI.BottomRightContentModel;
@@ -170,8 +171,8 @@ abstract public class CDBottomRightController extends CDMainContentModel {
             }
             if (selectedAtttributeType != null)
             {
-                Attribute newAttribute = new Attribute(selectedAtttributeType, this.attributesPanel.getMethodName().getText()+"()", (String) this.attributesPanel.getAttributeTypeMethod().getSelectedItem());
-                selectedClass.addNewMethod(newAttribute);
+                Method newMethod = new Method(selectedAtttributeType, this.attributesPanel.getMethodName().getText()+"()", (String) this.attributesPanel.getAttributeTypeMethod().getSelectedItem());
+                selectedClass.addNewMethod(newMethod);
             }
         }
         else
