@@ -104,6 +104,7 @@ public class CDJoinEdgeManipulator {
                 if (joinEdge.getFirstObject()!= null && ((CDClass)joinEdge.getFirstObject()).hasParent())
                 {
                     joinEdge.setFirstObject(null);
+                    return joinEdge;
                 }
             }
             

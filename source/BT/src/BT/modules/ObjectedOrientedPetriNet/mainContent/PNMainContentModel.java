@@ -9,11 +9,12 @@ import BT.interfaces.DrawingClicks;
 import BT.managers.DiagramPlacesManager;
 import BT.managers.DrawingListeners;
 import BT.managers.MainContentController;
-import BT.managers.PlaceManager;
+import BT.modules.ClassDiagram.places.CDClass;
 import BT.modules.ObjectedOrientedPetriNet.PNLeftBottomContent;
 import BT.modules.ObjectedOrientedPetriNet.PNLeftTopContent;
 import BT.modules.ObjectedOrientedPetriNet.PNMainContent;
 import BT.modules.ObjectedOrientedPetriNet.places.joinEdge.PNJoinEdgeController;
+import GUI.BottomLeftContentModel;
 import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
 import javax.swing.InputMap;
@@ -35,11 +36,27 @@ abstract public class PNMainContentModel extends MainContentController {
      *
      */
     protected PNLeftTopContent LeftTopContent;
+    
+    /**
+     * 
+     */
+    protected BottomLeftContentModel bottomLeftContentModel;
+    
+    /**
+     * 
+     */
+    protected CDClass selectedClass;
 
-    public PNMainContentModel(DiagramPlacesManager diagramPlaces) {
+    /**
+     * 
+     */
+    protected PNBottomLeftController bottomLeftController;
+    public PNMainContentModel(DiagramPlacesManager diagramPlaces,BottomLeftContentModel bottomLeftContentModel) {
         this.diagramPlaces = diagramPlaces;
         this.places = diagramPlaces.getPnPlaces();
         this.mainContent = new PNMainContent(this.places);
+        this.bottomLeftContentModel = bottomLeftContentModel;
+        this.bottomLeftController = new PNBottomLeftController(this.bottomLeftContentModel);
         createMainPane();
     }
 
@@ -55,12 +72,21 @@ abstract public class PNMainContentModel extends MainContentController {
         this.LeftTopContent = LeftTopContent;
     }
 
+    public PNMainContentModel setSelectedClass(CDClass selectedClass) {
+        this.selectedClass = selectedClass;
+        return this;
+    }
+
     public PNLeftBottomContent getLeftBottomContent() {
         return LeftBottomContent;
     }
 
     public PNLeftTopContent getLeftTopContent() {
         return LeftTopContent;
+    }
+
+    public CDClass getSelectedClass() {
+        return selectedClass;
     }
 
     private void createMainPane() {
@@ -108,5 +134,13 @@ abstract public class PNMainContentModel extends MainContentController {
         this.newJoinEdge = null;
         this.mainContent.getDrawingPane().setNewLine(newJoinEdge);
         ((PNDrawingPane) this.mainContent.getDrawingPane()).getDrawing().repaint();
+    }
+    
+    /**
+     * Method for calling repainting bottom left content model.
+     */
+    public void repaintBottomLeft()
+    {
+        this.bottomLeftController.repaintBottomLeftContent(selectedClass);
     }
 }

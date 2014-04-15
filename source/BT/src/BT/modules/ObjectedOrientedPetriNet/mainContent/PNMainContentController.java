@@ -8,12 +8,12 @@ package BT.modules.ObjectedOrientedPetriNet.mainContent;
 import BT.interfaces.DrawingClicks;
 import BT.managers.DiagramPlacesManager;
 import BT.managers.ObjectChecker;
-import BT.managers.PlaceManager;
 import BT.models.CoordinateModel;
 import BT.models.LineModel;
 import BT.modules.ObjectedOrientedPetriNet.places.PNPlace;
 import BT.modules.ObjectedOrientedPetriNet.places.PNTransition;
 import BT.modules.ObjectedOrientedPetriNet.places.joinEdge.PNJoinEdgeController;
+import GUI.BottomLeftContentModel;
 import java.awt.event.MouseEvent;
 import javax.swing.JOptionPane;
 import javax.swing.JToggleButton;
@@ -27,9 +27,10 @@ public class PNMainContentController extends PNMainContentModel implements Drawi
     /**
      *
      * @param diagramPlaces
+     * @param bottomLeftContentModel
      */
-    public PNMainContentController(DiagramPlacesManager diagramPlaces) {
-        super(diagramPlaces);
+    public PNMainContentController(DiagramPlacesManager diagramPlaces, BottomLeftContentModel bottomLeftContentModel) {
+        super(diagramPlaces, bottomLeftContentModel);
     }
 
     /**

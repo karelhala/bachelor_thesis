@@ -6,6 +6,9 @@
 
 package BT.managers;
 
+import BT.models.CoordinateModel;
+import BT.modules.ClassDiagram.places.CDClass;
+
 /**
  *
  * @author Karel
@@ -81,5 +84,18 @@ public class DiagramPlacesManager {
 
     public void setDiagramNumber(int diagramNumber) {
         this.diagramNumber = diagramNumber;
+    }
+    
+    /**
+     * Method for getting selected class from selected file.
+     * @return 
+     */
+    public CDClass getSelectedClass()
+    {
+        if (cdPlaces.getSelectedObject() instanceof CDClass)
+        {
+            return (CDClass) cdPlaces.getSelectedObject();
+        }
+        return null;
     }
 }

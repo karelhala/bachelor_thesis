@@ -8,7 +8,6 @@ package GUI;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
-import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -62,18 +61,32 @@ public class BottomLeftContentModel {
     {
         JLabel newLabel = new JLabel(name);
         JPanel newPanel = new JPanel(new BorderLayout());
+        newLabel.setToolTipText(name);
+        deletebutton.setToolTipText("Delete " + name);
         newPanel.add(newLabel, BorderLayout.CENTER);
         newPanel.add(deletebutton, BorderLayout.LINE_END);
         this.contentPane.add(newPanel);
     }
-    
-    public BottomLeftContentModel addClassLabel(JLabel attributeLabel)    
+
+    /**
+     * 
+     * @param attributeLabel
+     * @return 
+     */
+    public BottomLeftContentModel addAttributesToPane(JLabel attributeLabel)
     {
+        this.contentPane.add(attributeLabel);
         return this;
     }
     
-    public BottomLeftContentModel addAttributesToPane(JLabel attributeLabel)
+    /**
+     * Method for clearing content pane.
+     * It will remove all components from content pane, repaint it and revalidate it.
+     */
+    public void destroyContent()
     {
-        return this;
+        this.contentPane.removeAll();
+        this.contentPane.repaint();
+        this.contentPane.revalidate();
     }
 }

@@ -6,11 +6,15 @@
 
 package BT.modules.mainInterface;
 
+import BT.managers.CD.Attribute;
 import BT.managers.DiagramPlacesManager;
+import BT.managers.MainContentController;
 import BT.modules.ClassDiagram.CDContentController;
 import BT.modules.ClassDiagram.places.CDClass;
 import BT.modules.ObjectedOrientedPetriNet.PNContentController;
+import BT.modules.ObjectedOrientedPetriNet.PNMainContent;
 import BT.modules.ObjectedOrientedPetriNet.mainContent.PNDrawingPane;
+import BT.modules.ObjectedOrientedPetriNet.mainContent.PNMainContentModel;
 import BT.modules.UC.UCContentController;
 import GUI.CloseTabbedPane;
 import java.awt.event.MouseAdapter;
@@ -54,6 +58,7 @@ public class NewTabController {
                         {
                             OOPNContentModel.getPnMain().setPlaces(((CDClass)diagramPlaces.getCdPlaces().getSelectedObject()).getPnNetwork());
                             OOPNContentModel.getPnMain().getMainContent().getDrawingPane().setPlaces(((CDClass)diagramPlaces.getCdPlaces().getSelectedObject()).getPnNetwork());
+                            ((PNMainContentModel)OOPNContentModel.getPnMain()).setSelectedClass(diagramPlaces.getSelectedClass()).repaintBottomLeft();
                             ((PNDrawingPane)OOPNContentModel.getPnMain().getMainContent().getDrawingPane()).getDrawing().repaint();
                         }
                         else
