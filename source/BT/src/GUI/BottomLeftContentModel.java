@@ -68,6 +68,12 @@ public class BottomLeftContentModel {
         this.contentPane.add(newPanel);
     }
 
+    public BottomLeftContentModel addClassLabelToPane(JLabel classLabel)
+    {
+        this.mainPane.add(classLabel, BorderLayout.LINE_START);
+        return this;
+    }
+    
     /**
      * 
      * @param attributeLabel

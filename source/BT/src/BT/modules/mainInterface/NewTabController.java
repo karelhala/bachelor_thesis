@@ -6,13 +6,11 @@
 
 package BT.modules.mainInterface;
 
-import BT.managers.CD.Attribute;
+import BT.BT;
 import BT.managers.DiagramPlacesManager;
-import BT.managers.MainContentController;
 import BT.modules.ClassDiagram.CDContentController;
 import BT.modules.ClassDiagram.places.CDClass;
 import BT.modules.ObjectedOrientedPetriNet.PNContentController;
-import BT.modules.ObjectedOrientedPetriNet.PNMainContent;
 import BT.modules.ObjectedOrientedPetriNet.mainContent.PNDrawingPane;
 import BT.modules.ObjectedOrientedPetriNet.mainContent.PNMainContentModel;
 import BT.modules.UC.UCContentController;
@@ -56,10 +54,18 @@ public class NewTabController {
                     {
                         if (diagramPlaces.getCdPlaces().getSelectedObject() != null && diagramPlaces.getCdPlaces().getSelectedObject() instanceof CDClass)
                         {
-                            OOPNContentModel.getPnMain().setPlaces(((CDClass)diagramPlaces.getCdPlaces().getSelectedObject()).getPnNetwork());
-                            OOPNContentModel.getPnMain().getMainContent().getDrawingPane().setPlaces(((CDClass)diagramPlaces.getCdPlaces().getSelectedObject()).getPnNetwork());
-                            ((PNMainContentModel)OOPNContentModel.getPnMain()).setSelectedClass(diagramPlaces.getSelectedClass()).repaintBottomLeft();
-                            ((PNDrawingPane)OOPNContentModel.getPnMain().getMainContent().getDrawingPane()).getDrawing().repaint();
+                            if (((CDClass) diagramPlaces.getCdPlaces().getSelectedObject()).getTypeOfClass() != BT.ClassType.INTERFACE)
+                            {
+                                OOPNContentModel.getPnMain().setPlaces(((CDClass)diagramPlaces.getCdPlaces().getSelectedObject()).getPnNetwork());
+                                OOPNContentModel.getPnMain().getMainContent().getDrawingPane().setPlaces(((CDClass)diagramPlaces.getCdPlaces().getSelectedObject()).getPnNetwork());
+                                ((PNMainContentModel)OOPNContentModel.getPnMain()).setSelectedClass(diagramPlaces.getSelectedClass()).repaintBottomLeft();
+                                ((PNDrawingPane)OOPNContentModel.getPnMain().getMainContent().getDrawingPane()).getDrawing().repaint();
+                            }
+                            else
+                            {
+                                ((JTabbedPane)((CloseTabbedPane)myLayout.getFileTab()).getSelectedComponent()).setSelectedIndex(1);
+                                JOptionPane.showMessageDialog(null, "Selected class is interface, interface can't have petrinet.");
+                            }
                         }
                         else
                         {

@@ -9,13 +9,18 @@ import BT.interfaces.DrawingClicks;
 import BT.managers.DiagramPlacesManager;
 import BT.managers.DrawingListeners;
 import BT.managers.MainContentController;
+import BT.managers.PlaceManager;
 import BT.modules.ClassDiagram.places.CDClass;
 import BT.modules.ObjectedOrientedPetriNet.PNLeftBottomContent;
 import BT.modules.ObjectedOrientedPetriNet.PNLeftTopContent;
 import BT.modules.ObjectedOrientedPetriNet.PNMainContent;
 import BT.modules.ObjectedOrientedPetriNet.places.joinEdge.PNJoinEdgeController;
 import GUI.BottomLeftContentModel;
+import GUI.MethodLabel;
+import java.awt.Cursor;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import javax.swing.AbstractAction;
 import javax.swing.InputMap;
 import javax.swing.JComponent;
@@ -141,6 +146,34 @@ abstract public class PNMainContentModel extends MainContentController {
      */
     public void repaintBottomLeft()
     {
-        this.bottomLeftController.repaintBottomLeftContent(selectedClass);
+        this.bottomLeftController.repaintBottomLeftContent(this.selectedClass);
+        setListenerToMethodLabel(this.bottomLeftController.getDrawnClass());
+        for (MethodLabel oneLabel : this.bottomLeftController.getMethodLabels()) {
+            setListenerToMethodLabel(oneLabel);
+        }
+    }
+    
+    private void setListenerToMethodLabel(final MethodLabel listenedMethodLabel)
+    {
+        listenedMethodLabel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                e.getComponent().setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+            }
+            
+            @Override
+            public void mouseClicked(MouseEvent e)
+            {
+                setPlacesAndRepaintDrawing(listenedMethodLabel.getPetriNetFromClassOrMethod());
+            }
+        });
+            
+    }
+    
+    private void setPlacesAndRepaintDrawing(PlaceManager selectedPlaces)
+    {
+        this.places = selectedPlaces;
+        this.mainContent.getDrawingPane().setPlaces(selectedPlaces);
+        ((PNDrawingPane)this.mainContent.getDrawingPane()).getDrawing().repaint();
     }
 }
