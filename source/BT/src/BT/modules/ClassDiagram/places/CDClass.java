@@ -39,4 +39,43 @@ public class CDClass extends CDClassDrawer {
         }
         return false;
     }
+    
+    /**
+     * Method that will return parent class.
+     * It will be returned only if class has parent.
+     * @return 
+     */
+    public CDClass getParent() 
+    {
+        if (hasParent())
+        {
+            for (LineModel lineModel : outJoins) {
+                CDJoinEdgeController joinEdge = (CDJoinEdgeController) lineModel;
+                if (joinEdge.getJoinEdgeType() == CDLineType.GENERALIZATION)
+                {
+                    return (CDClass) lineModel.getSecondObject();
+                }
+            }
+        }
+        return null;
+    }
+    
+//    /**
+//     * Method that will loop through every object and check if there is no loop in generalization.
+//     * @return true or false
+//     */
+//    public boolean canGeneralize()
+//    {
+//        if (hasParent())
+//        {
+//            for(CDClass newClass = getParent(); newClass!= null; newClass = newClass.getParent())
+//            {
+//                if (newClass.equals(this))
+//                {
+//                    return false;
+//                }
+//            }
+//        }
+//        return true;
+//    }
 }

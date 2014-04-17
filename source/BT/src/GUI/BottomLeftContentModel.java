@@ -6,6 +6,7 @@
 
 package GUI;
 
+import static BT.BT.elementWithLabelAbove;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import javax.swing.JButton;
@@ -70,6 +71,7 @@ public class BottomLeftContentModel {
 
     public BottomLeftContentModel addClassLabelToPane(JLabel classLabel)
     {
+        classLabel.setToolTipText("Object's name");
         this.mainPane.add(classLabel, BorderLayout.LINE_START);
         return this;
     }
@@ -81,6 +83,7 @@ public class BottomLeftContentModel {
      */
     public BottomLeftContentModel addAttributesToPane(JLabel attributeLabel)
     {
+        attributeLabel.setToolTipText("Method of object");
         this.contentPane.add(attributeLabel);
         return this;
     }

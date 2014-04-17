@@ -135,10 +135,17 @@ abstract public class CDBottomRightController extends CDMainContentModel {
             {
                 selectedAtttributeType = AttributeType.PROTECTED;
             }
-            if (selectedAtttributeType != null)
+            if (selectedAtttributeType != null && !"".equals(this.attributesPanel.getVariableName().getText()))
             {
-                Attribute newAttribute = new Attribute(selectedAtttributeType, this.attributesPanel.getVariableName().getText(), (String) this.attributesPanel.getAttributeTypeVariable().getSelectedItem());
-                selectedClass.addNewVariable(newAttribute);
+                if (!"".equals((String) this.attributesPanel.getAttributeTypeVariable().getSelectedItem()))
+                {
+                    Attribute newAttribute = new Attribute(
+                            selectedAtttributeType,
+                            this.attributesPanel.getVariableName().getText(), 
+                            (String) this.attributesPanel.getAttributeTypeVariable().getSelectedItem()
+                    );
+                    selectedClass.addNewVariable(newAttribute);
+                }
             }
         }
         else
@@ -169,9 +176,17 @@ abstract public class CDBottomRightController extends CDMainContentModel {
             {
                 selectedAtttributeType = AttributeType.PROTECTED;
             }
-            if (selectedAtttributeType != null)
+            if (selectedAtttributeType != null && !"".equals(this.attributesPanel.getMethodName().getText()))
             {
-                Method newMethod = new Method(selectedAtttributeType, this.attributesPanel.getMethodName().getText()+"()", (String) this.attributesPanel.getAttributeTypeMethod().getSelectedItem());
+                String selectedType = (String) this.attributesPanel.getAttributeTypeMethod().getSelectedItem();
+                selectedType = (!"".equals(selectedType))?"void":selectedType;
+                Method newMethod = new Method(
+                        selectedAtttributeType, 
+                        this.attributesPanel.getMethodName().getText()+"()", 
+                        selectedType, 
+                        selectedClass
+                );
+                newMethod.loadClassAttributes().loadClassMethods();
                 selectedClass.addNewMethod(newMethod);
             }
         }

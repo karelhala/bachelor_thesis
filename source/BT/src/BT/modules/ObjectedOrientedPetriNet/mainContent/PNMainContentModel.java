@@ -17,6 +17,7 @@ import BT.modules.ObjectedOrientedPetriNet.PNMainContent;
 import BT.modules.ObjectedOrientedPetriNet.places.joinEdge.PNJoinEdgeController;
 import GUI.BottomLeftContentModel;
 import GUI.MethodLabel;
+import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
@@ -158,7 +159,14 @@ abstract public class PNMainContentModel extends MainContentController {
         listenedMethodLabel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
+                listenedMethodLabel.setForeground(Color.RED);
                 e.getComponent().setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+            }
+            
+            @Override
+            public void mouseExited(MouseEvent e)
+            {
+                listenedMethodLabel.setForeground(Color.BLACK);
             }
             
             @Override
