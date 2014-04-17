@@ -6,11 +6,8 @@
 
 package BT.managers.CD;
 
-import BT.BT;
 import BT.BT.AttributeType;
-import BT.managers.PlaceManager;
 import BT.modules.ClassDiagram.places.CDClass;
-import java.util.ArrayList;
 
 /**
  * Class that holds information about method.
@@ -49,10 +46,8 @@ public class Method extends MethodModel{
      */
     public Method loadClassMethods()
     {
-        for (Attribute method : assignedClass.getMethods()) {
-            this.classMethods.add(method.getName());
-        }
-        
+        this.classMethods.addAll(assignedClass.getMethods());
+
         if (assignedClass.hasParent())   
         {
             for(CDClass newClass = assignedClass.getParent();(newClass != null && !newClass.equals(assignedClass)); newClass = newClass.getParent())
@@ -60,7 +55,7 @@ public class Method extends MethodModel{
                 for (Attribute method : newClass.getMethods()) {
                     if (method.getVisibility() != AttributeType.PRIVATE)
                     {
-                        addUniqueMethod(method.getName());
+                        addUniqueMethod(method);
                     }
                 }
             }
@@ -74,9 +69,7 @@ public class Method extends MethodModel{
      */
     public Method loadClassAttributes()
     {
-        for (Attribute attribute : assignedClass.getVariables()) {
-            this.classAttributes.add(attribute.getName());
-        }
+        this.classAttributes.addAll(assignedClass.getVariables());
         
         if (assignedClass.hasParent())   
         {
@@ -85,7 +78,7 @@ public class Method extends MethodModel{
                 for (Attribute attribute : newClass.getVariables()) {
                     if (attribute.getVisibility() != AttributeType.PRIVATE)
                     {
-                        addUniqueAttribute(attribute.getName());
+                        addUniqueAttribute(attribute);
                     }
                 }
             }
@@ -95,25 +88,25 @@ public class Method extends MethodModel{
     
     /**
      * Add only unique methods to array list of methods.
-     * @param name 
+     * @param method 
      */
-    private void addUniqueMethod(String name)
+    private void addUniqueMethod(Attribute method)
     {
-        if (!this.classMethods.contains(name))
+        if (!this.classMethods.contains(method))
         {
-            this.classMethods.add(name);
+            this.classMethods.add(method);
         }
     }
     
     /**
      * Add unique attribute to array list of attributes.
-     * @param name 
+     * @param variable 
      */
-    public void addUniqueAttribute(String name)
+    public void addUniqueAttribute(Attribute variable)
     {
-        if (!this.classAttributes.contains(name))
+        if (!this.classAttributes.contains(variable))
         {
-            this.classAttributes.add(name);
+            this.classAttributes.add(variable);
         }
     }
 }

@@ -21,12 +21,12 @@ public class MethodModel extends Attribute{
     /**
      * 
      */
-    protected final ArrayList<String> classAttributes;
+    protected final ArrayList<Attribute> classAttributes;
     
     /**
      * 
      */
-    protected final ArrayList<String> classMethods;
+    protected final ArrayList<Attribute> classMethods;
     
     /**
      * 
@@ -64,7 +64,7 @@ public class MethodModel extends Attribute{
         this(BT.AttributeType.PRIVATE, name, type, assignedClass);
     }
     
-    public ArrayList<String> getClassAttributes() {
+    public ArrayList<Attribute> getClassAttributes() {
         return classAttributes;
     }
     
@@ -72,7 +72,7 @@ public class MethodModel extends Attribute{
         return petriNet;
     }
 
-    public ArrayList<String> getClassMethods() {
+    public ArrayList<Attribute> getClassMethods() {
         return classMethods;
     }
 
