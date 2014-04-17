@@ -18,15 +18,15 @@ import javax.swing.JPanel;
  */
 public class BottomRightContentModel {
     final private JPanel contentPane;
-    final private JButton reactivateAllButton;
-    final private JButton deleteAllNonValidButton;
+    final private JButton bottomButton;
+    final private JButton topButton;
     private JPanel additionalContent;
     
     public BottomRightContentModel()
     {
         this.contentPane = new JPanel(new BorderLayout());
-        this.reactivateAllButton = new JButton("Reactivate all inactive");
-        this.deleteAllNonValidButton = new JButton("Delete all inactive");
+        this.bottomButton = new JButton();
+        this.topButton = new JButton();
         insertBasicbuttons();
     }
 
@@ -36,11 +36,11 @@ public class BottomRightContentModel {
     private void insertBasicbuttons()
     {
         JPanel buttonPanel = new JPanel(new GridLayout(2, 1));
-        this.deleteAllNonValidButton.setPreferredSize(new Dimension(200, 50));
-	buttonPanel.add(this.deleteAllNonValidButton);
-        this.reactivateAllButton.setPreferredSize(new Dimension(200, 50));
-        buttonPanel.add(this.reactivateAllButton);
-	this.contentPane.add(buttonPanel, BorderLayout.LINE_START);
+        this.topButton.setPreferredSize(new Dimension(200, 50));
+	buttonPanel.add(this.topButton);
+        this.bottomButton.setPreferredSize(new Dimension(200, 50));
+        buttonPanel.add(this.bottomButton);
+	this.contentPane.add(buttonPanel, BorderLayout.LINE_END);
     }
     
     /**
@@ -55,12 +55,12 @@ public class BottomRightContentModel {
         return contentPane;
     }
 
-    public JButton getReactivateAllButton() {
-        return reactivateAllButton;
+    public JButton getBottomButton() {
+        return bottomButton;
     }
 
-    public JButton getDeleteAllNonValidButton() {
-        return deleteAllNonValidButton;
+    public JButton getTopButton() {
+        return topButton;
     }
 
     public void setAdditionalContent(JPanel additionalContent) {
@@ -69,5 +69,11 @@ public class BottomRightContentModel {
 
     public JPanel getAdditionalContent() {
         return additionalContent;
+    }
+    
+    public void setButtonNames(String topButtonText, String bottomButtonText)
+    {
+        this.topButton.setText(topButtonText);
+        this.bottomButton.setText(bottomButtonText);
     }
 }

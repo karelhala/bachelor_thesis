@@ -34,7 +34,7 @@ public class Method extends MethodModel{
         this(AttributeType.PRIVATE, name, type, assignedClass);
     }
     
-    public Method removeAttribute(String selectedAttribute)
+    public Method removeAttribute(Attribute selectedAttribute)
     {
         this.classAttributes.remove(selectedAttribute);
         return this;

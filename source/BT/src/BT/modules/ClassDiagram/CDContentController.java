@@ -36,6 +36,7 @@ public class CDContentController {
      */
     public void createComponents(DiagramPlacesManager diagramPlaces) {
         BottomRightContentModel cdBottomRightContent = new BottomRightContentModel();
+        cdBottomRightContent.setButtonNames("Delete all inactive", "Reactivate all inactive");
         ClassDiagramAttributesPanel attributesPanel = new ClassDiagramAttributesPanel();
         BottomLeftContentModel bottomLeftContentModel = new BottomLeftContentModel();
         CDMainContentController cdMain = new CDMainContentController(diagramPlaces, cdBottomRightContent, attributesPanel, bottomLeftContentModel);

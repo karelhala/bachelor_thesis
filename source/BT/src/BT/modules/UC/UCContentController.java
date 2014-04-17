@@ -38,7 +38,7 @@ public class UCContentController {
      */
     public void createComponents(DiagramPlacesManager diagramPlaces) {
         BottomRightContentModel ucBottomRightContent = new BottomRightContentModel();
-        
+        ucBottomRightContent.setButtonNames("Delete all inactive", "Reactivate all inactive");
         UCMainContentController UCmain = new UCMainContentController(diagramPlaces, ucBottomRightContent);
 
         UCLeftTopContent UCLeftTop = new UCLeftTopContent(UCmain);

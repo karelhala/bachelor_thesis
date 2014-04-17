@@ -4,15 +4,11 @@
  */
 package BT.modules.UC.mainContent;
 
-import BT.BT;
-import BT.BT.CDLineType;
 import BT.BT.UCLineType;
 import BT.managers.ObjectChecker;
 import BT.interfaces.DrawingClicks;
 import BT.managers.DiagramPlacesManager;
 import BT.models.CoordinateModel;
-import BT.modules.ClassDiagram.places.CDClass;
-import BT.modules.ClassDiagram.places.joinEdge.CDJoinEdgeController;
 import BT.modules.UC.places.UCActor;
 import BT.modules.UC.places.UCJoinEdge.UCJoinEdgeController;
 import BT.modules.UC.places.UCUseCase;
@@ -51,7 +47,7 @@ public class UCMainContentController extends UCMainContentModel implements Drawi
      */
     private void addButtonClickListeners()
     {
-        this.bottomRightContent.getDeleteAllNonValidButton().addActionListener(new ActionListener() {
+        this.bottomRightContent.getTopButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 places.deleteAllUnassignedObjects();
@@ -59,7 +55,7 @@ public class UCMainContentController extends UCMainContentModel implements Drawi
             }
         });
         
-        this.bottomRightContent.getReactivateAllButton().addActionListener(new ActionListener() {
+        this.bottomRightContent.getBottomButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 classDiagramConnector.reactivateAllObjects();

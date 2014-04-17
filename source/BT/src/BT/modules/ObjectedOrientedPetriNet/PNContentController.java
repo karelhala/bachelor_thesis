@@ -8,6 +8,7 @@ package BT.modules.ObjectedOrientedPetriNet;
 import BT.managers.DiagramPlacesManager;
 import BT.modules.ObjectedOrientedPetriNet.mainContent.PNMainContentController;
 import GUI.BottomLeftContentModel;
+import GUI.BottomRightContentModel;
 import GUI.MainContentModel;
 
 /**
@@ -16,7 +17,7 @@ import GUI.MainContentModel;
  */
 public class PNContentController {
 
-    private MainContentModel pnContent;
+    private final MainContentModel pnContent;
     private PNMainContentController pnMain;
 
     /**
@@ -40,6 +41,8 @@ public class PNContentController {
      */
     public void createComponents(DiagramPlacesManager diagramPlaces) {
         BottomLeftContentModel bottomLeftContentModel = new BottomLeftContentModel();
+        BottomRightContentModel bottomRightContentModel = new BottomRightContentModel();
+        bottomRightContentModel.setButtonNames("Change guard", "Change action");
         this.pnMain = new PNMainContentController(diagramPlaces, bottomLeftContentModel);
 
         PNLeftTopContent cdLeftTop = new PNLeftTopContent(pnMain);

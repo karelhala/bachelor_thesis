@@ -38,7 +38,7 @@ abstract public class CDBottomRightController extends CDMainContentModel {
      */
     private void addButtonListeners()
     {
-        bottomRightContent.getDeleteAllNonValidButton().addActionListener(new ActionListener() {
+        bottomRightContent.getTopButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 places.deleteAllUnassignedObjects();
@@ -46,7 +46,7 @@ abstract public class CDBottomRightController extends CDMainContentModel {
             }
         });
         
-        bottomRightContent.getReactivateAllButton().addActionListener(new ActionListener() {
+        bottomRightContent.getBottomButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 useCaseReactivator.reactivateAllEmpty();
