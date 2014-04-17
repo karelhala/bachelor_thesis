@@ -13,15 +13,35 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 /**
- *
+ * Class for holding bottom right content of window.
+ * It has 2 bottons and one additional content.
+ * These 2 buttons are topButton and topButton, additional content is stored via Jpanel additionalcontent.
  * @author Karel
  */
 public class BottomRightContentModel {
+    /**
+     * 
+     */
     final private JPanel contentPane;
+    
+    /**
+     * 
+     */
     final private JButton bottomButton;
+    
+    /**
+     * 
+     */
     final private JButton topButton;
+    
+    /**
+     * 
+     */
     private JPanel additionalContent;
     
+    /**
+     * 
+     */
     public BottomRightContentModel()
     {
         this.contentPane = new JPanel(new BorderLayout());
@@ -44,33 +64,69 @@ public class BottomRightContentModel {
     }
     
     /**
-     * 
+     * Add additional content to content pane.
      */
     public void addAdditionalcontent()
     {
         this.contentPane.add(this.additionalContent,BorderLayout.CENTER);
     }
     
+    /**
+     * Set addition content Jpanel and add it to content pane.
+     * @param additionalcontent 
+     */
+    public void addAdditionalcontent(JPanel additionalcontent)
+    {
+        this.additionalContent = additionalcontent;
+        addAdditionalcontent();
+    }
+    
+    /**
+     * 
+     * @return 
+     */
     public JPanel getContentPane() {
         return contentPane;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public JButton getBottomButton() {
         return bottomButton;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public JButton getTopButton() {
         return topButton;
     }
 
+    /**
+     * Set adition content pane.
+     * You might want to call addAditionalContent as well.
+     * @param additionalContent 
+     */
     public void setAdditionalContent(JPanel additionalContent) {
         this.additionalContent = additionalContent;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public JPanel getAdditionalContent() {
         return additionalContent;
     }
     
+    /**
+     * Set topButton and bottomButton texts.
+     * @param topButtonText string that will be visible in top button.
+     * @param bottomButtonText string that will be visible in bottom button.
+     */
     public void setButtonNames(String topButtonText, String bottomButtonText)
     {
         this.topButton.setText(topButtonText);

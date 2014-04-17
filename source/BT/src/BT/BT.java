@@ -108,8 +108,8 @@ public class BT {
     
     /**
      * Method that creates Jpanel containing Jcomponent and label for this component.
-     * @param element
-     * @param label
+     * @param element to be inserted.
+     * @param label Jlabel, that describes it.
      * @return JPanel
      */
     public static JPanel elementWithLabelAbove(JComponent element, JLabel label)

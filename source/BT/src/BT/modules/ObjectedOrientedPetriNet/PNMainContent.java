@@ -20,7 +20,7 @@ import javax.swing.JScrollPane;
  */
 public class PNMainContent extends ContentPaneModel {
 
-    private Dimension area;
+    private final Dimension area;
 
     /**
      *

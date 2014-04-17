@@ -22,15 +22,14 @@ import javax.swing.JToggleButton;
  *
  * @author Karel
  */
-public class PNMainContentController extends PNMainContentModel implements DrawingClicks {
+public class PNMainContentController extends PNMainContentInitializer implements DrawingClicks {
 
     /**
      *
      * @param diagramPlaces
-     * @param bottomLeftContentModel
      */
-    public PNMainContentController(DiagramPlacesManager diagramPlaces, BottomLeftContentModel bottomLeftContentModel) {
-        super(diagramPlaces, bottomLeftContentModel);
+    public PNMainContentController(DiagramPlacesManager diagramPlaces) {
+        super(diagramPlaces);  
     }
 
     /**

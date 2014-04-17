@@ -7,9 +7,11 @@ package BT.modules.ObjectedOrientedPetriNet;
 
 import BT.managers.DiagramPlacesManager;
 import BT.modules.ObjectedOrientedPetriNet.mainContent.PNMainContentController;
+import BT.modules.ObjectedOrientedPetriNet.mainContent.PNMainContentInitializer;
 import GUI.BottomLeftContentModel;
 import GUI.BottomRightContentModel;
 import GUI.MainContentModel;
+import GUI.PetrinetGuardActionPanel;
 
 /**
  *
@@ -42,8 +44,10 @@ public class PNContentController {
     public void createComponents(DiagramPlacesManager diagramPlaces) {
         BottomLeftContentModel bottomLeftContentModel = new BottomLeftContentModel();
         BottomRightContentModel bottomRightContentModel = new BottomRightContentModel();
+        PetrinetGuardActionPanel guardActionPanel = new PetrinetGuardActionPanel();
         bottomRightContentModel.setButtonNames("Change guard", "Change action");
-        this.pnMain = new PNMainContentController(diagramPlaces, bottomLeftContentModel);
+        bottomRightContentModel.addAdditionalcontent(guardActionPanel.getContentPane());
+        this.pnMain = new PNMainContentController(diagramPlaces);
 
         PNLeftTopContent cdLeftTop = new PNLeftTopContent(pnMain);
         cdLeftTop.setListeners();
@@ -55,7 +59,10 @@ public class PNContentController {
         this.pnContent.setLeftTopPane(cdLeftTop.getMainContentPane());
         this.pnContent.setLeftBottomPane(pnLeftBottom.getMainContentPane());
         this.pnContent.setBottomLeftPane(bottomLeftContentModel.getMainPane());
+        this.pnContent.setBottomRightPane(bottomRightContentModel.getContentPane());
         this.pnMain.setLeftBottomContent(pnLeftBottom);
         this.pnMain.setLeftTopContent(cdLeftTop);
+        this.pnMain.setBottomLeftContentModel(bottomLeftContentModel).initializeBottomLeftController();
+        ((PNMainContentInitializer)this.pnMain.setBottomRightModel(bottomRightContentModel)).initializeRightController();
     }
 }
