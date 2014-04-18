@@ -12,7 +12,6 @@ import BT.modules.ClassDiagram.places.CDClass;
 import GUI.BottomLeftContentModel;
 import GUI.MethodLabel;
 import java.util.ArrayList;
-import javax.swing.JLabel;
 
 /**
  *
@@ -25,9 +24,15 @@ public class PNBottomLeftController {
      */
     private final BottomLeftContentModel bottomLeftModel;
     
+    /**
+     * 
+     */
     private MethodLabel drawnClass;
     
-    private ArrayList<MethodLabel> methodLabels;
+    /**
+     * 
+     */
+    private final ArrayList<MethodLabel> methodLabels;
     
     /**
      * 
@@ -75,5 +80,25 @@ public class PNBottomLeftController {
         {
             this.methodLabels.clear();
         }
+    }
+    
+    /**
+     * Get selected method label.
+     * @return either drawn class or one os method labels.
+     */
+    public MethodLabel getSelectedmethodLabel()
+    {
+        if (this.drawnClass.isSelected())
+        {
+            return drawnClass;
+        }
+        
+        for (MethodLabel methodLabel : methodLabels) {
+            if (methodLabel.isSelected())
+            {
+                return methodLabel;
+            }        
+        }
+        return null;
     }
 }

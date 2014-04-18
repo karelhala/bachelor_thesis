@@ -13,7 +13,6 @@ import BT.models.LineModel;
 import BT.modules.ObjectedOrientedPetriNet.places.PNPlace;
 import BT.modules.ObjectedOrientedPetriNet.places.PNTransition;
 import BT.modules.ObjectedOrientedPetriNet.places.joinEdge.PNJoinEdgeController;
-import GUI.BottomLeftContentModel;
 import java.awt.event.MouseEvent;
 import javax.swing.JOptionPane;
 import javax.swing.JToggleButton;

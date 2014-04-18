@@ -8,6 +8,7 @@ package BT.modules.ObjectedOrientedPetriNet.mainContent;
 
 import BT.managers.CD.Method;
 import GUI.BottomRightContentModel;
+import GUI.MethodLabel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -25,7 +26,7 @@ public class PNBottomRightController {
     /**
      * 
      */
-    private Method selectedMethod;
+    private MethodLabel selectedMethod;
     
     /**
      * 
@@ -40,7 +41,7 @@ public class PNBottomRightController {
      * Getter for selected method of right content Panel.
      * @return 
      */
-    public Method getSelectedMethod() {
+    public MethodLabel getSelectedMethod() {
         return selectedMethod;
     }
 
@@ -49,7 +50,7 @@ public class PNBottomRightController {
      * @param selectedMethod
      * @return this object.
      */
-    public PNBottomRightController setSelectedMethod(Method selectedMethod) {
+    public PNBottomRightController setSelectedMethod(MethodLabel selectedMethod) {
         this.selectedMethod = selectedMethod;
         return this;
     }

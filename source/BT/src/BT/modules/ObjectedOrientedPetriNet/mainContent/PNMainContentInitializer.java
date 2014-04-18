@@ -126,6 +126,9 @@ abstract public class PNMainContentInitializer extends PNMainContentModel {
             @Override
             public void mouseClicked(MouseEvent e)
             {
+                bottomLeftController.getSelectedmethodLabel().setSelected(Boolean.FALSE);
+                listenedMethodLabel.setSelected(Boolean.TRUE);
+                bottomRightController.setSelectedMethod(listenedMethodLabel);
                 setPlacesAndRepaintDrawing(listenedMethodLabel.getPetriNetFromClassOrMethod());
             }
         });

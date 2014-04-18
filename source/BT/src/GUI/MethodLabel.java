@@ -16,14 +16,33 @@ import javax.swing.JLabel;
  * @author Karel
  */
 public class MethodLabel extends JLabel{
+    
+    /**
+     * 
+     */
     private final Method objectMethod;
+    
+    /**
+     * 
+     */
     private final CDClass selectedClass;
     
+    /**
+     * 
+     */
+    private Boolean selected;
+    
+    /**
+     * 
+     * @param name
+     * @param objectMethod 
+     */
     public MethodLabel(String name, Method objectMethod)
     {
         super(name);
         this.objectMethod = objectMethod;
         selectedClass = null;
+        this.selected = false;
     }
     
     public MethodLabel(String name, CDClass selectedClass)
@@ -39,6 +58,14 @@ public class MethodLabel extends JLabel{
 
     public CDClass getSelectedClass() {
         return selectedClass;
+    }
+
+    public Boolean isSelected() {
+        return selected;
+    }
+
+    public void setSelected(Boolean selected) {
+        this.selected = selected;
     }
     
     /**
