@@ -106,6 +106,7 @@ abstract public class PNMainContentInitializer extends PNMainContentModel {
     public void repaintBottomRight()
     {
         this.bottomRightController.setSelectedClass(selectedClass);
+        this.bottomRightController.setPetrinetPlaces(places);
         this.bottomRightController.loadAttributesToComboBox();
     }
     

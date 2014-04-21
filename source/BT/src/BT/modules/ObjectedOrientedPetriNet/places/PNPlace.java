@@ -94,15 +94,18 @@ public class PNPlace extends PNPlaceModel {
         for (String oneVariable : this.variables) {
             if (oneVariable.equals(this.variables.getFirst()))
             {
-                allVariables += "(" + oneVariable + ", ";
+                allVariables += "(";
             }
-            else if (oneVariable.equals(this.variables.getLast()))
+            
+            allVariables += oneVariable;
+            
+            if (oneVariable.equals(this.variables.getLast()))
             {
-                allVariables += oneVariable + ")";
+                allVariables += ")";
             }
             else
             {
-                allVariables += oneVariable + ", ";
+                allVariables += ", ";
             }
         }
         g.drawString(allVariables, x-fm.stringWidth(allVariables)/2, this.y + fm.getHeight()/2-4);

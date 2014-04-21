@@ -47,6 +47,10 @@ public class PNBottomRightController extends PNBottomRightModel{
         {
             this.basicPetrinetPanel.getClassAttributes().setEnabled(false);
         }
+        else
+        {
+            this.basicPetrinetPanel.getClassAttributes().setEnabled(true);
+        }
         return this;
     }
     
@@ -73,8 +77,13 @@ public class PNBottomRightController extends PNBottomRightModel{
         this.basicPetrinetPanel.getAddClassVariable().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                PNPlace newPlace = new PNPlace(30,30);
-                petrinetPlaces.addObject(newPlace);
+                if (basicPetrinetPanel.getClassAttributes().getSelectedItem() != null)
+                {
+                    PNPlace newPlace = new PNPlace(30,30);
+                    newPlace.addVariable(basicPetrinetPanel.getClassAttributes().getSelectedItem().toString());
+                    newPlace.setName("");
+                    petrinetPlaces.addObject(newPlace);
+                }
                 petrinetDrawingPane.getDrawing().repaint();
             }
         });

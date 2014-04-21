@@ -70,8 +70,12 @@ public class BottomLeftContentModel {
 
     public BottomLeftContentModel addClassLabelToPane(JLabel classLabel)
     {
+        this.mainPane.removeAll();
+        this.mainPane.add(this.scrollPane, BorderLayout.CENTER);
         classLabel.setToolTipText("Object's name");
         this.mainPane.add(classLabel, BorderLayout.LINE_START);
+        this.mainPane.revalidate();
+        this.mainPane.repaint();
         return this;
     }
     
@@ -96,5 +100,8 @@ public class BottomLeftContentModel {
         this.contentPane.removeAll();
         this.contentPane.repaint();
         this.contentPane.revalidate();
+//        this.mainPane.remove(mainPane.getComponent(0));
+//        this.mainPane.revalidate();
+//        this.mainPane.repaint();
     }
 }

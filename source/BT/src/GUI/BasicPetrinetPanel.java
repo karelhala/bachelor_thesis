@@ -45,7 +45,7 @@ public final class BasicPetrinetPanel {
      */
     public void insertElementsToPanel() {
         this.contentPane.add(elementWithLabelAbove(classAttributes, new JLabel("Select variable")), BorderLayout.CENTER);
-        this.contentPane.add(addClassVariable, BorderLayout.LINE_START);
+        this.contentPane.add(elementWithLabelAbove(addClassVariable, new JLabel("           ")), BorderLayout.LINE_START);
     }
 
     /**
