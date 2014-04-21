@@ -50,6 +50,7 @@ public class MethodLabel extends JLabel{
         super(name);
         this.selectedClass = selectedClass;
         objectMethod = null;
+        this.selected = false;
     }
 
     public Method getObjectMethod() {

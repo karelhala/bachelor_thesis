@@ -101,6 +101,15 @@ abstract public class PNMainContentInitializer extends PNMainContentModel {
     }
     
     /**
+     * Load selected class attributes to combobox.
+     */
+    public void repaintBottomRight()
+    {
+        this.bottomRightController.setSelectedClass(selectedClass);
+        this.bottomRightController.loadAttributesToComboBox();
+    }
+    
+    /**
      * 
      * @param listenedMethodLabel 
      */
@@ -122,7 +131,10 @@ abstract public class PNMainContentInitializer extends PNMainContentModel {
             @Override
             public void mouseClicked(MouseEvent e)
             {
-                bottomLeftController.getSelectedmethodLabel().setSelected(Boolean.FALSE);
+                if (bottomLeftController.getSelectedmethodLabel() != null)
+                {
+                    bottomLeftController.getSelectedmethodLabel().setSelected(Boolean.FALSE);   
+                }
                 listenedMethodLabel.setSelected(Boolean.TRUE);
                 bottomRightController.setSelectedMethod(listenedMethodLabel);
                 setPlacesAndRepaintDrawing(listenedMethodLabel.getPetriNetFromClassOrMethod());

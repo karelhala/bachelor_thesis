@@ -59,6 +59,7 @@ public class NewTabController {
                                 OOPNContentModel.getPnMain().setPlaces(((CDClass)diagramPlaces.getCdPlaces().getSelectedObject()).getPnNetwork());
                                 OOPNContentModel.getPnMain().getMainContent().getDrawingPane().setPlaces(((CDClass)diagramPlaces.getCdPlaces().getSelectedObject()).getPnNetwork());
                                 ((PNMainContentInitializer)((PNMainContentInitializer)OOPNContentModel.getPnMain()).setSelectedClass(diagramPlaces.getSelectedClass())).repaintBottomLeft();
+                                ((PNMainContentInitializer)((PNMainContentInitializer)OOPNContentModel.getPnMain()).setSelectedClass(diagramPlaces.getSelectedClass())).repaintBottomRight();
                                 ((PNDrawingPane)OOPNContentModel.getPnMain().getMainContent().getDrawingPane()).getDrawing().repaint();
                             }
                             else

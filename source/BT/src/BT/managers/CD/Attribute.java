@@ -77,6 +77,6 @@ public class Attribute {
     @Override
     public String toString()
     {
-        return this.name;
+        return ((this.visibility == AttributeType.PRIVATE)?"-":(this.visibility == AttributeType.PUBLIC)?"+":"#") + " " + this.name;
     }
 }

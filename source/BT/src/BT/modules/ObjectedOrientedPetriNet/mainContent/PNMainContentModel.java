@@ -14,6 +14,7 @@ import BT.modules.ObjectedOrientedPetriNet.PNLeftBottomContent;
 import BT.modules.ObjectedOrientedPetriNet.PNLeftTopContent;
 import GUI.BottomLeftContentModel;
 import GUI.BottomRightContentModel;
+import GUI.MethodLabel;
 
 /**
  *
@@ -152,6 +153,10 @@ abstract public class PNMainContentModel extends MainContentController{
     public PNMainContentModel initializeBottomLeftController()
     {
         this.bottomLeftController = new PNBottomLeftController(bottomLeftContentModel);
+        if (this.selectedClass != null)
+        {
+            this.bottomLeftController.setDrawnClass(new MethodLabel(this.selectedClass.getName(), this.selectedClass));
+        }
         return this;
     }
 }

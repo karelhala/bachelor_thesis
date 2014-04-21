@@ -69,7 +69,7 @@ public class CDClass extends CDClassDrawer {
     public MyArrayList<Attribute> loadClassMethods()
     {
         MyArrayList<Attribute> classMethods = new MyArrayList<>();
-        classMethods.addAll(this.getMethods());
+        classMethods.addAll(this.methods);
 
         if (this.hasParent())   
         {
@@ -93,7 +93,7 @@ public class CDClass extends CDClassDrawer {
     public MyArrayList<Attribute> loadClassAttributes()
     {
         MyArrayList<Attribute>classAttributes = new MyArrayList<>();
-        classAttributes.addAll(this.getVariables());
+        classAttributes.addAll(this.variables);
         
         if (this.hasParent())   
         {

@@ -6,6 +6,7 @@
 
 package BT.modules.ObjectedOrientedPetriNet.mainContent.PNBottomRight;
 
+import BT.managers.CD.Attribute;
 import GUI.BasicPetrinetPanel;
 import GUI.BottomRightContentModel;
 import GUI.PetrinetGuardActionPanel;
@@ -26,6 +27,26 @@ public class PNBottomRightController extends PNBottomRightModel{
      */
     public PNBottomRightController(BottomRightContentModel bottomRightModel, BasicPetrinetPanel petrinetPanel, PetrinetGuardActionPanel petrinetGuardAction) {
         super(bottomRightModel, petrinetPanel, petrinetGuardAction);
+        
+    }
+    
+    /**
+     * Load class attributes to combobox.
+     * @return this object.
+     */
+    public PNBottomRightController loadAttributesToComboBox()
+    {
+        if (this.selectedClass != null)
+        {
+            for (Attribute oneAttribute : this.selectedClass.loadClassAttributes()) {
+                this.basicPetrinetPanel.getClassAttributes().addItem(oneAttribute);
+            }
+        }
+        if (this.selectedClass.loadClassAttributes().size() == 0)
+        {
+            this.basicPetrinetPanel.getClassAttributes().setEnabled(false);
+        }
+        return this;
     }
     
     /**
@@ -51,7 +72,7 @@ public class PNBottomRightController extends PNBottomRightModel{
         this.basicPetrinetPanel.getAddClassVariable().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                System.out.println(); //To change body of generated methods, choose Tools | Templates.
+                System.out.println("asd"); //To change body of generated methods, choose Tools | Templates.
             }
         });
         return this;

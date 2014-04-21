@@ -88,9 +88,13 @@ public class PNBottomLeftController {
      */
     public MethodLabel getSelectedmethodLabel()
     {
-        if (this.drawnClass.isSelected())
+        if (this.drawnClass != null)
         {
-            return drawnClass;
+            System.out.println(this.drawnClass.isSelected());
+            if (this.drawnClass.isSelected())
+            {
+                return drawnClass;
+            }
         }
         
         for (MethodLabel methodLabel : methodLabels) {
@@ -100,5 +104,9 @@ public class PNBottomLeftController {
             }        
         }
         return null;
+    }
+
+    public void setDrawnClass(MethodLabel drawnClass) {
+        this.drawnClass = drawnClass;
     }
 }
