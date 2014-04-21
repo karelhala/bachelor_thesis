@@ -106,6 +106,18 @@ public class CDJoinEdgeManipulator {
                     joinEdge.setFirstObject(null);
                     return joinEdge;
                 }
+                
+                if (joinEdge.getSecondObject() != null)
+                {
+                    for (CDClass newParent = ((CDClass)joinEdge.getSecondObject()).getParent(); newParent != null; newParent = newParent.getParent())
+                    {
+                        if (newParent.equals(joinEdge.getFirstObject()))
+                        {
+                            joinEdge.setSecondObject(null);
+                            return joinEdge;
+                        }
+                    }
+                }
             }
             
             //check for connection bewteen activity and actor

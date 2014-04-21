@@ -64,18 +64,34 @@ public class MethodModel extends Attribute{
         this(BT.AttributeType.PRIVATE, name, type, assignedClass);
     }
     
+    /**
+     * 
+     * @return 
+     */
     public ArrayList<Attribute> getClassAttributes() {
         return classAttributes;
     }
     
+    /**
+     * 
+     * @return 
+     */
     public PlaceManager getPetriNet() {
         return petriNet;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public ArrayList<Attribute> getClassMethods() {
         return classMethods;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public CDClass getAssignedClass() {
         return assignedClass;
     }

@@ -132,4 +132,28 @@ public class BottomRightContentModel {
         this.topButton.setText(topButtonText);
         this.bottomButton.setText(bottomButtonText);
     }
+    
+    /**
+     * Method for hiding whole right panel.
+     * @return this object
+     */
+    public BottomRightContentModel hideAllitems()
+    {
+        this.topButton.setVisible(false);
+        this.bottomButton.setVisible(false);
+        this.additionalContent.setVisible(false);
+        return this;
+    }
+    
+    /**
+     * Show all items of bottom right content panel.
+     * @return this object.
+     */
+    public BottomRightContentModel showAllItems()
+    {
+        this.topButton.setVisible(true);
+        this.bottomButton.setVisible(true);
+        this.additionalContent.setVisible(true);
+        return this;
+    }
 }
