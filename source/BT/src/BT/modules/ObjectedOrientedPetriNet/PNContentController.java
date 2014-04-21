@@ -47,6 +47,7 @@ public class PNContentController {
         PetrinetGuardActionPanel guardActionPanel = new PetrinetGuardActionPanel();
         bottomRightTransition.setButtonNames("Change guard", "Change action");
         bottomRightTransition.addAdditionalcontent(guardActionPanel.getContentPane());
+        bottomRightTransition.hideAllitems();
         this.pnMain = new PNMainContentController(diagramPlaces);
 
         PNLeftTopContent cdLeftTop = new PNLeftTopContent(pnMain);
