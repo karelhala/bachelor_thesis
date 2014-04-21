@@ -43,10 +43,13 @@ public class PNJoinEdgeDrawer extends JoinEdgeDrawer {
         if (this.joinEdgeController instanceof PNJoinEdgeController) {
             PNJoinEdgeController pnJoin = (PNJoinEdgeController) this.joinEdgeController;
             Point arrowStartPoint = (pnJoin.getBreakPoints() != null && !pnJoin.getBreakPoints().isEmpty()) ? pnJoin.getBreakPoints().getLast() : this.startPoint;
+            setStartEndPointsText(pnJoin);
             if (pnJoin.getJoinEdgeType() == BT.BT.OOPNLineType.JOIN) {
                 g.setStroke(new BasicStroke(2));
                 drawbreakedLine(g, this.startPoint, this.endPoint, pnJoin.getBreakPoints());
                 drawTriangle(g, this.endPoint, arrowStartPoint, Color.BLACK);
+                drawString(g, pnJoin.getName());
+//                g.drawString(pnJoin.getName(), this.textStartPoint.getX(), this., this.textEndPoint);
             }
 
         }

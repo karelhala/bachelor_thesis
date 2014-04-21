@@ -29,7 +29,20 @@ public class JoinEdgeDrawer {
      */
     protected Point endPoint;
 
+    /**
+     * 
+     */
     protected LineModel joinEdgeController;
+    
+    /**
+     * Point that describes where is start of text.
+     */
+    protected Point textStartPoint;
+    
+    /**
+     * Point that describes where is end of text.
+     */
+    protected Point textEndPoint;
 
     public JoinEdgeDrawer(LineModel joinEdgeController, Point startPoint, Point endPoint) {
         this.joinEdgeController = joinEdgeController;
@@ -128,22 +141,21 @@ public class JoinEdgeDrawer {
     /**
      *
      * @param g2D
-     * @param A
-     * @param B
+
      * @param name
      */
-    protected void drawString(Graphics2D g2D, Point A, Point B, String name) {
+    protected void drawString(Graphics2D g2D, String name) {
         Graphics2D g = (Graphics2D) g2D.create();
         g.setStroke(new BasicStroke(2));
-        double dx = B.x - A.x;
-        double dy = B.y - A.y;
+        double dx = this.textEndPoint.x - this.textStartPoint.x;
+        double dy = this.textEndPoint.y - this.textStartPoint.y;
         double angle = Math.atan2(dy, dx);
         int len = (int) Math.sqrt(dx * dx + dy * dy);
         if ((angle <= Math.PI && angle >= Math.PI / 2) || (angle >= -Math.PI && angle <= -Math.PI / 2)) {
             len = -len * 2;
             angle = angle - Math.PI;
         }
-        AffineTransform at = AffineTransform.getTranslateInstance(A.x, A.y);
+        AffineTransform at = AffineTransform.getTranslateInstance(this.textStartPoint.x, this.textStartPoint.y);
         at.concatenate(AffineTransform.getRotateInstance(angle));
         g.transform(at);
 
@@ -178,6 +190,11 @@ public class JoinEdgeDrawer {
         setBasicColors(g, true);
     }
     
+    /**
+     * For setting basic colors of lines.
+     * @param g
+     * @param searchForAssignedObject 
+     */
     protected void setBasicColors(Graphics2D g, Boolean searchForAssignedObject) {
         if (this.joinEdgeController.getSelected()) {
             g.setColor(this.joinEdgeController.getSelectedColor());
@@ -188,5 +205,15 @@ public class JoinEdgeDrawer {
                 g.setColor(this.joinEdgeController.getColor());
             }
         }
+    }
+    
+    /**
+     * Method for setting start and end point of texts.
+     * @param joins this argument holds join model.
+     */
+    protected void setStartEndPointsText(LineModel joins)
+    {
+        this.textStartPoint = (joins.getBreakPoints() != null && !joins.getBreakPoints().isEmpty()) ? joins.getBreakPoints().getLeftMiddle() : this.startPoint;
+        this.textEndPoint = (joins.getBreakPoints() != null && !joins.getBreakPoints().isEmpty() && joins.getBreakPoints().size() > 1) ? joins.getBreakPoints().getRightMiddle() : this.endPoint;
     }
 }

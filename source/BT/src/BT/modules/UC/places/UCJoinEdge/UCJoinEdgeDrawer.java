@@ -44,8 +44,7 @@ public class UCJoinEdgeDrawer extends JoinEdgeDrawer {
         if (this.joinEdgeController instanceof UCJoinEdgeController) {
             UCJoinEdgeController UCjoin = (UCJoinEdgeController) this.joinEdgeController;
             Point arrowStartPoint = (UCjoin.getBreakPoints() != null && !UCjoin.getBreakPoints().isEmpty()) ? UCjoin.getBreakPoints().getLast() : this.startPoint;
-            Point textStartPoint = (UCjoin.getBreakPoints() != null && !UCjoin.getBreakPoints().isEmpty()) ? UCjoin.getBreakPoints().getLeftMiddle() : this.startPoint;
-            Point textEndPoint = (UCjoin.getBreakPoints() != null && !UCjoin.getBreakPoints().isEmpty() && UCjoin.getBreakPoints().size() > 1) ? UCjoin.getBreakPoints().getRightMiddle() : this.endPoint;
+            setStartEndPointsText(UCjoin);
             if (UCjoin.getJoinEdgeType() == BT.UCLineType.ASSOCIATION) {
                 g.setStroke(new BasicStroke(2));
                 drawbreakedLine(g, this.startPoint, this.endPoint, UCjoin.getBreakPoints());
@@ -54,13 +53,13 @@ public class UCJoinEdgeDrawer extends JoinEdgeDrawer {
                 drawbreakedLine(g, this.startPoint, this.endPoint, UCjoin.getBreakPoints());
                 g.setStroke(new BasicStroke(2));
                 drawArrow(g, this.endPoint, arrowStartPoint);
-                drawString(g, textEndPoint, textStartPoint, "<<include>>");
+                drawString(g, "<<include>>");
             } else if (UCjoin.getJoinEdgeType() == BT.UCLineType.EXTENDS) {
                 g.setStroke(dashed);
                 drawbreakedLine(g, this.startPoint, this.endPoint, UCjoin.getBreakPoints());
                 drawArrow(g, this.endPoint, arrowStartPoint);
                 g.setStroke(new BasicStroke(2));
-                drawString(g, textEndPoint, textStartPoint, "<<extend>>");
+                drawString(g, "<<extend>>");
             } else if (UCjoin.getJoinEdgeType() == BT.UCLineType.GENERALIZATION) {
                 g.setStroke(new BasicStroke(2));
                 drawbreakedLine(g, this.startPoint, this.endPoint, UCjoin.getBreakPoints());

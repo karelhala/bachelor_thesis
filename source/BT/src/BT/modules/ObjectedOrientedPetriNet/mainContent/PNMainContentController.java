@@ -170,6 +170,7 @@ public class PNMainContentController extends PNMainContentInitializer implements
     private PNJoinEdgeController createJoinEdge(PNJoinEdgeController joinEdge, CoordinateModel clickedObject) {
         if (joinEdge == null) {
             joinEdge = new PNJoinEdgeController();
+            joinEdge.setName("");
         }
         if (joinEdge.getFirstObject() == null) {
             joinEdge.setFirstObject(clickedObject);

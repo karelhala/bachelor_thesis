@@ -8,7 +8,6 @@ package BT.modules.ClassDiagram.places.joinEdge;
 import BT.BT;
 import BT.BT.ClassType;
 import BT.managers.JoinEdgeDrawer;
-import BT.models.CoordinateModel;
 import BT.models.LineModel;
 import BT.modules.ClassDiagram.places.CDClass;
 import java.awt.BasicStroke;
@@ -50,8 +49,7 @@ public class CDJoinEdgeDrawer extends JoinEdgeDrawer {
         if (this.joinEdgeController instanceof CDJoinEdgeController) {
             CDJoinEdgeController cdJoin = (CDJoinEdgeController) this.joinEdgeController;
             Point arrowStartPoint = (cdJoin.getBreakPoints() != null && !cdJoin.getBreakPoints().isEmpty()) ? cdJoin.getBreakPoints().getLast() : this.startPoint;
-            Point textStartPoint = (cdJoin.getBreakPoints() != null && !cdJoin.getBreakPoints().isEmpty()) ? cdJoin.getBreakPoints().getLeftMiddle() : this.startPoint;
-            Point textEndPoint = (cdJoin.getBreakPoints() != null && !cdJoin.getBreakPoints().isEmpty() && cdJoin.getBreakPoints().size() > 1) ? cdJoin.getBreakPoints().getRightMiddle() : this.endPoint;
+            setStartEndPointsText(cdJoin);
             if (cdJoin.getJoinEdgeType() == BT.CDLineType.ASSOCIATION) {
                 g.setStroke(new BasicStroke(2));
                 drawbreakedLine(g, this.startPoint, this.endPoint, cdJoin.getBreakPoints());
@@ -60,22 +58,22 @@ public class CDJoinEdgeDrawer extends JoinEdgeDrawer {
                 g.setStroke(new BasicStroke(2));
                 drawbreakedLine(g, this.startPoint, this.endPoint, cdJoin.getBreakPoints());
                 drawDiamond(g, this.endPoint, arrowStartPoint, Color.WHITE);
-                drawString(g, textEndPoint, textStartPoint, "aggregation");
+                drawString(g, "aggregation");
             } else if (cdJoin.getJoinEdgeType() == BT.CDLineType.COMPOSITION) {
                 g.setStroke(new BasicStroke(2));
                 drawbreakedLine(g, this.startPoint, this.endPoint, cdJoin.getBreakPoints());
                 drawDiamond(g, this.endPoint, arrowStartPoint, Color.BLACK);
-                drawString(g, textEndPoint, textStartPoint, "composition");
+                drawString(g, "composition");
             } else if (cdJoin.getJoinEdgeType() == BT.CDLineType.GENERALIZATION) {
                 g.setStroke(new BasicStroke(2));
                 drawbreakedLine(g, this.startPoint, this.endPoint, cdJoin.getBreakPoints());
                 drawTriangle(g, this.endPoint, arrowStartPoint, Color.WHITE);
-                drawString(g, textEndPoint, textStartPoint, "generalization");
+                drawString(g, "generalization");
             } else if (cdJoin.getJoinEdgeType() == BT.CDLineType.REALIZATION) {
                 g.setStroke(dashed);
                 drawbreakedLine(g, this.startPoint, this.endPoint, cdJoin.getBreakPoints());
                 drawArrow(g, this.endPoint, arrowStartPoint);
-                drawString(g, textEndPoint, textStartPoint, "realization");
+                drawString(g, "realization");
             }
         }
     }

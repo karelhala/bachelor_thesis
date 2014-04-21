@@ -43,10 +43,10 @@ public class PNContentController {
      */
     public void createComponents(DiagramPlacesManager diagramPlaces) {
         BottomLeftContentModel bottomLeftContentModel = new BottomLeftContentModel();
-        BottomRightContentModel bottomRightContentModel = new BottomRightContentModel();
+        BottomRightContentModel bottomRightTransition = new BottomRightContentModel();
         PetrinetGuardActionPanel guardActionPanel = new PetrinetGuardActionPanel();
-        bottomRightContentModel.setButtonNames("Change guard", "Change action");
-        bottomRightContentModel.addAdditionalcontent(guardActionPanel.getContentPane());
+        bottomRightTransition.setButtonNames("Change guard", "Change action");
+        bottomRightTransition.addAdditionalcontent(guardActionPanel.getContentPane());
         this.pnMain = new PNMainContentController(diagramPlaces);
 
         PNLeftTopContent cdLeftTop = new PNLeftTopContent(pnMain);
@@ -59,10 +59,10 @@ public class PNContentController {
         this.pnContent.setLeftTopPane(cdLeftTop.getMainContentPane());
         this.pnContent.setLeftBottomPane(pnLeftBottom.getMainContentPane());
         this.pnContent.setBottomLeftPane(bottomLeftContentModel.getMainPane());
-        this.pnContent.setBottomRightPane(bottomRightContentModel.getContentPane());
+        this.pnContent.setBottomRightPane(bottomRightTransition.getContentPane());
         this.pnMain.setLeftBottomContent(pnLeftBottom);
         this.pnMain.setLeftTopContent(cdLeftTop);
         this.pnMain.setBottomLeftContentModel(bottomLeftContentModel).initializeBottomLeftController();
-        ((PNMainContentInitializer)this.pnMain.setBottomRightModel(bottomRightContentModel)).initializeRightController();
+        ((PNMainContentInitializer)this.pnMain.setBottomRightModel(bottomRightTransition)).initializeRightController();
     }
 }
