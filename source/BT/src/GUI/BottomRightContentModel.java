@@ -176,4 +176,39 @@ public class BottomRightContentModel {
         this.additionalContent.setVisible(true);
         return this;
     }
+    
+    /**
+     * Hide bottom and top button of bottom right content pane.
+     * @return this object.
+     */
+    public BottomRightContentModel hideButtons()
+    {
+        this.bottomButton.setVisible(false);
+        this.topButton.setVisible(false);
+        return this;
+    }
+    
+    /**
+     * Show top and bottom button of bottom right content pane.
+     * @return this object.
+     */
+    public BottomRightContentModel showButtons()
+    {
+        this.bottomButton.setVisible(true);
+        this.topButton.setVisible(true);
+        return this;
+    }
+    
+    /**
+     * Replace additional content pane with additionalContentPane
+     * @param additionalContentPane
+     */
+    public void replaceAdditionalContent(JPanel additionalContentPane)
+    {
+        this.contentPane.remove(additionalContent);
+        this.contentPane.add(additionalContentPane);
+        this.additionalContent = additionalContentPane;
+        this.contentPane.validate();
+        this.contentPane.repaint();
+    }
 }

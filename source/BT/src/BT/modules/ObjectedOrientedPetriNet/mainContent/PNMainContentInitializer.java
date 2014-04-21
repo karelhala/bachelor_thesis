@@ -15,9 +15,11 @@ import BT.modules.ObjectedOrientedPetriNet.PNLeftBottomContent;
 import BT.modules.ObjectedOrientedPetriNet.PNLeftTopContent;
 import BT.modules.ObjectedOrientedPetriNet.PNMainContent;
 import BT.modules.ObjectedOrientedPetriNet.places.joinEdge.PNJoinEdgeController;
+import GUI.BasicPetrinetPanel;
 import GUI.BottomLeftContentModel;
 import GUI.BottomRightContentModel;
 import GUI.MethodLabel;
+import GUI.PetrinetGuardActionPanel;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.event.ActionEvent;
@@ -147,13 +149,33 @@ abstract public class PNMainContentInitializer extends PNMainContentModel {
     }
     
     /**
-     * Initialize rightBottomController.
+     * Initialize rightBottomController with basicPanel and guard action Panel.
+     * @param petrinetPanel
+     * @param petrinetGuardAction
      * @return this object.
      */
-    public PNMainContentInitializer initializeRightController()
+    public PNMainContentInitializer initializeRightController(BasicPetrinetPanel petrinetPanel, PetrinetGuardActionPanel petrinetGuardAction)
     {
-        this.bottomRightController = new PNBottomRightController(bottomRightModel);
+        this.bottomRightController = new PNBottomRightController(bottomRightModel, petrinetPanel, petrinetGuardAction);
         this.bottomRightController.initializeButtonListeners();
         return this;
+    }
+    
+    /**
+     * Show basic panel content pane.
+     */
+    public void showBasicPanel()
+    {
+        this.bottomRightModel.replaceAdditionalContent(this.bottomRightController.getBasicPetrinetPanel().getContentPane());
+        this.bottomRightModel.hideButtons();
+    }
+    
+    /**
+     * Show transition content pane.
+     */
+    public void showTransitionPanel()
+    {
+        this.bottomRightModel.replaceAdditionalContent(this.bottomRightController.getPetrinetGuardAction().getContentPane());
+        this.bottomRightModel.showButtons();
     }
 }

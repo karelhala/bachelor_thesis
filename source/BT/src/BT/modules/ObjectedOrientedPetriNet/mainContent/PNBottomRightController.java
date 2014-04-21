@@ -6,8 +6,10 @@
 
 package BT.modules.ObjectedOrientedPetriNet.mainContent;
 
+import GUI.BasicPetrinetPanel;
 import GUI.BottomRightContentModel;
 import GUI.MethodLabel;
+import GUI.PetrinetGuardActionPanel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -29,10 +31,26 @@ public class PNBottomRightController {
     
     /**
      * 
+     */
+    private BasicPetrinetPanel basicPetrinetPanel;
+    
+    /**
+     * 
+     */
+    private PetrinetGuardActionPanel petrinetGuardAction;
+    
+    /**
+     * 
      * @param bottomRightModel 
      */
     public PNBottomRightController(BottomRightContentModel bottomRightModel)
     {
+        this.bottomRightModel = bottomRightModel;
+    }
+
+    PNBottomRightController(BottomRightContentModel bottomRightModel, BasicPetrinetPanel petrinetPanel, PetrinetGuardActionPanel petrinetGuardAction) {
+        this.basicPetrinetPanel = petrinetPanel;
+        this.petrinetGuardAction = petrinetGuardAction;
         this.bottomRightModel = bottomRightModel;
     }
 
@@ -74,5 +92,13 @@ public class PNBottomRightController {
             }
         });
         return this;
+    }
+
+    public BasicPetrinetPanel getBasicPetrinetPanel() {
+        return basicPetrinetPanel;
+    }
+
+    public PetrinetGuardActionPanel getPetrinetGuardAction() {
+        return petrinetGuardAction;
     }
 }

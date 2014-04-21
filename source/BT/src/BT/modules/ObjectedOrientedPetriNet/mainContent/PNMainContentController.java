@@ -77,7 +77,7 @@ public class PNMainContentController extends PNMainContentInitializer implements
         if (selectedItemButton != null && "PLACE".equals(selectedItemButton.getName())) {
             this.places.setAllObjectDiselected();
             PNPlace newPlace = new PNPlace(evt.getX(), evt.getY());
-            this.bottomRightModel.hideAllitems();
+            showBasicPanel();
             this.places.addObject(newPlace);
         } else if (selectedItemButton != null && "TRANSITION".equals(selectedItemButton.getName())) {
             this.places.setAllObjectDiselected();
@@ -123,13 +123,20 @@ public class PNMainContentController extends PNMainContentInitializer implements
     public void setSelectedObject(CoordinateModel clickedObject) {
         this.places.setAllObjectDiselected();
         places.setSelectedLinesOnObject(clickedObject);
-        this.bottomRightModel.hideAllitems();
         if (clickedObject != null) {
             clickedObject.setSelected(true);
             if (clickedObject instanceof PNTransition)
             {
-                this.bottomRightModel.showAllItems();
+                showTransitionPanel();
             }
+            else
+            {
+                showBasicPanel();
+            }
+        }
+        else
+        {
+            showBasicPanel();
         }
 
         if (this.LeftBottomContent.getSelectedButton() != null || this.newJoinEdge != null) {

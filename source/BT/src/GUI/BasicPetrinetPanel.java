@@ -16,7 +16,7 @@ import javax.swing.JPanel;
  * Class that holds panel with class variables and button for inserting them.
  * @author Karel Hala
  */
-public class BasicPetrinetPanel {
+public final class BasicPetrinetPanel {
 
     /**
      * Combo box with attributes of class.
@@ -37,14 +37,15 @@ public class BasicPetrinetPanel {
         this.classAttributes = new JComboBox();
         this.contentPane = new JPanel(new BorderLayout());
         this.addClassVariable = new JButton("Add class variable");
+        insertElementsToPanel();
     }
 
     /**
      * Insert combo box with attributes to content panel.
      */
-    public void insertAttributesToPanel() {
-        this.contentPane.add(elementWithLabelAbove(contentPane, new JLabel("Select variable")), BorderLayout.LINE_START);
-        this.contentPane.add(addClassVariable, BorderLayout.CENTER);
+    public void insertElementsToPanel() {
+        this.contentPane.add(elementWithLabelAbove(classAttributes, new JLabel("Select variable")), BorderLayout.CENTER);
+        this.contentPane.add(addClassVariable, BorderLayout.LINE_START);
     }
 
     /**

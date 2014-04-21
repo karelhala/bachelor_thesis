@@ -8,6 +8,7 @@ package BT.modules.ObjectedOrientedPetriNet;
 import BT.managers.DiagramPlacesManager;
 import BT.modules.ObjectedOrientedPetriNet.mainContent.PNMainContentController;
 import BT.modules.ObjectedOrientedPetriNet.mainContent.PNMainContentInitializer;
+import GUI.BasicPetrinetPanel;
 import GUI.BottomLeftContentModel;
 import GUI.BottomRightContentModel;
 import GUI.MainContentModel;
@@ -44,13 +45,11 @@ public class PNContentController {
     public void createComponents(DiagramPlacesManager diagramPlaces) {
         BottomLeftContentModel bottomLeftContentModel = new BottomLeftContentModel();
         BottomRightContentModel bottomRightTransition = new BottomRightContentModel();
-        BottomRightContentModel bottomRightBasic = new BottomRightContentModel();
         PetrinetGuardActionPanel guardActionPanel = new PetrinetGuardActionPanel();
+        BasicPetrinetPanel basicPetrinetPanel = new BasicPetrinetPanel();
         bottomRightTransition.setButtonNames("Change guard", "Change action");
-        bottomRightBasic.getTopButton().setVisible(false);
-        bottomRightBasic.getBottomButton().setVisible(false);
-        bottomRightTransition.addAdditionalcontent(guardActionPanel.getContentPane());
-        bottomRightTransition.hideAllitems();
+        bottomRightTransition.addAdditionalcontent(basicPetrinetPanel.getContentPane());
+        bottomRightTransition.hideButtons();
         this.pnMain = new PNMainContentController(diagramPlaces);
 
         PNLeftTopContent cdLeftTop = new PNLeftTopContent(pnMain);
@@ -67,6 +66,6 @@ public class PNContentController {
         this.pnMain.setLeftBottomContent(pnLeftBottom);
         this.pnMain.setLeftTopContent(cdLeftTop);
         this.pnMain.setBottomLeftContentModel(bottomLeftContentModel).initializeBottomLeftController();
-        ((PNMainContentInitializer)this.pnMain.setBottomRightModel(bottomRightTransition)).initializeRightController();
+        ((PNMainContentInitializer)this.pnMain.setBottomRightModel(bottomRightTransition)).initializeRightController(basicPetrinetPanel, guardActionPanel);
     }
 }
