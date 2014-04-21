@@ -8,6 +8,7 @@ package BT.managers;
 
 import BT.models.CoordinateModel;
 import BT.modules.ClassDiagram.places.CDClass;
+import java.util.ArrayList;
 
 /**
  *
@@ -38,12 +39,12 @@ public class DiagramPlacesManager {
     /**
      * 
      */
-    private PlaceManager pnPlaces;
+    private ArrayList<PlaceManager> pnPlaces;
 
     public DiagramPlacesManager() {
         this.ucPlaces = new PlaceManager();
         this.cdPlaces = new PlaceManager();
-        this.pnPlaces = new PlaceManager();
+        this.pnPlaces = new ArrayList<>();
     }
 
     public PlaceManager getCdPlaces() {
@@ -54,14 +55,24 @@ public class DiagramPlacesManager {
         this.cdPlaces = cdPlaces;
     }
 
-    public PlaceManager getPnPlaces() {
+    public ArrayList<PlaceManager> getPnPlaces() {
         return pnPlaces;
     }
 
-    public void setPnPlaces(PlaceManager pnPlaces) {
+    public void setPnPlaces(ArrayList<PlaceManager> pnPlaces) {
         this.pnPlaces = pnPlaces;
     }
 
+    public void addPnPlace(PlaceManager pnPlaceManager)
+    {
+        this.pnPlaces.add(pnPlaceManager);
+    }
+    
+    public void removePnPlace(PlaceManager pnPlaceManager)
+    {
+        this.pnPlaces.remove(pnPlaceManager);
+    }
+    
     public PlaceManager getUcPlaces() {
         return ucPlaces;
     }

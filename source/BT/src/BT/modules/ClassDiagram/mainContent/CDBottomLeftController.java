@@ -7,14 +7,14 @@
 package BT.modules.ClassDiagram.mainContent;
 
 import BT.managers.CD.Attribute;
+import BT.managers.CD.Method;
+import BT.managers.DiagramPlacesManager;
 import BT.models.CoordinateModel;
 import BT.modules.ClassDiagram.places.CDClass;
 import GUI.BottomLeftContentModel;
-import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 
 /**
  *
@@ -24,6 +24,7 @@ public class CDBottomLeftController {
     final private BottomLeftContentModel leftContentmodel;
     final private CDDrawingPane.drawing drawingPane;
     private CoordinateModel selectedObject;
+    private DiagramPlacesManager diagramPlaces;
     
     public CDBottomLeftController (BottomLeftContentModel leftContentmodel, CDDrawingPane.drawing drawingPane)
     {
@@ -37,6 +38,14 @@ public class CDBottomLeftController {
 
     public void setSelectedObject(CoordinateModel selectedobject) {
         this.selectedObject = selectedobject;
+    }
+
+    public DiagramPlacesManager getDiagramPlaces() {
+        return diagramPlaces;
+    }
+
+    public void setDiagramPlaces(DiagramPlacesManager diagramPlaces) {
+        this.diagramPlaces = diagramPlaces;
     }
     
     /**
@@ -68,6 +77,10 @@ public class CDBottomLeftController {
             public void actionPerformed(ActionEvent ae) {
                 ((CDClass) selectedObject).removeAttribute(insertedAttribute);
                 objectSelected();
+                if (insertedAttribute instanceof Method)
+                {
+                    diagramPlaces.removePnPlace(((Method)insertedAttribute).getPetriNet());
+                }
                 drawingPane.repaint();
             }
         });

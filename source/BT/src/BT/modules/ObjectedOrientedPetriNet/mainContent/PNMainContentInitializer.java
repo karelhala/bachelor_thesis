@@ -137,6 +137,7 @@ abstract public class PNMainContentInitializer extends PNMainContentModel {
                 }
                 listenedMethodLabel.setSelected(Boolean.TRUE);
                 bottomRightController.setSelectedMethod(listenedMethodLabel);
+                bottomRightController.setPetrinetPlaces(listenedMethodLabel.getPetriNetFromClassOrMethod());
                 setPlacesAndRepaintDrawing(listenedMethodLabel.getPetriNetFromClassOrMethod());
             }
         });
@@ -165,7 +166,7 @@ abstract public class PNMainContentInitializer extends PNMainContentModel {
         this.bottomRightController = new PNBottomRightController(bottomRightModel, petrinetPanel, petrinetGuardAction);
         this.bottomRightController.setSelectedClass(selectedClass);
         this.bottomRightController.setPetrinetDrawingPane((PNDrawingPane) this.mainContent.getDrawingPane());
-        this.bottomRightController.setPetrinetPlaces(places);
+        this.bottomRightController.setPetrinetPlaces(this.places);
         this.bottomRightController.initializeButtonListeners();
         return this;
     }

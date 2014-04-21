@@ -7,6 +7,7 @@
 package BT.modules.ObjectedOrientedPetriNet.mainContent.PNBottomRight;
 
 import BT.managers.CD.Attribute;
+import BT.modules.ObjectedOrientedPetriNet.places.PNPlace;
 import GUI.BasicPetrinetPanel;
 import GUI.BottomRightContentModel;
 import GUI.PetrinetGuardActionPanel;
@@ -72,7 +73,9 @@ public class PNBottomRightController extends PNBottomRightModel{
         this.basicPetrinetPanel.getAddClassVariable().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                System.out.println("asd"); //To change body of generated methods, choose Tools | Templates.
+                PNPlace newPlace = new PNPlace(30,30);
+                petrinetPlaces.addObject(newPlace);
+                petrinetDrawingPane.getDrawing().repaint();
             }
         });
         return this;

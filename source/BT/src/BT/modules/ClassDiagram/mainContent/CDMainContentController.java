@@ -88,6 +88,7 @@ public class CDMainContentController extends CDBottomRightController implements 
         if (selectedItemButton != null && CDObjectType.CLASS.name().equals(selectedItemButton.getName())) {
             CDClass newClass = new CDClass(evt.getX(), evt.getY());
             this.places.addObject(newClass);
+            this.diagramPlaces.addPnPlace(newClass.getPnNetwork());
             newClass.setAssignedObject(newClass);
         }else if(selectedItemButton != null && CDObjectType.INTERFACE.name().equals(selectedItemButton.getName())){
             CDClass newInterface = new CDClass(evt.getX(), evt.getY());

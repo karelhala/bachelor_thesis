@@ -11,6 +11,7 @@ import BT.managers.MainContentController;
 import BT.modules.ClassDiagram.CDLeftBottomContent;
 import BT.modules.ClassDiagram.CDLeftTopContent;
 import BT.modules.ClassDiagram.CDMainContent;
+import BT.modules.ClassDiagram.places.CDClass;
 import BT.modules.ClassDiagram.places.joinEdge.CDJoinEdgeController;
 import GUI.BottomLeftContentModel;
 import GUI.BottomRightContentModel;
@@ -81,6 +82,7 @@ abstract class CDMainContentModel extends MainContentController {
 
             @Override
             public void actionPerformed(ActionEvent e) {
+                diagramPlaces.removePnPlace(((CDClass)places.getSelectedObject()).getPnNetwork());
                 mainContent.getDrawingPane().getPlaces().removeAllSelectedItems();
                 deleteNewLine();
             }

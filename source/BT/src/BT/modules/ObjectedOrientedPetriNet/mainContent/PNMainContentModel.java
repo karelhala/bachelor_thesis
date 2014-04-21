@@ -62,7 +62,6 @@ abstract public class PNMainContentModel extends MainContentController{
      */
     public PNMainContentModel(DiagramPlacesManager diagramPlaces) {
         this.diagramPlaces = diagramPlaces;
-        this.places = diagramPlaces.getPnPlaces();
         this.mainContent = new BT.modules.ObjectedOrientedPetriNet.PNMainContent(this.places);
         this.bottomLeftController = new PNBottomLeftController(this.bottomLeftContentModel);
     }

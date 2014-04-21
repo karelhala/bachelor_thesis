@@ -188,6 +188,7 @@ abstract public class CDBottomRightController extends CDMainContentModel {
                 );
                 newMethod.loadClassAttributes().loadClassMethods();
                 selectedClass.addNewMethod(newMethod);
+                this.diagramPlaces.addPnPlace(newMethod.getPetriNet());
             }
         }
         else
