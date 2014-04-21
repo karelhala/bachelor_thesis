@@ -156,4 +156,24 @@ public class BottomRightContentModel {
         this.additionalContent.setVisible(true);
         return this;
     }
+    
+    /**
+     * Hide additional content pane.
+     * @return this object.
+     */
+    public BottomRightContentModel hideAdditionalContent()
+    {
+        this.additionalContent.setVisible(false);
+        return this;
+    }
+    
+    /**
+     * Show additional content pane.
+     * @return this obejct.
+     */
+    public BottomRightContentModel showAdditionalContent()
+    {
+        this.additionalContent.setVisible(true);
+        return this;
+    }
 }
