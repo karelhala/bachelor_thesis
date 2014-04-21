@@ -101,12 +101,24 @@ public class PNTransition extends PNTransitionModel {
         return this;
     }
     
+    /**
+     * 
+     * @param g
+     * @param fm
+     * @return 
+     */
     private PNTransition drawGuard(Graphics2D g, FontMetrics fm) 
     {
         g.drawString(this.guard, x-fm.stringWidth(this.guard)/2, y-this.height/2+fm.getHeight()-5);
         return this;
     }
     
+    /**
+     * 
+     * @param g
+     * @param fm
+     * @return 
+     */
     private PNTransition drawAction(Graphics2D g, FontMetrics fm) 
     {
         g.drawString(this.action, x-fm.stringWidth(this.action)/2, y+this.height/2-fm.getHeight()+12);

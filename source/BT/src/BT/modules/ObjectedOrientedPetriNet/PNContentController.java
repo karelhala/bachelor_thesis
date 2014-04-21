@@ -44,8 +44,11 @@ public class PNContentController {
     public void createComponents(DiagramPlacesManager diagramPlaces) {
         BottomLeftContentModel bottomLeftContentModel = new BottomLeftContentModel();
         BottomRightContentModel bottomRightTransition = new BottomRightContentModel();
+        BottomRightContentModel bottomRightBasic = new BottomRightContentModel();
         PetrinetGuardActionPanel guardActionPanel = new PetrinetGuardActionPanel();
         bottomRightTransition.setButtonNames("Change guard", "Change action");
+        bottomRightBasic.getTopButton().setVisible(false);
+        bottomRightBasic.getBottomButton().setVisible(false);
         bottomRightTransition.addAdditionalcontent(guardActionPanel.getContentPane());
         bottomRightTransition.hideAllitems();
         this.pnMain = new PNMainContentController(diagramPlaces);

@@ -5,43 +5,25 @@
  */
 package BT.modules.ObjectedOrientedPetriNet.places;
 
-import BT.models.CoordinateModel;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics2D;
-import java.util.ArrayList;
 
 /**
  *
  * @author Karel
  */
-public class PNPlace extends CoordinateModel {
-
-    public PNPlace() {
-        super();
-    }
-
+public class PNPlace extends PNPlaceModel {
+    
     /**
      *
      * @param x
      * @param y
      */
     public PNPlace(int x, int y) {
-        super();
-        this.x = x;
-        this.y = y;
-        this.height = 20;
-        this.width = 20;
-        this.selectedColor = Color.RED;
-        this.basicColor = Color.BLACK;
-        this.color = this.basicColor;
-        this.name = "Default";
-        this.textSize = 15;
-        this.howerColor = Color.GREEN;
-        this.inJoins = new ArrayList<>();
-        this.outJoins = new ArrayList<>();
+        super(x, y);
     }
 
     /**
@@ -58,10 +40,72 @@ public class PNPlace extends CoordinateModel {
         }
         g.setStroke((this.inJoins.isEmpty() && this.outJoins.isEmpty()) ? this.dashedStroke : new BasicStroke(2));
         g.setColor(Color.BLACK);
+        setObjectHeight(fm).setObjectWidth(fm).drawVaribales(g, fm);
         g.drawString(name, x - this.width / 2, y + this.height / 2 + fm.getHeight() + 2);
-
+        
         g.setColor(placeColor);
         g.drawOval(x - this.width / 2, y - this.height / 2, this.width, this.height);
     }
+    
+    /**
+     *
+     * @param fm
+     * @return
+     */
+    protected PNPlace setObjectHeight(FontMetrics fm)
+    {
+        int objectTall = 15;
+        if (this.variables!=null && !this.variables.isEmpty())
+        {
+            objectTall += fm.getHeight() + 5;
+        }
 
+        this.height = objectTall;
+        return this;
+    }
+    
+    /**
+     *
+     * @param fm
+     * @return
+     */
+    protected PNPlace setObjectWidth(FontMetrics fm)
+    {
+        this.width = 30;
+        if (this.variables!=null && !this.variables.isEmpty())
+        {
+            for (String oneVariable : this.variables) {
+                this.width += fm.stringWidth(oneVariable);
+            }
+            this.width += 5;
+        }
+        return this;
+    }
+    
+    /**
+     * 
+     * @param g
+     * @param fm
+     * @return 
+     */
+    protected PNPlace drawVaribales(Graphics2D g, FontMetrics fm)
+    {
+        String allVariables = "";
+        for (String oneVariable : this.variables) {
+            if (oneVariable.equals(this.variables.getFirst()))
+            {
+                allVariables += "(" + oneVariable + ", ";
+            }
+            else if (oneVariable.equals(this.variables.getLast()))
+            {
+                allVariables += oneVariable + ")";
+            }
+            else
+            {
+                allVariables += oneVariable + ", ";
+            }
+        }
+        g.drawString(allVariables, x-fm.stringWidth(allVariables)/2, this.y + fm.getHeight()/2-4);
+        return this;
+    }
 }

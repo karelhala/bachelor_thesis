@@ -6,7 +6,6 @@
 
 package BT.modules.ObjectedOrientedPetriNet.mainContent;
 
-import BT.managers.CD.Method;
 import GUI.BottomRightContentModel;
 import GUI.MethodLabel;
 import java.awt.event.ActionEvent;
