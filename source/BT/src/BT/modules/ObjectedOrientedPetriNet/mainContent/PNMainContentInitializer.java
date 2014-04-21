@@ -5,19 +5,13 @@
  */
 package BT.modules.ObjectedOrientedPetriNet.mainContent;
 
+import BT.modules.ObjectedOrientedPetriNet.mainContent.PNBottomRight.PNBottomRightController;
 import BT.interfaces.DrawingClicks;
 import BT.managers.DiagramPlacesManager;
 import BT.managers.DrawingListeners;
-import BT.managers.MainContentController;
 import BT.managers.PlaceManager;
-import BT.modules.ClassDiagram.places.CDClass;
-import BT.modules.ObjectedOrientedPetriNet.PNLeftBottomContent;
-import BT.modules.ObjectedOrientedPetriNet.PNLeftTopContent;
-import BT.modules.ObjectedOrientedPetriNet.PNMainContent;
 import BT.modules.ObjectedOrientedPetriNet.places.joinEdge.PNJoinEdgeController;
 import GUI.BasicPetrinetPanel;
-import GUI.BottomLeftContentModel;
-import GUI.BottomRightContentModel;
 import GUI.MethodLabel;
 import GUI.PetrinetGuardActionPanel;
 import java.awt.Color;
@@ -157,6 +151,9 @@ abstract public class PNMainContentInitializer extends PNMainContentModel {
     public PNMainContentInitializer initializeRightController(BasicPetrinetPanel petrinetPanel, PetrinetGuardActionPanel petrinetGuardAction)
     {
         this.bottomRightController = new PNBottomRightController(bottomRightModel, petrinetPanel, petrinetGuardAction);
+        this.bottomRightController.setSelectedClass(selectedClass);
+        this.bottomRightController.setPetrinetDrawingPane((PNDrawingPane) this.mainContent.getDrawingPane());
+        this.bottomRightController.setPetrinetPlaces(places);
         this.bottomRightController.initializeButtonListeners();
         return this;
     }

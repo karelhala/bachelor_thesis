@@ -6,6 +6,7 @@
 
 package BT.modules.ObjectedOrientedPetriNet.mainContent;
 
+import BT.modules.ObjectedOrientedPetriNet.mainContent.PNBottomRight.PNBottomRightController;
 import BT.managers.DiagramPlacesManager;
 import BT.managers.MainContentController;
 import BT.modules.ClassDiagram.places.CDClass;

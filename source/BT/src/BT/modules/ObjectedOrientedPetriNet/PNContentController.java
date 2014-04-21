@@ -50,6 +50,7 @@ public class PNContentController {
         bottomRightTransition.setButtonNames("Change guard", "Change action");
         bottomRightTransition.addAdditionalcontent(basicPetrinetPanel.getContentPane());
         bottomRightTransition.hideButtons();
+        
         this.pnMain = new PNMainContentController(diagramPlaces);
 
         PNLeftTopContent cdLeftTop = new PNLeftTopContent(pnMain);
