@@ -51,7 +51,7 @@ public class PNBottomRightController extends PNBottomRightModel{
         this.basicPetrinetPanel.getAddClassVariable().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                System.out.println("Generated method"); //To change body of generated methods, choose Tools | Templates.
+                System.out.println(); //To change body of generated methods, choose Tools | Templates.
             }
         });
         return this;

@@ -71,7 +71,6 @@ public class MyArrayList<E> extends ArrayList<E> {
      * Method for returning right muiddle element. It will return element at
      * position arrayList.size()/2 if arrayList is not empty. It will return
      * this elemnt only if size of arrayList is bigger than 1
-     *
      * @return element at right middle position
      */
     public E getRightMiddle() {
@@ -81,5 +80,20 @@ public class MyArrayList<E> extends ArrayList<E> {
             }
         }
         return null;
+    }
+    
+    /**
+     * Add unique elemnt to arrayList.
+     * Check if array list does not contain insertElement and if not, insert it.
+     * @param insertElement element that is being inserted.
+     * @return this object.
+     */
+    public MyArrayList<E> addUnique(E insertElement)
+    {
+        if (!this.contains(insertElement))
+        {
+            this.add(insertElement);
+        }
+        return this;
     }
 }

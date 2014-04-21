@@ -9,8 +9,8 @@ package BT.managers.CD;
 import BT.BT;
 import BT.BT.AttributeType;
 import BT.managers.PlaceManager;
+import BT.models.MyArrayList;
 import BT.modules.ClassDiagram.places.CDClass;
-import java.util.ArrayList;
 
 /**
  * Model for method class.
@@ -21,12 +21,12 @@ public class MethodModel extends Attribute{
     /**
      * 
      */
-    protected final ArrayList<Attribute> classAttributes;
+    protected MyArrayList<Attribute> classAttributes;
     
     /**
      * 
      */
-    protected final ArrayList<Attribute> classMethods;
+    protected MyArrayList<Attribute> classMethods;
     
     /**
      * 
@@ -47,10 +47,10 @@ public class MethodModel extends Attribute{
      */
     public MethodModel(AttributeType visibility, String name, String type, CDClass assignedClass) {
         super(visibility, name, type);
-        this.classAttributes = new ArrayList<>();
+        this.classAttributes = new MyArrayList<>();
         this.petriNet = new PlaceManager();
         this.assignedClass = assignedClass;
-        this.classMethods = new ArrayList<>();
+        this.classMethods = new MyArrayList<>();
     }
     
     /**
@@ -68,7 +68,7 @@ public class MethodModel extends Attribute{
      * 
      * @return 
      */
-    public ArrayList<Attribute> getClassAttributes() {
+    public MyArrayList<Attribute> getClassAttributes() {
         return classAttributes;
     }
     
@@ -84,7 +84,7 @@ public class MethodModel extends Attribute{
      * 
      * @return 
      */
-    public ArrayList<Attribute> getClassMethods() {
+    public MyArrayList<Attribute> getClassMethods() {
         return classMethods;
     }
 

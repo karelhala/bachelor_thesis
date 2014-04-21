@@ -46,20 +46,7 @@ public class Method extends MethodModel{
      */
     public Method loadClassMethods()
     {
-        this.classMethods.addAll(assignedClass.getMethods());
-
-        if (assignedClass.hasParent())   
-        {
-            for(CDClass newClass = assignedClass.getParent();(newClass != null && !newClass.equals(assignedClass)); newClass = newClass.getParent())
-            {
-                for (Attribute method : newClass.getMethods()) {
-                    if (method.getVisibility() != AttributeType.PRIVATE)
-                    {
-                        addUniqueMethod(method);
-                    }
-                }
-            }
-        }
+        this.classMethods = this.assignedClass.loadClassMethods();
         return this;
     }
     
@@ -69,44 +56,7 @@ public class Method extends MethodModel{
      */
     public Method loadClassAttributes()
     {
-        this.classAttributes.addAll(assignedClass.getVariables());
-        
-        if (assignedClass.hasParent())   
-        {
-            for(CDClass newClass = assignedClass.getParent();(newClass != null && !newClass.equals(assignedClass)); newClass = newClass.getParent())
-            {
-                for (Attribute attribute : newClass.getVariables()) {
-                    if (attribute.getVisibility() != AttributeType.PRIVATE)
-                    {
-                        addUniqueAttribute(attribute);
-                    }
-                }
-            }
-        }
+        this.classAttributes = this.assignedClass.loadClassAttributes();
         return this;
-    }
-    
-    /**
-     * Add only unique methods to array list of methods.
-     * @param method 
-     */
-    private void addUniqueMethod(Attribute method)
-    {
-        if (!this.classMethods.contains(method))
-        {
-            this.classMethods.add(method);
-        }
-    }
-    
-    /**
-     * Add unique attribute to array list of attributes.
-     * @param variable 
-     */
-    public void addUniqueAttribute(Attribute variable)
-    {
-        if (!this.classAttributes.contains(variable))
-        {
-            this.classAttributes.add(variable);
-        }
     }
 }
