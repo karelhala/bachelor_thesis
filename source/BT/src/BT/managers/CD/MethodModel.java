@@ -19,31 +19,31 @@ import BT.modules.ClassDiagram.places.CDClass;
  */
 public class MethodModel extends Attribute{
     /**
-     * 
+     * Attributes loaded from class.
      */
     protected MyArrayList<Attribute> classAttributes;
     
     /**
-     * 
+     * Methods loaded from class.
      */
     protected MyArrayList<Attribute> classMethods;
     
     /**
-     * 
+     * CDClass that has this method.
      */
     protected final CDClass assignedClass;
     
     /**
-     * 
+     * PlaceManager for drawing places of petrinet for this method.
      */
     protected final PlaceManager petriNet;
 
     /**
-     *
-     * @param visibility
-     * @param name
-     * @param type
-     * @param assignedClass
+     * Contructor for creating basic method model.
+     * @param visibility AttributeType public, private, protected.
+     * @param name String name of this method.
+     * @param type String type of this method.
+     * @param assignedClass CDClass assigned class.
      */
     public MethodModel(AttributeType visibility, String name, String type, CDClass assignedClass) {
         super(visibility, name, type);
@@ -54,10 +54,10 @@ public class MethodModel extends Attribute{
     }
     
     /**
-     * 
-     * @param name
-     * @param type
-     * @param assignedClass 
+     * Contructor for creating private method.
+     * @param name String name of this method.
+     * @param type String type of this method.
+     * @param assignedClass CDClass assigned class.
      */
     public MethodModel(String name, String type, CDClass assignedClass)
     {
@@ -65,32 +65,32 @@ public class MethodModel extends Attribute{
     }
     
     /**
-     * 
-     * @return 
+     * Getter for fetching classAttributes as arrayList.
+     * @return MyArrayList<Attribute>.
      */
     public MyArrayList<Attribute> getClassAttributes() {
         return classAttributes;
     }
     
     /**
-     * 
-     * @return 
+     * Getter for fetching method's petrinet manager.
+     * @return PlaceManager.
      */
     public PlaceManager getPetriNet() {
         return petriNet;
     }
 
     /**
-     * 
-     * @return 
+     * Getter for fetching classMethods as arrayList.
+     * @return MyArrayList<Attribute>.
      */
     public MyArrayList<Attribute> getClassMethods() {
         return classMethods;
     }
 
     /**
-     * 
-     * @return 
+     * Getter for fetching assigned class to this method.
+     * @return CDClass.
      */
     public CDClass getAssignedClass() {
         return assignedClass;
