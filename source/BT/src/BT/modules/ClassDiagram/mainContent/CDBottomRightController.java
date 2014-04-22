@@ -137,7 +137,7 @@ abstract public class CDBottomRightController extends CDMainContentModel {
             }
             if (selectedAtttributeType != null && !"".equals(this.attributesPanel.getVariableName().getText()))
             {
-                if (!"".equals((String) this.attributesPanel.getAttributeTypeVariable().getSelectedItem()))
+                if (this.attributesPanel.getAttributeTypeVariable().getSelectedItem() != null)
                 {
                     Attribute newAttribute = new Attribute(
                             selectedAtttributeType,
@@ -179,7 +179,7 @@ abstract public class CDBottomRightController extends CDMainContentModel {
             if (selectedAtttributeType != null && !"".equals(this.attributesPanel.getMethodName().getText()))
             {
                 String selectedType = (String) this.attributesPanel.getAttributeTypeMethod().getSelectedItem();
-                selectedType = (!"".equals(selectedType))?"void":selectedType;
+                selectedType = (selectedType == null)?"void":selectedType;
                 Method newMethod = new Method(
                         selectedAtttributeType, 
                         this.attributesPanel.getMethodName().getText()+"()", 
