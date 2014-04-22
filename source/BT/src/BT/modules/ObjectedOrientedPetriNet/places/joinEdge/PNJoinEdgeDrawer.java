@@ -7,6 +7,8 @@ package BT.modules.ObjectedOrientedPetriNet.places.joinEdge;
 
 import BT.managers.JoinEdgeDrawer;
 import BT.models.LineModel;
+import BT.modules.ObjectedOrientedPetriNet.places.PNPlace;
+import BT.modules.ObjectedOrientedPetriNet.places.PNTransition;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -48,8 +50,14 @@ public class PNJoinEdgeDrawer extends JoinEdgeDrawer {
                 g.setStroke(new BasicStroke(2));
                 drawbreakedLine(g, this.startPoint, this.endPoint, pnJoin.getBreakPoints());
                 drawTriangle(g, this.endPoint, arrowStartPoint, Color.BLACK);
-                drawString(g, pnJoin.getName());
-//                g.drawString(pnJoin.getName(), this.textStartPoint.getX(), this., this.textEndPoint);
+                if (pnJoin.getFirstObject() instanceof PNTransition)
+                {
+                    drawString(g, ((PNTransition)pnJoin.getFirstObject()).getActionVariable());
+                }
+                else
+                {
+                    drawString(g, ((PNPlace)pnJoin.getFirstObject()).getVariablesAsString());
+                }
             }
 
         }

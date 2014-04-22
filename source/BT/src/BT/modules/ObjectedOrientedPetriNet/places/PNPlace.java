@@ -90,6 +90,17 @@ public class PNPlace extends PNPlaceModel {
      */
     protected PNPlace drawVaribales(Graphics2D g, FontMetrics fm)
     {
+        String allVariables = getVariablesAsString();
+        g.drawString(allVariables, x-fm.stringWidth(allVariables)/2, this.y + fm.getHeight()/2-4);
+        return this;
+    }
+    
+    /**
+     * Get all variables as string joined with ",".
+     * @return allVariables String.
+     */
+    public String getVariablesAsString()
+    {
         String allVariables = "";
         for (String oneVariable : this.variables) {
             if (oneVariable.equals(this.variables.getFirst()))
@@ -108,7 +119,6 @@ public class PNPlace extends PNPlaceModel {
                 allVariables += ", ";
             }
         }
-        g.drawString(allVariables, x-fm.stringWidth(allVariables)/2, this.y + fm.getHeight()/2-4);
-        return this;
+        return allVariables;
     }
 }

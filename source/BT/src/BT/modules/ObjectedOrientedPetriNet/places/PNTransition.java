@@ -82,6 +82,32 @@ public class PNTransition extends PNTransitionModel {
     }
     
     /**
+     * Resize transition based on size of strings of guard and action.
+     * First resize width by stringwidth of action, then compare stringwidth of guard and if it is higher, resize the 
+     * whole transition.
+     * @param fm FontMetrics of graphics2D.
+     * @return this object.
+     */
+    protected PNTransition setObjectWidth(FontMetrics fm)
+    {
+        this.width = 10;
+        if (this.action!=null && !this.action.equals(""))
+        {
+            this.width += fm.stringWidth(this.action);
+            this.width += 5;
+        }
+        if (this.guard!=null && !this.action.equals(""))
+        {
+            if (fm.stringWidth(this.guard)>this.width)
+            {
+                this.width += fm.stringWidth(this.guard);
+                this.width += 5;
+            }
+        }
+        return this;
+    }
+    
+    /**
      * Add string heights so transition can be taller.
      * @param fm 
      */
@@ -123,5 +149,14 @@ public class PNTransition extends PNTransitionModel {
     {
         g.drawString(this.action, x-fm.stringWidth(this.action)/2, y+this.height/2-fm.getHeight()+12);
         return this;
+    }
+    
+    /**
+     * Split action part of transition by := and first part (which is variable) return.
+     * @return variable of action.
+     */
+    public String getActionVariable()
+    {
+        return (this.action.split(":="))[0];
     }
 }

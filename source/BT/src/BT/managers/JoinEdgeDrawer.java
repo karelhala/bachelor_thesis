@@ -141,7 +141,6 @@ public class JoinEdgeDrawer {
     /**
      *
      * @param g2D
-
      * @param name
      */
     protected void drawString(Graphics2D g2D, String name) {
