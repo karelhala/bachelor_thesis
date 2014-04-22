@@ -65,6 +65,7 @@ public class MyMenuBar extends MyMenyBarModel{
 	this.closeFile = new JMenuItem("Close File");
         this.saveAction = new JMenuItem("Save File");
         this.saveAsAction = new JMenuItem("Save As...");
+        this.exit = new JMenuItem("Exit");
 	
 	this.jMenu1.add(this.newFile);
         this.jMenu1.addSeparator();
@@ -73,6 +74,8 @@ public class MyMenuBar extends MyMenyBarModel{
         this.jMenu1.addSeparator();
 	this.jMenu1.add(this.openFile);
 	this.jMenu1.add(this.closeFile);
+        this.jMenu1.addSeparator();
+        this.jMenu1.add(this.exit);
     }
     
     /**
@@ -207,5 +210,14 @@ public class MyMenuBar extends MyMenyBarModel{
     public void addActionListenerToSaveAs(ActionListener saveAsAction)
     {
         this.saveAsAction.addActionListener(saveAsAction);
+    }
+    
+    /**
+     * Method for setting listener to exit application.
+     * @param exitApplication listener.
+     */
+    public void addActionListenerToExit(ActionListener exitApplication)
+    {
+        this.exit.addActionListener(exitApplication);
     }
 }

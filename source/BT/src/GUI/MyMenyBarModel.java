@@ -28,6 +28,7 @@ public class MyMenyBarModel {
     protected JMenuItem frontAction;
     protected JMenuItem saveAction;
     protected JMenuItem saveAsAction;
+    protected JMenuItem exit;
     protected JMenuBar jMenuBar1;
 
     public JMenu getjMenu1() {
