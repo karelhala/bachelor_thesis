@@ -7,7 +7,7 @@
 package BT.managers;
 
 /**
- *
+ * Exception thrown when wrong type of attribute is provided.
  * @author Karel
  */
 public class ClassTypeException extends Exception {
