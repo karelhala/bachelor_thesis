@@ -19,25 +19,34 @@ import BT.modules.ClassDiagram.places.CDClass;
 public class Method extends MethodModel{
 
     /**
-     *
-     * @param visibility
-     * @param name
-     * @param type
-     * @param assignedClass
+     * Contructor for creating new method with visibility, name, type and assignedClass.
+     * @param visibility AttributeType public, private or protected.
+     * @param name String with method name.
+     * @param type String with type of class.
+     * @param assignedClass CDCLass clsass that has this method.
      */
     public Method(AttributeType visibility, String name, String type, CDClass assignedClass) {
         super(visibility, name, type, assignedClass);
     }
     
+    /**
+     * Constructor for creating private method.
+     * @param name String with method name.
+     * @param type String with type of class.
+     * @param assignedClass CDCLass clsass that has this method.
+     */
     public Method(String name, String type, CDClass assignedClass)
     {
         this(AttributeType.PRIVATE, name, type, assignedClass);
     }
     
-    public Method removeAttribute(Attribute selectedAttribute)
+    /**
+     * Remove class attribute (class variable).
+     * @param selectedAttribute Attribute that you want to remove.
+     */
+    public void removeAttribute(Attribute selectedAttribute)
     {
         this.classAttributes.remove(selectedAttribute);
-        return this;
     }
     
     /**
