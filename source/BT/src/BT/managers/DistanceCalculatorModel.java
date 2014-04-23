@@ -77,6 +77,10 @@ public class DistanceCalculatorModel {
         }
     }
 
+    /**
+     * Private class that contains line segment points.
+     * These points are stored as DoublePoints.
+     */
     protected class LineSegment {
 
         public DoublePoint pointA;
