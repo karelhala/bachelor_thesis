@@ -6,6 +6,7 @@
 package BT.models;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 
 /**
@@ -93,6 +94,19 @@ public class MyArrayList<E> extends ArrayList<E> {
         if (!this.contains(insertElement))
         {
             this.add(insertElement);
+        }
+        return this;
+    }
+    
+    /**
+     * Add elemnts to arrayList using addUnique.
+     * @param collection items to be inserted.
+     * @return this object as myArrayList<E>.
+     */
+    public MyArrayList<E> addAllUnique(Collection<E> collection)
+    {
+        for (E e : collection) {
+            this.addUnique(e);
         }
         return this;
     }

@@ -130,11 +130,13 @@ public class PNMainContentController extends PNMainContentInitializer implements
             if (clickedObject instanceof PNTransition)
             {
                 this.bottomRightController.setSelectedTransition((PNTransition) clickedObject);
+                this.bottomRightController.changeGuardAndAction();
                 showTransitionPanel();
             }
             else
             {
                 this.bottomRightController.setSelectedTransition(null);
+                this.bottomRightController.changeGuardAndAction();
                 showBasicPanel();
             }
         }

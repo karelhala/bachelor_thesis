@@ -50,14 +50,14 @@ public class PNTransition extends PNTransitionModel {
         g.setStroke((this.inJoins.isEmpty() && this.outJoins.isEmpty()) ? this.dashedStroke : new BasicStroke(2));
         g.setColor(Color.BLACK);
         g.drawString(name, x - this.width / 2, y + this.height / 2 + fm.getHeight() + 2);
-
-        g.setColor(placeColor);
-        g.drawRect(x - this.width / 2, y - this.height / 2, this.width, this.height);
         
         setObjectHeight(fm);
+        setObjectWidth(fm);
         drawLine(g, fm);
         drawGuard(g, fm);
         drawAction(g, fm);
+        g.setColor(placeColor);
+        g.drawRect(x - this.width / 2, y - this.height / 2, this.width, this.height);
     }
     
     /**
@@ -96,7 +96,7 @@ public class PNTransition extends PNTransitionModel {
             this.width += fm.stringWidth(this.action);
             this.width += 5;
         }
-        if (this.guard!=null && !this.action.equals(""))
+        if (this.guard!=null && !this.guard.equals(""))
         {
             if (fm.stringWidth(this.guard)>this.width)
             {
