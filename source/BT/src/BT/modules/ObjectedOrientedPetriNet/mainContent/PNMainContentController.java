@@ -58,7 +58,7 @@ public class PNMainContentController extends PNMainContentInitializer implements
      */
     @Override
     public void drawingPaneDoubleCliked(CoordinateModel pressedObject) {
-        if (pressedObject != null) {
+        if (pressedObject != null && !(pressedObject instanceof LineModel)) {
             String name = (String) JOptionPane.showInputDialog("Enter name of the object", pressedObject.getName());
             if (name != null && !"".equals(name)) {
                 pressedObject.setName(name);
@@ -82,6 +82,8 @@ public class PNMainContentController extends PNMainContentInitializer implements
         } else if (selectedItemButton != null && "TRANSITION".equals(selectedItemButton.getName())) {
             this.places.setAllObjectDiselected();
             PNTransition newTrasition = new PNTransition(evt.getX(), evt.getY());
+            newTrasition.setGuard("true");
+            newTrasition.setAction("x := y+p");
             this.bottomRightModel.showAllItems();
             this.places.addObject(newTrasition);
         } else {
@@ -127,10 +129,12 @@ public class PNMainContentController extends PNMainContentInitializer implements
             clickedObject.setSelected(true);
             if (clickedObject instanceof PNTransition)
             {
+                this.bottomRightController.setSelectedTransition((PNTransition) clickedObject);
                 showTransitionPanel();
             }
             else
             {
+                this.bottomRightController.setSelectedTransition(null);
                 showBasicPanel();
             }
         }
@@ -190,6 +194,10 @@ public class PNMainContentController extends PNMainContentInitializer implements
             joinEdge.setFirstObject(clickedObject);
         } else if (joinEdge.getSecondObject() == null && !joinEdge.getFirstObject().getClass().equals(clickedObject.getClass())) {
             joinEdge.setSecondObject(clickedObject);
+            if (joinEdge.getSecondObject() instanceof PNPlace)
+            {
+                ((PNPlace) joinEdge.getSecondObject()).addVariable(((PNTransition)joinEdge.getFirstObject()).getActionVariable());
+            }
         }
         return joinEdge;
     }

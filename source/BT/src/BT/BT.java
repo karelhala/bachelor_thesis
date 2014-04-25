@@ -24,7 +24,7 @@ public class BT {
      */
     public static enum UCLineType {
 
-        ASSOCIATION, INCLUDE, EXTENDS, GENERALIZATION
+        ASSOCIATION, INCLUDE, EXTENDS, GENERALIZATION, USERINPUT
     };
 
     /**
@@ -40,7 +40,7 @@ public class BT {
      */
     public static enum CDLineType {
 
-        ASSOCIATION, AGGREGATION, COMPOSITION, GENERALIZATION, REALIZATION
+        ASSOCIATION, AGGREGATION, COMPOSITION, GENERALIZATION, REALIZATION, USERINPUT
     };
 
     /**
@@ -89,7 +89,7 @@ public class BT {
     public static void main(String[] args) {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Metal".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }

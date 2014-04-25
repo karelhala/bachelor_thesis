@@ -74,6 +74,11 @@ public class CDJoinEdgeDrawer extends JoinEdgeDrawer {
                 drawbreakedLine(g, this.startPoint, this.endPoint, cdJoin.getBreakPoints());
                 drawArrow(g, this.endPoint, arrowStartPoint);
                 drawString(g, "realization");
+            } else if (cdJoin.getJoinEdgeType() == BT.CDLineType.USERINPUT) {
+                g.setStroke(dashed);
+                drawbreakedLine(g, this.startPoint, this.endPoint, cdJoin.getBreakPoints());
+                drawArrow(g, this.endPoint, arrowStartPoint);
+                drawString(g, "please specify");
             }
         }
     }

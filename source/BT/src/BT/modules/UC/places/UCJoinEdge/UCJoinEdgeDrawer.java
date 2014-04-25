@@ -65,6 +65,12 @@ public class UCJoinEdgeDrawer extends JoinEdgeDrawer {
                 drawbreakedLine(g, this.startPoint, this.endPoint, UCjoin.getBreakPoints());
                 drawTriangle(g, this.endPoint, arrowStartPoint, Color.WHITE);
             }
+            else if (UCjoin.getJoinEdgeType() == BT.UCLineType.USERINPUT) {
+                g.setStroke(dashed);
+                drawbreakedLine(g, this.startPoint, this.endPoint, UCjoin.getBreakPoints());
+                drawArrow(g, this.endPoint, arrowStartPoint);
+                drawString(g, "please specify");
+            }
         }
     }
 }

@@ -47,7 +47,7 @@ public class PNPlaceModel extends CoordinateModel{
      */
     public void addVariable(String variableName)
     {
-        this.variables.add(variableName);
+        this.variables.addUnique(variableName);
     }
     
     /**

@@ -20,6 +20,7 @@ import GUI.ClassDiagramAttributesPanel;
 import java.awt.BorderLayout;
 import java.awt.event.MouseEvent;
 import javax.swing.ButtonGroup;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
@@ -158,7 +159,7 @@ public class CDMainContentController extends CDBottomRightController implements 
      */
     @Override
     public void drawingPaneDoubleCliked(CoordinateModel pressedObject) {
-        if (pressedObject != null)
+        if (pressedObject != null && !(pressedObject instanceof LineModel))
         {
             JTextField nameInput = new JTextField();
             JPanel dialogPanel = new JPanel(new BorderLayout());
@@ -188,6 +189,21 @@ public class CDMainContentController extends CDBottomRightController implements 
                 ((CDClass) pressedObject).setTypeOfClass((actor.isSelected() == true) ? ClassType.ACTOR : (activity.isSelected() == true)?ClassType.ACTIVITY:ClassType.NONE);
                 this.useCaseConnector.setSelectedModel(pressedObject);
                 this.useCaseConnector.createNewUseCaseObject(nameInput.getText());
+            }
+        } else if (pressedObject instanceof CDJoinEdgeController)
+        {
+            JPanel dialogPanel = new JPanel(new BorderLayout());
+            CDJoinEdgeController selectedLine = (CDJoinEdgeController) pressedObject;
+            if (selectedLine.getJoinEdgeType() == CDLineType.USERINPUT)
+            {
+                String[] actorClass = { CDLineType.AGGREGATION.name(), CDLineType.COMPOSITION.name()};
+                JComboBox selectType = new JComboBox(actorClass);
+                dialogPanel.add(selectType);
+                int result = JOptionPane.showConfirmDialog(null, dialogPanel,
+                    "Please select type of this line", JOptionPane.OK_CANCEL_OPTION);
+                if (result == JOptionPane.OK_OPTION) {
+                    selectedLine.setJoinEdgeType((selectType.getSelectedItem().equals(CDLineType.COMPOSITION.name()))?CDLineType.COMPOSITION:CDLineType.AGGREGATION);
+                }
             }
         }
     }
@@ -284,7 +300,9 @@ public class CDMainContentController extends CDBottomRightController implements 
         else
         {
             for (CDLineType lineType : CDLineType.values()) {
-                this.LeftBottomContent.getButtonWithName(lineType.name()).setEnabled(true);
+                if (this.LeftBottomContent.getButtonWithName(lineType.name()) != null) {
+                    this.LeftBottomContent.getButtonWithName(lineType.name()).setEnabled(true);
+                }
             }
         }
     }

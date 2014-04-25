@@ -137,11 +137,11 @@ public class CDUseCaseConnector {
         }
         else if (cdJoin.getJoinEdgeType() == BT.CDLineType.AGGREGATION)
         {
-            System.out.println("aggregation");
+            newUseCaseLine.setJoinEdgeType(BT.UCLineType.USERINPUT);
         }
         else if (cdJoin.getJoinEdgeType() == BT.CDLineType.COMPOSITION)
         {
-            System.out.println("composition");
+            newUseCaseLine.setJoinEdgeType(BT.UCLineType.USERINPUT);
         }
         if (this.newline.getFirstObject().getAssignedObject() != null && this.newline.getSecondObject().getAssignedObject() != null)
         {

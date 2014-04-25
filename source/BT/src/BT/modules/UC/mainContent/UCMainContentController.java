@@ -9,6 +9,8 @@ import BT.managers.ObjectChecker;
 import BT.interfaces.DrawingClicks;
 import BT.managers.DiagramPlacesManager;
 import BT.models.CoordinateModel;
+import BT.models.LineModel;
+import BT.modules.ClassDiagram.places.joinEdge.CDJoinEdgeController;
 import BT.modules.UC.places.UCActor;
 import BT.modules.UC.places.UCJoinEdge.UCJoinEdgeController;
 import BT.modules.UC.places.UCUseCase;
@@ -17,6 +19,7 @@ import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -181,17 +184,35 @@ public class UCMainContentController extends UCMainContentModel implements Drawi
      */
     @Override
     public void drawingPaneDoubleCliked(CoordinateModel pressedObject) {
-        JPanel dialogPanel = new JPanel(new BorderLayout());
-        JTextField nameInput = new JTextField();
-        nameInput.setText(pressedObject.getName());
-        dialogPanel.add(nameInput, BorderLayout.PAGE_START);
-        this.classDiagramConnector.setSelectedObject(pressedObject);
-        this.classDiagramConnector.addButtonsToDialog(dialogPanel);
-        int result = (int) JOptionPane.showConfirmDialog(null, dialogPanel, "Enter name of the object", JOptionPane.OK_CANCEL_OPTION);
-        if (result == JOptionPane.OK_OPTION)
+        if (!(pressedObject instanceof LineModel))
         {
-            pressedObject.setName(nameInput.getText());
-            pressedObject.getAssignedObject().setName(nameInput.getText());
+            JPanel dialogPanel = new JPanel(new BorderLayout());
+            JTextField nameInput = new JTextField();
+            nameInput.setText(pressedObject.getName());
+            dialogPanel.add(nameInput, BorderLayout.PAGE_START);
+            this.classDiagramConnector.setSelectedObject(pressedObject);
+            this.classDiagramConnector.addButtonsToDialog(dialogPanel);
+            int result = (int) JOptionPane.showConfirmDialog(null, dialogPanel, "Enter name of the object", JOptionPane.OK_CANCEL_OPTION);
+            if (result == JOptionPane.OK_OPTION)
+            {
+                pressedObject.setName(nameInput.getText());
+                pressedObject.getAssignedObject().setName(nameInput.getText());
+            }
+        }else if (pressedObject instanceof UCJoinEdgeController)
+        {
+            JPanel dialogPanel = new JPanel(new BorderLayout());
+            UCJoinEdgeController selectedLine = (UCJoinEdgeController) pressedObject;
+            if (selectedLine.getJoinEdgeType() == UCLineType.USERINPUT)
+            {
+                String[] actorClass = { UCLineType.EXTENDS.name(), UCLineType.INCLUDE.name()};
+                JComboBox selectType = new JComboBox(actorClass);
+                dialogPanel.add(selectType);
+                int result = JOptionPane.showConfirmDialog(null, dialogPanel,
+                    "Please select type of this line", JOptionPane.OK_CANCEL_OPTION);
+                if (result == JOptionPane.OK_OPTION) {
+                    selectedLine.setJoinEdgeType((selectType.getSelectedItem().equals(UCLineType.EXTENDS.name()))?UCLineType.EXTENDS:UCLineType.INCLUDE);
+                }
+            }
         }
         ((UCDrawingPane) this.mainContent.getDrawingPane()).getDrawing().repaint();
     }

@@ -9,6 +9,7 @@ package BT.modules.ObjectedOrientedPetriNet.mainContent.PNBottomRight;
 import BT.managers.PlaceManager;
 import BT.modules.ClassDiagram.places.CDClass;
 import BT.modules.ObjectedOrientedPetriNet.mainContent.PNDrawingPane;
+import BT.modules.ObjectedOrientedPetriNet.places.PNTransition;
 import GUI.BasicPetrinetPanel;
 import GUI.BottomRightContentModel;
 import GUI.MethodLabel;
@@ -53,6 +54,11 @@ public class PNBottomRightModel {
      * 
      */
     protected CDClass selectedClass;
+    
+    /**
+     * 
+     */
+    protected PNTransition selectedTransition;
     
     /**
      * 
@@ -128,5 +134,13 @@ public class PNBottomRightModel {
 
     public void setSelectedClass(CDClass selectedClass) {
         this.selectedClass = selectedClass;
+    }
+
+    public PNTransition getSelectedTransition() {
+        return selectedTransition;
+    }
+
+    public void setSelectedTransition(PNTransition selectedTransition) {
+        this.selectedTransition = selectedTransition;
     }
 }

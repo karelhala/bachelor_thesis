@@ -81,11 +81,11 @@ public class UCClassDiagramConnector {
         }
         else if (useCaseLineType == BT.UCLineType.EXTENDS)
         {
-            System.out.println("extends");
+            newClassJoin.setJoinEdgeType(BT.CDLineType.USERINPUT);
         }
         else if (useCaseLineType == BT.UCLineType.INCLUDE)
         {
-            System.out.println("include");
+            newClassJoin.setJoinEdgeType(BT.CDLineType.USERINPUT);
         }
         this.newLine.getFirstObject().getAssignedObject().addOutJoins(newClassJoin);
         this.newLine.getSecondObject().getAssignedObject().addInJoin(newClassJoin);

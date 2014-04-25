@@ -125,4 +125,28 @@ public class CDJoinEdgeController extends LineModel {
         }
         return false;
     }
+    
+    /**
+     * Get first object as CDClass if it is instance of CDClass.
+     * @return (CDClass) firstObject
+     */
+    public CDClass getFirstClass()
+    {
+        if (this.firstObject instanceof CDClass) {
+            return (CDClass) this.firstObject;
+        }
+        return null;
+    }
+    
+    /**
+     * Get second object object as CDClass if it is instance of CDClass.
+     * @return (CDClass) secondObject
+     */
+    public CDClass getSecondClass()
+    {
+        if (this.secondObject instanceof CDClass) {
+            return (CDClass) this.secondObject;
+        }
+        return null;
+    }
 }

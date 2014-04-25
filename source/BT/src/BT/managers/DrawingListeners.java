@@ -119,7 +119,7 @@ public class DrawingListeners extends MouseInputAdapter {
             ObjectChecker objectChecker = new ObjectChecker(this.mainContent.getPlaces());
             CoordinateModel clickedObject = objectChecker.getObjectUnderMouse(e.getPoint());
             if (e.getClickCount() % 2 == 0) {
-                if (clickedObject != null && !(clickedObject instanceof LineModel)) {
+                if (clickedObject != null) {
                     this.mainContent.drawingPaneDoubleCliked(clickedObject);
                 }
             } else {
