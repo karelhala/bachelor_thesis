@@ -168,6 +168,7 @@ abstract public class PNMainContentInitializer extends PNMainContentModel {
         this.bottomRightController.setSelectedClass(selectedClass);
         this.bottomRightController.setPetrinetDrawingPane((PNDrawingPane) this.mainContent.getDrawingPane());
         this.bottomRightController.setPetrinetPlaces(this.places);
+        this.bottomRightController.setClassManager(this.diagramPlaces.getCdPlaces());
         this.bottomRightController.initializeButtonListeners();
         return this;
     }

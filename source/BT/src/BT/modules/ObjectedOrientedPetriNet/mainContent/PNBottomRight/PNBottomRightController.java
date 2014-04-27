@@ -6,15 +6,21 @@
 
 package BT.modules.ObjectedOrientedPetriNet.mainContent.PNBottomRight;
 
+import BT.BT;
+import BT.BT.ClassType;
 import static BT.BT.elementWithLabelAbove;
 import BT.managers.CD.Attribute;
+import BT.models.ActionModel;
+import BT.models.CoordinateModel;
 import BT.models.LineModel;
 import BT.models.MyArrayList;
+import BT.modules.ClassDiagram.places.CDClass;
 import BT.modules.ObjectedOrientedPetriNet.places.PNPlace;
 import GUI.BasicPetrinetPanel;
 import GUI.BottomRightContentModel;
 import GUI.PetrinetGuardActionPanel;
 import java.awt.BorderLayout;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -85,7 +91,10 @@ public class PNBottomRightController extends PNBottomRightModel{
         bottomRightModel.getBottomButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                System.out.println("Generated method"); //To change body of generated methods, choose Tools | Templates.
+                if (selectedTransition != null)
+                {
+                    createActionPanel(selectedTransition.getAction());
+                }
             }
         });
         
@@ -223,5 +232,32 @@ public class PNBottomRightController extends PNBottomRightModel{
             return joinVariablesWithOperator(leftVariable, operator, rightVariable);
         }
         return guardString + " " + glue + " " + joinVariablesWithOperator(leftVariable, operator, rightVariable);
+    }
+    
+    public void createActionPanel(ActionModel oldAction)
+    {
+        JPanel dialogPanel = new JPanel(new BorderLayout());
+        JPanel contentPanel = new JPanel(new BorderLayout());
+        JTextField variableField = new JTextField(oldAction.getVariable());
+        JComboBox classBox = new JComboBox();
+        classBox.setEditable(true);
+        JComboBox actionBox = new JComboBox();
+        actionBox.setEditable(true);
+        for (CoordinateModel oneobject : this.classManager.getObjects()) {
+            if (oneobject instanceof CDClass && ((CDClass)oneobject).getTypeOfClass() != ClassType.INTERFACE)
+            {
+                classBox.addItem(oneobject);
+            }
+        }
+        contentPanel.add(elementWithLabelAbove(variableField, new JLabel("variable   "), Font.ITALIC), BorderLayout.LINE_START);
+        contentPanel.add(elementWithLabelAbove(classBox, new JLabel("class"), Font.ITALIC), BorderLayout.CENTER);
+        contentPanel.add(elementWithLabelAbove(actionBox, new JLabel("action*"),Font.BOLD), BorderLayout.LINE_END);
+        dialogPanel.add(contentPanel, BorderLayout.PAGE_END);
+         int result = JOptionPane.showConfirmDialog(null, dialogPanel,
+                    "Please Enter Action for this transition.", JOptionPane.OK_CANCEL_OPTION);
+        if (result == JOptionPane.OK_OPTION)
+        {
+            System.out.println("aaa");
+        }
     }
 }

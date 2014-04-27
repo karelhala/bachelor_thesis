@@ -19,7 +19,7 @@ import GUI.PetrinetGuardActionPanel;
  *
  * @author Karel Hala
  */
-public class PNBottomRightModel {
+abstract public class PNBottomRightModel {
     /**
      * 
      */
@@ -59,6 +59,11 @@ public class PNBottomRightModel {
      * 
      */
     protected PNTransition selectedTransition;
+    
+    /**
+     * Manager for all classes for open file.
+     */
+    protected PlaceManager classManager;
     
     /**
      * 
@@ -142,5 +147,13 @@ public class PNBottomRightModel {
 
     public void setSelectedTransition(PNTransition selectedTransition) {
         this.selectedTransition = selectedTransition;
+    }
+
+    public PlaceManager getClassManager() {
+        return classManager;
+    }
+
+    public void setClassManager(PlaceManager classManager) {
+        this.classManager = classManager;
     }
 }

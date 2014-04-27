@@ -13,3 +13,5 @@ latex/*.bbl
 latex/*.blg
 latex/*.log
 latex/*.toc
+/source/BT/nbdist/
+/buildSources/*

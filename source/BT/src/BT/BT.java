@@ -6,11 +6,13 @@ package BT;
 
 import BT.modules.mainInterface.MainInterfaceControler;
 import java.awt.BorderLayout;
+import java.awt.Font;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
 /**
@@ -108,13 +110,28 @@ public class BT {
     
     /**
      * Method that creates Jpanel containing Jcomponent and label for this component.
-     * @param element to be inserted.
+     * @param element to be inser
      * @param label Jlabel, that describes it.
      * @return JPanel
      */
     public static JPanel elementWithLabelAbove(JComponent element, JLabel label)
     {
+        return elementWithLabelAbove(element, label, Font.PLAIN);
+    }
+    
+    /**
+     * Method that creates Jpanel containing Jcomponent and label for this component with different font for label.
+     * @param element to be inser
+     * @param label Jlabel, that describes it.
+     * @param newFontStyle
+     * @return JPanel
+     */
+    public static JPanel elementWithLabelAbove(JComponent element, JLabel label, int newFontStyle)
+    {
+        Font oldLabelFont = UIManager.getFont("Label.font");
         JPanel newPanel = new JPanel(new BorderLayout());
+        label.setLabelFor(element);
+        label.setFont(new Font(oldLabelFont.getFamily(), newFontStyle, oldLabelFont.getSize()));
         newPanel.add(label, BorderLayout.NORTH);
         newPanel.add(element, BorderLayout.CENTER);
         return newPanel;

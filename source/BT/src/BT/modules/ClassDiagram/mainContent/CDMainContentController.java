@@ -292,8 +292,11 @@ public class CDMainContentController extends CDBottomRightController implements 
             for (CDLineType lineType : CDLineType.values()) {
                 if (lineType != CDLineType.GENERALIZATION)
                 {
-                    this.LeftBottomContent.getButtonWithName(lineType.name()).setEnabled(false);
-                    this.LeftBottomContent.getButtonWithName(lineType.name()).setSelected(false);
+                    if (this.LeftBottomContent.getButtonWithName(lineType.name()) != null)
+                    {
+                        this.LeftBottomContent.getButtonWithName(lineType.name()).setEnabled(false);
+                        this.LeftBottomContent.getButtonWithName(lineType.name()).setSelected(false);
+                    }
                 }
             }
         }
