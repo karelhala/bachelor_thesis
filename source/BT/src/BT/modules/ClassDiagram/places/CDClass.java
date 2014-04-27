@@ -109,4 +109,23 @@ public class CDClass extends CDClassDrawer {
         }
         return classAttributes;
     }
+    
+    /**
+     * Find method of class by its name.
+     * It will loop through every method and return first one.
+     * @param methodName name of method that is being searched for.
+     * @return found method.
+     */
+    public Method getMethodByName(String methodName)
+    {
+        Method foundMethod = null;
+        for (Attribute oneMethod : this.methods) {
+            if (oneMethod.getName().equals(methodName))
+            {
+                foundMethod = (Method) oneMethod;
+                break;
+            }
+        }
+        return foundMethod;
+    }
 }

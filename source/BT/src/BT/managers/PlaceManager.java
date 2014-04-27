@@ -44,7 +44,6 @@ public class PlaceManager extends PlaceModel {
 
     /**
      * Method for removing join edge from array list.
-     *
      * @param jointEdge jointEdge object to be removed.
      */
     public void removeJoinEdge(LineModel jointEdge) {
@@ -267,5 +266,23 @@ public class PlaceManager extends PlaceModel {
             
         }
         return -1;
+    }
+    
+    /**
+     * Find class by it's name.
+     * Returns first class with name className.
+     * @param className string of searched class.
+     * @return found class or null.
+     */
+    public CDClass getClassByName(String className)
+    {
+        CDClass foundClass = null;
+        for (CoordinateModel coordinateModel : objects) {
+            if (coordinateModel instanceof CDClass && coordinateModel.getName().equals(className))
+            {
+                foundClass = (CDClass) coordinateModel;
+            }
+        }
+        return foundClass;
     }
 }

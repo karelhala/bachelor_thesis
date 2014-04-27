@@ -47,6 +47,17 @@ public class ActionModel {
     public ActionModel()
     {
     }
+    
+    /**
+     * Contructor for creating variable and basic action.
+     * @param variable name of action variable.
+     * @param basicAction string that contains action.
+     */
+    public ActionModel(String variable, String basicAction)
+    {
+        this(variable);
+        this.basicAction = basicAction;
+    }
 
     public CDClass getAssignedClass() {
         return assignedClass;
@@ -86,15 +97,12 @@ public class ActionModel {
      * if it is null set basicAction to stringMethod
      * @param stringAction name of assigned method or basicAction.
      */
-    public void initializeCDClass(String stringAction)
+    public void initializeStringActionWithMethod(String stringAction)
     {
         if (this.assignedClass != null)
         {
-            if (this.assignedMethod != null)
-            {
-                
-            }
-            else
+            this.assignedMethod = this.assignedClass.getMethodByName(stringAction);
+            if (this.assignedMethod == null)
             {
                 this.assignedClass = null;
                 this.basicAction = stringAction;
@@ -109,6 +117,19 @@ public class ActionModel {
     public String getActionAsString()
     {
         String actionString = "";
+        if (this.variable != null)
+        {
+            actionString = this.variable;
+        }
+        if (this.assignedClass != null)
+        {
+            actionString += ":= " + this.assignedClass.getName();
+            actionString += "."+ this.assignedMethod.getName();
+        }
+        else if (this.basicAction != null)
+        {
+            actionString += this.basicAction;
+        }
         return actionString;
     }
 }

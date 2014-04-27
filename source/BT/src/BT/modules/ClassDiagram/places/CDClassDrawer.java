@@ -9,6 +9,8 @@ package BT.modules.ClassDiagram.places;
 import BT.BT;
 import BT.BT.AttributeType;
 import BT.managers.CD.Attribute;
+import BT.managers.CD.Method;
+import BT.models.LineModel;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
