@@ -6,6 +6,7 @@
 
 package BT.modules.ObjectedOrientedPetriNet.places;
 
+import BT.models.ActionModel;
 import BT.models.CoordinateModel;
 import java.awt.Color;
 import java.util.ArrayList;
@@ -23,10 +24,10 @@ public class PNTransitionModel extends CoordinateModel{
     protected String guard;
     
     /**
-     * Stores action string.
+     * Stores action as action Model.
      * If you want to use it further more, change this to desired type, probably arrayList<object>
      */
-    protected String action;
+    protected ActionModel action;
 
     /**
      *
@@ -53,7 +54,7 @@ public class PNTransitionModel extends CoordinateModel{
         this.guard = guard;
     }
 
-    public void setAction(String action) {
+    public void setAction(ActionModel action) {
         this.action = action;
     }
     
@@ -61,7 +62,7 @@ public class PNTransitionModel extends CoordinateModel{
         return guard;
     }
 
-    public String getAction() {
+    public ActionModel getAction() {
         return action;
     }
 }

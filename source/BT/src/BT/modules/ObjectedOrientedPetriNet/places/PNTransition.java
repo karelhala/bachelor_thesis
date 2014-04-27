@@ -5,6 +5,7 @@
  */
 package BT.modules.ObjectedOrientedPetriNet.places;
 
+import BT.models.ActionModel;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
@@ -32,7 +33,7 @@ public class PNTransition extends PNTransitionModel {
     public PNTransition(int x, int y) {
         super(x, y);
         this.guard = "";
-        this.action = "";
+        this.action = new ActionModel();
     }
 
     /**
@@ -48,14 +49,14 @@ public class PNTransition extends PNTransitionModel {
             placeColor = this.selectedColor;
         }
         g.setStroke((this.inJoins.isEmpty() && this.outJoins.isEmpty()) ? this.dashedStroke : new BasicStroke(2));
-        g.setColor(Color.BLACK);
-        g.drawString(name, x - this.width / 2, y + this.height / 2 + fm.getHeight() + 2);
         
+        g.setColor(Color.BLACK);
         setObjectHeight(fm);
         setObjectWidth(fm);
         drawLine(g, fm);
         drawGuard(g, fm);
         drawAction(g, fm);
+        g.drawString(name, x - this.width / 2, y + this.height / 2 + fm.getHeight() + 2);
         g.setColor(placeColor);
         g.drawRect(x - this.width / 2, y - this.height / 2, this.width, this.height);
     }
@@ -91,9 +92,9 @@ public class PNTransition extends PNTransitionModel {
     protected PNTransition setObjectWidth(FontMetrics fm)
     {
         this.width = 10;
-        if (this.action!=null && !this.action.equals(""))
+        if (this.action!=null)
         {
-            this.width += fm.stringWidth(this.action);
+            this.width += fm.stringWidth(this.action.getActionAsString());
             this.width += 5;
         }
         if (this.guard!=null && !this.guard.equals(""))
@@ -119,7 +120,7 @@ public class PNTransition extends PNTransitionModel {
             objectTall += fm.getHeight() + 5;
         }
         
-        if (!"".equals(this.action))
+        if (this.action != null)
         {
             objectTall += fm.getHeight();
         }
@@ -147,7 +148,7 @@ public class PNTransition extends PNTransitionModel {
      */
     private PNTransition drawAction(Graphics2D g, FontMetrics fm) 
     {
-        g.drawString(this.action, x-fm.stringWidth(this.action)/2, y+this.height/2-fm.getHeight()+12);
+        g.drawString(this.action.getActionAsString(), x-fm.stringWidth(this.action.getActionAsString())/2, y+this.height/2-fm.getHeight()+12);
         return this;
     }
     
@@ -157,6 +158,6 @@ public class PNTransition extends PNTransitionModel {
      */
     public String getActionVariable()
     {
-        return (this.action.split(":="))[0];
+        return (this.action.getVariable());
     }
 }

@@ -112,7 +112,7 @@ public class PNBottomRightController extends PNBottomRightModel{
     {
         if (this.selectedTransition != null)
         {
-            this.petrinetGuardAction.getActionField().setText(this.selectedTransition.getAction());
+            this.petrinetGuardAction.getActionField().setText(this.selectedTransition.getAction().getActionAsString());
             this.petrinetGuardAction.getGuardField().setText(this.selectedTransition.getGuard());
         }
         else

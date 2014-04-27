@@ -123,12 +123,12 @@ public class ActionModel {
         }
         if (this.assignedClass != null)
         {
-            actionString += ":= " + this.assignedClass.getName();
+            actionString += " := " + this.assignedClass.getName();
             actionString += "."+ this.assignedMethod.getName();
         }
         else if (this.basicAction != null)
         {
-            actionString += this.basicAction;
+            actionString += " := " + this.basicAction;
         }
         return actionString;
     }
