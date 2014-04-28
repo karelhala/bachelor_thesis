@@ -7,7 +7,6 @@ package BT.modules.ObjectedOrientedPetriNet.places;
 
 import BT.managers.CD.Attribute;
 import BT.models.ActionModel;
-import BT.models.CoordinateModel;
 import BT.models.LineModel;
 import BT.models.MyArrayList;
 import BT.modules.ClassDiagram.places.CDClass;
@@ -125,10 +124,11 @@ public class PNTransition extends PNTransitionModel {
             objectTall += fm.getHeight() + 5;
         }
         
-        if (this.action != null)
+        if (!this.action.isEmpty())
         {
             objectTall += fm.getHeight();
         }
+        objectTall = (objectTall == 5)?objectTall+20:objectTall;
         this.height = objectTall;
         return this;
     }
