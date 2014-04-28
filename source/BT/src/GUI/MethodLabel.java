@@ -9,6 +9,7 @@ package GUI;
 import BT.managers.CD.Method;
 import BT.managers.PlaceManager;
 import BT.modules.ClassDiagram.places.CDClass;
+import java.awt.Color;
 import javax.swing.JLabel;
 
 /**
@@ -67,6 +68,24 @@ public class MethodLabel extends JLabel{
 
     public void setSelected(Boolean selected) {
         this.selected = selected;
+    }
+    
+    public void selectAndChangeColor(Boolean selected)
+    {
+        setSelected(selected);
+        setBasicColor();
+    }
+    
+    public void setBasicColor()
+    {
+        if (this.selected)
+        {
+            this.setForeground(Color.yellow);
+        }
+        else
+        {
+            this.setForeground(Color.black);
+        }
     }
     
     /**

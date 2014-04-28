@@ -126,7 +126,7 @@ abstract public class PNMainContentInitializer extends PNMainContentModel {
             @Override
             public void mouseExited(MouseEvent e)
             {
-                listenedMethodLabel.setForeground(Color.BLACK);
+                listenedMethodLabel.setBasicColor();
             }
             
             @Override
@@ -134,9 +134,9 @@ abstract public class PNMainContentInitializer extends PNMainContentModel {
             {
                 if (bottomLeftController.getSelectedmethodLabel() != null)
                 {
-                    bottomLeftController.getSelectedmethodLabel().setSelected(Boolean.FALSE);   
+                    bottomLeftController.getSelectedmethodLabel().selectAndChangeColor(Boolean.FALSE);   
                 }
-                listenedMethodLabel.setSelected(Boolean.TRUE);
+                listenedMethodLabel.selectAndChangeColor(Boolean.TRUE);
                 bottomRightController.setSelectedMethod(listenedMethodLabel);
                 bottomRightController.setPetrinetPlaces(listenedMethodLabel.getPetriNetFromClassOrMethod());
                 setPlacesAndRepaintDrawing(listenedMethodLabel.getPetriNetFromClassOrMethod());
