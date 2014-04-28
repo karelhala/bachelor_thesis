@@ -52,16 +52,16 @@ public class PNJoinEdgeDrawer extends JoinEdgeDrawer {
                 drawTriangle(g, this.endPoint, arrowStartPoint, Color.BLACK);
                 if (pnJoin.getFirstObject() instanceof PNTransition)
                 {
-                    if (pnJoin.getName() == null || "".equals(pnJoin.getName()))
+                    if (pnJoin.getSelectedVariables() == null || pnJoin.getSelectedVariables().isEmpty())
                     {
                         if (((PNTransition)pnJoin.getFirstObject()).getActionVariable() != null)
                         {
                             drawString(g, ((PNTransition)pnJoin.getFirstObject()).getActionVariable());
                         }
                     }
-                    else if (!"".equals(pnJoin.getName()))
+                    else
                     {
-                        drawString(g, pnJoin.getName());
+                        drawString(g, pnJoin.getVariablesAsString());
                     }
                 }
                 else

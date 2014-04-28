@@ -5,7 +5,12 @@
  */
 package BT.modules.ObjectedOrientedPetriNet.places;
 
+import BT.managers.CD.Attribute;
 import BT.models.ActionModel;
+import BT.models.CoordinateModel;
+import BT.models.LineModel;
+import BT.models.MyArrayList;
+import BT.modules.ClassDiagram.places.CDClass;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
@@ -159,5 +164,22 @@ public class PNTransition extends PNTransitionModel {
     public String getActionVariable()
     {
         return (this.action.getVariable());
+    }
+    
+    /**
+     * Get all class variables and all variables fro each in join of transition.
+     * @return MyArrayList<String>.
+     */
+    public MyArrayList<String> getAllVariablesOfTransition()
+    {
+        MyArrayList<String> allVariables = new MyArrayList<>();
+        allVariables.add(this.action.getVariable());
+        for (Attribute oneVariable : ((CDClass)this.assignedObject).loadClassAttributes()) {
+            allVariables.addUnique(oneVariable.getName());
+        }
+        for (LineModel oneInJoin : this.inJoins) {
+            allVariables.addAllUnique(((PNPlace)oneInJoin.getFirstObject()).getVariable());
+        }
+        return allVariables;
     }
 }

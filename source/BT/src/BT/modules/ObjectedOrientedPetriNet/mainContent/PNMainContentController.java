@@ -13,7 +13,9 @@ import BT.models.LineModel;
 import BT.modules.ObjectedOrientedPetriNet.places.PNPlace;
 import BT.modules.ObjectedOrientedPetriNet.places.PNTransition;
 import BT.modules.ObjectedOrientedPetriNet.places.joinEdge.PNJoinEdgeController;
-import java.awt.BorderLayout;
+import java.awt.Checkbox;
+import java.awt.Component;
+import java.awt.GridLayout;
 import java.awt.event.MouseEvent;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -71,10 +73,35 @@ public class PNMainContentController extends PNMainContentInitializer implements
             PNJoinEdgeController clickedLine = (PNJoinEdgeController) pressedObject;
             if (clickedLine.getFirstObject() instanceof PNTransition)
             {
-                JPanel dialogPanel = new JPanel(new BorderLayout());
-//                for (Object object : ((PNTransition)clickedLine.getFirstObject()).get {
-//                    
-//                }
+                JPanel dialogPanel = new JPanel(new GridLayout(0,1));
+                for (String oneVariable : ((PNTransition)clickedLine.getFirstObject()).getAllVariablesOfTransition()) {
+                    if (clickedLine.getSelectedVariables().contains(oneVariable) || 
+                            (((PNTransition)clickedLine.getFirstObject()).getActionVariable() != null 
+                            &&((PNTransition)clickedLine.getFirstObject()).getActionVariable().equals(oneVariable)))
+                    {
+                        dialogPanel.add(new Checkbox(oneVariable, true));
+                    }
+                    else if (((PNTransition)clickedLine.getFirstObject()).getActionVariable() != null || oneVariable != null)
+                    {
+                        dialogPanel.add(new Checkbox(oneVariable));
+                    }
+                }
+                int result = JOptionPane.showConfirmDialog(null, dialogPanel,
+                    "Please select variables.", JOptionPane.OK_CANCEL_OPTION);
+                if (result == JOptionPane.OK_OPTION) {
+                    clickedLine.getSelectedVariables().clear();
+                    ((PNPlace)clickedLine.getSecondObject()).getVariable().clear();
+                    for (Component oneComponent : dialogPanel.getComponents()) {
+                        if (oneComponent instanceof Checkbox)
+                        {
+                            if (((Checkbox)oneComponent).getState())
+                            {
+                                clickedLine.addVariable(((Checkbox)oneComponent).getLabel());
+                                ((PNPlace)clickedLine.getSecondObject()).addVariable(((Checkbox)oneComponent).getLabel());
+                            }
+                        }
+                    }
+                }
             }
         }
     }
@@ -89,11 +116,14 @@ public class PNMainContentController extends PNMainContentInitializer implements
         if (selectedItemButton != null && "PLACE".equals(selectedItemButton.getName())) {
             this.places.setAllObjectDiselected();
             PNPlace newPlace = new PNPlace(evt.getX(), evt.getY());
+            newPlace.setName("");
             showBasicPanel();
             this.places.addObject(newPlace);
         } else if (selectedItemButton != null && "TRANSITION".equals(selectedItemButton.getName())) {
             this.places.setAllObjectDiselected();
             PNTransition newTrasition = new PNTransition(evt.getX(), evt.getY());
+            newTrasition.setName("");
+            newTrasition.setAssignedObject(this.selectedClass);
             this.bottomRightModel.showAllItems();
             this.places.addObject(newTrasition);
         } else {

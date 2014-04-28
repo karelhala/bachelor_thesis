@@ -61,6 +61,23 @@ public class PNJoinEdgeController extends LineModel {
     }
     
     /**
+     * For fetching selected variables as String joined by ","
+     * @return 
+     */
+    public String getVariablesAsString()
+    {
+        String returnedString = "";
+        for (String oneVariable : this.selectedVariables) {
+            returnedString += oneVariable;
+            if (!this.selectedVariables.isLast(oneVariable))
+            {
+                returnedString += ", ";
+            }
+        }
+        return returnedString;
+    }
+    
+    /**
      *
      * @param g
      */

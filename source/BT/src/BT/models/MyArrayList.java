@@ -110,4 +110,14 @@ public class MyArrayList<E> extends ArrayList<E> {
         }
         return this;
     }
+    
+    /**
+     * Check if elemnt is last item in arrayList.
+     * @param element checked element.
+     * @return true or false.
+     */
+    public Boolean isLast(E element)
+    {
+        return getLast().equals(element);
+    }
 }
