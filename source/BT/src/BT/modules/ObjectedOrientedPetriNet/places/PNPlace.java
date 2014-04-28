@@ -75,7 +75,10 @@ public class PNPlace extends PNPlaceModel {
         if (this.variables!=null && !this.variables.isEmpty())
         {
             for (String oneVariable : this.variables) {
-                this.width += fm.stringWidth(oneVariable);
+                if (oneVariable != null)
+                {
+                    this.width += fm.stringWidth(oneVariable);
+                }
             }
             this.width += 5;
         }
@@ -103,20 +106,23 @@ public class PNPlace extends PNPlaceModel {
     {
         String allVariables = "";
         for (String oneVariable : this.variables) {
-            if (oneVariable.equals(this.variables.getFirst()))
+            if (oneVariable != null)
             {
-                allVariables += "(";
-            }
-            
-            allVariables += oneVariable;
-            
-            if (oneVariable.equals(this.variables.getLast()))
-            {
-                allVariables += ")";
-            }
-            else
-            {
-                allVariables += ", ";
+                if (oneVariable.equals(this.variables.getFirst()))
+                {
+                    allVariables += "(";
+                }
+
+                allVariables += oneVariable;
+
+                if (oneVariable.equals(this.variables.getLast()))
+                {
+                    allVariables += ")";
+                }
+                else
+                {
+                    allVariables += ", ";
+                }
             }
         }
         return allVariables;

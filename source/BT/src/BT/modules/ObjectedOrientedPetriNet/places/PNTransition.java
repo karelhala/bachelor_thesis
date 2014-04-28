@@ -153,7 +153,7 @@ public class PNTransition extends PNTransitionModel {
     }
     
     /**
-     * Split action part of transition by := and first part (which is variable) return.
+     * Split action part of transition by := and first part (which is variable).
      * @return variable of action.
      */
     public String getActionVariable()

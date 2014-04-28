@@ -9,6 +9,7 @@ import BT.BT;
 import BT.BT.OOPNLineType;
 import BT.managers.PointsCalculator;
 import BT.models.LineModel;
+import BT.models.MyArrayList;
 import java.awt.BasicStroke;
 import java.awt.Graphics2D;
 import java.awt.Point;
@@ -19,7 +20,24 @@ import java.awt.Point;
  */
 public class PNJoinEdgeController extends LineModel {
 
+    /**
+     * 
+     */
     private BT.OOPNLineType joinEdgeType;
+
+    /**
+     * 
+     */
+    private final MyArrayList<String> selectedVariables;
+
+    /**
+     *
+     */
+    public PNJoinEdgeController() {
+        super();
+        this.joinEdgeType = OOPNLineType.JOIN;
+        this.selectedVariables =  new MyArrayList<>();
+    }
 
     public void setJoinEdgeType(OOPNLineType joinEdgeType) {
         this.joinEdgeType = joinEdgeType;
@@ -29,14 +47,19 @@ public class PNJoinEdgeController extends LineModel {
         return joinEdgeType;
     }
 
-    /**
-     *
-     */
-    public PNJoinEdgeController() {
-        super();
-        this.joinEdgeType = OOPNLineType.JOIN;
+    public MyArrayList<String> getSelectedVariables() {
+        return selectedVariables;
     }
-
+    
+    /**
+     * Add unique variable to join edge.
+     * @param newVariable 
+     */
+    public void addVariable(String newVariable)
+    {
+        this.selectedVariables.addUnique(newVariable);
+    }
+    
     /**
      *
      * @param g

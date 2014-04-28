@@ -130,6 +130,23 @@ public class CDClass extends CDClassDrawer {
     }
     
     /**
+     * Find variable of class by its name.
+     * It will loop through every variable and return first one.
+     * @param variableName name of variable that is being searched for.
+     * @return found variable.
+     */
+    public Attribute getVariableByName(String variableName)
+    {
+        for (Attribute oneVariable : this.variables) {
+            if (oneVariable.getName().equals(variableName))
+            {
+                return oneVariable;
+            }
+        }
+        return null;
+    }
+    
+    /**
      * Get All methods of this class and it's parrents that are public.
      * @return MyArrayList<Attribute> list of public methods.
      */

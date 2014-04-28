@@ -13,8 +13,10 @@ import BT.models.LineModel;
 import BT.modules.ObjectedOrientedPetriNet.places.PNPlace;
 import BT.modules.ObjectedOrientedPetriNet.places.PNTransition;
 import BT.modules.ObjectedOrientedPetriNet.places.joinEdge.PNJoinEdgeController;
+import java.awt.BorderLayout;
 import java.awt.event.MouseEvent;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JToggleButton;
 
 /**
@@ -64,6 +66,16 @@ public class PNMainContentController extends PNMainContentInitializer implements
                 pressedObject.setName(name);
             }
             ((PNDrawingPane) this.mainContent.getDrawingPane()).getDrawing().repaint();
+        } else if (pressedObject instanceof LineModel)
+        {
+            PNJoinEdgeController clickedLine = (PNJoinEdgeController) pressedObject;
+            if (clickedLine.getFirstObject() instanceof PNTransition)
+            {
+                JPanel dialogPanel = new JPanel(new BorderLayout());
+//                for (Object object : ((PNTransition)clickedLine.getFirstObject()).get {
+//                    
+//                }
+            }
         }
     }
 

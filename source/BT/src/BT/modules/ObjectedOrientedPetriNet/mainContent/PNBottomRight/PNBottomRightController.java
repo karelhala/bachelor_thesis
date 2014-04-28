@@ -251,18 +251,28 @@ public class PNBottomRightController extends PNBottomRightModel{
     {
         JPanel dialogPanel = new JPanel(new BorderLayout());
         JPanel contentPanel = new JPanel(new BorderLayout());
-        JTextField variableField = new JTextField(oldAction.getVariable());
+        JComboBox variableField = new JComboBox();
         JComboBox classBox = new JComboBox();
         final JComboBox actionBox = new JComboBox();
         actionBox.setEditable(true);
+        variableField.setEditable(true);
+        classBox.setEditable(true);
         for (CoordinateModel oneobject : this.classManager.getObjects()) {
             if (oneobject instanceof CDClass && ((CDClass)oneobject).getTypeOfClass() != ClassType.INTERFACE)
             {
                 classBox.addItem(oneobject);
             }
         }
-        classBox.setEditable(true);
         classBox.setSelectedIndex(-1);
+        for (Attribute oneVariable : this.selectedClass.loadClassAttributes()) {
+            variableField.addItem(oneVariable);
+        }
+        variableField.setSelectedIndex(-1);
+        variableField.setSelectedItem(oldAction.getVariable());
+        if (oldAction.getVariable() != null && this.selectedClass.getVariableByName(oldAction.getVariable()) != null)
+        {
+            variableField.setSelectedItem(this.selectedClass.getVariableByName(oldAction.getVariable()));
+        }
         classBox.addItemListener(new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent ie) {
@@ -307,7 +317,7 @@ public class PNBottomRightController extends PNBottomRightModel{
                 this.selectedTransition.getAction().setAssignedClass(null);
                 this.selectedTransition.getAction().setBasicAction((String) actionBox.getSelectedItem());
             }
-            this.selectedTransition.getAction().setVariable(variableField.getText());
+            this.selectedTransition.getAction().setVariable(variableField.getSelectedItem().toString());
         }
     }
     
