@@ -10,6 +10,7 @@ import BT.BT;
 import BT.BT.ClassType;
 import static BT.BT.elementWithLabelAbove;
 import BT.managers.CD.Attribute;
+import BT.managers.CD.Method;
 import BT.models.ActionModel;
 import BT.models.CoordinateModel;
 import BT.models.LineModel;
@@ -23,6 +24,8 @@ import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -94,6 +97,7 @@ public class PNBottomRightController extends PNBottomRightModel{
                 if (selectedTransition != null)
                 {
                     createActionPanel(selectedTransition.getAction());
+                    petrinetGuardAction.getActionField().setText(selectedTransition.getAction().getActionAsString());
                 }
             }
         });
@@ -131,6 +135,11 @@ public class PNBottomRightController extends PNBottomRightModel{
         }
     }
     
+    /**
+     * 
+     * @param guardString
+     * @return 
+     */
     private String createGuardPanel(String guardString)
     {
         MyArrayList<String> placesVariables = new MyArrayList<>();
@@ -234,20 +243,47 @@ public class PNBottomRightController extends PNBottomRightModel{
         return guardString + " " + glue + " " + joinVariablesWithOperator(leftVariable, operator, rightVariable);
     }
     
+    /**
+     * 
+     * @param oldAction 
+     */
     public void createActionPanel(ActionModel oldAction)
     {
         JPanel dialogPanel = new JPanel(new BorderLayout());
         JPanel contentPanel = new JPanel(new BorderLayout());
         JTextField variableField = new JTextField(oldAction.getVariable());
         JComboBox classBox = new JComboBox();
-        classBox.setEditable(true);
-        JComboBox actionBox = new JComboBox();
+        final JComboBox actionBox = new JComboBox();
         actionBox.setEditable(true);
         for (CoordinateModel oneobject : this.classManager.getObjects()) {
             if (oneobject instanceof CDClass && ((CDClass)oneobject).getTypeOfClass() != ClassType.INTERFACE)
             {
                 classBox.addItem(oneobject);
             }
+        }
+        classBox.setEditable(true);
+        classBox.setSelectedIndex(-1);
+        classBox.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent ie) {
+                if (ie.getStateChange() == ItemEvent.SELECTED) {
+                    Object item = ie.getItem();
+                    actionBox.removeAllItems();
+                    if (item != null && item instanceof CDClass)
+                    {
+                        addAllMethodsFromClassToSelectBox((CDClass)item, actionBox);
+                    }
+                }
+            }
+        });
+        if (this.selectedTransition.getAction().getAssignedClass() != null)
+        {
+            classBox.setSelectedItem(this.selectedTransition.getAction().getAssignedClass());
+            actionBox.setSelectedItem(this.selectedTransition.getAction().getAssignedMethod());
+        }
+        else if (this.selectedTransition.getAction().getBasicAction() != null)
+        {
+            actionBox.setSelectedItem(this.selectedTransition.getAction().getBasicAction());
         }
         contentPanel.add(elementWithLabelAbove(variableField, new JLabel("variable   "), Font.ITALIC), BorderLayout.LINE_START);
         contentPanel.add(elementWithLabelAbove(classBox, new JLabel("class"), Font.ITALIC), BorderLayout.CENTER);
@@ -257,7 +293,45 @@ public class PNBottomRightController extends PNBottomRightModel{
                     "Please Enter Action for this transition.", JOptionPane.OK_CANCEL_OPTION);
         if (result == JOptionPane.OK_OPTION)
         {
-            System.out.println("aaa");
+            if (classBox.getSelectedItem() != null && classBox.getSelectedItem() instanceof CDClass)
+            {
+                this.selectedTransition.getAction().setAssignedClass((CDClass) classBox.getSelectedItem());
+            }
+            
+            if (actionBox.getSelectedItem() != null && actionBox.getSelectedItem() instanceof Method)
+            {
+                this.selectedTransition.getAction().setAssignedMethod((Method)actionBox.getSelectedItem());
+            }
+            else
+            {
+                this.selectedTransition.getAction().setAssignedClass(null);
+                this.selectedTransition.getAction().setBasicAction((String) actionBox.getSelectedItem());
+            }
+            this.selectedTransition.getAction().setVariable(variableField.getText());
+        }
+    }
+    
+    /**
+     * Load either private or public method from class.
+     * This depends on selected class.
+     * @param assignedClass class that was selected from class selectbox.
+     * @param actionSelectBox selectbox, that will contain methos.
+     */
+    public void addAllMethodsFromClassToSelectBox(CDClass assignedClass, JComboBox actionSelectBox)
+    {
+        actionSelectBox.addItem(new Method("new", assignedClass.getTypeOfClass().name(), assignedClass));
+        if (this.selectedClass.equals(assignedClass))
+        {
+            for (Attribute oneMethod : assignedClass.loadClassMethods()) {
+                actionSelectBox.addItem(oneMethod);
+            }
+            actionSelectBox.setSelectedIndex(0);
+        }
+        else
+        {
+            for (Attribute oneMethod : assignedClass.getAllPublicMethods()) {
+                actionSelectBox.addItem(oneMethod);
+            }
         }
     }
 }

@@ -82,9 +82,6 @@ public class PNMainContentController extends PNMainContentInitializer implements
         } else if (selectedItemButton != null && "TRANSITION".equals(selectedItemButton.getName())) {
             this.places.setAllObjectDiselected();
             PNTransition newTrasition = new PNTransition(evt.getX(), evt.getY());
-            newTrasition.setGuard("true");
-            newTrasition.getAction().setVariable("x");
-            newTrasition.getAction().setBasicAction("5 + 10");
             this.bottomRightModel.showAllItems();
             this.places.addObject(newTrasition);
         } else {

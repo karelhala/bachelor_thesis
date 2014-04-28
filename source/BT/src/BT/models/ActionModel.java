@@ -92,25 +92,6 @@ public class ActionModel {
     }
     
     /**
-     * Check if class was assigned and is not null.
-     * Find method in class and if it is not null assign it to assignMethod,
-     * if it is null set basicAction to stringMethod
-     * @param stringAction name of assigned method or basicAction.
-     */
-    public void initializeStringActionWithMethod(String stringAction)
-    {
-        if (this.assignedClass != null)
-        {
-            this.assignedMethod = this.assignedClass.getMethodByName(stringAction);
-            if (this.assignedMethod == null)
-            {
-                this.assignedClass = null;
-                this.basicAction = stringAction;
-            }
-        }
-    }
-    
-    /**
      * Get action as joined String.
      * @return action as String.
      */
@@ -121,14 +102,18 @@ public class ActionModel {
         {
             actionString = this.variable;
         }
-        if (this.assignedClass != null)
+        if (this.assignedClass != null && this.assignedMethod != null)
         {
             actionString += " := " + this.assignedClass.getName();
             actionString += "."+ this.assignedMethod.getName();
         }
         else if (this.basicAction != null)
         {
-            actionString += " := " + this.basicAction;
+            if (this.variable != null)
+            {
+                actionString += " := ";
+            }
+            actionString += this.basicAction;
         }
         return actionString;
     }

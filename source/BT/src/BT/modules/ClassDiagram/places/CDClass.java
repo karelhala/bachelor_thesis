@@ -63,7 +63,7 @@ public class CDClass extends CDClassDrawer {
         return null;
     }
     /**
-     * Add methods from assigned class and it's parents.
+     * Load private and protected methods from assigned class and it's parents.
      * @return MyArrayList<Attribute>
      */
     public MyArrayList<Attribute> loadClassMethods()
@@ -100,7 +100,7 @@ public class CDClass extends CDClassDrawer {
             for(CDClass newClass = this.getParent();(newClass != null && !newClass.equals(this)); newClass = newClass.getParent())
             {
                 for (Attribute attribute : newClass.getVariables()) {
-                    if (attribute.getVisibility() != BT.AttributeType.PRIVATE)
+                    if (attribute.getVisibility() != BT.AttributeType.PUBLIC)
                     {
                         classAttributes.addUnique(attribute);
                     }
@@ -127,5 +127,24 @@ public class CDClass extends CDClassDrawer {
             }
         }
         return foundMethod;
+    }
+    
+    /**
+     * Get All methods of this class and it's parrents that are public.
+     * @return MyArrayList<Attribute> list of public methods.
+     */
+    public MyArrayList<Attribute> getAllPublicMethods()
+    {
+        MyArrayList<Attribute>publicMethods = new MyArrayList<>();
+        for(CDClass newClass = this;newClass != null; newClass = newClass.getParent())
+        {
+            for (Attribute method : newClass.getMethods()) {
+                if (method.getVisibility() == BT.AttributeType.PUBLIC)
+                {
+                    publicMethods.addUnique(method);
+                }
+            }
+        }
+        return publicMethods;
     }
 }

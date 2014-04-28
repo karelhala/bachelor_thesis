@@ -276,13 +276,12 @@ public class PlaceManager extends PlaceModel {
      */
     public CDClass getClassByName(String className)
     {
-        CDClass foundClass = null;
         for (CoordinateModel coordinateModel : objects) {
             if (coordinateModel instanceof CDClass && coordinateModel.getName().equals(className))
             {
-                foundClass = (CDClass) coordinateModel;
+                return (CDClass) coordinateModel;
             }
         }
-        return foundClass;
+        return null;
     }
 }
