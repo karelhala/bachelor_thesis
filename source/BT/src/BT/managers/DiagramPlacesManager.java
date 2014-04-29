@@ -6,8 +6,8 @@
 
 package BT.managers;
 
-import BT.models.CoordinateModel;
 import BT.modules.ClassDiagram.places.CDClass;
+import java.io.File;
 import java.util.ArrayList;
 
 /**
@@ -21,6 +21,11 @@ import java.util.ArrayList;
  * @author Karel Hala
  */
 public class DiagramPlacesManager {
+    
+    /**
+     * Absolutepath to file.
+     */
+    private File absolutePath;
     
     /**
      * Name of opened file.
@@ -66,6 +71,7 @@ public class DiagramPlacesManager {
 
     /**
      * Setter for class diagram places.
+     * @param cdPlaces
      */
     public void setCdPlaces(PlaceManager cdPlaces) {
         this.cdPlaces = cdPlaces;
@@ -162,5 +168,13 @@ public class DiagramPlacesManager {
             return (CDClass) cdPlaces.getSelectedObject();
         }
         return null;
+    }
+
+    public File getAbsolutePath() {
+        return absolutePath;
+    }
+
+    public void setAbsolutePath(File absolutePath) {
+        this.absolutePath = absolutePath;
     }
 }

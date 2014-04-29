@@ -1,0 +1,12 @@
+<BT.managers.DiagramPlacesManager>
+  <diagramNumber>0</diagramNumber>
+  <ucPlaces>
+    <objects/>
+    <joinEdges/>
+  </ucPlaces>
+  <cdPlaces>
+    <objects/>
+    <joinEdges/>
+  </cdPlaces>
+  <pnPlaces/>
+</BT.managers.DiagramPlacesManager>

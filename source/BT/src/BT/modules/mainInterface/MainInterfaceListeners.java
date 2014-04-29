@@ -10,7 +10,16 @@ import BT.managers.DiagramPlacesManager;
 import BT.modules.export.ExportToEps;
 import BT.modules.export.ExportToPdf;
 import BT.modules.export.ExportToXml;
+import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.xml.DomDriver;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -27,16 +36,69 @@ public class MainInterfaceListeners {
     /**
      * Method that handles clicking on save button.
      * @param tabId id of selected tab. By this id it will be seleted propriete diagramPlace
+     * @return return filename of selected file.
      */
-    public void clickedOnSave(int tabId)
+    public String clickedOnSave(int tabId)
     {
         if (toolBarContent.getDiagramById(tabId) != null)
         {
-            System.out.println(toolBarContent.getDiagramById(tabId).getCdPlaces().getObjects().size());
+            DiagramPlacesManager selectedDiagrams = toolBarContent.getDiagramById(tabId);
+            XStream xstream = new XStream(new DomDriver());
+            String xml = xstream.toXML(selectedDiagrams);
+            if (selectedDiagrams.getAbsolutePath() == null)
+            {
+                final JFileChooser fc = new JFileChooser();
+                FileNameExtensionFilter xmlfilter = new FileNameExtensionFilter("xml files (*.xml)", "xml");
+                fc.setFileFilter(xmlfilter);
+                int returnVal = fc.showSaveDialog(null);
+                if (returnVal == JFileChooser.APPROVE_OPTION) {
+                    File file = fc.getSelectedFile();
+                    int i = file.getName().lastIndexOf('.');
+                    String extension = "";
+                    String fileName;
+                    if (i > 0) {
+                        extension = file.getName().substring(i+1);
+                    }
+                    if (!extension.equals("xml"))
+                    {
+                        fileName = file.getAbsolutePath() + ".xml";
+                        selectedDiagrams.setFileName(file.getName());
+                    }
+                    else
+                    {
+                        fileName = file.getAbsolutePath();
+                        selectedDiagrams.setFileName(file.getName().substring(0,i));
+                    }
+                    try {
+                        try (PrintWriter out = new PrintWriter(fileName)) {
+                            selectedDiagrams.setAbsolutePath(new File(fileName));
+                            out.println(xml);
+                        }
+                    } catch (FileNotFoundException ex) {
+                        JOptionPane.showMessageDialog(null, "Error while saving file.");
+                        System.out.println("Error while saving file.");
+                    }
+                } else {
+                    System.out.println("canceled");
+                }
+            }
+            else
+            {
+                try {
+                    try (PrintWriter out = new PrintWriter(selectedDiagrams.getAbsolutePath())) {
+                        out.println(xml);
+                    }
+                } catch (FileNotFoundException ex) {
+                    JOptionPane.showMessageDialog(null, "Error while saving file.");
+                    System.out.println("Error while saving file.");
+                }
+            }
+            return selectedDiagrams.getFileName();
         }
         else
         {
             JOptionPane.showMessageDialog(null, "No file to save.");
+            return null;
         }
     }
     

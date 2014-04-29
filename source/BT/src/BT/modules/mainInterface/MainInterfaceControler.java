@@ -6,10 +6,14 @@ package BT.modules.mainInterface;
 
 import GUI.MainWindowModel;
 import GUI.MyToolBar;
+import java.awt.Component;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Action;
+import javax.swing.JComponent;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 /**
  *
@@ -70,7 +74,16 @@ public class MainInterfaceControler {
         this.ToolBarContent.setSaveAction(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                mainInterfaceListeners.clickedOnSave(myLayout.getFileTab().getSelectedIndex());
+                String fileName = mainInterfaceListeners.clickedOnSave(myLayout.getFileTab().getSelectedIndex());
+                Component tabComponent = myLayout.getFileTab().getTabComponentAt(myLayout.getFileTab().getSelectedIndex());
+                if (tabComponent instanceof JPanel)
+                {
+                    JPanel tabPanel = (JPanel) tabComponent;
+                    if (tabPanel.getComponent(0) instanceof JLabel)
+                    {
+                        ((JLabel)tabPanel.getComponent(0)).setText(fileName);
+                    }
+                }
             }
         });
         

@@ -25,7 +25,11 @@ import javax.swing.JTabbedPane;
  */
 public class CloseTabbedPane extends JTabbedPane {
 
+    /**
+     * 
+     */
     final private ToolBarContentControler toolBarContent ;
+    
     public CloseTabbedPane(ToolBarContentControler toolBarContent) {
         super();
         this.toolBarContent = toolBarContent;
