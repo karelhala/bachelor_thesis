@@ -11,28 +11,29 @@ import java.awt.Point;
 import java.awt.event.MouseEvent;
 
 /**
- *
+ * Main class for managing man content controllers.
+ * It is abstract class, that it's childs will implement Drawing clicks.
  * @author Karel Hala
  */
 abstract public class MainContentController implements DrawingClicks {
 
     /**
-     *
+     * Main content model for storing additional data.
      */
     protected ContentPaneModel mainContent;
 
     /**
-     *
+     * Objects that are drawn on jpanel.
      */
     protected PlaceManager places;
 
     /**
-     *
+     * Join edge, that is currently drawn.
      */
     protected LineModel newJoinEdge;
     
     /**
-     * 
+     * All objects of whole application.
      */
     protected DiagramPlacesManager diagramPlaces;
     
@@ -61,7 +62,8 @@ abstract public class MainContentController implements DrawingClicks {
     }
 
     /**
-     *
+     * Basic acting of right click.
+     * It will add new breakPoint to new Join edge.
      * @param evt
      */
     @Override
