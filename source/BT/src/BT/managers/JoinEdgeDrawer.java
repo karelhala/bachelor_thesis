@@ -14,23 +14,25 @@ import java.awt.Point;
 import java.awt.geom.AffineTransform;
 
 /**
- *
+ * Class that can draw triangles and diamonds at the end of lines.
+ * This class is basic class for drawing additional components, such as 
+ * traingles or strings at precise location.
  * @author Karel Hala
  */
 public class JoinEdgeDrawer {
 
     /**
-     *
+     * Start point of line.
      */
     protected Point startPoint;
 
     /**
-     *
+     * End point of line.
      */
     protected Point endPoint;
 
     /**
-     * 
+     * Controller for detectiong color of line.
      */
     protected LineModel joinEdgeController;
     
@@ -44,6 +46,9 @@ public class JoinEdgeDrawer {
      */
     protected Point textEndPoint;
 
+    /**
+     * Basic constructor for drawing join edges.
+     */
     public JoinEdgeDrawer(LineModel joinEdgeController, Point startPoint, Point endPoint) {
         this.joinEdgeController = joinEdgeController;
         this.startPoint = startPoint;
@@ -52,10 +57,9 @@ public class JoinEdgeDrawer {
 
     /**
      * Method for drawing arrow at end of the line given by 2 points.
-     *
-     * @param g2D
-     * @param A
-     * @param B 111111111111111111111111
+     * @param g2D graphics that will have drawn this line.
+     * @param A Start point.
+     * @param B End point.
      */
     protected void drawArrow(Graphics2D g2D, Point A, Point B) {
         Graphics2D g = (Graphics2D) g2D.create();
@@ -73,11 +77,10 @@ public class JoinEdgeDrawer {
 
     /**
      * Method for drawing traiangle at end of the line given by 2 points.
-     *
-     * @param g2D
-     * @param A
-     * @param B
-     * @param fillColor
+     * @param g2D graphics that will have drawn this triangle.
+     * @param A Start point.
+     * @param B End point.
+     * @param fillColor color for insides of this triangle.
      */
     protected void drawTriangle(Graphics2D g2D, Point A, Point B, Color fillColor) {
         Graphics2D g = (Graphics2D) g2D.create();
@@ -102,12 +105,11 @@ public class JoinEdgeDrawer {
     }
 
     /**
-     * Method for drawing traiangle at end of the line given by 2 points.
-     *
-     * @param g2D
-     * @param A
-     * @param B
-     * @param fillColor
+     * Method for drawing diamond at end of the line given by 2 points.
+     * @param g2D graphics that will have drawn this diamond.
+     * @param A Start point.
+     * @param B End point.
+     * @param fillColor color for insides of this diamond.
      */
     protected void drawDiamond(Graphics2D g2D, Point A, Point B, Color fillColor) {
         Graphics2D g = (Graphics2D) g2D.create();
@@ -139,9 +141,9 @@ public class JoinEdgeDrawer {
     }
 
     /**
-     *
-     * @param g2D
-     * @param name
+     * Method for drawing string at precise coordinates.
+     * @param g2D drawing panel.
+     * @param name String to be srawn.
      */
     protected void drawString(Graphics2D g2D, String name) {
         Graphics2D g = (Graphics2D) g2D.create();
@@ -162,11 +164,11 @@ public class JoinEdgeDrawer {
     }
 
     /**
-     *
-     * @param g
-     * @param startPoint
-     * @param endPoint
-     * @param breakPoints
+     * Method for drawing line, that has break points inside.
+     * @param g drawing panel.
+     * @param startPoint start point of this line.
+     * @param endPoint end point of this line.
+     * @param breakPoints MyArrayList<Point> points that describe break points.
      */
     protected void drawbreakedLine(Graphics2D g, Point startPoint, Point endPoint, MyArrayList<Point> breakPoints) {
         Color lineColor = g.getColor();
@@ -191,8 +193,8 @@ public class JoinEdgeDrawer {
     
     /**
      * For setting basic colors of lines.
-     * @param g
-     * @param searchForAssignedObject 
+     * @param g drawing panel.
+     * @param searchForAssignedObject should be considered assigned object in cause.
      */
     protected void setBasicColors(Graphics2D g, Boolean searchForAssignedObject) {
         if (this.joinEdgeController.getSelected()) {
