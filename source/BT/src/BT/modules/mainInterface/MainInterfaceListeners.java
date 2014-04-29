@@ -12,9 +12,16 @@ import BT.modules.export.ExportToPdf;
 import BT.modules.export.ExportToXml;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.MappedByteBuffer;
+import java.nio.channels.FileChannel;
+import java.nio.charset.Charset;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
@@ -43,8 +50,6 @@ public class MainInterfaceListeners {
         if (toolBarContent.getDiagramById(tabId) != null)
         {
             DiagramPlacesManager selectedDiagrams = toolBarContent.getDiagramById(tabId);
-            XStream xstream = new XStream(new DomDriver());
-            String xml = xstream.toXML(selectedDiagrams);
             if (selectedDiagrams.getAbsolutePath() == null)
             {
                 final JFileChooser fc = new JFileChooser();
@@ -72,7 +77,8 @@ public class MainInterfaceListeners {
                     try {
                         try (PrintWriter out = new PrintWriter(fileName)) {
                             selectedDiagrams.setAbsolutePath(new File(fileName));
-                            out.println(xml);
+                            XStream xstream = new XStream(new DomDriver());
+                            out.println(xstream.toXML(selectedDiagrams));
                         }
                     } catch (FileNotFoundException ex) {
                         JOptionPane.showMessageDialog(null, "Error while saving file.");
@@ -86,7 +92,8 @@ public class MainInterfaceListeners {
             {
                 try {
                     try (PrintWriter out = new PrintWriter(selectedDiagrams.getAbsolutePath())) {
-                        out.println(xml);
+                        XStream xstream = new XStream(new DomDriver());
+                        out.println(xstream.toXML(selectedDiagrams));
                     }
                 } catch (FileNotFoundException ex) {
                     JOptionPane.showMessageDialog(null, "Error while saving file.");
@@ -108,8 +115,17 @@ public class MainInterfaceListeners {
      */
     public DiagramPlacesManager clickedOnOpen()
     {
-        System.out.println("Open clicked");
-        DiagramPlacesManager openedFile = new DiagramPlacesManager();
+        XStream xstream = new XStream(new DomDriver());
+        DiagramPlacesManager openedFile = null;
+        final JFileChooser fc = new JFileChooser();
+        FileNameExtensionFilter xmlfilter = new FileNameExtensionFilter("xml files (*.xml)", "xml");
+        fc.setFileFilter(xmlfilter);
+        int returnVal = fc.showOpenDialog(null);
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            FileInputStream stream = null;
+            File file = fc.getSelectedFile();
+            openedFile = (DiagramPlacesManager) xstream.fromXML(file);
+        }
         return openedFile;
     }
     

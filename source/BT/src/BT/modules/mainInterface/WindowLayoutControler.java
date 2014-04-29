@@ -80,7 +80,7 @@ public class WindowLayoutControler {
      * @param diagramPlaces
      */
     public void addNewTab(MainContentModel UCContentModel, MainContentModel UMLContentModel, MainContentModel OOPNContentModel, DiagramPlacesManager diagramPlaces) {
-        addNewTab(UCContentModel, UMLContentModel, OOPNContentModel, "new file");
+        addNewTab(UCContentModel, UMLContentModel, OOPNContentModel, diagramPlaces.getFileName());
     }
 
     /**

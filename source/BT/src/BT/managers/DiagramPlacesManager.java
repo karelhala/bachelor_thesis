@@ -59,6 +59,7 @@ public class DiagramPlacesManager {
         this.ucPlaces = new PlaceManager();
         this.cdPlaces = new PlaceManager();
         this.pnPlaces = new ArrayList<>();
+        this.fileName = "New File";
     }
 
     /**

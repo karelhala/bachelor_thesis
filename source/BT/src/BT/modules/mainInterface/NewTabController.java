@@ -27,17 +27,11 @@ import javax.swing.JTabbedPane;
 public class NewTabController {
     private DiagramPlacesManager diagramPlaces;
     
-    public NewTabController(WindowLayoutControler myLayout, ToolBarContentControler toolbar)
-    {
-        addNewTab(myLayout);
-    }
-    
     /**
      *
      * @param myLayout
      */
-    private void addNewTab(final WindowLayoutControler myLayout) {
-        diagramPlaces = new DiagramPlacesManager();
+    public void addNewTab(final WindowLayoutControler myLayout) {
         UCContentController UCController = new UCContentController();
         UCController.createComponents(diagramPlaces);
 

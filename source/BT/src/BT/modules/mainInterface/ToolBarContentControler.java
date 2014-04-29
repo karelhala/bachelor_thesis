@@ -99,10 +99,25 @@ public class ToolBarContentControler {
      * @param myLayout
      */
     public void NewFileButtonMouseClicked(WindowLayoutControler myLayout) {
-        NewTabController newTab = new NewTabController(myLayout, this);
+        NewTabController newTab = new NewTabController();
+        newTab.setDiagramPlaces(new DiagramPlacesManager());
+        newTab.addNewTab(myLayout);
         this.diagramPlaces.add(newTab.getDiagramPlaces());
     }
 
+    /**
+     * 
+     * @param openedDiagrams
+     * @param myLayout 
+     */
+    public void openedFile(DiagramPlacesManager openedDiagrams, WindowLayoutControler myLayout)
+    {
+        NewTabController newTab = new NewTabController();
+        newTab.setDiagramPlaces(openedDiagrams);
+        newTab.addNewTab(myLayout);
+        this.diagramPlaces.add(newTab.getDiagramPlaces());
+    }
+    
     /**
      *
      * @param myLayout

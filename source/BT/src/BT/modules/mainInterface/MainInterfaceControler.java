@@ -4,14 +4,13 @@
  */
 package BT.modules.mainInterface;
 
+import BT.managers.DiagramPlacesManager;
 import GUI.MainWindowModel;
 import GUI.MyToolBar;
 import java.awt.Component;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.Action;
-import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -90,7 +89,11 @@ public class MainInterfaceControler {
         this.ToolBarContent.setOpenFileAction(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                mainInterfaceListeners.clickedOnOpen();
+                DiagramPlacesManager diagramsFile = mainInterfaceListeners.clickedOnOpen();
+                if (diagramsFile != null)
+                {
+                    ToolBarContent.openedFile(diagramsFile, myLayout);
+                }
             }
         });
         
