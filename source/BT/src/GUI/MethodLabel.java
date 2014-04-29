@@ -10,7 +10,12 @@ import BT.managers.CD.Method;
 import BT.managers.PlaceManager;
 import BT.modules.ClassDiagram.places.CDClass;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseListener;
 import javax.swing.JLabel;
+import org.w3c.dom.events.MouseEvent;
 
 /**
  *
@@ -46,6 +51,11 @@ public class MethodLabel extends JLabel{
         this.selected = false;
     }
     
+    /**
+     * 
+     * @param name
+     * @param selectedClass 
+     */
     public MethodLabel(String name, CDClass selectedClass)
     {
         super(name);
@@ -76,6 +86,9 @@ public class MethodLabel extends JLabel{
         setBasicColor();
     }
     
+    /**
+     * 
+     */
     public void setBasicColor()
     {
         if (this.selected)

@@ -84,6 +84,6 @@ public class CDBottomLeftController {
                 drawingPane.repaint();
             }
         });
-        this.leftContentmodel.addObjectsToPane(insertedAttribute.getVisibility().name()+ " " + insertedAttribute.getName() + ":" + insertedAttribute.getType(), deleteButton);
+        this.leftContentmodel.addObjectsToPane(insertedAttribute, deleteButton);
     }
 }

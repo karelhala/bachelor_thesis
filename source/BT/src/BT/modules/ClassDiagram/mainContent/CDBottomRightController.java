@@ -182,7 +182,7 @@ abstract public class CDBottomRightController extends CDMainContentModel {
                 selectedType = (selectedType == null)?"void":selectedType;
                 Method newMethod = new Method(
                         selectedAtttributeType, 
-                        this.attributesPanel.getMethodName().getText()+"()", 
+                        this.attributesPanel.getMethodName().getText(), 
                         selectedType, 
                         selectedClass
                 );

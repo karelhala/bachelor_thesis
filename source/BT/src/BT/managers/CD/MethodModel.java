@@ -37,6 +37,11 @@ public class MethodModel extends Attribute{
      * PlaceManager for drawing places of petrinet for this method.
      */
     protected final PlaceManager petriNet;
+    
+    /**
+     * ArrayList that holds every attribute.
+     */
+    protected final MyArrayList<String> attributes;
 
     /**
      * Contructor for creating basic method model.
@@ -51,6 +56,7 @@ public class MethodModel extends Attribute{
         this.petriNet = new PlaceManager();
         this.assignedClass = assignedClass;
         this.classMethods = new MyArrayList<>();
+        this.attributes = new MyArrayList<>();
     }
     
     /**
@@ -94,5 +100,35 @@ public class MethodModel extends Attribute{
      */
     public CDClass getAssignedClass() {
         return assignedClass;
+    }
+
+    public MyArrayList<String> getAttributes() {
+        return attributes;
+    }
+    
+    /**
+     * Add new unique attribute to method.
+     * @param attribute String, name of attribute.
+     */
+    public void addNewAttribute(String attribute)
+    {
+        this.attributes.addUnique(attribute);
+    }
+    
+    /**
+     * Get methods attributes as joined string with columns as delimeter.
+     * @return String of attribues delimed by columns.
+     */
+    public String getAttributesAsString()
+    {
+        String joinedAttribues = "";
+        for (String attribute : attributes) {
+            joinedAttribues += attribute;
+            if (!attributes.isLast(attribute))
+            {
+                joinedAttribues += ", ";
+            }
+        }
+        return joinedAttribues;
     }
 }

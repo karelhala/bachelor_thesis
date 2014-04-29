@@ -17,17 +17,17 @@ public class Attribute {
     /**
      * Variable holding visibility of attribute.
      */
-    private AttributeType visibility;
+    protected AttributeType visibility;
     
     /**
      * Variable holding name of attribute.
      */
-    private String name;
+    protected String name;
     
     /**
      * Variable holding type of attribute
      */
-    private String type;
+    protected String type;
 
     /**
      * Basic constructor
@@ -78,5 +78,14 @@ public class Attribute {
     public String toString()
     {
         return ((this.visibility == AttributeType.PRIVATE)?"-":(this.visibility == AttributeType.PUBLIC)?"+":"#") + " " + this.name;
+    }
+    
+    /**
+     * Get attribute of class styled for printing.
+     * @return visibility name:type
+     */
+    public String getAttributeStyled()
+    {
+        return this.visibility.name() + " " + this.name + ":" + this.type;
     }
 }

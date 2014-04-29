@@ -68,4 +68,14 @@ public class Method extends MethodModel{
         this.classAttributes = this.assignedClass.loadClassAttributes();
         return this;
     }
+    
+    /**
+     * Get method of class styled for printing.
+     * @return visibility name(attributes):type
+     */
+    @Override
+    public String getAttributeStyled()
+    {
+        return this.visibility.name() + " " + this.name + "(" + this.getAttributesAsString() + ")" + ":" + this.type;
+    }
 }
