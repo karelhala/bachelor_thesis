@@ -5,9 +5,9 @@ name: Nástroj pro podporu vývoje softwarových systémů
 
 author: Karel Hala
 
-link to latest binary version (15.4.2014): https://dl.dropboxusercontent.com/u/42535875/bachelorsThesis.jar
+link to latest binary version (30.4.2014): https://drive.google.com/file/d/0B57Re4OGRysTV1VqMVc2Yk5qYmc/edit?usp=sharing
 
-link to latest source version (15.4.2014): https://dl.dropboxusercontent.com/u/42535875/bachelorsThesis.zip
+link to latest source version (30.4.2014): https://drive.google.com/file/d/0B57Re4OGRysTNTYyUExNWWVBVjA/edit?usp=sharing
 
 To build this project run:
 ant compile
