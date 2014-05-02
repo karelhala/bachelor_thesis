@@ -63,11 +63,13 @@ public class PNMainContentController extends PNMainContentInitializer implements
     @Override
     public void drawingPaneDoubleCliked(CoordinateModel pressedObject) {
         if (pressedObject != null && !(pressedObject instanceof LineModel)) {
-            String name = (String) JOptionPane.showInputDialog("Enter name of the object", pressedObject.getName());
-            if (name != null && !"".equals(name)) {
-                pressedObject.setName(name);
+            if (pressedObject instanceof PNPlace && ((PNPlace)pressedObject).isEditable())
+            {
+                String name = (String) JOptionPane.showInputDialog("Enter name of the object", pressedObject.getName());
+                if (name != null && !"".equals(name)) {
+                    pressedObject.setName(name);
+                }
             }
-            ((PNDrawingPane) this.mainContent.getDrawingPane()).getDrawing().repaint();
         } else if (pressedObject instanceof LineModel)
         {
             PNJoinEdgeController clickedLine = (PNJoinEdgeController) pressedObject;
@@ -104,6 +106,7 @@ public class PNMainContentController extends PNMainContentInitializer implements
                 }
             }
         }
+        ((PNDrawingPane) this.mainContent.getDrawingPane()).getDrawing().repaint();
     }
 
     /**

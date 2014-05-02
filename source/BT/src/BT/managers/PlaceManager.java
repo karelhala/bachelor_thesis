@@ -34,12 +34,15 @@ public class PlaceManager extends PlaceModel {
      * @param selectedObject selectedObject object to be deleted
      */
     public void removePlace(CoordinateModel selectedObject) {
-        removeJoinEdgesWithObject(selectedObject);
-        if (selectedObject.getAssignedObject() != null)
+        if (selectedObject.isRemovable())
         {
-            (selectedObject.getAssignedObject()).setAssignedObject(null);
+            removeJoinEdgesWithObject(selectedObject);
+            if (selectedObject.getAssignedObject() != null)
+            {
+                (selectedObject.getAssignedObject()).setAssignedObject(null);
+            }
+            this.objects.remove(selectedObject);
         }
-        this.objects.remove(selectedObject);
     }
 
     /**
@@ -47,15 +50,18 @@ public class PlaceManager extends PlaceModel {
      * @param jointEdge jointEdge object to be removed.
      */
     public void removeJoinEdge(LineModel jointEdge) {
-        jointEdge.getFirstObject().removeOutJoin(jointEdge);
-        if (jointEdge.getSecondObject() != null) {
-            jointEdge.getSecondObject().removeInJoin(jointEdge);
-        }
-        if (jointEdge.getAssignedObject() != null)
+        if (jointEdge.isRemovable())
         {
-            jointEdge.getAssignedObject().setAssignedObject(null);
+            jointEdge.getFirstObject().removeOutJoin(jointEdge);
+            if (jointEdge.getSecondObject() != null) {
+                jointEdge.getSecondObject().removeInJoin(jointEdge);
+            }
+            if (jointEdge.getAssignedObject() != null)
+            {
+                jointEdge.getAssignedObject().setAssignedObject(null);
+            }
+            this.joinEdges.remove(jointEdge);
         }
-        this.joinEdges.remove(jointEdge);
     }
 
     /**
@@ -67,16 +73,19 @@ public class PlaceManager extends PlaceModel {
         Iterator<LineModel> it = joinEdges.iterator();
         while (it.hasNext()) {
             LineModel joinEdge = it.next();
-            if (joinEdge.getFirstObject().equals(removedObject) || joinEdge.getSecondObject().equals(removedObject)) {
-                joinEdge.getFirstObject().removeOutJoin(joinEdge);
-                if (joinEdge.getSecondObject() != null) {
-                    joinEdge.getSecondObject().removeInJoin(joinEdge);
+            if (joinEdge.isRemovable())
+            {
+                if (joinEdge.getFirstObject().equals(removedObject) || joinEdge.getSecondObject().equals(removedObject)) {
+                    joinEdge.getFirstObject().removeOutJoin(joinEdge);
+                    if (joinEdge.getSecondObject() != null) {
+                        joinEdge.getSecondObject().removeInJoin(joinEdge);
+                    }
+                    if (joinEdge.getAssignedObject() != null)
+                    {
+                        joinEdge.getAssignedObject().setAssignedObject(null);
+                    }
+                    it.remove();
                 }
-                if (joinEdge.getAssignedObject() != null)
-                {
-                    joinEdge.getAssignedObject().setAssignedObject(null);
-                }
-                it.remove();
             }
         }
     }
@@ -90,21 +99,24 @@ public class PlaceManager extends PlaceModel {
             CoordinateModel coorModel = it.next();
             if (coorModel.getSelected()) {
                 LineModel selectedLine = (LineModel) coorModel;
-                selectedLine.getFirstObject().removeOutJoin(selectedLine);
-                if (selectedLine.getSecondObject() != null) {
-                    selectedLine.getSecondObject().removeInJoin(selectedLine);
-                }
-                if (selectedLine.getAssignedObject() != null)
+                if (selectedLine.isRemovable())
                 {
-                    selectedLine.getAssignedObject().setAssignedObject(null);
+                    selectedLine.getFirstObject().removeOutJoin(selectedLine);
+                    if (selectedLine.getSecondObject() != null) {
+                        selectedLine.getSecondObject().removeInJoin(selectedLine);
+                    }
+                    if (selectedLine.getAssignedObject() != null)
+                    {
+                        selectedLine.getAssignedObject().setAssignedObject(null);
+                    }
+                    it.remove();
                 }
-                it.remove();
             }
         }
 
         for (Iterator<CoordinateModel> it = objects.iterator(); it.hasNext();) {
             CoordinateModel coorModel = it.next();
-            if (coorModel.getSelected()) {
+            if (coorModel.getSelected() && coorModel.isRemovable()) {
                 removeJoinEdgesWithObject(coorModel);
                 if (coorModel.getAssignedObject() != null)
                 {
@@ -122,21 +134,27 @@ public class PlaceManager extends PlaceModel {
     {
         for (Iterator<LineModel> it = joinEdges.iterator(); it.hasNext();) {
             CoordinateModel coorModel = it.next();
-            if (coorModel.getAssignedObject() == null) {
-                LineModel selectedLine = (LineModel) coorModel;
-                selectedLine.getFirstObject().removeOutJoin(selectedLine);
-                if (selectedLine.getSecondObject() != null) {
-                    selectedLine.getSecondObject().removeInJoin(selectedLine);
+            if (coorModel.isRemovable())
+            {
+                if (coorModel.getAssignedObject() == null) {
+                    LineModel selectedLine = (LineModel) coorModel;
+                    selectedLine.getFirstObject().removeOutJoin(selectedLine);
+                    if (selectedLine.getSecondObject() != null) {
+                        selectedLine.getSecondObject().removeInJoin(selectedLine);
+                    }
+                    it.remove();
                 }
-                it.remove();
             }
         }
         
         for (Iterator<CoordinateModel> it = objects.iterator(); it.hasNext();) {
             CoordinateModel coorModel = it.next();
-            if (coorModel.getAssignedObject() == null) {
-                removeJoinEdgesWithObject(coorModel);
-                it.remove();
+            if (coorModel.isRemovable())
+            {
+                if (coorModel.getAssignedObject() == null) {
+                    removeJoinEdgesWithObject(coorModel);
+                    it.remove();
+                }
             }
         }
     }

@@ -17,7 +17,11 @@ import java.util.ArrayList;
  */
 public class PNPlaceModel extends CoordinateModel{
 
+    /**
+     * 
+     */
     protected MyArrayList<String> variables;
+    
     
     /**
      *

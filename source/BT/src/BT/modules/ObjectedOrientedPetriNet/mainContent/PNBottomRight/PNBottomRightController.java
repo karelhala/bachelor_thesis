@@ -56,6 +56,7 @@ public class PNBottomRightController extends PNBottomRightModel{
      */
     public PNBottomRightController loadAttributesToComboBox()
     {
+        this.basicPetrinetPanel.getClassAttributes().removeAllItems();
         if (this.selectedClass != null)
         {
             for (Attribute oneAttribute : this.selectedClass.loadClassAttributes()) {
@@ -108,8 +109,9 @@ public class PNBottomRightController extends PNBottomRightModel{
                 if (basicPetrinetPanel.getClassAttributes().getSelectedItem() != null)
                 {
                     PNPlace newPlace = new PNPlace(30,30);
+                    newPlace.setEditable(Boolean.FALSE);
                     newPlace.addVariable(basicPetrinetPanel.getClassAttributes().getSelectedItem().toString());
-                    newPlace.setName("");
+                    newPlace.setName(basicPetrinetPanel.getClassAttributes().getSelectedItem().toString());
                     petrinetPlaces.addObject(newPlace);
                 }
                 petrinetDrawingPane.getDrawing().repaint();

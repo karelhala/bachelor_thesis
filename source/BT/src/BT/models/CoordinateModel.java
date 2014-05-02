@@ -86,6 +86,17 @@ public class CoordinateModel {
      */
     protected int textSize;
 
+    
+    /**
+     * Define if this place is editable.
+     */
+    protected Boolean editable;
+    
+    /**
+     * Define if this place can be deleted.
+     */
+    protected Boolean removable;
+    
     /**
      *
      */
@@ -97,6 +108,8 @@ public class CoordinateModel {
                         BasicStroke.CAP_BUTT,
                         BasicStroke.JOIN_MITER,
                         10.0f, dash1, 0.0f);
+        this.removable = true;
+        this.editable = true;
     }
 
     public ArrayList<LineModel> getInJoins() {
@@ -286,6 +299,23 @@ public class CoordinateModel {
             }
         }
     }
+    
+    public Boolean isEditable() {
+        return editable;
+    }
+
+    public void setEditable(Boolean editable) {
+        this.editable = editable;
+    }
+
+    public Boolean isRemovable() {
+        return removable;
+    }
+
+    public void setRemovable(Boolean removable) {
+        this.removable = removable;
+    }
+    
     
     @Override
     public String toString()

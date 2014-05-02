@@ -57,7 +57,6 @@ abstract public class PNMainContentInitializer extends PNMainContentModel {
         PNDrawingPane drawingPane = (PNDrawingPane) this.mainContent.getDrawingPane();
         drawingPane.getDrawing().getActionMap().put("removeObject", new AbstractAction() {
             PNDrawingPane drawingPane = (PNDrawingPane) mainContent.getDrawingPane();
-
             @Override
             public void actionPerformed(ActionEvent ae) {
                 places.removeAllSelectedItems();
