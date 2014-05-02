@@ -93,6 +93,7 @@ abstract public class PNMainContentInitializer extends PNMainContentModel {
     public void repaintBottomLeft()
     {
         this.bottomLeftController.repaintBottomLeftContent(this.selectedClass);
+        this.bottomLeftController.getDrawnClass().setSelected(Boolean.TRUE);
         setListenerToMethodLabel(this.bottomLeftController.getDrawnClass());
         for (MethodLabel oneLabel : this.bottomLeftController.getMethodLabels()) {
             setListenerToMethodLabel(oneLabel);
@@ -106,6 +107,7 @@ abstract public class PNMainContentInitializer extends PNMainContentModel {
     {
         this.bottomRightController.setSelectedClass(selectedClass);
         this.bottomRightController.setPetrinetPlaces(places);
+        this.bottomRightController.setSelectedMethod(null);
         this.bottomRightController.loadAttributesToComboBox();
     }
     
@@ -115,6 +117,7 @@ abstract public class PNMainContentInitializer extends PNMainContentModel {
      */
     private void setListenerToMethodLabel(final MethodLabel listenedMethodLabel)
     {
+        listenedMethodLabel.setBasicColor();
         listenedMethodLabel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
