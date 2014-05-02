@@ -62,6 +62,13 @@ public class PNBottomRightController extends PNBottomRightModel{
             for (Attribute oneAttribute : this.selectedClass.loadClassAttributes()) {
                 this.basicPetrinetPanel.getClassAttributes().addItem(oneAttribute);
             }
+            if (this.selectedMethod != null && this.selectedMethod.getObjectMethod() != null)
+            {
+                Method clickedMethod = this.selectedMethod.getObjectMethod();
+                for (String methodsAttribute : clickedMethod.getAttributes()) {
+                    this.basicPetrinetPanel.getClassAttributes().addItem(methodsAttribute);
+                }
+            }
         }
         if (this.selectedClass.loadClassAttributes().size() == 0)
         {

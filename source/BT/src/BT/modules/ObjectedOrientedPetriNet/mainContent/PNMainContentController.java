@@ -17,9 +17,13 @@ import java.awt.Checkbox;
 import java.awt.Component;
 import java.awt.GridLayout;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JToggleButton;
+import net.sf.epsgraphics.EpsGraphics;
 
 /**
  *

@@ -137,6 +137,7 @@ abstract public class PNMainContentInitializer extends PNMainContentModel {
                 }
                 listenedMethodLabel.selectAndChangeColor(Boolean.TRUE);
                 bottomRightController.setSelectedMethod(listenedMethodLabel);
+                bottomRightController.loadAttributesToComboBox();
                 bottomRightController.setPetrinetPlaces(listenedMethodLabel.getPetriNetFromClassOrMethod());
                 setPlacesAndRepaintDrawing(listenedMethodLabel.getPetriNetFromClassOrMethod());
             }

@@ -39,6 +39,8 @@ public class PNDrawingPane extends DrawingPaneModel {
      *
      */
     public class drawing extends JPanel {
+        
+        private Graphics2D graphicsPanel;
 
         /**
          *
@@ -47,24 +49,28 @@ public class PNDrawingPane extends DrawingPaneModel {
         @Override
         protected void paintComponent(Graphics g1) {
             super.paintComponent(g1);
-            Graphics2D g = (Graphics2D) g1.create();
-            g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+            graphicsPanel = (Graphics2D) g1.create();
+            graphicsPanel.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
             if (newLine != null) {
-                g.setColor(Color.GREEN);
-                ((PNJoinEdgeController) newLine).drawJoinEdge(g);
+                graphicsPanel.setColor(Color.GREEN);
+                ((PNJoinEdgeController) newLine).drawJoinEdge(graphicsPanel);
             }
 
             for (LineModel joinEdge : places.getJoinEdges()) {
-                ((PNJoinEdgeController) joinEdge).drawJoinEdge(g);
+                ((PNJoinEdgeController) joinEdge).drawJoinEdge(graphicsPanel);
             }
 
             for (CoordinateModel place : places.getObjects()) {
                 if (place instanceof PNPlace) {
-                    ((PNPlace) place).drawPlace(g);
+                    ((PNPlace) place).drawPlace(graphicsPanel);
                 } else if (place instanceof PNTransition) {
-                    ((PNTransition) place).drawTransition(g);
+                    ((PNTransition) place).drawTransition(graphicsPanel);
                 }
             }
+        }
+
+        public Graphics2D getGraphicsPanel() {
+            return graphicsPanel;
         }
     }
 

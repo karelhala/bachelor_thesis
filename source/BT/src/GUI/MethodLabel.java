@@ -93,7 +93,7 @@ public class MethodLabel extends JLabel{
     {
         if (this.selected)
         {
-            this.setForeground(Color.yellow);
+            this.setForeground(Color.red);
         }
         else
         {
