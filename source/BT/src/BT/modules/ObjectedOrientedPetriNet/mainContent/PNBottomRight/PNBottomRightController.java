@@ -153,7 +153,7 @@ public class PNBottomRightController extends PNBottomRightModel{
     {
         MyArrayList<String> placesVariables = new MyArrayList<>();
         for (LineModel oneLine : this.selectedTransition.getInJoins()) {
-            placesVariables.addAllUnique(((PNPlace)oneLine.getFirstObject()).getVariable());
+            placesVariables.addAllUnique(((PNPlace)oneLine.getFirstObject()).getVariables());
         }
         JPanel dialogPanel = new JPanel(new BorderLayout());
         final JTextField resultString = new JTextField(guardString);
@@ -326,7 +326,10 @@ public class PNBottomRightController extends PNBottomRightModel{
                 this.selectedTransition.getAction().setAssignedClass(null);
                 this.selectedTransition.getAction().setBasicAction((String) actionBox.getSelectedItem());
             }
-            this.selectedTransition.getAction().setVariable(variableField.getSelectedItem().toString());
+            if (variableField.getSelectedItem() != null)
+            {
+                this.selectedTransition.getAction().setVariable(variableField.getSelectedItem().toString());
+            }
         }
     }
     

@@ -15,12 +15,12 @@ import java.util.ArrayList;
  *
  * @author Karel Hala
  */
-public class PNPlaceModel extends CoordinateModel{
-
+public class PNPlaceModel extends PetriNetModel{
+    
     /**
-     * 
+     * Contstant that is in place.
      */
-    protected MyArrayList<String> variables;
+    protected String constant;
     
     
     /**
@@ -44,31 +44,20 @@ public class PNPlaceModel extends CoordinateModel{
         this.outJoins = new ArrayList<>();
         this.variables = new MyArrayList<>();
     }
-    
+
     /**
-     * Add new variable to place.
-     * @param variableName variable's name.
+     * Get constant.
+     * @return String of constant.
      */
-    public void addVariable(String variableName)
-    {
-        this.variables.addUnique(variableName);
+    public String getConstant() {
+        return constant;
     }
-    
+
     /**
-     * Get all variable as ArrayList<String>
-     * @return ArrayList<String>
+     * Set constant to this.
+     * @param constant
      */
-    public ArrayList<String> getVariable()
-    {
-        return this.variables;
-    }
-    
-    /**
-     * Remove desired variable from variables.
-     * @param variableName remove variable with this name.
-     */
-    public void removeVariable(String variableName)
-    {
-        this.variables.remove(variableName);
+    public void setConstant(String constant) {
+        this.constant = constant;
     }
 }

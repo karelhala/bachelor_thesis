@@ -10,6 +10,7 @@ import BT.models.ActionModel;
 import BT.models.LineModel;
 import BT.models.MyArrayList;
 import BT.modules.ClassDiagram.places.CDClass;
+import BT.modules.ObjectedOrientedPetriNet.places.joinEdge.PNJoinEdgeController;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
@@ -170,15 +171,13 @@ public class PNTransition extends PNTransitionModel {
      * Get all class variables and all variables fro each in join of transition.
      * @return MyArrayList<String>.
      */
-    public MyArrayList<String> getAllVariablesOfTransition()
+    @Override
+    public MyArrayList<String> getVariables()
     {
         MyArrayList<String> allVariables = new MyArrayList<>();
         allVariables.add(this.action.getVariable());
-        for (Attribute oneVariable : ((CDClass)this.assignedObject).loadClassAttributes()) {
-            allVariables.addUnique(oneVariable.getName());
-        }
         for (LineModel oneInJoin : this.inJoins) {
-            allVariables.addAllUnique(((PNPlace)oneInJoin.getFirstObject()).getVariable());
+            allVariables.addAllUnique(((PNPlace)oneInJoin.getFirstObject()).getVariables());
         }
         return allVariables;
     }

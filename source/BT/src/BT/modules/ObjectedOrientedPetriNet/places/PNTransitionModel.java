@@ -15,7 +15,7 @@ import java.util.ArrayList;
  *
  * @author Karel Hala
  */
-public class PNTransitionModel extends CoordinateModel{
+public class PNTransitionModel extends PetriNetModel{
     
     /**
      * Stores guard string.

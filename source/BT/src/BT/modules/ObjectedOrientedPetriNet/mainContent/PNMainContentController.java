@@ -12,6 +12,7 @@ import BT.models.CoordinateModel;
 import BT.models.LineModel;
 import BT.modules.ObjectedOrientedPetriNet.places.PNPlace;
 import BT.modules.ObjectedOrientedPetriNet.places.PNTransition;
+import BT.modules.ObjectedOrientedPetriNet.places.PetriNetModel;
 import BT.modules.ObjectedOrientedPetriNet.places.joinEdge.PNJoinEdgeController;
 import java.awt.Checkbox;
 import java.awt.Component;
@@ -77,34 +78,33 @@ public class PNMainContentController extends PNMainContentInitializer implements
         } else if (pressedObject instanceof LineModel)
         {
             PNJoinEdgeController clickedLine = (PNJoinEdgeController) pressedObject;
-            if (clickedLine.getFirstObject() instanceof PNTransition)
-            {
-                JPanel dialogPanel = new JPanel(new GridLayout(0,1));
-                for (String oneVariable : ((PNTransition)clickedLine.getFirstObject()).getAllVariablesOfTransition()) {
-                    if (clickedLine.getSelectedVariables().contains(oneVariable) || 
-                            (((PNTransition)clickedLine.getFirstObject()).getActionVariable() != null 
-                            &&((PNTransition)clickedLine.getFirstObject()).getActionVariable().equals(oneVariable)))
-                    {
-                        dialogPanel.add(new Checkbox(oneVariable, true));
-                    }
-                    else if (((PNTransition)clickedLine.getFirstObject()).getActionVariable() != null || oneVariable != null)
-                    {
-                        dialogPanel.add(new Checkbox(oneVariable));
-                    }
+            JPanel dialogPanel = new JPanel(new GridLayout(0,1));
+            for (String oneVariable : ((PetriNetModel)clickedLine.getFirstObject()).getVariables()) {
+                if (clickedLine.getSelectedVariables().contains(oneVariable) || 
+                        (clickedLine.getFirstObject() instanceof PNTransition &&
+                        (((PNTransition)clickedLine.getFirstObject()).getActionVariable() != null 
+                        &&((PNTransition)clickedLine.getFirstObject()).getActionVariable().equals(oneVariable)))
+                        )
+                {
+                    dialogPanel.add(new Checkbox(oneVariable, true));
                 }
-                int result = JOptionPane.showConfirmDialog(null, dialogPanel,
-                    "Please select variables.", JOptionPane.OK_CANCEL_OPTION);
-                if (result == JOptionPane.OK_OPTION) {
-                    clickedLine.getSelectedVariables().clear();
-                    ((PNPlace)clickedLine.getSecondObject()).getVariable().clear();
-                    for (Component oneComponent : dialogPanel.getComponents()) {
-                        if (oneComponent instanceof Checkbox)
+                else if (oneVariable != null)
+                {
+                    dialogPanel.add(new Checkbox(oneVariable));
+                }
+            }
+            int result = JOptionPane.showConfirmDialog(null, dialogPanel,
+                "Please select variables.", JOptionPane.OK_CANCEL_OPTION);
+            if (result == JOptionPane.OK_OPTION) {
+                clickedLine.getSelectedVariables().clear();
+                ((PNPlace)clickedLine.getSecondObject()).getVariables().clear();
+                for (Component oneComponent : dialogPanel.getComponents()) {
+                    if (oneComponent instanceof Checkbox)
+                    {
+                        if (((Checkbox)oneComponent).getState())
                         {
-                            if (((Checkbox)oneComponent).getState())
-                            {
-                                clickedLine.addVariable(((Checkbox)oneComponent).getLabel());
-                                ((PNPlace)clickedLine.getSecondObject()).addVariable(((Checkbox)oneComponent).getLabel());
-                            }
+                            clickedLine.addVariable(((Checkbox)oneComponent).getLabel());
+                            ((PNPlace)clickedLine.getSecondObject()).addVariable(((Checkbox)oneComponent).getLabel());
                         }
                     }
                 }
@@ -245,7 +245,10 @@ public class PNMainContentController extends PNMainContentInitializer implements
             joinEdge.setSecondObject(clickedObject);
             if (joinEdge.getSecondObject() instanceof PNPlace)
             {
-                ((PNPlace) joinEdge.getSecondObject()).addVariable(((PNTransition)joinEdge.getFirstObject()).getActionVariable());
+                if (((PNTransition)joinEdge.getFirstObject()).getActionVariable() != null)
+                {
+                    ((PNPlace) joinEdge.getSecondObject()).addVariable(((PNTransition)joinEdge.getFirstObject()).getActionVariable());
+                }
             }
         }
         return joinEdge;
