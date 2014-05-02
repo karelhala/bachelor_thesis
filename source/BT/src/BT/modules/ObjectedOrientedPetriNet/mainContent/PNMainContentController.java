@@ -23,6 +23,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.JToggleButton;
 import net.sf.epsgraphics.EpsGraphics;
 
@@ -79,6 +80,7 @@ public class PNMainContentController extends PNMainContentInitializer implements
         {
             PNJoinEdgeController clickedLine = (PNJoinEdgeController) pressedObject;
             JPanel dialogPanel = new JPanel(new GridLayout(0,1));
+            JTextField additionalVariable = new JTextField(clickedLine.getAdditionalVariable());
             for (String oneVariable : ((PetriNetModel)clickedLine.getFirstObject()).getVariables()) {
                 if (clickedLine.getSelectedVariables().contains(oneVariable) || 
                         (clickedLine.getFirstObject() instanceof PNTransition &&
@@ -93,20 +95,26 @@ public class PNMainContentController extends PNMainContentInitializer implements
                     dialogPanel.add(new Checkbox(oneVariable));
                 }
             }
+            dialogPanel.add(additionalVariable);
             int result = JOptionPane.showConfirmDialog(null, dialogPanel,
                 "Please select variables.", JOptionPane.OK_CANCEL_OPTION);
             if (result == JOptionPane.OK_OPTION) {
                 clickedLine.getSelectedVariables().clear();
-                ((PNPlace)clickedLine.getSecondObject()).getVariables().clear();
+                ((PetriNetModel)clickedLine.getSecondObject()).getVariables().clear();
                 for (Component oneComponent : dialogPanel.getComponents()) {
                     if (oneComponent instanceof Checkbox)
                     {
                         if (((Checkbox)oneComponent).getState())
                         {
                             clickedLine.addVariable(((Checkbox)oneComponent).getLabel());
-                            ((PNPlace)clickedLine.getSecondObject()).addVariable(((Checkbox)oneComponent).getLabel());
+                            ((PetriNetModel)clickedLine.getSecondObject()).addVariable(((Checkbox)oneComponent).getLabel());
                         }
                     }
+                }
+                clickedLine.setAdditionalVariable(additionalVariable.getText());
+                if (additionalVariable.getText() != null && clickedLine.getSecondObject() instanceof PNPlace)
+                {
+                    ((PNPlace)clickedLine.getSecondObject()).addVariable(additionalVariable.getText());
                 }
             }
         }

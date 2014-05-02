@@ -5,12 +5,9 @@
  */
 package BT.modules.ObjectedOrientedPetriNet.places;
 
-import BT.managers.CD.Attribute;
 import BT.models.ActionModel;
 import BT.models.LineModel;
 import BT.models.MyArrayList;
-import BT.modules.ClassDiagram.places.CDClass;
-import BT.modules.ObjectedOrientedPetriNet.places.joinEdge.PNJoinEdgeController;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;

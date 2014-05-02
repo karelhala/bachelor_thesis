@@ -25,6 +25,10 @@ import javax.swing.JTabbedPane;
  * @author Karel
  */
 public class NewTabController {
+    
+    /**
+     * 
+     */
     private DiagramPlacesManager diagramPlaces;
     
     /**

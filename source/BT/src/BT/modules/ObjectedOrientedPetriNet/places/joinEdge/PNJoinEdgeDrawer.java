@@ -50,23 +50,20 @@ public class PNJoinEdgeDrawer extends JoinEdgeDrawer {
                 g.setStroke(new BasicStroke(2));
                 drawbreakedLine(g, this.startPoint, this.endPoint, pnJoin.getBreakPoints());
                 drawTriangle(g, this.endPoint, arrowStartPoint, Color.BLACK);
-                if (pnJoin.getFirstObject() instanceof PNTransition)
-                {
-                    if (pnJoin.getSelectedVariables() == null || pnJoin.getSelectedVariables().isEmpty())
-                    {
-                        if (((PNTransition)pnJoin.getFirstObject()).getActionVariable() != null)
-                        {
-                            drawString(g, ((PNTransition)pnJoin.getFirstObject()).getActionVariable());
+                if (pnJoin.getFirstObject() instanceof PNTransition) {
+                    if (pnJoin.getSelectedVariables() == null || pnJoin.getSelectedVariables().isEmpty()) {
+                        if (pnJoin.getAdditionalVariable() == null || pnJoin.getAdditionalVariable().equals("")) {
+                            if (((PNTransition) pnJoin.getFirstObject()).getActionVariable() != null) {
+                                drawString(g, ((PNTransition) pnJoin.getFirstObject()).getActionVariable());
+                            }
+                        } else {
+                            drawString(g, pnJoin.getVariablesAsString());
                         }
-                    }
-                    else
-                    {
+                    } else {
                         drawString(g, pnJoin.getVariablesAsString());
                     }
-                }
-                else
-                {
-                    drawString(g, ((PNPlace)pnJoin.getFirstObject()).getVariablesAsString());
+                } else {
+                    drawString(g, ((PNPlace) pnJoin.getFirstObject()).getVariablesAsString());
                 }
             }
 

@@ -29,6 +29,11 @@ public class PNJoinEdgeController extends LineModel {
      * 
      */
     private final MyArrayList<String> selectedVariables;
+    
+    /**
+     * 
+     */
+    private String additionalVariable;
 
     /**
      *
@@ -59,6 +64,14 @@ public class PNJoinEdgeController extends LineModel {
     {
         this.selectedVariables.addUnique(newVariable);
     }
+
+    public String getAdditionalVariable() {
+        return additionalVariable;
+    }
+
+    public void setAdditionalVariable(String additionalVariable) {
+        this.additionalVariable = additionalVariable;
+    }
     
     /**
      * For fetching selected variables as String joined by ","
@@ -74,6 +87,11 @@ public class PNJoinEdgeController extends LineModel {
                 returnedString += ", ";
             }
         }
+        if (!this.selectedVariables.isEmpty() && this.additionalVariable != null && !this.additionalVariable.equals(""))
+        {
+            returnedString += ", ";
+        }
+        returnedString += this.additionalVariable;
         return returnedString;
     }
     
