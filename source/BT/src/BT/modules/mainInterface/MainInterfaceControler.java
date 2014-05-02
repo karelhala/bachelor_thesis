@@ -72,13 +72,16 @@ public class MainInterfaceControler {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 String fileName = mainInterfaceListeners.clickedOnSave(myLayout.getFileTab().getSelectedIndex());
-                Component tabComponent = myLayout.getFileTab().getTabComponentAt(myLayout.getFileTab().getSelectedIndex());
-                if (tabComponent instanceof JPanel)
+                if (myLayout.getFileTab().getSelectedIndex() != -1)
                 {
-                    JPanel tabPanel = (JPanel) tabComponent;
-                    if (tabPanel.getComponent(0) instanceof JLabel)
+                    Component tabComponent = myLayout.getFileTab().getTabComponentAt(myLayout.getFileTab().getSelectedIndex());
+                    if (tabComponent instanceof JPanel)
                     {
-                        ((JLabel)tabPanel.getComponent(0)).setText(fileName);
+                        JPanel tabPanel = (JPanel) tabComponent;
+                        if (tabPanel.getComponent(0) instanceof JLabel)
+                        {
+                            ((JLabel)tabPanel.getComponent(0)).setText(fileName);
+                        }
                     }
                 }
             }

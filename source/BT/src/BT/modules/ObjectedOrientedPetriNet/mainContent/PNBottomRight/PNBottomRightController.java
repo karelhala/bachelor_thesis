@@ -6,7 +6,6 @@
 
 package BT.modules.ObjectedOrientedPetriNet.mainContent.PNBottomRight;
 
-import BT.BT;
 import BT.BT.ClassType;
 import static BT.BT.elementWithLabelAbove;
 import BT.managers.CD.Attribute;
@@ -31,6 +30,8 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 /**
@@ -261,18 +262,10 @@ public class PNBottomRightController extends PNBottomRightModel{
         JPanel dialogPanel = new JPanel(new BorderLayout());
         JPanel contentPanel = new JPanel(new BorderLayout());
         JComboBox variableField = new JComboBox();
-        JComboBox classBox = new JComboBox();
-        final JComboBox actionBox = new JComboBox();
-        actionBox.setEditable(true);
+        JTextArea actionArea = new JTextArea(this.selectedTransition.getAction().getBasicAction(),5, 20);
+        JScrollPane scrollPane = new JScrollPane(actionArea); 
         variableField.setEditable(true);
-        classBox.setEditable(true);
-        for (CoordinateModel oneobject : this.classManager.getObjects()) {
-            if (oneobject instanceof CDClass && ((CDClass)oneobject).getTypeOfClass() != ClassType.INTERFACE)
-            {
-                classBox.addItem(oneobject);
-            }
-        }
-        classBox.setSelectedIndex(-1);
+        
         for (Attribute oneVariable : this.selectedClass.loadClassAttributes()) {
             variableField.addItem(oneVariable);
         }
@@ -282,50 +275,15 @@ public class PNBottomRightController extends PNBottomRightModel{
         {
             variableField.setSelectedItem(this.selectedClass.getVariableByName(oldAction.getVariable()));
         }
-        classBox.addItemListener(new ItemListener() {
-            @Override
-            public void itemStateChanged(ItemEvent ie) {
-                if (ie.getStateChange() == ItemEvent.SELECTED) {
-                    Object item = ie.getItem();
-                    actionBox.removeAllItems();
-                    if (item != null && item instanceof CDClass)
-                    {
-                        addAllMethodsFromClassToSelectBox((CDClass)item, actionBox);
-                    }
-                }
-            }
-        });
-        if (this.selectedTransition.getAction().getAssignedClass() != null)
-        {
-            classBox.setSelectedItem(this.selectedTransition.getAction().getAssignedClass());
-            actionBox.setSelectedItem(this.selectedTransition.getAction().getAssignedMethod());
-        }
-        else if (this.selectedTransition.getAction().getBasicAction() != null)
-        {
-            actionBox.setSelectedItem(this.selectedTransition.getAction().getBasicAction());
-        }
-        contentPanel.add(elementWithLabelAbove(variableField, new JLabel("variable   "), Font.ITALIC), BorderLayout.LINE_START);
-        contentPanel.add(elementWithLabelAbove(classBox, new JLabel("class"), Font.ITALIC), BorderLayout.CENTER);
-        contentPanel.add(elementWithLabelAbove(actionBox, new JLabel("action*"),Font.BOLD), BorderLayout.LINE_END);
+
+        contentPanel.add(elementWithLabelAbove(variableField, new JLabel("variable"), Font.ITALIC), BorderLayout.LINE_START);
+        contentPanel.add(elementWithLabelAbove(scrollPane, new JLabel("action"), Font.BOLD), BorderLayout.PAGE_END);
         dialogPanel.add(contentPanel, BorderLayout.PAGE_END);
          int result = JOptionPane.showConfirmDialog(null, dialogPanel,
                     "Please Enter Action for this transition.", JOptionPane.OK_CANCEL_OPTION);
         if (result == JOptionPane.OK_OPTION)
         {
-            if (classBox.getSelectedItem() != null && classBox.getSelectedItem() instanceof CDClass)
-            {
-                this.selectedTransition.getAction().setAssignedClass((CDClass) classBox.getSelectedItem());
-            }
-            
-            if (actionBox.getSelectedItem() != null && actionBox.getSelectedItem() instanceof Method)
-            {
-                this.selectedTransition.getAction().setAssignedMethod((Method)actionBox.getSelectedItem());
-            }
-            else
-            {
-                this.selectedTransition.getAction().setAssignedClass(null);
-                this.selectedTransition.getAction().setBasicAction((String) actionBox.getSelectedItem());
-            }
+            this.selectedTransition.getAction().setBasicAction(actionArea.getText());
             if (variableField.getSelectedItem() != null)
             {
                 this.selectedTransition.getAction().setVariable(variableField.getSelectedItem().toString());
