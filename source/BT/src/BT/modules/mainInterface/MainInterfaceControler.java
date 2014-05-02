@@ -19,7 +19,6 @@ import javax.swing.JPanel;
  * @author Karel Hala
  */
 public class MainInterfaceControler {
-    final private String programName;
     final private ToolBarContentControler ToolBarContent;
     final private MyToolBar toolBar;
     final private WindowLayoutControler myLayout;
@@ -30,7 +29,6 @@ public class MainInterfaceControler {
      * @param programName
      */
     public MainInterfaceControler(String programName) {
-        this.programName = programName;
         this.ToolBarContent = new ToolBarContentControler();
         this.toolBar = new MyToolBar();
         this.myLayout = new WindowLayoutControler(this.toolBar, this.ToolBarContent);

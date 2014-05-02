@@ -69,6 +69,12 @@ public class Method extends MethodModel{
         return this;
     }
     
+    @Override
+    public String toString()
+    {
+        return ((this.visibility == AttributeType.PRIVATE)?"-":(this.visibility == AttributeType.PUBLIC)?"+":"#") + " " + this.name + "(" + getAttributesAsString() + ")" + ":" + this.type;
+    }
+    
     /**
      * Get method of class styled for printing.
      * @return visibility name(attributes):type

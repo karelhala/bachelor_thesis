@@ -123,7 +123,6 @@ public class WindowLayoutControler {
      * @param UMLContentModel
      * @param OOPNContentModel
      * @param name
-     * @param diagramPlaces
      */
     public void addNewTab(MainContentModel UCContentModel, MainContentModel UMLContentModel, MainContentModel OOPNContentModel, String name) {
         JTabbedPane typeTab = new JTabbedPane();

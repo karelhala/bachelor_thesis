@@ -9,8 +9,6 @@ package BT.modules.ClassDiagram.places;
 import BT.BT;
 import BT.BT.AttributeType;
 import BT.managers.CD.Attribute;
-import BT.managers.CD.Method;
-import BT.models.LineModel;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
@@ -80,15 +78,7 @@ public class CDClassDrawer extends CDClassModel{
      */
     protected void drawAttributes(Graphics2D g, ArrayList<Attribute> attribues, Point nameLinePoint, FontMetrics fm) {
         for (Attribute attribute : attribues) {
-            String visibility = "";
-            if (attribute.getVisibility() == AttributeType.PRIVATE) {
-                visibility = "-";
-            } else if (attribute.getVisibility() == AttributeType.PUBLIC) {
-                visibility = "+";
-            } else if (attribute.getVisibility() == AttributeType.PROTECTED) {
-                visibility = "#";
-            }
-            g.drawString(visibility + attribute.getName() + ":" + attribute.getType(), x - nameLinePoint.x + 5, y - nameLinePoint.y + (attribues.indexOf(attribute) * fm.getHeight()));
+            g.drawString(attribute.toString(), x - nameLinePoint.x + 5, y - nameLinePoint.y + (attribues.indexOf(attribute) * fm.getHeight()));
         }
     }
 
@@ -126,7 +116,7 @@ public class CDClassDrawer extends CDClassModel{
     protected int getMaximumStringLengthOfAttribute(ArrayList<Attribute> attribues, FontMetrics fm) {
         int maxWidth = 0;
         for (Attribute attribute : attribues) {
-            int attributeWidth = fm.stringWidth(" " + attribute.getName() + ":" + attribute.getType());
+            int attributeWidth = fm.stringWidth(attribute.toString());
             if (attributeWidth > maxWidth) {
                 maxWidth = attributeWidth;
             }
