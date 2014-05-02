@@ -11,6 +11,7 @@ import BT.managers.CD.Attribute;
 import BT.managers.CD.Method;
 import BT.managers.DiagramPlacesManager;
 import BT.modules.ClassDiagram.places.CDClass;
+import BT.modules.ObjectedOrientedPetriNet.places.PNPlace;
 import GUI.BottomRightContentModel;
 import GUI.ClassDiagramAttributesPanel;
 import java.awt.event.ActionEvent;
@@ -186,6 +187,11 @@ abstract public class CDBottomRightController extends CDMainContentModel {
                         selectedType, 
                         selectedClass
                 );
+                PNPlace returnPlace = new PNPlace(70, 40);
+                returnPlace.setName("return");
+                returnPlace.setEditable(Boolean.FALSE);
+                returnPlace.setRemovable(Boolean.FALSE);
+                newMethod.getPetriNet().addObject(returnPlace);
                 newMethod.loadClassAttributes().loadClassMethods();
                 selectedClass.addNewMethod(newMethod);
                 this.diagramPlaces.addPnPlace(newMethod.getPetriNet());
