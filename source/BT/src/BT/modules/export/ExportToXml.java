@@ -7,6 +7,7 @@
 package BT.modules.export;
 
 import BT.managers.DiagramPlacesManager;
+import java.io.File;
 
 /**
  * Class to export selected file to XML.
@@ -15,8 +16,8 @@ import BT.managers.DiagramPlacesManager;
  */
 public class ExportToXml extends ExportModel{
     
-    public ExportToXml(DiagramPlacesManager diagramPlaces)
+    public ExportToXml(DiagramPlacesManager diagramPlaces, File exportToFolder)
     {
-        super (diagramPlaces);
+        super (diagramPlaces, exportToFolder);
     }
 }

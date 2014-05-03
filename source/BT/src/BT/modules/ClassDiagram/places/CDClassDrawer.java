@@ -7,7 +7,6 @@
 package BT.modules.ClassDiagram.places;
 
 import BT.BT;
-import BT.BT.AttributeType;
 import BT.managers.CD.Attribute;
 import java.awt.BasicStroke;
 import java.awt.Color;

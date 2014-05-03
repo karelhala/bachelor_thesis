@@ -7,6 +7,7 @@
 package BT.modules.export;
 
 import BT.managers.DiagramPlacesManager;
+import java.io.File;
 
 /**
  * Class for exporting files to PDF.
@@ -15,8 +16,8 @@ import BT.managers.DiagramPlacesManager;
  */
 public class ExportToPdf extends ExportModel{
     
-    public ExportToPdf(DiagramPlacesManager diagramPlaces)
+    public ExportToPdf(DiagramPlacesManager diagramPlaces, File exportToFolder)
     {
-        super(diagramPlaces);
+        super(diagramPlaces, exportToFolder);
     }
 }

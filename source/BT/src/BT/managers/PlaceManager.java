@@ -12,15 +12,11 @@ import BT.modules.ClassDiagram.places.CDClass;
 import BT.modules.UC.places.UCActor;
 import BT.modules.UC.places.UCUseCase;
 import java.awt.BorderLayout;
-import java.awt.Graphics2D;
 import java.util.ArrayList;
 import java.util.Iterator;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import net.sf.epsgraphics.EpsGraphics;
-import net.sf.epsgraphics.EpsTools;
-import sun.print.PSPrinterJob;
 
 /**
  *

@@ -12,18 +12,10 @@ import BT.modules.export.ExportToPdf;
 import BT.modules.export.ExportToXml;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.io.PrintWriter;
-import java.nio.MappedByteBuffer;
-import java.nio.channels.FileChannel;
-import java.nio.charset.Charset;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -137,7 +129,13 @@ public class MainInterfaceListeners {
     {
         if (toolBarContent.getDiagramById(tabId) != null)
         {
-            ExportToEps epsExport = new ExportToEps(toolBarContent.getDiagramById(tabId));
+            JFileChooser fc = new JFileChooser();
+            fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+            int returnVal = fc.showSaveDialog(null);
+            if (returnVal == JFileChooser.APPROVE_OPTION) {
+                ExportToEps epsExport = new ExportToEps(toolBarContent.getDiagramById(tabId), fc.getSelectedFile());
+                epsExport.exportAllToFiles();
+            }
             System.out.println("ExportEpsClicked");
         }
         else
@@ -154,7 +152,12 @@ public class MainInterfaceListeners {
     {
         if (toolBarContent.getDiagramById(tabId) != null)
         {
-            ExportToXml xmlExporter = new ExportToXml(toolBarContent.getDiagramById(tabId));
+            JFileChooser fc = new JFileChooser();
+            fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+            int returnVal = fc.showSaveDialog(null);
+            if (returnVal == JFileChooser.APPROVE_OPTION) {
+                ExportToXml xmlExporter = new ExportToXml(toolBarContent.getDiagramById(tabId), fc.getSelectedFile());
+            }
             System.out.println("ExportXmlClicked");
         }
         else
@@ -171,7 +174,12 @@ public class MainInterfaceListeners {
     {
         if (toolBarContent.getDiagramById(tabId) != null)
         {
-            ExportToPdf pdfExporter = new ExportToPdf(toolBarContent.getDiagramById(tabId));
+            JFileChooser fc = new JFileChooser();
+            fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+            int returnVal = fc.showSaveDialog(null);
+            if (returnVal == JFileChooser.APPROVE_OPTION) {
+                ExportToPdf pdfExporter = new ExportToPdf(toolBarContent.getDiagramById(tabId), fc.getSelectedFile());
+            }
             System.out.println("ExoprtToPdfClicked");
         }
         else

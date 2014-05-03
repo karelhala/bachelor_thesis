@@ -106,7 +106,7 @@ public class UCMainContentController extends UCMainContentModel implements Drawi
                 case "ACTOR":
                     UCActor actor = new UCActor(evt.getX(), evt.getY());
                     this.classDiagramConnector.setSelectedObject(actor);
-                    this.classDiagramConnector.createNewClassdiagramObject();
+                    this.diagramPlaces.addPnPlace(this.classDiagramConnector.createNewClassdiagramObject().getPnNetwork());
                     this.places.addObject(actor);
 //                        this.mainContent.recalculateSize(actor);
                     break;
@@ -114,7 +114,7 @@ public class UCMainContentController extends UCMainContentModel implements Drawi
                 case "USECASE":
                     UCUseCase useCase = new UCUseCase(evt.getX(), evt.getY());
                     this.classDiagramConnector.setSelectedObject(useCase);
-                    this.classDiagramConnector.createNewClassdiagramObject();
+                    this.diagramPlaces.addPnPlace(this.classDiagramConnector.createNewClassdiagramObject().getPnNetwork());
                     this.places.addObject(useCase);
 //                        this.mainContent.recalculateSize(useCase);
                     break;

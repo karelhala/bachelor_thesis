@@ -82,7 +82,10 @@ abstract class CDMainContentModel extends MainContentController {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                diagramPlaces.removePnPlace(((CDClass)places.getSelectedObject()).getPnNetwork());
+                if (places.getSelectedObject() instanceof CDClass)
+                {
+                    diagramPlaces.removePnPlace(((CDClass)places.getSelectedObject()).getPnNetwork());
+                }
                 mainContent.getDrawingPane().getPlaces().removeAllSelectedItems();
                 deleteNewLine();
             }
