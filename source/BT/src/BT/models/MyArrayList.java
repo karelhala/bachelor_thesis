@@ -84,14 +84,14 @@ public class MyArrayList<E> extends ArrayList<E> {
     }
     
     /**
-     * Add unique elemnt to arrayList.
+     * Add unique element to arrayList if it is not null.
      * Check if array list does not contain insertElement and if not, insert it.
      * @param insertElement element that is being inserted.
      * @return this object.
      */
     public MyArrayList<E> addUnique(E insertElement)
     {
-        if (!this.contains(insertElement))
+        if (!this.contains(insertElement) && insertElement != null)
         {
             this.add(insertElement);
         }
@@ -100,13 +100,17 @@ public class MyArrayList<E> extends ArrayList<E> {
     
     /**
      * Add elemnts to arrayList using addUnique.
+     * Add only elements, that are not null.
      * @param collection items to be inserted.
      * @return this object as myArrayList<E>.
      */
     public MyArrayList<E> addAllUnique(Collection<E> collection)
     {
         for (E e : collection) {
-            this.addUnique(e);
+            if (e != null)
+            {
+                this.addUnique(e);
+            }
         }
         return this;
     }

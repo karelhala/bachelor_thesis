@@ -7,7 +7,6 @@
 package BT.modules.ObjectedOrientedPetriNet.places;
 
 import BT.models.ActionModel;
-import BT.models.CoordinateModel;
 import BT.models.MyArrayList;
 import java.awt.Color;
 import java.util.ArrayList;

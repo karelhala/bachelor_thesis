@@ -8,6 +8,7 @@ package BT.modules.ObjectedOrientedPetriNet.places;
 import BT.models.ActionModel;
 import BT.models.LineModel;
 import BT.models.MyArrayList;
+import BT.modules.ObjectedOrientedPetriNet.places.joinEdge.PNJoinEdgeController;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
@@ -172,9 +173,16 @@ public class PNTransition extends PNTransitionModel {
     public MyArrayList<String> getVariables()
     {
         MyArrayList<String> allVariables = new MyArrayList<>();
-        allVariables.add(this.action.getVariable());
+        if (this.action.getVariable() != null)
+        {
+            allVariables.add(this.action.getVariable());
+        }
         for (LineModel oneInJoin : this.inJoins) {
-            allVariables.addAllUnique(((PNPlace)oneInJoin.getFirstObject()).getVariables());
+            allVariables.addAllUnique(((PNJoinEdgeController)oneInJoin).getSelectedVariables());
+            if (((PNJoinEdgeController)oneInJoin).getAdditionalVariable() != null)
+            {
+                allVariables.addUnique(((PNJoinEdgeController)oneInJoin).getAdditionalVariable());
+            }
         }
         return allVariables;
     }

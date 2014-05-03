@@ -8,7 +8,6 @@ package BT.modules.ObjectedOrientedPetriNet.places;
 
 import BT.models.CoordinateModel;
 import BT.models.MyArrayList;
-import java.util.ArrayList;
 
 /**
  *
@@ -31,10 +30,10 @@ public class PetriNetModel extends CoordinateModel{
     }
     
     /**
-     * Get all variable as ArrayList<String>
-     * @return ArrayList<String>
+     * Get all variable as MyArrayList<String>
+     * @return MyArrayList<String>
      */
-    public ArrayList<String> getVariables()
+    public MyArrayList<String> getVariables()
     {
         return this.variables;
     }
