@@ -12,7 +12,11 @@ import BT.models.LineModel;
 import BT.modules.ObjectedOrientedPetriNet.places.PNPlace;
 import BT.modules.ObjectedOrientedPetriNet.places.PNTransition;
 import BT.modules.ObjectedOrientedPetriNet.places.joinEdge.PNJoinEdgeController;
+import BT.modules.UC.UCMainContent;
+import BT.modules.UC.mainContent.UCDrawingPane;
+import GUI.DrawingJpanel;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
@@ -38,7 +42,7 @@ public class PNDrawingPane extends DrawingPaneModel {
     /**
      *
      */
-    public class drawing extends JPanel {
+    public class drawing extends DrawingJpanel {
         
         private Graphics2D graphicsPanel;
 
@@ -61,6 +65,7 @@ public class PNDrawingPane extends DrawingPaneModel {
             }
 
             for (CoordinateModel place : places.getObjects()) {
+                recalculateSize(place);
                 if (place instanceof PNPlace) {
                     ((PNPlace) place).drawPlace(graphicsPanel);
                 } else if (place instanceof PNTransition) {
@@ -68,7 +73,7 @@ public class PNDrawingPane extends DrawingPaneModel {
                 }
             }
         }
-
+        
         public Graphics2D getGraphicsPanel() {
             return graphicsPanel;
         }

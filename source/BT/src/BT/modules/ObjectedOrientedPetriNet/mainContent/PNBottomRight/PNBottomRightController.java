@@ -266,7 +266,7 @@ public class PNBottomRightController extends PNBottomRightModel{
         JScrollPane scrollPane = new JScrollPane(actionArea); 
         variableField.setEditable(true);
         
-        for (Attribute oneVariable : this.selectedClass.loadClassAttributes()) {
+        for (String oneVariable : this.selectedTransition.getVariables()) {
             variableField.addItem(oneVariable);
         }
         variableField.setSelectedIndex(-1);
@@ -287,30 +287,6 @@ public class PNBottomRightController extends PNBottomRightModel{
             if (variableField.getSelectedItem() != null)
             {
                 this.selectedTransition.getAction().setVariable(variableField.getSelectedItem().toString());
-            }
-        }
-    }
-    
-    /**
-     * Load either private or public method from class.
-     * This depends on selected class.
-     * @param assignedClass class that was selected from class selectbox.
-     * @param actionSelectBox selectbox, that will contain methos.
-     */
-    public void addAllMethodsFromClassToSelectBox(CDClass assignedClass, JComboBox actionSelectBox)
-    {
-        actionSelectBox.addItem(new Method("new", assignedClass.getTypeOfClass().name(), assignedClass));
-        if (this.selectedClass.equals(assignedClass))
-        {
-            for (Attribute oneMethod : assignedClass.loadClassMethods()) {
-                actionSelectBox.addItem(oneMethod);
-            }
-            actionSelectBox.setSelectedIndex(0);
-        }
-        else
-        {
-            for (Attribute oneMethod : assignedClass.getAllPublicMethods()) {
-                actionSelectBox.addItem(oneMethod);
             }
         }
     }

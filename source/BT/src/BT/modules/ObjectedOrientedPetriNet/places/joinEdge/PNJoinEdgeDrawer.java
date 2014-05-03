@@ -63,7 +63,7 @@ public class PNJoinEdgeDrawer extends JoinEdgeDrawer {
                         drawString(g, pnJoin.getVariablesAsString());
                     }
                 } else {
-                    drawString(g, ((PNPlace) pnJoin.getFirstObject()).getVariablesAsString());
+                    drawString(g, pnJoin.getVariablesAsString());
                 }
             }
 

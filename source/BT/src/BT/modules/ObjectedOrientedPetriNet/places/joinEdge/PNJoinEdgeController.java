@@ -87,11 +87,14 @@ public class PNJoinEdgeController extends LineModel {
                 returnedString += ", ";
             }
         }
-        if (!this.selectedVariables.isEmpty() && this.additionalVariable != null && !this.additionalVariable.equals(""))
+        if (this.additionalVariable != null && !this.additionalVariable.equals(""))
         {
-            returnedString += ", ";
+            if (!this.selectedVariables.isEmpty())
+            {
+                returnedString += ", ";
+            }
+            returnedString += this.additionalVariable;
         }
-        returnedString += this.additionalVariable;
         return returnedString;
     }
     

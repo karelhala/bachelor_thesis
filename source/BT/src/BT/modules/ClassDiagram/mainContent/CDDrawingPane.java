@@ -10,6 +10,7 @@ import BT.models.DrawingPaneModel;
 import BT.models.LineModel;
 import BT.modules.ClassDiagram.places.CDClass;
 import BT.modules.ClassDiagram.places.joinEdge.CDJoinEdgeController;
+import GUI.DrawingJpanel;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -36,7 +37,7 @@ public class CDDrawingPane extends DrawingPaneModel {
     /**
      *
      */
-    public class drawing extends JPanel {
+    public class drawing extends DrawingJpanel {
 
         public drawing() {
             super();
@@ -60,10 +61,11 @@ public class CDDrawingPane extends DrawingPaneModel {
                 ((CDJoinEdgeController) joinEdge).drawJoinEdge(g);
             }
 
-            for (CoordinateModel actor : places.getObjects()) {
-                if (actor instanceof CDClass)
+            for (CoordinateModel drawnClass : places.getObjects()) {
+                recalculateSize(drawnClass);
+                if (drawnClass instanceof CDClass)
                 {
-                    ((CDClass) actor).drawClass(g);
+                    ((CDClass) drawnClass).drawClass(g);
                 }
             }
         }

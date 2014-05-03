@@ -8,6 +8,7 @@ package BT.modules.ObjectedOrientedPetriNet.places;
 
 import BT.models.ActionModel;
 import BT.models.CoordinateModel;
+import BT.models.MyArrayList;
 import java.awt.Color;
 import java.util.ArrayList;
 
@@ -48,6 +49,7 @@ public class PNTransitionModel extends PetriNetModel{
         this.howerColor = Color.GREEN;
         this.inJoins = new ArrayList<>();
         this.outJoins = new ArrayList<>();
+        this.variables = new MyArrayList<>();
     }
 
     public void setGuard(String guard) {

@@ -11,12 +11,12 @@ import BT.models.CoordinateModel;
 import BT.models.DrawingPaneModel;
 import BT.models.LineModel;
 import BT.modules.UC.places.UCUseCase;
+import GUI.DrawingJpanel;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 
 /**
  *
@@ -41,7 +41,7 @@ public class UCDrawingPane extends DrawingPaneModel {
     /**
      *
      */
-    public class drawing extends JPanel {
+    public class drawing extends DrawingJpanel {
 
         /**
          *
@@ -63,6 +63,7 @@ public class UCDrawingPane extends DrawingPaneModel {
             }
 
             for (CoordinateModel object : places.getObjects()) {
+                recalculateSize(object);
                 if (object instanceof UCActor) {
                     ((UCActor) object).drawActor(g);
                 } else if (object instanceof UCUseCase) {
