@@ -195,7 +195,9 @@ public class PNMainContentController extends PNMainContentInitializer implements
             }
             else if (clickedObject instanceof PNPlace)
             {
-                showBasicPanel();
+                this.bottomRightController.setSelectedObject(clickedObject);
+                this.bottomRightController.changeGuardAndAction();
+                showPlacePanel();
             }
             else
             {

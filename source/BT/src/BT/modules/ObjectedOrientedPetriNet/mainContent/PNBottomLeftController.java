@@ -90,7 +90,6 @@ public class PNBottomLeftController {
     {
         if (this.drawnClass != null)
         {
-            System.out.println(this.drawnClass.isSelected());
             if (this.drawnClass.isSelected())
             {
                 return drawnClass;

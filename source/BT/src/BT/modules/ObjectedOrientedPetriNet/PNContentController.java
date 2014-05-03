@@ -13,6 +13,7 @@ import GUI.BottomLeftContentModel;
 import GUI.BottomRightContentModel;
 import GUI.MainContentModel;
 import GUI.PetrinetGuardActionPanel;
+import GUI.PetrinetPlacePanel;
 
 /**
  *
@@ -46,6 +47,7 @@ public class PNContentController {
         BottomLeftContentModel bottomLeftContentModel = new BottomLeftContentModel();
         BottomRightContentModel bottomRightTransition = new BottomRightContentModel();
         PetrinetGuardActionPanel guardActionPanel = new PetrinetGuardActionPanel();
+        PetrinetPlacePanel petrinetPlace = new PetrinetPlacePanel();
         BasicPetrinetPanel basicPetrinetPanel = new BasicPetrinetPanel();
         bottomRightTransition.setButtonNames("Change guard", "Change action");
         bottomRightTransition.addAdditionalcontent(basicPetrinetPanel.getContentPane());
@@ -67,6 +69,6 @@ public class PNContentController {
         this.pnMain.setLeftBottomContent(pnLeftBottom);
         this.pnMain.setLeftTopContent(cdLeftTop);
         this.pnMain.setBottomLeftContentModel(bottomLeftContentModel).initializeBottomLeftController();
-        ((PNMainContentInitializer)this.pnMain.setBottomRightModel(bottomRightTransition)).initializeRightController(basicPetrinetPanel, guardActionPanel);
+        ((PNMainContentInitializer)this.pnMain.setBottomRightModel(bottomRightTransition)).initializeRightController(basicPetrinetPanel, guardActionPanel, petrinetPlace);
     }
 }

@@ -77,11 +77,13 @@ abstract public class PNBottomRightModel {
      * @param bottomRightModel
      * @param petrinetPanel
      * @param petrinetGuardAction 
+     * @param petrinetPlace 
      */
-    public PNBottomRightModel(BottomRightContentModel bottomRightModel, BasicPetrinetPanel petrinetPanel, PetrinetGuardActionPanel petrinetGuardAction) {
+    public PNBottomRightModel(BottomRightContentModel bottomRightModel, BasicPetrinetPanel petrinetPanel, PetrinetGuardActionPanel petrinetGuardAction, PetrinetPlacePanel petrinetPlace) {
         this.basicPetrinetPanel = petrinetPanel;
         this.petrinetGuardAction = petrinetGuardAction;
         this.bottomRightModel = bottomRightModel;
+        this.petrinetPlace = petrinetPlace;
     }
     
     /**
@@ -162,5 +164,13 @@ abstract public class PNBottomRightModel {
 
     public void setClassManager(PlaceManager classManager) {
         this.classManager = classManager;
+    }
+
+    public PetrinetPlacePanel getPetrinetPlace() {
+        return petrinetPlace;
+    }
+
+    public void setPetrinetPlace(PetrinetPlacePanel petrinetPlace) {
+        this.petrinetPlace = petrinetPlace;
     }
 }

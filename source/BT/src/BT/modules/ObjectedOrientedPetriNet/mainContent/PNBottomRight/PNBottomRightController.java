@@ -9,11 +9,14 @@ import static BT.BT.elementWithLabelAbove;
 import BT.managers.CD.Attribute;
 import BT.managers.CD.Method;
 import BT.models.ActionModel;
+import BT.models.LineModel;
 import BT.modules.ObjectedOrientedPetriNet.places.PNPlace;
 import BT.modules.ObjectedOrientedPetriNet.places.PNTransition;
+import BT.modules.ObjectedOrientedPetriNet.places.joinEdge.PNJoinEdgeController;
 import GUI.BasicPetrinetPanel;
 import GUI.BottomRightContentModel;
 import GUI.PetrinetGuardActionPanel;
+import GUI.PetrinetPlacePanel;
 import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -38,9 +41,10 @@ public class PNBottomRightController extends PNBottomRightModel {
      * @param bottomRightModel
      * @param petrinetPanel
      * @param petrinetGuardAction
+     * @param petrinetPlace
      */
-    public PNBottomRightController(BottomRightContentModel bottomRightModel, BasicPetrinetPanel petrinetPanel, PetrinetGuardActionPanel petrinetGuardAction) {
-        super(bottomRightModel, petrinetPanel, petrinetGuardAction);
+    public PNBottomRightController(BottomRightContentModel bottomRightModel, BasicPetrinetPanel petrinetPanel, PetrinetGuardActionPanel petrinetGuardAction, PetrinetPlacePanel petrinetPlace) {
+        super(bottomRightModel, petrinetPanel, petrinetGuardAction, petrinetPlace);
 
     }
 
@@ -115,17 +119,40 @@ public class PNBottomRightController extends PNBottomRightModel {
                 petrinetDrawingPane.getDrawing().repaint();
             }
         });
+        
+        this.petrinetPlace.getConfirmButton().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                setConstantClicked();
+                petrinetDrawingPane.getDrawing().repaint();
+            }
+        });
         return this;
     }
 
     /**
+     * Method for handeling when button for setting constant clicked.
+     */
+    public void setConstantClicked()
+    {
+        String constant = this.petrinetPlace.getConstantField().getText();
+        if (constant != null && !constant.equals("") && this.selectedObject instanceof PNPlace)
+        {
+            ((PNPlace)this.selectedObject).setConstant(constant);
+        }
+    }
+    
+    /**
      * Change guard and action fields for selected transition.
      */
     public void changeGuardAndAction() {
-        if (this.selectedObject != null) {
+        if (this.selectedObject != null && this.selectedObject instanceof PNTransition) {
             PNTransition selectedTransition = (PNTransition) selectedObject;
             this.petrinetGuardAction.getActionField().setText(selectedTransition.getAction().getActionAsString());
             this.petrinetGuardAction.getGuardField().setText(selectedTransition.getGuard());
+        }
+        else if (this.selectedObject != null && this.selectedObject instanceof PNPlace){
+            this.petrinetPlace.getConstantField().setText(((PNPlace)selectedObject).getConstant());
         } else {
             this.petrinetGuardAction.getActionField().setText("");
             this.petrinetGuardAction.getGuardField().setText("");
@@ -270,6 +297,10 @@ public class PNBottomRightController extends PNBottomRightModel {
             selectedTransition.getAction().setBasicAction(actionArea.getText());
             if (variableField.getSelectedItem() != null) {
                 selectedTransition.getAction().setVariable(variableField.getSelectedItem().toString());
+                for (LineModel oneLine : selectedTransition.getOutJoins()) {
+                    ((PNJoinEdgeController) oneLine).addVariable(selectedTransition.getActionVariable());
+                    ((PNPlace)oneLine.getSecondObject()).addVariable(selectedTransition.getActionVariable());
+                }
             }
         }
     }

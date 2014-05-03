@@ -10,10 +10,13 @@ import BT.interfaces.DrawingClicks;
 import BT.managers.DiagramPlacesManager;
 import BT.managers.DrawingListeners;
 import BT.managers.PlaceManager;
+import BT.modules.ObjectedOrientedPetriNet.places.PNPlace;
+import BT.modules.ObjectedOrientedPetriNet.places.PNTransition;
 import BT.modules.ObjectedOrientedPetriNet.places.joinEdge.PNJoinEdgeController;
 import GUI.BasicPetrinetPanel;
 import GUI.MethodLabel;
 import GUI.PetrinetGuardActionPanel;
+import GUI.PetrinetPlacePanel;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.event.ActionEvent;
@@ -109,6 +112,7 @@ abstract public class PNMainContentInitializer extends PNMainContentModel {
         this.bottomRightController.setPetrinetPlaces(places);
         this.bottomRightController.setSelectedMethod(null);
         this.bottomRightController.loadAttributesToComboBox();
+        showPanel();
     }
     
     /**
@@ -143,6 +147,7 @@ abstract public class PNMainContentInitializer extends PNMainContentModel {
                 bottomRightController.loadAttributesToComboBox();
                 bottomRightController.setPetrinetPlaces(listenedMethodLabel.getPetriNetFromClassOrMethod());
                 setPlacesAndRepaintDrawing(listenedMethodLabel.getPetriNetFromClassOrMethod());
+                showPanel();
             }
         });
             
@@ -163,11 +168,12 @@ abstract public class PNMainContentInitializer extends PNMainContentModel {
      * Initialize rightBottomController with basicPanel and guard action Panel.
      * @param petrinetPanel
      * @param petrinetGuardAction
+     * @param petrinetPlace
      * @return this object.
      */
-    public PNMainContentInitializer initializeRightController(BasicPetrinetPanel petrinetPanel, PetrinetGuardActionPanel petrinetGuardAction)
+    public PNMainContentInitializer initializeRightController(BasicPetrinetPanel petrinetPanel, PetrinetGuardActionPanel petrinetGuardAction, PetrinetPlacePanel petrinetPlace)
     {
-        this.bottomRightController = new PNBottomRightController(bottomRightModel, petrinetPanel, petrinetGuardAction);
+        this.bottomRightController = new PNBottomRightController(bottomRightModel, petrinetPanel, petrinetGuardAction, petrinetPlace);
         this.bottomRightController.setSelectedClass(selectedClass);
         this.bottomRightController.setPetrinetDrawingPane((PNDrawingPane) this.mainContent.getDrawingPane());
         this.bottomRightController.setPetrinetPlaces(this.places);
@@ -192,5 +198,37 @@ abstract public class PNMainContentInitializer extends PNMainContentModel {
     {
         this.bottomRightModel.replaceAdditionalContent(this.bottomRightController.getPetrinetGuardAction().getContentPane());
         this.bottomRightModel.showButtons();
+    }
+    
+    /**
+     * Show place content pane.
+     */
+    public void showPlacePanel()
+    {
+        this.bottomRightModel.replaceAdditionalContent(this.bottomRightController.getPetrinetPlace().getContentPane());
+        this.bottomRightModel.hideButtons();
+    }
+    
+    /**
+     * Method for showing propriete panel, based on selected object.
+     */
+    public void showPanel()
+    {
+        this.bottomRightController.setSelectedObject(places.getSelectedObject());
+        if (places.getSelectedObject() instanceof PNPlace)
+        {
+            showPlacePanel();
+            this.bottomRightController.changeGuardAndAction();
+        }
+        else if (places.getSelectedObject() instanceof PNTransition)
+        {
+            showTransitionPanel();
+            this.bottomRightController.changeGuardAndAction();
+        }
+        else
+        {
+            showBasicPanel();
+            this.bottomRightController.changeGuardAndAction();
+        }
     }
 }

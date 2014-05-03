@@ -36,7 +36,7 @@ public class PetrinetPlacePanel {
     private final JButton confirmButton;
 
     public PetrinetPlacePanel() {
-        this.constantField = new JPasswordField();
+        this.constantField = new JTextField();
         this.contentPane = new JPanel(new BorderLayout());
         this.confirmButton = new JButton("Change constant");
         this.confirmButton.setToolTipText(this.confirmButton.getText());
