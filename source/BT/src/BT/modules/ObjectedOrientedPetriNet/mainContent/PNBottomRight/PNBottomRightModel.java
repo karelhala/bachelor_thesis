@@ -7,6 +7,7 @@
 package BT.modules.ObjectedOrientedPetriNet.mainContent.PNBottomRight;
 
 import BT.managers.PlaceManager;
+import BT.models.CoordinateModel;
 import BT.modules.ClassDiagram.places.CDClass;
 import BT.modules.ObjectedOrientedPetriNet.mainContent.PNDrawingPane;
 import BT.modules.ObjectedOrientedPetriNet.places.PNTransition;
@@ -14,6 +15,7 @@ import GUI.BasicPetrinetPanel;
 import GUI.BottomRightContentModel;
 import GUI.MethodLabel;
 import GUI.PetrinetGuardActionPanel;
+import GUI.PetrinetPlacePanel;
 
 /**
  *
@@ -43,6 +45,11 @@ abstract public class PNBottomRightModel {
     /**
      * 
      */
+    protected PetrinetPlacePanel petrinetPlace;
+    
+    /**
+     * 
+     */
     protected PlaceManager petrinetPlaces;
     
     /**
@@ -58,7 +65,7 @@ abstract public class PNBottomRightModel {
     /**
      * 
      */
-    protected PNTransition selectedTransition;
+    protected CoordinateModel selectedObject;
     
     /**
      * Manager for all classes for open file.
@@ -141,12 +148,12 @@ abstract public class PNBottomRightModel {
         this.selectedClass = selectedClass;
     }
 
-    public PNTransition getSelectedTransition() {
-        return selectedTransition;
+    public CoordinateModel getSelectedObject() {
+        return selectedObject;
     }
 
-    public void setSelectedTransition(PNTransition selectedTransition) {
-        this.selectedTransition = selectedTransition;
+    public void setSelectedObject(CoordinateModel selectedObject) {
+        this.selectedObject = selectedObject;
     }
 
     public PlaceManager getClassManager() {

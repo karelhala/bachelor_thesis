@@ -9,9 +9,8 @@ import static BT.BT.elementWithLabelAbove;
 import BT.managers.CD.Attribute;
 import BT.managers.CD.Method;
 import BT.models.ActionModel;
-import BT.models.LineModel;
-import BT.models.MyArrayList;
 import BT.modules.ObjectedOrientedPetriNet.places.PNPlace;
+import BT.modules.ObjectedOrientedPetriNet.places.PNTransition;
 import GUI.BasicPetrinetPanel;
 import GUI.BottomRightContentModel;
 import GUI.PetrinetGuardActionPanel;
@@ -80,10 +79,14 @@ public class PNBottomRightController extends PNBottomRightModel {
         bottomRightModel.getTopButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                String guardString = createGuardPanel(selectedTransition.getGuard());
-                if (guardString != null) {
-                    selectedTransition.setGuard(guardString);
-                    petrinetGuardAction.getGuardField().setText(selectedTransition.getGuard());
+                if (selectedObject instanceof PNTransition)
+                {
+                    PNTransition selectedTransition = (PNTransition) selectedObject;
+                    String guardString = createGuardPanel(selectedTransition.getGuard());
+                    if (guardString != null) {
+                        selectedTransition.setGuard(guardString);
+                        petrinetGuardAction.getGuardField().setText(selectedTransition.getGuard());
+                    }
                 }
             }
         });
@@ -91,7 +94,8 @@ public class PNBottomRightController extends PNBottomRightModel {
         bottomRightModel.getBottomButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                if (selectedTransition != null) {
+                if (selectedObject != null && selectedObject instanceof PNTransition) {
+                    PNTransition selectedTransition = (PNTransition) selectedObject;
                     createActionPanel(selectedTransition.getAction());
                     petrinetGuardAction.getActionField().setText(selectedTransition.getAction().getActionAsString());
                 }
@@ -118,9 +122,10 @@ public class PNBottomRightController extends PNBottomRightModel {
      * Change guard and action fields for selected transition.
      */
     public void changeGuardAndAction() {
-        if (this.selectedTransition != null) {
-            this.petrinetGuardAction.getActionField().setText(this.selectedTransition.getAction().getActionAsString());
-            this.petrinetGuardAction.getGuardField().setText(this.selectedTransition.getGuard());
+        if (this.selectedObject != null) {
+            PNTransition selectedTransition = (PNTransition) selectedObject;
+            this.petrinetGuardAction.getActionField().setText(selectedTransition.getAction().getActionAsString());
+            this.petrinetGuardAction.getGuardField().setText(selectedTransition.getGuard());
         } else {
             this.petrinetGuardAction.getActionField().setText("");
             this.petrinetGuardAction.getGuardField().setText("");
@@ -133,16 +138,17 @@ public class PNBottomRightController extends PNBottomRightModel {
      * @return
      */
     private String createGuardPanel(String guardString) {
+        PNTransition selectedTransition = (PNTransition) selectedObject;
         JPanel dialogPanel = new JPanel(new BorderLayout());
         final JTextField resultString = new JTextField(guardString);
 
         JPanel variablesPanel = new JPanel(new BorderLayout());
         final JComboBox leftVariable = new JComboBox();
         final JComboBox rightVariable = new JComboBox();
-        for (String oneVariable : this.selectedTransition.getVariables()) {
+        for (String oneVariable : selectedTransition.getVariables()) {
             leftVariable.addItem(oneVariable);
         }
-        for (String oneVariable : this.selectedTransition.getVariables()) {
+        for (String oneVariable : selectedTransition.getVariables()) {
             rightVariable.addItem(oneVariable);
         }
         leftVariable.setEditable(true);
@@ -238,14 +244,15 @@ public class PNBottomRightController extends PNBottomRightModel {
      * @param oldAction
      */
     public void createActionPanel(ActionModel oldAction) {
+        PNTransition selectedTransition = (PNTransition) selectedObject;
         JPanel dialogPanel = new JPanel(new BorderLayout());
         JPanel contentPanel = new JPanel(new BorderLayout());
         JComboBox variableField = new JComboBox();
-        JTextArea actionArea = new JTextArea(this.selectedTransition.getAction().getBasicAction(), 5, 20);
+        JTextArea actionArea = new JTextArea(selectedTransition.getAction().getBasicAction(), 5, 20);
         JScrollPane scrollPane = new JScrollPane(actionArea);
         variableField.setEditable(true);
 
-        for (String oneVariable : this.selectedTransition.getVariables()) {
+        for (String oneVariable : selectedTransition.getVariables()) {
             variableField.addItem(oneVariable);
         }
         variableField.setSelectedIndex(-1);
@@ -260,9 +267,9 @@ public class PNBottomRightController extends PNBottomRightModel {
         int result = JOptionPane.showConfirmDialog(null, dialogPanel,
                 "Please Enter Action for this transition.", JOptionPane.OK_CANCEL_OPTION);
         if (result == JOptionPane.OK_OPTION) {
-            this.selectedTransition.getAction().setBasicAction(actionArea.getText());
+            selectedTransition.getAction().setBasicAction(actionArea.getText());
             if (variableField.getSelectedItem() != null) {
-                this.selectedTransition.getAction().setVariable(variableField.getSelectedItem().toString());
+                selectedTransition.getAction().setVariable(variableField.getSelectedItem().toString());
             }
         }
     }

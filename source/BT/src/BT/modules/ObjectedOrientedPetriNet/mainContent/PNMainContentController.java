@@ -189,13 +189,17 @@ public class PNMainContentController extends PNMainContentInitializer implements
             clickedObject.setSelected(true);
             if (clickedObject instanceof PNTransition)
             {
-                this.bottomRightController.setSelectedTransition((PNTransition) clickedObject);
+                this.bottomRightController.setSelectedObject(clickedObject);
                 this.bottomRightController.changeGuardAndAction();
                 showTransitionPanel();
             }
+            else if (clickedObject instanceof PNPlace)
+            {
+                showBasicPanel();
+            }
             else
             {
-                this.bottomRightController.setSelectedTransition(null);
+                this.bottomRightController.setSelectedObject(null);
                 this.bottomRightController.changeGuardAndAction();
                 showBasicPanel();
             }
