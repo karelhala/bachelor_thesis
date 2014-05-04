@@ -187,6 +187,7 @@ abstract public class CDBottomRightController extends CDMainContentModel {
                         selectedType, 
                         selectedClass
                 );
+                newMethod.getPetriNet().setAssignedmethod(newMethod);
                 PNPlace returnPlace = new PNPlace(70, 40);
                 returnPlace.setName("return");
                 returnPlace.setEditable(Boolean.FALSE);

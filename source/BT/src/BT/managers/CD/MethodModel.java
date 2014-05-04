@@ -11,6 +11,7 @@ import BT.BT.AttributeType;
 import BT.managers.PlaceManager;
 import BT.models.MyArrayList;
 import BT.modules.ClassDiagram.places.CDClass;
+import BT.modules.ObjectedOrientedPetriNet.PetriNetPlaceManager;
 
 /**
  * Model for method class.
@@ -36,7 +37,7 @@ public class MethodModel extends Attribute{
     /**
      * PlaceManager for drawing places of petrinet for this method.
      */
-    protected final PlaceManager petriNet;
+    protected final PetriNetPlaceManager petriNet;
     
     /**
      * ArrayList that holds every attribute.
@@ -53,7 +54,7 @@ public class MethodModel extends Attribute{
     public MethodModel(AttributeType visibility, String name, String type, CDClass assignedClass) {
         super(visibility, name, type);
         this.classAttributes = new MyArrayList<>();
-        this.petriNet = new PlaceManager();
+        this.petriNet = new PetriNetPlaceManager();
         this.assignedClass = assignedClass;
         this.classMethods = new MyArrayList<>();
         this.attributes = new MyArrayList<>();
@@ -82,7 +83,7 @@ public class MethodModel extends Attribute{
      * Getter for fetching method's petrinet manager.
      * @return PlaceManager.
      */
-    public PlaceManager getPetriNet() {
+    public PetriNetPlaceManager getPetriNet() {
         return petriNet;
     }
 

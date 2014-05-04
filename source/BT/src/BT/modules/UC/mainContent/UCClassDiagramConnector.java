@@ -118,6 +118,7 @@ public class UCClassDiagramConnector {
         }
         newClass.setAssignedObject(this.selectedObject);
         newClass.setName(className);
+        newClass.getPnNetwork().setAssignedClass(newClass);
         this.cdPlaces.addObject(newClass);
         return newClass;
     }

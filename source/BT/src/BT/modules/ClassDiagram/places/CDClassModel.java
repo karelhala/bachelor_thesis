@@ -11,6 +11,7 @@ import BT.BT.ClassType;
 import BT.managers.CD.Attribute;
 import BT.managers.PlaceManager;
 import BT.models.CoordinateModel;
+import BT.modules.ObjectedOrientedPetriNet.PetriNetPlaceManager;
 import java.awt.Color;
 import java.util.ArrayList;
 
@@ -42,7 +43,7 @@ public class CDClassModel extends CoordinateModel{
     /**
      * 
      */
-    private final PlaceManager pnNetwork;
+    protected PetriNetPlaceManager pnNetwork;
     
     /**
      *
@@ -65,7 +66,7 @@ public class CDClassModel extends CoordinateModel{
         this.typeOfClass = BT.ClassType.NONE;
         this.inJoins = new ArrayList<>();
         this.outJoins = new ArrayList<>();
-        this.pnNetwork = new PlaceManager();
+        this.pnNetwork = new PetriNetPlaceManager();
     }
     
     public ClassType getTypeOfClass() {
@@ -76,7 +77,7 @@ public class CDClassModel extends CoordinateModel{
         this.typeOfClass = typeOfClass;
     }
     
-    public PlaceManager getPnNetwork()
+    public PetriNetPlaceManager getPnNetwork()
     {
         return this.pnNetwork;
     }

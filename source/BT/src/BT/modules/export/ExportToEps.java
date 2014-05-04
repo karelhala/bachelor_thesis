@@ -12,6 +12,7 @@ import BT.models.CoordinateModel;
 import BT.models.LineModel;
 import BT.modules.ClassDiagram.places.CDClass;
 import BT.modules.ClassDiagram.places.joinEdge.CDJoinEdgeController;
+import BT.modules.ObjectedOrientedPetriNet.PetriNetPlaceManager;
 import BT.modules.ObjectedOrientedPetriNet.places.PNPlace;
 import BT.modules.ObjectedOrientedPetriNet.places.PNTransition;
 import BT.modules.ObjectedOrientedPetriNet.places.joinEdge.PNJoinEdgeController;
@@ -85,7 +86,12 @@ public class ExportToEps extends ExportModel{
                 if (this.exportedPlaces.getPnPlaces().size()>0)
                 {
                     for (PlaceManager onePetriNet : this.exportedPlaces.getPnPlaces()) {
-                        File petriNetDiagram = createNewFile(this.exportToFolder + "/petriNet", ".eps");
+                        String petriNetName = "/petriNet";
+                        if (onePetriNet instanceof PetriNetPlaceManager)
+                        {
+                            petriNetName += "_"+ ((PetriNetPlaceManager) onePetriNet).getNameOfPetriNet();
+                        } 
+                        File petriNetDiagram = createNewFile(this.exportToFolder + petriNetName, ".eps");
                         onePetriNet.calculateDimension();
                         EpsGraphics pnGraphics = new EpsGraphics("UseCase", new FileOutputStream(petriNetDiagram),0, 0, (int) onePetriNet.getPaneSize().getWidth(), (int) onePetriNet.getPaneSize().getHeight(), ColorMode.COLOR_RGB);
                         for (LineModel oneLine : onePetriNet.getJoinEdges()) {
