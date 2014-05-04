@@ -4,9 +4,6 @@
  */
 package BT.models;
 
-import BT.managers.CD.Method;
-import BT.modules.ClassDiagram.places.CDClass;
-
 /**
  *
  * @author Karel Hala

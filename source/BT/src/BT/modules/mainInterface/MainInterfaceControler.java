@@ -91,7 +91,15 @@ public class MainInterfaceControler {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 DiagramPlacesManager diagramsFile = mainInterfaceListeners.clickedOnOpen();
-                if (diagramsFile != null)
+                Boolean fileAllredyOpened = false;
+                for (DiagramPlacesManager oneDiagramPlace : ToolBarContent.getDiagramPlaces()) {
+                    if (diagramsFile != null && oneDiagramPlace.getAbsolutePath().equals(diagramsFile.getAbsolutePath()))
+                    {
+                        myLayout.getFileTab().setSelectedIndex(oneDiagramPlace.getDiagramNumber());
+                        fileAllredyOpened = true;
+                    }
+                }
+                if (diagramsFile != null && !fileAllredyOpened)
                 {
                     ToolBarContent.openedFile(diagramsFile, myLayout);
                 }

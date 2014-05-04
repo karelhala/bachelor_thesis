@@ -29,7 +29,7 @@ import javax.swing.SwingConstants;
  */
 public class ToolBarContentControler {
 
-    private ToolBarContentModel toolBarcontent;
+    private final ToolBarContentModel toolBarcontent;
     private ActionListener newFileAction;
     private ActionListener closeFileAction;
     private ActionListener openFileAction;
@@ -141,6 +141,11 @@ public class ToolBarContentControler {
         }
     }
     
+    /**
+     * 
+     * @param id
+     * @return 
+     */
     public DiagramPlacesManager getDiagramById(int id)
     {
         if (id < 0)
@@ -216,6 +221,10 @@ public class ToolBarContentControler {
 
     public ActionListener getSaveAsAction() {
         return saveAsAction;
+    }
+
+    public ArrayList<DiagramPlacesManager> getDiagramPlaces() {
+        return diagramPlaces;
     }
     
     /**
