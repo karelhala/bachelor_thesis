@@ -70,6 +70,15 @@ public class MainInterfaceControler {
                 ToolBarContent.CloseButtonMouseClicked(myLayout);
             }
         });
+        
+        this.ToolBarContent.setExitAction(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                for (Frame oneFrame : Frame.getFrames()) {
+                    oneFrame.dispose();
+                }
+            }
+        });
 
         this.ToolBarContent.setSaveAction(new ActionListener() {
             @Override
@@ -171,14 +180,7 @@ public class MainInterfaceControler {
         this.mainWindowModel.getMyMenu().addActionListenerToExportPdf(ToolBarContent.getExportPdfAction());
         this.mainWindowModel.getMyMenu().addActionListenerToExportXml(ToolBarContent.getExportXmlAction());
         this.mainWindowModel.getMyMenu().addActionListenerToSaveAs(ToolBarContent.getSaveAsAction());
-        this.mainWindowModel.getMyMenu().addActionListenerToExit(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                for (Frame oneFrame : Frame.getFrames()) {
-                    oneFrame.dispose();
-                }
-            }
-        });
+        this.mainWindowModel.getMyMenu().addActionListenerToExit(ToolBarContent.getExitAction());
     }
 
 }

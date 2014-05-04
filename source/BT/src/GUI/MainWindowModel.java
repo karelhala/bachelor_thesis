@@ -34,7 +34,7 @@ public class MainWindowModel extends javax.swing.JFrame {
      *
      */
     public void initComponents() {
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         this.setPreferredSize(new Dimension(this.width, this.height));
 //        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 

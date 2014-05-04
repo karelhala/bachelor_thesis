@@ -16,6 +16,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
@@ -64,23 +65,27 @@ public class CloseTabbedPane extends JTabbedPane {
      * @param component
      */
     public void removeTab(Component component) {
-        if (this.indexOfComponent(component) != -1) {
-            if (this.indexOfComponent(component) == this.getSelectedIndex()) {
+        int result = JOptionPane.showConfirmDialog(null, "Are you sure you want to close this file?", "Please confirm", JOptionPane.YES_NO_OPTION);
+        if (result == JOptionPane.OK_OPTION)
+        {
+            if (this.indexOfComponent(component) != -1) {
+                if (this.indexOfComponent(component) == this.getSelectedIndex()) {
 
-                this.setSelectedIndex(this.getTabCount() - 3);
+                    this.setSelectedIndex(this.getTabCount() - 3);
+                }
             }
-        }
-        if (this.getTabCount() == 1) {
-            this.setSelectedIndex(-1);
-        }
-        this.toolBarContent.removeDiagramPlaceById(this.indexOfComponent(component));
-        for (DiagramPlacesManager diagramPlaces : toolBarContent.getDiagramPlaces()) {
-            if (diagramPlaces.getDiagramNumber() > this.indexOfComponent(component))
-            {
-                diagramPlaces.setDiagramNumber(diagramPlaces.getDiagramNumber() - 1);
+            if (this.getTabCount() == 1) {
+                this.setSelectedIndex(-1);
             }
+            this.toolBarContent.removeDiagramPlaceById(this.indexOfComponent(component));
+            for (DiagramPlacesManager diagramPlaces : toolBarContent.getDiagramPlaces()) {
+                if (diagramPlaces.getDiagramNumber() > this.indexOfComponent(component))
+                {
+                    diagramPlaces.setDiagramNumber(diagramPlaces.getDiagramNumber() - 1);
+                }
+            }
+            this.remove(component);
         }
-        this.remove(component);
     }
 
     /**
@@ -122,7 +127,7 @@ public class CloseTabbedPane extends JTabbedPane {
     private void createIconsForButton(JButton buttonClose) {
         try{
             ClassLoader cl = this.getClass().getClassLoader();
-            ImageIcon icon = new ImageIcon(cl.getResource("resources/redSmallX.png"));
+            ImageIcon icon = new ImageIcon(cl.getResource("resources/closeFile.png"));
             Image normalImage = icon.getImage();
             Image grayImage = GrayFilter.createDisabledImage(normalImage);
             ImageIcon greyIcon = new ImageIcon(grayImage);

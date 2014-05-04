@@ -18,6 +18,7 @@ import javax.swing.AbstractAction;
 import javax.swing.InputMap;
 import javax.swing.JButton;
 import javax.swing.JComponent;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.KeyStroke;
@@ -38,6 +39,7 @@ public class ToolBarContentControler {
     private ActionListener exportXmlAction;
     private ActionListener saveAction;
     private ActionListener saveAsAction;
+    private ActionListener exitAction;
     private final ArrayList<DiagramPlacesManager> diagramPlaces;
 
     /**
@@ -53,14 +55,15 @@ public class ToolBarContentControler {
      */
     public void addBasicButtons() {
         JPanel myPanel = this.toolBarcontent.getToolBarPane();
-        JButton NewFileButton = toolBarcontent.addNewButton("New File");
-        JButton Closebutton = toolBarcontent.addNewButton("Close File");
-        JButton openButton = toolBarcontent.addNewButton("Open File");
-        JButton saveButton = toolBarcontent.addNewButton("Save File");
-        JButton saveAsButton = toolBarcontent.addNewButton("Save As");
+        JButton NewFileButton = toolBarcontent.addNewButton("New File", "newFile.png");
+        JButton Closebutton = toolBarcontent.addNewButton("Close File", "closeFileButton.png");
+        JButton openButton = toolBarcontent.addNewButton("Open File", "openFile.png");
+        JButton saveButton = toolBarcontent.addNewButton("Save File", "saveFile.png");
+        JButton saveAsButton = toolBarcontent.addNewButton("Save File As..", "saveAs.png");
         JButton exportEps = toolBarcontent.addNewButton("Export to Eps");
         JButton exportPdf = toolBarcontent.addNewButton("Export to PDF");
         JButton exportXml = toolBarcontent.addNewButton("Export to XML");
+        JButton exit = toolBarcontent.addNewButton("Exit", "exitApplication.png");
         
         NewFileButton.addActionListener(newFileAction);
         Closebutton.addActionListener(closeFileAction);
@@ -70,6 +73,7 @@ public class ToolBarContentControler {
         exportEps.addActionListener(exportEpsAction);
         exportPdf.addActionListener(exportPdfAction);
         exportXml.addActionListener(exportXmlAction);
+        exit.addActionListener(exitAction);
         
         myPanel.add(NewFileButton);
         myPanel.add(saveButton);
@@ -80,6 +84,8 @@ public class ToolBarContentControler {
         myPanel.add(exportEps);
         myPanel.add(exportPdf);
         myPanel.add(exportXml);
+        myPanel.add(new JSeparator(SwingConstants.VERTICAL));
+        myPanel.add(exit);
         this.toolBarcontent.setToolBarPane(myPanel);
     }
     
@@ -123,14 +129,21 @@ public class ToolBarContentControler {
      * @param myLayout
      */
     public void CloseButtonMouseClicked(WindowLayoutControler myLayout) {
-        removeDiagramPlaceById(myLayout.getFileTab().getSelectedIndex());
-        for (DiagramPlacesManager diagramPlacesManager : diagramPlaces) {
-            if (diagramPlacesManager.getDiagramNumber()>myLayout.getFileTab().getSelectedIndex())
+        if (myLayout.getFileTab().getSelectedIndex()!= -1)
+        {
+            int result = JOptionPane.showConfirmDialog(null, "Are you sure you want to close selected file?", "Please confirm", JOptionPane.YES_NO_OPTION);
+            if (result == JOptionPane.OK_OPTION)
             {
-                diagramPlacesManager.setDiagramNumber(diagramPlacesManager.getDiagramNumber() - 1);
+                removeDiagramPlaceById(myLayout.getFileTab().getSelectedIndex());
+                for (DiagramPlacesManager diagramPlacesManager : diagramPlaces) {
+                    if (diagramPlacesManager.getDiagramNumber()>myLayout.getFileTab().getSelectedIndex())
+                    {
+                        diagramPlacesManager.setDiagramNumber(diagramPlacesManager.getDiagramNumber() - 1);
+                    }
+                }
+                myLayout.removeTab(myLayout.getSelectedTab());
             }
         }
-        myLayout.removeTab(myLayout.getSelectedTab());
     }
 
     /**
@@ -229,6 +242,14 @@ public class ToolBarContentControler {
         return saveAsAction;
     }
 
+    public ActionListener getExitAction() {
+        return exitAction;
+    }
+
+    public void setExitAction(ActionListener exitAction) {
+        this.exitAction = exitAction;
+    }
+    
     public ArrayList<DiagramPlacesManager> getDiagramPlaces() {
         return diagramPlaces;
     }

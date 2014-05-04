@@ -109,7 +109,7 @@ public class MyMenuBar extends MyMenyBarModel{
      */
     private void addItemsToMenu() {
         this.jMenuBar1.add(this.jMenu1);
-        this.jMenuBar1.add(this.jMenu2);
+//        this.jMenuBar1.add(this.jMenu2);
 	this.jMenuBar1.add(this.jMenu3);
     }
 

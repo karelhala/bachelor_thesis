@@ -7,7 +7,6 @@ package GUI;
 import java.awt.BorderLayout;
 import java.awt.Image;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
 import javax.swing.GrayFilter;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -61,7 +60,7 @@ public class PlusTab {
     private void createIconsForButton() {
 	try
 	{
-	    ImageIcon icon = new ImageIcon(CloseTabbedPane.class.getResource("/resources/greenPlus.png"));
+	    ImageIcon icon = new ImageIcon(CloseTabbedPane.class.getResource("/resources/plusIcon.png"));
 	    Image normalImage = icon.getImage();
 	    Image grayImage = GrayFilter.createDisabledImage(normalImage);
 	    ImageIcon greyIcon = new ImageIcon(grayImage);
