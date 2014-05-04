@@ -44,54 +44,9 @@ public class MainInterfaceListeners {
             DiagramPlacesManager selectedDiagrams = toolBarContent.getDiagramById(tabId);
             if (selectedDiagrams.getAbsolutePath() == null)
             {
-                final JFileChooser fc = new JFileChooser();
-                FileNameExtensionFilter xmlfilter = new FileNameExtensionFilter("xml files (*.xml)", "xml");
-                fc.setFileFilter(xmlfilter);
-                int returnVal = fc.showSaveDialog(null);
-                if (returnVal == JFileChooser.APPROVE_OPTION) {
-                    File file = fc.getSelectedFile();
-                    int i = file.getName().lastIndexOf('.');
-                    String extension = "";
-                    String fileName;
-                    if (i > 0) {
-                        extension = file.getName().substring(i+1);
-                    }
-                    if (!extension.equals("xml"))
-                    {
-                        fileName = file.getAbsolutePath() + ".xml";
-                        selectedDiagrams.setFileName(file.getName());
-                    }
-                    else
-                    {
-                        fileName = file.getAbsolutePath();
-                        selectedDiagrams.setFileName(file.getName().substring(0,i));
-                    }
-                    try {
-                        try (PrintWriter out = new PrintWriter(fileName)) {
-                            selectedDiagrams.setAbsolutePath(new File(fileName));
-                            XStream xstream = new XStream(new DomDriver());
-                            out.println(xstream.toXML(selectedDiagrams));
-                        }
-                    } catch (FileNotFoundException ex) {
-                        JOptionPane.showMessageDialog(null, "Error while saving file.");
-                        System.out.println("Error while saving file.");
-                    }
-                } else {
-                    System.out.println("canceled");
-                }
+                selectedDiagrams = loadSaveDialog(selectedDiagrams);
             }
-            else
-            {
-                try {
-                    try (PrintWriter out = new PrintWriter(selectedDiagrams.getAbsolutePath())) {
-                        XStream xstream = new XStream(new DomDriver());
-                        out.println(xstream.toXML(selectedDiagrams));
-                    }
-                } catch (FileNotFoundException ex) {
-                    JOptionPane.showMessageDialog(null, "Error while saving file.");
-                    System.out.println("Error while saving file.");
-                }
-            }
+            saveDiagrams(selectedDiagrams);
             return selectedDiagrams.getFileName();
         }
         else
@@ -102,23 +57,88 @@ public class MainInterfaceListeners {
     }
     
     /**
+     * Method for showing save dialog.
+     * It will show save dialog and if you confirm it, it will set the path of file to diagramPlacesManager.
+     * @param selectedDiagrams diagramPlacesManager that is being saved.
+     * @return DiagramPlacesManager with new path to saved file.
+     */
+    private DiagramPlacesManager loadSaveDialog(DiagramPlacesManager selectedDiagrams)
+    {
+        final JFileChooser fc = new JFileChooser();
+        FileNameExtensionFilter xmlfilter = new FileNameExtensionFilter("xml files (*.xml)", "xml");
+        fc.setFileFilter(xmlfilter);
+        int returnVal = fc.showSaveDialog(null);
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            File file = fc.getSelectedFile();
+            int i = file.getName().lastIndexOf('.');
+            String extension = "";
+            String fileName;
+            if (i > 0) {
+                extension = file.getName().substring(i+1);
+            }
+            if (!extension.equals("xml"))
+            {
+                fileName = file.getAbsolutePath() + ".xml";
+                selectedDiagrams.setFileName(file.getName());
+            }
+            else
+            {
+                fileName = file.getAbsolutePath();
+                selectedDiagrams.setFileName(file.getName().substring(0,i));
+            }
+            selectedDiagrams.setAbsolutePath(new File(fileName));
+            return selectedDiagrams;
+        } else {
+            System.out.println("canceled");
+            return null;
+        }
+    }
+    
+    /**
+     * Method for saving diagrams to diagrams path.
+     * @param selectedDiagrams diagrams to be saved.
+     */
+    private void saveDiagrams(DiagramPlacesManager selectedDiagrams)
+    {
+        try {
+            try (PrintWriter out = new PrintWriter(selectedDiagrams.getAbsolutePath())) {
+                XStream xstream = new XStream(new DomDriver());
+                out.println(xstream.toXML(selectedDiagrams));
+            }
+        } catch (FileNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, "Error while saving file.");
+            System.out.println("Error while saving file.");
+        }
+        
+    }
+    
+    /**
      * Method for handeling clicking on open button.
      * @return 
      */
     public DiagramPlacesManager clickedOnOpen()
     {
-        XStream xstream = new XStream(new DomDriver());
         DiagramPlacesManager openedFile = null;
         final JFileChooser fc = new JFileChooser();
         FileNameExtensionFilter xmlfilter = new FileNameExtensionFilter("xml files (*.xml)", "xml");
         fc.setFileFilter(xmlfilter);
         int returnVal = fc.showOpenDialog(null);
         if (returnVal == JFileChooser.APPROVE_OPTION) {
-            FileInputStream stream = null;
             File file = fc.getSelectedFile();
-            openedFile = (DiagramPlacesManager) xstream.fromXML(file);
+            openedFile = getDiagramsFromXML(file);
         }
         return openedFile;
+    }
+    
+    /**
+     * Open diagrams from file with XML.
+     * @param fromFile open this file and load diagramPlacesManager.
+     * @return opened DiagramPlacesManager.
+     */
+    public DiagramPlacesManager getDiagramsFromXML(File fromFile)
+    {
+        XStream xstream = new XStream(new DomDriver());
+        return (DiagramPlacesManager) xstream.fromXML(fromFile);
     }
     
     /**

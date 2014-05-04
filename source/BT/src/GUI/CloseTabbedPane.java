@@ -73,8 +73,13 @@ public class CloseTabbedPane extends JTabbedPane {
         if (this.getTabCount() == 1) {
             this.setSelectedIndex(-1);
         }
-
         this.toolBarContent.removeDiagramPlaceById(this.indexOfComponent(component));
+        for (DiagramPlacesManager diagramPlaces : toolBarContent.getDiagramPlaces()) {
+            if (diagramPlaces.getDiagramNumber() > this.indexOfComponent(component))
+            {
+                diagramPlaces.setDiagramNumber(diagramPlaces.getDiagramNumber() - 1);
+            }
+        }
         this.remove(component);
     }
 

@@ -123,8 +123,14 @@ public class ToolBarContentControler {
      * @param myLayout
      */
     public void CloseButtonMouseClicked(WindowLayoutControler myLayout) {
-        myLayout.removeTab(myLayout.getSelectedTab());
         removeDiagramPlaceById(myLayout.getFileTab().getSelectedIndex());
+        for (DiagramPlacesManager diagramPlacesManager : diagramPlaces) {
+            if (diagramPlacesManager.getDiagramNumber()>myLayout.getFileTab().getSelectedIndex())
+            {
+                diagramPlacesManager.setDiagramNumber(diagramPlacesManager.getDiagramNumber() - 1);
+            }
+        }
+        myLayout.removeTab(myLayout.getSelectedTab());
     }
 
     /**

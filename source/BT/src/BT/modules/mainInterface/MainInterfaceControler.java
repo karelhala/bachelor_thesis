@@ -7,11 +7,14 @@ package BT.modules.mainInterface;
 import BT.managers.DiagramPlacesManager;
 import GUI.MainWindowModel;
 import GUI.MyToolBar;
+import com.thoughtworks.xstream.io.StreamException;
 import java.awt.Component;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -19,6 +22,7 @@ import javax.swing.JPanel;
  * @author Karel Hala
  */
 public class MainInterfaceControler {
+
     final private ToolBarContentControler ToolBarContent;
     final private MyToolBar toolBar;
     final private WindowLayoutControler myLayout;
@@ -44,104 +48,123 @@ public class MainInterfaceControler {
         this.mainWindowModel.initComponents();
         this.ToolBarContent.setBasicListeners(this.myLayout).addBasicButtons();
         this.myLayout.setAddNewTabListener(this.ToolBarContent.getNewFileAction());
-        this.myLayout.setMouseClickedOnPlusButton();        
+        this.myLayout.setMouseClickedOnPlusButton();
         setMenuListeners();
     }
-    
+
     /**
      * Method for creating basic listeners in this program, for maintaining file operations.
      */
-    private void createListeners()
-    {
+    private void createListeners() {
         final MainInterfaceListeners mainInterfaceListeners = new MainInterfaceListeners(ToolBarContent);
-        
-        this.ToolBarContent.setNewFileAction( new ActionListener() {
-	    @Override
-	    public void actionPerformed(ActionEvent e) {
-		ToolBarContent.NewFileButtonMouseClicked(myLayout);
-	    }
-	});
+
+        this.ToolBarContent.setNewFileAction(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ToolBarContent.NewFileButtonMouseClicked(myLayout);
+            }
+        });
         this.ToolBarContent.setCloseFileAction(new ActionListener() {
-	    @Override
-	    public void actionPerformed(ActionEvent e) {
-		ToolBarContent.CloseButtonMouseClicked(myLayout);
-	    }
-	});
-        
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ToolBarContent.CloseButtonMouseClicked(myLayout);
+            }
+        });
+
         this.ToolBarContent.setSaveAction(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 String fileName = mainInterfaceListeners.clickedOnSave(myLayout.getFileTab().getSelectedIndex());
-                if (myLayout.getFileTab().getSelectedIndex() != -1)
-                {
+                if (myLayout.getFileTab().getSelectedIndex() != -1) {
                     Component tabComponent = myLayout.getFileTab().getTabComponentAt(myLayout.getFileTab().getSelectedIndex());
-                    if (tabComponent instanceof JPanel)
-                    {
+                    if (tabComponent instanceof JPanel) {
                         JPanel tabPanel = (JPanel) tabComponent;
-                        if (tabPanel.getComponent(0) instanceof JLabel)
-                        {
-                            ((JLabel)tabPanel.getComponent(0)).setText(fileName);
+                        if (tabPanel.getComponent(0) instanceof JLabel) {
+                            ((JLabel) tabPanel.getComponent(0)).setText(fileName);
                         }
                     }
                 }
             }
         });
-        
+
         this.ToolBarContent.setOpenFileAction(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                DiagramPlacesManager diagramsFile = mainInterfaceListeners.clickedOnOpen();
-                Boolean fileAllredyOpened = false;
-                for (DiagramPlacesManager oneDiagramPlace : ToolBarContent.getDiagramPlaces()) {
-                    if (diagramsFile != null && oneDiagramPlace.getAbsolutePath().equals(diagramsFile.getAbsolutePath()))
-                    {
-                        myLayout.getFileTab().setSelectedIndex(oneDiagramPlace.getDiagramNumber());
-                        fileAllredyOpened = true;
+                try {
+                    DiagramPlacesManager diagramsFile = mainInterfaceListeners.clickedOnOpen();
+                    Boolean fileAllredyOpened = false;
+                    for (DiagramPlacesManager oneDiagramPlace : ToolBarContent.getDiagramPlaces()) {
+                        if (diagramsFile != null && oneDiagramPlace.getAbsolutePath().equals(diagramsFile.getAbsolutePath())) {
+                            myLayout.getFileTab().setSelectedIndex(oneDiagramPlace.getDiagramNumber());
+                            fileAllredyOpened = true;
+                        }
                     }
-                }
-                if (diagramsFile != null && !fileAllredyOpened)
-                {
-                    ToolBarContent.openedFile(diagramsFile, myLayout);
+                    if (diagramsFile != null && !fileAllredyOpened) {
+                        ToolBarContent.openedFile(diagramsFile, myLayout);
+                    }
+                } catch (StreamException fatalError) {
+                    JOptionPane.showMessageDialog(null, "Fatal error when trying to open file.");
                 }
             }
         });
-        
+
         this.ToolBarContent.setExportEpsAction(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 mainInterfaceListeners.clickedOnExportToEPS(myLayout.getFileTab().getSelectedIndex());
             }
         });
-        
+
         this.ToolBarContent.setExportPdfAction(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 mainInterfaceListeners.clickedOnExportToPDF(myLayout.getFileTab().getSelectedIndex());
             }
         });
-        
+
         this.ToolBarContent.setExportXmlAction(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 mainInterfaceListeners.clickedOnExportToXML(myLayout.getFileTab().getSelectedIndex());
             }
         });
-        
+
         this.ToolBarContent.setSaveAsAction(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                mainInterfaceListeners.clickedOnSaveAs(myLayout.getFileTab().getSelectedIndex());
+                if (ToolBarContent.getDiagramById(myLayout.getFileTab().getSelectedIndex()) != null)
+                {
+                    DiagramPlacesManager workingDiagramPlaces = ToolBarContent.getDiagramById(myLayout.getFileTab().getSelectedIndex());
+                    File originalPath = workingDiagramPlaces.getAbsolutePath();
+                    workingDiagramPlaces.setAbsolutePath(null);
+                    String fileName = mainInterfaceListeners.clickedOnSave(myLayout.getFileTab().getSelectedIndex());
+
+                    if (fileName != null) {
+                        try {
+                            DiagramPlacesManager openedFile = mainInterfaceListeners.getDiagramsFromXML(workingDiagramPlaces.getAbsolutePath());
+                            if (openedFile != null) {
+                                ToolBarContent.openedFile(openedFile, myLayout);
+                            }
+                        } catch (StreamException fatalError) {
+                            JOptionPane.showMessageDialog(null, "Fatal error when trying to open file.");
+                        }
+                    }
+                    workingDiagramPlaces.setAbsolutePath(originalPath);
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(null, "No file to save.");
+                }
             }
         });
     }
-    
+
     /**
      * Method that sets listeners to menu.
      */
-    private void setMenuListeners()
-    {
+    private void setMenuListeners() {
         this.mainWindowModel.getMyMenu().addActionListenerToNewFileItem(ToolBarContent.getNewFileAction());
-	this.mainWindowModel.getMyMenu().addActionListenerToCloseFileItem(ToolBarContent.getCloseFileAction());
+        this.mainWindowModel.getMyMenu().addActionListenerToCloseFileItem(ToolBarContent.getCloseFileAction());
         this.mainWindowModel.getMyMenu().addActionListenerToSave(ToolBarContent.getSaveAction());
         this.mainWindowModel.getMyMenu().addActionListenerToOpenNewFileItem(ToolBarContent.getOpenFileAction());
         this.mainWindowModel.getMyMenu().addActionListenerToExportEps(ToolBarContent.getExportEpsAction());
