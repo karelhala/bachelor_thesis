@@ -20,3 +20,7 @@ Link to pdf version of text: https://github.com/ch4rlien/bachelor_thesis/blob/ma
 
 
 These icons were used for buttons: https://github.com/ch4rlien/bachelor_thesis/blob/master/iconResources.txt
+
+This library was used for saving to XML format: http://xstream.codehaus.org
+
+This library was used for exporting to EPS: http://www.abeel.be/epsgraphics/
