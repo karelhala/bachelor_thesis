@@ -17,3 +17,6 @@ ant run
 
 
 Link to pdf version of text: https://github.com/ch4rlien/bachelor_thesis/blob/master/latex/bachelorsThesis.pdf?raw=true
+
+
+These icons were used for buttons: https://github.com/ch4rlien/bachelor_thesis/blob/master/iconResources.txt
