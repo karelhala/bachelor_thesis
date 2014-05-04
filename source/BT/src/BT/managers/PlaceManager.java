@@ -12,6 +12,7 @@ import BT.modules.ClassDiagram.places.CDClass;
 import BT.modules.UC.places.UCActor;
 import BT.modules.UC.places.UCUseCase;
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.Iterator;
 import javax.swing.JComboBox;
@@ -26,6 +27,7 @@ public class PlaceManager extends PlaceModel {
 
     public PlaceManager() {
         super();
+        this.paneSize = new Dimension(500, 800);
     }
 
     /**

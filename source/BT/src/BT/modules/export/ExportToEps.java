@@ -18,14 +18,12 @@ import BT.modules.ObjectedOrientedPetriNet.places.joinEdge.PNJoinEdgeController;
 import BT.modules.UC.places.UCActor;
 import BT.modules.UC.places.UCJoinEdge.UCJoinEdgeController;
 import BT.modules.UC.places.UCUseCase;
-import de.erichseifert.vectorgraphics2d.EPSGraphics2D;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.io.PrintWriter;
 import net.sf.epsgraphics.ColorMode;
 import net.sf.epsgraphics.EpsGraphics;
 
@@ -47,7 +45,8 @@ public class ExportToEps extends ExportModel{
                 if (this.exportedPlaces.getUcPlaces().getObjects().size()>0)
                 {   
                     File ucPlacesFile = createNewFile(this.exportToFolder + "/UseCase", ".eps");
-                    EpsGraphics ucGraphics = new EpsGraphics("UseCase", new FileOutputStream(ucPlacesFile),0, 0, 800, 500, ColorMode.COLOR_RGB);
+                    this.exportedPlaces.getUcPlaces().calculateDimension();
+                    EpsGraphics ucGraphics = new EpsGraphics("UseCase", new FileOutputStream(ucPlacesFile),0, 0, (int) this.exportedPlaces.getUcPlaces().getPaneSize().getWidth(), (int) this.exportedPlaces.getUcPlaces().getPaneSize().getHeight(), ColorMode.COLOR_RGB);
                     for (LineModel oneLine : this.exportedPlaces.getUcPlaces().getJoinEdges()) {
                         ((UCJoinEdgeController) oneLine).drawJoinEdge(ucGraphics);
                     }
@@ -63,15 +62,13 @@ public class ExportToEps extends ExportModel{
                     }
                     ucGraphics.flush();
                     ucGraphics.close();
-//                    try (PrintWriter ucOut = new PrintWriter(ucPlacesFile)) {
-//                        ucOut.print(ucGraphics.toString());
-//                    }
                 }
                 
                 if (this.exportedPlaces.getCdPlaces().getObjects().size()>0)
                 {  
                     File classDiagram = createNewFile(this.exportToFolder + "/ClassDiagram", ".eps");
-                    EpsGraphics cdGraphics = new EpsGraphics("UseCase", new FileOutputStream(classDiagram),0, 0, 800, 500, ColorMode.COLOR_RGB);
+                    this.exportedPlaces.getCdPlaces().calculateDimension();
+                    EpsGraphics cdGraphics = new EpsGraphics("UseCase", new FileOutputStream(classDiagram),0, 0, (int) this.exportedPlaces.getCdPlaces().getPaneSize().getWidth(), (int) this.exportedPlaces.getCdPlaces().getPaneSize().getHeight(), ColorMode.COLOR_RGB);
                     for (LineModel oneLine : this.exportedPlaces.getCdPlaces().getJoinEdges()) {
                         ((CDJoinEdgeController)oneLine).drawJoinEdge(cdGraphics);
                     }
@@ -89,7 +86,8 @@ public class ExportToEps extends ExportModel{
                 {
                     for (PlaceManager onePetriNet : this.exportedPlaces.getPnPlaces()) {
                         File petriNetDiagram = createNewFile(this.exportToFolder + "/petriNet", ".eps");
-                        EpsGraphics pnGraphics = new EpsGraphics("UseCase", new FileOutputStream(petriNetDiagram),0, 0, 800, 500, ColorMode.COLOR_RGB);
+                        onePetriNet.calculateDimension();
+                        EpsGraphics pnGraphics = new EpsGraphics("UseCase", new FileOutputStream(petriNetDiagram),0, 0, (int) onePetriNet.getPaneSize().getWidth(), (int) onePetriNet.getPaneSize().getHeight(), ColorMode.COLOR_RGB);
                         for (LineModel oneLine : onePetriNet.getJoinEdges()) {
                             ((PNJoinEdgeController)oneLine).drawJoinEdge(pnGraphics);
                         }

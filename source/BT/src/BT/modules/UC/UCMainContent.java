@@ -58,39 +58,6 @@ public final class UCMainContent extends ContentPaneModel {
 
     /**
      *
-     * @param newObject
-     */
-    public void recalculateSize(CoordinateModel newObject) {
-        Boolean changed = false;
-        WidthHeight objectWidthAndHeight = getObjectWidthAndheight(newObject);
-        if (objectWidthAndHeight != null) {
-            int this_width = (newObject.getX() + objectWidthAndHeight.width);
-            if (this_width > this.area.width) {
-                this.area.width = this_width;
-                changed = true;
-            }
-
-            int this_height = (newObject.getY() + objectWidthAndHeight.height);
-            if (this_height > this.area.height) {
-                this.area.height = this_height;
-                changed = true;
-            }
-            if (changed) {
-                //Update client's preferred size because
-                //the area taken up by the graphics has
-                //gotten larger or smaller (if cleared).
-                ((UCDrawingPane) this.drawingPane).getDrawing().setPreferredSize(area);
-
-                //Let the scroll pane know to update itself
-                //and its scrollbars.
-                ((UCDrawingPane) this.drawingPane).getDrawing().revalidate();
-            }
-        }
-        ((UCDrawingPane) this.drawingPane).getDrawing().repaint();
-    }
-
-    /**
-     *
      * @param object
      * @return
      */

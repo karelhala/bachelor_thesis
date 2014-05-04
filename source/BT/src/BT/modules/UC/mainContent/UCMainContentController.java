@@ -89,7 +89,6 @@ public class UCMainContentController extends UCMainContentModel implements Drawi
                 drawingPanecheckMove(e);
             }
         }
-//        this.mainContent.recalculateSize(dragged);
         UCdrawing.getDrawing().repaint();
     }
 
@@ -108,7 +107,6 @@ public class UCMainContentController extends UCMainContentModel implements Drawi
                     this.classDiagramConnector.setSelectedObject(actor);
                     this.diagramPlaces.addPnPlace(this.classDiagramConnector.createNewClassdiagramObject().getPnNetwork());
                     this.places.addObject(actor);
-//                        this.mainContent.recalculateSize(actor);
                     break;
 
                 case "USECASE":
@@ -116,7 +114,6 @@ public class UCMainContentController extends UCMainContentModel implements Drawi
                     this.classDiagramConnector.setSelectedObject(useCase);
                     this.diagramPlaces.addPnPlace(this.classDiagramConnector.createNewClassdiagramObject().getPnNetwork());
                     this.places.addObject(useCase);
-//                        this.mainContent.recalculateSize(useCase);
                     break;
             }
             UCdrawing.getDrawing().repaint();
@@ -141,7 +138,6 @@ public class UCMainContentController extends UCMainContentModel implements Drawi
         if (coordModel != null) {
             coordModel.setHowerColor();
         }
-//        this.mainContent.recalculateSize(coordModel);
         UCdrawing.getDrawing().repaint();
     }
 

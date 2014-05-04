@@ -12,7 +12,14 @@ import BT.managers.PlaceManager;
  */
 public class DrawingPaneModel {
 
+    /**
+     * 
+     */
     protected PlaceManager places;
+    
+    /**
+     * 
+     */
     protected LineModel newLine;
 
     public DrawingPaneModel(PlaceManager places) {

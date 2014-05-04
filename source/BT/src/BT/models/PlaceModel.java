@@ -4,6 +4,8 @@
  */
 package BT.models;
 
+import BT.managers.RecalculatePaneSize;
+import java.awt.Dimension;
 import java.util.ArrayList;
 
 /**
@@ -11,6 +13,11 @@ import java.util.ArrayList;
  * @author Karel Hala
  */
 public class PlaceModel {
+    
+    /**
+     * Size of printed pane as dimension.
+     */
+    protected Dimension paneSize;
 
     /**
      * Arraylist that contains all actors in UC
@@ -42,6 +49,14 @@ public class PlaceModel {
         }
     }
 
+    public Dimension getPaneSize() {
+        return paneSize;
+    }
+
+    public void setPaneSize(Dimension paneSize) {
+        this.paneSize = paneSize;
+    }
+    
     /**
      * Method for returning all join edges in array list.
      *
@@ -117,5 +132,16 @@ public class PlaceModel {
         }
         }
         return null;
+    }
+    
+    /**
+     * Method used for calculating pane size based on each object.
+     * This is usefull for calculating when exporting to EPS.
+     */
+    public void calculateDimension()
+    {
+        for (CoordinateModel coordinateModel : objects) {
+            paneSize = RecalculatePaneSize.recalculateSizeofPaneOnObject(coordinateModel, paneSize);
+        }
     }
 }
