@@ -100,7 +100,7 @@ public class CDClass extends CDClassDrawer {
             for(CDClass newClass = this.getParent();(newClass != null && !newClass.equals(this)); newClass = newClass.getParent())
             {
                 for (Attribute attribute : newClass.getVariables()) {
-                    if (attribute.getVisibility() != BT.AttributeType.PUBLIC)
+                    if (attribute.getVisibility() != BT.AttributeType.PRIVATE)
                     {
                         classAttributes.addUnique(attribute);
                     }
