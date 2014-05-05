@@ -48,6 +48,7 @@ public class CDMainContentController extends CDBottomRightController implements 
         
         super(diagramPlaces, bottomRightContent, attributesPanel);
         this.leftBottomController = new CDBottomLeftController(leftContentModel, ((CDDrawingPane) this.mainContent.getDrawingPane()).getDrawing());
+        this.leftBottomController.setDiagramPlaces(diagramPlaces);
         this.leftContentModel = leftContentModel;
     }
     

@@ -8,6 +8,7 @@ import BT.interfaces.DrawingClicks;
 import BT.managers.DiagramPlacesManager;
 import BT.managers.DrawingListeners;
 import BT.managers.MainContentController;
+import BT.models.LineModel;
 import BT.modules.ClassDiagram.CDLeftBottomContent;
 import BT.modules.ClassDiagram.CDLeftTopContent;
 import BT.modules.ClassDiagram.CDMainContent;
@@ -86,7 +87,7 @@ abstract class CDMainContentModel extends MainContentController {
                 {
                     diagramPlaces.removePnPlace(((CDClass)places.getSelectedObject()).getPnNetwork());
                 }
-                mainContent.getDrawingPane().getPlaces().removeAllSelectedItems();
+                places.removeAllSelectedItems();
                 deleteNewLine();
             }
         }
@@ -99,8 +100,7 @@ abstract class CDMainContentModel extends MainContentController {
      *
      */
     protected void deleteNewLine() {
-        this.newJoinEdge = null;
-        this.mainContent.getDrawingPane().setNewLine(newJoinEdge);
+        this.mainContent.getDrawingPane().setNewLine(null);
         ((CDDrawingPane) this.mainContent.getDrawingPane()).getDrawing().repaint();
     }
 

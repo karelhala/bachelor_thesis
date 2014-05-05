@@ -161,4 +161,14 @@ public class LineModel extends CoordinateModel {
     {
         return this.firstObject == null || this.secondObject ==null;
     }
+    
+    /**
+     * 
+     * @return 
+     */
+    @Override
+    public String toString()
+    {
+        return parentToString();
+    }
 }

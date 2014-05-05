@@ -29,9 +29,9 @@ public class PlaceModel {
     /**
      * Arraylist that contains all join edges in UC
      *
-     * @var ArrayList<LineModel>
+     * @var MyArrayList<LineModel>
      */
-    protected ArrayList<LineModel> joinEdges = new ArrayList<>();
+    protected MyArrayList<LineModel> joinEdges = new MyArrayList<>();
 
     /**
      * Method for add new join edge to array list.
@@ -44,7 +44,7 @@ public class PlaceModel {
             {
                 joinEdge.getFirstObject().addOutJoins(joinEdge);
                 joinEdge.getSecondObject().addInJoin(joinEdge);
-                this.joinEdges.add(joinEdge);
+                this.joinEdges.addUnique(joinEdge);
             }
         }
     }

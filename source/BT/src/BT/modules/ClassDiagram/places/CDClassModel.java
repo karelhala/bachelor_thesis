@@ -11,6 +11,7 @@ import BT.BT.ClassType;
 import BT.managers.CD.Attribute;
 import BT.managers.PlaceManager;
 import BT.models.CoordinateModel;
+import BT.models.MyArrayList;
 import BT.modules.ObjectedOrientedPetriNet.PetriNetPlaceManager;
 import java.awt.Color;
 import java.util.ArrayList;
@@ -64,8 +65,8 @@ public class CDClassModel extends CoordinateModel{
         this.variables = new ArrayList<>();
         this.methods = new ArrayList<>();
         this.typeOfClass = BT.ClassType.NONE;
-        this.inJoins = new ArrayList<>();
-        this.outJoins = new ArrayList<>();
+        this.inJoins = new MyArrayList<>();
+        this.outJoins = new MyArrayList<>();
         this.pnNetwork = new PetriNetPlaceManager();
     }
     

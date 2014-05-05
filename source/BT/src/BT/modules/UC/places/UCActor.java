@@ -5,6 +5,7 @@
 package BT.modules.UC.places;
 
 import BT.models.CoordinateModel;
+import BT.models.MyArrayList;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
@@ -40,8 +41,8 @@ public class UCActor extends CoordinateModel {
         this.textSize = 15;
         this.gap = 2;
         this.howerColor = Color.red;
-        this.inJoins = new ArrayList<>();
-        this.outJoins = new ArrayList<>();
+        this.inJoins = new MyArrayList<>();
+        this.outJoins = new MyArrayList<>();
         this.id = UUID.randomUUID();
     }
 

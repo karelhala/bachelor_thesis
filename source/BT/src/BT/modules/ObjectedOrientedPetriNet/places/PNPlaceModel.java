@@ -39,8 +39,8 @@ public class PNPlaceModel extends PetriNetModel{
         this.name = "Default";
         this.textSize = 15;
         this.howerColor = Color.GREEN;
-        this.inJoins = new ArrayList<>();
-        this.outJoins = new ArrayList<>();
+        this.inJoins = new MyArrayList<>();
+        this.outJoins = new MyArrayList<>();
         this.variables = new MyArrayList<>();
     }
 

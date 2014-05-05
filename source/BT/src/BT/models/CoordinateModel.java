@@ -72,11 +72,11 @@ public class CoordinateModel {
     /**
      *
      */
-    protected ArrayList<LineModel> inJoins;
+    protected MyArrayList<LineModel> inJoins;
     /**
      *
      */
-    protected ArrayList<LineModel> outJoins;
+    protected MyArrayList<LineModel> outJoins;
     /**
      * 
      */
@@ -206,7 +206,7 @@ public class CoordinateModel {
 
     public void addInJoin(LineModel inJoins) {
         if (this.inJoins != null) {
-            this.inJoins.add(inJoins);
+            this.inJoins.addUnique(inJoins);
         }
     }
 
@@ -220,7 +220,7 @@ public class CoordinateModel {
 
     public void addOutJoins(LineModel outJoins) {
         if (this.outJoins != null) {
-            this.outJoins.add(outJoins);
+            this.outJoins.addUnique(outJoins);
         }
     }
 
@@ -321,5 +321,10 @@ public class CoordinateModel {
     public String toString()
     {
         return this.name;
+    }
+    
+    protected String parentToString()
+    {
+        return super.toString();
     }
 }
