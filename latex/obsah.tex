@@ -319,8 +319,6 @@ je èasto stakeholderem daného systému a hlavní spou¹tìè tohoto systému. Obèas je
 zapotøebí aktér, který není pøímo v systému, tomuto se øíká \uv{Podpùrný aktér}. 
 Aktér není pøímo chápán jako jedinec, nýbr¾ jako role v systému. 
 \cite{Pripad_uziti}
-\includegraphics{fig/UseCase}
-
 
 \subsection{Rozbor Diagramu pøipadù u¾ití}
 Tyto diagramy se pou¾ívají pro grafický popis pøípadù u¾ití a zahrnuje nìkolik pravidel.
@@ -353,10 +351,15 @@ pøebírá ve¹kerou funckinalitu svého rodièe a mù¾e, tuto funkcionalitu
 poupravit, nebo pøidat vlastní. Tento spoj je znázornìn spojem ukonèeným 
 prázdnou ¹ipkou a je veden od potomka k rodièi.
 
-Pro lep¹í znázornìní a oddìlení pøípadù u¾ití je vhodné pou¾ít organizaci, ta se
-znázoròuje rámeèkem okolo nìkolika pøípadù u¾ití.\cite{Pripad_uziti}
+\begin{figure}
+\centering
+  \includegraphics[trim = 0mm 150mm 0mm 0mm, clip, 
+scale=0.5]{fig/UseCase}
+  \caption{Pøíklad Diagramu pøípadù u¾ití.}
+  \label{useCaseExam}
+\end{figure}
 
-\subsection{Pu¾ité vlastnosti}
+\subsection{Pou¾ité vlastnosti}
 Ve výsledné aplikaci byl pou¾it Diagram pøipadù u¾ití pro jednoduché znázornìní
 a zanesení zákazníkových po¾adavkù. Tento diagram byl roz¹íøen o nìkolik u¾iteèných
 vlastností.
@@ -455,7 +458,15 @@ Tato hrana je specifická v tom, ¾e se kreslí pouze mezi tøídou a interfacem.
 Slou¾í ke znázornìní, ¾e tøída A implementuje interface B, pøevezme v¹echny
 attributy tøídy B a pøetí¾í operace tøídy B, které implementuje. Hrana je 
 kreslena pøeru¹ovanou ¹ipkou ve smìru od implementovanì tøídy k
-interfacu. \cite{Diagram_trid} 
+interfacu. \cite{Diagram_trid}
+
+\begin{figure}
+\centering
+  \includegraphics[trim = 0mm 150mm 0mm 0mm, clip, 
+scale=0.5]{fig/ClassDiagram}
+  \caption{Pøíklad Diagramu tøíd.}
+  \label{diagramClassExamp}
+\end{figure}
 
 \subsection{Pou¾ité a upravené èásti z Diagramu tøíd}
 Ve výsledné aplikaci bylo pou¾ito pro popis vztahù mezi jednotlivými tøídami
@@ -486,7 +497,6 @@ Tøídy, které nemají odpovídající pøedpis v èásti Diagramu pøípadù u¾ití,
 jsou znázornìny tak, ¾e jejich obsah je psán nahnutým písmem a pod tøídou,
 se nachází text \uv{\/No UseCase\/}. Pokud hrana spojující tøídy nemá
 odpovídající spoj v Diagramu pøipadù u¾ití, je odli¹ena rozdílnou barvou.
-\includegraphics{fig/ClassDiagram}
 
 \section{Objektovì orientované Petriho sítì} \label{oopn}
 Pro popis chování objektù a komunikace mezi nimi ve výsledné aplikaci  
@@ -602,15 +612,78 @@ Výsledná objektovì orientovaná petriho sí» má v¹echny atributy
 objektovì orientovaného jazyka. Umo¾òuje zapouzdøení, 
 polymorfismus a dìdiènost. \cite{ModelovaniOOPN}
 
+\begin{figure}[]
+\centering
+  \includegraphics[trim = 0mm 100mm 0mm 0mm, clip, 
+scale=0.5]{fig/petriNet}
+  \caption{Pøíklad Objektovì orientované petriho sítì pro metodu.}
+\end{figure}
+
 \subsection{Grafické znázornìní}
 Jednotlivé místa se znázoròují v Objektovì orientovaných Petriho 
 sítích jako koleèka obsahující procesy, reference na objekty. 
 Pøechody jsou znázornìny obdélníkem obshaujícím strá¾ a akci. 
 Akce se nachází pod èarou a nad èarou se nachází strá¾.
-\includegraphics{fig/petriNet}
+
 
 \section{Spojení diagramù}\label{spojeni}
+Bìhem vytvøení pøípadù u¾ití je vhodné vytvoøit také diagram tøíd. Tato akce 
+spoèívá v hledání návrhových tøíd rozhraní a komponent, je¾ vzájemnì komunikují 
+a projevují chování specifikované pomocí pøípadu u¾ití.
 
+\begin{figure}[h!]
+\centering
+  \includegraphics[trim = 0mm 200mm 0mm 0mm, clip, 
+scale=0.5]{fig/UseCasePropoj}
+  \caption{Nástin problému pøípadù u¾ití.}
+\end{figure}
+
+Bìhem tohoto procesu vznikají analytické tøídy, tyto tøídy by mìly mapovat 
+pojmy reálného svìta. Nicménì odhad a automatické generování tìchto tøíd je 
+velice nároèné a proto èasto tato práce zùstává na orientovém analytikovi. Ten 
+by se mìl postarat o dal¹í pøevod a upøesnìní tìchto analytických tøíd.
+
+Analytické tøídy by mìli obsaovat pouze ty nejdùle¾itìj¹í atributy, operace 
+jsou opìt klíèové slu¾by, které musí tøída poskytovat. Èasto se mù¾e stát ¾e 
+operace je poté rozbita do nìkolika men¹ích metod.
+\cite{UML2}
+
+\subsection{Pou¾ití ve výsledné aplikaci}
+Provázání mezi UML èástmi prbíhá na velice nizké úrovni a to taj, ¾e pøi 
+vytvoøení objektu v diagramu pøípadù u¾ití vznikne tøída se stejným názvem v 
+diagramu tøíd. Na orientovaném analytikovi potom je potøeba zadat jednotlivé 
+atributy a operace. Pokud vznikne pøípad, ¾e se analytivká tøída rozpadne na 
+více tøíd, je toto mo¾né realizovat dvojím zpùsobem. A to tak, ¾e se odstraní 
+analytická tøída a vzniknou dvì nové tøídy, které se nepromítnou do diagramu 
+pøípadù u¾ití. A nebo zachováním analytické tøídy a navázáním nové tøídy, která 
+se nepromítne do pøípadù u¾ití.
+
+\begin{figure}[h!]
+\centering
+  \includegraphics[trim = 0mm 150mm 0mm 0mm, clip, 
+scale=0.5]{fig/ClassDiagramPropoj}
+  \caption{Nástin problému pøevodu pøípadu u¾ití do diagramu tøíd.}
+\end{figure}
+
+Pøi vytváøení tøíd a operací (metod) v diagramu tøíd také vznikají nové 
+objektovì orientované tøídy. Ka¾dá metoda má jednu objektovì orientovanou 
+Petriho sít a podobnì tomu tak je v pøípadì tøídy. Objektovì orientovaná 
+Petriho sít pro metodu má jedno specifické místo \textbf{return}, které nelze 
+odstranit ani zmìnit její jméno. \cite{ModelovaniOOPN}
+
+V ka¾dé Objektovì orientované Petriho síti se nachází attributy. V pøípadì 
+Objektovì orientované Petriho síti pro tøídu jsou to tøídní promìnné dané tøídy 
+a v¹ech rodièù, které mají viditelnost \textbf{protected}, nebo 
+\textbf{public}. V pøípadì Objektovì orientovaných Petriho sítí pro tøídy dále 
+tato sít obsahuje attributy, které jsou vstupními promìnnými dané metody.  
+\cite{oopn_caseStudy}
+
+\begin{figure}[h!]
+\centering
+  \includegraphics[trim = 0mm 200mm 0mm 0mm, clip, 
+scale=0.5]{fig/petriNet_makeActionMethodaPropoj}
+  \caption{Metoda popsána Objektovì orientovanou Petriho sítí.}
+\end{figure}
 
 \section{Shrnutí}
 V této kapitole byly pøiblí¾eny nástroje slou¾ící ke 
@@ -626,8 +699,14 @@ nástroje velice vhodné. A to pøevá¾nì z hlediska jednoduché
 integrace zákazníka do vývoje a promítnutí zmìn od zákazníka 
 okam¾itì na celý systém.
 
-\chapter{Popis aplikace}
-Jak ji¾ bylo øeèeno v pøede¹lé èásti, bylo rozhodnuto o jednoduchosti a 
+\chapter{Samostatná aplikace}
+Po vyzkou¹ení kouknurentních nástrojù a vybrání vhodných nástrojù z nich bylo 
+zji¹tìno ¾e ¾ádný nástroj nedosahuje absolutních po¾adavkù a ¾ádný z nich 
+neimplementuje Objektovì orientované Petriho sítì. Z toho dùvodu bylo 
+rozhodnuto implementovat nástroj, který je hlavním pøedmìtem této práce.
+
+\subsection{Popis aplikace}
+Na základì poznatkù z ostatních aplikací bylo rozhodnuto o jednoduchosti a 
 intuitivním ovládání aplikace. Tohoto bylo docíleno sjednocením základního 
 designu aplikace, sjednocení klávesových zkratek a porozumìní a prozkoumání 
 moderních aplikací.
