@@ -94,7 +94,7 @@ sí». s touto mo¾ností také pøichází mo¾nost tisku celého diagramu.
 \cite{umbrelloDocumentation}
 
 Umbrello je sice jednoduché na pou¾ívání a intuitivní, nicménì dlouhodobìj¹í 
-práce je zdlouhavá a pøíli¹ repetitvní. Nutnost vytvoøení objektu na pracovním 
+práce je zdlouhavá a pøíli¹ repetitvní. Nutnost vytvoøení objektu na editaèním 
 plátnì, poté výbìru nástroje pro pøesun a editaci daného objektu je zdlouhavá a 
 ¹patná. Jednodu¹¹í pro práci by jistì bylo vytvoøení objektu a po kliknutí na 
 ji¾ vytvoøený objekt jej pouze pøesunout. Vytvoøení nového atributu tøídy je 
@@ -196,7 +196,7 @@ Aplikace poslou¾ila pro dal¹í zhodnocení po¾adavkù a vyvarování se chyb.
 Pøedev¹ím nároènost a komplexnost aplikace se nehodí pro výslednou aplikaci.
 
 Ve výsledné aplikaci bude za potøebí mo¾nosti jednoduchého zalomení hran a 
-mo¾nosti jejich jednoduché editace. Takté¾ pøesun po pracovním plátnì je v 
+mo¾nosti jejich jednoduché editace. Takté¾ pøesun po editaèním plátnì je v 
 aplikace EA øe¹en pomìrnì chaoticky a nahodile.
 
 Umístnìní otevøených souborù je v aplikaci EA ponìkud netradièní v dolní èásti 
@@ -705,7 +705,7 @@ zji¹tìno ¾e ¾ádný nástroj nedosahuje absolutních po¾adavkù a ¾ádný z nich
 neimplementuje Objektovì orientované Petriho sítì. Z toho dùvodu bylo 
 rozhodnuto implementovat nástroj, který je hlavním pøedmìtem této práce.
 
-\section{Popis aplikace}
+\section{Popis aplikace} \label{popisAplikace}
 Na základì poznatkù z ostatních aplikací bylo rozhodnuto o jednoduchosti a 
 intuitivním ovládání aplikace. Tohoto bylo docíleno sjednocením základního 
 designu aplikace, sjednocení klávesových zkratek a porozumìní a prozkoumání 
@@ -726,8 +726,71 @@ prvky. Po zakliknutí vybraného prvu a kliknutí na editaèní plátno se vytvoøí
 objekt vytvoøí objekt, po ta¾ení se vybraný objekt pøesune a pro spojení 
 dvou objektù hranou je zapotøebí vybrat typ hrany z levého menu a poté kliknout 
 kliknout na první objekt a poté na druhý. Pokud je potøeba spoj zahnout pro 
-zpøehlednìní grafu, je toto mo¾né vyvolat kliknutím na pré tlaèítko my¹i 
+zpøehlednìní grafu, je toto mo¾né vyvolat kliknutím na pravé tlaèítko my¹i 
 bìhem ta¾ení spoje.
+
+\section{Ovládací prvky}
+Pro celou aplikaci je spoleèných nìkolik speciálních ovláadacích prvkù. 
+
+K vytvoøení nového projektu lze pou¾ít menu, horní toolbar, nebo klávesové 
+zkratky. Také je mo¾né vytvoøit nový projekt kliknutím na tlaèítko \uv{plus} 
+vedle zálo¾ek s projekty. Pokud je potøeba zavøít nìjaký projekt je mo¾né jej 
+zavøít také tlaèítkem nacházející se v zálo¾ce daného tabu pro projekt. Pro 
+vytvoøení nového projektu lze také pou¾ít klávesové zkratky \texttt{CTRL + T} a 
+pro zavøení zvoleného projektu je mo¾né pou¾ít klávesové zkratky \texttt{CTRL + 
+W}.
+
+Pøi výbìru pøidání objektu, nebo spoje tlaèítko zùstane zakliknuté, to je kvùli 
+jednodu¹¹ímu pøidání více stejných objektù na pracovní plochu. 
+
+Smazání objektu probíhá jeho výbìrem a zmáèknutím tlaèítka delete na 
+klávesnici, tímto zpùsobem lze také mazat hrany mezi ojekty.
+
+Pro roz¹íøení editaèního plátna lze pøesunout po¾adovaný objekt mimo viditelnou 
+oblast a editaèní plátno se roztáhne automaticky. Plátno je fixnuté do levého 
+horního rohu, to znamené ¾e nelze objekty pøesunout za levý, nebo horní okraj 
+editaèního plátna pouze za pravý a dolní okraj.
+
+Pokud je vybrána hrana a dr¾eno levé tlaèítko my¹i, ta¾ením se hrana \uv{odepne} 
+od druhého objektu a je mo¾né ji odstranit kliknutím mimo jakýkoliv objekt, nebo 
+ji pøidat k jinému objektu. Pøi manipulaci s hranou je potøeba vybrat po¾adovaný 
+typ hrany. To znamená vybrat typ hrany z levého menu a poté zaèít editovat 
+hranu. Pokud vyberete odli¹ný typ hrany, ne¾ se chystáte editovat, tato hrana 
+zmìní svùj typ na právì vybraný. Lze také vybrat hranu a a¾ poté vybrat její 
+typ, toto je ale mírnì nároèné.
+
+Jak ji¾ bylo øeèeno v \ref{popisAplikace} pøi vytváøení hrany je mo¾né tuto 
+hranu zalomit a dosáhnout tak vìt¹í pøehlednosti aplikace. Bohu¾el nelze tyto 
+zalomení editovat, ale roz¹íøení aplikace o tuto funkcionalitu není nároèné, 
+jenom toto nebylo pova¾ováno za nutnost.
+
+Obèas jsou nìkteré hrany ukonèeny ¹ipkou, nebo roz¹iøujícím obrazcem, jak je 
+toto uìláno je popsáno v kapitole \ref{grafickePrvky}. Nìkteré hrany diagramù 
+mohou být ukonèeny ¹ipkami na obou stranách, pro pøehlednost aplikace byla ale 
+tato funckionalita zakázána a v¹echny hrany jsou tím pádem \textbf{Jednosmìrné} 
+a to ve smìru z prvního objektu k druhému.
+
+Aplikace bohu¾el neobsahuje mo¾nost návratu akce a opìtování akce jak je tomu u 
+vìt¹iny aplikací. Toto je pravdìpobnì nejvìt¹í slabinou tohoto nástroje. Na 
+funckionalitì to nièemu neohro¾uje, ale pro pohodlnost pou¾ívání by se tato 
+mo¾nost jistì hodila. Absence této funkce není pøíli¹ omezující, znamená to 
+pouze pro u¾ivatele opakování stejných akcí. Bohu¾el pøi vývoji na tuto 
+funcki nebyl brán zøetel a vytvoøení této funkce by znamenalo nedokonèení 
+nìkterých velice dùle¾itých èástí. Tento nedostatek je brán na vìdomí a v 
+rámci pokraèování vývoje aplikace by toto mìlo být jedno z prvních dùle¾itých 
+roz¹íøení.
+
+Nelze nastavit odli¹ný vzhled celé aplikace, jako napøíklad barvy jednotlivých 
+objektù, jejich styl a chování. Pøi vytváøení nástroje nicménì s touto mo¾ností 
+bylo poèítáno, ale opìt jako s návratem akce bylo prioritizováno dokonèení 
+dùle¾itìj¹ích èástí. Na¹tìstí je aplikace na toto plnì pøipravena a pokud bude 
+pokraèováno v dal¹ím vývoji pøidání takového nastavení nebude vy¾adovat 
+pøíli¹né úsilí.
+
+Velice nepraktické je bohu¾el také to, ¾e u¾ivatel není nijak informován o 
+stavu ulo¾ení právì editovaného souboru. To znamená ¾e pøi zavøení souboru není 
+vyzván k jeho ulo¾ení a také ¾e není hned na první pohled viditelnì, zda právì 
+editovaný soubor je ulo¾ený, nebo ne.
 
 \section{Jednotlivé editory}
 Jednotlivé editory jak ji¾ bylo øeèeno v pøechozích kapitolách jsou Diagram 
@@ -775,8 +838,8 @@ Interfacy pomocí spoje \textbf{Generalizace}.
 Pro editaci jména tøídy je nutné dvakrát na ni poklepat, v oknì, které vyskoèí 
 po dvojtém kliknutí na tøídu je také mo¾né nastavit jeji \uv{roli} v systému. 
 \begin{itemize}
-  \item \tetbf{Actor} po vybrání tohoto druhy tøídy se v Diagramu pøípadù u¾ití 
-vyvtoøí Aktér
+  \item \textbf{Actor} po vybrání tohoto druhy tøídy se v Diagramu pøípadù 
+u¾ití vyvtoøí Aktér.
   \item \textbf{Activity} pokud je vybrán tento typ tøídy je v Diagramu pøípadù 
 u¾ití vytvoøen pøípad u¾ití.
   \textbf{None} tento druh tøídy slou¾í pro vytváøení pomocných tøíd. Tøídy s 
@@ -807,6 +870,93 @@ tlaèítkem vedle polo¾ky.
 Pro vstup do tohoto editoru je zapotøebí vybrat tøídu pro kterou je potøeba 
 editovat tyto sítì. Po pøesunu do tohoto editoru je automaticky vybrána Petriho 
 sít pro tøídu, pøepínání mezi tìmito Petriho sítìmi probíhá v levém dolním rohu.
+
+V pravém dolním rohu, pokud není vybrán ¾ádný objekt na pracovním plátnì, je 
+mo¾né pøidat tøídní promìnné, nebo atributy metody jako \textbf{Místa}. Takto 
+pøidané místa nelze editovat. Vkládat konstanty, operovat s tìmito místo, nebo 
+je mazat lze, ale mìnit jejich jméno není povolené. Podobnì tomu je u 
+návratových míst v Petriho sítích pro metody kde je jedno speciální místo 
+\textbf{return} toto místo je podobnì needitoatelné a navíc jej není mo¾né 
+odstranit.
+
+Pøidané Místa je mo¾né dále editovat pomocí vkládání konstant, jednodu¹e vybrat 
+místo a v pravém dolním rohu aplikace lze vidìt aktuální konstanta (pokud není 
+¾ádná je input prázdný), která lze zmìnit.
+
+Po pøídání \textbf{Pøechodu} (èasto nazývaném transition) je mo¾né tomuto 
+Pøechodu editovat dvì slo¾ky. Slo¾ku \textbf{Strá¾} (nazýván té¾ Guard) a 
+slo¾ku \textbf{Akce} (známý také jako Activity). Výbìrem pøechodu se zobrazí v 
+pravé èásti mo¾nost tyto slo¾ky editovat.
+
+\begin{itemize}
+  \item \textbf{Slo¾ka Strá¾e}
+Pro základní vytváøení pravidel je v horní èásti okna pro editaci strá¾e volné 
+textové pole, kam je mo¾né zadat jakýkoliv text. Pokud je potøeba zadat více 
+kontrolovaný vstup je mo¾né si ve sdponí èásti vybrat promìnné, nebo zadat 
+konstanty a vybrat jejich podmínku. Poté lze nastavit horní text pøímo na tuto 
+podmínku, nebo spojit operátorem s pøechozí podmínkou. V textové èásti lze poté 
+výslednou podmínku editovat a dále upravovat.
+  \item \textbf{Slo¾ka Akce} 
+Pro vytvoøení nové promìnné je mo¾né vyu¾ít horního pole, je mo¾né také 
+vybrat promìnnou, která je ji¾ spojena s tímto pøechodem. Dal¹í editace akce 
+probíhá pøes textové pole, toto pole ale není nijak kontrolované a upravované. 
+Rozdìlení takového textu a kontrola je pøíli¹ nároèná, navíc nebyla pøedmìtem 
+této práce. Ale pøidání ve¹kerých kontrol na podobné texty v Objektovì 
+orientovaných Petriho sítích je jistì dobrý plán na roz¹íøení tohoto nástroje.
+\end{itemize}
+
+V objektovì orientovaných Petriho sítí je pouze jeden spoj, pro tento 
+spoj platí omezení v podobì mo¾nosti spojit pouze Místo s Pøechodem, nebo 
+naopak. Není v¹ak mo¾né spojit dvì místa, nebo pøechody pøímo mezi sebou.
+
+Dal¹í roz¹íøení spojù oproti ostatním editorùm je to ¾e lze pøidávat promìnné, 
+které jsou pøes tento spoj \uv{pøená¹eny}. Po dvjokliku na hranu si lze vybrat 
+mno¾inu promìnných které jsou automaticky hlídány z míst a pøechodù, nebo zadat 
+samostatný string. Tento samostatný text je zde kvùli nároènìj¹ím programùm a 
+nároènìjsím operacím, jako je napøíklad pole, nebo seznam. Tento text v¹ak není 
+nijak kontrolovaný, pøevá¾nì kvùli nároènosti na rozdìlení do tokenù a provést 
+analýzu tìchto tokenù. Pokud je potøeba dát najevo ¾e hrana neobsahuje ¾ádné 
+data, lze ji nechat prázdnou, popøípadì uvést \textbf{null}, nebo \textbf{nill} 
+do textového pole spoje.
+
+\chapter {Roz¹íøené mo¾nosti aplikace}
+Pøi vývoji aplikace bylo hledìno na nìkteré mo¾nosti roz¹íøení celkové 
+aplikace. Tyto roz¹íøení byly postupnì implementovány, nebo promy¹leny a 
+nachystány na budoucí implementaci.
+
+\section{Export diagramù}
+Jako jeden z po¾adavkù bylo po¾adováno exportu do nìjakého formátu. Tohoto bylo 
+vyu¾ito v pøípadì ukládání stavu aplikace, kdy otevøený projekt je mo¾né ulo¾it 
+do formátu \textbf{XML}. Tento formát tudí¾ slou¾í pro ukládání a naèítání 
+projektù. Formát XML byl zvolen èásteènì kvùli jeho mo¾nému upravení, kdy je 
+mo¾né editovat obsah objektù bez nutnosti zaplého nástroje. Toto se ale 
+doporuèuje pouze zku¹eným u¾ivatelùm, proto¾e je mo¾né ¾e se díky tomuto 
+jakýmkoliv zpùsobem poru¹í editovaný soubor, který ji¾ nebude mo¾né jakkoliv 
+opravit.
+
+Velice u¾iteèným roz¹íøením je dále mo¾nost vykreslit námi editované diagramy a 
+sítì do formátu \textbf{Post Script} (formát EPS). Tímto lze získat obrázky 
+vhodné napøíklad pro vìdecké práce a pro vlo¾ení do dokumentù. V tomto textu 
+byly pou¾ity pøevá¾nì obrázky pocházející z výsledné aplikace. Editovaný projekt 
+se ulo¾í do samostatné slo¾ky pod jeho jménem a v¹echny editory jsou ulo¾eny v 
+této slo¾ce.
+
+Pøi implementaci bylo uva¾ováno o dal¹ích mo¾nostech exportu, jako napøíklad 
+pøevedení Objektovì orientovaných Petriho sítí do \textbf{PN talku}. Vzhledem k 
+jednoduchosti ukládaného souboru je mo¾né toto roz¹íøení velice jednodu¹e 
+pøidat. Po pøidání tohoto roz¹íøení by aplikace získala znaènì na funkènosti a 
+pou¾itelnosti. Proto bylo hledìno na to, aby bylo mo¾né pøidatpodobná roz¹íøení 
+ji¾ bìhem implementace.
+
+\section{Grafické prvky}\label{grafickePrvky}
+
+\chapter{Testy a jejich výsledky}
+
+\chapter{Zhodnocení výsledné aplikace}
+
+\section{Budoucnost aplikace}
+
+\section{Závìreèné zhodnocení aplikace}
 
 \chapter{Závìr}
 
