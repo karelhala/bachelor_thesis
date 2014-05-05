@@ -945,11 +945,71 @@ Pøi implementaci bylo uva¾ováno o dal¹ích mo¾nostech exportu, jako napøíklad
 pøevedení Objektovì orientovaných Petriho sítí do \textbf{PN talku}. Vzhledem k 
 jednoduchosti ukládaného souboru je mo¾né toto roz¹íøení velice jednodu¹e 
 pøidat. Po pøidání tohoto roz¹íøení by aplikace získala znaènì na funkènosti a 
-pou¾itelnosti. Proto bylo hledìno na to, aby bylo mo¾né pøidatpodobná roz¹íøení 
-ji¾ bìhem implementace.
+pou¾itelnosti. Proto byl brán ohled na podobná roz¹íøení ji¾ bhem implementace 
+základní aplikace.
 
 \section{Grafické prvky}\label{grafickePrvky}
+Pro práci s grafickými prvky na editaèním plátnì bylo pou¾ito rùzných technik 
+napøíklad pro detekci objektu pod ukazatelem, nebo detekci hrany pod kurzorem 
+a podobné.
 
+\subsection{Detekce objektu pod kurzorem}
+Zji¹tìní zda se nachází nìjaký objekt pod kurzorem bylo velice jednoduché, 
+ka¾dý objekt má výpoèet pro toto zji¹tìní. Tento zpùsob zji¹»ìní objektu byl 
+zvolen pøevá¾nì kvùli jednoduchosti pøidání nového tvaru.
+
+\begin{equation}\label{count:coords}
+\begin{split}
+isX = \lvert mouseX - objectX \rvert\\
+isY = \lvert mouseY - objectY \rvert
+\end{split}
+\end{equation}
+Kde \eqref{count:coords}:
+\begin{itemize}
+  \item \textbf{objectX} a \textbf{objectY} jsou souøadnice X a Y pro 
+bod objektu.
+  \item \textbf{mouseX} a \textbf{mouseY} urèují bod kurzoru.
+  \item \textbf{isX} a \textbf{isY} je vypoèítaná vzdálenost na osách X a Y.
+\end{itemize}
+
+Výpoèet je provádìn, tak ¾e se vypoèítá vzdálenost na osách mezi body a tato 
+vzdálenost se poté provìøí zda le¾í v daném bodu, porovná se ¹íøka a vý¹ka 
+oproti tìmto vzdálenostem. Pokud bod kurzoru le¾í v tìchto hranicích vykoná se 
+pøíslu¹ná operace, napøíklad zvýraznìní objektu.
+
+Tento zpùsob je velice nároèný na pamìt, pøevá¾nì kvùli neustálému volání pøi 
+jakémkoliv pohybu my¹i. Pro celkovou aplikace, ale toto omezení nehraje ¾ádnou 
+roli. Pokud by bylo potøeba zmìnit zji¹tìní takovéhoto objektu pomocí 
+sofistikovanìj¹í funce, zmìna na takovouto funkci není nikterak nároèná.
+
+\subsection{Detekce hrany pod kurzorem}
+Na druhou stranu zji¹tìní hrany pod kurzorem ji¾ je ponìkud nároènìj¹í. 
+Pøevá¾nì z toho dùvodu, ¾e hranu máme definovanou jako dvojici bodù. Výpoèet 
+pro takové zji¹tìní je ponìkud slo¾itìj¹í a mo¾ností pou¾ití rùzných vzorcù pro 
+toto zji¹tìní mnoho.
+
+V tomto nástroji jsou pou¾ity dvì metody zji¹tìní vzdálenosti bodu od pøímky. 
+Jedna metoda \eqref{lineToobject} je pou¾ita pro výpoèet vzdálenosti kraje 
+objektu a na základì toho je hrana zkrácena (pou¾ito pøevá¾nì pro vykreslení 
+¹ipky na konci hrany). Druhá metoda \eqref{pointToLine} slou¾í pro výpoèet bodu 
+kurzoru a useèky mezi dvìma body.
+
+\begin{equation} \label{lineToobject}
+\begin{split}
+\end{split}
+\end{equation}
+
+\begin{equation} \label{pointToLine}
+\begin{split}
+\end{split}
+\end{equation}
+
+\chapter{Pou¾ité knihovny}
+
+\section{XML export}
+\footnote{xstream adres}
+\section{EPS export}
+\footnote{eps adresa}
 \chapter{Testy a jejich výsledky}
 
 \chapter{Zhodnocení výsledné aplikace}

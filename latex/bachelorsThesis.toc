@@ -47,10 +47,15 @@
 \contentsline {chapter}{\numberline {5}Roz\v s\IeC {\'\i }\v ren\'e mo\v znosti aplikace}{23}{chapter.5}
 \contentsline {section}{\numberline {5.1}Export diagram\r u}{23}{section.5.1}
 \contentsline {section}{\numberline {5.2}Grafick\'e prvky}{23}{section.5.2}
-\contentsline {chapter}{\numberline {6}Testy a jejich v\'ysledky}{24}{chapter.6}
-\contentsline {chapter}{\numberline {7}Zhodnocen\IeC {\'\i } v\'ysledn\'e aplikace}{25}{chapter.7}
-\contentsline {section}{\numberline {7.1}Budoucnost aplikace}{25}{section.7.1}
-\contentsline {section}{\numberline {7.2}Z\'av\v ere\v cn\'e zhodnocen\IeC {\'\i } aplikace}{25}{section.7.2}
-\contentsline {chapter}{\numberline {8}Z\'av\v er}{26}{chapter.8}
-\contentsline {chapter}{\numberline {A}Obsah CD}{28}{appendix.A}
-\contentsline {chapter}{\numberline {B}Manual}{29}{appendix.B}
+\contentsline {subsection}{\numberline {5.2.1}Detekce objektu pod kurzorem}{23}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.2}Detekce hrany pod kurzorem}{24}{subsection.5.2.2}
+\contentsline {chapter}{\numberline {6}Pou\v zit\'e knihovny}{25}{chapter.6}
+\contentsline {section}{\numberline {6.1}XML export}{25}{section.6.1}
+\contentsline {section}{\numberline {6.2}EPS export}{25}{section.6.2}
+\contentsline {chapter}{\numberline {7}Testy a jejich v\'ysledky}{26}{chapter.7}
+\contentsline {chapter}{\numberline {8}Zhodnocen\IeC {\'\i } v\'ysledn\'e aplikace}{27}{chapter.8}
+\contentsline {section}{\numberline {8.1}Budoucnost aplikace}{27}{section.8.1}
+\contentsline {section}{\numberline {8.2}Z\'av\v ere\v cn\'e zhodnocen\IeC {\'\i } aplikace}{27}{section.8.2}
+\contentsline {chapter}{\numberline {9}Z\'av\v er}{28}{chapter.9}
+\contentsline {chapter}{\numberline {A}Obsah CD}{30}{appendix.A}
+\contentsline {chapter}{\numberline {B}Manual}{31}{appendix.B}

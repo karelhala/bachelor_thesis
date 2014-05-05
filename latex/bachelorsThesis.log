@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.6-1.40.14 (TeX Live 2014/dev) (format=pdflatex 2014.3.25)  5 MAY 2014 12:25
+This is pdfTeX, Version 3.1415926-2.6-1.40.14 (TeX Live 2014/dev) (format=pdflatex 2014.3.25)  5 MAY 2014 13:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -394,7 +394,7 @@ Overfull \hbox (15.47694pt too wide) in paragraph at lines 109--109
 \@vyskartext=\skip48
 \@vyskaobr=\skip49
 
-<fig/vut-zp2.pdf, id=207, 109.40875pt x 109.40875pt>
+<fig/vut-zp2.pdf, id=227, 109.40875pt x 109.40875pt>
 File: fig/vut-zp2.pdf Graphic file (type pdf)
  <use fig/vut-zp2.pdf>
 Package pdftex.def Info: fig/vut-zp2.pdf used on input line 109.
@@ -404,7 +404,7 @@ Overfull \hbox (109.58464pt too wide) in paragraph at lines 109--109
 [][] 
  []
 
-<fig/fit-zp2.pdf, id=208, 120.45pt x 120.45pt>
+<fig/fit-zp2.pdf, id=228, 120.45pt x 120.45pt>
 File: fig/fit-zp2.pdf Graphic file (type pdf)
  <use fig/fit-zp2.pdf>
 Package pdftex.def Info: fig/fit-zp2.pdf used on input line 109.
@@ -515,7 +515,7 @@ Package epstopdf Info: Source file: <fig/UseCase.eps>
 to.pdf fig/UseCase.eps>
 (epstopdf)             \includegraphics on input line 357.
 Package epstopdf Info: Output file is already uptodate.
- <fig/UseCase-eps-converted-to.pdf, id=354, 501.875pt x 803.0pt>
+ <fig/UseCase-eps-converted-to.pdf, id=379, 501.875pt x 803.0pt>
 File: fig/UseCase-eps-converted-to.pdf Graphic file (type pdf)
 
 <use fig/UseCase-eps-converted-to.pdf>
@@ -533,7 +533,7 @@ Package epstopdf Info: Source file: <fig/ClassDiagram.eps>
 rted-to.pdf fig/ClassDiagram.eps>
 (epstopdf)             \includegraphics on input line 466.
 Package epstopdf Info: Output file is already uptodate.
- <fig/ClassDiagram-eps-converted-to.pdf, id=379, 501.875pt x 803.0pt>
+ <fig/ClassDiagram-eps-converted-to.pdf, id=404, 501.875pt x 803.0pt>
 File: fig/ClassDiagram-eps-converted-to.pdf Graphic file (type pdf)
 
 <use fig/ClassDiagram-eps-converted-to.pdf>
@@ -555,7 +555,7 @@ Package epstopdf Info: Source file: <fig/petriNet.eps>
 -to.pdf fig/petriNet.eps>
 (epstopdf)             \includegraphics on input line 618.
 Package epstopdf Info: Output file is already uptodate.
-<fig/petriNet-eps-converted-to.pdf, id=404, 501.875pt x 803.0pt>
+<fig/petriNet-eps-converted-to.pdf, id=429, 501.875pt x 803.0pt>
 File: fig/petriNet-eps-converted-to.pdf Graphic file (type pdf)
 
 <use fig/petriNet-eps-converted-to.pdf>
@@ -574,7 +574,7 @@ erted-to.pdf fig/UseCasePropoj.eps>
 (epstopdf)             \includegraphics on input line 637.
 Package epstopdf Info: Output file is already uptodate.
 
-<fig/UseCasePropoj-eps-converted-to.pdf, id=414, 501.875pt x 803.0pt>
+<fig/UseCasePropoj-eps-converted-to.pdf, id=440, 501.875pt x 803.0pt>
 File: fig/UseCasePropoj-eps-converted-to.pdf Graphic file (type pdf)
 
 <use fig/UseCasePropoj-eps-converted-to.pdf>
@@ -595,7 +595,7 @@ f>
 (epstopdf)             \includegraphics on input line 664.
 Package epstopdf Info: Output file is already uptodate.
 
-<fig/ClassDiagramPropoj-eps-converted-to.pdf, id=431, 501.875pt x 803.0pt>
+<fig/ClassDiagramPropoj-eps-converted-to.pdf, id=456, 501.875pt x 803.0pt>
 File: fig/ClassDiagramPropoj-eps-converted-to.pdf Graphic file (type pdf)
 
 <use fig/ClassDiagramPropoj-eps-converted-to.pdf>
@@ -614,7 +614,7 @@ hodaPropoj-eps-converted-to.pdf fig/petriNet_makeActionMethodaPropoj.eps>
 (epstopdf)             \includegraphics on input line 684.
 Package epstopdf Info: Output file is already uptodate.
 
-<fig/petriNet_makeActionMethodaPropoj-eps-converted-to.pdf, id=435, 501.875pt x
+<fig/petriNet_makeActionMethodaPropoj-eps-converted-to.pdf, id=460, 501.875pt x
  803.0pt>
 File: fig/petriNet_makeActionMethodaPropoj-eps-converted-to.pdf Graphic file (t
 ype pdf)
@@ -638,29 +638,33 @@ Overfull \hbox (3.91391pt too wide) in paragraph at lines 923--926
 
 [23
 
-]
+] [24]
 Kapitola 6.
-[24
-
-]
-Kapitola 7.
 [25
 
 ]
-Kapitola 8.
-) (./bachelorsThesis.bbl [26
+Kapitola 7.
+[26
 
-]) (./prilohy.tex [27
+]
+Kapitola 8.
+[27
+
+]
+Kapitola 9.
+) (./bachelorsThesis.bbl [28
+
+]) (./prilohy.tex [29
 
 ]
 P\v {r}\'{\i }loha A.
-[28
+[30
 
 ]
 P\v {r}\'{\i }loha B.
 )
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 133.
- [29
+ [31
 
 ]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 133.
@@ -668,7 +672,7 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 133.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 133.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 133.
 Package rerunfilecheck Info: File `bachelorsThesis.out' has not changed.
-(rerunfilecheck)             Checksum: 45EDDB3662402BF7BC8EEEBAFC5D4333;8218.
+(rerunfilecheck)             Checksum: 86F96F9AF6B58DEBA6903BE3B1944B9C;8979.
 
 
 LaTeX Font Warning: Size substitutions with differences
@@ -677,13 +681,13 @@ LaTeX Font Warning: Size substitutions with differences
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 133.
  ) 
 Here is how much of TeX's memory you used:
- 10468 strings out of 494517
- 144191 string characters out of 6168561
- 216366 words of memory out of 5000000
- 13469 multiletter control sequences out of 15000+600000
+ 10488 strings out of 494517
+ 144446 string characters out of 6168561
+ 216539 words of memory out of 5000000
+ 13477 multiletter control sequences out of 15000+600000
  27049 words of font info for 65 fonts, out of 8000000 for 9000
  324 hyphenation exceptions out of 8191
- 34i,8n,28p,442b,494s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 34i,14n,28p,442b,494s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/cs/xl2.enc}</usr/share/texlive
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf
 -dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/
@@ -700,10 +704,10 @@ exlive/texmf-dist/fonts/type1/public/cs/cstt10.pfb></usr/share/texlive/texmf-di
 st/fonts/type1/public/cs/cstt9.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
 ublic/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/ur
 w/helvetic/uhvr8a.pfb>
-Output written on bachelorsThesis.pdf (33 pages, 311351 bytes).
+Output written on bachelorsThesis.pdf (35 pages, 318474 bytes).
 PDF statistics:
- 588 PDF objects out of 1000 (max. 8388607)
- 516 compressed objects within 6 object streams
- 106 named destinations out of 1000 (max. 500000)
- 469 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 634 PDF objects out of 1000 (max. 8388607)
+ 560 compressed objects within 6 object streams
+ 118 named destinations out of 1000 (max. 500000)
+ 509 words of extra memory for PDF output out of 10000 (max. 10000000)
 
