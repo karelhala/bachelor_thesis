@@ -705,26 +705,108 @@ zji¹tìno ¾e ¾ádný nástroj nedosahuje absolutních po¾adavkù a ¾ádný z nich
 neimplementuje Objektovì orientované Petriho sítì. Z toho dùvodu bylo 
 rozhodnuto implementovat nástroj, který je hlavním pøedmìtem této práce.
 
-\subsection{Popis aplikace}
+\section{Popis aplikace}
 Na základì poznatkù z ostatních aplikací bylo rozhodnuto o jednoduchosti a 
 intuitivním ovládání aplikace. Tohoto bylo docíleno sjednocením základního 
 designu aplikace, sjednocení klávesových zkratek a porozumìní a prozkoumání 
 moderních aplikací.
 
-Hlavní okno se skládá z nìkolika panelù. Horní èást obsahuje otevøené projekty, 
-jejich èástí a ovládací prvky. Celý hlavní obsah aplikace se nacháazí ve zbylích 
-dvou tøetinách okna. V levé èásti se dále nacházejí tlaèítka pro mo¾nost 
-pøepínání jednotlivých vkládaných obejktù. Dolní èást obsahuje informaèní a 
-editaèní mo¾nosti zvoleného prvku a pro hlavní èást, je vyhranìn zbytek pracovní 
-plochy, takzvané editaèní plátno.
+Hlavní okno se skládá z nìkolika panelù. V horní èásti se nachází menu 
+obsahující jednoduché operace nad projekty. Dále se zde nachází ovládací prvky, 
+slou¾ící pro práci se soubory a exporty daného souboru. Celý hlavní obsah 
+aplikace se nacháazí ve zbylích dvou tøetinách okna. V levé èásti se nacházejí 
+tlaèítka pro mo¾nost pøepínání jednotlivých vkládaných obejktù a pøepínání 
+mezi druhy spojù. Dolní èást obsahuje informaèní a editaèní mo¾nosti zvoleného 
+prvku a pro hlavní èást je vyèleòen zbytek pracovní plochy, takzvané editaèní 
+plátno.
 
 Na toto plátno je mo¾né pøidávat jednotlivé prvky, spojovat je, pøesouvat je a 
 mazat je. Po vybrání nìkterého tlaèítka v levém menu je mo¾né zaèít pøidávat 
-prvky. Bylo zvoleno jednoduché a intuitivní chování aplikace, po kliknutí se 
-vytvoøí objekt, po ta¾ení se pøesune objekt a pro spojení dvou objektù hranou je 
-zapotøebí kliknout na první objekt a poté na druhý, pøièem¾ spoj je viditelný od 
-kurzoru po první objekt. Pro zahnutí spoje je mo¾no kliknout pravým tlaèítkem 
-my¹i, co¾ vyvolá vytvoøení ohybu spoje.
+prvky. Po zakliknutí vybraného prvu a kliknutí na editaèní plátno se vytvoøí 
+objekt vytvoøí objekt, po ta¾ení se vybraný objekt pøesune a pro spojení 
+dvou objektù hranou je zapotøebí vybrat typ hrany z levého menu a poté kliknout 
+kliknout na první objekt a poté na druhý. Pokud je potøeba spoj zahnout pro 
+zpøehlednìní grafu, je toto mo¾né vyvolat kliknutím na pré tlaèítko my¹i 
+bìhem ta¾ení spoje.
+
+\section{Jednotlivé editory}
+Jednotlivé editory jak ji¾ bylo øeèeno v pøechozích kapitolách jsou Diagram 
+pøípadù u¾ití \ref{pripadUziti}, Diagram tøíd \ref{diagramTrid} a Objektovì 
+orientované Petriho sítì \ref{oopn} tyto editory byly nadále mírnì pozmìnìny, 
+pøevá¾nì z grafického hlediska pro zlep¹ení pøehlednosti tìchto diagramù a pro 
+jednodu¹¹í práci mezi nimi.
+
+Základním odli¹ením ve v¹ech editorech je zvýraznìní objektu co nemá ¾ádnou 
+spojující hranu, jsou zvýraznìny pomocí èárkování. Vybraný objekt 
+je znázornìn ohranièením a odli¹nou barvou. Pokud objekt nemá odpovídající 
+\uv{obraz}, je zváraznìn kurzívou a textem pod objektem, toto platí pøevá¾nì 
+pro propojení Diagramu tøíd a diagramu pøípadù u¾ití. Pokud spoj mezi dvìma 
+objekty nemá tento obraz je zvýraznìn odli¹nou barvou.
+
+\subsection{Editor pøípadù u¾ití}
+Tento editor je prvním editorem a slou¾í pro popis chodu aplikace, v tomto 
+editoru se nachází pouze mírné úpravy.
+
+V pøípadì vybrání \textbf{Aktéra} je znemo¾òeno u¾ivateli spojit stejné 
+objekty jinak jak Dìdìním. Dále mù¾e u¾ivatel spojit \textbf{Aktéra} a 
+\textbf{Pøípad u¾ití} pouze pomocí asociace. Toto lze provést pouze ve smìru od 
+Aktéra, tudí¾ pokud toto u¾ivatel provede naopak je hrana otoèena automaticky.
+
+Pro zmìnu jména objektu je potøeba na nìj poklepat dvakrát, zde je také mo¾né 
+zmìnit jeho propojení s tøídou. Je mo¾né propojení absolutnì zmìnit, nebo 
+reaktivovat spoj mezi tøídou a objektem, pokud v Diagramu tøíd není tøída 
+odpovídající editovanému obejktu. S touto reaktivací se také reaktivují spoje 
+mezi tøídami a nebo mezi objekty v Diagramu pøípadù u¾ití.
+
+Pokud chce u¾ivatel hromadnì reaktivovat objekty pøípadù u¾ití a opìt aktivovat 
+a vytvoøit tøídy v Diagramu tøíd lze toto provést kliknutím na tlaèítko 
+\uv{Reactivate all inactive}. Pokud na druhou stranu, u¾ivatel chce hromadnì 
+smazat v¹echny neaktivní objekty, mù¾e kliknout na \uv{Delete all inactive}.
+
+\subsection{Editor Diagramu tøíd}
+V tomto editoru je mo¾né ji¾ popsané chování aplikace rozdìlit pomocí objektovì 
+orientovaného programování popsaného v sekci \ref{obejktoveProgram}. Je mo¾né 
+vytvoøit jednotlivé tøídy a ty poté editovat.
+
+Pokud je vytvoøen a vybrán \textbf{Interface} není mo¾né jej spojit s ostatními 
+tøídami jinak, ne¾ spojem \textbf{Implementace}, nebo mezi jednotlivými 
+Interfacy pomocí spoje \textbf{Generalizace}.
+
+Pro editaci jména tøídy je nutné dvakrát na ni poklepat, v oknì, které vyskoèí 
+po dvojtém kliknutí na tøídu je také mo¾né nastavit jeji \uv{roli} v systému. 
+\begin{itemize}
+  \item \tetbf{Actor} po vybrání tohoto druhy tøídy se v Diagramu pøípadù u¾ití 
+vyvtoøí Aktér
+  \item \textbf{Activity} pokud je vybrán tento typ tøídy je v Diagramu pøípadù 
+u¾ití vytvoøen pøípad u¾ití.
+  \textbf{None} tento druh tøídy slou¾í pro vytváøení pomocných tøíd. Tøídy s 
+tímto druhem nejsou nijak promítnuty do Diagramu pøíadù u¾ití. Toto je výchozí 
+hodnota v¹ech tøíd.
+\end{itemize}
+Výbìr role je mo¾ný pouze u tøíd, které nemají doposud ¾ádný spoj.
+
+Pokud je potøeba znovu aktivovat a vytvoøit obraz v Diagramu pøípadù u¾ití je 
+potøeba tøídu nejdøíve spojit s dal¹í tøídou a poté po dvojkliku na tuto tøídu 
+bude vyvoláno okno s editací a tato tøída bude mít mo¾nost opìt aktivace 
+objektu a nebo spojení s jiným objektem.
+
+Pro pøidání metod a tøídních promìnných se nachází v dolní èásti v pravo editor 
+tøíd. Nejdøíve je za potøebí vybrat tøídu pro kterou po¾adujeme pøídání 
+nìkterého prvku a poté zadat viditelnost, jméno a typ. Pøíslu¹ný øádek slou¾í 
+pro tøídní promìnnou, nebo metodu. Pro zjednodu¹ení je mo¾né jako typ zadat 
+tøídy, které jsou vytvoøeny na pracovním plátnì.
+
+Po úspì¹ném vlo¾ení metod a popøípadì tøídních promìnných je mo¾né pøidat 
+atributy metodám, to se provádí v levé spodní èásti. Po výbìru tøídy, pro 
+kterou je potøeba editovat atributy metody, dvojklikem vybereme metodu, kterou 
+je potøeba editovat a poté zadat atributy oddìlené èárkami. Pokud chceme 
+odstranit nìkterou tøídní promìnnou, nebo metodu, je toto mo¾né provést 
+tlaèítkem vedle polo¾ky.
+
+\subsection{Editor objektovì orientovaných Petriho sítí}
+Pro vstup do tohoto editoru je zapotøebí vybrat tøídu pro kterou je potøeba 
+editovat tyto sítì. Po pøesunu do tohoto editoru je automaticky vybrána Petriho 
+sít pro tøídu, pøepínání mezi tìmito Petriho sítìmi probíhá v levém dolním rohu.
 
 \chapter{Závìr}
 
