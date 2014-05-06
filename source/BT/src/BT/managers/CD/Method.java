@@ -69,6 +69,10 @@ public class Method extends MethodModel{
         return this;
     }
     
+    /**
+     * Method for fetching method as string.
+     * @return String will be visibility name(arguments):type.
+     */
     @Override
     public String toString()
     {

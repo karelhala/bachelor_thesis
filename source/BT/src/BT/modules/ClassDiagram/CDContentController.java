@@ -12,15 +12,19 @@ import GUI.ClassDiagramAttributesPanel;
 import GUI.MainContentModel;
 
 /**
+ * ClassDiagram content controller. This class creates every part of main content of class diagram part.
  *
  * @author Karel Hala
  */
 public class CDContentController {
 
+    /**
+     * Model that contains main content data.
+     */
     private final MainContentModel cdContent;
 
     /**
-     *
+     * Basic constructor
      */
     public CDContentController() {
         this.cdContent = new MainContentModel();
@@ -31,8 +35,11 @@ public class CDContentController {
     }
 
     /**
+     * Call this to create every part of class diagram main content. It will cereate BottomRightContent, then it will
+     * create attributes pane, and bottom left model. It will create main controller and pass him models and
+     * diagramPlaces.
      *
-     * @param diagramPlaces
+     * @param diagramPlaces stores every part of diagrams.
      */
     public void createComponents(DiagramPlacesManager diagramPlaces) {
         BottomRightContentModel cdBottomRightContent = new BottomRightContentModel();
@@ -46,7 +53,7 @@ public class CDContentController {
 
         CDLeftBottomContent cdLeftBottom = new CDLeftBottomContent(cdMain);
         cdLeftBottom.setListeners();
-        
+
         cdBottomRightContent.setAdditionalContent(attributesPanel.getContentPanel());
         cdBottomRightContent.addAdditionalcontent();
         this.cdContent.setCenterPane(cdMain.getMainContent().getMainContentPane());

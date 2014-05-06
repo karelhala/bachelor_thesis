@@ -14,24 +14,69 @@ import java.awt.Point;
  */
 public class LineModel extends CoordinateModel {
 
+    /**
+     * CoordinateModel with first object.
+     */
     protected CoordinateModel firstObject;
+    /**
+     * CoordinateModel with second object.
+     */
     protected CoordinateModel secondObject;
+    /**
+     * Distance calculator. Used for calculating distance from line, or
+     * intersection of lines.
+     */
     protected DistanceCalculator distanceCalculator;
+    /**
+     * Break points of line.
+     */
     protected MyArrayList<Point> breakPoints;
+    
+    /**
+     * Coordinate X of start point for this line.
+     */
     protected int startX;
+    /**
+     * Coordinate Y of start point for this line.
+     */
     protected int startY;
+    /**
+     * Coordinate X of end point for this line.
+     */
     protected int endX;
+    /**
+     * Coordinate Y of end point for this line.
+     */
     protected int endY;
+    /**
+     * Basic color of no parent is given.
+     * no parent means, no connected object in other part of application.
+     */
     protected Color noParentLine;
+    /**
+     * number of toleranced distance from line.
+     */
     protected double tolerance;
 
+    /**
+     * Basic constructor.
+     * It will set:
+     * tolerance to 8.
+     * selected color to RED.
+     * basicColor to BLACK.
+     * noParentLine color to GRAY.
+     * normalColor to BLACK.
+     * hower color to ORANGE.
+     * Create new distanceCalculator.
+     * create new breakPoints.
+     */
     public LineModel() {
         this.tolerance = 8;
         this.selectedColor = Color.RED;
         this.basicColor = Color.BLACK;
         this.noParentLine = Color.GRAY;
         this.color = Color.BLACK;
-        this.howerColor = Color.orange;
+        this.howerColor = Color.ORANGE;
         this.distanceCalculator = new DistanceCalculator();
         this.breakPoints = new MyArrayList<>();
     }
@@ -49,8 +94,7 @@ public class LineModel extends CoordinateModel {
     }
 
     public void setFirstObject(CoordinateModel firstObject) {
-        if (firstObject != null)
-        {
+        if (firstObject != null) {
             setStartCoordinates(new Point(firstObject.getX(), firstObject.getY()));
             setEndPoint(new Point(firstObject.getX(), firstObject.getY()));
         }
@@ -68,9 +112,6 @@ public class LineModel extends CoordinateModel {
         this.distanceCalculator = distanceCalculator;
     }
 
-    /**
-     * @param endPoint
-     */
     public void setEndPoint(Point endPoint) {
         this.endX = endPoint.x;
         this.endY = endPoint.y;
@@ -104,12 +145,12 @@ public class LineModel extends CoordinateModel {
     public void setNoParentLine(Color noParentLine) {
         this.noParentLine = noParentLine;
     }
-    
+
     /**
-     *
-     * @param x
-     * @param y
-     * @return
+     * Check if line is in range of X and Y.
+     * @param x coordinate X of point.
+     * @param y coordinate Y of point.
+     * @return true if is in range, false if not.
      */
     public Boolean isInRange(int x, int y) {
         MyArrayList<Point> wholeArrayList = new MyArrayList<>();
@@ -129,21 +170,17 @@ public class LineModel extends CoordinateModel {
         return false;
     }
 
-    /**
-     *
-     * @return
-     */
     public Point getStartPoint() {
-        if (this.firstObject != null)
-        {
+        if (this.firstObject != null) {
             return new Point(this.firstObject.getX(), this.firstObject.getY());
         }
         return null;
     }
 
     /**
-     * Method for fetching end point of line based on second object.
-     * If line has no second object, return endX and endY of this line.
+     * Method for fetching end point of line based on second object. If line has
+     * no second object, return endX and endY of this line.
+     *
      * @return Point
      */
     public Point getEndPoint() {
@@ -152,23 +189,22 @@ public class LineModel extends CoordinateModel {
         }
         return new Point(this.endX, this.endY);
     }
-    
+
     /**
      * Checks if both objects at the end of line are null
+     *
      * @return true if one of these objects is null
      */
-    public Boolean isLineEmpty()
-    {
-        return this.firstObject == null || this.secondObject ==null;
+    public Boolean isLineEmpty() {
+        return this.firstObject == null || this.secondObject == null;
     }
-    
+
     /**
-     * 
-     * @return 
+     * Linemodel to string.
+     * @return parentString() from coordinateModel.
      */
     @Override
-    public String toString()
-    {
+    public String toString() {
         return parentToString();
     }
 }

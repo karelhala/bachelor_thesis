@@ -5,6 +5,7 @@
 package BT.models;
 
 /**
+ * Model that holds variables for action in transition.
  *
  * @author Karel Hala
  */
@@ -14,7 +15,6 @@ public class ActionModel {
      * Result variable is stored in this.
      */
     private String variable;
-
     /**
      * If method is not found in assignedClass, store action in this.
      */
@@ -64,6 +64,7 @@ public class ActionModel {
 
     /**
      * Get action as joined String.
+     *
      * @return action as String.
      */
     public String getActionAsString() {
@@ -71,9 +72,8 @@ public class ActionModel {
         if (this.variable != null) {
             actionString = this.variable;
         }
-        
-        if (this.basicAction != null && !this.basicAction.equals(""))
-        {
+
+        if (this.basicAction != null && !this.basicAction.equals("")) {
             if (this.variable != null) {
                 actionString += " := ";
             }
@@ -84,6 +84,7 @@ public class ActionModel {
 
     /**
      * Check if any part of action is empty.
+     *
      * @return true or false.
      */
     public Boolean isEmpty() {

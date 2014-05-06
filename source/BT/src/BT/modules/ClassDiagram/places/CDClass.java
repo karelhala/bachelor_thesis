@@ -13,15 +13,17 @@ import BT.models.MyArrayList;
 import BT.modules.ClassDiagram.places.joinEdge.CDJoinEdgeController;
 
 /**
- *
+ * Class that maintain every operation with classes in class diagram.
+ * 
  * @author Karel Hala
  */
 public class CDClass extends CDClassDrawer {
     
     /**
      * Contructor for creating new class at coordinates x and y
-     * @param x
-     * @param y
+     * 
+     * @param x coordinate X.
+     * @param y coordinate Y.
      */
     public CDClass(int x, int y) {
         super(x, y);
@@ -29,6 +31,7 @@ public class CDClass extends CDClassDrawer {
     
     /**
      * Method that checks if class allready has parent class.
+     * 
      * @return true if class has join to other class with type aggregation.
      */
     public boolean hasParent()
@@ -46,6 +49,7 @@ public class CDClass extends CDClassDrawer {
     /**
      * Method that will return parent class.
      * It will be returned only if class has parent.
+     * 
      * @return 
      */
     public CDClass getParent() 
@@ -64,6 +68,7 @@ public class CDClass extends CDClassDrawer {
     }
     /**
      * Load private and protected methods from assigned class and it's parents.
+     * 
      * @return MyArrayList<Attribute>
      */
     public MyArrayList<Attribute> loadClassMethods()
@@ -88,6 +93,7 @@ public class CDClass extends CDClassDrawer {
     
     /**
      * Add class variables from assigned class and it's parents.
+     * 
      * @return MyArrayList<Attribute>
      */
     public MyArrayList<Attribute> loadClassAttributes()
@@ -113,6 +119,7 @@ public class CDClass extends CDClassDrawer {
     /**
      * Find method of class by its name.
      * It will loop through every method and return first one.
+     * 
      * @param methodName name of method that is being searched for.
      * @return found method.
      */
@@ -132,6 +139,7 @@ public class CDClass extends CDClassDrawer {
     /**
      * Find variable of class by its name.
      * It will loop through every variable and return first one.
+     * 
      * @param variableName name of variable that is being searched for.
      * @return found variable.
      */
@@ -148,6 +156,7 @@ public class CDClass extends CDClassDrawer {
     
     /**
      * Get All methods of this class and it's parrents that are public.
+     * 
      * @return MyArrayList<Attribute> list of public methods.
      */
     public MyArrayList<Attribute> getAllPublicMethods()

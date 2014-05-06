@@ -15,13 +15,25 @@ import java.awt.Graphics2D;
 import java.awt.Point;
 
 /**
- *
+ * Controller for maintaining join edges between classes in class diagram.
+ * It will calculate start and end point, draw join edges and checks if 
+ * it is possible to join these classes with usecases.
+ * 
  * @author Karel Hala
  */
 public class CDJoinEdgeController extends LineModel {
 
+    /**
+     * Type of controlled line.
+     */ 
     private CDLineType joinEdgeType;
     
+    /**
+     * Basic contructor. It will set first object and second object.
+     * 
+     * @param firstObject to be set.
+     * @param secondObject to be set.
+     */
     public CDJoinEdgeController(CoordinateModel firstObject, CoordinateModel secondObject)
     {
         super();
@@ -29,16 +41,25 @@ public class CDJoinEdgeController extends LineModel {
         this.secondObject = secondObject;
     }
 
+    /**
+     * Method for setting type of join edge between classes.
+     * 
+     * @param joinEdgeType new type of join edge.
+     */
     public void setJoinEdgeType(CDLineType joinEdgeType) {
         this.joinEdgeType = joinEdgeType;
     }
 
+    /**
+     * Method for getting type of controlled line.
+     */
     public CDLineType getJoinEdgeType() {
         return joinEdgeType;
     }
 
     /**
-     *
+     * Constructor for creating object with association.
+     * This object has no first and second object, this is often used wehn creating new line.
      */
     public CDJoinEdgeController() {
         super();
@@ -46,7 +67,8 @@ public class CDJoinEdgeController extends LineModel {
     }
     
     /**
-     * Method for checking if second object is same type as first object
+     * Method for checking if second object is same type as first object.
+     * 
      * @return true if both objects are same type
      */
     public Boolean isSecondObjectSameType()
@@ -59,7 +81,8 @@ public class CDJoinEdgeController extends LineModel {
     }
     
     /**
-     * Checks if both objects are type of typeOfObjects.
+     * Checks if both objects are same specified type.
+     * 
      * @param typeOfObjects selected type
      * @return true if both objects are type of typeOfObjects
      */
@@ -73,8 +96,11 @@ public class CDJoinEdgeController extends LineModel {
     }
 
     /**
-     *
-     * @param g
+     * Method encapsuling drawing line.
+     * First check start and end point from PointsCalculator.
+     * If both ends of line are set, draw this line.
+     * 
+     * @param g Graphics2D on this it will be drawn.
      */
     public void drawJoinEdge(Graphics2D g) {
         PointsCalculator pointsCaluclator = new PointsCalculator(this.firstObject, this.secondObject, getStartPoint(), getEndPoint(), this.breakPoints);
@@ -94,6 +120,7 @@ public class CDJoinEdgeController extends LineModel {
     
     /**
      * Method that gives you classType of first object.
+     * 
      * @return classType
      */
     private ClassType getFirstObjectType()
@@ -103,6 +130,7 @@ public class CDJoinEdgeController extends LineModel {
     
     /**
      * Method that gives you classType of second object.
+     * 
      * @return classType
      */
     private ClassType getSecondObjectType()
@@ -112,6 +140,7 @@ public class CDJoinEdgeController extends LineModel {
     
     /**
      * Method that lets you check if both objects are joinable with use case.
+     * 
      * @return true if both object are activity and or actor
      */
     public Boolean checkBothObjects()
@@ -128,6 +157,7 @@ public class CDJoinEdgeController extends LineModel {
     
     /**
      * Get first object as CDClass if it is instance of CDClass.
+     * 
      * @return (CDClass) firstObject
      */
     public CDClass getFirstClass()
@@ -140,6 +170,7 @@ public class CDJoinEdgeController extends LineModel {
     
     /**
      * Get second object object as CDClass if it is instance of CDClass.
+     * 
      * @return (CDClass) secondObject
      */
     public CDClass getSecondClass()

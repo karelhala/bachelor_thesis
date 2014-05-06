@@ -15,28 +15,52 @@ import java.awt.event.ItemListener;
 import javax.swing.JToggleButton;
 
 /**
+ * Model that holds buttons of left pane.
  *
  * @author Karel Hala
  */
 public class ButtonPaneModel extends ContentPaneModel implements ToggleButtonsInterface {
 
+    /**
+     * Controller of each part.
+     */
     DrawingClicks mainContentController;
 
+    /**
+     * Constructor that sets man controller to UseCase.
+     *
+     * @param UCMain
+     */
     public ButtonPaneModel(UCMainContentController UCMain) {
         super();
         this.mainContentController = UCMain;
     }
 
+    /**
+     * Constructor that sets man controller to ClassDiagram.
+     *
+     * @param CDMain
+     */
     public ButtonPaneModel(CDMainContentController CDMain) {
         super();
         this.mainContentController = CDMain;
     }
 
+    /**
+     * Constructor that sets man controller to PetriNet.
+     *
+     * @param PNMain
+     */
     public ButtonPaneModel(PNMainContentController PNMain) {
         super();
         this.mainContentController = PNMain;
     }
 
+    /**
+     * Implemented method of getting selected button.
+     *
+     * @return JtoggleButton.
+     */
     @Override
     public JToggleButton getSelectedButton() {
         for (Component comp : this.mainContentPane.getComponents()) {
@@ -51,8 +75,8 @@ public class ButtonPaneModel extends ContentPaneModel implements ToggleButtonsIn
     /**
      * Method for getting button specified by it's name.
      *
-     * @param name
-     * @return JToggleButton specified by it's name
+     * @param name String name of desired button.
+     * @return JToggleButton specified by it's name.
      */
     @Override
     public JToggleButton getButtonWithName(String name) {
@@ -66,7 +90,7 @@ public class ButtonPaneModel extends ContentPaneModel implements ToggleButtonsIn
     }
 
     /**
-     *
+     * Method for setting listeners to each group of buttons.
      */
     public void setListeners() {
         for (Component comp : this.mainContentPane.getComponents()) {
@@ -85,9 +109,10 @@ public class ButtonPaneModel extends ContentPaneModel implements ToggleButtonsIn
     }
 
     /**
+     * Untoggle other buttons if one button is selected. It will untoggle other
+     * buttons in group if one of group's button is selected.
      *
-     * @param selectedButton
-     * @param allComponents
+     * @param selectedButton button that has been selected.
      */
     private void toggleButtonSelected(JToggleButton selectedButton) {
         for (Component comp : this.mainContentPane.getComponents()) {

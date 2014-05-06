@@ -9,6 +9,7 @@ import BT.models.CoordinateModel;
 import java.awt.Dimension;
 
 /**
+ * Class for recalculating drawing pane.
  *
  * @author Karel Hala
  */

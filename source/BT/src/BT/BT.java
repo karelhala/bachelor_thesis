@@ -16,7 +16,8 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
 /**
- * Main of bachelor's thesis project
+ * Main class of bachelor's thesis project
+ *
  * @author Karel Hala
  */
 public class BT {
@@ -107,27 +108,29 @@ public class BT {
             }
         });
     }
-    
+
     /**
-     * Method that creates Jpanel containing Jcomponent and label for this component.
+     * Method that creates Jpanel containing Jcomponent and label for this
+     * component.
+     *
      * @param element to be inser
      * @param label Jlabel, that describes it.
      * @return JPanel
      */
-    public static JPanel elementWithLabelAbove(JComponent element, JLabel label)
-    {
+    public static JPanel elementWithLabelAbove(JComponent element, JLabel label) {
         return elementWithLabelAbove(element, label, Font.PLAIN);
     }
-    
+
     /**
-     * Method that creates Jpanel containing Jcomponent and label for this component with different font for label.
+     * Method that creates Jpanel containing Jcomponent and label for this
+     * component with different font for label.
+     *
      * @param element to be inser
      * @param label Jlabel, that describes it.
      * @param newFontStyle
      * @return JPanel
      */
-    public static JPanel elementWithLabelAbove(JComponent element, JLabel label, int newFontStyle)
-    {
+    public static JPanel elementWithLabelAbove(JComponent element, JLabel label, int newFontStyle) {
         Font oldLabelFont = UIManager.getFont("Label.font");
         JPanel newPanel = new JPanel(new BorderLayout());
         label.setLabelFor(element);

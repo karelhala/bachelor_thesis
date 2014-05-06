@@ -16,19 +16,31 @@ import java.awt.Graphics2D;
 import java.awt.Point;
 
 /**
- *
- * @author Karel
+ * Class for drawing join egdes between classes in class diagram.
+ * 
+ * @author Karel Hala
  */
 public class CDJoinEdgeDrawer extends JoinEdgeDrawer {
 
+    /**
+     * Basic constructor.
+     * Sets joinEdgeController, startPoint, endPoint.
+     * @param joinEdgeController controller for join edges.
+     * @param startPoint of join edge.
+     * @param endPoint of joind edge.
+     */
     public CDJoinEdgeDrawer(LineModel joinEdgeController, Point startPoint, Point endPoint) {
         super(joinEdgeController, startPoint, endPoint);
     }
 
     /**
      * Method for drawing each type of line.
+     * First create dashed stroke.
+     * Calculate arrow start point based on breakPoints in line.
+     * Set start and end points of line.
+     * Draw each line.
      *
-     * @param g
+     * @param g Graphics2D.
      */
     public void drawLine(Graphics2D g) {
         if (this.joinEdgeController.getSecondObject() == null)
@@ -83,6 +95,10 @@ public class CDJoinEdgeDrawer extends JoinEdgeDrawer {
         }
     }
     
+    /**
+     * Method for checking type of class.
+     * @param cdJoin LineModel of join.
+     */ 
     private boolean checkClassTypes(LineModel cdJoin)
     {
         if (cdJoin.getFirstObject() != null && cdJoin.getSecondObject() != null)

@@ -36,7 +36,7 @@ public final class BasicPetrinetPanel {
     public BasicPetrinetPanel() {
         this.classAttributes = new JComboBox();
         this.contentPane = new JPanel(new BorderLayout());
-        this.addClassVariable = new JButton("Add class variable");
+        this.addClassVariable = new JButton("Add new place");
         insertElementsToPanel();
     }
 

@@ -14,12 +14,11 @@ import javax.swing.JPanel;
 public class ContentPaneModel {
 
     /**
-     * @var Model that holds drawing pane
+     * Model that holds drawing pane
      */
     protected DrawingPaneModel drawingPane;
-
     /**
-     * @var Jpanel for storing every component of top left content
+     * Jpanel for storing every component of top left content
      */
     protected JPanel mainContentPane;
 
@@ -33,6 +32,7 @@ public class ContentPaneModel {
     }
 
     /**
+     * Method for returning drawingPaneModel.
      *
      * @return
      */
@@ -50,11 +50,11 @@ public class ContentPaneModel {
     }
 
     /**
+     * Method for setting drawingPaneModel.
      *
      * @param drawingPane
      */
     public void setDrawingPane(DrawingPaneModel drawingPane) {
         this.drawingPane = drawingPane;
     }
-
 }
