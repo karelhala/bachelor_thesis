@@ -248,7 +248,7 @@ práci.
 Pro grafické znázornìní jednotlivých èástí byly vybrány z UML 
 grafù \textbf{diagramy pøípadù u¾ití} 
 \ref{pripadUziti} pro popis jednotlivých akcí v systému a 
-\refs{diagram tøíd} 
+\ref{diagram tøíd} 
 \ref{diagramTrid} pro grafické znázornìní tøíd a operace mezi nimi. Jako 
 poslední èást, která nespadá pod UML, bylo vybráno Objektovì orientovaných 
 Petriho sítí \ref{oopn} pro popis chování jednotlivých tøíd.
@@ -491,10 +491,10 @@ Kvùli provázanosti s Diagramem pøípadù u¾ití musely být tøídy rozdìleny do
 u¾ití.
   \item \textbf{Interface} speciální druh tøídy.
 \end{itemize}
-Typ tøídy se nachází nad danou tøídou, v pøípade interface a None tøídy jsou 
+Typ tøídy se nachází nad danou tøídou, v pøípadì interface a None tøídy jsou 
 tyto názvy skryty.
 
-Podobnì jako tomu je v pøípade Diagramu pøípadù u¾ití i zde je názornì vidìt,
+Podobnì jako tomu je v pøípadì Diagramu pøípadù u¾ití i zde je názornì vidìt,
 zda nìkterá hrana vede z a nebo do tøídy a to tak, ¾e tøída bez jakýhkoliv hran 
 je ohranièena èárkovaným orámováním.
 
@@ -543,7 +543,7 @@ sebou a stejnì, tak nemohou být spojeny dva pøechody pøímým spojem.
 
 Procesy jsou v Petriho sítích znázornìny teèkou uvnitø míst, v 
 prùbìhu provádìní simulace se tento bod pøesouvá mezi 
-jednotlivímy místy. Tyto pøesuny jsou provedeny na základì 
+jednotlivýmy místy. Tyto pøesuny jsou provedeny na základì 
 splnìní pravidel zanesená v pøechodech. Tyto pravidla jsou 
 atomická, co¾ znamená ¾e se buï toto pravidlo provede, nebo ne.
 Jednoduché roz¹íøení je pøidání kapacity pro jednotlivá místa.
@@ -553,7 +553,7 @@ okam¾itì provedou. Nebo mohou být èasované, co¾ znamená ¾e po
 urèitém èase se daný pøechod provede. Toto je opìt velice 
 jednoduché ro¹íøení základních Petriho sítí.
 
-úspì¹né provádìní pøehodù probíhá v poøadí odebrání 
+Úspì¹né provádìní pøechodù probíhá v poøadí odebrání 
 znaèek ze vstupního místa, pøídání znaèek na výstupní místo.
 
 Dále mù¾eme sítì roz¹íøit o jednoduché oprioritizování 
@@ -650,19 +650,19 @@ scale=0.5]{fig/UseCasePropoj}
 
 Bìhem tohoto procesu vznikají analytické tøídy, tyto tøídy by mìly mapovat 
 pojmy reálného svìta. Nicménì odhad a automatické generování tìchto tøíd je 
-velice nároèné a proto èasto tato práce zùstává na orientovém analytikovi. Ten 
+velice nároèné a proto èasto tato práce zùstává na objektovém analytikovi. Ten 
 by se mìl postarat o dal¹í pøevod a upøesnìní tìchto analytických tøíd.
 
-Analytické tøídy by mìli obsaovat pouze ty nejdùle¾itìj¹í atributy, operace 
-jsou opìt klíèové slu¾by, které musí tøída poskytovat. Èasto se mù¾e stát ¾e 
+Analytické tøídy by mìli obsahovat pouze ty nejdùle¾itìj¹í atributy a operace, 
+které musí tøída poskytovat. Èasto se mù¾e stát ¾e 
 operace je poté rozbita do nìkolika men¹ích metod.
 \cite{UML2}
 
 \subsection{Pou¾ití ve výsledné aplikaci}
-Provázání mezi UML èástmi prbíhá na velice nizké úrovni a to taj, ¾e pøi 
+Provázání mezi UML èástmi prbíhá na velice nizké úrovni a to tak, ¾e pøi 
 vytvoøení objektu v diagramu pøípadù u¾ití vznikne tøída se stejným názvem v 
-diagramu tøíd. Na orientovaném analytikovi potom je potøeba zadat jednotlivé 
-atributy a operace. Pokud vznikne pøípad, ¾e se analytivká tøída rozpadne na 
+diagramu tøíd. Na objektovém analytikovi potom je potøeba zadat jednotlivé 
+atributy a operace. Pokud vznikne pøípad, ¾e se analytická tøída rozpadne na 
 více tøíd, je toto mo¾né realizovat dvojím zpùsobem. A to tak, ¾e se odstraní 
 analytická tøída a vzniknou dvì nové tøídy, které se nepromítnou do diagramu 
 pøípadù u¾ití. A nebo zachováním analytické tøídy a navázáním nové tøídy, která 
@@ -681,11 +681,11 @@ Petriho sít a podobnì tomu tak je v pøípadì tøídy. Objektovì orientovaná
 Petriho sít pro metodu má jedno specifické místo \textbf{return}, které nelze 
 odstranit ani zmìnit její jméno. \cite{ModelovaniOOPN}
 
-V ka¾dé Objektovì orientované Petriho síti se nachází attributy. V pøípadì 
-Objektovì orientované Petriho síti pro tøídu jsou to tøídní promìnné dané tøídy 
-a v¹ech rodièù, které mají viditelnost \textbf{protected}, nebo 
-\textbf{public}. V pøípadì Objektovì orientovaných Petriho sítí pro tøídy dále 
-tato sít obsahuje attributy, které jsou vstupními promìnnými dané metody.  
+Objektovì orientované Petriho sítì, mají nìkolik speciálních míst. V pøípadì 
+ Petriho sítì pro tøídu jsou to tøídní promìnné této tøídy a zdìdìné tøídní 
+promìnné od svùch pøedkù. V pøípadì Petriho sítì je mno¾ina tìchto zvlá¹tních 
+míst roz¹íøena o argumenty metody, které jsou vstupními místy pro tuto Petriho 
+sí».
 \cite{oopn_caseStudy}
 
 \begin{figure}[h!]
@@ -710,36 +710,41 @@ integrace zákazníka do vývoje a promítnutí zmìn od zákazníka
 okam¾itì na celý systém.
 
 \chapter{Samostatná aplikace} \label{samotatnaAplikace}
-Po vyzkou¹ení kouknurentních nástrojù a vybrání vhodných nástrojù z nich bylo 
+Po vyzkou¹ení kounkurentních nástrojù a vybrání vhodných nástrojù z nich bylo 
 zji¹tìno ¾e ¾ádný nástroj nedosahuje absolutních po¾adavkù a ¾ádný z nich 
 neimplementuje Objektovì orientované Petriho sítì. Z toho dùvodu bylo 
 rozhodnuto implementovat nástroj, který je hlavním pøedmìtem této práce.
 
+Nejdøíve si objasníme design aplikace, rozmístnìní jednotlivých prvkù aplikace 
+a zpùsob ovládání \ref{popisAplikace}. Poté probereme nìkteré speciální 
+ovládací prvky v kapitole \ref{ovladaciPrvky}. A závìrem této kapitoly popí¹eme 
+jednotlivé editory, jejich roz¹íøení a pou¾ívání \ref{jednotliveEditory}.
+
 \section{Popis aplikace} \label{popisAplikace}
 Na základì poznatkù z ostatních aplikací bylo rozhodnuto o jednoduchosti a 
 intuitivním ovládání aplikace. Tohoto bylo docíleno sjednocením základního 
-designu aplikace, sjednocení klávesových zkratek a porozumìní a prozkoumání 
-moderních aplikací.
+designu aplikace a pou¾ití klávesových zkratek, které jsou známé z moderních 
+aplikací.
 
 Hlavní okno se skládá z nìkolika panelù. V horní èásti se nachází menu 
 obsahující jednoduché operace nad projekty. Dále se zde nachází ovládací prvky, 
 slou¾ící pro práci se soubory a exporty daného souboru. Celý hlavní obsah 
-aplikace se nacháazí ve zbylích dvou tøetinách okna. V levé èásti se nacházejí 
-tlaèítka pro mo¾nost pøepínání jednotlivých vkládaných obejktù a pøepínání 
+aplikace se nachází ve zbylích dvou tøetinách okna. V levé èásti se nacházejí 
+tlaèítka pro mo¾nost pøepínání jednotlivých vkládaných objektù a pøepínání 
 mezi druhy spojù. Dolní èást obsahuje informaèní a editaèní mo¾nosti zvoleného 
-prvku a pro hlavní èást je vyèleòen zbytek pracovní plochy, takzvané editaèní 
+prvku a pro hlavní èást je vyèleìn zbytek pracovní plochy, takzvané editaèní 
 plátno.
 
 Na toto plátno je mo¾né pøidávat jednotlivé prvky, spojovat je, pøesouvat je a 
 mazat je. Po vybrání nìkterého tlaèítka v levém menu je mo¾né zaèít pøidávat 
 prvky. Po zakliknutí vybraného prvu a kliknutí na editaèní plátno se vytvoøí 
-objekt vytvoøí objekt, po ta¾ení se vybraný objekt pøesune a pro spojení 
+objekt, po ta¾ení se vybraný objekt pøesune a pro spojení 
 dvou objektù hranou je zapotøebí vybrat typ hrany z levého menu a poté kliknout 
-kliknout na první objekt a poté na druhý. Pokud je potøeba spoj zahnout pro 
+na první objekt a poté na druhý. Pokud je potøeba spoj zahnout pro 
 zpøehlednìní grafu, je toto mo¾né vyvolat kliknutím na pravé tlaèítko my¹i 
 bìhem ta¾ení spoje.
 
-\section{Ovládací prvky}
+\section{Ovládací prvky} \label{ovladaciPrvky}
 Pro celou aplikaci je spoleèných nìkolik speciálních ovláadacích prvkù. 
 
 K vytvoøení nového projektu lze pou¾ít menu, horní toolbar, nebo klávesové 
@@ -753,7 +758,7 @@ W}.
 Pøi výbìru pøidání objektu, nebo spoje tlaèítko zùstane zakliknuté, to je kvùli 
 jednodu¹¹ímu pøidání více stejných objektù na pracovní plochu. 
 
-Smazání objektu probíhá jeho výbìrem a zmáèknutím tlaèítka delete na 
+Smazání objektu probíhá jeho výbìrem a zmáèknutím tlaèítka \texttt{delete} na 
 klávesnici, tímto zpùsobem lze také mazat hrany mezi ojekty.
 
 Pro roz¹íøení editaèního plátna lze pøesunout po¾adovaný objekt mimo viditelnou 
@@ -764,7 +769,7 @@ editaèního plátna pouze za pravý a dolní okraj.
 Pokud je vybrána hrana a dr¾eno levé tlaèítko my¹i, ta¾ením se hrana \uv{odepne} 
 od druhého objektu a je mo¾né ji odstranit kliknutím mimo jakýkoliv objekt, nebo 
 ji pøidat k jinému objektu. Pøi manipulaci s hranou je potøeba vybrat po¾adovaný 
-typ hrany. To znamená vybrat typ hrany z levého menu a poté zaèít editovat 
+typ hrany, to znamená vybrat typ hrany z levého menu a poté zaèít editovat 
 hranu. Pokud vyberete odli¹ný typ hrany, ne¾ se chystáte editovat, tato hrana 
 zmìní svùj typ na právì vybraný. Lze také vybrat hranu a a¾ poté vybrat její 
 typ, toto je ale mírnì nároèné.
@@ -774,16 +779,15 @@ hranu zalomit a dosáhnout tak vìt¹í pøehlednosti aplikace. Bohu¾el nelze tyto
 zalomení editovat, ale roz¹íøení aplikace o tuto funkcionalitu není nároèné, 
 jenom toto nebylo pova¾ováno za nutnost.
 
-Obèas jsou nìkteré hrany ukonèeny ¹ipkou, nebo roz¹iøujícím obrazcem, jak je 
-toto uìláno je popsáno v kapitole \ref{grafickePrvky}. Nìkteré hrany diagramù 
+Obèas jsou nìkteré hrany ukonèeny ¹ipkou, nebo roz¹iøujícím obrazcem. Toto 
+je popsáno v kapitole \ref{grafickePrvky}. Nìkteré hrany diagramù 
 mohou být ukonèeny ¹ipkami na obou stranách, pro pøehlednost aplikace byla ale 
 tato funckionalita zakázána a v¹echny hrany jsou tím pádem \textbf{Jednosmìrné} 
 a to ve smìru z prvního objektu k druhému.
 
-Aplikace bohu¾el neobsahuje mo¾nost návratu akce a opìtování akce jak je tomu u 
-vìt¹iny aplikací. Toto je pravdìpobnì nejvìt¹í slabinou tohoto nástroje. Na 
-funckionalitì to nièemu neohro¾uje, ale pro pohodlnost pou¾ívání by se tato 
-mo¾nost jistì hodila. Absence této funkce není pøíli¹ omezující, znamená to 
+Aplikace bohu¾el neobsahuje mo¾nost návratu akce a opìtování akce, jak je tomu 
+u vìt¹iny aplikací. Toto je pravdìpobnì nejvìt¹í slabinou tohoto nástroje. 
+Absence této funkce není pøíli¹ omezující, znamená to 
 pouze pro u¾ivatele opakování stejných akcí. Bohu¾el pøi vývoji na tuto 
 funcki nebyl brán zøetel a vytvoøení této funkce by znamenalo nedokonèení 
 nìkterých velice dùle¾itých èástí. Tento nedostatek je brán na vìdomí a v 
@@ -802,18 +806,20 @@ stavu ulo¾ení právì editovaného souboru. To znamená ¾e pøi zavøení souboru není
 vyzván k jeho ulo¾ení a také ¾e není hned na první pohled viditelnì, zda právì 
 editovaný soubor je ulo¾ený, nebo ne.
 
-\section{Jednotlivé editory}
-Jednotlivé editory jak ji¾ bylo øeèeno v pøechozích kapitolách jsou Diagram 
-pøípadù u¾ití \ref{pripadUziti}, Diagram tøíd \ref{diagramTrid} a Objektovì 
-orientované Petriho sítì \ref{oopn} tyto editory byly nadále mírnì pozmìnìny, 
+\section{Jednotlivé editory}\label{jednotliveEditory}
+Jednotlivé editory jak ji¾ bylo øeèeno v pøechozích kapitolách jsou 
+\textbf{diagram 
+pøípadù u¾ití} \ref{pripadUziti}, \textbf{diagram tøíd} \ref{diagramTrid} a 
+\textbf{objektovì 
+orientované Petriho sítì} \ref{oopn} tyto editory byly nadále mírnì pozmìnìny, 
 pøevá¾nì z grafického hlediska pro zlep¹ení pøehlednosti tìchto diagramù a pro 
 jednodu¹¹í práci mezi nimi.
 
 Základním odli¹ením ve v¹ech editorech je zvýraznìní objektu co nemá ¾ádnou 
 spojující hranu, jsou zvýraznìny pomocí èárkování. Vybraný objekt 
 je znázornìn ohranièením a odli¹nou barvou. Pokud objekt nemá odpovídající 
-\uv{obraz}, je zváraznìn kurzívou a textem pod objektem, toto platí pøevá¾nì 
-pro propojení Diagramu tøíd a diagramu pøípadù u¾ití. Pokud spoj mezi dvìma 
+\uv{obraz}, je zvýraznìn kurzívou a textem pod objektem, toto platí pøevá¾nì 
+pro propojení diagramu tøíd a diagramu pøípadù u¾ití. Pokud spoj mezi dvìma 
 objekty nemá tento obraz je zvýraznìn odli¹nou barvou.
 
 \subsection{Editor pøípadù u¾ití}
@@ -826,7 +832,7 @@ objekty jinak jak Dìdìním. Dále mù¾e u¾ivatel spojit \textbf{Aktéra} a
 Aktéra, tudí¾ pokud toto u¾ivatel provede naopak je hrana otoèena automaticky.
 
 Pro zmìnu jména objektu je potøeba na nìj poklepat dvakrát, zde je také mo¾né 
-zmìnit jeho propojení s tøídou. Je mo¾né propojení absolutnì zmìnit, nebo 
+zmìnit jeho propojení s tøídou. Je mo¾né propojení zmìnit, nebo 
 reaktivovat spoj mezi tøídou a objektem, pokud v Diagramu tøíd není tøída 
 odpovídající editovanému obejktu. S touto reaktivací se také reaktivují spoje 
 mezi tøídami a nebo mezi objekty v Diagramu pøípadù u¾ití.
@@ -845,64 +851,68 @@ Pokud je vytvoøen a vybrán \textbf{Interface} není mo¾né jej spojit s ostatními
 tøídami jinak, ne¾ spojem \textbf{Implementace}, nebo mezi jednotlivými 
 Interfacy pomocí spoje \textbf{Generalizace}.
 
-Pro editaci jména tøídy je nutné dvakrát na ni poklepat, v oknì, které vyskoèí 
+Pro editaci jména tøídy je nutné dvakrát na ni poklepat v oknì, které vyskoèí 
 po dvojtém kliknutí na tøídu je také mo¾né nastavit jeji \uv{roli} v systému. 
 \begin{itemize}
   \item \textbf{Actor} po vybrání tohoto druhy tøídy se v Diagramu pøípadù 
 u¾ití vyvtoøí Aktér.
   \item \textbf{Activity} pokud je vybrán tento typ tøídy je v Diagramu pøípadù 
 u¾ití vytvoøen pøípad u¾ití.
-  \textbf{None} tento druh tøídy slou¾í pro vytváøení pomocných tøíd. Tøídy s 
-tímto druhem nejsou nijak promítnuty do Diagramu pøíadù u¾ití. Toto je výchozí 
-hodnota v¹ech tøíd.
+  \item \textbf{None} tento druh tøídy slou¾í pro vytváøení pomocných tøíd.
+  \item \textbf{Interface} pouze pro vytvoøení metod a tøídních promìnných, 
+nelze pro nì vytvoøit Petriho sí».
 \end{itemize}
-Výbìr role je mo¾ný pouze u tøíd, které nemají doposud ¾ádný spoj.
+Výbìr role je mo¾ný pouze u tøíd, které nemají doposud ¾ádný spoj. Tøídy 
+\textbf{None} a \textbf{Interface} se nepromítnou do diagramu pøípadù u¾ití, 
+slou¾í pouze ke snadnìj¹í implementaci nìkerých funkcí.
 
 Pokud je potøeba znovu aktivovat a vytvoøit obraz v Diagramu pøípadù u¾ití je 
 potøeba tøídu nejdøíve spojit s dal¹í tøídou a poté po dvojkliku na tuto tøídu 
 bude vyvoláno okno s editací a tato tøída bude mít mo¾nost opìt aktivace 
 objektu a nebo spojení s jiným objektem.
 
-Pro pøidání metod a tøídních promìnných se nachází v dolní èásti v pravo editor 
+Pro pøidání metod a tøídních promìnných se nachází v pravé dolní èásti editor 
 tøíd. Nejdøíve je zapotøebí vybrat tøídu pro kterou po¾adujeme pøídání 
 nìkterého prvku a poté zadat viditelnost, jméno a typ. Pøíslu¹ný øádek slou¾í 
-pro tøídní promìnnou, nebo metodu. Pro zjednodu¹ení je mo¾né jako typ zadat 
-tøídy, které jsou vytvoøeny na pracovním plátnì.
+pro tøídní promìnnou, nebo metodu. Pro zjednodu¹ení je mo¾né nastavit typ 
+promìnné a operace, jako typ jakékoliv tøídy, která se momentálnì nacháí na 
+editaèním plátnì.
 
 Po úspì¹ném vlo¾ení metod a popøípadì tøídních promìnných je mo¾né pøidat 
-atributy metodám, to se provádí v levé spodní èásti. Po výbìru tøídy, pro 
-kterou je potøeba editovat atributy metody, dvojklikem vybereme metodu, kterou 
-je potøeba editovat a poté zadat atributy oddìlené èárkami. Pokud chceme 
+argumenty metodám, to se provádí v levé spodní èásti. Po výbìru tøídy, pro 
+kterou je potøeba editovat argumenty metody, dvojklikem vybereme metodu, kterou 
+je potøeba editovat a poté zadat argumenty oddìlené èárkami. Pokud chceme 
 odstranit nìkterou tøídní promìnnou, nebo metodu, je toto mo¾né provést 
 tlaèítkem vedle polo¾ky.
 
 \subsection{Editor objektovì orientovaných Petriho sítí}
-Pro vstup do tohoto editoru je zapotøebí vybrat tøídu pro kterou je potøeba 
-editovat tyto sítì. Po pøesunu do tohoto editoru je automaticky vybrána Petriho 
-sít pro tøídu, pøepínání mezi tìmito Petriho sítìmi probíhá v levém dolním rohu.
+Pro vstup do tohoto editoru je zapotøebí vybrat tøídu pro kterou budou 
+editovány Petriho sítì. Automaticky je vybrána Petriho sí» pro tøídu,
+pøepnutí mezi Petriho sítìmi pro tøídu a metody probíhá v levém dolním rohu.
 
 V pravém dolním rohu, pokud není vybrán ¾ádný objekt na pracovním plátnì, je 
-mo¾né pøidat tøídní promìnné, nebo atributy metody jako \textbf{Místa}. Takto 
+mo¾né pøidat tøídní promìnné, nebo argumenty metody jako \textbf{Místa}. Takto 
 pøidané místa nelze editovat. Vkládat konstanty, operovat s tìmito místo, nebo 
 je mazat lze, ale mìnit jejich jméno není povolené. Podobnì tomu je u 
 návratových míst v Petriho sítích pro metody kde je jedno speciální místo 
-\textbf{return} toto místo je podobnì needitoatelné a navíc jej není mo¾né 
+\textbf{return} toto místo je podobnì needitovatelné a navíc jej není mo¾né 
 odstranit.
 
-Pøidané Místa je mo¾né dále editovat pomocí vkládání konstant, jednodu¹e vybrat 
+Pøidané místa je mo¾né dále editovat pomocí vkládání konstant, jednodu¹e vybrat 
 místo a v pravém dolním rohu aplikace lze vidìt aktuální konstanta (pokud není 
 ¾ádná je input prázdný), která lze zmìnit.
 
 Po pøídání \textbf{Pøechodu} (èasto nazývaném transition) je mo¾né tomuto 
 Pøechodu editovat dvì slo¾ky. Slo¾ku \textbf{Strá¾} (nazýván té¾ Guard) a 
-slo¾ku \textbf{Akce} (známý také jako Activity). Výbìrem pøechodu se zobrazí v 
-pravé èásti mo¾nost tyto slo¾ky editovat.
+slo¾ku \textbf{Akce} (Activity). Výbìrem pøechodu se zobrazí v 
+pravé èásti mo¾nost tyto slo¾ky editovat. Po kliknutí na pøíslu¹né tlaèítko 
+budou vyvolány okna pro editaci jednotlivých slo¾ek.
 
 \begin{itemize}
   \item \textbf{Slo¾ka Strá¾e}
 Pro základní vytváøení pravidel je v horní èásti okna pro editaci strá¾e volné 
 textové pole, kam je mo¾né zadat jakýkoliv text. Pokud je potøeba zadat více 
-kontrolovaný vstup je mo¾né si ve sdponí èásti vybrat promìnné, nebo zadat 
+kontrolovaný vstup je mo¾né si ve spodní èásti vybrat promìnné, nebo zadat 
 konstanty a vybrat jejich podmínku. Poté lze nastavit horní text pøímo na tuto 
 podmínku, nebo spojit operátorem s pøechozí podmínkou. V textové èásti lze poté 
 výslednou podmínku editovat a dále upravovat.
@@ -922,11 +932,12 @@ naopak. Není v¹ak mo¾né spojit dvì místa, nebo pøechody pøímo mezi sebou.
 Dal¹í roz¹íøení spojù oproti ostatním editorùm je to ¾e lze pøidávat promìnné, 
 které jsou pøes tento spoj \uv{pøená¹eny}. Po dvjokliku na hranu si lze vybrat 
 mno¾inu promìnných které jsou automaticky hlídány z míst a pøechodù, nebo zadat 
-samostatný string. Tento samostatný text je zde kvùli nároènìj¹ím programùm a 
+samostatný text. Tento samostatný text je zde kvùli nároènìj¹ím programùm a 
 nároènìjsím operacím, jako je napøíklad pole, nebo seznam. Tento text v¹ak není 
-nijak kontrolovaný, pøevá¾nì kvùli nároènosti na rozdìlení do tokenù a provést 
-analýzu tìchto tokenù. Pokud je potøeba dát najevo ¾e hrana neobsahuje ¾ádné 
-data, lze ji nechat prázdnou, popøípadì uvést \textbf{null}, nebo \textbf{nill} 
+nijak kontrolovaný, pøevá¾nì kvùli nároènosti na rozdìlení do tokenù a 
+provedení analýzy tìchto tokenù. Pokud je potøeba dát najevo ¾e hrana 
+neobsahuje ¾ádné data, lze ji nechat prázdnou, popøípadì uvést \textbf{null}, 
+nebo \textbf{nill} 
 do textového pole spoje.
 
 \subsection{Provázání jednotlivých èástí}
@@ -942,43 +953,51 @@ Aplikace pouze napomáhá vývoji a napomáhá postupnému vytváøení
 urèitých èástí, nemá za úkol být naprosto zautomatizována a 
 vytváøet v¹e bez zásahù od u¾ivatele.
 
-\chapter {Roz¹íøené mo¾nosti aplikace} \label{moznostiAplikace}
-Pøi vývoji aplikace bylo hledìno na nìkteré mo¾nosti roz¹íøení celkové 
-aplikace. Tyto roz¹íøení byly postupnì implementovány, nebo promy¹leny a 
-nachystány na budoucí implementaci.
+\chapter {Roz¹íøené mo¾nosti nástroje} \label{moznostiAplikace}
+Bìhem vývoje aplikace bylo poèítáno s nìkterými roz¹íøenímy a potøebnými 
+úpravami editoru. Pøevá¾nì z toho dùvodu, aby aplikace byla snáze pou¾itelná a 
+pøiná¹ela nové prvky. 
 
-\section{Export diagramù}
+Øekneme si nìco o zpùsoobech exportu aplikace a proè byl vybrátn tento druh 
+exportù \ref{exportDiagramu}. Dále si popí¹eme v èem je tento nástroj vylep¹ený 
+oproti konkurenci po grafické stránce nìkterých ovládacích prvkù v kapitole 
+\ref{grafickePrvky}.
+
+\section{Export diagramù} \label{exportDiagramu}
 Jako jeden z po¾adavkù bylo po¾adováno exportu do nìjakého formátu. Tohoto bylo 
 vyu¾ito v pøípadì ukládání stavu aplikace, kdy otevøený projekt je mo¾né ulo¾it 
-do formátu \textbf{XML}. Tento formát tudí¾ slou¾í pro ukládání a naèítání 
+do formátu \textbf{XML}. Tento formát slou¾í pro ukládání a naèítání 
 projektù. Formát XML byl zvolen èásteènì kvùli jeho mo¾nému upravení, kdy je 
 mo¾né editovat obsah objektù bez nutnosti zaplého nástroje. Toto se ale 
 doporuèuje pouze zku¹eným u¾ivatelùm, proto¾e je mo¾né ¾e se díky tomuto 
 jakýmkoliv zpùsobem poru¹í editovaný soubor, který ji¾ nebude mo¾né jakkoliv 
-opravit.
+opravit. Pro export do XML byla vyu¾ita speciální knihovna blí¾e popsána v 
+kapitole \ref{xmlExport}.
 
 Velice u¾iteèným roz¹íøením je dále mo¾nost vykreslit námi editované diagramy a 
 sítì do formátu \textbf{PostScript} (formát EPS). Tímto lze získat obrázky 
 vhodné napøíklad pro vìdecké práce a pro vlo¾ení do dokumentù. V tomto textu 
 byly pou¾ity pøevá¾nì obrázky pocházející z výsledné aplikace. Editovaný projekt 
 se ulo¾í do samostatné slo¾ky pod jeho jménem a v¹echny editory jsou ulo¾eny v 
-této slo¾ce.
+této slo¾ce. Tato funkcionalita byla pøidána pomocí knihovny, kterou blí¾e 
+popí¹eme v kapitole \ref{postScriptExport}.
 
 Pøi implementaci bylo uva¾ováno o dal¹ích mo¾nostech exportu, jako napøíklad 
-pøevedení Objektovì orientovaných Petriho sítí do \textbf{PN talku}. Vzhledem k 
+pøevedení objektovì orientovaných Petriho sítí do \textbf{PN talku}. Vzhledem k 
 jednoduchosti ukládaného souboru je mo¾né toto roz¹íøení velice jednodu¹e 
 pøidat. Po pøidání tohoto roz¹íøení by aplikace získala znaènì na funkènosti a 
-pou¾itelnosti. Proto byl brán ohled na podobná roz¹íøení ji¾ bhem implementace 
-základní aplikace.
+pou¾itelnosti. Proto byl brán ohled na podobná roz¹íøení ji¾ bìhem implementace 
+základní aplikace. O dal¹ích navrhovaných roz¹íøeních je mo¾né se dozvìdìt v 
+kapitole \ref{budoucnost}, kde popí¹eme mo¾ná roz¹íøení.
 
 \section{Grafické prvky}\label{grafickePrvky}
-Pro práci s grafickými prvky na editaèním plátnì bylo pou¾ito rùzných technik 
-napøíklad pro detekci objektu pod ukazatelem, nebo detekci hrany pod kurzorem 
+Pro práci s grafickými prvky na editaèním plátnì bylo pou¾ito rùzných technik.
+Napøíklad pro detekci objektu pod ukazatelem, nebo detekci hrany pod kurzorem 
 a podobné.
 
 \subsection{Detekce objektu pod kurzorem}
-Zji¹tìní zda se nachází nìjaký objekt pod kurzorem bylo velice jednoduché, 
-ka¾dý objekt má výpoèet pro toto zji¹tìní. Tento zpùsob zji¹»ìní objektu byl 
+Zji¹tìní zda se nachází nìjaký objekt pod kurzorem bylo velice jednoduché. 
+Ka¾dý objekt má výpoèet pro toto zji¹tìní. Tento zpùsob zji¹»ìní objektu byl 
 zvolen pøevá¾nì kvùli jednoduchosti pøidání nového tvaru.
 
 \begin{equation}\label{count:coords}
@@ -995,26 +1014,26 @@ bod objektu.
   \item \textbf{isX} a \textbf{isY} je vypoèítaná vzdálenost na osách X a Y.
 \end{itemize}
 
-Výpoèet je provádìn, tak ¾e se vypoèítá vzdálenost na osách mezi body a tato 
-vzdálenost se poté provìøí zda le¾í v daném bodu, porovná se ¹íøka a vý¹ka 
-oproti tìmto vzdálenostem. Pokud bod kurzoru le¾í v tìchto hranicích vykoná se 
+Výpoèet je provádìn tak, ¾e se vypoèítá vzdálenost na osách mezi body a tato 
+vzdálenost se poté provìøí zda le¾í v daném objektu. Porovná se ¹íøka a vý¹ka 
+oproti tìmto vzdálenostem. Pokud bod kurzoru le¾í v tìchto hranicích, vykoná se 
 pøíslu¹ná operace, napøíklad zvýraznìní objektu.
 
 Tento zpùsob je velice nároèný na pamìt, pøevá¾nì kvùli neustálému volání pøi 
-jakémkoliv pohybu my¹i. Pro celkovou aplikace, ale toto omezení nehraje ¾ádnou 
+jakémkoliv pohybu my¹i. Pro celkovou aplikaci, ale toto omezení nehraje ¾ádnou 
 roli. Pokud by bylo potøeba zmìnit zji¹tìní takovéhoto objektu pomocí 
 sofistikovanìj¹í funce, zmìna na takovouto funkci není nikterak nároèná.
 
 \subsection{Výpoèet vzdálenosti hrany od bodu}
 Na druhou stranu zji¹tìní hrany pod kurzorem ji¾ je ponìkud nároènìj¹í. 
-Pøevá¾nì z toho dùvodu, ¾e hranu máme definovanou jako dvojici bodù. Výpoèet 
+Pøevá¾nì z toho dùvodu, ¾e hranu máme definovanou jako dovjici bodù. Výpoèet 
 pro takové zji¹tìní je ponìkud slo¾itìj¹í a mo¾ností pou¾ití rùzných vzorcù pro 
 toto zji¹tìní mnoho.
 
 V tomto nástroji jsou pou¾ity dvì metody zji¹tìní vzdálenosti bodu od pøímky. 
-Jedna metoda \ref{lineToobject} je pou¾ita pro výpoèet vzdálenosti kraje 
+Jedna metoda je pou¾ita pro výpoèet vzdálenosti kraje 
 objektu k bodu a na základì toho je hrana zkrácena (pou¾ito pøevá¾nì pro 
-vykreslení ¹ipky na konci hrany). Druhá metoda \ref{pointToLine} slou¾í pro 
+vykreslení ¹ipky na konci hrany). Druhá metoda slou¾í pro 
 výpoèet bodu kurzoru a úseèky mezi dvìma body.
 
 \subsubsection{Výpoèet kraje objektu k bodu} \label{lineToobject}
@@ -1080,16 +1099,16 @@ Pro rovnice \eqref{urceniPolohy} a  \eqref{vypocetVzdalenosti} platí:
 Vzorce pro výpoèet polohy bodu vùèi úseèce a pro finální výpoèet vzdálenosti 
 tohoto bodu od úseèky byly pøevzaty z \cite{graphicGems2}.
 
-\chapter{Pou¾ité knihovny a ikony}
+\chapter{Pou¾ité knihovny a ikony} \label{pouziteKnihovny}
 Pro zjednodu¹ení práce a mo¾nosti zamìøení se na dùle¾itìj¹í èásti nástroje 
 bylo pou¾ito nìkolik knihoven pro urychlení vývoje. Tyto knihovny jsou volnì ke 
-sta¾ení a velice pøehledné dokumentace, také jejich pou¾ití je velice 
+sta¾ení s velice pøehlednou dokumentací. Jejich pou¾ití je velice 
 jednoduché a rychlé. Pou¾itím tìchto knihoven vedlo k urychlení vývoje 
 dùle¾itých koponent, nicménì tyto knihovny nejsou nutností pro výslednou 
-aplikaci. Pokud by se ov¹em odtranily byla by nutvnost tyto knihovny nahradit 
+aplikaci. Pokud by se ov¹em odtranily, bylo by nutné tyto knihovny nahradit 
 vlastní implemtnací tìchto funkcí.
 
-\section{XML export}
+\section{XML export} \label{xmlExport}
 V pøípadì expotu do XML bylo zvoleno ukládání ve¹kerých grafù do speciální 
 struktury, kterou lze velice jednodu¹e pøedat knihovnì s názvem 
 \textbf{XStream} \footnote{Domovskou adresu pro tuto adresu lze nalést 
@@ -1102,36 +1121,37 @@ sna¾¹í. Dal¹í výhodou této knihovny je mo¾nost nastavit aliasy pro XML tagy,
 tak¾e je mo¾né upravit XML soubor, který bude pou¾ívaný v tomto nástroji pro 
 dal¹í potøeby. Pokud napøíklad bude potøeba soubory exportované tímto nástrojem 
 upravit v dal¹í aplikaci, která doká¾e èíst a vytváøet XML soubory, je mo¾né 
-upravit vstup a výstup této knihovny, tak ¾e nebude potøeba upravovat naèítání 
+upravit vstup a výstup této knihovny tak, ¾e nebude potøeba upravovat naèítání 
 a práci s tìmito soubory v jiné aplikaci.
 
-Pou¾itím tété knihovny bylo docíleno bezchybného, rychlého a jednoduché 
-vytvoøení souboru pro ukládání editovaného projektu.
+Pou¾itím této knihovny bylo docíleno bezchybného, rychlého a 
+jednoduchého vytvoøení souboru pro ukládání editovaného projektu.
 
-\section{PostScript export}
+\section{PostScript export}\label{postScriptExport}
 Export do souboru PostScript nebyl nutností pro tuto aplikaci, nicménì bylo 
 zvoleno, ¾e export do tohoto formátu bude velice u¾iteèný a nástroj tím získá 
 velmi silnou funcionalitu.
 
 Pro export do formátu EPS bylo vyzkou¹eno nìkolik nástrojù, ¾ádný z nich ov¹em 
-nebyl tak jednoduchý na pou¾ití a nepodporoval tolik funkèností jako tomu bylo 
+nebyl tak jednoduchý na pou¾ití a nepodporoval tolik funkcí, jako tomu bylo 
 u Nástroje \textbf{EPS Graphics} \footnote{Dokumentaci a knihovnu samotnou lze 
 najít na adrese \url{http://www.abeel.be/epsgraphics/}.}.
 
 Tento nástroj vyènívá nad konkurencí pøevá¾nì v mno¾ství implementovaných 
-funckí, byl vybrán pøevá¾nì kvùli tomu, ¾e ve¹kerá grafika je tisknuta pomocí 
+funckí. Byl vybrán pøevá¾nì kvùli tomu, ¾e ve¹kerá grafika je tisknuta pomocí 
 \textbf{Graphics2D} a tato knihovna podporuje vìt¹inu funckí, které jsou 
 pou¾ívány právì v Graphics2D. \footnote{Pro bli¾¹í obeznámení implementvoaných 
 funckí je mo¾né nahlédnout do rozsáhlé API dokumentace na stránce 
 \url{http://epsgraphics.sourceforge.net/api/1.2/doc/}.}
 
-V celém tomto dokumentu byly pou¾ity obrázky co byly exportovány pomocí této 
-knihovny, která umo¾nila velice rychlé a u¾iteèné roz¹íøení tohoto nástroje.
+V celém tomto dokumentu byly pou¾ity obrázky, které byly exportovány pomocí 
+této 
+knihovny, umo¾òující velice rychlé a u¾iteèné roz¹íøení tohoto nástroje.
 
 \section{Pou¾ité ikony}
 V aplikaci bylo pou¾ito nìkolika ikon pro zpøehlednìní a k odlehèení 
 monotónnosti designu. Pøidáním tìchto ikon bylo umo¾nìno i ménì zruèným 
-u¾ivatelùm jednoduchého pou¾ívání a osvojení si práce s tímto nástrojem.
+u¾ivatelùm jednodu¹e pou¾ívat a osvojit si práci s tímto nástrojem.
 
 Ikony byly vybrány z galerie Open Icon Library\footnote{Adresa této galerie 
 je \url{http://openiconlibrary.sourceforge.net/}.}, tyto ikony jsou volnì ke 
@@ -1144,19 +1164,39 @@ Budou pøedstaveny návrhy od mo¾ných zákazníkù a mo¾ných budoucích u¾ivatelù
 tohoto nástroje. 
 
 \section{Nezku¹ený u¾ivatel}
-Nejdøíve byl nástroj pøedstaven nezku¹enému u¾ivateli, na tohoto u¾ivatele 
-nástroj nebyl pøíli¹ míøený, ale pokud by takovýto u¾ivatel po¾adoval vytvoøení 
-aplikace jistì by s tímto nástroj pøi¹el do styku.
+Nátroj byl pøedstaven nejdøíve u¾ivateli, který nemá ¾ádné zku¹enosti s 
+vytváøením programù, ani nikdy nebyl zapojen do vývoje programu. Tento test má 
+dokázat zda je nástroj pou¾itelný a nemá nìkterou chybu znemo¾òující práci s 
+tímto nástrojem.
 
 \subsection{Prùbìh pøedstavení}
+U¾ivateli bylo dáno za úkol vymyslet program, který by mu pomáhal pøi práci. 
+Tento program byl poté pøedstaven a popsán programátorovi. Pøi tomto testu 
+nebyla nalezena ¾ádná chyba a neostatek, u¾ivatel byl spokojený s rychlostí s 
+jakou se výsledný program rýsoval. Pøevá¾nì kvùlu tomu, ¾e si mohl okam¾itì 
+vybavit vìci, které ji¾ byly nachystány a které bude potøeba vymyslet.
+
+Nástroj byl tedy velice pøínosný v tomto pøípadì a bylo mo¾né postoupit k 
+pøedání nástroje více zku¹enému u¾ivateli.
 
 \section{Zku¹enìj¹í u¾ivatel}
-Tento u¾ivatel ji¾ pou¾il Diagram pøípadù u¾ití a rozumí návrhu aplikace. Bylo 
+Tento u¾ivatel ji¾ pou¾il diagram pøípadù u¾ití a rozumí návrhu aplikace. Bylo 
 po nìm po¾adováno, aby pøedvedl zda by zvládl v této aplikaci pøedstavit svoji 
 vizi programátorovi a zda aplikaci neschází nìkterý nutný prvek potøebný pro 
 jednoduché ovládání.
 
 \subsection{Prùbìh a výsledky u¾ivatelské práce}
+Pøi sledování práce u¾ivatele bylo zji¹»ìno, ¾e jeho uèební køivka je velice 
+strmá. To znamenalo, ¾e návrh aplikace byl velice dobrý a u¾ivatel si rychle 
+zvykl na práci a po chvilce zkou¹ení aplikace, byl schopný vytvoøit vlastní 
+diagram pøípadù u¾ití.
+
+Bìhem tvoøení tohoto diagramu bylo ov¹em zji¹»ìno, ¾e aplikaci schází mo¾nost 
+okam¾itého zru¹ení pøidávání nových objektù na editaèní plátno a zru¹ení 
+spojení mezi objekty. Tento návrh byl tedy poznamenán a pozdìji implementován.
+
+U¾ivatel nemìl ¾ádnou dal¹í výtku k nástroji, kromì po¾adavku na vytvoøení 
+nápovìdy a jednoduchého popsání jednotlivých èástí nástroje.
 
 \section{Programátor}
 V poslední èásti byl nástroj pøedstaven programátorovi, kterému bylo navrhnuto 
@@ -1166,14 +1206,26 @@ Petriho sítí. Bylo sledováno pøevá¾nì zda nechybí nìkterá dùle¾itá funkce, zda
 není pøíli¹ omezovaný a zda není potøeba pøíli¹ pøedstavovat tento nástroj.
 
 \subsection{Prùbìh testování}
+Tento u¾ivatel velice rychle pochopil základní ovládání nástroje, velice ocenil 
+rùzné mo¾nosti otevírání a zavírání jednotlivých projektù. Ocenil provázání 
+mezi diagram pøípadù u¾ití a diagramem tøíd. Po vysvìtlení jak spojit rùzné 
+objekty napøíè diagramy byl velice pøekvapen a s touto funkcí byl spokojený.
 
-\subsection{Názor a vyhodnocení rogramátorovy práce}
+Po vysvìtlení jak fungují objektovì orientované Petriho sítì, byl pøekvapený 
+jak jednodu¹e a rychle lze vytváøet jednotlivé èásti aplikace. A jak rychle lze 
+popsat jednotlivé metodi pomocí Petriho sítí.
+
+\subsection{Vyhodnocení rogramátorovy práce}
+U¾ivatel byl spokojený s nástrojem a ocenil byl dal¹í roz¹íøení v podobì 
+exportu do zdrojových kódù a nebo simulace Petriho sítí.
 
 \section{Výsledky testování}
+Po otestování tøemi rùznými u¾ivateli bylo objeveno nìkolik chyb, v podobì 
+napøíklad okam¾itého zru¹ení pøidávaných objektù a spojování tìchto objektù.
 
 \chapter{Závìr} \label{zaver}
 V této kapitole se budeme postupnì vìnovat navrhovaným mo¾ným roz¹íøením, 
-kterýmy by bylo vhodné tento nástroj vylep¹it a roz¹íøit. A poté shrneme stav 
+kterýmo by bylo vhodné tento nástroj vylep¹it a roz¹íøit. A poté shrneme stav 
 této aplikace, její pøínos a aktuální stav. Také popí¹eme nìkteré známé chyby, 
 nebo nedostatky.
 
@@ -1190,7 +1242,7 @@ pohledu momentálního stavu aplikace by znamenaly velmi mnoho. Do aplikace je
 samozøejmì mo¾né pøidat mnoho dal¹ích funkcí, 
 
 \subsubsection{Historie akcí}
-Jak ji¾ bylo zmínìno v pøede¹lých kapitolách jistì by se vlice hodilo ukládat 
+Jak ji¾ bylo zmínìno v pøede¹lých kapitolách jistì by se hodilo ukládat 
 postupný chod akcí, pøes které by bylo mo¾né postupnì kolovat, jak do zadu, tak 
 dopøedu. Co¾ by vedlo ke sna¾¹í editaci a pohodlnìj¹í práci s aplikací. Absence 
 této funkce momentálnì neznamená nepou¾itelnost aplikace, pouze ji dìlá mírnì 
@@ -1199,8 +1251,8 @@ dal¹ím roz¹íøení nástroje by bylo vhodné tuto úpravu implementovat jako první.
 
 \subsubsection{Grafický design a editace designu}
 Grafický design a momentální vzhled nástroje není ¹patný, nebo nikterak 
-nepou¾itelný, je pouze jednoduchý a velice monotónní. Z tohoto dùvodu by byo 
-velice vhodné pøidat mo¾nost zmìny vzhledu aplikace, a» u¾ nastavení 
+nepou¾itelný, je pouze jednoduchý a velice monotónní. Z tohoto dùvodu by 
+bylo vhodné pøidat mo¾nost zmìny vzhledu aplikace, a» u¾ nastavení 
 u¾ivatelského rozhraní, tak celkový vzhled objektù na editaèním plátnì. 
 Aplikace by díky tomuto ro¹íøení jistì byla více pøívìtivìj¹í k u¾ivateli.
 
@@ -1208,14 +1260,15 @@ Aplikace by díky tomuto ro¹íøení jistì byla více pøívìtivìj¹í k u¾ivateli.
 Pro lep¹í komunikaci mezi tímto nástrojem a nástroji, které se soustøedují 
 napøíklad na interpretaci Petriho sítí by bylo velice u¾iteèné, kdyby nástroj 
 mohl Objektovì orientované Petriho sítì exportovat do specifického formátu, 
-jako napøíklad PN \footnote{Bli¾¹í informace o tomto jazyku a o projektu PNTalk 
+jako napøíklad PNTalk \footnote{Bli¾¹í informace o tomto jazyku a o projektu 
+PNTalk 
 lze nalést na stránkách \url{http://perchta.fit.vutbr.cz:8000/projekty/12}.}.
 
 \subsubsection{Simulace Petriho sítí}
-Pokud by se vyu¾ilo pøede¹lého roz¹íøení \ref{PNtalk} a toto roz¹íøení by se 
-propojilo s dal¹ím nástrojem, který by se staral o simulaci Petriho sítí 
-vytvoøených v tomto nástroji znamenalo by to znaèné urychlení vývoje aplikací. 
-Kdy by se od zákazníka pøevzali vstupy a výstupy pro testovací pøípady a ty by 
+Pokud by se vyu¾ilo pøede¹lého roz¹íøení \ref{PNtalk} by se propojilo s dal¹ím 
+nástrojem, který by se staral o simulaci Petriho sítí vytvoøených v tomto 
+nástroji znamenalo by to znaèné urychlení vývoje aplikací. 
+Kdyby se od zákazníka pøevzali vstupy a výstupy pro testovací pøípady a ty by 
 se porovnaly s výstupem z tohoto simulátoru, na základì kterých by se dala 
 Petriho sít upravit.
 
@@ -1234,9 +1287,9 @@ editorù.
 Bylo navrhnuto a objeveno mnoho mo¾ností, jak tento nástroj roz¹íøit a udìlat 
 tak z nìj velice silný nástroj na poli UML editorù. V pøípadì postupné 
 implementace navrhovaných roz¹íøení by po dosa¾ení \textbf{Vytvoøení zdrojových 
-kódù z diagramù a Petriho sítí} \ref{sourceCode} by z tohoto jednoduchého 
+kódù z diagramù a Petriho sítí} by z tohoto jednoduchého 
 editoru vytvoøilo velice silnou konkurenci pro nástroje jako \textbf{Umbrello}, 
-\textbf{Enterprise Architect}, \textbf{Dia} a mnohých dal¹ích nástrojù.
+\textbf{Enterprise Architect}, \textbf{Dia} a mnohých dal¹ích.
 
 \section{Závìreèné zhodnocení aplikace}
 Bez ohledu na roz¹íøení probrané v pøede¹lé kapitole \ref{budoucnost} je 
