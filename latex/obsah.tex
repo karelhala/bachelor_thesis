@@ -597,7 +597,7 @@ sekvenci výrazù a ka¾dý z nich je zaslání zprávy. Pokud ka¾dá
 dálèí zpráva vrací \textbf{true}, strá¾ je vyhodnocena jako \textbf{true}.
 
 Akce pøechodu specifikuje zaslání zprávy. Budeme uva¾ovat tvar 
-zaslání ve tvaru \ref{zprava}:
+zaslání ve tvaru \eqref{zprava}:
 
 \begin{equation}\label{zprava}
 y := x_0.msg(x_1, \dots, x_n)
@@ -935,7 +935,7 @@ jakýmkoliv zpùsobem poru¹í editovaný soubor, který ji¾ nebude mo¾né jakkoliv
 opravit.
 
 Velice u¾iteèným roz¹íøením je dále mo¾nost vykreslit námi editované diagramy a 
-sítì do formátu \textbf{Post Script} (formát EPS). Tímto lze získat obrázky 
+sítì do formátu \textbf{PostScript} (formát EPS). Tímto lze získat obrázky 
 vhodné napøíklad pro vìdecké práce a pro vlo¾ení do dokumentù. V tomto textu 
 byly pou¾ity pøevá¾nì obrázky pocházející z výsledné aplikace. Editovaný projekt 
 se ulo¾í do samostatné slo¾ky pod jeho jménem a v¹echny editory jsou ulo¾eny v 
@@ -982,34 +982,128 @@ jakémkoliv pohybu my¹i. Pro celkovou aplikace, ale toto omezení nehraje ¾ádnou
 roli. Pokud by bylo potøeba zmìnit zji¹tìní takovéhoto objektu pomocí 
 sofistikovanìj¹í funce, zmìna na takovouto funkci není nikterak nároèná.
 
-\subsection{Detekce hrany pod kurzorem}
+\subsection{Výpoèet vzdálenosti hrany od bodu}
 Na druhou stranu zji¹tìní hrany pod kurzorem ji¾ je ponìkud nároènìj¹í. 
 Pøevá¾nì z toho dùvodu, ¾e hranu máme definovanou jako dvojici bodù. Výpoèet 
 pro takové zji¹tìní je ponìkud slo¾itìj¹í a mo¾ností pou¾ití rùzných vzorcù pro 
 toto zji¹tìní mnoho.
 
 V tomto nástroji jsou pou¾ity dvì metody zji¹tìní vzdálenosti bodu od pøímky. 
-Jedna metoda \eqref{lineToobject} je pou¾ita pro výpoèet vzdálenosti kraje 
-objektu a na základì toho je hrana zkrácena (pou¾ito pøevá¾nì pro vykreslení 
-¹ipky na konci hrany). Druhá metoda \eqref{pointToLine} slou¾í pro výpoèet bodu 
-kurzoru a useèky mezi dvìma body.
+Jedna metoda \ref{lineToobject} je pou¾ita pro výpoèet vzdálenosti kraje 
+objektu k bodu a na základì toho je hrana zkrácena (pou¾ito pøevá¾nì pro 
+vykreslení ¹ipky na konci hrany). Druhá metoda \ref{pointToLine} slou¾í pro 
+výpoèet bodu kurzoru a úseèky mezi dvìma body.
 
-\begin{equation} \label{lineToobject}
-\begin{split}
-\end{split}
+\subsubsection{Výpoèet kraje objektu k bodu} \label{lineToobject}
+Pøed samotným výpoètem prùseèíku okraje objektu a pøímky z nìj vycházející je 
+potøeba zjistit v jakém sektoru se nachází druhý konec úseèky (støed druhého 
+objektu). Pro zji¹tìní sektoru jsou poou¾ity úhlopøíèky objektu a to ve stylu, 
+¾e do vzorcù pro úhlopøíèku dosadíme bod X, nebo bod Y a výsledný bod provìøíme 
+zda le¾í pod a nebo nad touto úhlopøíèkou. Pro výpoøet bodu lze pou¾ít jednu z 
+rovnic \eqref{uhlopricka}.
+
+Pro samotný výpoèet bodu je pou¾ito shodnosti trojúhelníkù, s tím e máme zadaný 
+støed objektu ke kterému se sna¾íme zjistit protínaný okraj a bod odkud vychází 
+tato pøíka. Proto je po vybrání sektoru zji¹tìn pomìr stran pomocí podìlení 
+¹íøky, nebo vý¹ky (zále¾í na sektoru) a vzdálenosti støedu objektu od bodu na 
+ose X, nebo Y (opìt zále¾í na sektoru). Pøi zji¹tìném pomìru stran se dopoèítá 
+druhá strana trojúhelníku a výnasobí se s tímto pomìrem.
+
+\begin{subequations} \label{uhlopricka}
+Výpoèet zda se bod nachází pod, nad a nebo na úhlopøíèce.
+\begin{align}
+resultY &= \frac{YboduA - YboduB}{(XboduA - XboduB){(givenX-XboduA)}} + 
+YboduA\\
+resultX &= \frac{givenY - YboduA}{\frac{YboduA - YboduB}{XboduA - XboduB}} + 
+XboduA
+\end{align}
+\end{subequations}
+Kde pro \eqref{uhlopricka} znamená:
+\begin{itemize}
+  \item \textbf{resultX} a \textbf{resultY} výsledná souøednice bodu X, nebo Y.
+  \item \textbf{XboduA} a \textbf{YboduA} souøednice prvního bodu úhlopøíèky.
+  \item \textbf{XboduB} a \textbf{YboduB} souøadnice druhého bodu úhlopøíèky.
+  \item \textbf{givenX} a \textbf{givenY} souøadnice X, nebo Y z daného bodu, 
+zde je tento bod souøadnice støedu druhého objektu.
+\end{itemize}
+
+\subsubsection{Výpoèet bodu kurzoru a úseèky} \label{pointToLine}
+Výpoèet vzdálenosti kurzoru od úseèky je provádìn odli¹ným vzorcem. Pøi tomto 
+výpoètu se nejdøíve urèí zda se bod nachází v rozmezí dané pøímky. To znamená, 
+zda se bod nachází pod a nebo nad úseèkou. Pro urèení bodu vùèi pøímce byla 
+pou¾ita rovnice \eqref{urceniPolohy}.
+
+\begin{equation} \label{urceniPolohy}
+h = \frac{(Px - Ax)(Bx - Ax) + (Py - Ay)(By - Ay)}{delkaUsecky}
 \end{equation}
 
-\begin{equation} \label{pointToLine}
-\begin{split}
-\end{split}
+V momentì kdy výsledné \textbf{h} z rovnice \eqref{urceniPolohy} je v rozmezí 
+$ 0<h<1 $ bod se nachází pod a nebo nad touto úseèkou. Lze tedy vypoèítat 
+vzdálenost kurzoru od úseèky.
+
+\begin{equation} \label{vypocetVzdalenosti}
+\frac{(Bx - Ax)(Py - Ay) - (Ax - Px)(By - Ay)}{delkaUsecky}
 \end{equation}
+
+Pro rovnice \eqref{urceniPolohy} a  \eqref{vypocetVzdalenosti} platí:
+\begin{itemize}
+  \item \textbf{Px} a \textbf{Py} jsou souøadnice kurzoru.
+  \item \textbf{Ax} a \textbf{Ay} reprezentují souøadnice bodu \textbf{A} 
+úseèky \textbf{AB}.
+  \item \textbf{Bx} a \textbf{By} slou¾í jako souøadnice bodu \textbf{B} na 
+úseèce \textbf{AB}.
+\end{itemize}
+
+Vzorce pro výpoèet polohy bodu vùèi úseèce a pro finální výpoèet vzdálenosti 
+tohoto bodu od úseèky byly pøevzaty z \cite{graphicGems2}.
 
 \chapter{Pou¾ité knihovny}
+Pro zjednodu¹ení práce a mo¾nosti zamìøení se na dùle¾itìj¹í èásti nástroje 
+bylo pou¾ito nìkolik knihoven pro urychlení vývoje. Tyto knihovny jsou volnì ke 
+sta¾ení a velice pøehledné dokumentace, také jejich pou¾ití je velice 
+jednoduché a rychlé. Pou¾itím tìchto knihoven vedlo k urychlení vývoje 
+dùle¾itých koponent, nicménì tyto knihovny nejsou nutností pro výslednou 
+aplikaci. Pokud by se ov¹em odtranily byla by nutvnost tyto knihovny nahradit 
+vlastní implemtnací tìchto funkcí.
 
 \section{XML export}
-\footnote{xstream adres}
-\section{EPS export}
-\footnote{eps adresa}
+V pøípadì expotu do XML bylo zvoleno ukládání ve¹kerých grafù do speciální 
+struktury, kterou lze velice jednodu¹e pøedat knihovnì s názvem 
+\textbf{XStream} \footnote{Domovskou adresu pro tuto adresu lze nalést 
+na adrese \url{http://xstream.codehaus.org/}.}. Tato knihovna se postará o 
+bezproblémovou serializaci objektu do XML.
+
+Výhodou této knihovny je jednoduchost pou¾ítí jak pøi serializaci, tak 
+deserializaci. V pøípadì naètení souboru je práce s touto knihovnou je¹tì 
+sna¾¹í. Dal¹í výhodou této knihovny je mo¾nost nastavit aliasy pro XML tagy, 
+tak¾e je mo¾né upravit XML soubor, který bude pou¾ívaný v tomto nástroji pro 
+dal¹í potøeby. Pokud napøíklad bude potøeba soubory exportované tímto nástrojem 
+upravit v dal¹í aplikaci, která doká¾e èíst a vytváøet XML soubory, je mo¾né 
+upravit vstup a výstup této knihovny, tak ¾e nebude potøeba upravovat naèítání 
+a práci s tìmito soubory v jiné aplikaci.
+
+Pou¾itím tété knihovny bylo docíleno bezchybného, rychlého a jednoduché 
+vytvoøení souboru pro ukládání editovaného projektu.
+
+\section{PostScript export}
+Export do souboru PostScript nebyl nutností pro tuto aplikaci, nicménì bylo 
+zvoleno, ¾e export do tohoto formátu bude velice u¾iteèný a nástroj tím získá 
+velmi silnou funcionalitu.
+
+Pro export do formátu EPS bylo vyzkou¹eno nìkolik nástrojù, ¾ádný z nich ov¹em 
+nebyl tak jednoduchý na pou¾ití a nepodporoval tolik funkèností jako tomu bylo 
+u Nástroje \textbf{EPS Graphics} \footnote{Dokumentaci a knihovnu samotnou lze 
+najít na adrese \url{http://www.abeel.be/epsgraphics/}.}.
+
+Tento nástroj vyènívá nad konkurencí pøevá¾nì v mno¾ství implementovaných 
+funckí, byl vybrán pøevá¾nì kvùli tomu, ¾e ve¹kerá grafika je tisknuta pomocí 
+\textbf{Graphics2D} a tato knihovna podporuje vìt¹inu funckí, které jsou 
+pou¾ívány právì v Graphics2D. \footnote{Pro bli¾¹í obeznámení implementvoaných 
+funckí je mo¾né nahlédnout do rozsáhlé API dokumentace na stránce 
+\url{http://epsgraphics.sourceforge.net/api/1.2/doc/}.}
+
+V celém tomto dokumentu byly pou¾ity obrázky co byly exportovány pomocí této 
+knihovny, která umo¾nila velice rychlé a u¾iteèné roz¹íøení tohoto nástroje.
 \chapter{Testy a jejich výsledky}
 
 \chapter{Zhodnocení výsledné aplikace}
