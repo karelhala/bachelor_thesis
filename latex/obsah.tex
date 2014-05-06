@@ -19,9 +19,23 @@ tojici diagramù \textbf{Diagram pøipadù u¾ití, Diagram tøíd,
 Objektovì orientované Petriho sítì}. Provázání mezi tìmito 
 diagramy poté vysvìtlíme v kapitole \ref{spojeni}.
 
-\section{Seznámení s nástrojem}
+Poté pøestavíme nástroj, který byl pøedmìtem této práce. Pøedvedeme jeho silné 
+stránky, jakým zpùsobem byly vytvoøeny urèité èásti aplikace a také mírnì 
+nastíníme ovládací prvky tohoto nástroje \ref{samotatnaAplikace}. Na toto volnì 
+navá¾eme pøedstavním roz¹íøených mo¾ností tohoto nástroje v kapitole 
+\ref{moznostiAplikace}.
 
-\chapter{Zhondocení konkurence} \label{konkurence}
+Po vysvìltení nástroje pøedstavíme jeho pou¾itelnost v praxi, pøedstavením 
+nìkolika mo¾ných budoucích u¾ivatelù a jejichreakcí na tento nástroj. Popí¹eme 
+jejich chování a jejich pocity z aplikace \ref{testyAvysledky}.
+
+Po otestování pøedstavíme mo¾ná roz¹íøení této aplikace v kapitole 
+\ref{vyhodnoceni}, kde také popí¹eme aktuální stav nástroje, jeho mo¾né chyby a 
+navrhneme mo¾ná øe¹ení na opravu tìchto chyb.
+
+V zakonèení práce popí¹eme \dots \ref{zaver}.
+
+\chapter{Konkurence} \label{konkurence}
 Z hlediska sna¾¹ího porozumìní byl brán zøetel na konkurentní nástroje. Pøevá¾nì 
 byla brána v potaz jejich jednoduchost a co je dìlá tak hojnì 
 vyu¾ívanými a snadno pou¾itelnými. Z toho dùvodu byly prozkoumány dva 
@@ -614,9 +628,10 @@ polymorfismus a dìdiènost. \cite{ModelovaniOOPN}
 
 \begin{figure}[]
 \centering
-  \includegraphics[trim = 0mm 100mm 0mm 0mm, clip, 
+  \includegraphics[trim = 0mm 150mm 0mm 0mm, clip, 
 scale=0.5]{fig/petriNet}
-  \caption{Pøíklad Objektovì orientované petriho sítì pro metodu.}
+  \caption{Pøíklad popisu metody pro dìlení pomocí Objektovì orientovaných 
+Petriho sítí.}
 \end{figure}
 
 \subsection{Grafické znázornìní}
@@ -699,7 +714,7 @@ nástroje velice vhodné. A to pøevá¾nì z hlediska jednoduché
 integrace zákazníka do vývoje a promítnutí zmìn od zákazníka 
 okam¾itì na celý systém.
 
-\chapter{Samostatná aplikace}
+\chapter{Samostatná aplikace} \label{samotatnaAplikace}
 Po vyzkou¹ení kouknurentních nástrojù a vybrání vhodných nástrojù z nich bylo 
 zji¹tìno ¾e ¾ádný nástroj nedosahuje absolutních po¾adavkù a ¾ádný z nich 
 neimplementuje Objektovì orientované Petriho sítì. Z toho dùvodu bylo 
@@ -919,7 +934,7 @@ analýzu tìchto tokenù. Pokud je potøeba dát najevo ¾e hrana neobsahuje ¾ádné
 data, lze ji nechat prázdnou, popøípadì uvést \textbf{null}, nebo \textbf{nill} 
 do textového pole spoje.
 
-\chapter {Roz¹íøené mo¾nosti aplikace}
+\chapter {Roz¹íøené mo¾nosti aplikace} \label{moznostiAplikace}
 Pøi vývoji aplikace bylo hledìno na nìkteré mo¾nosti roz¹íøení celkové 
 aplikace. Tyto roz¹íøení byly postupnì implementovány, nebo promy¹leny a 
 nachystány na budoucí implementaci.
@@ -1114,14 +1129,110 @@ Ikony byly vybrány z galerie Open Icon Library\footnote{Adresa této galerie
 je \url{http://openiconlibrary.sourceforge.net/}.}, tyto ikony jsou volnì ke 
 sta¾ení a pokud tento nástroj nebude vyu¾íván pro úèely zisku nemìl by být ¾ádný 
 problém s licencemi.
-\chapter{Testy a jejich výsledky}
 
-\chapter{Zhodnocení výsledné aplikace}
+\chapter{Testy a jejich výsledky} \label{testyAvysledky}
+Zámìrem této kapitoly je pøednést testování a výsledky pou¾ívání této aplikace. 
+Budou pøedstaveny návrhy od mo¾ných zákazníkù a mo¾ných budoucích u¾ivatelù 
+tohoto nástroje. 
 
-\section{Budoucnost aplikace}
+\section{Nezku¹ený u¾ivatel}
+Nejdøíve byl nástroj pøedstaven nezku¹enému u¾ivateli, na tohoto u¾ivatele 
+nástroj nebyl pøíli¹ míøený, ale pokud by takovýto u¾ivatel po¾adoval vytvoøení 
+aplikace jistì by s tímto nástroj pøi¹el do styku.
+
+\subsection{Prùbìh pøedstavení}
+
+\section{Zku¹enìj¹í u¾ivatel}
+Tento u¾ivatel ji¾ pou¾il Diagram pøípadù u¾ití a rozumí návrhu aplikace. Bylo 
+po nìm po¾adováno, aby pøedvedl zda by zvládl v této aplikaci pøedstavit svoji 
+vizi programátorovi a zda aplikaci neschází nìkterý nutný prvek potøebný pro 
+jednoduché ovládání.
+
+\subsection{Prùbìh a výsledky u¾ivatelské práce}
+
+\section{Programátor}
+V poslední èásti byl nástroj pøedstaven programátorovi, kterému bylo navrhnuto 
+aby vytvoøil jednoduchý program. Vytvoøil Diagram pøípadù u¾ití, poté pøidal 
+pár roz¹iøujích metod a tyto metody popsal pomocí Objektovì orientovaných 
+Petriho sítí. Bylo sledováno pøevá¾nì zda nechybí nìkterá dùle¾itá funkce, zda 
+není pøíli¹ omezovaný a zda není potøeba pøíli¹ pøedstavovat tento nástroj.
+
+\subsection{Prùbìh testování}
+
+\subsection{Názor a vyhodnocení rogramátorovy práce}
+
+\section{Výsledky testování}
+
+\chapter{Zhodnocení výsledné aplikace} \label{vyhodnoceni}
+V této kapitole se budeme postupnì vìnovat navrhovaným mo¾ným roz¹íøením, 
+kterýmy by bylo vhodné tento nástroj vylep¹it a roz¹íøit. A poté shrneme stav 
+této aplikace, její funkènost a mo¾né nedostatky a chyby.
+
+\section{Budoucnost aplikace} \label{budoucnost}
+Tato kapitola pøedstavuje navrhované roz¹íøení pro tento nástroj. Nástroj je 
+bez tìchto navrhovaných roz¹íøení absolutnì funkèní, nicménì pøidáním tìchto 
+funkcí a mo¾ností by z tohoto nástroje udìlali pravdìpodobnì velice robustní 
+nástroj.
+
+\subsection{Navrhovaná roz¹íøení}
+Roz¹íøení zde navrhnutá není nutné dodr¾et pøi dal¹í implementaci a pøidání 
+dal¹ích funkcí a vylep¹ení do tohoto nástroje. Nicménì jsou logicky vybrány a z 
+pohledu momentálního stavu aplikace by znamenaly velmi mnoho. Do aplikace je 
+samozøejmì mo¾né pøidat mnoho dal¹ích funkcí, 
+
+\subsubsection{Historie akcí}
+Jak ji¾ bylo zmínìno v pøede¹lých kapitolách jistì by se vlice hodilo ukládat 
+postupný chod akcí, pøes které by bylo mo¾né postupnì kolovat, jak do zadu, tak 
+dopøedu. Co¾ by vedlo ke sna¾¹í editaci a pohodlnìj¹í práci s aplikací. Absence 
+této funkce momentálnì neznamená nepou¾itelnost aplikace, pouze ji dìlá mírnì 
+tì¾kopádnou.  Toto roz¹íøení je momentálnì pova¾ováno za nejdùle¾itìj¹í a pøi 
+dal¹ím roz¹íøení nástroje by bylo vhodné tuto úpravu implementovat jako první.
+
+\subsubsection{Grafický design a editace designu}
+Grafický design a momentální vzhled nástroje není ¹patný, nebo nikterak 
+nepou¾itelný, je pouze jednoduchý a velice monotónní. Z tohoto dùvodu by byo 
+velice vhodné pøidat mo¾nost zmìny vzhledu aplikace, a» u¾ nastavení 
+u¾ivatelského rozhraní, tak celkový vzhled objektù na editaèním plátnì. 
+Aplikace by díky tomuto ro¹íøení jistì byla více pøívìtivìj¹í k u¾ivateli.
+
+\subsubsection{Mo¾nost exportu Petriho sítì} \label{PNtalk}
+Pro lep¹í komunikaci mezi tímto nástrojem a nástroji, které se soustøedují 
+napøíklad na interpretaci Petriho sítí by bylo velice u¾iteèné, kdyby nástroj 
+mohl Objektovì orientované Petriho sítì exportovat do specifického formátu, 
+jako napøíklad PN \footnote{Bli¾¹í informace o tomto jazyku a o projektu PNTalk 
+lze nalést na stránkách \url{http://perchta.fit.vutbr.cz:8000/projekty/12}.}.
+
+\subsubsection{Simulace Petriho sítí}
+Pokud by se vyu¾ilo pøede¹lého roz¹íøení \ref{PNtalk} a toto roz¹íøení by se 
+propojilo s dal¹ím nástrojem, který by se staral o simulaci Petriho sítí 
+vytvoøených v tomto nástroji znamenalo by to znaèné urychlení vývoje aplikací. 
+Kdy by se od zákazníka pøevzali vstupy a výstupy pro testovací pøípady a ty by 
+se porovnaly s výstupem z tohoto simulátoru, na základì kterých by se dala 
+Petriho sít upravit.
+
+\subsubsection{Vytvoøení zdrojových kódù z diagramù a Petriho sítí} 
+\label{sourceCode}
+Po vzoru konkurentních nástrojù Umbrello \ref{umbrello} a Enterprise Architektu 
+\ref{enterpriseArchitect} by bylo velice u¾iteèné mít mo¾nost vytvoøit zdrojové 
+kódy pro zvolený jazyk z vytvoøených Diagramù. Po zapojení Objektovì 
+orientovancýh sítí do tohoto exportu by znamenalo vytvoøení plnì funkèní 
+aplikace. Díky tomuto zaøízení by tento nástroj byl velice silnou konkurencí 
+pro komerèní i nekomerèní nástroje. Oproti konkurenci má tento nástroj ji¾ 
+velikou výhodu v podobì Objektovì orientovaných Petriho sítí a jednoduchých 
+editorù.
+
+\subsection{Shrnutí roz¹íøení}
+Bylo navrhnuto a objeveno mnoho mo¾ností, jak tento nástroj roz¹íøit a udìlat 
+tak z nìj velice silný nástroj na poli UML editorù. V pøípadì postupné 
+implementace navrhovaných roz¹íøení by po dosa¾ení \textbf{Vytvoøení zdrojových 
+kódù z diagramù a Petriho sítí} \ref{sourceCode} by z tohoto jednoduchého 
+editoru vytvoøilo velice silnou konkurenci pro nástroje jako \textbf{Umbrello}, 
+\textbf{Enterprise Architect}, \textbf{Dia} a mnohých dal¹ích nástrojù.
 
 \section{Závìreèné zhodnocení aplikace}
+Bez ohledu na roz¹íøení probrané v pøede¹lé kapitole \ref{budoucnost} je 
+aplikace velice dobøe pou¾itelná a vhodná pro vytvoøení návrhu vývoje.
 
-\chapter{Závìr}
+\chapter{Závìr} \label{zaver}
 
 %=========================================================================

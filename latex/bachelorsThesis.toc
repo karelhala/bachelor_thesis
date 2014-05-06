@@ -1,7 +1,6 @@
 \select@language {czech}
 \contentsline {chapter}{\numberline {1}\'Uvod}{3}{chapter.1}
-\contentsline {section}{\numberline {1.1}Sezn\'amen\IeC {\'\i } s n\'astrojem}{3}{section.1.1}
-\contentsline {chapter}{\numberline {2}Zhondocen\IeC {\'\i } konkurence}{4}{chapter.2}
+\contentsline {chapter}{\numberline {2}Konkurence}{4}{chapter.2}
 \contentsline {section}{\numberline {2.1}Umbrello}{4}{section.2.1}
 \contentsline {subsection}{\numberline {2.1.1}Popis aplikace}{4}{subsection.2.1.1}
 \contentsline {subsection}{\numberline {2.1.2}V\'yhody a nev\'yhody}{4}{subsection.2.1.2}
@@ -35,8 +34,8 @@
 \contentsline {subsection}{\numberline {3.4.2}Objektov\v e orientovan\'e Petriho s\IeC {\'\i }t\v e}{15}{subsection.3.4.2}
 \contentsline {subsection}{\numberline {3.4.3}Grafick\'e zn\'azorn\v en\IeC {\'\i }}{15}{subsection.3.4.3}
 \contentsline {section}{\numberline {3.5}Spojen\IeC {\'\i } diagram\r u}{16}{section.3.5}
-\contentsline {subsection}{\numberline {3.5.1}Pou\v zit\IeC {\'\i } ve v\'ysledn\'e aplikaci}{17}{subsection.3.5.1}
-\contentsline {section}{\numberline {3.6}Shrnut\IeC {\'\i }}{18}{section.3.6}
+\contentsline {subsection}{\numberline {3.5.1}Pou\v zit\IeC {\'\i } ve v\'ysledn\'e aplikaci}{16}{subsection.3.5.1}
+\contentsline {section}{\numberline {3.6}Shrnut\IeC {\'\i }}{17}{section.3.6}
 \contentsline {chapter}{\numberline {4}Samostatn\'a aplikace}{19}{chapter.4}
 \contentsline {section}{\numberline {4.1}Popis aplikace}{19}{section.4.1}
 \contentsline {section}{\numberline {4.2}Ovl\'adac\IeC {\'\i } prvky}{19}{section.4.2}
@@ -56,9 +55,23 @@
 \contentsline {section}{\numberline {6.2}PostScript export}{26}{section.6.2}
 \contentsline {section}{\numberline {6.3}Pou\v zit\'e ikony}{27}{section.6.3}
 \contentsline {chapter}{\numberline {7}Testy a jejich v\'ysledky}{28}{chapter.7}
+\contentsline {section}{\numberline {7.1}Nezku\v sen\'y u\v zivatel}{28}{section.7.1}
+\contentsline {subsection}{\numberline {7.1.1}Pr\r ub\v eh p\v redstaven\IeC {\'\i }}{28}{subsection.7.1.1}
+\contentsline {section}{\numberline {7.2}Zku\v sen\v ej\v s\IeC {\'\i } u\v zivatel}{28}{section.7.2}
+\contentsline {subsection}{\numberline {7.2.1}Pr\r ub\v eh a v\'ysledky u\v zivatelsk\'e pr\'ace}{28}{subsection.7.2.1}
+\contentsline {section}{\numberline {7.3}Program\'ator}{28}{section.7.3}
+\contentsline {subsection}{\numberline {7.3.1}Pr\r ub\v eh testov\'an\IeC {\'\i }}{28}{subsection.7.3.1}
+\contentsline {subsection}{\numberline {7.3.2}N\'azor a vyhodnocen\IeC {\'\i } rogram\'atorovy pr\'ace}{28}{subsection.7.3.2}
+\contentsline {section}{\numberline {7.4}V\'ysledky testov\'an\IeC {\'\i }}{28}{section.7.4}
 \contentsline {chapter}{\numberline {8}Zhodnocen\IeC {\'\i } v\'ysledn\'e aplikace}{29}{chapter.8}
 \contentsline {section}{\numberline {8.1}Budoucnost aplikace}{29}{section.8.1}
-\contentsline {section}{\numberline {8.2}Z\'av\v ere\v cn\'e zhodnocen\IeC {\'\i } aplikace}{29}{section.8.2}
-\contentsline {chapter}{\numberline {9}Z\'av\v er}{30}{chapter.9}
-\contentsline {chapter}{\numberline {A}Obsah CD}{32}{appendix.A}
-\contentsline {chapter}{\numberline {B}Manual}{33}{appendix.B}
+\contentsline {subsection}{\numberline {8.1.1}Navrhovan\'a roz\v s\IeC {\'\i }\v ren\IeC {\'\i }}{29}{subsection.8.1.1}
+\contentsline {subsubsection}{Historie akc\IeC {\'\i }}{29}{section*.10}
+\contentsline {subsubsection}{Grafick\'y design a editace designu}{29}{section*.11}
+\contentsline {subsubsection}{Mo\v znost exportu Petriho s\IeC {\'\i }t\v e}{30}{section*.12}
+\contentsline {subsubsection}{Simulace Petriho s\IeC {\'\i }t\IeC {\'\i }}{30}{section*.13}
+\contentsline {subsubsection}{Vytvo\v ren\IeC {\'\i } zdrojov\'ych k\'od\r u z diagram\r u a Petriho s\IeC {\'\i }t\IeC {\'\i }}{30}{section*.14}
+\contentsline {subsection}{\numberline {8.1.2}Shrnut\IeC {\'\i } roz\v s\IeC {\'\i }\v ren\IeC {\'\i }}{30}{subsection.8.1.2}
+\contentsline {section}{\numberline {8.2}Z\'av\v ere\v cn\'e zhodnocen\IeC {\'\i } aplikace}{30}{section.8.2}
+\contentsline {chapter}{\numberline {9}Z\'av\v er}{31}{chapter.9}
+\contentsline {chapter}{\numberline {A}Obsah CD}{33}{appendix.A}
