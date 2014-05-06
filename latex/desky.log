@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.6-1.40.14 (TeX Live 2014/dev) (format=pdflatex 2014.3.25)  6 MAY 2014 06:31
+This is pdfTeX, Version 3.1415926-2.6-1.40.14 (TeX Live 2014/dev) (format=pdflatex 2014.3.25)  6 MAY 2014 06:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -157,7 +157,7 @@ Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 )
 \mkspc=\skip46
 )
-No file desky.aux.
+(./desky.aux)
 \openout1 = `desky.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 41.
@@ -172,7 +172,7 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 41.
 LaTeX Font Info:    ... okay on input line 41.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 41.
 LaTeX Font Info:    ... okay on input line 41.
-(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+ (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count103
 \scratchdimen=\dimen115
@@ -247,8 +247,8 @@ Overfull \hbox (17.51016pt too wide) in paragraph at lines 44--44
 {/usr/share/texlive/texmf-dist/fonts/map/pdftex/updmap/pdftex.map}]
 (./desky.aux) ) 
 Here is how much of TeX's memory you used:
- 3059 strings out of 494517
- 39807 string characters out of 6168561
+ 3061 strings out of 494517
+ 39827 string characters out of 6168561
  101888 words of memory out of 5000000
  6283 multiletter control sequences out of 15000+600000
  13346 words of font info for 26 fonts, out of 8000000 for 9000
@@ -256,7 +256,7 @@ Here is how much of TeX's memory you used:
  37i,4n,28p,227b,122s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr
 /share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb>
-Output written on desky.pdf (1 page, 7762 bytes).
+Output written on desky.pdf (1 page, 7671 bytes).
 PDF statistics:
  13 PDF objects out of 1000 (max. 8388607)
  8 compressed objects within 1 object stream
