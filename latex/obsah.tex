@@ -385,6 +385,10 @@ pøebírá ve¹kerou funckinalitu svého rodièe a mù¾e tuto funkcionalitu
 poupravit, nebo pøidat vlastní. Tento spoj je znázornìn spojem ukonèeným 
 prázdnou ¹ipkou a je veden od potomka k rodièi. \cite{Pripad_uziti}
 
+Na obrázku \ref{useCaseExam} lze vidìt jednoduchý systém pøidávání, editace a 
+zobrazení dat. Kdy se v systému nachází dvì role a ka¾dá má pøístup k odli¹ným 
+akcím.
+
 \begin{figure}
 \centering
   \includegraphics[trim = 0mm 150mm 0mm 0mm, clip, 
@@ -475,6 +479,10 @@ Slou¾í ke znázornìní, ¾e tøída A implementuje interface B, pøevezme v¹echny
 attributy tøídy B a pøetí¾í operace tøídy B, které implementuje. Hrana je 
 kreslena pøeru¹ovanou ¹ipkou ve smìru od implementovanì tøídy k
 interfacu. \cite{Diagram_trid}
+
+Na obrázku \ref{diagramClassExamp} lze vidìt zpùsob spojení nìkolika tøíd, kdy 
+nìkteré tøídy obsahují tøídní promìnné, v horní èásti a ve spodní poté jejich 
+metody.
 
 \begin{figure}
 \centering
@@ -597,12 +605,16 @@ Výsledná objektovì orientovaná petriho sí» má v¹echny atributy
 objektovì orientovaného jazyka. Umo¾òuje zapouzdøení, 
 polymorfismus a dìdiènost. \cite{ModelovaniOOPN}
 
-\begin{figure}[]
+Na obrázku \ref{petriNetFig} lze vidìt pøíklad návrhu metody dìlení, kdy se 
+rozhodne zda je dìlitel 0 vrátí se null v opaèném pøípadì se do návratového 
+místa ulo¾í podíl \emph{x} a \emph{delitel}.
+
+\begin{figure}[h!]
 \centering
   \includegraphics[trim = 0mm 150mm 0mm 0mm, clip, 
 scale=0.5]{fig/petriNet}
   \caption{Pøíklad popisu metody pro dìlení pomocí Objektovì orientovaných 
-Petriho sítí.}
+Petriho sítí.} \label{petriNetFig}
 \end{figure}
 
 \subsection{Grafické znázornìní}
@@ -650,9 +662,9 @@ analytické tøídy a navázáním nové tøídy, která se nepromítne do pøípadù u¾ití.
 Zpùsob znázornìní jednoduchého pøípadu u¾ití je vidìt na obrázku 
 \ref{useCasePropoj} kde máme dva aktéry a ka¾dý z nich pou¾ívá rùznou akci, 
 tyto akce jsou v¹ak roz¹íøeny pomocí include spoje o pøípad 
-u¾ití \ref{classdiagramPropoj}. \ref{oopnPropoj}.
+u¾ití.
 
-\begin{figure}[h!] \label{architekturaAplikace}
+\begin{figure}[h!]
   \centering
   \begin{tikzpicture}
     \node[anchor=south west,inner sep=0] at (0,0) 
@@ -674,7 +686,8 @@ rozhodnou jaký spoj se pou¾ije v pøípadì include, zda agregaci, nebo
 kompozici. Pøed toto rozhodnutí je také postaven v pøípadì pou¾ití extends 
 spoje. Po vytvoøení tìchto tøíd je mo¾né zadat tøídní promìnné a metody k 
 jednotlivým tøídám. Výsledný diagram provázání mù¾ete vidìt na obrázku 
-\ref{classdiagramPropoj}.
+\ref{classdiagramPropoj}. Kdy aktéøi odpovídají tøídám, které mají pøíznak 
+Actor a pøípady u¾ití odpovídají tøídám s pøíznaky Activity.
 
 \begin{figure}[h!] 
 \centering
@@ -688,13 +701,15 @@ K popisu jednotlivých tøíd a metod dále slou¾í objektovì orientované Petriho
 sítì. Ka¾dá tøída a také ka¾dá metoda má jednu objektovì orientovanou Petriho 
 sí». V pøípadì metody tato sí» mù¾e obsahovat vstupní místa, argumenty této 
 metody, a jedno speciální místo, kde je ulo¾ena návratová hodnota. Pøíklad 
-navrhnutí metody \emph{vypocitejSirku} je vidìt na obrázku \ref{oopnPropoj}
+navrhnutí metody \emph{isUserAllowd} je vidìt na obrázku \ref{oopnPropoj}, kdy 
+se kontroluje zda se u¾ivatelské ID nachází v povolených, pokud tomu tak je 
+vrátí se hodnota true.
 
 \begin{figure}[h!] 
 \centering
-  \includegraphics[trim = 0mm 200mm 0mm 0mm, clip, 
+  \includegraphics[trim = 0mm 130mm 0mm 0mm, clip, 
 scale=0.5]{fig/petriNet_makeActionMethodaPropoj}
-  \caption{Metoda popsána Objektovì orientovanou Petriho sítí.} 
+  \caption{Metoda popsána objektovì orientovanou Petriho sítí.} 
 \label{oopnPropoj}
 \end{figure}
 
@@ -754,23 +769,51 @@ dvou objektù hranou je zapotøebí vybrat typ hrany z levého menu a poté kliknout
 na první objekt a poté na druhý. Pokud je potøeba spoj zahnout pro 
 zpøehlednìní grafu, je toto mo¾né vyvolat kliknutím na pravé tlaèítko my¹i 
 bìhem ta¾ení spoje.
+\section{Architektura aplikace}
+Architekturu výsledného nástroje si lze prohlédnout na obrázku 
+\ref{architekturaAplikace}, kde je znázornìno èásteènì jak jsou jednotlivé 
+tøídy navzájem provázané.
 
-Architekturu aplikace si lze prohlédnout na obrazku \ref{architekturaAplikace}, 
-kde jsou hrubì znázornìny akce pøi vytvoøení jednotlivých obejktù na pracovním 
-plátnì.
-
-
-\begin{figure}[h!] \label{architekturaAplikace}
+\begin{figure}[h!] 
   \centering
-  \begin{tikzpicture}
-    \node[anchor=south west,inner sep=0] at (0,0) 
-  { \includegraphics[trim = 0mm 200mm 0mm 0mm, clip, 
-  scale=0.5]{fig/petriNet_makeActionMethodaPropoj}
-    };
-    \draw[red,ultra thick,rounded corners] (7.5,5.3) rectangle (9.4,6.2);
-  \end{tikzpicture}
-  \caption{Metoda popsána Objektovì orientovanou Petriho sítí.}
+    \includegraphics{fig/navrhAplikace}
+  \caption{Architektura aplikace.} 
+\label{architekturaAplikace}
 \end{figure}
+
+Tøída \emph{GUI} je základní tøída, obsahuje main a také vytváøí objekty z 
+jednotlivch tøíd. \emph{PlaceManager} V této tøídì jsou ulo¾eny ¹echny objekty 
+a jejich v¹echny spoje. Tato tøída je obsahem tøídy 
+\emph{DiagramPlacesManager}, která se stará o jednotlivé èásti a diagramy, 
+Petriho sítì jsou ulo¾eny pomocí ArrayListu, proto¾e je potøeba mít více sítí 
+pro jeden projekt. 
+
+\emph{CoordinateModel} je tøída starající se o ka¾dý objekt. 
+Obsahuje X a Y souøadnice, rozmìry tohoto objektu a základní popis objektu. Od 
+této tøídy dìdí dále tøídy \emph{UCActor, UCUseCase, CDClass, PNPlace a 
+PNTransition}, tyto tøídy dále specifikují jednotlivé objekty na editaèním 
+plátnì. Tyto tøídy se také starají o vykreslování na pracovní plátno. 
+
+Od tøídy CoordinateModel dále dìdí \emph{Linemodel} ta se stará o ulo¾ení 
+jednotlivých spojù mezi objekty. Poèítá koncové body pomocí 
+\emph{PointsCalculator} a její nejdùle¾itìj¹í rolí je, ¾e je rodièovskou tøídou 
+pro v¹echny spoje tak¾e od ní dìdí tøídy \emph{UCJoinEdge, CDJoinEdge, 
+PNJoinEdge}. Tyto tøídy se starají o styl vykreslovaných spojù a nastavují 
+rùzná pravidla pro spoje.
+
+Základní tøídou pro v¹echny editory je \emph{MainController} ukládá v sobì 
+v¹echny objekty z daného projektu a je rodièem tøíd \emph{UseCaseController, 
+ClassDiagramController a PetriNetController}, které se starají o vykonání akcí, 
+jako napøíklad po pøidání pøípadu u¾ití, vytvoøení adekvátní tøídy.
+
+Ka¾dá tøída má nìkolik metod, zde uvedené jsou pouze na ukázku. pøevá¾nì tøídy, 
+které mají v názvu slovo \uv{Model} jsou znaènì rozsáhlé díky tomu, ¾e je v 
+nich ulo¾eno nastavení potomka. Dále jednotlivé tøídní promìnné mají v ka¾dé 
+tøídì metody pro jejich získání a popøípadì jejich nastavení (takzvané getery a 
+setery).
+
+Podrobnìj¹í popis tøíd a metod je v dokumentaci tohoto nástroje 
+\footnote{Dokumentace je souèástí pøilo¾eného CD.}.
 
 \section{Jednotlivé editory}\label{jednotliveEditory}
 Jednotlivé editory jak ji¾ bylo øeèeno v pøechozích kapitolách jsou 
