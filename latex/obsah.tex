@@ -652,11 +652,18 @@ Zpùsob znázornìní jednoduchého pøípadu u¾ití je vidìt na obrázku
 tyto akce jsou v¹ak roz¹íøeny pomocí include spoje o pøípad 
 u¾ití \ref{classdiagramPropoj}. \ref{oopnPropoj}.
 
-\begin{figure}[h!] \label{useCasePropoj}
-\centering
-  \includegraphics[trim = 0mm 200mm 0mm 0mm, clip, 
+\begin{figure}[h!] \label{architekturaAplikace}
+  \centering
+  \begin{tikzpicture}
+    \node[anchor=south west,inner sep=0] at (0,0) 
+  { \includegraphics[trim = 0mm 150mm 0mm 0mm, clip, 
 scale=0.5]{fig/UseCasePropoj}
-  \caption{Nástin problému pøípadù u¾ití.}
+    };
+    \draw (2,0) -- (2,7);
+    \node at (0.5,1) {Actors};
+    \node at (5,1) {Activities};
+  \end{tikzpicture}
+  \caption{Nástin problému pøípadù u¾ití.} \label{useCasePropoj}
 \end{figure}
 
 Tento pøípadu¾ití se poté promítne do diagramu tøíd s tím, ¾e jednotlivý aktéøi 
@@ -669,11 +676,12 @@ spoje. Po vytvoøení tìchto tøíd je mo¾né zadat tøídní promìnné a metody k
 jednotlivým tøídám. Výsledný diagram provázání mù¾ete vidìt na obrázku 
 \ref{classdiagramPropoj}.
 
-\begin{figure}[h!] \label{classdiagramPropoj}
+\begin{figure}[h!] 
 \centering
-  \includegraphics[trim = 0mm 150mm 0mm 0mm, clip, 
+  \includegraphics[trim = 0mm 130mm 0mm 0mm, clip, 
 scale=0.5]{fig/ClassDiagramPropoj}
-  \caption{Nástin problému pøevodu pøípadu u¾ití do diagramu tøíd.}
+  \caption{Nástin problému pøevodu pøípadu u¾ití do diagramu tøíd.} 
+\label{classdiagramPropoj}
 \end{figure}
 
 K popisu jednotlivých tøíd a metod dále slou¾í objektovì orientované Petriho 
@@ -682,11 +690,12 @@ sí». V pøípadì metody tato sí» mù¾e obsahovat vstupní místa, argumenty této
 metody, a jedno speciální místo, kde je ulo¾ena návratová hodnota. Pøíklad 
 navrhnutí metody \emph{vypocitejSirku} je vidìt na obrázku \ref{oopnPropoj}
 
-\begin{figure}[h!] \label{oopnPropoj}
+\begin{figure}[h!] 
 \centering
   \includegraphics[trim = 0mm 200mm 0mm 0mm, clip, 
 scale=0.5]{fig/petriNet_makeActionMethodaPropoj}
-  \caption{Metoda popsána Objektovì orientovanou Petriho sítí.}
+  \caption{Metoda popsána Objektovì orientovanou Petriho sítí.} 
+\label{oopnPropoj}
 \end{figure}
 
 Objektovì orientované Petriho sítì, mají nìkolik speciálních míst. V pøípadì 
@@ -750,11 +759,17 @@ Architekturu aplikace si lze prohlédnout na obrazku \ref{architekturaAplikace},
 kde jsou hrubì znázornìny akce pøi vytvoøení jednotlivých obejktù na pracovním 
 plátnì.
 
+
 \begin{figure}[h!] \label{architekturaAplikace}
-\centering
-  \includegraphics[trim = 0mm 200mm 0mm 0mm, clip, 
-scale=0.5]{fig/petriNet_makeActionMethodaPropoj}
-  \caption{Architektura aplikace.}
+  \centering
+  \begin{tikzpicture}
+    \node[anchor=south west,inner sep=0] at (0,0) 
+  { \includegraphics[trim = 0mm 200mm 0mm 0mm, clip, 
+  scale=0.5]{fig/petriNet_makeActionMethodaPropoj}
+    };
+    \draw[red,ultra thick,rounded corners] (7.5,5.3) rectangle (9.4,6.2);
+  \end{tikzpicture}
+  \caption{Metoda popsána Objektovì orientovanou Petriho sítí.}
 \end{figure}
 
 \section{Jednotlivé editory}\label{jednotliveEditory}
@@ -1202,7 +1217,7 @@ napøíklad na interpretaci Petriho sítí by bylo velice u¾iteèné, kdyby nástroj
 mohl Objektovì orientované Petriho sítì exportovat do specifického formátu, 
 jako napøíklad PNTalk \footnote{Bli¾¹í informace o tomto jazyku a o projektu 
 PNTalk 
-lze nalést na stránkách \url{http://perchta.fit.vutbr.cz:8000/projekty/12}.}.
+lze nalést na stránkách \url{http://perchta.fit.vutbr.cz/pntalk2k}.}.
 
 \subsubsection{Simulace Petriho sítí}
 Pokud by se vyu¾ilo pøede¹lého roz¹íøení \ref{PNtalk} by se propojilo s dal¹ím 
