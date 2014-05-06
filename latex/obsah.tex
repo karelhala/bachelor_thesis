@@ -777,7 +777,7 @@ objekty nemá tento obraz je zvýraznìn odli¹nou barvou.
 Tento editor je prvním editorem a slou¾í pro popis chodu aplikace, v tomto 
 editoru se nachází pouze mírné úpravy.
 
-V pøípadì vybrání \textbf{Aktéra} je znemo¾òeno u¾ivateli spojit stejné 
+V pøípadì vybrání \textbf{Aktéra} je zakázáno u¾ivateli spojit stejné 
 objekty jinak jak Dìdìním. Dále mù¾e u¾ivatel spojit \textbf{Aktéra} a 
 \textbf{Pøípad u¾ití} pouze pomocí asociace. Toto lze provést pouze ve smìru od 
 Aktéra, tudí¾ pokud toto u¾ivatel provede naopak je hrana otoèena automaticky.
@@ -915,9 +915,9 @@ oproti konkurenci po grafické stránce nìkterých ovládacích prvkù v kapitole
 \ref{grafickePrvky}.
 
 \section{Export diagramù} \label{exportDiagramu}
-Jako jeden z po¾adavkù bylo po¾adováno exportu do nìjakého formátu. Tohoto bylo 
-vyu¾ito v pøípadì ukládání stavu aplikace, kdy otevøený projekt je mo¾né ulo¾it 
-do formátu \textbf{XML}. Tento formát slou¾í pro ukládání a naèítání 
+Jako jeden z po¾adavkù bylo po¾adováno exportu do formátu \emph{XML}. Tohoto 
+bylo vyu¾ito v pøípadì ukládání stavu aplikace, kdy otevøený projekt je mo¾né 
+ulo¾it do formátu \textbf{XML}. Tento formát slou¾í pro ukládání a naèítání 
 projektù. Formát XML byl zvolen èásteènì kvùli jeho mo¾nému upravení, kdy je 
 mo¾né editovat obsah objektù bez nutnosti zaplého nástroje. Toto se ale 
 doporuèuje pouze zku¹eným u¾ivatelùm, proto¾e je mo¾né ¾e se díky tomuto 
@@ -926,20 +926,11 @@ opravit. Pro export do XML byla vyu¾ita speciální knihovna blí¾e popsána v
 kapitole \ref{xmlExport}.
 
 Velice u¾iteèným roz¹íøením je dále mo¾nost vykreslit námi editované diagramy a 
-sítì do formátu \textbf{PostScript} (formát EPS). Tímto lze získat obrázky 
-vhodné napøíklad pro vìdecké práce a pro vlo¾ení do dokumentù. V tomto textu 
-byly pou¾ity pøevá¾nì obrázky pocházející z výsledné aplikace. Editovaný projekt 
-se ulo¾í do samostatné slo¾ky pod jeho jménem a v¹echny editory jsou ulo¾eny v 
-této slo¾ce. Tato funkcionalita byla pøidána pomocí knihovny, kterou blí¾e 
-popí¹eme v kapitole \ref{postScriptExport}.
-
-Pøi implementaci bylo uva¾ováno o dal¹ích mo¾nostech exportu, jako napøíklad 
-pøevedení objektovì orientovaných Petriho sítí do \textbf{PN talku}. Vzhledem k 
-jednoduchosti ukládaného souboru je mo¾né toto roz¹íøení velice jednodu¹e 
-pøidat. Po pøidání tohoto roz¹íøení by aplikace získala znaènì na funkènosti a 
-pou¾itelnosti. Proto byl brán ohled na podobná roz¹íøení ji¾ bìhem implementace 
-základní aplikace. O dal¹ích navrhovaných roz¹íøeních je mo¾né se dozvìdìt v 
-kapitole \ref{budoucnost}, kde popí¹eme mo¾ná roz¹íøení.
+sítì do formátu \textbf{PostScript} (formát EPS). V tomto textubyly pou¾ity 
+pøevá¾nì obrázky pocházející z výsledné aplikace. Editovaný projekt se ulo¾í do 
+samostatné slo¾ky pod jeho jménem a v¹echny editory jsou ulo¾eny v této slo¾ce. 
+Tato funkcionalita byla pøidána pomocí knihovny, kterou blí¾e popí¹eme v 
+kapitole \ref{postScriptExport}.
 
 \section{Grafické prvky}\label{grafickePrvky}
 Pro práci s grafickými prvky na editaèním plátnì bylo pou¾ito rùzných technik.
@@ -970,10 +961,9 @@ vzdálenost se poté provìøí zda le¾í v daném objektu. Porovná se ¹íøka a vý¹ka
 oproti tìmto vzdálenostem. Pokud bod kurzoru le¾í v tìchto hranicích, vykoná se 
 pøíslu¹ná operace, napøíklad zvýraznìní objektu.
 
-Tento zpùsob je velice nároèný na pamìt, pøevá¾nì kvùli neustálému volání pøi 
-jakémkoliv pohybu my¹i. Pro celkovou aplikaci, ale toto omezení nehraje ¾ádnou 
-roli. Pokud by bylo potøeba zmìnit zji¹tìní takovéhoto objektu pomocí 
-sofistikovanìj¹í funce, zmìna na takovouto funkci není nikterak nároèná.
+Tento zpùsob je nároèný na pamìt, pøevá¾nì kvùli neustálému volání pøi 
+jakémkoliv pohybu my¹i. Pro tento nástroj v¹ak toto omezení nemá vliv na výkon, 
+nebo celkový chod pøevá¾nì díky jednoduchosti a rychlosti.
 
 \subsection{Výpoèet vzdálenosti hrany od bodu}
 Na druhou stranu zji¹tìní hrany pod kurzorem ji¾ je ponìkud nároènìj¹í. 
@@ -1050,7 +1040,7 @@ Pro rovnice \eqref{urceniPolohy} a  \eqref{vypocetVzdalenosti} platí:
 Vzorce pro výpoèet polohy bodu vùèi úseèce a pro finální výpoèet vzdálenosti 
 tohoto bodu od úseèky byly pøevzaty z \cite{graphicGems2}.
 
-\chapter{Pou¾ité knihovny a ikony} \label{pouziteKnihovny}
+\section{Pou¾ité knihovny a ikony} \label{pouziteKnihovny}
 Pro zjednodu¹ení práce a mo¾nosti zamìøení se na dùle¾itìj¹í èásti nástroje 
 bylo pou¾ito nìkolik knihoven pro urychlení vývoje. Tyto knihovny jsou volnì ke 
 sta¾ení s velice pøehlednou dokumentací. Jejich pou¾ití je velice 
@@ -1059,7 +1049,7 @@ dùle¾itých koponent, nicménì tyto knihovny nejsou nutností pro výslednou
 aplikaci. Pokud by se ov¹em odtranily, bylo by nutné tyto knihovny nahradit 
 vlastní implemtnací tìchto funkcí.
 
-\section{XML export} \label{xmlExport}
+\subsection{XML export} \label{xmlExport}
 V pøípadì expotu do XML bylo zvoleno ukládání ve¹kerých grafù do speciální 
 struktury, kterou lze velice jednodu¹e pøedat knihovnì s názvem 
 \textbf{XStream} \footnote{Domovskou adresu pro tuto adresu lze nalést 
@@ -1078,7 +1068,7 @@ a práci s tìmito soubory v jiné aplikaci.
 Pou¾itím této knihovny bylo docíleno bezchybného, rychlého a 
 jednoduchého vytvoøení souboru pro ukládání editovaného projektu.
 
-\section{PostScript export}\label{postScriptExport}
+\subsection{PostScript export}\label{postScriptExport}
 Export do souboru PostScript nebyl nutností pro tuto aplikaci, nicménì bylo 
 zvoleno, ¾e export do tohoto formátu bude velice u¾iteèný a nástroj tím získá 
 velmi silnou funcionalitu.
@@ -1099,7 +1089,7 @@ V celém tomto dokumentu byly pou¾ity obrázky, které byly exportovány pomocí
 této 
 knihovny, umo¾òující velice rychlé a u¾iteèné roz¹íøení tohoto nástroje.
 
-\section{Pou¾ité ikony}
+\subsection{Pou¾ité ikony}
 V aplikaci bylo pou¾ito nìkolika ikon pro zpøehlednìní a k odlehèení 
 monotónnosti designu. Pøidáním tìchto ikon bylo umo¾nìno i ménì zruèným 
 u¾ivatelùm jednodu¹e pou¾ívat a osvojit si práci s tímto nástrojem.
@@ -1109,7 +1099,7 @@ je \url{http://openiconlibrary.sourceforge.net/}.}, tyto ikony jsou volnì ke
 sta¾ení a pokud tento nástroj nebude vyu¾íván pro úèely zisku nemìl by být ¾ádný 
 problém s licencemi.
 
-\chapter{Testy a jejich výsledky} \label{testyAvysledky}
+\chapter{U¾ivatelské testování} \label{testyAvysledky}
 Zámìrem této kapitoly je pøednést testování a výsledky pou¾ívání této aplikace. 
 Budou pøedstaveny návrhy od mo¾ných zákazníkù a mo¾ných budoucích u¾ivatelù 
 tohoto nástroje. 
@@ -1176,9 +1166,9 @@ napøíklad okam¾itého zru¹ení pøidávaných objektù a spojování tìchto objektù.
 
 \chapter{Závìr} \label{zaver}
 V této kapitole se budeme postupnì vìnovat navrhovaným mo¾ným roz¹íøením, 
-kterýmo by bylo vhodné tento nástroj vylep¹it a roz¹íøit. A poté shrneme stav 
-této aplikace, její pøínos a aktuální stav. Také popí¹eme nìkteré známé chyby, 
-nebo nedostatky.
+kterýmo by bylo vhodné tento nástroj vylep¹it a roz¹íøit. A poté shrneme 
+vytvoøený nástroj, jeho pøínos a aktuální stav. Také popí¹eme nìkteré známé 
+chyby, nebo nedostatky.
 
 \section{Budoucnost aplikace} \label{budoucnost}
 Tato kapitola pøedstavuje navrhované roz¹íøení pro tento nástroj. Nástroj je 
@@ -1186,7 +1176,6 @@ bez tìchto navrhovaných roz¹íøení absolutnì funkèní, nicménì pøidáním tìchto
 funkcí a mo¾ností by z tohoto nástroje udìlali pravdìpodobnì velice robustní 
 nástroj.
 
-\subsection{Navrhovaná roz¹íøení}
 Roz¹íøení zde navrhnutá není nutné dodr¾et pøi dal¹í implementaci a pøidání 
 dal¹ích funkcí a vylep¹ení do tohoto nástroje. Nicménì jsou logicky vybrány a z 
 pohledu momentálního stavu aplikace by znamenaly velmi mnoho. Do aplikace je 
@@ -1234,7 +1223,7 @@ pro komerèní i nekomerèní nástroje. Oproti konkurenci má tento nástroj ji¾
 velikou výhodu v podobì Objektovì orientovaných Petriho sítí a jednoduchých 
 editorù.
 
-\subsection{Shrnutí roz¹íøení}
+\subsubsection{Shrnutí roz¹íøení}
 Bylo navrhnuto a objeveno mnoho mo¾ností, jak tento nástroj roz¹íøit a udìlat 
 tak z nìj velice silný nástroj na poli UML editorù. V pøípadì postupné 
 implementace navrhovaných roz¹íøení by po dosa¾ení \textbf{Vytvoøení zdrojových 
@@ -1268,12 +1257,11 @@ zámìrem byla tato aplikace od zaèátku vyvýjena a tento úkol také splòuje.
 
 Aplikace má nìkteré nedostatky v podobì nemo¾nosti vrátit zpìt provedenou akci, 
 nebo neidentifikaci zda byl program ulo¾en. Tyto nedostatky ov¹em nejsou 
-kritické pro úspì¹ný chod a pou¾ívání aplikace.
+limitující a neomezují u¾ivatele v pou¾ívání aplikace.
 
 Velice pøínosná je mo¾nost dal¹ího roz¹íøení tohoto nástroje o nìkolik dal¹ích 
 funkcí. V pøípadì vytvoøení navrhovaných roz¹íøení v kapitole
 \ref{budoucnost} je mo¾né z tohoto nástroje udìlat silného soupeøe na 
 poli editorù. Nad kterými aplikace ji¾ momentálnì vítìzí díky mo¾nosti popsání 
 metod a tøíd pomocí objektovì orientovanou Petriho sítí.
-
 %=========================================================================
