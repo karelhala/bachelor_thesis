@@ -1,77 +1,78 @@
 \select@language {czech}
 \contentsline {chapter}{\numberline {1}\'Uvod}{3}{chapter.1}
-\contentsline {chapter}{\numberline {2}Konkuren\v cn\IeC {\'\i } n\'astroje}{4}{chapter.2}
+\contentsline {chapter}{\numberline {2}N\'astroje zam\v e\v ruj\IeC {\'\i }c\IeC {\'\i } se na podobn\'e t\'ema}{4}{chapter.2}
 \contentsline {section}{\numberline {2.1}Umbrello}{4}{section.2.1}
 \contentsline {subsection}{\numberline {2.1.1}Motivace}{4}{subsection.2.1.1}
 \contentsline {subsection}{\numberline {2.1.2}Popis aplikace}{4}{subsection.2.1.2}
 \contentsline {subsection}{\numberline {2.1.3}V\'yhody a nev\'yhody}{5}{subsection.2.1.3}
-\contentsline {subsection}{\numberline {2.1.4}Zhodnocen\IeC {\'\i } a p\v revzat\'e vlastnosti}{5}{subsection.2.1.4}
+\contentsline {subsection}{\numberline {2.1.4}Zhodnocen\IeC {\'\i } aplikace Umbrello}{5}{subsection.2.1.4}
 \contentsline {section}{\numberline {2.2}Enterprise Architect}{6}{section.2.2}
-\contentsline {subsection}{\numberline {2.2.1}Popis aplikace}{6}{subsection.2.2.1}
-\contentsline {subsection}{\numberline {2.2.2}V\'yhody a nev\'yhody}{6}{subsection.2.2.2}
-\contentsline {subsection}{\numberline {2.2.3}Zhodnocen\IeC {\'\i } a p\v revzat\'e vlastnosti}{7}{subsection.2.2.3}
+\contentsline {subsection}{\numberline {2.2.1}Motivace}{6}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}Popis aplikace}{6}{subsection.2.2.2}
+\contentsline {subsection}{\numberline {2.2.3}V\'yhody a nev\'yhody}{6}{subsection.2.2.3}
+\contentsline {subsection}{\numberline {2.2.4}Zhodnocen\IeC {\'\i } a p\v revzat\'e vlastnosti}{7}{subsection.2.2.4}
 \contentsline {section}{\numberline {2.3}Zhodnocen\IeC {\'\i } konkurentn\IeC {\'\i }ch n\'astroj\r u}{7}{section.2.3}
-\contentsline {chapter}{\numberline {3}Grafy pro popis \v c\'ast\IeC {\'\i }}{9}{chapter.3}
+\contentsline {subsection}{\numberline {2.3.1}Vybran\'e funkce a mo\v znosti z Umbrello}{7}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}Vybran\'e vlastnosti z Enterprise Architect}{7}{subsection.2.3.2}
+\contentsline {chapter}{\numberline {3}Robzor jednotliv\'ych diagram\r u}{9}{chapter.3}
 \contentsline {section}{\numberline {3.1}Objektov\v e orientovan\'e programov\'an\IeC {\'\i }}{9}{section.3.1}
-\contentsline {subsection}{\numberline {3.1.1}\v c\'asti obj\v ektov\v e orientovan\'eho programov\'an\IeC {\'\i }}{9}{subsection.3.1.1}
-\contentsline {subsection}{\numberline {3.1.2}Objekt}{9}{subsection.3.1.2}
-\contentsline {subsection}{\numberline {3.1.3}Instanciace, t\v r\IeC {\'\i }dy}{10}{subsection.3.1.3}
-\contentsline {subsection}{\numberline {3.1.4}D\v edi\v cnost}{10}{subsection.3.1.4}
+\contentsline {subsection}{\numberline {3.1.1}Objekt}{9}{subsection.3.1.1}
+\contentsline {subsection}{\numberline {3.1.2}Instanciace, t\v r\IeC {\'\i }dy}{10}{subsection.3.1.2}
+\contentsline {subsection}{\numberline {3.1.3}D\v edi\v cnost}{10}{subsection.3.1.3}
 \contentsline {section}{\numberline {3.2}Diagram p\v r\IeC {\'\i }pad\r u u\v zit\IeC {\'\i }}{10}{section.3.2}
 \contentsline {subsection}{\numberline {3.2.1}Rozbor Diagramu p\v ripad\r u u\v zit\IeC {\'\i }}{10}{subsection.3.2.1}
-\contentsline {subsection}{\numberline {3.2.2}Pou\v zit\'e vlastnosti}{11}{subsection.3.2.2}
 \contentsline {section}{\numberline {3.3}Diagram t\v r\IeC {\'\i }d}{11}{section.3.3}
 \contentsline {subsection}{\numberline {3.3.1}Prvky Diagramu t\v r\IeC {\'\i }d}{11}{subsection.3.3.1}
 \contentsline {subsubsection}{Generaliza\v cn\IeC {\'\i } hrana}{12}{section*.2}
 \contentsline {subsubsection}{Asocia\v cn\IeC {\'\i } hrana}{12}{section*.3}
 \contentsline {subsubsection}{Agrega\v cn\IeC {\'\i } hrana}{12}{section*.4}
-\contentsline {subsubsection}{Kompozi\v cn\IeC {\'\i } hrana}{13}{section*.5}
-\contentsline {subsubsection}{Implementa\v cn\IeC {\'\i } hrana}{13}{section*.6}
-\contentsline {subsection}{\numberline {3.3.2}Pou\v zit\'e a upraven\'e \v c\'asti z Diagramu t\v r\IeC {\'\i }d}{13}{subsection.3.3.2}
-\contentsline {section}{\numberline {3.4}Objektov\v e orientovan\'e Petriho s\IeC {\'\i }t\v e}{14}{section.3.4}
-\contentsline {subsection}{\numberline {3.4.1}Petriho s\IeC {\'\i }t\v e}{14}{subsection.3.4.1}
-\contentsline {subsubsection}{Roz\v s\IeC {\'\i }\v ren\IeC {\'\i } Petriho s\IeC {\'\i }t\IeC {\'\i }}{15}{section*.7}
-\contentsline {subsection}{\numberline {3.4.2}Objektov\v e orientovan\'e Petriho s\IeC {\'\i }t\v e}{15}{subsection.3.4.2}
+\contentsline {subsubsection}{Kompozi\v cn\IeC {\'\i } hrana}{12}{section*.5}
+\contentsline {subsubsection}{Implementa\v cn\IeC {\'\i } hrana}{12}{section*.6}
+\contentsline {section}{\numberline {3.4}Zp\r usob popisu t\v r\IeC {\'\i }d a reakce na zaslan\'e zpr\'avy}{13}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.1}Petriho s\IeC {\'\i }t\v e}{13}{subsection.3.4.1}
+\contentsline {subsubsection}{Roz\v s\IeC {\'\i }\v ren\IeC {\'\i } Petriho s\IeC {\'\i }t\IeC {\'\i }}{14}{section*.7}
+\contentsline {subsection}{\numberline {3.4.2}Objektov\v e orientovan\'e Petriho s\IeC {\'\i }t\v e}{14}{subsection.3.4.2}
 \contentsline {subsection}{\numberline {3.4.3}Grafick\'e zn\'azorn\v en\IeC {\'\i }}{15}{subsection.3.4.3}
-\contentsline {section}{\numberline {3.5}Spojen\IeC {\'\i } diagram\r u}{16}{section.3.5}
+\contentsline {section}{\numberline {3.5}Koncept aplikace}{15}{section.3.5}
 \contentsline {subsection}{\numberline {3.5.1}Pou\v zit\IeC {\'\i } ve v\'ysledn\'e aplikaci}{16}{subsection.3.5.1}
 \contentsline {section}{\numberline {3.6}Shrnut\IeC {\'\i }}{17}{section.3.6}
-\contentsline {chapter}{\numberline {4}Samostatn\'a aplikace}{19}{chapter.4}
-\contentsline {section}{\numberline {4.1}Popis aplikace}{19}{section.4.1}
-\contentsline {section}{\numberline {4.2}Ovl\'adac\IeC {\'\i } prvky}{19}{section.4.2}
-\contentsline {section}{\numberline {4.3}Jednotliv\'e editory}{20}{section.4.3}
-\contentsline {subsection}{\numberline {4.3.1}Editor p\v r\IeC {\'\i }pad\r u u\v zit\IeC {\'\i }}{21}{subsection.4.3.1}
-\contentsline {subsection}{\numberline {4.3.2}Editor Diagramu t\v r\IeC {\'\i }d}{21}{subsection.4.3.2}
-\contentsline {subsection}{\numberline {4.3.3}Editor objektov\v e orientovan\'ych Petriho s\IeC {\'\i }t\IeC {\'\i }}{22}{subsection.4.3.3}
-\contentsline {subsection}{\numberline {4.3.4}Prov\'az\'an\IeC {\'\i } jednotliv\'ych \v c\'ast\IeC {\'\i }}{23}{subsection.4.3.4}
-\contentsline {chapter}{\numberline {5}Roz\v s\IeC {\'\i }\v ren\'e mo\v znosti n\'astroje}{24}{chapter.5}
-\contentsline {section}{\numberline {5.1}Export diagram\r u}{24}{section.5.1}
-\contentsline {section}{\numberline {5.2}Grafick\'e prvky}{24}{section.5.2}
-\contentsline {subsection}{\numberline {5.2.1}Detekce objektu pod kurzorem}{25}{subsection.5.2.1}
-\contentsline {subsection}{\numberline {5.2.2}V\'ypo\v cet vzd\'alenosti hrany od bodu}{25}{subsection.5.2.2}
-\contentsline {subsubsection}{V\'ypo\v cet kraje objektu k bodu}{25}{section*.8}
-\contentsline {subsubsection}{V\'ypo\v cet bodu kurzoru a \'use\v cky}{26}{section*.9}
-\contentsline {chapter}{\numberline {6}Pou\v zit\'e knihovny a ikony}{27}{chapter.6}
-\contentsline {section}{\numberline {6.1}XML export}{27}{section.6.1}
-\contentsline {section}{\numberline {6.2}PostScript export}{27}{section.6.2}
-\contentsline {section}{\numberline {6.3}Pou\v zit\'e ikony}{28}{section.6.3}
-\contentsline {chapter}{\numberline {7}Testy a jejich v\'ysledky}{29}{chapter.7}
-\contentsline {section}{\numberline {7.1}Nezku\v sen\'y u\v zivatel}{29}{section.7.1}
-\contentsline {subsection}{\numberline {7.1.1}Pr\r ub\v eh p\v redstaven\IeC {\'\i }}{29}{subsection.7.1.1}
-\contentsline {section}{\numberline {7.2}Zku\v sen\v ej\v s\IeC {\'\i } u\v zivatel}{29}{section.7.2}
-\contentsline {subsection}{\numberline {7.2.1}Pr\r ub\v eh a v\'ysledky u\v zivatelsk\'e pr\'ace}{29}{subsection.7.2.1}
-\contentsline {section}{\numberline {7.3}Program\'ator}{30}{section.7.3}
-\contentsline {subsection}{\numberline {7.3.1}Pr\r ub\v eh testov\'an\IeC {\'\i }}{30}{subsection.7.3.1}
-\contentsline {subsection}{\numberline {7.3.2}Vyhodnocen\IeC {\'\i } rogram\'atorovy pr\'ace}{30}{subsection.7.3.2}
-\contentsline {section}{\numberline {7.4}V\'ysledky testov\'an\IeC {\'\i }}{30}{section.7.4}
-\contentsline {chapter}{\numberline {8}Z\'av\v er}{31}{chapter.8}
-\contentsline {section}{\numberline {8.1}Budoucnost aplikace}{31}{section.8.1}
-\contentsline {subsection}{\numberline {8.1.1}Navrhovan\'a roz\v s\IeC {\'\i }\v ren\IeC {\'\i }}{31}{subsection.8.1.1}
-\contentsline {subsubsection}{Historie akc\IeC {\'\i }}{31}{section*.10}
-\contentsline {subsubsection}{Grafick\'y design a editace designu}{31}{section*.11}
-\contentsline {subsubsection}{Mo\v znost exportu Petriho s\IeC {\'\i }t\v e}{32}{section*.12}
-\contentsline {subsubsection}{Simulace Petriho s\IeC {\'\i }t\IeC {\'\i }}{32}{section*.13}
-\contentsline {subsubsection}{Vytvo\v ren\IeC {\'\i } zdrojov\'ych k\'od\r u z diagram\r u a Petriho s\IeC {\'\i }t\IeC {\'\i }}{32}{section*.14}
-\contentsline {subsection}{\numberline {8.1.2}Shrnut\IeC {\'\i } roz\v s\IeC {\'\i }\v ren\IeC {\'\i }}{32}{subsection.8.1.2}
-\contentsline {section}{\numberline {8.2}Z\'av\v ere\v cn\'e zhodnocen\IeC {\'\i } aplikace}{32}{section.8.2}
-\contentsline {chapter}{\numberline {A}Obsah CD}{34}{appendix.A}
+\contentsline {chapter}{\numberline {4}N\'avrh aplikace}{18}{chapter.4}
+\contentsline {section}{\numberline {4.1}Popis aplikace}{18}{section.4.1}
+\contentsline {section}{\numberline {4.2}Jednotliv\'e editory}{18}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Editor p\v r\IeC {\'\i }pad\r u u\v zit\IeC {\'\i }}{19}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Editor Diagramu t\v r\IeC {\'\i }d}{19}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {4.2.3}Editor objektov\v e orientovan\'ych Petriho s\IeC {\'\i }t\IeC {\'\i }}{20}{subsection.4.2.3}
+\contentsline {subsection}{\numberline {4.2.4}Prov\'az\'an\IeC {\'\i } jednotliv\'ych \v c\'ast\IeC {\'\i }}{21}{subsection.4.2.4}
+\contentsline {chapter}{\numberline {5}Roz\v s\IeC {\'\i }\v ren\'e mo\v znosti n\'astroje}{22}{chapter.5}
+\contentsline {section}{\numberline {5.1}Export diagram\r u}{22}{section.5.1}
+\contentsline {section}{\numberline {5.2}Grafick\'e prvky}{22}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}Detekce objektu pod kurzorem}{23}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.2}V\'ypo\v cet vzd\'alenosti hrany od bodu}{23}{subsection.5.2.2}
+\contentsline {subsubsection}{V\'ypo\v cet kraje objektu k bodu}{23}{section*.8}
+\contentsline {subsubsection}{V\'ypo\v cet bodu kurzoru a \'use\v cky}{24}{section*.9}
+\contentsline {chapter}{\numberline {6}Pou\v zit\'e knihovny a ikony}{25}{chapter.6}
+\contentsline {section}{\numberline {6.1}XML export}{25}{section.6.1}
+\contentsline {section}{\numberline {6.2}PostScript export}{25}{section.6.2}
+\contentsline {section}{\numberline {6.3}Pou\v zit\'e ikony}{26}{section.6.3}
+\contentsline {chapter}{\numberline {7}Testy a jejich v\'ysledky}{27}{chapter.7}
+\contentsline {section}{\numberline {7.1}Nezku\v sen\'y u\v zivatel}{27}{section.7.1}
+\contentsline {subsection}{\numberline {7.1.1}Pr\r ub\v eh p\v redstaven\IeC {\'\i }}{27}{subsection.7.1.1}
+\contentsline {section}{\numberline {7.2}Zku\v sen\v ej\v s\IeC {\'\i } u\v zivatel}{27}{section.7.2}
+\contentsline {subsection}{\numberline {7.2.1}Pr\r ub\v eh a v\'ysledky u\v zivatelsk\'e pr\'ace}{27}{subsection.7.2.1}
+\contentsline {section}{\numberline {7.3}Program\'ator}{28}{section.7.3}
+\contentsline {subsection}{\numberline {7.3.1}Pr\r ub\v eh testov\'an\IeC {\'\i }}{28}{subsection.7.3.1}
+\contentsline {subsection}{\numberline {7.3.2}Vyhodnocen\IeC {\'\i } rogram\'atorovy pr\'ace}{28}{subsection.7.3.2}
+\contentsline {section}{\numberline {7.4}V\'ysledky testov\'an\IeC {\'\i }}{28}{section.7.4}
+\contentsline {chapter}{\numberline {8}Z\'av\v er}{29}{chapter.8}
+\contentsline {section}{\numberline {8.1}Budoucnost aplikace}{29}{section.8.1}
+\contentsline {subsection}{\numberline {8.1.1}Navrhovan\'a roz\v s\IeC {\'\i }\v ren\IeC {\'\i }}{29}{subsection.8.1.1}
+\contentsline {subsubsection}{Historie akc\IeC {\'\i }}{29}{section*.10}
+\contentsline {subsubsection}{Grafick\'y design a editace designu}{29}{section*.11}
+\contentsline {subsubsection}{Mo\v znost exportu Petriho s\IeC {\'\i }t\v e}{30}{section*.12}
+\contentsline {subsubsection}{Simulace Petriho s\IeC {\'\i }t\IeC {\'\i }}{30}{section*.13}
+\contentsline {subsubsection}{Vytvo\v ren\IeC {\'\i } zdrojov\'ych k\'od\r u z diagram\r u a Petriho s\IeC {\'\i }t\IeC {\'\i }}{30}{section*.14}
+\contentsline {subsection}{\numberline {8.1.2}Shrnut\IeC {\'\i } roz\v s\IeC {\'\i }\v ren\IeC {\'\i }}{30}{subsection.8.1.2}
+\contentsline {section}{\numberline {8.2}Z\'av\v ere\v cn\'e zhodnocen\IeC {\'\i } aplikace}{30}{section.8.2}
+\select@language {english}
+\select@language {czech}
+\contentsline {chapter}{\numberline {A}Obsah CD}{33}{appendix.A}

@@ -22,10 +22,6 @@
 \bibitem{ModelovaniOOPN}
 janou¹ek, V.: \emph{Modelování objektù petriho sítìmi}. Dizertaèní práce, 2008.
 
-\bibitem{UML2}
-Jim~Arlow, I.~N.: \emph{UML2 a unifikovaný proces vývoje aplikací}. Computer
-  Press, a.s., 2011, iSBN-978-80-251-1503-9.
-
 \bibitem{Diagram_trid}
 Kettenis, J.: \emph{Getting Started With UML Class Modeling}. Oracle, May 2007,
   accessed: 22.03.2014.
@@ -33,6 +29,13 @@ Kettenis, J.: \emph{Getting Started With UML Class Modeling}. Oracle, May 2007,
 \bibitem{Pripad_uziti}
 Kettenis, J.: \emph{Getting Started With Use Case Modeling}. Oracle, May 2007,
   accessed: 22.03.2014.
+
+\bibitem{usecaDrivenDevelopmen}
+Koèí, R.; Janou¹ek, V.: {\selectlanguage{english}Object Oriented Petri Nets in
+  Software Development and Deployment}. In \emph{ICSEA 2013, The Eighth
+  International Conference on Software Engineering Advances}, Xpert Publishing
+  Services, 2013, ISBN 978-1-61208-304-9, s. 485--490.
+\newline\urlprefix\url{http://www.fit.vutbr.cz/research/view_pub.php.cs?id=10381}
 
 \bibitem{oopn_caseStudy}
 {Radek Koèí­, Vladimír Janou¹ek, and Franti¹ek Zboøil, jr. }: Object Oriented

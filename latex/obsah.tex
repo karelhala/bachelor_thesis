@@ -7,16 +7,27 @@ programátorem. Zákazník èasto netu¹í co chce a programátor èasto zákazníka
 ¹patnì pochopí. Tento nástroj bohu¾el tyto problémy nedoká¾e odstranit, nicménì 
 mìl by napomoci odstranit nìkteré bariéry a pomoci sna¾¹í vizualizace problémù.
 
-V kapitole \ref{konkurence} se nejdøíve podíváme na konkurentní 
-nástroje, které doká¾í vizualizovat vyvýjený software pomocí 
-rùzných grafù. Rozebereme jejich pøednosti a jejich slabiny. Poté 
-si vybemere nìkteré jejich vlastnosti a vysvìtlíme pøípadné 
-øe¹ení jejich nedostatkù.
+Tento nástroj umo¾ní vìt¹í prùhlednosti vývoje aplikací, kdy umo¾ní postupnou 
+implementaci a vytváøení jednotlivých èástí postupnì upravovat. Tento nástroj 
+dále umo¾ní popis chování tøíd pøes objektovì orientovaných Petriho 
+sítí, co¾ vede k urychlení návrhu novì vytváøené aplikace a mo¾nosti prùbì¾ného 
+testování aplikace bez nutnosti vytváøet a spou¹tìt zdrojový kód.
+
+Tento editor by mìl být jednoduchý na pou¾ívání, snadný k pochopení a pøevá¾nì 
+je potøeba zajistit automatického vytváøení a editace pøi návrhu. Kdy je 
+potøeba zajistit vytvoøení diagramu tøíd na základì diagramu pøípadù u¾ití. A 
+na diagram tøíd také navázat objektovì orientované Petriho sítì.
+
+V kapitole \ref{konkurence} se nejdøíve podíváme na nástroje, které se 
+zamìøují na podobné téma jako je tomu ve specifikaci pro tento nástroj. Tyto 
+nástroje doká¾í vizualizovat vyvýjený software pomocí rùzných grafù a diagramù. 
+Rozebereme jejich pøednosti a jejich slabiny. Poté si vybemere nìkteré jejich 
+vlastnosti a vysvìtlíme pøípadné øe¹ení nedostatkù tìchto aplikací.
 
 Navá¾eme kapitolou \ref{grafy} kde vysvìtlíme druhy grafù, které 
 se hodí pro implementaci námi zvolených èástí. Zamìøíme se na 
-trojici diagramù \textbf{Diagram pøipadù u¾ití}, \textbf{Diagram tøíd} a 
-\textbf{Objektovì orientované Petriho sítì}. Provázání mezi tìmito 
+trojici diagramù \emph{Diagram pøipadù u¾ití}, \emph{Diagram tøíd} a 
+\emph{Objektovì orientované Petriho sítì}. Provázání mezi tìmito 
 diagramy poté vysvìtlíme v kapitole \ref{spojeni}.
 
 V následující kapitole pøestavíme nástroj, který byl pøedmìtem této práce. Pøedvedeme jeho silné 
@@ -31,50 +42,52 @@ jejich chování a jejich pocity z aplikace \ref{testyAvysledky}.
 
 Závìrem práce poté bude pøedstavení mo¾ných dal¹ích roz¹íøení tohoto nástroje. 
 Také rozebemere momentální stav této aplikace, kde se zamìøíme na pøínos 
-nástroje a popøípadì popí¹eme mo¾né chyby anedostatky aplikace \ref{zaver}.
+nástroje a zhodnotíme zda je nástroj schopný udr¾et se v silné konkurenci 
+rùzných editorù UML diagramù \ref{zaver}.
 
-\chapter{Konkurenèní nástroje} \label{konkurence}
-Z hlediska sna¾¹ího porozumìní byl brán zøetel na konkurentní nástroje. Pøevá¾nì 
-byla brána v potaz jejich jednoduchost a co je dìlá tak hojnì 
-vyu¾ívanými a snadno pou¾itelnými. Z toho dùvodu byly prozkoumány dva 
-nástroje, \textbf{Umbrello} a komerèní \textbf{Enterprise Architect}. 
-Detailnìj¹í popis jednotlivých aplikací, jejich výhod, nedostatkù a 
-pøevzatých vlastností je popsán v sekci \ref{umbrello} a \ref{enterpriseArchitect}.
+\chapter{Nástroje zamìøující se na podobné téma} \label{konkurence}
+Z hlediska sna¾¹ího porozumìní vyvýjeného nástroje, bylo zvoleno nejdøíve 
+prozkoumat nástroje, které se specifikují na podobné téma. Byly vybrány 
+nástroje co jsou jednoduché na pou¾ívání a hojonì vyu¾ívané v praxi. Z toho 
+dùvodu byly prozkoumány dva nástroje, \textbf{Umbrello} a komerèní 
+\textbf{Enterprise Architect}. Detailnìj¹í popis jednotlivých aplikací, jejich 
+výhod a nedostatkù je popsán v sekci \ref{umbrello} a 
+\ref{enterpriseArchitect}. Dále se zamìøíme na vyu¾itelné souèásti tìchto 
+nástrojù v sekci \ref{vybraneSoucasti}.
 
 \section{Umbrello} \label{umbrello}
-Aplikace celým názvem \textbf{Umbrello UML Modeller} 
-\footnote{Domovská stránka aplikace: \url{http://umbrello.kde.org/}} aplikace 
-primárnì urèena pro Unix systémy, nicménì je mo¾né jej bez problémù 
+Aplikace, celým názvem \emph{Umbrello UML Modeller} 
+\footnote{Domovská stránka aplikace: \url{http://umbrello.kde.org/}}, je 
+aplikace primárnì urèena pro Unix systémy, nicménì je mo¾né jej bez problémù 
 nainstalovat také na Windows za pomoci KDE installeru a vybrání po¾adovaného 
 balíèku. \footnote{Ovládání tohoto installeru, je velice 
 jednoduché a intuitivní. Lze jej nalést na 
 \url{http://windows.kde.org/download.php}.}. 
 
-Mezi hlavní výhody Umbrello aplikace patøí refaktoring pro 
-nìkteré jazyky. Nicménì graficky zaostává za konkurencí ostatních 
-nástrojù pro tvorbu UML diagramù.
-
 \subsection{Motivace}
 Aplikace Umbrello je hojnì vyu¾ívána a chválena mezi u¾ivateli, z toho dùvodu 
-byl brán zøetel na tuto aplikaci. Také jednoduché pou¾ívání této aplikace bylo 
-velice pøínosné pro pozdìj¹í pochopení potøebných vlastností aplikace zamìøené 
-na dané téma.
+byla tato aplikaci vybrána jako první. Také jednoduché pou¾ívání této 
+aplikace bylo velice pøínosné pro analýzu po¾adavkù a porozumìní tìmto 
+nástrojùm.
 
 \subsection{Popis aplikace}
-Aplikace je velice robustní a poskytuje mnoho vlastností. Pøi ohlédnutí na to, 
-¾e je volnì ke sta¾ení a volnì k pou¾ívání \footnote{Aplikace pou¾ívá licenci GNU general 
+Aplikace je velice robustní a poskytuje mnoho vlastností. Aplikace je volnì ke 
+sta¾ení a volnì k pou¾ívání \footnote{Aplikace pou¾ívá licenci GNU general 
 public license 
 \url{http://www.gnu.org/licenses/old-licenses/gpl-2.0.html} co¾ 
-umo¾òuje zapojení komunity do vývoje tohoto nástroje.} aplikace 
-nabízí velké mno¾ství vlastností a mo¾ností.
-Umbrello poskytuje mnoho UML grafù a základní práce s touto aplikací je pomìrnì 
+umo¾òuje zapojení komunity do vývoje tohoto nástroje.}. Umbrello poskytuje 
+mnoho UML grafù a základní práce s touto aplikací je pomìrnì 
 jednoduchá, ale její jednoduchý design má pár slabin. Pro men¹í aplikace 
 a pro zaèínající firmy je naprosto dokonalá, ale absence pokroèilého 
 editoru a ne pøíli¹ jednoduché práce s editorem jako napøíklad 
-pøidání nové metody, zalomení èar a také vytvoøení jiného souboru.
+pøidání nové metody, zalomení èar a také vytvoøení jiného souboru. V dal¹í 
+kapitole se tedy podíváme na výhody této aplikace a pouèíme se z pøípadncýh 
+nedostatkù.
 
 \subsection{Výhody a nevýhody}
-Umbrello aplikace poskytuje nìkolik UML grafù mezi které patøí:
+Umbrello aplikace poskytuje nìkolik mo¾ností, jak popsat vývoj a návrh 
+aplikace. Nabízí pøevá¾nì grafy a diagramy ze skupiny UML mezi které 
+patøí:
 \begin{itemize}
   \item \textbf{ClassDiagram} pro popis tøíd a provázanosti mezi nimi.
   \item \textbf{Sequence Diagram}, pro 
@@ -92,80 +105,59 @@ fyzické ulo¾í¹tì a zaøízení, na kterých program bude pracovat.
   \item \textbf{Entity Relationship Diagram} pro popis vztahu dat mezi sebou.
 \end{itemize}
 
-Umbrello poskytuje velké mno¾ství diagramù a mo¾ností, jak znázornit 
-chod aplikace. Aplikace je také velice intuitivní, a» ji¾ díky klávesovým 
-zkratkám, tak také díky jednoduchému grafickému designu. Umbrello, také 
-podporuje generaci a refactoring zdrojového kódu pro nìkteré jazyky. Staèí 
-pouze importovat jednu ji¾ vytvoøenou tøídu a Umbrello u¾ivatele provede 
-jednoduchým nastavením, výbìrem které tøídy namodelované v aplikaci se mají 
-vygenerovat a nabídne také mo¾nost mírnì upravit zvolený kód. Vzhledem na to, 
-¾e aplikace je plnì zdarma je tato vlastnost velice pøínosná.
+Do kladù této aplikace jistì patøí vìt¹í výbìr diagramù jak znázornit a 
+zpøehlednit vývoj aplikace. Základní ovládání aplikace je intuitivní a 
+design aplikace je pøehledný. Mezi hlavní klady této aplikace patøí 
+mo¾nost vytvoøení zdrojových kódù na základì vytvoøených diagramù a 
+grafù. Je mo¾né také provést refactoring a upravit tak námi vyvýjenou 
+aplikaci pomocí Umrello. Staèí pouze importovat jednu ji¾ vytvoøenou tøídu a 
+Umbrello u¾ivatele provede jednoduchým nastavením, výbìrem které tøídy 
+namodelované v aplikaci se mají vygenerovat a nabídne také mo¾nost mírnì upravit 
+zvolený kód. Vzhledem na to, ¾e aplikace je plnì zdarma je tato vlastnost velice 
+pøínosná.
 
-Umbrello dále poskytuje mo¾nost èásteèné generace dokumentace i v pøípadì, ¾e nejsou 
-poskytnuty komentáøe na základì kterých by tato dokumentace mohla být vytvoøena. 
-Pøi generování tøíd je mo¾né, také importovat zdrojový kód a nechat umbrello 
-v¹e vygenerovat samo. Tato vlastnost je, ale podporována pouze pro jazyky 
-\texttt{ActionScript, Ada, C++, C\#, D IDL, Java, Javascript, MySQL}.
+Umbrello dále poskytuje mo¾nost èásteèného vytvoøení dokumentace i v pøípadì, 
+¾e nejsou poskytnuty komentáøe na základì kterých by tato dokumentace mohla být 
+vytvoøena. Pøi generování tøíd je mo¾né také importovat zdrojový kód a nechat 
+umbrello v¹e vygenerovat samo. Tato vlastnost je podporována pouze pro 
+jazyky \texttt{ActionScript, Ada, C++, C\#, D IDL, Java, Javascript, MySQL}.
 
-Dále Umbrello poskytuje mo¾nost exportování objektù jako PNG obrázky. Pøi 
+Mezi dal¹í výhody patøí mo¾nost exportování objektù jako PNG obrázky. Pøi 
 psaní dokumentù je mo¾né vytvoøený diagram zkopírovat a vlo¾it pøímo do 
 dokumentu. Pro export do formátu PNG je mo¾né vybrat èást diagramu, nebo celou 
 sí». s touto mo¾ností také pøichází mo¾nost tisku celého diagramu. 
 \cite{umbrelloDocumentation}
 
-Umbrello je sice jednoduché a intuitivní na pou¾ívání, nicménì dlouhodobìj¹í 
-práce je zdlouhavá a pøíli¹ repetitvní. Nutnost vytvoøení objektu na editaèním 
-plátnì, poté výbìru nástroje pro pøesun a editaci daného objektu je zdlouhavá a 
-¹patná. Jednodu¹¹í pro práci by jistì bylo vytvoøení objektu a po kliknutí na 
-ji¾ vytvoøený objekt jej pouze pøesunout. Vytvoøení nového atributu tøídy je 
-opìt velice nároèné a neintuitivní. Takté¾ nemo¾nost zalomení spojù mezi 
-objekty je velice limitující.
-
-\subsection{Zhodnocení a pøevzaté vlastnosti}
-Aplikace Umbrello je ¹pièkou ve své tøídì. Je zdarma a poskytuje mnoho nástrojù 
-pøi návrhu aplikace. Mezi jeho pøednosti jistì patøí mo¾nost refactoringu a také 
-rozsáhlé mo¾nosti ve variabilitì grafických návrhù.
-
-Aplikace poskytla mnoho informací o vývoji editaèní aplikace, jakým chybám se 
-vyvarovat a co je naopak nezbytné k vytvoøení kvalitní aplikace zamìøené na 
-tvorbu diagramù. Není zapotøebí ve výsledné aplikaci mnoho nároèných 
-grafických elementù, tyto elementy by byly ru¹ivé. Grafické rolo¾ení a 
-dosa¾itelnost vìt¹iny editaèních prvkù je v aplikaci Umbrello velice 
-jednoduché a intuitvní z tohoto dùvodu bylo ve výsledné aplikaci pøihlí¾eno na 
-tyto vlastnosti.
-
-Ve výsledné aplikaci bylo vyvarováno nìkterým nedostatkùmm aplikace Umbrello. Jako 
-napøíklad zdlouhavé a repetetivní vytváøení tøíd, jejich pøesun po pracovní 
-plo¹e, nebo spojení tìchto tøíd.
-
-V Umbrello lze spoje mezi objekty ohýbat velice slo¾itì a z 
-u¾ivatelského hlediska velice nároènì. Celková práce se spoji 
-mezi objekty je v Umbrello øe¹ena pomìrnì slo¾itì, co¾ èasto 
-vede k vytváøení nepøehledných a ¹patnì pochopitelných diagramù.
-
-Aplikace Umbrello pøi pøidání nového objektu donutí u¾ivatele zadat jméno, co¾ 
-opìt vede ke zdlouhavé práci a repetetivním akcím, které u¾ivatele zbyteènì 
-zdr¾ují od práce. Toto bylo vyhodnoceno jako nepøínosné a nutnost zadat jméno 
-objektu pøi jeho vytvoøení bylo nahrazeno pozdìj¹í úpravou. Kdy si u¾ivatel 
-vytvoøí objekt a a¾ poté urèí jeho jméno.
+\subsection{Zhodnocení aplikace Umbrello}
+Základní práce s aplikací je jednoduchá a intuitivní, nicménì dlouhodobìj¹í 
+práce je zdlouhavá a pøíli¹ opakující se. Nutnost vytvoøení objektu na 
+editaèním plátnì, poté výbìru nástroje pro pøesun a editaci daného objektu je 
+zdlouhavá a ¹patná. Jednodu¹¹í pro práci by jistì bylo vytvoøení objektu a po 
+kliknutí na ji¾ vytvoøený objekt jej pouze pøesunout. Vytvoøení nového atributu 
+tøídy je opìt velice nároèné a neintuitivní. Takté¾ nemo¾nost zalomení spojù 
+mezi objekty je limitující, a¾ takøka neproveditelné.
 
 \section{Enterprise Architect} \label{enterpriseArchitect}
 S ohlédnutím na Aplikaci Umbrello a nìkteré její nedostatky, bylo nutné pro 
 pozdìj¹í vývoj aplikace prozkoumat dal¹í aplikaci. Tato aplikace se jmenuje 
-\textbf{Enterprise Architect} a je tvoøena firmou \textbf{Sparx Systems} 
+\textbf{Enterprise Architect} a je tvoøena firmou \emph{Sparx Systems} 
 \footnote{\url{http://www.sparxsystems.com}}, tato firma se soustøeïuje na 
 tvorbu nástrojù pro tvorbu UML grafù. Firmou nabízené produkty jsou 
 placené, ale u¾ivatel obdr¾í opravdu robustní systémy pro tvorbu UML grafù a 
 mo¾nost refaktoringu pro nìkolik jazykù.
+
+\subsection{Motivace}
+Tento nástroj byl vybrán z dùvodu vy¹¹ího roz¹íøení pøi vytváøení vìt¹ích 
+projektù a pøevá¾nì díky tomu, ¾e tato aplikace nabízí velké mno¾ství funkcí a 
+grafù jak popsat právì vytváøenou aplikaci.
 
 \subsection{Popis aplikace}
 Enterprise Architect (EA) je velice robustní, ji¾ nemá takové 
 nedostatky jako aplikace Umbrello a nabízí nìkolikero mo¾ností pro refaktoring 
 projektu. Aplikace rozdìluje UML grafy do dvou skupin 
 \begin{itemize}
-  \item \textbf{Structural Diagrams} pro diagramy na popis vyvýjené aplikace a 
-popis 
-její struktury.
+  \item \textbf{Structural Diagrams} pro diagramy na popis aplikace a 
+popis její struktury.
   \item \textbf{Behavior Diagrams} pro popis chování aplikace 
 a komunikace mezi jednotlivými èástmi aplikace. 
 \end{itemize}
@@ -175,50 +167,33 @@ návrh testování výsledné aplikace. \cite{enterpriseArchitect}
 
 \subsection{Výhody a nevýhody}
 V aplikaci je mo¾né vytvoøit velké mno¾ství grafù a diagramù. Grafické rozhraní 
-ji¾ není tak jednoduché, jako tomu je u aplikace Umbrello, ale je stále velice 
-intuitivní a jednoduché pro pou¾ívání. Vìt¹ina pokroèilých 
-funkcí je v¹ak schována a je nároèné ji najít, jako napøíklad pøidání a
- editace atributù tøídy.
+ji¾ není tak jednoduché, jako tomu je u aplikace Umbrello, vìt¹ina pokroèilých 
+funkcí je schována a je nároèné ji najít, jako napøíklad pøidání a editace 
+atributù tøídy.
 
-Výhodou této aplikace je jistì mo¾nost vytváøení diagramù pro 
-jednotlivé jazyky, a poté tyto diagramy exportovat do zdrojového textu.
-Na výbìr je celkem jedenáct jazykù \texttt{ActionScript, C, C\#, C++, 
-Delphi, Java, PHP, Python, VBNet, Visual Basic, WorkFlow Script}.
+Pro jednodu¹¹í a rychlej¹í mo¾nost spojení jednotlivých objektù na pracovní 
+plo¹e lze pou¾ít rychlého nástroje vedle objektu. Na stejném místì lze nalést 
+také funkce pro rychlou editaci a zmìnu stylu objektu.
 
-Nejvìt¹í výhodou je jistì mo¾nost importovat celý obsah slo¾ky se zdrojovými 
-kódy a tento projekt poté zobrazit v diagramu tøíd. Lze také 
-importovat binární soubor, napøíklad \texttt{.jar} souboru a 
+Pøeta¾ení spoje mezi dvìma objekty lze pomocí uchopení za jeden konec a ta¾ení 
+k dal¹ímu objektu. Bohu¾el pùvodní spoj se neztratí do doby, ne¾ u¾ivatel pustí 
+my¹, toto mù¾e být ponìkud matoucí.
+
+Nejvìt¹ím výhodou oproti ostatním aplikacím má Enterprise Architect v mo¾nosti 
+importovat zdrojové kódy a ty zobrazit v diagramu tøíd. Lze také 
+vybrat binární soubor, napøíklad \texttt{.jar} souboru a 
 aplikace Enterprise Architect mù¾e vygenerovat dokumentaci a diagram 
 tøíd.
 
-Pro jednodu¹¹í a rychlej¹í mo¾nost spojení jednotlivých objektù na pracovní 
-plo¹e, lze pou¾ít rychlého nástroje vedle objektu. Na stejném místì lze nalést 
-také funkce pro ryhclou editaci a zmìnu stylu objektu.
-
-Pøeta¾ení spoje mezi dvìma objekty lze pomocí uchopení za jeden konec a ta¾ení k 
-dal¹ímu objektu. Bohu¾el pùvodní spoj se neztratí do doby, ne¾ u¾ivatel pustí 
-my¹.\cite{enterpriseArchitect}
+Po úspì¹ném upravení diagramù tøíd lze opìt jednodu¹e provést export 
+do zdrojových kódù. Na výbìr je celkem jedenáct jazykù \emph{ActionScript, C, 
+C\#, C++, Delphi, Java, PHP, Python, VBNet, Visual Basic, WorkFlow 
+Script}. \cite{enterpriseArchitect}
 
 \subsection{Zhodnocení a pøevzaté vlastnosti}
-Aplikace poslou¾ila pro dal¹í zhodnocení po¾adavkù a vyvarování se chyb. 
-Pøedev¹ím nároènost a komplexnost aplikace se nehodí pro výslednou aplikaci.
 
-Ve výsledné aplikaci bude zapotøebí mo¾nosti jednoduchého zalomení hran a 
-mo¾nosti jejich jednoduché editace. Takté¾ pøesun po editaèním plátnì je v 
-aplikace EA øe¹en pomìrnì chaoticky a nahodile.
 
-Umístnìní otevøených souborù je v aplikaci EA ponìkud netradièní v dolní èásti 
-aplikace. U¾ivatel èasto nevidí otevøený projekt a èasto se mù¾e stát, ¾e zavøe 
-stávající jen kvùli tomu aby na¹el ji¾ otevøený soubor. Pøi porovnání s 
-aplikací Umbrello, která toto øe¹í více standartním zpùsobem, umístnìní zálo¾ek 
-v horní èásti okna, je tento zpùsob ponìkud nepraktický.
-
-V Enterprise Architect jsou druhy diagramù a grafù umístnìny ve stromové 
-struktuøe, z pochopitelných dùvodù rozsáhlosti aplikace. Opìt nepou¾itelné v 
-men¹ích aplikacích a zbyteènì nároèné na hledání a pøidání nového diagramu, 
-nebo grafu.
-
-\section{Zhodnocení konkurentních nástrojù}
+\section{Zhodnocení konkurentních nástrojù}\label{vybraneSoucasti}
 Pøi testování nástrojù urèených pro tvorbu UML grafù bylo zji¹tìno mnoho detailù 
 a dùle¾itých vlastností, které bude výsledná aplikace potøebovat. Nìkteré výhody 
 tìchto aplikací, jako napøíklad generování kódu, nebude potøeba implementovat  
@@ -230,13 +205,6 @@ V testovaných aplikacích nebyla nikde mo¾nost èásteèné pøedgenerace dal¹ích
 a diagramem tøíd nebyla mo¾ná. V tomto ohledu bylo rozhodnuto, ¾e je potøeba 
 tyto èásti propojit a více zautomatizovat pro rychlej¹í a svi¾nej¹í práci s 
 výslednou aplikací.
- 
-Grafický prvek celé aplikace bude zapotøebí jednoduchý a snadný k pou¾ívání, 
-ale dùle¾itým prvkem je dobré zviditelnìní nìkterých objektù. Jako napøíklad 
-znázornìní tøíd, které nemají odpovídající prvky v pøípadu u¾ití. Nebo znázornit 
-prvky, které nemají ¾ádné spojení s ostratními objekty. Takovéto znázornìní 
-nebylo nalezeno v ¾ádné z testovaných aplikací, ale je dùle¾itým prvkem v 
-rozpoznávání editovaného diagramu.
 
 V testovaných aplikacích chybìla mo¾nost, nebo byla nedostateèná, pro zalomení 
 hran. Tato vlastnost velice napomù¾e pro zpøehlednìní výsledného diagramu, 
@@ -244,14 +212,72 @@ podobnì tomu bylo s editací hran. Zmìna typu hrany a zmìna objektù pro danou
 hranu je zapotøebí pro jednodu¹¹í práci s editorem a pøedev¹ím pro rychlej¹í 
 práci.
 
-\chapter{Grafy pro popis èástí}\label{grafy}
-Pro grafické znázornìní jednotlivých èástí byly vybrány z UML 
-grafù \textbf{diagramy pøípadù u¾ití} 
-\ref{pripadUziti} pro popis jednotlivých akcí v systému a 
-\ref{diagram tøíd} 
-\ref{diagramTrid} pro grafické znázornìní tøíd a operace mezi nimi. Jako 
-poslední èást, která nespadá pod UML, bylo vybráno Objektovì orientovaných 
-Petriho sítí \ref{oopn} pro popis chování jednotlivých tøíd.
+\subsection{Vybrané funkce a mo¾nosti z Umbrello}
+Aplikace Umbrello poskytla mnoho informací o vývoji editaèní aplikace, jakým 
+chybám se vyvarovat a co je naopak nezbytné k vytvoøení kvalitní aplikace 
+zamìøené na tvorbu diagramù. 
+
+Vyplynulo ¾e není zapotøebí ve výsledné aplikaci mnoho nároèných grafických 
+elementù, tyto elementy by byly ru¹ivé. Grafické rolo¾ení a dosa¾itelnost 
+vìt¹iny editaèních prvkù je v aplikaci Umbrello velice jednoduché a intuitvní z 
+tohoto dùvodu bylo ve výsledném nástroji pøihlí¾eno na tyto vlastnosti.
+
+Ve nástroji, který byl pozdìji implementován, bylo vyvarováno nìkterým 
+nedostatkùmm aplikace Umbrello. Jako napøíklad zdlouhavé a repetetivní vytváøení 
+tøíd, jejich pøesun po pracovní plo¹e, nebo spojení tìchto tøíd.
+
+Pøevá¾nì bylo pouèeno z takøka chybìjící mo¾nosti zalomení spojù mezi objekty 
+na pracovním plátnì. V Umbrello je toto øe¹eno velice nepraktiyka a velice 
+nároènì. Zalomení tìchto spojù vede k celkovému zpøehlednìní grafu a 
+dává dal¹í mo¾nosti pøi vytváøení diagramù proto bylo urèeno ¾e tato vlastnost 
+nesmí chybìt v implementovaném nástroji.
+
+Nepraktická práce s objekty v Umbrello také není dobrým pøíkladem, 
+pøevá¾nì z toho dùvodu, ¾e po pøidání nového objektu na pracovní plátno 
+je u¾ivatel okam¾itì donucen zadat jeho jméno. Dále pro pøesun objektù 
+je nutné vybrat nástroj pro posun po pracovní plo¹e a a¾ 
+poté je mo¾né tento objekt posunout. Toto vede ke zdlouhavým a rstále se 
+opakujícím akcím, které u¾ivatele zbyteènì zdr¾ují od práce. Toto bylo 
+vyhodnoceno jako nepøínosné a nutnost zadat jméno objektu pøi jeho vytvoøení 
+bylo nahrazeno pozdìj¹í úpravou. Kdy si u¾ivatel vytvoøí objekt a a¾ poté urèí 
+jeho jméno. Podobnì tomu bylo u pøesunu objektu, kdy byla zavrhnuta nutnst 
+výbìru speciálního nástroje pro tento pøesun.
+
+\subsection{Vybrané vlastnosti z Enterprise Architect}
+Enterprise Architect aplikace poslou¾ila pro dal¹í zhodnocení po¾adavkù a 
+vyvarování se chyb. Pøedev¹ím nároènost a komplexnost aplikace se nehodí pro 
+výslednou aplikaci.
+
+Ve výsledném nástroji bude zapotøebí mo¾nosti jednoduchého zalomení hran a 
+mo¾nosti jejich jednoduché editace. Tato funkce bohu¾el v aplikaci Enterprise 
+Architect je opìt nevyhovující a nepraktická. Opìt to vede k nepøehlednosti 
+vìt¹ích diagramù.
+
+Umístnìní otevøených souborù je v aplikaci Enterprise Architect ponìkud 
+netradièní v dolní èásti aplikace. U¾ivatel èasto nevidí otevøený projekt a 
+èasto se mù¾e stát, ¾e zavøe stávající jen kvùli tomu aby na¹el ji¾ otevøený 
+soubor. Pøi porovnání s aplikací Umbrello, která toto øe¹í více standartním 
+zpùsobem, umístnìní zálo¾ek v horní èásti okna, je tento zpùsob ponìkud 
+nepraktický.
+
+V Enterprise Architect jsou druhy diagramù a grafù umístnìny ve stromové 
+struktuøe, z pochopitelných dùvodù rozsáhlosti aplikace. Opìt nepou¾itelné v 
+men¹ích aplikacích a zbyteènì nároèné na hledání a pøidání nového diagramu, 
+nebo grafu.
+
+\chapter{Robzor jednotlivých diagramù}\label{grafy}
+Po prozkoumání nástrojù specializujících se na návrh aplikace bylo zvoleno ¾e 
+pro popis chování aplikace bude vhodné pou¾ít \emph{diagramy pøípadù u¾ití} 
+\ref{pripadUziti} a pro popis jednotlivých tøíd, vztahù mezi tìmito tøídami a 
+návrh operací je vhodný \emph{diagram tøíd} \ref{diagramTrid}. Pro popis 
+chování tøíd a jejich metod bylo zvoleno Petriho sítí, pøesnìji jejich 
+roz¹íøení s názvem \emph{objektovì orientovaných Petriho sítí} \ref{oopn}.
+
+Dále byly tyto diagramy a grafy spojeny pro vzájemnou komunikaci na základì 
+takzvaného \emph{Use-case driven developmentu}. Tento zpùsob se orientuje na 
+propojení diagramu pøípadù u¾ití do diagramu tøíd a poté urèuje napojení 
+objektovì orientovaných Petriho sítí na tyto tøídy, blí¾e popsáno v kapitole 
+\ref{spojeni}.
 
 \section{Objektovì orientované programování}\label{obejktoveProgram}
 Pøedtím, ne¾ rozebereme grafy, které slou¾í pro popis vývoje a 
@@ -259,19 +285,15 @@ vytvoøení návrhu je potøeba rozebrat objìktovì orientované
 programování. Toto je speciální styl programování pou¾ívaný 
 pøevá¾nì pøi vývojí vìt¹ích a nároènìjèích aplikací.
 
-\subsection{èásti objìktovì orientovaného programování}
-Objektovì orientované programování se skládá z nìkolika èástí 
-a nìkolika principù, jak programovat.
-
 \subsection{Objekt}
 Základ takovéhoto programování je samozøejmì objekt, je to 
-specifický pohled na fyzikální a konceptální jednotky reálného 
+specifický pohled na fyzikální a konceptuální jednotky reálného 
 svìta. Jednotlivé èásti objektu jsou:
 \begin{itemize}
-  \item Stav nese informaci o tom v jakém stavu se objekt v daném 
+  \item Stav nese informaci, o tom v jakém stavu se objekt v daném 
   èase nachází. 
   \item Chování popisuje reakce na vnìj¹í a vnitøní události.
-  \item Identita ka¾dý objekt je jednoznaènì identifikovatelný v 
+  \item Identita ka¾dého objektu je jednoznaènì identifikovatelná v 
   rámci systému -- má jméno, kterým se li¹í od ka¾dého jiného.
 \end{itemize}
 
@@ -317,12 +339,13 @@ být implementováno èásteènì, nebo úplnì. A v neposlední
 \section{Diagram pøípadù u¾ití} \label{pripadUziti}
 Diagramy pøípadù u¾ití jsou èasto modelovány a pou¾ívány ke komunikaci mezi 
 zákazníkem, který nemá pøili¹ mnoho zku¹eností s vývojem systému, ale rozumí 
-danému problému a svému oboru a programátorem, èlovìkem který naopak má 
+danému problému a svému oboru a programátorem, èlovìkem, který naopak má 
 zku¹enosti s vývojem aplikace, ale nechápe do hloubky zákazníkùv problém a jeho 
 obor.
 
 Základními prvky diagramu pøípadù u¾ití jsou pøípady u¾ití a aktéøi. V po¾adavcích na
-systém rozpoznáváme takzvané \uv{Stakeholdery} jsou to osoby, nebo vìci, které mají 
+systém rozpoznáváme takzvané \uv{Stakeholdery},l jsou to osoby, nebo vìci, 
+které mají 
 zájem na úspì¹né provedení systému. Pøípady u¾ití popisují jak se má systém 
 zachovat na reakce stakeholderù, akterù, a dodat urèité výsledky. Aktéøi na 
 druhou stranu, jsou pøímí u¾ivatelé nebo vìci s urèitým chováním. Hlavní aktér 
@@ -337,18 +360,18 @@ Aktéøi jsou znázoròováni ve tvaru postav a pøípady u¾ití jako elipsy obsahující
 název provádìného úkonu. Spoje mezi pøípady u¾ití a aktéry jsou znázornìny úseèkou vedoucí
 od aktéra k pøípadu u¾ití.
 
-Mezi pøípady u¾ití mohou být vedeny dále spoje pro jejich roz¹íøení a upravení. Jsou to
+Mezi pøípady u¾ití mohou být vedeny dále spoje pro jejich roz¹íøení. Jsou to
 \textbf{include}, \textbf{extends} a \textbf{generalizace}. Poslední 
 jmenovaný spoj je mo¾né také vést mezi aktéry.
 
 \textbf{Include} znamená to, ¾e pro správný chod daného nadøazeného pøípadu 
 u¾ití je zapotøebí
-pou¾ití ni¾¹ího pøípadu u¾ití.
-Pro vykonání vy¹¹ího pøípadu u¾ití je zapotøebí nejdøíve vykonat ni¾¹í pøípad u¾ití.
-Pokud pøi vykonávání nìkolika pøípadù u¾ití je vykonávána stejná funkcionalita, je vhodné
-tuto funkcionalitu oddìlit z daného pøípadu u¾ití a spojit se v¹emi pøípady u¾ití 
-spojem include. Spoj include je znázornìn pøeru¹ovanou ¹ipkou doprovázené textem
-\uv{include}. Spoj je veden z nadøazeného pøípadu u¾ití k ni¾¹ímu pøípadu.
+pou¾ití vlo¾eného pøípadu u¾ití. Pro vykonání vy¹¹ího pøípadu u¾ití je 
+zapotøebí nejdøíve vykonat vlo¾ený pøípad u¾ití. Pokud pøi vykonávání nìkolika 
+pøípadù u¾ití je vykonávána stejná funkcionalita, je vhodné tuto funkcionalitu 
+oddìlit z daného pøípadu u¾ití a spojit se v¹emi pøípady u¾ití spojem include. 
+Spoj include je znázornìn pøeru¹ovanou ¹ipkou doprovázené textem \uv{include}. 
+Spoj je veden z nadøazeného pøípadu u¾ití k ni¾¹ímu pøípadu.
 
 \textbf{Extends} slou¾í pro roz¹íøení urèitých pøípadù u¾ití. Toto znamená, ¾e 
 je roz¹íøením hlavního pøípadu u¾ití a toto roz¹íøení bylo vyjmuto z pùvodního 
@@ -370,45 +393,29 @@ scale=0.5]{fig/UseCase}
   \label{useCaseExam}
 \end{figure}
 
-\subsection{Pou¾ité vlastnosti}
-Ve výsledné aplikaci byl pou¾it Diagram pøipadù u¾ití pro jednoduché znázornìní
-a zanesení zákazníkových po¾adavkù. Tento diagram byl roz¹íøen o nìkolik u¾iteèných
-vlastností.
-
-Pokud tøída není nijak spojena ¾ádným spojem s dal¹ími 
-tøídami, je tato tøída bez jakýhkoliv spojù znázornìna 
-pøeru¹ovanou èarou. Toto vede ke sna¾¹í identifikaci tìchto tøíd.
-
-Vybraný objekt je znázornìn odli¹nou barvou a jeho okolí je ohranièeno rámeèkem.
-Pokud je ojekt spojen s nìkterým jiným objektem tyto spoje jsou znázornìny po 
-vybrání tohoto objektu. Zvýraznìné spoje jsou pouze ty spoje, které vedou z 
-vybraného objektu. Toto vede ke zpøehlednìní celého diagramu pøípadù u¾ití.
-
 \section{Diagram tøíd} \label{diagramTrid}
-Po znázornìní aplikace pomocí Diagramu pøípadù u¾ití se nabízí dal¹í nástroj z 
-UML rodiny a tím je \textbf{Diagram tøíd}. Tento diagram slou¾í pro grafické 
-znázornìní objektù a kominakci mezi nimi, tyto objekty a zprávy jsou popsány v 
-kapitole \ref{obejktoveProgram}. 
+Po znázornìní funkèních po¾adavkù na aplikaci pomocí diagramù pøípadù 
+u¾ití se nabízí dal¹í nástroj z UML rodiny a tím je \emph{Diagram tøíd}. 
+Tento diagram slou¾í pro grafické znázornìní tøíd, bli¾¹í seznámení s 
+objektovì orientovaným programováním bylo probráno v kapitole 
+\ref{obejktoveProgram}. 
 
 \subsection{Prvky Diagramu tøíd}
-Hlavní slo¾kou diagramu jsou tøídy, ty jsou znázornìny pomocí obdìlínkù obsahující dal¹í 
-informace o dané tøídì. V horní èásti je název tøídy. Poté tøída obsahuje 
-instaèní promìnné, attributy. A poslední èást tøíd jsou operace, metody.
-
-Urèitou podmno¾inou tøídy jsou abstraktní tøídy, tyto tøídy nemohou být 
-inicializovány, pouze slou¾í k pøedpisu pro potomky. To znamená, ¾e tøída A je 
-abstraktní a je pøedkem tøídy B, v systému se nenachází objekt tøídy A, ale 
-pouze objekt tøídy B.
+Hlavní slo¾kou diagramu jsou tøídy, ty jsou znázornìny pomocí obdélínkù 
+obsahující dal¹íinformace o dané tøídì. V horní èásti je název tøídy. Poté tøída 
+obsahuje instaèní promìnné, atributy. A poslední èást tøíd jsou operace, 
+metody.
 
 V diagramu tøíd lze také namodelovat interface. Toto je speciální tøída
-obsahující pøedpis pro attributy a operace, ale nenachází se v takových
+obsahující pøedpis pro atributy a operace, ale nenachází se v takových
 tøídách implementace tìchto operací. Tato implementace se nachází a¾ ve
 tøídách, které implementují takový interface.
 
-Zápis attributù a operací tøíd je stanoven tak, ¾e za jménem následuje 
+Zápis atributù a operací tøíd je stanoven tak, ¾e za jménem následuje 
 dvojteèka a její typ. V pøípadì operací za jménem následuje závorka obsahující 
 seznam argumentù a a¾ poté dvojteèka a návratový typ. Pokud operace nic nevrací 
-je mo¾né indikovat toto pomocí nastavení návratové hodnoty na \uv{void} Dále je 
+je mo¾né indikovat toto pomocí nastavení návratové hodnoty na \uv{void}. Dále 
+je 
 mo¾né omezit vyditelnost attributù a operací pomocí identifikátoru. 
 \textbf{Private} oznaèované \uv{-}, \textbf{protected} jako \uv{\#} a 
 \textbf{public} znázornìné pomocí \uv{+}. Tyto identifikátory se pí¹í pøed 
@@ -420,7 +427,7 @@ Implementace}. \cite{Diagram_trid}
 
 \subsubsection{Generalizaèní hrana}
 Hrana \textbf{Generalizace} popisuje spojení mezi tøídou, která je více 
-generická a tøídou, která je specifická. Generická tøída se nazývá 
+obecná a tøídou, která je specifická. Generická tøída se nazývá 
 \textbf{superclass}, nebo také \textbf{rodiè} a více specifická tøída se nazývá 
 \textbf{subclass}, známá té¾ jako \textbf{potomek}.
 
@@ -477,39 +484,9 @@ scale=0.5]{fig/ClassDiagram}
   \label{diagramClassExamp}
 \end{figure}
 
-\subsection{Pou¾ité a upravené èásti z Diagramu tøíd}
-Ve výsledné aplikaci bylo pou¾ito pro popis vztahù mezi jednotlivými tøídami
-diagramu tøíd. Tento diagram byl z èásti upraven pro jednodu¹¹í práci a snadnìj¹í
-pou¾ívání u¾ivatelem.
-
-Kvùli provázanosti s Diagramem pøípadù u¾ití musely být tøídy rozdìleny do 
-ètyø druhù:
-\begin{itemize}
-  \item \textbf{Actor} odpovídá bjektu aktér v Diagramu pøípadù u¾ití.
-  \item \textbf{Activity} tato tøída je spojena s pøípadem u¾ití.
-  \item \textbf{None} pro popis tøídy, která se nepromítne v Diagramu pøípadù 
-u¾ití.
-  \item \textbf{Interface} speciální druh tøídy.
-\end{itemize}
-Typ tøídy se nachází nad danou tøídou, v pøípadì interface a None tøídy jsou 
-tyto názvy skryty.
-
-Podobnì jako tomu je v pøípadì Diagramu pøípadù u¾ití i zde je názornì vidìt,
-zda nìkterá hrana vede z a nebo do tøídy a to tak, ¾e tøída bez jakýhkoliv hran 
-je ohranièena èárkovaným orámováním.
-
-Zvýraznìná tøída je oddìlena od ostatních odli¹nou barvou orámování
-a hrany, které vedou z, nebo do dané tøídy jsou znázornìny jinou barvou, ne¾ 
-ostatní hrany.
-
-Tøídy, které nemají odpovídající pøedpis v èásti Diagramu pøípadù u¾ití,
-jsou znázornìny tak, ¾e jejich obsah je psán nahnutým písmem a pod tøídou,
-se nachází text \uv{\/No UseCase\/}. Pokud hrana spojující tøídy nemá
-odpovídající spoj v Diagramu pøipadù u¾ití, je odli¹ena rozdílnou barvou.
-
-\section{Objektovì orientované Petriho sítì} \label{oopn}
-Pro popis chování objektù a komunikace mezi nimi ve výsledné aplikaci  
-bylo zvoleno pou¾ití objektovì orientovaných Petriho sítí.
+\section{Zpùsob popisu tøíd a reakce na zaslané zprávy} \label{oopn}
+Pro popis tøíd a chování objektù na zaslané zprávy, popis implementace metod 
+(operací), bylo pou¾ito objektovì orientovaných Petriho sítí.
 
 \subsection{Petriho sítì}\label{PN}
 Objektovì orientované Petriho sítì jsou roz¹íøením Petriho 
@@ -556,9 +533,8 @@ jednoduché ro¹íøení základních Petriho sítí.
 Úspì¹né provádìní pøechodù probíhá v poøadí odebrání 
 znaèek ze vstupního místa, pøídání znaèek na výstupní místo.
 
-Dále mù¾eme sítì roz¹íøit o jednoduché oprioritizování 
-spojení mezi místy a pøechody, nebo vlo¾ením procentuální 
-pravdìpodobností provedení daného spoje.
+Dále mù¾eme sítì roz¹íøit o pomocí prioritizací spojení mezi místy a pøechody, 
+nebo vlo¾ením procentuální pravdìpodobností provedení daného spoje.
 \cite{ModelovaniOOPN}
 
 \subsubsection{Roz¹íøení Petriho sítí}
@@ -577,7 +553,7 @@ zaslání zprávy tomuto objektu.
 Model systému, ve kterém mohou dynamicky vznikat a zanikat objekty, 
 komunikující pøedáváním zpráv lze vhodnì znázornit pomocí 
 Objektovì orientovaných Petriho sítí, jako model je mno¾ina 
-tøíd, hierarchicky organitována podle dìdiènosti. Ka¾dá z 
+tøíd, hierarchicky organizována podle dìdiènosti. Ka¾dá z 
 tìchto tøíd obshauje tyto prvky:
 \begin{itemize}
 	\item sí» objektu, definuje reprezentaci instance tøídy (atributy)
@@ -587,23 +563,23 @@ tìchto tøíd obshauje tyto prvky:
 	synchronní zprávy
 \end{itemize}
 
-Sítì metod mohou sdílet attributy objektu. Mají navíc parametrová 
+Sítì metod mohou sdílet atributy objektu. Mají navíc parametrová 
 místa, do kterých se pøi invokaci takové sítì vlo¾í parametry 
-ze zprávy, dále mají výstupní místo \textbf{return}, coè je 
+ze zprávy, dále mají výstupní místo \emph{return}, co¾ je 
 místo do kterého se ulo¾í výstupní hodnota.
 
 Znaèky v sítích nereprezentují samotné objekty, ale pouze 
 reference na tyto objekty. V objektovì orientovaných Petriho sítích 
 jsou tøi druhy objektù.  Primitivní tøídy to jsou èísla znaky, 
 øetìzce, symboly a seznamy. Dal¹í objekty jsou tøídy, tyto 
-objekty se v prùbìhu nemìní a rozumìjí na volání \textbf{new}, 
+objekty se v prùbìhu nemìní a rozumìjí na volání \emph{new}, 
 co¾ vede k vytvoøení nové instance.  Ostatní objekty jsou instancemi 
 tøídy.
 
 Proveditelnost pøechodu v objektovì orientovaných Petriho sítích 
 je rozdìleno na strá¾ pøechodu a akci. Strá¾ pøechodu obsahuje 
 sekvenci výrazù a ka¾dý z nich je zaslání zprávy. Pokud ka¾dá 
-dálèí zpráva vrací \textbf{true}, strá¾ je vyhodnocena jako \textbf{true}.
+dálèí zpráva vrací \emph{true}, strá¾ je vyhodnocena jako \emph{true}.
 
 Akce pøechodu specifikuje zaslání zprávy. Budeme uva¾ovat tvar 
 zaslání ve tvaru \eqref{zprava}:
@@ -630,56 +606,88 @@ Petriho sítí.}
 \end{figure}
 
 \subsection{Grafické znázornìní}
-Jednotlivé místa se znázoròují v Objektovì orientovaných Petriho 
-sítích jako koleèka obsahující procesy, reference na objekty. 
-Pøechody jsou znázornìny obdélníkem obshaujícím strá¾ a akci. 
+Jednotlivé místa se znázoròují v objektovì orientovaných Petriho 
+sítích jako koleèka obsahující stav tohoto místa, napøíklad referenci na 
+objekty. Pøechody jsou znázornìny obdélníkem obsahujícím strá¾ a akci. 
 Akce se nachází pod èarou a nad èarou se nachází strá¾.
 
+\section{Koncept aplikace}\label{spojeni}
+Vytvoøit jednotlivé diagramy a Petriho sítì je pouze èást tohoto nástroje, jeho 
+pøedností má být atumoatické a urychlené vytváøení aplikací. Z tohoto dùvodu 
+bylo zvoleno zavedení \emph{Use-Case driven developmentu}.
 
-\section{Spojení diagramù}\label{spojeni}
-Bìhem vytvøení pøípadù u¾ití je vhodné vytvoøit také diagram tøíd. Tato akce 
-spoèívá v hledání návrhových tøíd rozhraní a komponent, je¾ vzájemnì komunikují 
-a projevují chování specifikované pomocí pøípadu u¾ití.
+Tento pohled na návrh aplikace je veden tak, ¾e na základì diagramu pøípadù 
+u¾ití je mo¾né vytvoøit automaticky tøídy v diagramu tøíd. A to tak, ¾e aktér 
+je modelován jako tøída se speciálním typem \emph{Actor} a pøípad u¾ití je 
+modelován jako tøída s urèením \emph{activity}.
 
-\begin{figure}[h!]
+Pro tyto tøídy nadále platí stejná omezení, jako pro aktéry a pøípady u¾ití. 
+Dále je tento zpùsob výhodný z toho hlediska ¾e po navrhnutí chování aplikace 
+máe okam¾itì k dispozici základní kostru a strukturu v diagramu tøíd. Tato 
+kostra se dá nadále roz¹íøit dal¹ími tøídami, které mohou být zobrazeny v 
+diagramu pøípadù u¾ití po urèení jejich role, nebo mohou být pouze jako pomocné 
+tøídy, nezobrazené v diagramu pøípadù u¾ití.
+
+Takto vytvoøené tøídy a dal¹í tøídy lze poté popsat pomocí objektovì 
+orientovaných Petriho sítí. To tak, ¾e ka¾dá tøída má svoji zvlá¹tní Petriho 
+sí», ve které lze znázornit komunikace s ostatními tøídami. Ka¾dá metoda této 
+tøídy má opìt vlastní Petriho sí», tato sí» má je¹tì roz¹íøení v podobì 
+speciálního místa urèeného pro návratovou hodnotu.
+
+Pou¾itím tohoto koceptu lze dosáhnout velice plynulého návrhu aplikace a po 
+vytvoøení objektovì orientovaných Petriho sítí je mo¾né testování 
+této aplikace bez nutnosti editace zdrojových kódù \cite{usecaDrivenDevelopmen}.
+
+\subsection{Pou¾ití ve výsledné aplikaci}
+Provázání mezi UML èástmi prbíhá tak, ¾e pøi vytvoøení objektu v diagramu 
+pøípadù u¾ití vznikne tøída se stejným názvem v diagramu tøíd. Na objektovém 
+analytikovi potom je potøeba zadat jednotlivé atributy a operace. Pokud vznikne 
+pøípad, ¾e se analytická tøída rozpadne na více tøíd, je toto mo¾né realizovat 
+dvojím zpùsobem. A to tak, ¾e se odstraní analytická tøída a vzniknou dvì nové 
+tøídy, které se nepromítnou do diagramu pøípadù u¾ití. A nebo zachováním 
+analytické tøídy a navázáním nové tøídy, která se nepromítne do pøípadù u¾ití.
+
+Zpùsob znázornìní jednoduchého pøípadu u¾ití je vidìt na obrázku 
+\ref{useCasePropoj} kde máme dva aktéry a ka¾dý z nich pou¾ívá rùznou akci, 
+tyto akce jsou v¹ak roz¹íøeny pomocí include spoje o pøípad 
+u¾ití \ref{classdiagramPropoj}. \ref{oopnPropoj}.
+
+\begin{figure}[h!] \label{useCasePropoj}
 \centering
   \includegraphics[trim = 0mm 200mm 0mm 0mm, clip, 
 scale=0.5]{fig/UseCasePropoj}
   \caption{Nástin problému pøípadù u¾ití.}
 \end{figure}
 
-Bìhem tohoto procesu vznikají analytické tøídy, tyto tøídy by mìly mapovat 
-pojmy reálného svìta. Nicménì odhad a automatické generování tìchto tøíd je 
-velice nároèné a proto èasto tato práce zùstává na objektovém analytikovi. Ten 
-by se mìl postarat o dal¹í pøevod a upøesnìní tìchto analytických tøíd.
+Tento pøípadu¾ití se poté promítne do diagramu tøíd s tím, ¾e jednotlivý aktéøi 
+budou reprezentování tøídami s pøíznakem \emph{Actor} a pøípady u¾ití jako 
+\emph{Activity}. Spoje mezi tìmito tøídami jsou toto¾né s tìmi co jsou v 
+diagramu pøípadù u¾ití. S tím rozdílem, ¾e je na objektovém analytikovi 
+rozhodnou jaký spoj se pou¾ije v pøípadì include, zda agregaci, nebo 
+kompozici. Pøed toto rozhodnutí je také postaven v pøípadì pou¾ití extends 
+spoje. Po vytvoøení tìchto tøíd je mo¾né zadat tøídní promìnné a metody k 
+jednotlivým tøídám. Výsledný diagram provázání mù¾ete vidìt na obrázku 
+\ref{classdiagramPropoj}.
 
-Analytické tøídy by mìli obsahovat pouze ty nejdùle¾itìj¹í atributy a operace, 
-které musí tøída poskytovat. Èasto se mù¾e stát ¾e 
-operace je poté rozbita do nìkolika men¹ích metod.
-\cite{UML2}
-
-\subsection{Pou¾ití ve výsledné aplikaci}
-Provázání mezi UML èástmi prbíhá na velice nizké úrovni a to tak, ¾e pøi 
-vytvoøení objektu v diagramu pøípadù u¾ití vznikne tøída se stejným názvem v 
-diagramu tøíd. Na objektovém analytikovi potom je potøeba zadat jednotlivé 
-atributy a operace. Pokud vznikne pøípad, ¾e se analytická tøída rozpadne na 
-více tøíd, je toto mo¾né realizovat dvojím zpùsobem. A to tak, ¾e se odstraní 
-analytická tøída a vzniknou dvì nové tøídy, které se nepromítnou do diagramu 
-pøípadù u¾ití. A nebo zachováním analytické tøídy a navázáním nové tøídy, která 
-se nepromítne do pøípadù u¾ití.
-
-\begin{figure}[h!]
+\begin{figure}[h!] \label{classdiagramPropoj}
 \centering
   \includegraphics[trim = 0mm 150mm 0mm 0mm, clip, 
 scale=0.5]{fig/ClassDiagramPropoj}
   \caption{Nástin problému pøevodu pøípadu u¾ití do diagramu tøíd.}
 \end{figure}
 
-Pøi vytváøení tøíd a operací (metod) v diagramu tøíd také vznikají nové 
-objektovì orientované tøídy. Ka¾dá metoda má jednu objektovì orientovanou 
-Petriho sít a podobnì tomu tak je v pøípadì tøídy. Objektovì orientovaná 
-Petriho sít pro metodu má jedno specifické místo \textbf{return}, které nelze 
-odstranit ani zmìnit její jméno. \cite{ModelovaniOOPN}
+K popisu jednotlivých tøíd a metod dále slou¾í objektovì orientované Petriho 
+sítì. Ka¾dá tøída a také ka¾dá metoda má jednu objektovì orientovanou Petriho 
+sí». V pøípadì metody tato sí» mù¾e obsahovat vstupní místa, argumenty této 
+metody, a jedno speciální místo, kde je ulo¾ena návratová hodnota. Pøíklad 
+navrhnutí metody \emph{vypocitejSirku} je vidìt na obrázku \ref{oopnPropoj}
+
+\begin{figure}[h!] \label{oopnPropoj}
+\centering
+  \includegraphics[trim = 0mm 200mm 0mm 0mm, clip, 
+scale=0.5]{fig/petriNet_makeActionMethodaPropoj}
+  \caption{Metoda popsána Objektovì orientovanou Petriho sítí.}
+\end{figure}
 
 Objektovì orientované Petriho sítì, mají nìkolik speciálních míst. V pøípadì 
  Petriho sítì pro tøídu jsou to tøídní promìnné této tøídy a zdìdìné tøídní 
@@ -687,13 +695,6 @@ promìnné od svùch pøedkù. V pøípadì Petriho sítì je mno¾ina tìchto zvlá¹tních
 míst roz¹íøena o argumenty metody, které jsou vstupními místy pro tuto Petriho 
 sí».
 \cite{oopn_caseStudy}
-
-\begin{figure}[h!]
-\centering
-  \includegraphics[trim = 0mm 200mm 0mm 0mm, clip, 
-scale=0.5]{fig/petriNet_makeActionMethodaPropoj}
-  \caption{Metoda popsána Objektovì orientovanou Petriho sítí.}
-\end{figure}
 
 \section{Shrnutí}
 V této kapitole byly pøiblí¾eny nástroje slou¾ící ke 
@@ -709,11 +710,12 @@ nástroje velice vhodné. A to pøevá¾nì z hlediska jednoduché
 integrace zákazníka do vývoje a promítnutí zmìn od zákazníka 
 okam¾itì na celý systém.
 
-\chapter{Samostatná aplikace} \label{samotatnaAplikace}
-Po vyzkou¹ení kounkurentních nástrojù a vybrání vhodných nástrojù z nich bylo 
-zji¹tìno ¾e ¾ádný nástroj nedosahuje absolutních po¾adavkù a ¾ádný z nich 
-neimplementuje Objektovì orientované Petriho sítì. Z toho dùvodu bylo 
-rozhodnuto implementovat nástroj, který je hlavním pøedmìtem této práce.
+\chapter{Návrh aplikace} \label{samotatnaAplikace}
+Po vyzkou¹ení nástrojù specializujících se v návrh aplikací bylo zji¹tìno ¾e 
+¾ádný z nich neimplementuje mo¾nost vzájemného propojení, jak bylo 
+specifikováno v po¾adavcích. Také byl potvrzen oèekávaný výsledek, kdy 
+¾ádný nástroj neobsahoval mo¾nost návrhu pomocí objektovì orientovaných Petriho 
+sítí.
 
 Nejdøíve si objasníme design aplikace, rozmístnìní jednotlivých prvkù aplikace 
 a zpùsob ovládání \ref{popisAplikace}. Poté probereme nìkteré speciální 
@@ -744,67 +746,16 @@ na první objekt a poté na druhý. Pokud je potøeba spoj zahnout pro
 zpøehlednìní grafu, je toto mo¾né vyvolat kliknutím na pravé tlaèítko my¹i 
 bìhem ta¾ení spoje.
 
-\section{Ovládací prvky} \label{ovladaciPrvky}
-Pro celou aplikaci je spoleèných nìkolik speciálních ovláadacích prvkù. 
+Architekturu aplikace si lze prohlédnout na obrazku \ref{architekturaAplikace}, 
+kde jsou hrubì znázornìny akce pøi vytvoøení jednotlivých obejktù na pracovním 
+plátnì.
 
-K vytvoøení nového projektu lze pou¾ít menu, horní toolbar, nebo klávesové 
-zkratky. Také je mo¾né vytvoøit nový projekt kliknutím na tlaèítko \uv{plus} 
-vedle zálo¾ek s projekty. Pokud je potøeba zavøít nìjaký projekt je mo¾né jej 
-zavøít také tlaèítkem nacházející se v zálo¾ce daného tabu pro projekt. Pro 
-vytvoøení nového projektu lze také pou¾ít klávesové zkratky \texttt{CTRL + T} a 
-pro zavøení zvoleného projektu je mo¾né pou¾ít klávesové zkratky \texttt{CTRL + 
-W}.
-
-Pøi výbìru pøidání objektu, nebo spoje tlaèítko zùstane zakliknuté, to je kvùli 
-jednodu¹¹ímu pøidání více stejných objektù na pracovní plochu. 
-
-Smazání objektu probíhá jeho výbìrem a zmáèknutím tlaèítka \texttt{delete} na 
-klávesnici, tímto zpùsobem lze také mazat hrany mezi ojekty.
-
-Pro roz¹íøení editaèního plátna lze pøesunout po¾adovaný objekt mimo viditelnou 
-oblast a editaèní plátno se roztáhne automaticky. Plátno je fixnuté do levého 
-horního rohu, to znamené ¾e nelze objekty pøesunout za levý, nebo horní okraj 
-editaèního plátna pouze za pravý a dolní okraj.
-
-Pokud je vybrána hrana a dr¾eno levé tlaèítko my¹i, ta¾ením se hrana \uv{odepne} 
-od druhého objektu a je mo¾né ji odstranit kliknutím mimo jakýkoliv objekt, nebo 
-ji pøidat k jinému objektu. Pøi manipulaci s hranou je potøeba vybrat po¾adovaný 
-typ hrany, to znamená vybrat typ hrany z levého menu a poté zaèít editovat 
-hranu. Pokud vyberete odli¹ný typ hrany, ne¾ se chystáte editovat, tato hrana 
-zmìní svùj typ na právì vybraný. Lze také vybrat hranu a a¾ poté vybrat její 
-typ, toto je ale mírnì nároèné.
-
-Jak ji¾ bylo øeèeno v \ref{popisAplikace} pøi vytváøení hrany je mo¾né tuto 
-hranu zalomit a dosáhnout tak vìt¹í pøehlednosti aplikace. Bohu¾el nelze tyto 
-zalomení editovat, ale roz¹íøení aplikace o tuto funkcionalitu není nároèné, 
-jenom toto nebylo pova¾ováno za nutnost.
-
-Obèas jsou nìkteré hrany ukonèeny ¹ipkou, nebo roz¹iøujícím obrazcem. Toto 
-je popsáno v kapitole \ref{grafickePrvky}. Nìkteré hrany diagramù 
-mohou být ukonèeny ¹ipkami na obou stranách, pro pøehlednost aplikace byla ale 
-tato funckionalita zakázána a v¹echny hrany jsou tím pádem \textbf{Jednosmìrné} 
-a to ve smìru z prvního objektu k druhému.
-
-Aplikace bohu¾el neobsahuje mo¾nost návratu akce a opìtování akce, jak je tomu 
-u vìt¹iny aplikací. Toto je pravdìpobnì nejvìt¹í slabinou tohoto nástroje. 
-Absence této funkce není pøíli¹ omezující, znamená to 
-pouze pro u¾ivatele opakování stejných akcí. Bohu¾el pøi vývoji na tuto 
-funcki nebyl brán zøetel a vytvoøení této funkce by znamenalo nedokonèení 
-nìkterých velice dùle¾itých èástí. Tento nedostatek je brán na vìdomí a v 
-rámci pokraèování vývoje aplikace by toto mìlo být jedno z prvních dùle¾itých 
-roz¹íøení.
-
-Nelze nastavit odli¹ný vzhled celé aplikace, jako napøíklad barvy jednotlivých 
-objektù, jejich styl a chování. Pøi vytváøení nástroje nicménì s touto mo¾ností 
-bylo poèítáno, ale opìt jako s návratem akce bylo prioritizováno dokonèení 
-dùle¾itìj¹ích èástí. Na¹tìstí je aplikace na toto plnì pøipravena a pokud bude 
-pokraèováno v dal¹ím vývoji pøidání takového nastavení nebude vy¾adovat 
-pøíli¹né úsilí.
-
-Velice nepraktické je bohu¾el také to, ¾e u¾ivatel není nijak informován o 
-stavu ulo¾ení právì editovaného souboru. To znamená ¾e pøi zavøení souboru není 
-vyzván k jeho ulo¾ení a také ¾e není hned na první pohled viditelnì, zda právì 
-editovaný soubor je ulo¾ený, nebo ne.
+\begin{figure}[h!] \label{architekturaAplikace}
+\centering
+  \includegraphics[trim = 0mm 200mm 0mm 0mm, clip, 
+scale=0.5]{fig/petriNet_makeActionMethodaPropoj}
+  \caption{Architektura aplikace.}
+\end{figure}
 
 \section{Jednotlivé editory}\label{jednotliveEditory}
 Jednotlivé editory jak ji¾ bylo øeèeno v pøechozích kapitolách jsou 
@@ -1294,5 +1245,35 @@ editoru vytvoøilo velice silnou konkurenci pro nástroje jako \textbf{Umbrello},
 \section{Závìreèné zhodnocení aplikace}
 Bez ohledu na roz¹íøení probrané v pøede¹lé kapitole \ref{budoucnost} je 
 aplikace velice dobøe pou¾itelná a vhodná pro vytvoøení návrhu vývoje.
+
+Tento nástroj má veliké výhody oproti konkurenci pøevá¾nì díky jednoduchému a 
+snadnému ovládání. Minimum nástrojù na trhu momentálnì nabízí spojení diagramu 
+pøípadù u¾ití s diagramem tøíd. Nástroje, které toto umo¾òují v¹ak nemají 
+mo¾nost popsat tøídy pomocí objektov orientovaných Petriho sítí. Tento zpùsob 
+popisu chování tøídy a popisu reakcí na odchycené zprávy je unikátní pøevá¾nì 
+díky rychlosti jakou lze takovou tøídu, nebo metodu popsat.
+
+Tento nástroj pøevá¾nì získává oproti dal¹ím nástroj díky provázanosti 
+jednoduché úpravì v èásti UML. Kdy je mo¾né vytvoøit tøídu, tu popsat a 
+kompletnì vytvoøit a v momentì, kdy je potøeba tuto tøídu pou¾ít jinak, jako 
+napøíklad odli¹ný pøípad u¾ití, tento nástroj tuto zmìnu doká¾e provést takøka 
+okam¾itì. Takovýto pohled na vytváøení tøíd a provázání s akcemi je velice 
+dobrý v pøípadì zapojení agilních metodik vývoje. Je mo¾né vytvoøit tøídy a 
+o jejich pou¾ití se postará zákazník, který nemusí být zku¹ený v programování, 
+pouze rozumnìt diagramu pøípadù u¾ití.
+
+Z testù a práce u¾ivatelù s tímto nástrojem \ref{testyAvysledky} vyplývá ¾e 
+nástroj je velice jednoduchý na pou¾ívání a snadno pochopitelný. S tímto 
+zámìrem byla tato aplikace od zaèátku vyvýjena a tento úkol také splòuje. 
+
+Aplikace má nìkteré nedostatky v podobì nemo¾nosti vrátit zpìt provedenou akci, 
+nebo neidentifikaci zda byl program ulo¾en. Tyto nedostatky ov¹em nejsou 
+kritické pro úspì¹ný chod a pou¾ívání aplikace.
+
+Velice pøínosná je mo¾nost dal¹ího roz¹íøení tohoto nástroje o nìkolik dal¹ích 
+funkcí. V pøípadì vytvoøení navrhovaných roz¹íøení v kapitole
+\ref{budoucnost} je mo¾né z tohoto nástroje udìlat silného soupeøe na 
+poli editorù. Nad kterými aplikace ji¾ momentálnì vítìzí díky mo¾nosti popsání 
+metod a tøíd pomocí objektovì orientovanou Petriho sítí.
 
 %=========================================================================
