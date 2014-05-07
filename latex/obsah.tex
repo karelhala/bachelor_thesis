@@ -258,236 +258,230 @@ V Enterprise Architect jsou druhy diagramù a grafù umístnìny ve stromové
 struktuøe z dùvodù rozsáhlosti aplikace. Toto je opìt nepou¾itelné v men¹ích 
 aplikacích a zbyteènì nároèné na hledání a pøidání nového diagramu nebo grafu.
 
-\chapter{Robzor jednotlivých diagramù}\label{grafy}
-Po prozkoumání nástrojù specializujících se na návrh aplikace bylo zvoleno ¾e 
+\chapter{Rozbor diagramù}\label{grafy}
+Po prozkoumání nástrojù specializujících se na návrh aplikace bylo zvoleno, ¾e 
 pro popis chování aplikace bude vhodné pou¾ít \emph{diagramy pøípadù u¾ití} 
 \ref{pripadUziti} a pro popis jednotlivých tøíd, vztahù mezi tìmito tøídami a 
 návrh operací je vhodný \emph{diagram tøíd} \ref{diagramTrid}. Pro popis 
 chování tøíd a jejich metod bylo zvoleno Petriho sítí, pøesnìji jejich 
-roz¹íøení s názvem \emph{objektovì orientovaných Petriho sítí} \ref{oopn}.
+roz¹íøení s názvem \emph{objektovì orientované Petriho sítì} \ref{oopn}.
 
 Dále byly tyto diagramy a grafy spojeny pro vzájemnou komunikaci na základì 
 takzvaného \emph{Use-case driven developmentu}. Tento zpùsob se orientuje na 
 propojení diagramu pøípadù u¾ití do diagramu tøíd a poté urèuje napojení 
-objektovì orientovaných Petriho sítí na tyto tøídy, blí¾e popsáno v kapitole 
-\ref{spojeni}.
+objektovì orientovaných Petriho sítí na tyto tøídy, co¾ je blí¾e popsáno v 
+kapitole \ref{spojeni}.
 
 \section{Objektovì orientované programování}\label{obejktoveProgram}
-Pøedtím, ne¾ rozebereme grafy, které slou¾í pro popis vývoje a 
-vytvoøení návrhu je potøeba rozebrat objìktovì orientované 
-programování. Toto je speciální styl programování pou¾ívaný 
-pøevá¾nì pøi vývojí vìt¹ích a nároènìjèích aplikací.
+Pøedtím, ne¾ rozebereme grafy, které slou¾í pro popis vývoje a vytvoøení návrhu 
+je potøeba analyzovat objìktovì orientované programování. Jedná se o speciální 
+styl programování pou¾ívaný pøevá¾nì pøi vývojí vìt¹ích a nároènìjèích aplikací.
 
 \subsection{Objekt}
-Základ takovéhoto programování je samozøejmì objekt, je to 
-specifický pohled na fyzikální a konceptuální jednotky reálného 
-svìta. Jednotlivé èásti objektu jsou:
+Základ objektovì orientovaného programování je samozøejmì objekt. Je to 
+specifický pohled na fyzikální a konceptuální jednotky reálného svìta. 
+Jednotlivé èásti objektu jsou:
 \begin{itemize}
-  \item Stav nese informaci, o tom v jakém stavu se objekt v daném 
+  \item Stav -- nese informaci, o tom v jakém stavu se objekt v daném 
   èase nachází. 
-  \item Chování popisuje reakce na vnìj¹í a vnitøní události.
-  \item Identita ka¾dého objektu je jednoznaènì identifikovatelná v 
-  rámci systému -- má jméno, kterým se li¹í od ka¾dého jiného.
+  \item Chování -- popisuje reakce na vnìj¹í a vnitøní události.
+  \item Identita -- u ka¾dého objektu je jednoznaènì identifikovatelná v rámci 
+systému -- má jméno, kterým se li¹í od ka¾dého jiného objektu.
 \end{itemize}
 
 Jako jeden z hlavních rysù objektovì orientovaného programování 
-je zapouzdøení, skrytí ve¹kerých dat a práci s daty pøed 
+je zapouzdøení -- skrytí ve¹kerých dat a práce s daty pøed 
 ostatními objekty. Ostatní objekty jsou schopné komunikovat mezi 
 sebou pomocí zasílání zpráv. Tyto zprávy obsahují jméno 
-operace, parametry -- data potøebná pro zpracování a jméno objektu 
+operace, parametry (data potøebná pro zpracování) a jméno objektu 
 obsahujícího tuto operaci. Zaslaná zpráva mù¾e slou¾it jak ke 
 zpracování a navrácení dat, tak k vnitøní zmìnì objektu, který 
 tuto zprávu pøijal.
 
 Veøejné rozhraní objektu je urèeno mno¾inou operací, co¾ je 
 výèet schopností objektu. Popis provádìní operace je schován 
-uvnitø objektu a je popsán metodami. Uvnitø objektu se také 
-nachází atributy, co¾e je popis uchování dat. \cite{ModelovaniOOPN}
+uvnitø objektu a je urèen metodami. Uvnitø objektu se také 
+nachází atributy, co¾ je pøedpis pro uchování dat. \cite{ModelovaniOOPN}
 
-\subsection{Instanciace, tøídy}
-Ve vìt¹inì programovacích jazykù se vytváøení objektù 
-provádí specílní konstrukcí, takzvanou tøídou. Tøída je 
- pøedpis pro objekt.
+\subsection{Instanciace tøídy}
+Ve vìt¹inì programovacích jazykù se vytváøení objektù provádí 
+speciální konstrukcí, takzvanou tøídou. Tøída je pøedpis pro objekt.
  
- Tøída definuje viditelnost instanèních promìnných (atributù) a 
- metod. Dále definuje metody a jejich provádìní. 
+Tøída definuje viditelnost instanèních promìnných (atributù) a metod. Dále 
+definuje metody a jejich provádìní.
  
- Objekty mohou být instanciovány staticky a dynamicky. Staticky 
- instanciované tøídy se vytvoøí pøi spustìní programu a 
- zanikají a¾ pøi jeho ukonèení. Dynamicky instanciované 
- promìnné vznikají a zanikají v prùbìhu chodu aplikace na 
- po¾adavky u¾ivatele. \cite{ModelovaniOOPN}
+Objekty mohou být instanciovány staticky a dynamicky. Staticky instanciované 
+tøídy se vytvoøí pøi spustìní programu a zanikají a¾ pøi jeho ukonèení. 
+Dynamicky instanciované promìnné vznikají a zanikají v prùbìhu chodu aplikace 
+v reakci na po¾adavky u¾ivatele. \cite{ModelovaniOOPN}
 
 \subsection{Dìdiènost}
-Dal¹í ze silných vlastností objektovì orientovaného 
-programování je dìdìní. Slou¾í ke sdílení jisté 
-charakteristiky jednoho objektu s druhým.
+Dal¹í ze silných vlastností objektovì orientovaného programování je dìdìní. 
+Slou¾í ke sdílení jisté charakteristiky jednoho objektu s druhým.
 
-Ka¾dý jazyk má tuto vlastnost implementovanou rùznì. Dynamické a 
-statické dìdìní mù¾e být zamìøeno na tøídy nebo objekty. 
-Mù¾e být dìdìna reprezentace, nebo chování. Dìdìní mù¾e 
-být implementováno èásteènì, nebo úplnì. A v neposlední 
-øadì lze rozli¹it dìdìní násobné a jednoduché podle poètu dìdìní. \cite{ModelovaniOOPN}
+Ka¾dý jazyk má tuto vlastnost implementovanou rùznì. Dynamické a statické 
+dìdìní mù¾e být zamìøeno na tøídy nebo objekty. Mù¾e být dìdìna reprezentace, 
+nebo chování. Dìdìní mù¾e být implementováno èásteènì, nebo úplnì. A v 
+neposlední øadì lze podle poètu dìdìní rozli¹it dìdìní násobné a jednoduché. 
+\cite{ModelovaniOOPN}
 
 \section{Diagram pøípadù u¾ití} \label{pripadUziti}
 Diagramy pøípadù u¾ití jsou èasto modelovány a pou¾ívány ke komunikaci mezi 
 zákazníkem, který nemá pøili¹ mnoho zku¹eností s vývojem systému, ale rozumí 
-danému problému a svému oboru a programátorem, èlovìkem, který naopak má 
+danému problému a svému oboru, a programátorem, èlovìkem, který naopak má 
 zku¹enosti s vývojem aplikace, ale nechápe do hloubky zákazníkùv problém a jeho 
 obor.
 
-Základními prvky diagramu pøípadù u¾ití jsou pøípady u¾ití a aktéøi. V po¾adavcích na
-systém rozpoznáváme takzvané \uv{Stakeholdery},l jsou to osoby, nebo vìci, 
-které mají 
-zájem na úspì¹né provedení systému. Pøípady u¾ití popisují jak se má systém 
-zachovat na reakce stakeholderù, akterù, a dodat urèité výsledky. Aktéøi na 
-druhou stranu, jsou pøímí u¾ivatelé nebo vìci s urèitým chováním. Hlavní aktér 
-je èasto stakeholderem daného systému a hlavní spou¹tìè tohoto systému. Obèas je 
-zapotøebí aktér, který není pøímo v systému, tomuto se øíká \uv{Podpùrný aktér}. 
-Aktér není pøímo chápán jako jedinec, nýbr¾ jako role v systému. 
-\cite{Pripad_uziti}
+Základními prvky diagramu pøípadù u¾ití jsou pøípady u¾ití a aktéøi. V 
+po¾adavcích na systém rozpoznáváme takzvané \uv{Stakeholdery}, jsou to osoby 
+nebo vìci, které mají zájem na úspì¹ném provedení systému. Pøípady u¾ití 
+popisují, jak se má systém zachovat na reakce stakeholderù, akterù, a dodat 
+urèité výsledky. Aktéøi jsou na druhou stranu pøímí u¾ivatelé nebo vìci s 
+urèitým chováním. Hlavní aktér je èasto stakeholderem a hlavní spou¹tìè tohoto 
+systému. Obèas je zapotøebí aktér, který není pøímo v systému. Tomuto se øíká 
+\uv{Podpùrný aktér}. Aktér není pøímo chápán jako jedinec, nýbr¾ jako role v 
+systému. \cite{Pripad_uziti}
 
-\subsection{Rozbor Diagramu pøipadù u¾ití}
-Tyto diagramy se pou¾ívají pro grafický popis pøípadù u¾ití a zahrnuje nìkolik pravidel.
-Aktéøi jsou znázoròováni ve tvaru postav a pøípady u¾ití jako elipsy obsahující 
-název provádìného úkonu. Spoje mezi pøípady u¾ití a aktéry jsou znázornìny úseèkou vedoucí
-od aktéra k pøípadu u¾ití.
+\subsection{Rozbor diagramu pøipadù u¾ití}
+Diagramy pøipadù u¾ití se pou¾ívají pro grafický popis pøípadù u¾ití a 
+zahrnují nìkolik pravidel. Aktéøi jsou znázoròováni ve tvaru postav a pøípady 
+u¾ití jako elipsy obsahující název provádìného úkonu. Spoje mezi pøípady u¾ití a 
+aktéry jsou znázornìny úseèkou vedoucí od aktéra k pøípadu u¾ití.
 
 Mezi pøípady u¾ití mohou být vedeny dále spoje pro jejich roz¹íøení. Jsou to
-\textbf{include}, \textbf{extends} a \textbf{generalizace}. Poslední 
+\emph{include}, \emph{extends} a \emph{generalizace}. Poslední 
 jmenovaný spoj je mo¾né také vést mezi aktéry.
 
-\textbf{Include} znamená to, ¾e pro správný chod daného nadøazeného pøípadu 
-u¾ití je zapotøebí
-pou¾ití vlo¾eného pøípadu u¾ití. Pro vykonání vy¹¹ího pøípadu u¾ití je 
-zapotøebí nejdøíve vykonat vlo¾ený pøípad u¾ití. Pokud pøi vykonávání nìkolika 
-pøípadù u¾ití je vykonávána stejná funkcionalita, je vhodné tuto funkcionalitu 
-oddìlit z daného pøípadu u¾ití a spojit se v¹emi pøípady u¾ití spojem include. 
-Spoj include je znázornìn pøeru¹ovanou ¹ipkou doprovázené textem \uv{include}. 
-Spoj je veden z nadøazeného pøípadu u¾ití k ni¾¹ímu pøípadu.
+\subsubsection{Include}
+Include znamená to, ¾e pro správný chod daného nadøazeného pøípadu 
+u¾ití je zapotøebí pou¾ití vlo¾eného. Pro vykonání vy¹¹ího pøípadu u¾ití je 
+zapotøebí nejdøíve vykonat vlo¾ený. Pokud je pøi vykonávání nìkolika pøípadù 
+u¾ití provádìna stejná operace, je vhodné tuto funkcionalitu oddìlit z daného 
+pøípadu u¾ití a spojit se v¹emi pøípady u¾ití spojem include. Spoj include je 
+znázornìn pøeru¹ovanou ¹ipkou doprovázené textem \uv{include}. Spoj je veden z 
+nadøazeného pøípadu u¾ití k vlo¾enému.
 
-\textbf{Extends} slou¾í pro roz¹íøení urèitých pøípadù u¾ití. Toto znamená, ¾e 
-je roz¹íøením hlavního pøípadu u¾ití a toto roz¹íøení bylo vyjmuto z pùvodního 
-pøípadu. V pøekladu tento spoj znamená, ¾e jeden pøípad u¾ití je roz¹íøen 
-dal¹ím pøípadem u¾ití. Spoj je znázoròován pøeru¹ovanou ¹ipkou vedenou do 
-roz¹iøovaného (hlavního) pøípadu u¾ití.
+\subsubsection{Extends} 
+Extends slou¾í pro roz¹íøení pøípadù u¾ití. To znamená, ¾e je roz¹íøením 
+hlavního pøípadu u¾ití, které bylo vyjmuto z pùvodního pøípadu. V  pøekladu 
+tento spoj znamená, ¾e jeden pøípad u¾ití je roz¹íøen dal¹ím pøípadem u¾ití. 
+Spoj je znázoròován pøeru¹ovanou ¹ipkou vedenou do roz¹iøovaného (hlavního) 
+pøípadu u¾ití.
 
-\textbf{Generalizaci} lze pou¾ít jak v pøípadech u¾ití, tak mezi aktéry. Slou¾í 
-ke znázornìní rodièù a potomkù. Pøi pou¾ití tohoto spoje znamená, ¾e potomek 
-pøebírá ve¹kerou funckinalitu svého rodièe a mù¾e tuto funkcionalitu 
-poupravit, nebo pøidat vlastní. Tento spoj je znázornìn spojem ukonèeným 
-prázdnou ¹ipkou a je veden od potomka k rodièi. \cite{Pripad_uziti}
+\subsubsection{Generalizace} 
+Generalizaci lze pou¾ít jak v pøípadech u¾ití, tak mezi aktéry. Slou¾í ke 
+znázornìní rodièù a potomkù. Pou¾ití tohoto spoje znamená, ¾e potomek pøebírá 
+ve¹kerou funkcionalitu svého rodièe a tu mù¾e poupravit nebo pøidat vlastní. 
+Tento spoj je znázornìn spojem ukonèeným prázdnou ¹ipkou a je veden od potomka k 
+rodièi. \cite{Pripad_uziti}
 
-Na obrázku \ref{useCaseExam} lze vidìt jednoduchý systém pøidávání, editace a 
-zobrazení dat. Kdy se v systému nachází dvì role a ka¾dá má pøístup k odli¹ným 
-akcím.
-
-\begin{figure}
+\begin{figure}[h!]
 \centering
   \includegraphics[trim = 0mm 150mm 0mm 0mm, clip, 
 scale=0.5]{fig/UseCase}
-  \caption{Pøíklad Diagramu pøípadù u¾ití.}
+  \caption{Pøíklad diagramu pøípadù u¾ití.}
   \label{useCaseExam}
 \end{figure}
+
+Na obrázku \ref{useCaseExam} lze vidìt jednoduchý systém pøidávání, editace a 
+zobrazení dat, kdy se v systému nachází dvì role a ka¾dá má pøístup k odli¹ným 
+akcím.
 
 \section{Diagram tøíd} \label{diagramTrid}
 Po znázornìní funkèních po¾adavkù na aplikaci pomocí diagramù pøípadù 
 u¾ití se nabízí dal¹í nástroj z UML rodiny a tím je \emph{Diagram tøíd}. 
-Tento diagram slou¾í pro grafické znázornìní tøíd, bli¾¹í seznámení s 
+Tento diagram slou¾í pro grafické znázornìní tøíd. Bli¾¹í seznámení s 
 objektovì orientovaným programováním bylo probráno v kapitole 
-\ref{obejktoveProgram}. 
+\ref{obejktoveProgram}.
 
-\subsection{Prvky Diagramu tøíd}
-Hlavní slo¾kou diagramu jsou tøídy, ty jsou znázornìny pomocí obdélínkù 
-obsahující dal¹íinformace o dané tøídì. V horní èásti je název tøídy. Poté tøída 
-obsahuje instaèní promìnné, atributy. A poslední èást tøíd jsou operace, 
+\subsection{Prvky diagramu tøíd}
+Hlavní slo¾kou diagramu jsou tøídy, které jsou znázornìny pomocí obdélníkù 
+obsahující dal¹í informace o dané tøídì. V horní èásti je název tøídy. Poté 
+tøída obsahuje tøídní promìnné, atributy. A poslední èást tøíd jsou operace, 
 metody.
 
-V diagramu tøíd lze také namodelovat interface. Toto je speciální tøída
-obsahující pøedpis pro atributy a operace, ale nenachází se v takových
-tøídách implementace tìchto operací. Tato implementace se nachází a¾ ve
-tøídách, které implementují takový interface.
+V diagramu tøíd lze také namodelovat interface -- to je speciální tøída
+obsahující pøedpis pro atributy a operace. V interfacu se nenachází 
+implementace tìchto operací, ta se nachází a¾ ve tøídách, které pou¾ívají tento 
+interface.
 
 Zápis atributù a operací tøíd je stanoven tak, ¾e za jménem následuje 
-dvojteèka a její typ. V pøípadì operací za jménem následuje závorka obsahující 
-seznam argumentù a a¾ poté dvojteèka a návratový typ. Pokud operace nic nevrací 
-je mo¾né indikovat toto pomocí nastavení návratové hodnoty na \uv{void}. Dále 
-je 
-mo¾né omezit vyditelnost attributù a operací pomocí identifikátoru. 
-\textbf{Private} oznaèované \uv{-}, \textbf{protected} jako \uv{\#} a 
-\textbf{public} znázornìné pomocí \uv{+}. Tyto identifikátory se pí¹í pøed 
-jméno attributu, nebo operace. 
+dvojteèka a její typ. V pøípadì operací se napí¹e jméno a za ním je uvedena 
+závorka obsahující seznam argumentù a a¾ poté dvojteèka urèijící návratový 
+typ. Pokud operace nic nevrací, je mo¾né indikovat toto pomocí nastavení 
+návratové hodnoty na \uv{void}. Dále je mo¾né omezit vyditelnost atributù a 
+operací pomocí identifikátoru. \emph{Private} oznaèované \uv{-}, 
+\emph{protected} jako \uv{\#} a \emph{public} znázornìné pomocí \uv{+}. 
+Tyto identifikátory se pí¹í pøed jméno atributu nebo operace.
 
-Jednotlivé hrany pro spojení se dìlí na \textbf{Generalizaci}, 
-\textbf{Asociaci}, \textbf{Agregaci}, \textbf{Compozici} a \textbf{Hrana 
-Implementace}. \cite{Diagram_trid}
+Jednotlivé hrany pro spojení se dìlí na \emph{Generalizaci}, 
+\emph{Asociaci}, \emph{Agregaci}, \emph{Kompozici} a \emph{Implementaci}. 
+\cite{Diagram_trid}
 
 \subsubsection{Generalizaèní hrana}
-Hrana \textbf{Generalizace} popisuje spojení mezi tøídou, která je více 
+Hrana \emph{Generalizace} popisuje spojení mezi tøídou, která je více 
 obecná a tøídou, která je specifická. Generická tøída se nazývá 
-\textbf{superclass}, nebo také \textbf{rodiè} a více specifická tøída se nazývá 
-\textbf{subclass}, známá té¾ jako \textbf{potomek}.
+\emph{superclass}, nebo také \emph{rodiè}, a více specifická tøída se nazývá 
+\emph{subclass}, známá té¾ jako \emph{potomek}.
 
 V UML je tato hrana popsána ¹ipkou ukonèenou bílým trojúhelníkem 
 na konci. Tato hrana je vedena smìrem od generické tøídy k více specifické.
 
-Je také mo¾né nìkolikanásobná dìdiènost, ale v pøípadì implementace takovéto dìdiènosti
-se musí vzít v potaz to, zda daný jazyk nìkolikanásobnou dìdiènost podporuje.
-Proto¾e pøi takovéto dìdiènosti èasto mù¾e nastat problém. Pøedev¹ím díky tomu,
-¾e pokud tøída A dìdí od tøíd B a C a tøída B i tøída C obsahují stejnou metodu,
-programátor musí øe¹it, která metoda se má v tøídì A pou¾ít. Napøíklad
-v jazyce Java\texttrademark nìkolikanásobná dìdiènost není povolena, ale
-je mo¾né pou¾ít \textbf{interface}. \cite{Diagram_trid}
+Je také mo¾né nìkolikanásobná dìdiènost, ale v pøípadì implementace této 
+dìdiènosti se musí vzít v potaz to, zda daný jazyk nìkolikanásobnou dìdiènost 
+podporuje, proto¾e pøi takovéto dìdiènosti èasto mù¾e nastat problém. Pøedev¹ím 
+díky tomu, ¾e pokud tøída A dìdí od tøíd B a C a tøída B i tøída C obsahují 
+stejnou metodu, programátor musí øe¹it, která metoda se má v tøídì A pou¾ít. 
+Napøíklad v jazyce Java\texttrademark nìkolikanásobná dìdiènost povolena není, 
+ale je mo¾né pou¾ít interface. \cite{Diagram_trid}
 
 \subsubsection{Asociaèní hrana}
-Vztah mezi tøídami urèující, ¾e objekty jedné tøídy jsou pou¾ívány v objektech druhé 
-tøídy.
+Asociaèní hrana je vztah mezi tøídami, který urèuje, ¾e objekty jedné 
+tøídy jsou pou¾ívány v objektech druhé tøídy.
 
-Asociace je kreslena v UML pomocí hrany s jednou ¹ipkou na konci. A 
-jmenuje se \textbf{jednosmìrná}, tento styl hrany je 
-pou¾ívanìj¹í. Takto pou¾itá asociace znamená ¾e tøída, ze 
-které ¹ipka vede, je pou¾ita ve tøídì do které tato ¹ipka smìøuje.
-Tuto hrana lze kreslit také se dvìma ¹ipakami na konci, jmenuje se 
-\textbf{obousmìrná} a znamená, ¾e obì tøídy se pou¾ívají 
-navzájem. \cite{Diagram_trid}
+Asociace je kreslena v UML pomocí hrany s jednou ¹ipkou na konci a jmenuje se 
+\emph{jednosmìrná}. Takto pou¾itá asociace znamená, ¾e tøída, ze které ¹ipka 
+vede, je pou¾ita ve tøídì, do které tato ¹ipka smìøuje. Tuto hranu lze kreslit 
+také s ¹ipkami na obou koncích, jmenuje se \textbf{obousmìrná} a znamená, ¾e 
+obì tøídy se pou¾ívají navzájem. Takto urèená asociace není pøíli¹ pou¾ívaná. 
+\cite{Diagram_trid}
 
 \subsubsection{Agregaèní hrana}
-Pou¾ití spoje Agregace znaèí, ¾e urèitý objekt potøebuje, ke svému chodu
+Pou¾ití spoje Agregace znaèí, ¾e urèitý objekt potøebuje ke svému chodu
 dal¹í objekt. Pokud ov¹em pøestane existovat pùvodní objekt, dal¹í objekt
 lze nadále v systému pou¾ít. To znamená, ¾e objekt tøídy A potøebuje ke svému
-chodu objekt tøídy B. V momentì odstranìní objektu tøídy A ze systému, ale
+chodu objekt tøídy B. V momentì odstranìní objektu tøídy A ze systému ale
 objekt tøídy B nezaniká. Tomuto se øíká slabá agregace. Tato hrana je kreslena 
-souvislou hranou opatøenou bílým diamantem na konci. \cite{Diagram_trid}
+souvislou èarou opatøenou bílým diamantem na konci. \cite{Diagram_trid}
 
 \subsubsection{Kompozièní hrana}
-Tato hrana je z èásti stejná, jako hrana Agregaèní, s tím rozdílem ¾e
-reprezentuje silnou agregaci. To znamená ¾e pokud objekt tøídy A potøebuje
-ke svému chodu objekt tøídy B v momentì odstranìní objektu tøídy A je ze 
-systému odtranìn objekt tøídy B. Tato hrana je kreslena souvislou hranou 
+Tato hrana je z èásti stejná jako hrana Agregaèní s tím rozdílem, ¾e
+reprezentuje silnou agregaci. To znamená, ¾e pokud objekt tøídy A potøebuje
+ke svému chodu objekt tøídy B, v momentì odstranìní objektu tøídy A je ze 
+systému odtranìn objekt tøídy B. Tato hrana je kreslena souvislou èarou 
 opatøenou èerným diamantem na konci. \cite{Diagram_trid}
 
 \subsubsection{Implementaèní hrana}
 Tato hrana je specifická v tom, ¾e se kreslí pouze mezi tøídou a interfacem.
 Slou¾í ke znázornìní, ¾e tøída A implementuje interface B, pøevezme v¹echny
-attributy tøídy B a pøetí¾í operace tøídy B, které implementuje. Hrana je 
-kreslena pøeru¹ovanou ¹ipkou ve smìru od implementovanì tøídy k
+atributy tøídy B a pøetí¾í operace tøídy B, které implementuje. Hrana je 
+kreslena pøeru¹ovanou ¹ipkou ve smìru od implementované tøídy k
 interfacu. \cite{Diagram_trid}
 
+\begin{figure} [h!]
+\centering
+  \includegraphics[trim = 0mm 150mm 0mm 0mm, clip, 
+scale=0.5]{fig/ClassDiagram}
+  \caption{Pøíklad diagramu tøíd.}
+  \label{diagramClassExamp}
+\end{figure}
 Na obrázku \ref{diagramClassExamp} lze vidìt zpùsob spojení nìkolika tøíd, kdy 
 nìkteré tøídy obsahují tøídní promìnné, v horní èásti a ve spodní poté jejich 
 metody.
 
-\begin{figure}
-\centering
-  \includegraphics[trim = 0mm 150mm 0mm 0mm, clip, 
-scale=0.5]{fig/ClassDiagram}
-  \caption{Pøíklad Diagramu tøíd.}
-  \label{diagramClassExamp}
-\end{figure}
-
-\section{Zpùsob popisu tøíd a reakce na zaslané zprávy} \label{oopn}
-Pro popis tøíd a chování objektù na zaslané zprávy, popis implementace metod 
-(operací), bylo pou¾ito objektovì orientovaných Petriho sítí.
+\section{Objektovì orientované Petriho sítì} \label{oopn}
+Pro popis tøíd a chování objektù na zaslané zprávy a popis implementace metod 
+(operací) bylo pou¾ito objektovì orientovaných Petriho sítí.
 
 \subsection{Petriho sítì}\label{PN}
 Objektovì orientované Petriho sítì jsou roz¹íøením Petriho 
@@ -498,95 +492,90 @@ Chování dynamického systému je v podstatì sledování stavové
 promìnné a zaznamenávání její hodnoty v èase.
 
 Petriho sí» lze matematicky zapsat jako \(N = (P_N, T_N, PI_N, 
-TI_N)\) kde:
+TI_N)\), kde:
 \begin{itemize}
-  \item \(P_N\) je koneèná mno¾ina \textbf{míst}.
-  \item \(T_N\) je koneèná mno¾ina \textbf{pøechodù}, \(P_N 
+  \item \(P_N\) je koneèná mno¾ina \emph{míst}.
+  \item \(T_N\) je koneèná mno¾ina \emph{pøechodù}, \(P_N 
   \bigcap T_N = \emptyset\).
-  \item \(PI_N\) : \(P_N \to \mathbb{N}\) \textbf{inicializaèní funkce}.
-  \item \(TI_N\) je \textbf{popis pøechodù}. Je to funkce definovaná 
+  \item \(PI_N\) : \(P_N \to \mathbb{N}\) je \emph{inicializaèní funkce}.
+  \item \(TI_N\) je \emph{popis pøechodù}. Je to funkce definovaná 
   na \(T_N\), taková, ¾e \(\forall t \in T_N\):
-  \(TI_N = (PRECOND_t^N, POSTCOND_t^N) \), kde
+  \(TI_N = (PRECOND_t^N, POSTCOND_t^N) \), kde:
   \begin{enumerate}
-	\item \(RECOND_t^N : PN \to \mathbb{N}\) jsou \textbf{vstupní 
+	\item \(RECOND_t^N : PN \to \mathbb{N}\) jsou \emph{vstupní 
 	podmínky} pøechodu.
-	\item \(POSTCOND_t^N: P_N \to \mathbb{N}\) jsou \textbf{výstupní 
+	\item \(POSTCOND_t^N: P_N \to \mathbb{N}\) jsou \emph{výstupní 
 	podmínky} pøechodu t.
   \end{enumerate}
 \end{itemize}
 
 Petriho sítì se skládají z míst a pøechodù, tyto prvky jsou 
 spojeny orientovanými hranami. Nemohou být spojeny dvì místa mezi 
-sebou a stejnì, tak nemohou být spojeny dva pøechody pøímým spojem.
+sebou a stejnì tak nemohou být spojeny dva pøechody pøímou hranou.
 
-Procesy jsou v Petriho sítích znázornìny teèkou uvnitø míst, v 
+Procesy jsou v Petriho sítích znázornìny teèkou uvnitø míst. V 
 prùbìhu provádìní simulace se tento bod pøesouvá mezi 
-jednotlivýmy místy. Tyto pøesuny jsou provedeny na základì 
-splnìní pravidel zanesená v pøechodech. Tyto pravidla jsou 
-atomická, co¾ znamená ¾e se buï toto pravidlo provede, nebo ne.
-Jednoduché roz¹íøení je pøidání kapacity pro jednotlivá místa.
+jednotlivými místy. Tyto pøesuny jsou provedeny na základì 
+splnìní pravidel zanesených v pøechodech. Tato pravidla jsou 
+atomická, co¾ znamená ¾e se buï toto pravidlo provede nebo neprovede.
 
-Pøechody mohou být okam¾ité, pøi splnìný zanesených pravidel se 
-okam¾itì provedou. Nebo mohou být èasované, co¾ znamená ¾e po 
-urèitém èase se daný pøechod provede. Toto je opìt velice 
-jednoduché ro¹íøení základních Petriho sítí.
+Pøechody mohou být okam¾ité, pøi splnìný zanesených pravidel se okam¾itì 
+provedou. Nebo mohou být èasované, co¾ znamená, ¾e po urèitém èase se daný 
+pøechod realizuje. Toto je velice jednoduché roz¹íøení základních Petriho sítí.
 
-Úspì¹né provádìní pøechodù probíhá v poøadí odebrání 
-znaèek ze vstupního místa, pøídání znaèek na výstupní místo.
+Úspì¹né provádìní pøechodù probíhá tak, ¾e nejdøíve dojde k odebrání znaèek ze 
+vstupního místa a poté pøídání znaèek na výstupní místo.
 
-Dále mù¾eme sítì roz¹íøit o pomocí prioritizací spojení mezi místy a pøechody, 
-nebo vlo¾ením procentuální pravdìpodobností provedení daného spoje.
+Dále mù¾eme sítì roz¹íøit pomocí prioritizací spojení mezi místy a pøechody, 
+nebo vlo¾ením procentuální pravdìpodobnosti provedení daného spoje.
 \cite{ModelovaniOOPN}
 
 \subsubsection{Roz¹íøení Petriho sítí}
-Základní Petriho sítì pøedstavují pøíli¹ nízkoúrovòový 
-model pro modelování reálných systémù. Z toho dùvodu bylo 
-zavedeno nìkolik roz¹íøení. Pro pozdìj¹í pou¾ití nás 
-nejvíce zajímá roz¹íøení petriho sítí na funkcionální. Co¾ 
-je rozdìlení pøechodu na strá¾ a akci a do místa akce mo¾nost 
-volat jednotlivé èásti sítí.
+Základní Petriho sítì pøedstavují pøíli¹ nízkoúrovòový prototyp pro modelování 
+reálných systémù. Z toho dùvodu bylo zavedeno nìkolik roz¹íøení. Pro pozdìj¹í 
+pou¾ití nás nejvíce zajímá roz¹íøení Petriho sítí na funkcionální, co¾ 
+je rozdìlení pøechodu na strá¾ a akci. Do místa akce je mo¾né volat 
+jednotlivé èásti sítí.
 
-Toto lze poté roz¹íøit o objektové rozdìlení, s tím ¾e v 
-místì akce lze volat vytvoøení nového objektu jiné sítì a poté 
-zaslání zprávy tomuto objektu.
+Toto lze poté roz¹íøit o objektové rozdìlení s tím, ¾e v místì akce lze volat 
+vytvoøení nového objektu jiné sítì a poté zaslání zprávy tomuto objektu.
 
 \subsection{Objektovì orientované Petriho sítì}
-Model systému, ve kterém mohou dynamicky vznikat a zanikat objekty, 
-komunikující pøedáváním zpráv lze vhodnì znázornit pomocí 
-Objektovì orientovaných Petriho sítí, jako model je mno¾ina 
+Model systému, ve kterém mohou dynamicky vznikat a zanikat objekty
+komunikující pøedáváním zpráv, lze vhodnì znázornit pomocí 
+objektovì orientovaných Petriho sítí. Jako model je mno¾ina 
 tøíd, hierarchicky organizována podle dìdiènosti. Ka¾dá z 
-tìchto tøíd obshauje tyto prvky:
+tìchto tøíd obsahuje tyto prvky:
 \begin{itemize}
-	\item sí» objektu, definuje reprezentaci instance tøídy (atributy)
-	\item mno¾inu sítí metod, tyto sítì modelují reakce na zaslané 
-	zprávy
-	\item mno¾inu synchronních portù, definující reakce na 
-	synchronní zprávy
+	\item Sí» objektu, která definuje reprezentaci instance tøídy.
+	\item Mno¾inu sítí metod, které modelují reakce na zaslané 
+	zprávy.
+	\item Mno¾inu synchronních portù, definující reakce na 
+	synchronní zprávy.
 \end{itemize}
 
-Sítì metod mohou sdílet atributy objektu. Mají navíc parametrová 
-místa, do kterých se pøi invokaci takové sítì vlo¾í parametry 
-ze zprávy, dále mají výstupní místo \emph{return}, co¾ je 
-místo do kterého se ulo¾í výstupní hodnota.
+Sítì metod mohou sdílet atributy objektu. Mají navíc parametrová místa, do 
+kterých se pøi invokaci takové sítì vlo¾í parametry ze zprávy. Dále mají 
+výstupní místo \emph{return}, co¾ je, místo do kterého se ulo¾í výstupní 
+hodnota.
 
-Znaèky v sítích nereprezentují samotné objekty, ale pouze 
-reference na tyto objekty. V objektovì orientovaných Petriho sítích 
-jsou tøi druhy objektù.  Primitivní tøídy to jsou èísla znaky, 
-øetìzce, symboly a seznamy. Dal¹í objekty jsou tøídy, tyto 
-objekty se v prùbìhu nemìní a rozumìjí na volání \emph{new}, 
-co¾ vede k vytvoøení nové instance.  Ostatní objekty jsou instancemi 
-tøídy.
+Znaèky v sítích nereprezentují samotné objekty, ale pouze reference na tyto 
+objekty. V objektovì orientovaných Petriho sítích jsou tøi druhy objektù.  
+Primitivní tøídy to jsou èísla znaky, øetìzce, symboly a seznamy. Dal¹í objekty 
+jsou tøídy, tyto objekty se v prùbìhu simulace nemìní a rozumìjí na volání 
+\emph{new}, co¾ vede k vytvoøení nové instance. Ostatní objekty jsou 
+instancemi tøídy.
 
 Proveditelnost pøechodu v objektovì orientovaných Petriho sítích 
 je rozdìleno na strá¾ pøechodu a akci. Strá¾ pøechodu obsahuje 
 sekvenci výrazù a ka¾dý z nich je zaslání zprávy. Pokud ka¾dá 
-dálèí zpráva vrací \emph{true}, strá¾ je vyhodnocena jako \emph{true}.
+dílèí zpráva vrací \emph{true}, strá¾ je vyhodnocena jako \emph{true}.
 
 Akce pøechodu specifikuje zaslání zprávy. Budeme uva¾ovat tvar 
-zaslání ve tvaru \eqref{zprava}:
+zaslání zprávy \eqref{zprava}:
 
 \begin{equation}\label{zprava}
-y := x_0.msg(x_1, \dots, x_n)
+y := x_0.msg(x_1, \dots, x_n),
 \end{equation}
 kde \(y\) je promìnná, \(x_i\) je term a \(msg\) je jméno zprávy. 
 Objekt se jménem \(x_0\) je adresátem zaslané zprávy a \(x_i\) jsou 
@@ -594,24 +583,24 @@ argumenty této zprávy. V tìchto akcích je zapotøebí definovat
 také speciální zprávu \(new\), která vede k vytvoøení nové 
 instance tøídy \(x_0\).
 
-Výsledná objektovì orientovaná petriho sí» má v¹echny atributy 
-objektovì orientovaného jazyka. Umo¾òuje zapouzdøení, 
-polymorfismus a dìdiènost. \cite{ModelovaniOOPN}
+Výsledná objektovì orientovaná Petriho sí» má v¹echny atributy objektovì 
+orientovaného jazyka. Umo¾òuje zapouzdøení, polymorfismus a dìdiènost. 
+\cite{ModelovaniOOPN}
 
-Na obrázku \ref{petriNetFig} lze vidìt pøíklad návrhu metody dìlení, kdy se 
-rozhodne zda je dìlitel 0 vrátí se null v opaèném pøípadì se do návratového 
+Na obrázku \ref{petriNetFig} lze vidìt pøíklad návrhu metody dìlení, kdy v 
+pøípadì, ¾e dìlitel je 0 vrátí se null, v opaèném pøípadì se do návratového 
 místa ulo¾í podíl \emph{x} a \emph{delitel}.
 
 \begin{figure}[h!]
 \centering
   \includegraphics[trim = 0mm 150mm 0mm 0mm, clip, 
 scale=0.5]{fig/petriNet}
-  \caption{Pøíklad popisu metody pro dìlení pomocí Objektovì orientovaných 
+  \caption{Pøíklad popisu metody pro dìlení pomocí objektovì orientovaných 
 Petriho sítí.} \label{petriNetFig}
 \end{figure}
 
 \subsection{Grafické znázornìní}
-Jednotlivé místa se znázoròují v objektovì orientovaných Petriho 
+Jednotlivá místa se znázoròují v objektovì orientovaných Petriho 
 sítích jako koleèka obsahující stav tohoto místa, napøíklad referenci na 
 objekty. Pøechody jsou znázornìny obdélníkem obsahujícím strá¾ a akci. 
 Akce se nachází pod èarou a nad èarou se nachází strá¾.
