@@ -27,6 +27,7 @@ public class MyMenuBar extends MyMenyBarModel {
         addItemsToFilemenu();
         addItemsToEditMenu();
         addItesmToExportMenu();
+        addItemsToHelpMenu();
         addItemsToMenu();
     }
 
@@ -52,10 +53,12 @@ public class MyMenuBar extends MyMenyBarModel {
         this.jMenu1 = new JMenu();
         this.jMenu2 = new JMenu();
         this.jMenu3 = new JMenu();
+        this.helpMenu = new JMenu();
 
         this.jMenu1.setText("File");
         this.jMenu2.setText("Edit");
         this.jMenu3.setText("Export");
+        this.helpMenu.setText("Help");
     }
 
     /**
@@ -103,6 +106,22 @@ public class MyMenuBar extends MyMenyBarModel {
         this.jMenu3.add(this.exportToXml);
         this.jMenu3.add(this.exportToPdf);
     }
+    
+    private void addItemsToHelpMenu() {
+        this.currentHelp = new JMenuItem("Help");
+        this.useCaseHelp = new JMenuItem("UseCase diagram Help");
+        this.classDiagramHelp = new JMenuItem("Class diagram Help");
+        this.oopnHelp = new JMenuItem("Petri net Help");
+        this.applicationHelp = new JMenuItem("Application Help");
+
+        this.helpMenu.add(currentHelp);
+        this.helpMenu.addSeparator();
+        this.helpMenu.add(useCaseHelp);
+        this.helpMenu.add(classDiagramHelp);
+        this.helpMenu.add(oopnHelp);
+        this.helpMenu.add(applicationHelp);
+    }
+    
 
     /**
      * Method for adding menus to menu bar
@@ -111,6 +130,7 @@ public class MyMenuBar extends MyMenyBarModel {
         this.jMenuBar1.add(this.jMenu1);
 //        this.jMenuBar1.add(this.jMenu2);
         this.jMenuBar1.add(this.jMenu3);
+        this.jMenuBar1.add(this.helpMenu);
     }
 
     /**
@@ -219,5 +239,56 @@ public class MyMenuBar extends MyMenyBarModel {
      */
     public void addActionListenerToExit(ActionListener exitApplication) {
         this.exit.addActionListener(exitApplication);
+    }
+    
+    /**
+     * Action listener to show basic help dialog.
+     * 
+     * @param showHelp listener.
+     */
+    public void addActionListenerToCurrentHelp(ActionListener showHelp)
+    {
+        this.currentHelp.addActionListener(showHelp);
+        this.currentHelp.setAccelerator(KeyStroke.getKeyStroke("F1"));
+    }
+    
+    /**
+     * Action listener to show useCase help dialog.
+     * 
+     * @param showHelp listener.
+     */
+    public void addActionListenerToUseCaseHelp(ActionListener showHelp)
+    {
+        this.useCaseHelp.addActionListener(showHelp);
+    }
+    
+    /**
+     * Action listener to show class diagram help dialog.
+     * 
+     * @param showHelp listener.
+     */
+    public void addActionListenerToClassDiagramHelp(ActionListener showHelp)
+    {
+        this.classDiagramHelp.addActionListener(showHelp);
+    }
+    
+    /**
+     * Action listener to show OOPN help dialog.
+     * 
+     * @param showHelp listener.
+     */
+    public void addActionListenerToOOPNHelp(ActionListener showHelp)
+    {
+        this.oopnHelp.addActionListener(showHelp);
+    }
+    
+    /**
+     * Action listener to show application help dialog.
+     * 
+     * @param showHelp listener.
+     */
+    public void addActionListenerToApplicationHelp(ActionListener showHelp)
+    {
+        this.applicationHelp.addActionListener(showHelp);
     }
 }
