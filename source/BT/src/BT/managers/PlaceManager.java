@@ -20,8 +20,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
- * Class that hold every object and it's lines. Objects and lines are stored in
- * arrayList.
+ * Class that hold every object and it's lines. Objects and lines are stored in arrayList.
  *
  * @author Karel Hala
  */
@@ -93,8 +92,7 @@ public class PlaceManager extends PlaceModel {
     }
 
     /**
-     * Method for looping through every array list and removing every object,
-     * that is selected.
+     * Method for looping through every array list and removing every object, that is selected.
      */
     public void removeAllSelectedItems() {
         for (Iterator<LineModel> it = joinEdges.iterator(); it.hasNext();) {
@@ -127,8 +125,7 @@ public class PlaceManager extends PlaceModel {
     }
 
     /**
-     * Method that deletes all lines and objects, that has no assigned object in
-     * use case.
+     * Method that deletes all lines and objects, that has no assigned object in use case.
      */
     public void deleteAllUnassignedObjects() {
         for (Iterator<LineModel> it = joinEdges.iterator(); it.hasNext();) {
@@ -258,8 +255,7 @@ public class PlaceManager extends PlaceModel {
     }
 
     /**
-     * Method that creates option pane, that lets you select which object should
-     * be connected.
+     * Method that creates option pane, that lets you select which object should be connected.
      *
      * @param modelsArray
      * @return int based on selected item

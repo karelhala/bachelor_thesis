@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 
 /**
  * Class that creates toolBar content
+ *
  * @author Karel Hala
  */
 public class ToolBarContentModel {
@@ -37,20 +38,22 @@ public class ToolBarContentModel {
 
     /**
      * Method for creating new Button with basic color to toolBar.
+     *
      * @param name
      * @param iconName
      * @return
      */
-    public JButton addNewButton(String name, String iconName) {        
+    public JButton addNewButton(String name, String iconName) {
         return addNewButton(name, iconName, Color.GRAY);
     }
-    
-    public JButton addNewButton(String name) {        
+
+    public JButton addNewButton(String name) {
         return addNewButton(name, null);
     }
 
     /**
      * Method for initializing and creating new button
+     *
      * @param name new name of button
      * @param iconName
      * @param buttonColor color of new button.
@@ -59,14 +62,11 @@ public class ToolBarContentModel {
     public JButton addNewButton(String name, String iconName, Color buttonColor) {
         JButton jButton1 = new javax.swing.JButton();
         ClassLoader cl = this.getClass().getClassLoader();
-        if (cl.getResource("resources/"+iconName)!=null)
-        {
-            ImageIcon icon = new ImageIcon(cl.getResource("resources/"+iconName));
+        if (cl.getResource("resources/" + iconName) != null) {
+            ImageIcon icon = new ImageIcon(cl.getResource("resources/" + iconName));
             jButton1.setIcon(icon);
             jButton1.setText(name);
-        }
-        else
-        {
+        } else {
             jButton1.setText(name);
         }
         jButton1.setToolTipText(name);

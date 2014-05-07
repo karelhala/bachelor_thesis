@@ -34,7 +34,7 @@ public class PNMainContentController extends PNMainContentInitializer implements
      * @param diagramPlaces
      */
     public PNMainContentController(DiagramPlacesManager diagramPlaces) {
-        super(diagramPlaces);  
+        super(diagramPlaces);
     }
 
     /**
@@ -65,60 +65,50 @@ public class PNMainContentController extends PNMainContentInitializer implements
     @Override
     public void drawingPaneDoubleCliked(CoordinateModel pressedObject) {
         if (pressedObject != null && !(pressedObject instanceof LineModel)) {
-            if (pressedObject.isEditable())
-            {
+            if (pressedObject.isEditable()) {
                 String name = (String) JOptionPane.showInputDialog("Enter name of the object", pressedObject.getName());
                 if (name != null && !"".equals(name)) {
                     pressedObject.setName(name);
                 }
             }
-        } else if (pressedObject instanceof LineModel)
-        {
+        } else if (pressedObject instanceof LineModel) {
             PNJoinEdgeController clickedLine = (PNJoinEdgeController) pressedObject;
-            JPanel dialogPanel = new JPanel(new GridLayout(0,1));
+            JPanel dialogPanel = new JPanel(new GridLayout(0, 1));
             JTextField additionalVariable = new JTextField(clickedLine.getAdditionalVariable());
-            for (String oneVariable : ((PetriNetModel)clickedLine.getFirstObject()).getVariables()) {
-                if (clickedLine.getSelectedVariables().contains(oneVariable) )
-                {
+            for (String oneVariable : ((PetriNetModel) clickedLine.getFirstObject()).getVariables()) {
+                if (clickedLine.getSelectedVariables().contains(oneVariable)) {
                     dialogPanel.add(new Checkbox(oneVariable, true));
-                }
-                else if (oneVariable != null)
-                {
+                } else if (oneVariable != null) {
                     dialogPanel.add(new Checkbox(oneVariable));
                 }
             }
             dialogPanel.add(additionalVariable);
             int result = JOptionPane.showConfirmDialog(null, dialogPanel,
-                "Please select variables.", JOptionPane.OK_CANCEL_OPTION);
+                    "Please select variables.", JOptionPane.OK_CANCEL_OPTION);
             if (result == JOptionPane.OK_OPTION) {
                 clickedLine.getSelectedVariables().clear();
-                ((PetriNetModel)clickedLine.getSecondObject()).getVariables().clear();
+                ((PetriNetModel) clickedLine.getSecondObject()).getVariables().clear();
                 for (Component oneComponent : dialogPanel.getComponents()) {
-                    if (oneComponent instanceof Checkbox)
-                    {
-                        if (((Checkbox)oneComponent).getState())
-                        {
-                            clickedLine.addVariable(((Checkbox)oneComponent).getLabel());
-                            ((PetriNetModel)clickedLine.getSecondObject()).addVariable(((Checkbox)oneComponent).getLabel());
-                            if (clickedLine.getSecondObject() instanceof PNPlace)
-                            {
+                    if (oneComponent instanceof Checkbox) {
+                        if (((Checkbox) oneComponent).getState()) {
+                            clickedLine.addVariable(((Checkbox) oneComponent).getLabel());
+                            ((PetriNetModel) clickedLine.getSecondObject()).addVariable(((Checkbox) oneComponent).getLabel());
+                            if (clickedLine.getSecondObject() instanceof PNPlace) {
                                 for (LineModel oneJoin : clickedLine.getSecondObject().getOutJoins()) {
-                                    ((PNJoinEdgeController) oneJoin).addVariable(((Checkbox)oneComponent).getLabel());
+                                    ((PNJoinEdgeController) oneJoin).addVariable(((Checkbox) oneComponent).getLabel());
                                 }
                             }
                         }
                     }
                 }
-                
-                if (additionalVariable.getText() != null && !additionalVariable.getText().equals(""))
-                {
+
+                if (additionalVariable.getText() != null && !additionalVariable.getText().equals("")) {
                     clickedLine.setAdditionalVariable(additionalVariable.getText());
-                    ((PetriNetModel)clickedLine.getSecondObject()).addVariable(additionalVariable.getText());
-                    if (clickedLine.getSecondObject() instanceof PNPlace)
-                    {
+                    ((PetriNetModel) clickedLine.getSecondObject()).addVariable(additionalVariable.getText());
+                    if (clickedLine.getSecondObject() instanceof PNPlace) {
                         for (LineModel oneJoin : clickedLine.getSecondObject().getOutJoins()) {
-                                ((PNJoinEdgeController) oneJoin).addVariable(additionalVariable.getText());
-                            }
+                            ((PNJoinEdgeController) oneJoin).addVariable(additionalVariable.getText());
+                        }
                     }
                 }
             }
@@ -144,7 +134,7 @@ public class PNMainContentController extends PNMainContentInitializer implements
             PNTransition newTrasition = new PNTransition(evt.getX(), evt.getY());
             newTrasition.setName("");
             newTrasition.setAssignedObject(this.selectedClass);
-            this.bottomRightModel.showAllItems();
+            this.bottomRightModel.showAllItems(true);
             this.places.addObject(newTrasition);
         } else {
             this.places.setAllObjectDiselected();
@@ -187,27 +177,20 @@ public class PNMainContentController extends PNMainContentInitializer implements
         places.setSelectedLinesOnObject(clickedObject);
         if (clickedObject != null) {
             clickedObject.setSelected(true);
-            if (clickedObject instanceof PNTransition)
-            {
+            if (clickedObject instanceof PNTransition) {
                 this.bottomRightController.setSelectedObject(clickedObject);
                 this.bottomRightController.changeGuardAndAction();
                 showTransitionPanel();
-            }
-            else if (clickedObject instanceof PNPlace)
-            {
+            } else if (clickedObject instanceof PNPlace) {
                 this.bottomRightController.setSelectedObject(clickedObject);
                 this.bottomRightController.changeGuardAndAction();
                 showPlacePanel();
-            }
-            else
-            {
+            } else {
                 this.bottomRightController.setSelectedObject(null);
                 this.bottomRightController.changeGuardAndAction();
                 showBasicPanel();
             }
-        }
-        else
-        {
+        } else {
             showBasicPanel();
         }
 
@@ -263,14 +246,12 @@ public class PNMainContentController extends PNMainContentInitializer implements
         } else if (joinEdge.getSecondObject() == null && !joinEdge.getFirstObject().getClass().equals(clickedObject.getClass())) {
             joinEdge.setSecondObject(clickedObject);
         }
-        if (joinEdge.getFirstObject() instanceof PNPlace)
-        {
-            joinEdge.getSelectedVariables().addAllUnique(((PNPlace)joinEdge.getFirstObject()).getVariables());
+        if (joinEdge.getFirstObject() instanceof PNPlace) {
+            joinEdge.getSelectedVariables().addAllUnique(((PNPlace) joinEdge.getFirstObject()).getVariables());
         }
-        if (joinEdge.getSecondObject() instanceof PNPlace)
-        {
-            joinEdge.addVariable(((PNTransition)joinEdge.getFirstObject()).getActionVariable());
-            ((PNPlace)joinEdge.getSecondObject()).getVariables().addAllUnique(joinEdge.getSelectedVariables());
+        if (joinEdge.getSecondObject() instanceof PNPlace) {
+            joinEdge.addVariable(((PNTransition) joinEdge.getFirstObject()).getActionVariable());
+            ((PNPlace) joinEdge.getSecondObject()).getVariables().addAllUnique(joinEdge.getSelectedVariables());
         }
         return joinEdge;
     }

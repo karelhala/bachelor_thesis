@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package BT.modules.ObjectedOrientedPetriNet.places;
 
 import BT.models.MyArrayList;
@@ -14,14 +13,13 @@ import java.util.ArrayList;
  *
  * @author Karel Hala
  */
-public class PNPlaceModel extends PetriNetModel{
-    
+public class PNPlaceModel extends PetriNetModel {
+
     /**
      * Contstant that is in place.
      */
     protected String constant;
-    
-    
+
     /**
      *
      * @param x
@@ -46,6 +44,7 @@ public class PNPlaceModel extends PetriNetModel{
 
     /**
      * Get constant.
+     *
      * @return String of constant.
      */
     public String getConstant() {
@@ -54,6 +53,7 @@ public class PNPlaceModel extends PetriNetModel{
 
     /**
      * Set constant to this.
+     *
      * @param constant
      */
     public void setConstant(String constant) {

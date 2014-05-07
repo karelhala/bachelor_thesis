@@ -10,10 +10,9 @@ import BT.modules.UC.places.UCActor;
 import java.awt.Point;
 
 /**
- * Class that will calculate star and end points for given object. This class
- * will calculate start and end point by given objects, just pass 2 objects in
- * it and it ethod will handle everzthing else. To get calculated points call
- * for getStartPoint and getEndPoint
+ * Class that will calculate star and end points for given object. This class will calculate start and end point by
+ * given objects, just pass 2 objects in it and it ethod will handle everzthing else. To get calculated points call for
+ * getStartPoint and getEndPoint
  *
  * @author Karel Hala
  */
@@ -28,8 +27,7 @@ public class PointsCalculator {
      */
     private CoordinateModel secondObject;
     /**
-     * Distance calculator, for calculating intersection point or distance of
-     * point to line.
+     * Distance calculator, for calculating intersection point or distance of point to line.
      */
     private DistanceCalculator distanceCalculator;
     /**
@@ -54,8 +52,7 @@ public class PointsCalculator {
     }
 
     /**
-     * Basic constructor. Every part of class will be set even breakPoints of
-     * line.
+     * Basic constructor. Every part of class will be set even breakPoints of line.
      *
      * @param firstObject coordinate Model.
      * @param secondObject coordinate Model.
@@ -96,8 +93,7 @@ public class PointsCalculator {
     }
 
     /**
-     * Method for calculating start point of line. First check if first object
-     * is set.
+     * Method for calculating start point of line. First check if first object is set.
      *
      * @return start point of line.
      */
@@ -116,8 +112,8 @@ public class PointsCalculator {
     }
 
     /**
-     * Method for setting and calculating width and height of object. Result
-     * will be stored in WidthHeight private class.
+     * Method for setting and calculating width and height of object. Result will be stored in WidthHeight private
+     * class.
      *
      * @param object object for whitch this will be calculated.
      * @return WidthHeight object.
@@ -140,8 +136,8 @@ public class PointsCalculator {
     }
 
     /**
-     * Method for calculating end point of object. It will check if second
-     * object is not null and by this it will calculate it.
+     * Method for calculating end point of object. It will check if second object is not null and by this it will
+     * calculate it.
      *
      * @return Point of actual intersection.
      */

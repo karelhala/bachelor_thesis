@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package BT.modules.ObjectedOrientedPetriNet.mainContent;
 
 import BT.modules.ObjectedOrientedPetriNet.mainContent.PNBottomRight.PNBottomRightController;
@@ -20,7 +19,8 @@ import GUI.MethodLabel;
  *
  * @author Karel Hala
  */
-abstract public class PNMainContentModel extends MainContentController{
+abstract public class PNMainContentModel extends MainContentController {
+
     /**
      *
      */
@@ -30,35 +30,35 @@ abstract public class PNMainContentModel extends MainContentController{
      *
      */
     protected PNLeftTopContent LeftTopContent;
-    
+
     /**
-     * 
+     *
      */
     protected BottomLeftContentModel bottomLeftContentModel;
-    
+
     /**
-     * 
+     *
      */
     protected CDClass selectedClass;
 
     /**
-     * 
+     *
      */
     protected BottomRightContentModel bottomRightModel;
-    
+
     /**
-     * 
+     *
      */
     protected PNBottomLeftController bottomLeftController;
-    
+
     /**
-     * 
+     *
      */
     protected PNBottomRightController bottomRightController;
-    
+
     /**
-     * 
-     * @param diagramPlaces 
+     *
+     * @param diagramPlaces
      */
     public PNMainContentModel(DiagramPlacesManager diagramPlaces) {
         this.diagramPlaces = diagramPlaces;
@@ -70,21 +70,21 @@ abstract public class PNMainContentModel extends MainContentController{
         this.bottomLeftContentModel = bottomLeftContentModel;
         return this;
     }
-    
+
     /**
-     * 
-     * @param bottomRightModel 
-     * @return  
+     *
+     * @param bottomRightModel
+     * @return
      */
     public PNMainContentModel setBottomRightModel(BottomRightContentModel bottomRightModel) {
         this.bottomRightModel = bottomRightModel;
         return this;
     }
-    
+
     /**
-     * 
-     * @param mainContent 
-     * @return  
+     *
+     * @param mainContent
+     * @return
      */
     public PNMainContentModel setMainContent(BT.modules.ObjectedOrientedPetriNet.PNMainContent mainContent) {
         this.mainContent = mainContent;
@@ -92,9 +92,9 @@ abstract public class PNMainContentModel extends MainContentController{
     }
 
     /**
-     * 
-     * @param LeftBottomContent 
-     * @return  
+     *
+     * @param LeftBottomContent
+     * @return
      */
     public PNMainContentModel setLeftBottomContent(PNLeftBottomContent LeftBottomContent) {
         this.LeftBottomContent = LeftBottomContent;
@@ -102,9 +102,9 @@ abstract public class PNMainContentModel extends MainContentController{
     }
 
     /**
-     * 
-     * @param LeftTopContent 
-     * @return  
+     *
+     * @param LeftTopContent
+     * @return
      */
     public PNMainContentModel setLeftTopContent(PNLeftTopContent LeftTopContent) {
         this.LeftTopContent = LeftTopContent;
@@ -112,9 +112,9 @@ abstract public class PNMainContentModel extends MainContentController{
     }
 
     /**
-     * 
+     *
      * @param selectedClass
-     * @return 
+     * @return
      */
     public PNMainContentModel setSelectedClass(CDClass selectedClass) {
         this.selectedClass = selectedClass;
@@ -122,38 +122,37 @@ abstract public class PNMainContentModel extends MainContentController{
     }
 
     /**
-     * 
-     * @return 
+     *
+     * @return
      */
     public PNLeftBottomContent getLeftBottomContent() {
         return LeftBottomContent;
     }
 
     /**
-     * 
-     * @return 
+     *
+     * @return
      */
     public PNLeftTopContent getLeftTopContent() {
         return LeftTopContent;
     }
 
     /**
-     * 
-     * @return 
+     *
+     * @return
      */
     public CDClass getSelectedClass() {
         return selectedClass;
     }
-    
+
     /**
      * Intilize bottom left content controller.
+     *
      * @return this.
      */
-    public PNMainContentModel initializeBottomLeftController()
-    {
+    public PNMainContentModel initializeBottomLeftController() {
         this.bottomLeftController = new PNBottomLeftController(bottomLeftContentModel);
-        if (this.selectedClass != null)
-        {
+        if (this.selectedClass != null) {
             this.bottomLeftController.setDrawnClass(new MethodLabel(this.selectedClass.getName(), this.selectedClass));
         }
         return this;

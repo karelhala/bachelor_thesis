@@ -70,7 +70,7 @@ public class MainInterfaceControler {
                 ToolBarContent.CloseButtonMouseClicked(myLayout);
             }
         });
-        
+
         this.ToolBarContent.setExitAction(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
@@ -141,8 +141,7 @@ public class MainInterfaceControler {
         this.ToolBarContent.setSaveAsAction(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                if (ToolBarContent.getDiagramById(myLayout.getFileTab().getSelectedIndex()) != null)
-                {
+                if (ToolBarContent.getDiagramById(myLayout.getFileTab().getSelectedIndex()) != null) {
                     DiagramPlacesManager workingDiagramPlaces = ToolBarContent.getDiagramById(myLayout.getFileTab().getSelectedIndex());
                     File originalPath = workingDiagramPlaces.getAbsolutePath();
                     workingDiagramPlaces.setAbsolutePath(null);
@@ -159,9 +158,7 @@ public class MainInterfaceControler {
                         }
                     }
                     workingDiagramPlaces.setAbsolutePath(originalPath);
-                }
-                else
-                {
+                } else {
                     JOptionPane.showMessageDialog(null, "No file to save.");
                 }
             }

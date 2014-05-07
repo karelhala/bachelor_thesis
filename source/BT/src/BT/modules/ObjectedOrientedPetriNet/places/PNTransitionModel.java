@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package BT.modules.ObjectedOrientedPetriNet.places;
 
 import BT.models.ActionModel;
@@ -15,17 +14,16 @@ import java.util.ArrayList;
  *
  * @author Karel Hala
  */
-public class PNTransitionModel extends PetriNetModel{
-    
+public class PNTransitionModel extends PetriNetModel {
+
     /**
-     * Stores guard string.
-     * If you want to use it further more, change this to desired type, probably arrayList<object>
+     * Stores guard string. If you want to use it further more, change this to desired type, probably arrayList<object>
      */
     protected String guard;
-    
+
     /**
-     * Stores action as action Model.
-     * If you want to use it further more, change this to desired type, probably arrayList<object>
+     * Stores action as action Model. If you want to use it further more, change this to desired type, probably
+     * arrayList<object>
      */
     protected ActionModel action;
 
@@ -58,7 +56,7 @@ public class PNTransitionModel extends PetriNetModel{
     public void setAction(ActionModel action) {
         this.action = action;
     }
-    
+
     public String getGuard() {
         return guard;
     }

@@ -12,6 +12,7 @@ import BT.modules.UC.UCLeftTopContent;
 import BT.modules.UC.UCMainContent;
 import BT.modules.UC.places.UCJoinEdge.UCJoinEdgeController;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 import javax.swing.AbstractAction;
 import javax.swing.InputMap;
 import javax.swing.JComponent;
@@ -23,9 +24,21 @@ import javax.swing.KeyStroke;
  */
 abstract public class UCMainContentModel extends MainContentController {
 
+    /**
+     *
+     */
     protected UCLeftBottomContent LeftBottomContent;
+    /**
+     *
+     */
     protected UCLeftTopContent LeftTopContent;
 
+    /**
+     * /
+     *
+     **
+     * @param diagramPlaces
+     */
     public UCMainContentModel(DiagramPlacesManager diagramPlaces) {
         this.diagramPlaces = diagramPlaces;
         this.places = diagramPlaces.getUcPlaces();
@@ -44,18 +57,34 @@ abstract public class UCMainContentModel extends MainContentController {
         setButtonsListeners();
     }
 
+    /**
+     *
+     * @param LeftBottomContent
+     */
     public void setLeftBottomContent(UCLeftBottomContent LeftBottomContent) {
         this.LeftBottomContent = LeftBottomContent;
     }
 
+    /**
+     *
+     * @param LeftTopContent
+     */
     public void setLeftTopContent(UCLeftTopContent LeftTopContent) {
         this.LeftTopContent = LeftTopContent;
     }
 
+    /**
+     *
+     * @return
+     */
     public UCLeftBottomContent getLeftBottomContent() {
         return LeftBottomContent;
     }
 
+    /**
+     *
+     * @return
+     */
     public UCLeftTopContent getLeftTopContent() {
         return LeftTopContent;
     }
@@ -64,7 +93,7 @@ abstract public class UCMainContentModel extends MainContentController {
      *
      */
     public void setButtonsListeners() {
-        UCDrawingPane drawingPane = (UCDrawingPane) this.mainContent.getDrawingPane();
+        final UCDrawingPane drawingPane = (UCDrawingPane) this.mainContent.getDrawingPane();
         drawingPane.getDrawing().getActionMap().put("removeObject", new AbstractAction() {
             UCDrawingPane drawingPane = (UCDrawingPane) mainContent.getDrawingPane();
 
@@ -77,8 +106,22 @@ abstract public class UCMainContentModel extends MainContentController {
             }
         }
         );
+
+        drawingPane.getDrawing().getActionMap().put("selectionCanceled", new AbstractAction() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                places.setAllObjectDiselected();
+                LeftTopContent.setAllButtonsAvailable();
+                LeftTopContent.setAllButtonsDiselected();
+                LeftBottomContent.setAllButtonsAvailable();
+                LeftBottomContent.setAllButtonsDiselected();
+                drawingPane.getDrawing().repaint();
+            }
+        });
         InputMap inputMap = drawingPane.getDrawing().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
         inputMap.put(KeyStroke.getKeyStroke("DELETE"), "removeObject");
+        inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), "selectionCanceled");
     }
 
     /**

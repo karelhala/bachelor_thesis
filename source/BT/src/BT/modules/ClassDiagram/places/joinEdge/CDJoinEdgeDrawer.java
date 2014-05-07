@@ -17,14 +17,14 @@ import java.awt.Point;
 
 /**
  * Class for drawing join egdes between classes in class diagram.
- * 
+ *
  * @author Karel Hala
  */
 public class CDJoinEdgeDrawer extends JoinEdgeDrawer {
 
     /**
-     * Basic constructor.
-     * Sets joinEdgeController, startPoint, endPoint.
+     * Basic constructor. Sets joinEdgeController, startPoint, endPoint.
+     *
      * @param joinEdgeController controller for join edges.
      * @param startPoint of join edge.
      * @param endPoint of joind edge.
@@ -34,21 +34,15 @@ public class CDJoinEdgeDrawer extends JoinEdgeDrawer {
     }
 
     /**
-     * Method for drawing each type of line.
-     * First create dashed stroke.
-     * Calculate arrow start point based on breakPoints in line.
-     * Set start and end points of line.
-     * Draw each line.
+     * Method for drawing each type of line. First create dashed stroke. Calculate arrow start point based on
+     * breakPoints in line. Set start and end points of line. Draw each line.
      *
      * @param g Graphics2D.
      */
     public void drawLine(Graphics2D g) {
-        if (this.joinEdgeController.getSecondObject() == null)
-        {
+        if (this.joinEdgeController.getSecondObject() == null) {
             setBasicColors(g, false);
-        }
-        else
-        {
+        } else {
             setBasicColors(g);
         }
 
@@ -94,16 +88,15 @@ public class CDJoinEdgeDrawer extends JoinEdgeDrawer {
             }
         }
     }
-    
+
     /**
      * Method for checking type of class.
+     *
      * @param cdJoin LineModel of join.
-     */ 
-    private boolean checkClassTypes(LineModel cdJoin)
-    {
-        if (cdJoin.getFirstObject() != null && cdJoin.getSecondObject() != null)
-        {
-            return ((CDClass)cdJoin.getFirstObject()).getTypeOfClass() != ClassType.NONE &&  ((CDClass)cdJoin.getSecondObject()).getTypeOfClass() != ClassType.NONE;
+     */
+    private boolean checkClassTypes(LineModel cdJoin) {
+        if (cdJoin.getFirstObject() != null && cdJoin.getSecondObject() != null) {
+            return ((CDClass) cdJoin.getFirstObject()).getTypeOfClass() != ClassType.NONE && ((CDClass) cdJoin.getSecondObject()).getTypeOfClass() != ClassType.NONE;
         }
         return false;
     }

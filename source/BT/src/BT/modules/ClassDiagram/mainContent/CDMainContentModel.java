@@ -18,6 +18,7 @@ import GUI.BottomLeftContentModel;
 import GUI.BottomRightContentModel;
 import GUI.ClassDiagramAttributesPanel;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 import javax.swing.AbstractAction;
 import javax.swing.InputMap;
 import javax.swing.JComponent;
@@ -29,15 +30,45 @@ import javax.swing.KeyStroke;
  */
 abstract class CDMainContentModel extends MainContentController {
 
+    /**
+     *
+     */
     protected CDLeftBottomContent LeftBottomContent;
+    /**
+     *
+     */
     protected CDLeftTopContent LeftTopContent;
+    /**
+     *
+     */
     protected CDUseCaseConnector useCaseConnector;
+    /**
+     *
+     */
     protected CDUseCaseReactivator useCaseReactivator;
+    /**
+     *
+     */
     protected BottomRightContentModel bottomRightContent;
+    /**
+     *
+     */
     protected ClassDiagramAttributesPanel attributesPanel;
+    /**
+     *
+     */
     protected BottomLeftContentModel leftContentModel;
+    /**
+     *
+     */
     protected CDBottomLeftController leftBottomController;
 
+    /**
+     *
+     * @param diagramPlaces
+     * @param bottomRightContent
+     * @param attributesPanel
+     */
     public CDMainContentModel(DiagramPlacesManager diagramPlaces, BottomRightContentModel bottomRightContent, ClassDiagramAttributesPanel attributesPanel) {
         this.diagramPlaces = diagramPlaces;
         this.places = diagramPlaces.getCdPlaces();
@@ -49,22 +80,41 @@ abstract class CDMainContentModel extends MainContentController {
         createMainPane();
     }
 
+    /**
+     *
+     * @return
+     */
     public CDLeftBottomContent getLeftBottomContent() {
         return LeftBottomContent;
     }
 
+    /**
+     *
+     * @return
+     */
     public CDLeftTopContent getLeftTopContent() {
         return LeftTopContent;
     }
 
+    /**
+     *
+     * @param LeftBottomContent
+     */
     public void setLeftBottomContent(CDLeftBottomContent LeftBottomContent) {
         this.LeftBottomContent = LeftBottomContent;
     }
 
+    /**
+     *
+     * @param LeftTopContent
+     */
     public void setLeftTopContent(CDLeftTopContent LeftTopContent) {
         this.LeftTopContent = LeftTopContent;
     }
 
+    /**
+     *
+     */
     private void createMainPane() {
         CDDrawingPane UCdrawing = (CDDrawingPane) this.mainContent.getDrawingPane();
         DrawingListeners alpha = new DrawingListeners((DrawingClicks) this);
@@ -83,23 +133,40 @@ abstract class CDMainContentModel extends MainContentController {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (places.getSelectedObject() instanceof CDClass)
-                {
-                    diagramPlaces.removePnPlace(((CDClass)places.getSelectedObject()).getPnNetwork());
+                if (places.getSelectedObject() instanceof CDClass) {
+                    diagramPlaces.removePnPlace(((CDClass) places.getSelectedObject()).getPnNetwork());
                 }
                 places.removeAllSelectedItems();
                 deleteNewLine();
             }
         }
         );
+
+        drawingPane.getDrawing().getActionMap().put("selectionCanceled", new AbstractAction() {
+            CDDrawingPane drawingPane = (CDDrawingPane) mainContent.getDrawingPane();
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                places.setAllObjectDiselected();
+                LeftTopContent.setAllButtonsAvailable();
+                LeftTopContent.setAllButtonsDiselected();
+                LeftBottomContent.setAllButtonsAvailable();
+                LeftBottomContent.setAllButtonsDiselected();
+                drawingPane.getDrawing().repaint();
+                bottomRightContent.showAdditionalContent(false);
+            }
+        });
+
         InputMap inputMap = drawingPane.getDrawing().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
         inputMap.put(KeyStroke.getKeyStroke("DELETE"), "removeObject");
+        inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), "selectionCanceled");
     }
 
     /**
      *
      */
     protected void deleteNewLine() {
+        this.newJoinEdge = null;
         this.mainContent.getDrawingPane().setNewLine(null);
         ((CDDrawingPane) this.mainContent.getDrawingPane()).getDrawing().repaint();
     }

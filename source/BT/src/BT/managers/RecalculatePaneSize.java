@@ -39,15 +39,14 @@ public class RecalculatePaneSize {
         }
         return size;
     }
-    
+
     /**
-     * 
+     *
      * @param newLine
      * @param size
-     * @return 
+     * @return
      */
-    public static Dimension recalculateSizeOfPaneByLine(LineModel newLine, Dimension size)
-    {
+    public static Dimension recalculateSizeOfPaneByLine(LineModel newLine, Dimension size) {
         if (newLine.getX() > size.width) {
             size.width = newLine.getX();
         }

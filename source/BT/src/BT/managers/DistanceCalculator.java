@@ -7,16 +7,16 @@ package BT.managers;
 import java.awt.Point;
 
 /**
- * Class for calculating distances with Lines. Between point and line segment
- * and calculating intersection point of object boundaries and lie segment.
+ * Class for calculating distances with Lines. Between point and line segment and calculating intersection point of
+ * object boundaries and lie segment.
  *
  * @author Karel Hala
  */
 public class DistanceCalculator extends DistanceCalculatorModel {
 
     /**
-     * Method for calculating distance from point to line segment. First check
-     * if point is withing line segment. And then calculate distance.
+     * Method for calculating distance from point to line segment. First check if point is withing line segment. And
+     * then calculate distance.
      *
      * @param DoublePoint firstPointSegment first point determining line segment (point A)
      * @param secondPointSegment second point determining line segment (point B)
@@ -59,9 +59,8 @@ public class DistanceCalculator extends DistanceCalculatorModel {
     }
 
     /**
-     * Method that will calculate point of intersection of line segment and
-     * width or height of object. It will check sector in which lines do
-     * intersects. And then it will calculate the point.
+     * Method that will calculate point of intersection of line segment and width or height of object. It will check
+     * sector in which lines do intersects. And then it will calculate the point.
      *
      * @param pointA first point of lineSegment.
      * @param pointB second point of lineSegment.
@@ -93,8 +92,8 @@ public class DistanceCalculator extends DistanceCalculatorModel {
     }
 
     /**
-     * This will calculate intersection point. First it will check sector, then
-     * it will calculate intersecion point of line and object bound.
+     * This will calculate intersection point. First it will check sector, then it will calculate intersecion point of
+     * line and object bound.
      *
      * @return calculated Point of intersection.
      */

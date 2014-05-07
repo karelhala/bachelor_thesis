@@ -39,7 +39,7 @@ public class PNDrawingPane extends DrawingPaneModel {
      *
      */
     public class drawing extends DrawingJpanel {
-        
+
         private Graphics2D graphicsPanel;
 
         /**
@@ -73,7 +73,7 @@ public class PNDrawingPane extends DrawingPaneModel {
                 }
             }
         }
-        
+
         public Graphics2D getGraphicsPanel() {
             return graphicsPanel;
         }

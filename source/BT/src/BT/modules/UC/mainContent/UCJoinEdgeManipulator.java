@@ -88,19 +88,16 @@ public class UCJoinEdgeManipulator {
             }
         }
     }
-    
+
     /**
-     * 
-     * @param joinEdge 
+     *
+     * @param joinEdge
      */
-    public static void checkObjects(UCJoinEdgeController joinEdge)
-    {
-        if (joinEdge.getFirstObject() != null && joinEdge.getFirstObject() instanceof UCActor)
-        {
+    public static void checkObjects(UCJoinEdgeController joinEdge) {
+        if (joinEdge.getFirstObject() != null && joinEdge.getFirstObject() instanceof UCActor) {
             joinEdge.setFirstObject(null);
         }
-        if (joinEdge.getSecondObject()!= null && joinEdge.getSecondObject() instanceof UCActor)
-        {
+        if (joinEdge.getSecondObject() != null && joinEdge.getSecondObject() instanceof UCActor) {
             joinEdge.setSecondObject(null);
         }
     }

@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package BT.modules.mainInterface;
 
 import BT.managers.DiagramPlacesManager;
@@ -24,45 +23,41 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  * @author Karel
  */
 public class MainInterfaceListeners {
+
     final private ToolBarContentControler toolBarContent;
-    
-    public MainInterfaceListeners(ToolBarContentControler toolBarContent)
-    {
+
+    public MainInterfaceListeners(ToolBarContentControler toolBarContent) {
         this.toolBarContent = toolBarContent;
     }
-    
+
     /**
      * Method that handles clicking on save button.
+     *
      * @param tabId id of selected tab. By this id it will be seleted propriete diagramPlace
      * @return return filename of selected file.
      */
-    public String clickedOnSave(int tabId)
-    {
-        if (toolBarContent.getDiagramById(tabId) != null)
-        {
+    public String clickedOnSave(int tabId) {
+        if (toolBarContent.getDiagramById(tabId) != null) {
             DiagramPlacesManager selectedDiagrams = toolBarContent.getDiagramById(tabId);
-            if (selectedDiagrams.getAbsolutePath() == null)
-            {
+            if (selectedDiagrams.getAbsolutePath() == null) {
                 selectedDiagrams = loadSaveDialog(selectedDiagrams);
             }
             saveDiagrams(selectedDiagrams);
             return selectedDiagrams.getFileName();
-        }
-        else
-        {
+        } else {
             JOptionPane.showMessageDialog(null, "No file to save.");
             return null;
         }
     }
-    
+
     /**
-     * Method for showing save dialog.
-     * It will show save dialog and if you confirm it, it will set the path of file to diagramPlacesManager.
+     * Method for showing save dialog. It will show save dialog and if you confirm it, it will set the path of file to
+     * diagramPlacesManager.
+     *
      * @param selectedDiagrams diagramPlacesManager that is being saved.
      * @return DiagramPlacesManager with new path to saved file.
      */
-    private DiagramPlacesManager loadSaveDialog(DiagramPlacesManager selectedDiagrams)
-    {
+    private DiagramPlacesManager loadSaveDialog(DiagramPlacesManager selectedDiagrams) {
         final JFileChooser fc = new JFileChooser();
         FileNameExtensionFilter xmlfilter = new FileNameExtensionFilter("xml files (*.xml)", "xml");
         fc.setFileFilter(xmlfilter);
@@ -73,17 +68,14 @@ public class MainInterfaceListeners {
             String extension = "";
             String fileName;
             if (i > 0) {
-                extension = file.getName().substring(i+1);
+                extension = file.getName().substring(i + 1);
             }
-            if (!extension.equals("xml"))
-            {
+            if (!extension.equals("xml")) {
                 fileName = file.getAbsolutePath() + ".xml";
                 selectedDiagrams.setFileName(file.getName());
-            }
-            else
-            {
+            } else {
                 fileName = file.getAbsolutePath();
-                selectedDiagrams.setFileName(file.getName().substring(0,i));
+                selectedDiagrams.setFileName(file.getName().substring(0, i));
             }
             selectedDiagrams.setAbsolutePath(new File(fileName));
             return selectedDiagrams;
@@ -92,13 +84,13 @@ public class MainInterfaceListeners {
             return null;
         }
     }
-    
+
     /**
      * Method for saving diagrams to diagrams path.
+     *
      * @param selectedDiagrams diagrams to be saved.
      */
-    private void saveDiagrams(DiagramPlacesManager selectedDiagrams)
-    {
+    private void saveDiagrams(DiagramPlacesManager selectedDiagrams) {
         try {
             try (PrintWriter out = new PrintWriter(selectedDiagrams.getAbsolutePath())) {
                 XStream xstream = new XStream(new DomDriver());
@@ -108,15 +100,15 @@ public class MainInterfaceListeners {
             JOptionPane.showMessageDialog(null, "Error while saving file.");
             System.out.println("Error while saving file.");
         }
-        
+
     }
-    
+
     /**
      * Method for handeling clicking on open button.
-     * @return 
+     *
+     * @return
      */
-    public DiagramPlacesManager clickedOnOpen()
-    {
+    public DiagramPlacesManager clickedOnOpen() {
         DiagramPlacesManager openedFile = null;
         final JFileChooser fc = new JFileChooser();
         FileNameExtensionFilter xmlfilter = new FileNameExtensionFilter("xml files (*.xml)", "xml");
@@ -128,26 +120,25 @@ public class MainInterfaceListeners {
         }
         return openedFile;
     }
-    
+
     /**
      * Open diagrams from file with XML.
+     *
      * @param fromFile open this file and load diagramPlacesManager.
      * @return opened DiagramPlacesManager.
      */
-    public DiagramPlacesManager getDiagramsFromXML(File fromFile)
-    {
+    public DiagramPlacesManager getDiagramsFromXML(File fromFile) {
         XStream xstream = new XStream(new DomDriver());
         return (DiagramPlacesManager) xstream.fromXML(fromFile);
     }
-    
+
     /**
      * Method for handeling click on export to EPS.
+     *
      * @param tabId id of selected tab with file.
      */
-    public void clickedOnExportToEPS(int tabId)
-    {
-        if (toolBarContent.getDiagramById(tabId) != null)
-        {
+    public void clickedOnExportToEPS(int tabId) {
+        if (toolBarContent.getDiagramById(tabId) != null) {
             JFileChooser fc = new JFileChooser();
             fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
             int returnVal = fc.showSaveDialog(null);
@@ -156,21 +147,18 @@ public class MainInterfaceListeners {
                 epsExport.exportAllToFiles();
             }
             System.out.println("ExportEpsClicked");
-        }
-        else
-        {
+        } else {
             JOptionPane.showMessageDialog(null, "No file to export.");
         }
     }
-    
+
     /**
      * Method for handeling click on export to XML.
+     *
      * @param tabId id of selected tab with file.
      */
-    public void clickedOnExportToXML(int tabId)
-    {
-        if (toolBarContent.getDiagramById(tabId) != null)
-        {
+    public void clickedOnExportToXML(int tabId) {
+        if (toolBarContent.getDiagramById(tabId) != null) {
             JFileChooser fc = new JFileChooser();
             fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
             int returnVal = fc.showSaveDialog(null);
@@ -178,21 +166,18 @@ public class MainInterfaceListeners {
                 ExportToXml xmlExporter = new ExportToXml(toolBarContent.getDiagramById(tabId), fc.getSelectedFile());
             }
             System.out.println("ExportXmlClicked");
-        }
-        else
-        {
+        } else {
             JOptionPane.showMessageDialog(null, "No file to export.");
         }
     }
-    
+
     /**
      * Method for handeling click on export to PDF.
-     * @param tabId id of selected tab with file. 
-    */
-    public void clickedOnExportToPDF(int tabId)
-    {
-        if (toolBarContent.getDiagramById(tabId) != null)
-        {
+     *
+     * @param tabId id of selected tab with file.
+     */
+    public void clickedOnExportToPDF(int tabId) {
+        if (toolBarContent.getDiagramById(tabId) != null) {
             JFileChooser fc = new JFileChooser();
             fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
             int returnVal = fc.showSaveDialog(null);
@@ -200,26 +185,21 @@ public class MainInterfaceListeners {
                 ExportToPdf pdfExporter = new ExportToPdf(toolBarContent.getDiagramById(tabId), fc.getSelectedFile());
             }
             System.out.println("ExoprtToPdfClicked");
-        }
-        else
-        {
+        } else {
             JOptionPane.showMessageDialog(null, "No file to export.");
         }
     }
-    
+
     /**
      * Method for saving opened file as.
-     * @param tabId id of selected tab with file. 
+     *
+     * @param tabId id of selected tab with file.
      * @return saved as file.
      */
-    public DiagramPlacesManager clickedOnSaveAs(int tabId)
-    {
-        if (toolBarContent.getDiagramById(tabId) != null)
-        {
+    public DiagramPlacesManager clickedOnSaveAs(int tabId) {
+        if (toolBarContent.getDiagramById(tabId) != null) {
             System.out.println("save as clicked");
-        }
-        else
-        {
+        } else {
             JOptionPane.showMessageDialog(null, "No file to save as.");
         }
         return new DiagramPlacesManager();

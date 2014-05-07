@@ -50,6 +50,6 @@ public class MainWindowModel extends javax.swing.JFrame {
     }
 
     public MyMenuBar getMyMenu() {
-	return myMenu;
+        return myMenu;
     }
 }

@@ -27,10 +27,10 @@ import javax.swing.JTabbedPane;
 public class CloseTabbedPane extends JTabbedPane {
 
     /**
-     * 
+     *
      */
-    final private ToolBarContentControler toolBarContent ;
-    
+    final private ToolBarContentControler toolBarContent;
+
     public CloseTabbedPane(ToolBarContentControler toolBarContent) {
         super();
         this.toolBarContent = toolBarContent;
@@ -66,8 +66,7 @@ public class CloseTabbedPane extends JTabbedPane {
      */
     public void removeTab(Component component) {
         int result = JOptionPane.showConfirmDialog(null, "Are you sure you want to close this file?", "Please confirm", JOptionPane.YES_NO_OPTION);
-        if (result == JOptionPane.OK_OPTION)
-        {
+        if (result == JOptionPane.OK_OPTION) {
             if (this.indexOfComponent(component) != -1) {
                 if (this.indexOfComponent(component) == this.getSelectedIndex()) {
 
@@ -79,8 +78,7 @@ public class CloseTabbedPane extends JTabbedPane {
             }
             this.toolBarContent.removeDiagramPlaceById(this.indexOfComponent(component));
             for (DiagramPlacesManager diagramPlaces : toolBarContent.getDiagramPlaces()) {
-                if (diagramPlaces.getDiagramNumber() > this.indexOfComponent(component))
-                {
+                if (diagramPlaces.getDiagramNumber() > this.indexOfComponent(component)) {
                     diagramPlaces.setDiagramNumber(diagramPlaces.getDiagramNumber() - 1);
                 }
             }
@@ -125,7 +123,7 @@ public class CloseTabbedPane extends JTabbedPane {
      * @param buttonClose
      */
     private void createIconsForButton(JButton buttonClose) {
-        try{
+        try {
             ClassLoader cl = this.getClass().getClassLoader();
             ImageIcon icon = new ImageIcon(cl.getResource("resources/closeFile.png"));
             Image normalImage = icon.getImage();
@@ -133,15 +131,13 @@ public class CloseTabbedPane extends JTabbedPane {
             ImageIcon greyIcon = new ImageIcon(grayImage);
             buttonClose.setRolloverIcon(icon);
             buttonClose.setIcon(greyIcon);
-        }
-        catch (NullPointerException exception)
-        {
+        } catch (NullPointerException exception) {
             buttonClose.setText("X");
         }
 
         buttonClose.setRolloverEnabled(true);
         buttonClose.setContentAreaFilled(false);
-        
+
     }
 
 }

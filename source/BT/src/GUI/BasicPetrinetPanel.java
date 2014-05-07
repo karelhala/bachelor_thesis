@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 
 /**
  * Class that holds panel with class variables and button for inserting them.
+ *
  * @author Karel Hala
  */
 public final class BasicPetrinetPanel {

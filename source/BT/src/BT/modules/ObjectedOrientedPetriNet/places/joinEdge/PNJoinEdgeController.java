@@ -21,17 +21,17 @@ import java.awt.Point;
 public class PNJoinEdgeController extends LineModel {
 
     /**
-     * 
+     *
      */
     private BT.OOPNLineType joinEdgeType;
 
     /**
-     * 
+     *
      */
     private final MyArrayList<String> selectedVariables;
-    
+
     /**
-     * 
+     *
      */
     private String additionalVariable;
 
@@ -41,7 +41,7 @@ public class PNJoinEdgeController extends LineModel {
     public PNJoinEdgeController() {
         super();
         this.joinEdgeType = OOPNLineType.JOIN;
-        this.selectedVariables =  new MyArrayList<>();
+        this.selectedVariables = new MyArrayList<>();
     }
 
     public void setJoinEdgeType(OOPNLineType joinEdgeType) {
@@ -55,13 +55,13 @@ public class PNJoinEdgeController extends LineModel {
     public MyArrayList<String> getSelectedVariables() {
         return selectedVariables;
     }
-    
+
     /**
      * Add unique variable to join edge.
-     * @param newVariable 
+     *
+     * @param newVariable
      */
-    public void addVariable(String newVariable)
-    {
+    public void addVariable(String newVariable) {
         this.selectedVariables.addUnique(newVariable);
     }
 
@@ -72,32 +72,29 @@ public class PNJoinEdgeController extends LineModel {
     public void setAdditionalVariable(String additionalVariable) {
         this.additionalVariable = additionalVariable;
     }
-    
+
     /**
      * For fetching selected variables as String joined by ","
-     * @return 
+     *
+     * @return
      */
-    public String getVariablesAsString()
-    {
+    public String getVariablesAsString() {
         String returnedString = "";
         for (String oneVariable : this.selectedVariables) {
             returnedString += oneVariable;
-            if (!this.selectedVariables.isLast(oneVariable))
-            {
+            if (!this.selectedVariables.isLast(oneVariable)) {
                 returnedString += ", ";
             }
         }
-        if (this.additionalVariable != null && !this.additionalVariable.equals(""))
-        {
-            if (!this.selectedVariables.isEmpty())
-            {
+        if (this.additionalVariable != null && !this.additionalVariable.equals("")) {
+            if (!this.selectedVariables.isEmpty()) {
                 returnedString += ", ";
             }
             returnedString += this.additionalVariable;
         }
         return returnedString;
     }
-    
+
     /**
      *
      * @param g

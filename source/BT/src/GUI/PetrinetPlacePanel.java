@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package GUI;
 
 import static BT.BT.elementWithLabelAbove;
@@ -24,12 +23,12 @@ public class PetrinetPlacePanel {
      * Text field that holds constant string.
      */
     private final JTextField constantField;
-    
+
     /**
      * Pane that holds guard field and action field.
      */
     private final JPanel contentPane;
-    
+
     /**
      * Button for confirming constant field.
      */
@@ -54,13 +53,13 @@ public class PetrinetPlacePanel {
     public JButton getConfirmButton() {
         return confirmButton;
     }
-    
+
     /**
      * Insert constant field and confirm button to content pane.
+     *
      * @return this object.
      */
-    private void insertIntoPane()
-    {
+    private void insertIntoPane() {
         this.contentPane.add(this.confirmButton, BorderLayout.WEST);
         this.contentPane.add(elementWithLabelAbove(this.constantField, new JLabel("Costant's field")), BorderLayout.CENTER);
     }

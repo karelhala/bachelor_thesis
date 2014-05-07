@@ -53,7 +53,7 @@ public class PNContentController {
         bottomRightTransition.setButtonNames("Change guard", "Change action");
         bottomRightTransition.addAdditionalcontent(basicPetrinetPanel.getContentPane());
         bottomRightTransition.hideButtons();
-        
+
         this.pnMain = new PNMainContentController(diagramPlaces);
 
         PNLeftTopContent cdLeftTop = new PNLeftTopContent(pnMain);
@@ -61,7 +61,7 @@ public class PNContentController {
 
         PNLeftBottomContent pnLeftBottom = new PNLeftBottomContent(pnMain);
         pnLeftBottom.setListeners();
-        
+
         this.pnContent.setCenterPane(this.pnMain.getMainContent().getMainContentPane());
         this.pnContent.setLeftTopPane(cdLeftTop.getMainContentPane());
         this.pnContent.setLeftBottomPane(pnLeftBottom.getMainContentPane());
@@ -70,6 +70,6 @@ public class PNContentController {
         this.pnMain.setLeftBottomContent(pnLeftBottom);
         this.pnMain.setLeftTopContent(cdLeftTop);
         this.pnMain.setBottomLeftContentModel(bottomLeftContentModel).initializeBottomLeftController();
-        ((PNMainContentInitializer)this.pnMain.setBottomRightModel(bottomRightTransition)).initializeRightController(basicPetrinetPanel, guardActionPanel, petrinetPlace);
+        ((PNMainContentInitializer) this.pnMain.setBottomRightModel(bottomRightTransition)).initializeRightController(basicPetrinetPanel, guardActionPanel, petrinetPlace);
     }
 }

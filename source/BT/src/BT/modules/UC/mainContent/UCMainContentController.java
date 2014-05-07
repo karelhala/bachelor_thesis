@@ -10,7 +10,6 @@ import BT.interfaces.DrawingClicks;
 import BT.managers.DiagramPlacesManager;
 import BT.models.CoordinateModel;
 import BT.models.LineModel;
-import BT.modules.ClassDiagram.places.joinEdge.CDJoinEdgeController;
 import BT.modules.UC.places.UCActor;
 import BT.modules.UC.places.UCJoinEdge.UCJoinEdgeController;
 import BT.modules.UC.places.UCUseCase;
@@ -33,6 +32,7 @@ public class UCMainContentController extends UCMainContentModel implements Drawi
 
     private final UCClassDiagramConnector classDiagramConnector;
     private final BottomRightContentModel bottomRightContent;
+
     /**
      *
      * @param diagramPlaces
@@ -44,12 +44,11 @@ public class UCMainContentController extends UCMainContentModel implements Drawi
         this.classDiagramConnector = new UCClassDiagramConnector(diagramPlaces.getCdPlaces(), diagramPlaces.getUcPlaces());
         addButtonClickListeners();
     }
-    
+
     /**
-     * 
+     *
      */
-    private void addButtonClickListeners()
-    {
+    private void addButtonClickListeners() {
         this.bottomRightContent.getTopButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
@@ -57,7 +56,7 @@ public class UCMainContentController extends UCMainContentModel implements Drawi
                 ((UCDrawingPane) mainContent.getDrawingPane()).getDrawing().repaint();
             }
         });
-        
+
         this.bottomRightContent.getBottomButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
@@ -151,19 +150,14 @@ public class UCMainContentController extends UCMainContentModel implements Drawi
         places.setSelectedLinesOnObject(clickedObject);
         if (clickedObject != null) {
             clickedObject.setSelected(true);
-            if (clickedObject instanceof UCActor)
-            {
+            if (clickedObject instanceof UCActor) {
                 this.LeftBottomContent.getButtonWithName(UCLineType.EXTENDS.name()).setEnabled(false);
                 this.LeftBottomContent.getButtonWithName(UCLineType.INCLUDE.name()).setEnabled(false);
-            }
-            else
-            {
+            } else {
                 this.LeftBottomContent.getButtonWithName(UCLineType.EXTENDS.name()).setEnabled(true);
                 this.LeftBottomContent.getButtonWithName(UCLineType.INCLUDE.name()).setEnabled(true);
             }
-        }
-        else
-        {
+        } else {
             this.LeftBottomContent.getButtonWithName(UCLineType.EXTENDS.name()).setEnabled(true);
             this.LeftBottomContent.getButtonWithName(UCLineType.INCLUDE.name()).setEnabled(true);
         }
@@ -180,8 +174,7 @@ public class UCMainContentController extends UCMainContentModel implements Drawi
      */
     @Override
     public void drawingPaneDoubleCliked(CoordinateModel pressedObject) {
-        if (!(pressedObject instanceof LineModel))
-        {
+        if (!(pressedObject instanceof LineModel)) {
             JPanel dialogPanel = new JPanel(new BorderLayout());
             JTextField nameInput = new JTextField();
             nameInput.setText(pressedObject.getName());
@@ -189,24 +182,21 @@ public class UCMainContentController extends UCMainContentModel implements Drawi
             this.classDiagramConnector.setSelectedObject(pressedObject);
             this.classDiagramConnector.addButtonsToDialog(dialogPanel);
             int result = (int) JOptionPane.showConfirmDialog(null, dialogPanel, "Enter name of the object", JOptionPane.OK_CANCEL_OPTION);
-            if (result == JOptionPane.OK_OPTION)
-            {
+            if (result == JOptionPane.OK_OPTION) {
                 pressedObject.setName(nameInput.getText());
                 pressedObject.getAssignedObject().setName(nameInput.getText());
             }
-        }else if (pressedObject instanceof UCJoinEdgeController)
-        {
+        } else if (pressedObject instanceof UCJoinEdgeController) {
             JPanel dialogPanel = new JPanel(new BorderLayout());
             UCJoinEdgeController selectedLine = (UCJoinEdgeController) pressedObject;
-            if (selectedLine.getJoinEdgeType() == UCLineType.USERINPUT)
-            {
-                String[] actorClass = { UCLineType.EXTENDS.name(), UCLineType.INCLUDE.name()};
+            if (selectedLine.getJoinEdgeType() == UCLineType.USERINPUT) {
+                String[] actorClass = {UCLineType.EXTENDS.name(), UCLineType.INCLUDE.name()};
                 JComboBox selectType = new JComboBox(actorClass);
                 dialogPanel.add(selectType);
                 int result = JOptionPane.showConfirmDialog(null, dialogPanel,
-                    "Please select type of this line", JOptionPane.OK_CANCEL_OPTION);
+                        "Please select type of this line", JOptionPane.OK_CANCEL_OPTION);
                 if (result == JOptionPane.OK_OPTION) {
-                    selectedLine.setJoinEdgeType((selectType.getSelectedItem().equals(UCLineType.EXTENDS.name()))?UCLineType.EXTENDS:UCLineType.INCLUDE);
+                    selectedLine.setJoinEdgeType((selectType.getSelectedItem().equals(UCLineType.EXTENDS.name())) ? UCLineType.EXTENDS : UCLineType.INCLUDE);
                 }
             }
         }
@@ -229,8 +219,7 @@ public class UCMainContentController extends UCMainContentModel implements Drawi
                     this.newJoinEdge.setSelected(false);
                 }
                 this.places.addObject(this.newJoinEdge);
-                if (this.newJoinEdge.getFirstObject().getAssignedObject() != null && this.newJoinEdge.getSecondObject().getAssignedObject() != null)
-                {
+                if (this.newJoinEdge.getFirstObject().getAssignedObject() != null && this.newJoinEdge.getSecondObject().getAssignedObject() != null) {
                     this.classDiagramConnector.setNewLine(this.newJoinEdge);
                     this.classDiagramConnector.createNewClassJoinEdge();
                 }
@@ -240,7 +229,7 @@ public class UCMainContentController extends UCMainContentModel implements Drawi
         UCDrawingPane UCdrawing = (UCDrawingPane) this.mainContent.getDrawingPane();
         UCdrawing.setNewLine(newJoinEdge);
     }
-    
+
     /**
      *
      * @param clickedObject

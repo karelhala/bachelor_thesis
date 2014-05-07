@@ -29,8 +29,7 @@ public class MyArrayList<E> extends ArrayList<E> {
     }
 
     /**
-     * Method for returning first elemnt. It will return element at position 0
-     * if arrayList is not empty
+     * Method for returning first elemnt. It will return element at position 0 if arrayList is not empty
      *
      * @return element at first position
      */
@@ -42,8 +41,8 @@ public class MyArrayList<E> extends ArrayList<E> {
     }
 
     /**
-     * Method for returning last elemnt. It will return element at position
-     * arrayList.size()-1 if arrayList is not empty.
+     * Method for returning last elemnt. It will return element at position arrayList.size()-1 if arrayList is not
+     * empty.
      *
      * @return element at last position
      */
@@ -55,9 +54,8 @@ public class MyArrayList<E> extends ArrayList<E> {
     }
 
     /**
-     * Method for returning left muiddle element. It will return element at
-     * position arrayList.size()/2-1 if arrayList is not empty. If size of
-     * arrayList is bellow or equal 2 return first elemnt.
+     * Method for returning left muiddle element. It will return element at position arrayList.size()/2-1 if arrayList
+     * is not empty. If size of arrayList is bellow or equal 2 return first elemnt.
      *
      * @return element at left middle position
      */
@@ -72,9 +70,8 @@ public class MyArrayList<E> extends ArrayList<E> {
     }
 
     /**
-     * Method for returning right muiddle element. It will return element at
-     * position arrayList.size()/2 if arrayList is not empty. It will return
-     * this elemnt only if size of arrayList is bigger than 1
+     * Method for returning right muiddle element. It will return element at position arrayList.size()/2 if arrayList is
+     * not empty. It will return this elemnt only if size of arrayList is bigger than 1
      *
      * @return element at right middle position
      */
@@ -88,8 +85,8 @@ public class MyArrayList<E> extends ArrayList<E> {
     }
 
     /**
-     * Add unique element to arrayList if it is not null. Check if array list
-     * does not contain insertElement and if not, insert it.
+     * Add unique element to arrayList if it is not null. Check if array list does not contain insertElement and if not,
+     * insert it.
      *
      * @param insertElement element that is being inserted.
      * @return this object.
@@ -102,8 +99,7 @@ public class MyArrayList<E> extends ArrayList<E> {
     }
 
     /**
-     * Add elemnts to arrayList using addUnique. Add only elements, that are not
-     * null.
+     * Add elemnts to arrayList using addUnique. Add only elements, that are not null.
      *
      * @param collection items to be inserted.
      * @return this object as myArrayList<E>.

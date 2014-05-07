@@ -72,7 +72,7 @@ public class BottomLeftContentModel {
                     if (insertedAttribute instanceof Method) {
                         String result = JOptionPane.showInputDialog("Please Enter attribues delimtered by comma.", ((Method) insertedAttribute).getAttributesAsString());
                         if (result != null) {
-                            result = result.replaceAll("\\s+","");
+                            result = result.replaceAll("\\s+", "");
                             for (String oneAttribute : result.split(",")) {
                                 ((Method) insertedAttribute).addNewAttribute(oneAttribute);
                             }

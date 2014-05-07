@@ -37,9 +37,8 @@ public class DrawingListeners extends MouseInputAdapter {
     }
 
     /**
-     * This will be called when mouse pressed. When right click call
-     * mainContent.rightClick. When left click get object under mouse, if no
-     * object call mainContent.drawingPaneClicked. When object under mouse, call
+     * This will be called when mouse pressed. When right click call mainContent.rightClick. When left click get object
+     * under mouse, if no object call mainContent.drawingPaneClicked. When object under mouse, call
      * mainContent.setSelectedObject.
      *
      * @param evt
@@ -61,10 +60,9 @@ public class DrawingListeners extends MouseInputAdapter {
     }
 
     /**
-     * This method is called when mouse is dragged. Check if any object is
-     * dragged. Check if dragged line, then dragg it only if join in range
-     * otherwise call mainContent.drawingMouseDragged If no object under mouse,
-     * diselect all objects.
+     * This method is called when mouse is dragged. Check if any object is dragged. Check if dragged line, then dragg it
+     * only if join in range otherwise call mainContent.drawingMouseDragged If no object under mouse, diselect all
+     * objects.
      *
      * @param e
      */
@@ -113,8 +111,8 @@ public class DrawingListeners extends MouseInputAdapter {
     }
 
     /**
-     * This method is called when mouse clicked (pressed and released). Check
-     * double click or call mainContent.setSelectedObject
+     * This method is called when mouse clicked (pressed and released). Check double click or call
+     * mainContent.setSelectedObject
      *
      * @param e
      */

@@ -21,13 +21,12 @@ public class UCJoinEdgeController extends LineModel {
 
     private UCLineType joinEdgeType;
 
-    public UCJoinEdgeController(CoordinateModel firstObject, CoordinateModel secondObject)
-    {
+    public UCJoinEdgeController(CoordinateModel firstObject, CoordinateModel secondObject) {
         super();
         this.firstObject = firstObject;
         this.secondObject = secondObject;
     }
-    
+
     public void setJoinEdgeType(UCLineType joinEdgeType) {
         this.joinEdgeType = joinEdgeType;
     }
@@ -53,8 +52,7 @@ public class UCJoinEdgeController extends LineModel {
      * @param g
      */
     public void drawJoinEdge(Graphics2D g) {
-        if (this.firstObject != null)
-        {
+        if (this.firstObject != null) {
             PointsCalculator pointsCaluclator = new PointsCalculator(this.firstObject, this.secondObject, getStartPoint(), getEndPoint(), this.breakPoints);
 
             Point startPoint = pointsCaluclator.getStartPoint();
