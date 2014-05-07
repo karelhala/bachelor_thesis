@@ -600,51 +600,50 @@ Petriho sítí.} \label{petriNetFig}
 \end{figure}
 
 \subsection{Grafické znázornìní}
-Jednotlivá místa se znázoròují v objektovì orientovaných Petriho 
-sítích jako koleèka obsahující stav tohoto místa, napøíklad referenci na 
-objekty. Pøechody jsou znázornìny obdélníkem obsahujícím strá¾ a akci. 
-Akce se nachází pod èarou a nad èarou se nachází strá¾.
+Jednotlivá místa se znázoròují v objektovì orientovaných Petriho sítích jako 
+koleèka obsahující stav tohoto místa, napøíklad referenci na objekty. Pøechody 
+jsou znázornìny obdélníkem obsahujícím strá¾ a akci. Akce se nachází pod èarou 
+a nad èarou se nachází strá¾.
 
 \section{Koncept aplikace}\label{spojeni}
 Vytvoøit jednotlivé diagramy a Petriho sítì je pouze èást tohoto nástroje, jeho 
-pøedností má být atumoatické a urychlené vytváøení aplikací. Z tohoto dùvodu 
+pøedností má být automatické a urychlené vytváøení aplikací. Z tohoto dùvodu 
 bylo zvoleno zavedení \emph{Use-Case driven developmentu}.
 
 Tento pohled na návrh aplikace je veden tak, ¾e na základì diagramu pøípadù 
 u¾ití je mo¾né vytvoøit automaticky tøídy v diagramu tøíd. A to tak, ¾e aktér 
 je modelován jako tøída se speciálním typem \emph{Actor} a pøípad u¾ití je 
-modelován jako tøída s urèením \emph{activity}.
+modelován jako tøída s urèením \emph{Activity}.
 
-Pro tyto tøídy nadále platí stejná omezení, jako pro aktéry a pøípady u¾ití. 
-Dále je tento zpùsob výhodný z toho hlediska ¾e po navrhnutí chování aplikace 
-máe okam¾itì k dispozici základní kostru a strukturu v diagramu tøíd. Tato 
-kostra se dá nadále roz¹íøit dal¹ími tøídami, které mohou být zobrazeny v 
-diagramu pøípadù u¾ití po urèení jejich role, nebo mohou být pouze jako pomocné 
-tøídy, nezobrazené v diagramu pøípadù u¾ití.
+Pro tyto tøídy nadále platí stejná omezení jako pro aktéry a pøípady u¾ití. 
+Dále je tento zpùsob výhodný z toho hlediska, ¾e po navrhnutí chování aplikace 
+máme okam¾itì k dispozici základní kostru a strukturu v diagramu tøíd. Tato 
+kostra se dá roz¹íøit dal¹ími tøídami, které mohou být zobrazeny v diagramu 
+pøípadù u¾ití po urèení jejich role, nebo mohou být pouze jako pomocné 
+tøídy (nezobrazené v diagramu pøípadù u¾ití).
 
 Takto vytvoøené tøídy a dal¹í tøídy lze poté popsat pomocí objektovì 
-orientovaných Petriho sítí. To tak, ¾e ka¾dá tøída má svoji zvlá¹tní Petriho 
-sí», ve které lze znázornit komunikace s ostatními tøídami. Ka¾dá metoda této 
-tøídy má opìt vlastní Petriho sí», tato sí» má je¹tì roz¹íøení v podobì 
-speciálního místa urèeného pro návratovou hodnotu.
+orientovaných Petriho sítí. To se provede tak, ¾e ka¾dá tøída má svoji zvlá¹tní 
+Petriho sí», ve které lze znázornit komunikaci s ostatními tøídami. Ka¾dá 
+metoda této tøídy má opìt vlastní Petriho sí», tato sí» má je¹tì roz¹íøení v 
+podobì speciálního místa urèeného pro návratovou hodnotu.
 
-Pou¾itím tohoto koceptu lze dosáhnout velice plynulého návrhu aplikace a po 
-vytvoøení objektovì orientovaných Petriho sítí je mo¾né testování 
-této aplikace bez nutnosti editace zdrojových kódù \cite{usecaDrivenDevelopmen}.
+Pou¾itím tohoto koceptu lze dosáhnout plynulého návrhu aplikace a po vytvoøení 
+objektovì orientovaných Petriho sítí je mo¾né testování této aplikace bez 
+nutnosti editace zdrojových kódù \cite{usecaDrivenDevelopmen}.
 
 \subsection{Pou¾ití ve výsledné aplikaci}
-Provázání mezi UML èástmi prbíhá tak, ¾e pøi vytvoøení objektu v diagramu 
+Provázání mezi UML èástmi probíhá tak, ¾e pøi vytvoøení objektu v diagramu 
 pøípadù u¾ití vznikne tøída se stejným názvem v diagramu tøíd. Na objektovém 
-analytikovi potom je potøeba zadat jednotlivé atributy a operace. Pokud vznikne 
+analytikovi potom je, aby zadal jednotlivé atributy a operace. Pokud vznikne 
 pøípad, ¾e se analytická tøída rozpadne na více tøíd, je toto mo¾né realizovat 
 dvojím zpùsobem. A to tak, ¾e se odstraní analytická tøída a vzniknou dvì nové 
 tøídy, které se nepromítnou do diagramu pøípadù u¾ití. A nebo zachováním 
 analytické tøídy a navázáním nové tøídy, která se nepromítne do pøípadù u¾ití.
 
 Zpùsob znázornìní jednoduchého pøípadu u¾ití je vidìt na obrázku 
-\ref{useCasePropoj} kde máme dva aktéry a ka¾dý z nich pou¾ívá rùznou akci, 
-tyto akce jsou v¹ak roz¹íøeny pomocí include spoje o pøípad 
-u¾ití.
+\ref{useCasePropoj}, kde máme dva aktéry a ka¾dý z nich pou¾ívá rùznou akci. 
+Tyto akce jsou v¹ak roz¹íøeny pomocí include spoje o pøípad u¾ití.
 
 \begin{figure}[h!]
   \centering
@@ -660,16 +659,16 @@ scale=0.5]{fig/UseCasePropoj}
   \caption{Nástin problému pøípadù u¾ití.} \label{useCasePropoj}
 \end{figure}
 
-Tento pøípadu¾ití se poté promítne do diagramu tøíd s tím, ¾e jednotlivý aktéøi 
-budou reprezentování tøídami s pøíznakem \emph{Actor} a pøípady u¾ití jako 
-\emph{Activity}. Spoje mezi tìmito tøídami jsou toto¾né s tìmi co jsou v 
+Tento pøípad u¾ití se poté promítne do diagramu tøíd s tím, ¾e jednotliví 
+aktéøi budou reprezentováni tøídami s pøíznakem \emph{Actor} a pøípady u¾ití 
+jako \emph{Activity}. Spoje mezi tìmito tøídami jsou toto¾né s tìmi, co jsou v 
 diagramu pøípadù u¾ití. S tím rozdílem, ¾e je na objektovém analytikovi 
-rozhodnou jaký spoj se pou¾ije v pøípadì include, zda agregaci, nebo 
-kompozici. Pøed toto rozhodnutí je také postaven v pøípadì pou¾ití extends 
-spoje. Po vytvoøení tìchto tøíd je mo¾né zadat tøídní promìnné a metody k 
-jednotlivým tøídám. Výsledný diagram provázání mù¾ete vidìt na obrázku 
-\ref{classdiagramPropoj}. Kdy aktéøi odpovídají tøídám, které mají pøíznak 
-Actor a pøípady u¾ití odpovídají tøídám s pøíznaky Activity.
+rozhodnout, jaký spoj se pou¾ije v pøípadì include -- zda agregace, nebo 
+kompozice. Objektový analytik je pøed toto rozhodnutí také postaven v 
+pøípadì pou¾ití extends spoje. Po vytvoøení tìchto tøíd je mo¾né zadat tøídní 
+promìnné a metody k jednotlivým tøídám. Výsledný diagram provázání mù¾eme vidìt 
+na obrázku \ref{classdiagramPropoj}, kdy aktéøi odpovídají tøídám, které mají 
+pøíznak \emph{Actor} a pøípady u¾ití tøídám s pøíznaky \emph{Activity}.
 
 \begin{figure}[h!] 
 \centering
@@ -681,79 +680,76 @@ scale=0.5]{fig/ClassDiagramPropoj}
 
 K popisu jednotlivých tøíd a metod dále slou¾í objektovì orientované Petriho 
 sítì. Ka¾dá tøída a také ka¾dá metoda má jednu objektovì orientovanou Petriho 
-sí». V pøípadì metody tato sí» mù¾e obsahovat vstupní místa, argumenty této 
-metody, a jedno speciální místo, kde je ulo¾ena návratová hodnota. Pøíklad 
-navrhnutí metody \emph{isUserAllowd} je vidìt na obrázku \ref{oopnPropoj}, kdy 
-se kontroluje zda se u¾ivatelské ID nachází v povolených, pokud tomu tak je 
-vrátí se hodnota true.
+sí». Pøíklad navrhnutí metody \emph{isUserAllowed} (z tøídy \uv{pristup k 
+datum}) je vidìt na obrázku \ref{oopnPropoj}, kdy se kontroluje, zda se 
+u¾ivatelské ID nachází v povolených, pokud tomu tak je, vrátí se hodnota 
+\emph{true}.
 
 \begin{figure}[h!] 
 \centering
   \includegraphics[trim = 0mm 130mm 0mm 0mm, clip, 
 scale=0.5]{fig/petriNet_makeActionMethodaPropoj}
-  \caption{Metoda popsána objektovì orientovanou Petriho sítí.} 
+  \caption{Metoda isUserAllowed popsána objektovì orientovanou Petriho sítí.} 
 \label{oopnPropoj}
 \end{figure}
 
-Objektovì orientované Petriho sítì, mají nìkolik speciálních míst. V pøípadì 
- Petriho sítì pro tøídu jsou to tøídní promìnné této tøídy a zdìdìné tøídní 
-promìnné od svùch pøedkù. V pøípadì Petriho sítì je mno¾ina tìchto zvlá¹tních 
-míst roz¹íøena o argumenty metody, které jsou vstupními místy pro tuto Petriho 
-sí».
+Objektovì orientované Petriho sítì mají nìkolik speciálních míst. V 
+pøípadì Petriho sítì pro tøídu jsou to tøídní promìnné této tøídy a zdìdìné 
+tøídní promìnné od svých pøedkù. V pøípadì Petriho sítì pro metodu je mno¾ina 
+tìchto zvlá¹tních míst roz¹íøena o argumenty metody (které jsou vstupními místy 
+pro tuto sí») a jedno speciální místo, kde je ulo¾ena návratová hodnota.
 \cite{oopn_caseStudy}
 
 \section{Shrnutí}
 V této kapitole byly pøiblí¾eny nástroje slou¾ící ke 
-znázornìní postupného vývoje aplikace. Ke zjednodu¹ení vývoje a 
+znázornìní postupného vývoje aplikace, ke zjednodu¹ení vývoje a 
 pøevá¾nì k zpøehlednìní komunikace uvnitø aplikace.
 
 Motivací pro výbìr tìchto nástrojù byla skuteènost, ¾e se v 
 moderním programování pou¾ívá pøevá¾nì objektovì 
-orientovaných postupù. Dále také mo¾nost jednoduché provázanosti 
-mezi tìmito nástroji, co¾ vede ke zjednodu¹ení a urychlení 
+orientovaných postupù. Tyto nástroje dále podporují \emph{Use-case driven 
+development}, co¾ vede k jednoduché provázanosti 
+mezi tìmito nástroji a ke zjednodu¹ení a urychlení 
 vývoje. S ohledem na moderní zpùsob agilního vývoje jsou tyto 
-nástroje velice vhodné. A to pøevá¾nì z hlediska jednoduché 
-integrace zákazníka do vývoje a promítnutí zmìn od zákazníka 
-okam¾itì na celý systém.
+nástroje vhodné, a to pøevá¾nì z hlediska jednoduché integrace zákazníka do 
+vývoje a okam¾ité promítnutí zmìn od zákazníka na celý systém.
 
 \chapter{Návrh aplikace} \label{samotatnaAplikace}
-Po vyzkou¹ení nástrojù specializujících se v návrh aplikací bylo zji¹tìno ¾e 
+Po vyzkou¹ení nástrojù specializujících se na návrh aplikací, bylo zji¹tìno, ¾e 
 ¾ádný z nich neimplementuje mo¾nost vzájemného propojení, jak bylo 
 specifikováno v po¾adavcích. Také byl potvrzen oèekávaný výsledek, kdy 
 ¾ádný nástroj neobsahoval mo¾nost návrhu pomocí objektovì orientovaných Petriho 
 sítí.
 
-Nejdøíve si objasníme design aplikace, rozmístnìní jednotlivých prvkù aplikace 
-a zpùsob ovládání \ref{popisAplikace}. Poté probereme nìkteré speciální 
-ovládací prvky v kapitole \ref{ovladaciPrvky}. A závìrem této kapitoly popí¹eme 
-jednotlivé editory, jejich roz¹íøení a pou¾ívání \ref{jednotliveEditory}.
+Nejdøíve si v \ref{popisAplikace} objasníme design aplikace, rozmístnìní 
+jednotlivých prvkù a zpùsob ovládání. Poté zde probereme nìkteré speciální 
+ovládací prvky. Závìrem této kapitoly popí¹eme jednotlivé editory, jejich 
+roz¹íøení a pou¾ívání \ref{jednotliveEditory}.
 
 \section{Popis aplikace} \label{popisAplikace}
 Na základì poznatkù z ostatních aplikací bylo rozhodnuto o jednoduchosti a 
-intuitivním ovládání aplikace. Tohoto bylo docíleno sjednocením základního 
-designu aplikace a pou¾ití klávesových zkratek, které jsou známé z moderních 
-aplikací.
+intuitivním ovládání. Tohoto bylo docíleno sjednocením základního designu 
+aplikace a pou¾itím klávesových zkratek, které jsou známé z moderních aplikací.
 
 Hlavní okno se skládá z nìkolika panelù. V horní èásti se nachází menu 
-obsahující jednoduché operace nad projekty. Dále se zde nachází ovládací prvky, 
-slou¾ící pro práci se soubory a exporty daného souboru. Celý hlavní obsah 
-aplikace se nachází ve zbylích dvou tøetinách okna. V levé èásti se nacházejí 
-tlaèítka pro mo¾nost pøepínání jednotlivých vkládaných objektù a pøepínání 
-mezi druhy spojù. Dolní èást obsahuje informaèní a editaèní mo¾nosti zvoleného 
-prvku a pro hlavní èást je vyèleìn zbytek pracovní plochy, takzvané editaèní 
-plátno.
+obsahující jednoduché operace nad projekty. Dále jsou zde umístnìny ovládací 
+prvky, slou¾ící pro práci se soubory a exporty daného souboru. Celý hlavní 
+obsah aplikace se nachází ve zbylých dvou tøetinách okna. V levé jsou tlaèítka 
+pro mo¾nost pøepínání jednotlivých vkládaných objektù a pøepínání mezi druhy 
+spojù. Dolní èást obsahuje informaèní a editaèní mo¾nosti zvoleného prvku a pro 
+hlavní èást je vyèlenìn zbytek pracovní plochy -- takzvané editaèní plátno.
 
 Na toto plátno je mo¾né pøidávat jednotlivé prvky, spojovat je, pøesouvat je a 
 mazat je. Po vybrání nìkterého tlaèítka v levém menu je mo¾né zaèít pøidávat 
 prvky. Po zakliknutí vybraného prvu a kliknutí na editaèní plátno se vytvoøí 
 objekt, po ta¾ení se vybraný objekt pøesune a pro spojení 
 dvou objektù hranou je zapotøebí vybrat typ hrany z levého menu a poté kliknout 
-na první objekt a poté na druhý. Pokud je potøeba spoj zahnout pro 
+na první objekt a následnì na druhý. Pokud je potøeba spoj zahnout pro 
 zpøehlednìní grafu, je toto mo¾né vyvolat kliknutím na pravé tlaèítko my¹i 
 bìhem ta¾ení spoje.
 \section{Architektura aplikace}
 Architekturu výsledného nástroje si lze prohlédnout na obrázku 
-\ref{architekturaAplikace}, kde je znázornìno èásteènì jak jsou jednotlivé 
+\ref{architekturaAplikace}, kde je èásteènì znázornìno, jak jsou jednotlivé 
 tøídy navzájem provázané.
 
 \begin{figure}[h!] 
@@ -763,186 +759,182 @@ tøídy navzájem provázané.
 \label{architekturaAplikace}
 \end{figure}
 
-Tøída \emph{GUI} je základní tøída, obsahuje main a také vytváøí objekty z 
-jednotlivch tøíd. \emph{PlaceManager} V této tøídì jsou ulo¾eny ¹echny objekty 
-a jejich v¹echny spoje. Tato tøída je obsahem tøídy 
-\emph{DiagramPlacesManager}, která se stará o jednotlivé èásti a diagramy, 
-Petriho sítì jsou ulo¾eny pomocí ArrayListu, proto¾e je potøeba mít více sítí 
-pro jeden projekt. 
+Tøída \emph{GUI} je základní tøída, obsahuje \emph{main} a také vytváøí objekty 
+z jednotlivch tøíd. V tøídì \emph{PlaceManager} jsou ulo¾eny v¹echny objekty a 
+jejich v¹echny spoje. Tato tøída je obsahem tøídy \emph{DiagramPlacesManager}, 
+která se stará o jednotlivé èásti a diagramy. Petriho sítì jsou ulo¾eny pomocí 
+\emph{ArrayListu}, proto¾e je potøeba mít více sítí pro jeden projekt. 
 
-\emph{CoordinateModel} je tøída starající se o ka¾dý objekt. 
-Obsahuje X a Y souøadnice, rozmìry tohoto objektu a základní popis objektu. Od 
-této tøídy dìdí dále tøídy \emph{UCActor, UCUseCase, CDClass, PNPlace a 
-PNTransition}, tyto tøídy dále specifikují jednotlivé objekty na editaèním 
-plátnì. Tyto tøídy se také starají o vykreslování na pracovní plátno. 
+\emph{CoordinateModel} je tøída starající se o ka¾dý objekt. Obsahuje X a Y 
+souøadnice, rozmìry a základní popis objektu. Od této tøídy dìdí dále tøídy 
+\emph{UCActor, UCUseCase, CDClass, PNPlace a PNTransition}. Tyto tøídy 
+specifikují jednotlivé objekty na editaèním plátnì a také se starají o 
+vykreslování na pracovní plátno.
 
-Od tøídy CoordinateModel dále dìdí \emph{Linemodel} ta se stará o ulo¾ení 
-jednotlivých spojù mezi objekty. Poèítá koncové body pomocí 
-\emph{PointsCalculator} a její nejdùle¾itìj¹í rolí je, ¾e je rodièovskou tøídou 
-pro v¹echny spoje tak¾e od ní dìdí tøídy \emph{UCJoinEdge, CDJoinEdge, 
-PNJoinEdge}. Tyto tøídy se starají o styl vykreslovaných spojù a nastavují 
-rùzná pravidla pro spoje.
+Od tøídy \emph{CoordinateModel} dále dìdí \emph{Linemodel}, ta se stará o 
+ulo¾ení jednotlivých spojù mezi objekty. Koncové body jsou spoèítány pomocí 
+\emph{PointsCalculator} a nejdùle¾itìj¹í rolí tøídy \emph{Linemodel} je, ¾e je 
+rodièovskou tøídou pro v¹echny spoje, tak¾e od ní dìdí tøídy \emph{UCJoinEdge, 
+CDJoinEdge, PNJoinEdge}. Tyto tøídy se starají o styl vykreslovaných spojù a 
+nastavují rùzná pravidla pro spoje.
 
-Základní tøídou pro v¹echny editory je \emph{MainController} ukládá v sobì 
+Základní tøídou pro v¹echny editory je \emph{MainController}. Ukládá v sobì 
 v¹echny objekty z daného projektu a je rodièem tøíd \emph{UseCaseController, 
-ClassDiagramController a PetriNetController}, které se starají o vykonání akcí, 
-jako napøíklad po pøidání pøípadu u¾ití, vytvoøení adekvátní tøídy.
+ClassDiagramController a PetriNetController}, které se starají o vykonání akcí 
+-- jako napøíklad vytvoøení adekvátní tøídy po pøidání pøípadu u¾ití.
 
-Ka¾dá tøída má nìkolik metod, zde uvedené jsou pouze na ukázku. pøevá¾nì tøídy, 
+Ka¾dá tøída má nìkolik metod, zde uvedené jsou pouze na ukázku. Pøevá¾nì tøídy, 
 které mají v názvu slovo \uv{Model} jsou znaènì rozsáhlé díky tomu, ¾e je v 
-nich ulo¾eno nastavení potomka. Dále jednotlivé tøídní promìnné mají v ka¾dé 
-tøídì metody pro jejich získání a popøípadì jejich nastavení (takzvané getery a 
-setery).
+nich ulo¾eno ve¹ekeré nastavení tøídních promìnných pro potomky. Dále 
+jednotlivé tøídní promìnné mají v ka¾dé tøídì metody pro jejich získání a 
+popøípadì jejich nastavení (takzvané \uv{getery} a \uv{setery}).
 
 Podrobnìj¹í popis tøíd a metod je v dokumentaci tohoto nástroje 
 \footnote{Dokumentace je souèástí pøilo¾eného CD.}.
 
 \section{Jednotlivé editory}\label{jednotliveEditory}
-Jednotlivé editory jak ji¾ bylo øeèeno v pøechozích kapitolách jsou 
-\textbf{diagram 
-pøípadù u¾ití} \ref{pripadUziti}, \textbf{diagram tøíd} \ref{diagramTrid} a 
-\textbf{objektovì 
-orientované Petriho sítì} \ref{oopn} tyto editory byly nadále mírnì pozmìnìny, 
-pøevá¾nì z grafického hlediska pro zlep¹ení pøehlednosti tìchto diagramù a pro 
-jednodu¹¹í práci mezi nimi.
+Jednotlivé editory, jak ji¾ bylo øeèeno v pøechozích kapitolách, jsou 
+\emph{diagram pøípadù u¾ití} \ref{pripadUziti}, \emph{diagram tøíd} 
+\ref{diagramTrid} a \emph{objektovì orientované Petriho sítì} \ref{oopn}. T0yto 
+editory byly nadále mírnì pozmìnìny, pøevá¾nì z grafického hlediska pro 
+zlep¹ení pøehlednosti tìchto diagramù a pro jednodu¹¹í práci mezi nimi.
 
-Základním odli¹ením ve v¹ech editorech je zvýraznìní objektu co nemá ¾ádnou 
-spojující hranu, jsou zvýraznìny pomocí èárkování. Vybraný objekt 
+Základním odli¹ením ve v¹ech editorech je zvýraznìní objektu, který nemá ¾ádnou 
+spojující hranu. Tyto objekty jsou zvýraznìny pomocí èárkování. Vybraný objekt 
 je znázornìn ohranièením a odli¹nou barvou. Pokud objekt nemá odpovídající 
-\uv{obraz}, je zvýraznìn kurzívou a textem pod objektem, toto platí pøevá¾nì 
+\uv{obraz}, je zvýraznìn kurzívou a textem pod objektem. Toto platí pøevá¾nì 
 pro propojení diagramu tøíd a diagramu pøípadù u¾ití. Pokud spoj mezi dvìma 
-objekty nemá tento obraz je zvýraznìn odli¹nou barvou.
+objekty nemá tento obraz, je zvýraznìn odli¹nou barvou.
 
 \subsection{Editor pøípadù u¾ití}
-Tento editor je prvním editorem a slou¾í pro popis chodu aplikace, v tomto 
-editoru se nachází pouze mírné úpravy.
+Tento editor je prvním editorem a slou¾í pro popis chodu aplikace, zde se 
+nachází pouze mírné úpravy.
 
-V pøípadì vybrání \textbf{Aktéra} je zakázáno u¾ivateli spojit stejné 
-objekty jinak jak Dìdìním. Dále mù¾e u¾ivatel spojit \textbf{Aktéra} a 
-\textbf{Pøípad u¾ití} pouze pomocí asociace. Toto lze provést pouze ve smìru od 
-Aktéra, tudí¾ pokud toto u¾ivatel provede naopak je hrana otoèena automaticky.
+V pøípadì vybrání \emph{aktéra} je zakázáno u¾ivateli spojit stejné objekty 
+jinak ne¾ dìdìním. Dále mù¾e u¾ivatel spojit \emph{aktéra} a \emph{pøípad u¾ití} 
+pouze pomocí asociace. Toto lze provést pouze ve smìru od \emph{aktéra}, tudí¾ 
+pokud toto u¾ivatel provede naopak je hrana otoèena automaticky.
 
-Pro zmìnu jména objektu je potøeba na nìj poklepat dvakrát, zde je také mo¾né 
-zmìnit jeho propojení s tøídou. Je mo¾né propojení zmìnit, nebo 
-reaktivovat spoj mezi tøídou a objektem, pokud v Diagramu tøíd není tøída 
-odpovídající editovanému obejktu. S touto reaktivací se také reaktivují spoje 
-mezi tøídami a nebo mezi objekty v Diagramu pøípadù u¾ití.
+Pro zmìnu jména objektu je potøeba na nìj poklepat dvakrát. Zde je také mo¾né 
+zmìnit jeho propojení s tøídou, nebo reaktivovat spoj mezi tøídou a objektem, 
+pokud v Diagramu tøíd není tøída odpovídající editovanému obejktu. S touto 
+reaktivací se také znovu vytvoøí spoje mezi tøídami a nebo mezi objekty v 
+diagramu pøípadù u¾ití.
 
-Pokud chce u¾ivatel hromadnì reaktivovat objekty pøípadù u¾ití a opìt aktivovat 
-a vytvoøit tøídy v Diagramu tøíd lze toto provést kliknutím na tlaèítko 
-\uv{Reactivate all inactive}. Pokud na druhou stranu, u¾ivatel chce hromadnì 
-smazat v¹echny neaktivní objekty, mù¾e kliknout na \uv{Delete all inactive}.
+Pokud chce u¾ivatel hromadnì reaktivovat objekty pøípadù u¾ití a opìt vytvoøit 
+tøídy v diagramu tøíd, lze to provést kliknutím na tlaèítko \emph{Reactivate 
+all inactive}. Pokud na druhou stranu u¾ivatel chce hromadnì smazat v¹echny 
+neaktivní objekty, mù¾e kliknout na \emph{Delete all inactive}.
 
-\subsection{Editor Diagramu tøíd}
+\subsection{Editor diagramu tøíd}
 V tomto editoru je mo¾né ji¾ popsané chování aplikace rozdìlit pomocí objektovì 
-orientovaného programování popsaného v sekci \ref{obejktoveProgram}. Je mo¾né 
+orientovaného programování popsaného v sekci \ref{obejktoveProgram}. Dále lze 
 vytvoøit jednotlivé tøídy a ty poté editovat.
 
-Pokud je vytvoøen a vybrán \textbf{Interface} není mo¾né jej spojit s ostatními 
-tøídami jinak, ne¾ spojem \textbf{Implementace}, nebo mezi jednotlivými 
-Interfacy pomocí spoje \textbf{Generalizace}.
+Pokud je vytvoøen a vybrán \emph{interface} není mo¾né jej spojit s ostatními 
+tøídami jinak ne¾ spojem \emph{implementace}, nebo mezi jednotlivými 
+\emph{interfacy} pomocí spoje \emph{generalizace}.
 
-Pro editaci jména tøídy je nutné dvakrát na ni poklepat v oknì, které vyskoèí 
-po dvojtém kliknutí na tøídu je také mo¾né nastavit jeji \uv{roli} v systému. 
+Pro editaci jména je nutné dvakrát poklepat na tøídu a v oknì, které vyskoèí 
+je také mo¾né nastavit její \uv{roli} v systému.
 \begin{itemize}
-  \item \textbf{Actor} po vybrání tohoto druhy tøídy se v Diagramu pøípadù 
+  \item \emph{Actor} -- po vybrání tohoto druhy tøídy se v diagramu pøípadù 
 u¾ití vyvtoøí Aktér.
-  \item \textbf{Activity} pokud je vybrán tento typ tøídy je v Diagramu pøípadù 
+  \item \emph{Activity} -- pokud je vybrán tento typ tøídy je v diagramu 
+pøípadù 
 u¾ití vytvoøen pøípad u¾ití.
-  \item \textbf{None} tento druh tøídy slou¾í pro vytváøení pomocných tøíd.
-  \item \textbf{Interface} pouze pro vytvoøení metod a tøídních promìnných, 
+  \item \emph{None} -- tento druh tøídy slou¾í pro vytváøení pomocných tøíd.
+  \item \emph{Interface} -- pouze pro vytvoøení metod a tøídních promìnných, 
 nelze pro nì vytvoøit Petriho sí».
 \end{itemize}
 Výbìr role je mo¾ný pouze u tøíd, které nemají doposud ¾ádný spoj. Tøídy 
-\textbf{None} a \textbf{Interface} se nepromítnou do diagramu pøípadù u¾ití, 
+\emph{None} a \emph{Interface} se nepromítnou do diagramu pøípadù u¾ití, 
 slou¾í pouze ke snadnìj¹í implementaci nìkerých funkcí.
 
-Pokud je potøeba znovu aktivovat a vytvoøit obraz v Diagramu pøípadù u¾ití je 
-potøeba tøídu nejdøíve spojit s dal¹í tøídou a poté po dvojkliku na tuto tøídu 
-bude vyvoláno okno s editací a tato tøída bude mít mo¾nost opìt aktivace 
+Pokud je potøeba znovu aktivovat a vytvoøit obraz v diagramu pøípadù u¾ití je 
+nutné tøídu nejdøíve spojit s dal¹í tøídou a poté po dvojkliku na tuto tøídu 
+bude vyvoláno okno s editací a tato tøída bude mít mo¾nost opìtovné aktivace 
 objektu a nebo spojení s jiným objektem.
 
 Pro pøidání metod a tøídních promìnných se nachází v pravé dolní èásti editor 
-tøíd. Nejdøíve je zapotøebí vybrat tøídu pro kterou po¾adujeme pøídání 
+tøíd. Nejdøíve je zapotøebí vybrat tøídu, pro kterou po¾adujeme pøídáni 
 nìkterého prvku a poté zadat viditelnost, jméno a typ. Pøíslu¹ný øádek slou¾í 
-pro tøídní promìnnou, nebo metodu. Pro zjednodu¹ení je mo¾né nastavit typ 
-promìnné a operace, jako typ jakékoliv tøídy, která se momentálnì nacháí na 
+pro tøídní promìnnou nebo metodu. Pro zjednodu¹ení je mo¾né nastavit typ 
+promìnné a operace, jako typ jakékoliv tøídy, která se momentálnì nachází na 
 editaèním plátnì.
 
 Po úspì¹ném vlo¾ení metod a popøípadì tøídních promìnných je mo¾né pøidat 
-argumenty metodám, to se provádí v levé spodní èásti. Po výbìru tøídy, pro 
+argumenty metodám. To se provádí v levé spodní èásti. Po výbìru tøídy, pro 
 kterou je potøeba editovat argumenty metody, dvojklikem vybereme metodu, kterou 
 je potøeba editovat a poté zadat argumenty oddìlené èárkami. Pokud chceme 
 odstranit nìkterou tøídní promìnnou, nebo metodu, je toto mo¾né provést 
 tlaèítkem vedle polo¾ky.
 
 \subsection{Editor objektovì orientovaných Petriho sítí}
-Pro vstup do tohoto editoru je zapotøebí vybrat tøídu pro kterou budou 
+Pro vstup do tohoto editoru je zapotøebí vybrat tøídu, pro kterou budou 
 editovány Petriho sítì. Automaticky je vybrána Petriho sí» pro tøídu,
 pøepnutí mezi Petriho sítìmi pro tøídu a metody probíhá v levém dolním rohu.
 
 V pravém dolním rohu, pokud není vybrán ¾ádný objekt na pracovním plátnì, je 
-mo¾né pøidat tøídní promìnné, nebo argumenty metody jako \textbf{Místa}. Takto 
-pøidané místa nelze editovat. Vkládat konstanty, operovat s tìmito místo, nebo 
+mo¾né pøidat tøídní promìnné nebo argumenty metody jako \emph{místa}. Takto 
+pøidaná místa nelze editovat. Vkládat konstanty, operovat s tìmito místy nebo 
 je mazat lze, ale mìnit jejich jméno není povolené. Podobnì tomu je u 
-návratových míst v Petriho sítích pro metody kde je jedno speciální místo 
-\textbf{return} toto místo je podobnì needitovatelné a navíc jej není mo¾né 
+návratových míst v Petriho sítích pro metody, kde je jedno speciální místo 
+\emph{return}. Toto místo je podobnì needitovatelné a navíc jej není mo¾né 
 odstranit.
 
-Pøidané místa je mo¾né dále editovat pomocí vkládání konstant, jednodu¹e vybrat 
-místo a v pravém dolním rohu aplikace lze vidìt aktuální konstanta (pokud není 
-¾ádná je input prázdný), která lze zmìnit.
+Pøidaná místa je mo¾né dále editovat pomocí vkládání konstant. Staèí vybrat 
+místo a v pravém dolním rohu aplikace lze vidìt aktuální konstantu (pokud není 
+¾ádná, je input prázdný), kterou lze zmìnit.
 
-Po pøídání \textbf{Pøechodu} (èasto nazývaném transition) je mo¾né tomuto 
-Pøechodu editovat dvì slo¾ky. Slo¾ku \textbf{Strá¾} (nazýván té¾ Guard) a 
-slo¾ku \textbf{Akce} (Activity). Výbìrem pøechodu se zobrazí v 
-pravé èásti mo¾nost tyto slo¾ky editovat. Po kliknutí na pøíslu¹né tlaèítko 
-budou vyvolány okna pro editaci jednotlivých slo¾ek.
+Po pøídáni \emph{pøechodu} (èasto nazývaném Transition) je mo¾né tomuto 
+Pøechodu editovat dvì slo¾ky. Slo¾ku \emph{strá¾} (nazýván té¾ Guard) a 
+slo¾ku \emph{akce} (Activity). Výbìrem pøechodu se zobrazí v pravé dolní èásti 
+mo¾nost tyto slo¾ky editovat. Po kliknutí na pøíslu¹né tlaèítko budou vyvolány 
+okna pro editaci jednotlivých slo¾ek.
 
 \begin{itemize}
-  \item \textbf{Slo¾ka Strá¾e}
+  \item \emph{Slo¾ka Strá¾e}:
 Pro základní vytváøení pravidel je v horní èásti okna pro editaci strá¾e volné 
 textové pole, kam je mo¾né zadat jakýkoliv text. Pokud je potøeba zadat více 
-kontrolovaný vstup je mo¾né si ve spodní èásti vybrat promìnné, nebo zadat 
+kontrolovaný vstup, je mo¾né si ve spodní èásti vybrat promìnné nebo zadat 
 konstanty a vybrat jejich podmínku. Poté lze nastavit horní text pøímo na tuto 
-podmínku, nebo spojit operátorem s pøechozí podmínkou. V textové èásti lze poté 
+podmínku nebo spojit operátorem s pøechozí podmínkou. V textové èásti lze poté 
 výslednou podmínku editovat a dále upravovat.
-  \item \textbf{Slo¾ka Akce} 
-Pro vytvoøení nové promìnné je mo¾né vyu¾ít horního pole, je mo¾né také 
-vybrat promìnnou, která je ji¾ spojena s tímto pøechodem. Dal¹í editace akce 
-probíhá pøes textové pole, toto pole ale není nijak kontrolované a upravované. 
-Rozdìlení takového textu a kontrola je pøíli¹ nároèná, navíc nebyla pøedmìtem 
-této práce. Ale pøidání ve¹kerých kontrol na podobné texty v Objektovì 
-orientovaných Petriho sítích je jistì dobrý plán na roz¹íøení tohoto nástroje.
+  \item \emph{Slo¾ka Akce}:
+Pro vytvoøení nové promìnné je mo¾né vyu¾ít horního pole. Lze také vybrat 
+promìnnou, která je ji¾ spojena s tímto pøechodem. Dal¹í editace akce probíhá 
+pøes textové pole -- toto pole ale není nijak kontrolované a upravované. 
+Rozdìlení takového textu a jeho kontrola je pøíli¹ nároèná, navíc nebyla 
+pøedmìtem této práce. Ale pøidání ve¹kerých kontrol na podobné texty v 
+objektovì orientovaných Petriho sítích je jistì dobrý plán na roz¹íøení tohoto 
+nástroje.
 \end{itemize}
 
-V objektovì orientovaných Petriho sítí je pouze jeden spoj, pro tento 
-spoj platí omezení v podobì mo¾nosti spojit pouze Místo s Pøechodem, nebo 
-naopak. Není v¹ak mo¾né spojit dvì místa, nebo pøechody pøímo mezi sebou.
+V objektovì orientovaných Petriho sítí je pouze jeden spoj. Pro tento 
+spoj platí omezení v podobì mo¾nosti spojit pouze místo s pøechodem, nebo 
+naopak. Není v¹ak mo¾né spojit dvì místa nebo pøechody pøímo mezi sebou.
 
-Dal¹í roz¹íøení spojù oproti ostatním editorùm je to ¾e lze pøidávat promìnné, 
-které jsou pøes tento spoj \uv{pøená¹eny}. Po dvjokliku na hranu si lze vybrat 
-mno¾inu promìnných které jsou automaticky hlídány z míst a pøechodù, nebo zadat 
-samostatný text. Tento samostatný text je zde kvùli nároènìj¹ím programùm a 
-nároènìjsím operacím, jako je napøíklad pole, nebo seznam. Tento text v¹ak není 
-nijak kontrolovaný, pøevá¾nì kvùli nároènosti na rozdìlení do tokenù a 
-provedení analýzy tìchto tokenù. Pokud je potøeba dát najevo ¾e hrana 
-neobsahuje ¾ádné data, lze ji nechat prázdnou, popøípadì uvést \textbf{null}, 
-nebo \textbf{nill} 
-do textového pole spoje.
+Dal¹ím roz¹íøením spojù oproti ostatním editorùm je to, ¾e lze pøidávat 
+promìnné, které jsou pøes tento spoj \uv{pøená¹eny}. Po dvjokliku na hranu si 
+lze vybrat mno¾inu promìnných, které jsou automaticky hlídány z míst a 
+pøechodù nebo zadat samostatný text. Tento samostatný text je zde kvùli 
+nároènìj¹ím programùm a operacím, jako je napøíklad pole nebo seznam. Tento 
+text v¹ak není nijak kontrolovaný, pøevá¾nì kvùli nároènosti na rozdìlení do 
+tokenù a provedení analýzy tìchto tokenù. Pokud je potøeba dát najevo, ¾e hrana 
+neobsahuje ¾ádná data, lze ji nechat prázdnou, popøípadì uvést \emph{null} 
+nebo \emph{nill} do textového pole spoje.
 
 \subsection{Provázání jednotlivých èástí}
-Aplikace poskytuje jednoduché provázání a spojení èástí, které 
-spolu souvisý. Jako je tomu napøíklad u Diagramu pøípadù u¾ití 
-a Diagramu tøíd. V pøípadì editace a vytvoøení v jedné èásti 
-vede k vyvolání akce v druhé. Toto chování je èásteènì 
-zautomatizováno a tím ulehèena práce, nicménì u¾ivateli je 
-ponechána volná ruka v tìchto ohledech a pokud potøebuje zmìnit 
-pøedgenerované èásti nejsou mu kladeny ¾ádné pøeká¾ky. 
+Aplikace poskytuje jednoduché provázání a spojení èástí, které spolu souvisí -- 
+jako je tomu napøíklad u diagramu pøípadù u¾ití a diagramu tøíd. Editace a 
+vytvoøení objektu v jedné èásti vede k vyvolání akce v druhé. Toto chování je 
+èásteènì zautomatizováno a tím ulehèena práce, nicménì u¾ivateli je ponechána 
+volná ruka v tìchto ohledech, a pokud potøebuje zmìnit pøedgenerované èásti, 
+nejsou mu kladeny ¾ádné pøeká¾ky. 
 
-Aplikace pouze napomáhá vývoji a napomáhá postupnému vytváøení 
-urèitých èástí, nemá za úkol být naprosto zautomatizována a 
-vytváøet v¹e bez zásahù od u¾ivatele.
+Aplikace pouze napomáhá vývoji a postupnému vytváøení urèitých èástí. Nemá za 
+úkol být naprosto zautomatizována a vytváøet v¹e bez zásahù od u¾ivatele.
 
 \chapter {Roz¹íøené mo¾nosti nástroje} \label{moznostiAplikace}
 Bìhem vývoje aplikace bylo poèítáno s nìkterými roz¹íøenímy a potøebnými 

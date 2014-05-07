@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.6-1.40.14 (TeX Live 2014/dev) (format=pdflatex 2014.3.25)  7 MAY 2014 07:03
+This is pdfTeX, Version 3.1415926-2.6-1.40.14 (TeX Live 2014/dev) (format=pdflatex 2014.3.25)  7 MAY 2014 07:35
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -820,14 +820,14 @@ Package epstopdf Info: Source file: <fig/UseCasePropoj.eps>
 (epstopdf)                    size: 18156 bytes
 (epstopdf)             Command: <repstopdf --outfile=fig/UseCasePropoj-eps-conv
 erted-to.pdf fig/UseCasePropoj.eps>
-(epstopdf)             \includegraphics on input line 654.
+(epstopdf)             \includegraphics on input line 653.
 Package epstopdf Info: Output file is already uptodate.
  <fig/UseCasePropoj-eps-converted-to.pdf, id=495, 501.875pt x 803.0pt>
 File: fig/UseCasePropoj-eps-converted-to.pdf Graphic file (type pdf)
 
 <use fig/UseCasePropoj-eps-converted-to.pdf>
 Package pdftex.def Info: fig/UseCasePropoj-eps-converted-to.pdf used on input l
-ine 654.
+ine 653.
 (pdftex.def)             Requested size: 250.93687pt x 188.10387pt.
 Package epstopdf Info: Source file: <fig/ClassDiagramPropoj.eps>
 (epstopdf)                    date: 2014-05-06 23:12:34
@@ -838,7 +838,7 @@ f>
 (epstopdf)                    size: 46656 bytes
 (epstopdf)             Command: <repstopdf --outfile=fig/ClassDiagramPropoj-eps
 -converted-to.pdf fig/ClassDiagramPropoj.eps>
-(epstopdf)             \includegraphics on input line 677.
+(epstopdf)             \includegraphics on input line 676.
 Package epstopdf Info: Output file is already uptodate.
 
 <fig/ClassDiagramPropoj-eps-converted-to.pdf, id=498, 584.1825pt x 803.0pt>
@@ -846,7 +846,7 @@ File: fig/ClassDiagramPropoj-eps-converted-to.pdf Graphic file (type pdf)
 
 <use fig/ClassDiagramPropoj-eps-converted-to.pdf>
 Package pdftex.def Info: fig/ClassDiagramPropoj-eps-converted-to.pdf used on in
-put line 677.
+put line 676.
 (pdftex.def)             Requested size: 292.09053pt x 216.55656pt.
 
 
@@ -862,23 +862,23 @@ onverted-to.pdf>
 (epstopdf)                    size: 26041 bytes
 (epstopdf)             Command: <repstopdf --outfile=fig/petriNet_makeActionMet
 hodaPropoj-eps-converted-to.pdf fig/petriNet_makeActionMethodaPropoj.eps>
-(epstopdf)             \includegraphics on input line 693.
+(epstopdf)             \includegraphics on input line 691.
 Package epstopdf Info: Output file is already uptodate.
 
-<fig/petriNet_makeActionMethodaPropoj-eps-converted-to.pdf, id=511, 501.875pt x
+<fig/petriNet_makeActionMethodaPropoj-eps-converted-to.pdf, id=512, 501.875pt x
  803.0pt>
 File: fig/petriNet_makeActionMethodaPropoj-eps-converted-to.pdf Graphic file (t
 ype pdf)
  <use fig/petriNet_makeActionMethodaPropoj-eps-converted-to.pdf>
 Package pdftex.def Info: fig/petriNet_makeActionMethodaPropoj-eps-converted-to.
-pdf used on input line 693.
+pdf used on input line 691.
 (pdftex.def)             Requested size: 250.93687pt x 216.55656pt.
 
 [17 <./fig/ClassDiagramPropoj-eps-converted-to.pdf> <./fig/petriNet_makeActionM
 ethodaPropoj-eps-converted-to.pdf>] [18]
 Kapitola 4.
 
-LaTeX Warning: Reference `ovladaciPrvky' on page 19 undefined on input line 728
+LaTeX Warning: Reference `ovladaciPrvky' on page 19 undefined on input line 726
 .
 
 Package epstopdf Info: Source file: <fig/navrhAplikace.eps>
@@ -889,14 +889,14 @@ Package epstopdf Info: Source file: <fig/navrhAplikace.eps>
 (epstopdf)                    size: 280474 bytes
 (epstopdf)             Command: <repstopdf --outfile=fig/navrhAplikace-eps-conv
 erted-to.pdf fig/navrhAplikace.eps>
-(epstopdf)             \includegraphics on input line 761.
+(epstopdf)             \includegraphics on input line 759.
 Package epstopdf Info: Output file is already uptodate.
 <fig/navrhAplikace-eps-converted-to.pdf, id=533, 390.45876pt x 358.33875pt>
 File: fig/navrhAplikace-eps-converted-to.pdf Graphic file (type pdf)
 
 <use fig/navrhAplikace-eps-converted-to.pdf>
 Package pdftex.def Info: fig/navrhAplikace-eps-converted-to.pdf used on input l
-ine 761.
+ine 759.
 (pdftex.def)             Requested size: 390.4578pt x 358.33788pt.
 
 
@@ -966,7 +966,7 @@ texmf-dist/fonts/type1/public/cs/cstt10.pfb></usr/share/texlive/texmf-dist/font
 s/type1/public/cs/cstt9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
 msfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helve
 tic/uhvr8a.pfb>
-Output written on bachelorsThesis.pdf (38 pages, 685494 bytes).
+Output written on bachelorsThesis.pdf (38 pages, 685534 bytes).
 PDF statistics:
  758 PDF objects out of 1000 (max. 8388607)
  678 compressed objects within 7 object streams
