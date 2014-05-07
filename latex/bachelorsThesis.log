@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.6-1.40.14 (TeX Live 2014/dev) (format=pdflatex 2014.3.25)  7 MAY 2014 01:44
+This is pdfTeX, Version 3.1415926-2.6-1.40.14 (TeX Live 2014/dev) (format=pdflatex 2014.3.25)  7 MAY 2014 03:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -561,24 +561,24 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 (./bachelorsThesis.aux)
 \openout1 = `bachelorsThesis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 122.
-LaTeX Font Info:    ... okay on input line 122.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 122.
-LaTeX Font Info:    ... okay on input line 122.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 122.
-LaTeX Font Info:    ... okay on input line 122.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 122.
-LaTeX Font Info:    ... okay on input line 122.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 122.
-LaTeX Font Info:    ... okay on input line 122.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 122.
-LaTeX Font Info:    ... okay on input line 122.
-LaTeX Font Info:    Checking defaults for IL2/cmr/m/n on input line 122.
-LaTeX Font Info:    ... okay on input line 122.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 122.
-LaTeX Font Info:    ... okay on input line 122.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 122.
-LaTeX Font Info:    ... okay on input line 122.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 125.
+LaTeX Font Info:    ... okay on input line 125.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 125.
+LaTeX Font Info:    ... okay on input line 125.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 125.
+LaTeX Font Info:    ... okay on input line 125.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 125.
+LaTeX Font Info:    ... okay on input line 125.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 125.
+LaTeX Font Info:    ... okay on input line 125.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 125.
+LaTeX Font Info:    ... okay on input line 125.
+LaTeX Font Info:    Checking defaults for IL2/cmr/m/n on input line 125.
+LaTeX Font Info:    ... okay on input line 125.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 125.
+LaTeX Font Info:    ... okay on input line 125.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 125.
+LaTeX Font Info:    ... okay on input line 125.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -610,7 +610,7 @@ e
 ))
 ABD: EveryShipout initializing macros
 \AtBeginShipoutBox=\box38
-Package hyperref Info: Link coloring ON on input line 122.
+Package hyperref Info: Link coloring ON on input line 125.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -620,15 +620,15 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count138
 )
-LaTeX Info: Redefining \ref on input line 122.
-LaTeX Info: Redefining \pageref on input line 122.
-LaTeX Info: Redefining \nameref on input line 122.
+LaTeX Info: Redefining \ref on input line 125.
+LaTeX Info: Redefining \pageref on input line 125.
+LaTeX Info: Redefining \nameref on input line 125.
 
 (./bachelorsThesis.out) (./bachelorsThesis.out)
 \@outlinefile=\write4
 \openout4 = `bachelorsThesis.out'.
 
-LaTeX Font Info:    Try loading font information for IL2+phv on input line 128.
+LaTeX Font Info:    Try loading font information for IL2+phv on input line 131.
 
 
 (/usr/share/texlive/texmf-dist/tex/cslatex/cspsfonts/il2phv.fd
@@ -638,7 +638,7 @@ LaTeX Font Info:    (C) Z. Wagner,1998/01/31 on input line 3.
 LaTeX Font Info:    Created by CsPsFont utility v.1.0e (C) Z. Wagner, 1998/01/3
 1 on input line 4.
 )
-Overfull \hbox (15.47694pt too wide) in paragraph at lines 128--128
+Overfull \hbox (15.47694pt too wide) in paragraph at lines 131--131
 \IL2/phv/m/n/18 NÁSTROJ PRO POD-PORU VÝ-VOJE SOFT-WA-RO-VÝCH
  []
 
@@ -653,53 +653,53 @@ Overfull \hbox (15.47694pt too wide) in paragraph at lines 128--128
 <fig/vut-zp2.pdf, id=258, 109.40875pt x 109.40875pt>
 File: fig/vut-zp2.pdf Graphic file (type pdf)
  <use fig/vut-zp2.pdf>
-Package pdftex.def Info: fig/vut-zp2.pdf used on input line 128.
+Package pdftex.def Info: fig/vut-zp2.pdf used on input line 131.
 (pdftex.def)             Requested size: 99.58464pt x 99.58546pt.
 
-Overfull \hbox (109.58464pt too wide) in paragraph at lines 128--128
+Overfull \hbox (109.58464pt too wide) in paragraph at lines 131--131
 [][] 
  []
 
 <fig/fit-zp2.pdf, id=259, 120.45pt x 120.45pt>
 File: fig/fit-zp2.pdf Graphic file (type pdf)
  <use fig/fit-zp2.pdf>
-Package pdftex.def Info: fig/fit-zp2.pdf used on input line 128.
+Package pdftex.def Info: fig/fit-zp2.pdf used on input line 131.
 (pdftex.def)             Requested size: 99.58464pt x 99.5875pt.
 
-Overfull \hbox (109.58464pt too wide) in paragraph at lines 128--128
+Overfull \hbox (109.58464pt too wide) in paragraph at lines 131--131
 [][] 
  []
 
 
-Overfull \hbox (15.47694pt too wide) in paragraph at lines 128--128
+Overfull \hbox (15.47694pt too wide) in paragraph at lines 131--131
 \IL2/phv/m/n/18 NÁSTROJ PRO POD-PORU VÝ-VOJE SOFT-WA-RO-VÝCH
  []
 
 [2 <./fig/vut-zp2.pdf> <./fig/fit-zp2.pdf>]
 
 LaTeX Font Warning: Font shape `IL2/cmr/m/n' in size <16> not available
-(Font)              size <17.28> substituted on input line 128.
+(Font)              size <17.28> substituted on input line 131.
 
 
 LaTeX Font Warning: Font shape `IL2/cmr/bx/n' in size <16> not available
-(Font)              size <17.28> substituted on input line 128.
+(Font)              size <17.28> substituted on input line 131.
 
 [3]
 
 LaTeX Font Warning: Font shape `IL2/cmr/m/n' in size <18> not available
-(Font)              size <17.28> substituted on input line 128.
+(Font)              size <17.28> substituted on input line 131.
 
 
 LaTeX Font Warning: Font shape `IL2/cmr/bx/n' in size <18> not available
-(Font)              size <17.28> substituted on input line 128.
+(Font)              size <17.28> substituted on input line 131.
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 128.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 131.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 128.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 131.
  [4]
 (./bachelorsThesis.toc
 LaTeX Font Info:    Try loading font information for U+msa on input line 4.
@@ -734,13 +734,13 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.3}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.48 \chapter
+l.50 \chapter
              {Nástroje zamìøující se na podobné téma} \label{konkurence}
 [3
 
 ]
 Kapitola 2.
-LaTeX Font Info:    Try loading font information for IL2+cmtt on input line 60.
+LaTeX Font Info:    Try loading font information for IL2+cmtt on input line 62.
 
 (/usr/share/texlive/texmf-dist/tex/cslatex/base/il2cmtt.fd
 File: il2cmtt.fd 1997/08/20 CSLaTeX font definitions
@@ -748,8 +748,8 @@ File: il2cmtt.fd 1997/08/20 CSLaTeX font definitions
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.92   \item \textbf
-                    {ClassDiagram} pro popis tøíd a provázanosti mezi nimi.
+l.93   \item \emph
+                  {ClassDiagram} pro popis tøíd a provázanosti mezi nimi.
 [4
 
 ] [5] [6] [7] [8]
@@ -767,7 +767,7 @@ Package epstopdf Info: Source file: <fig/UseCase.eps>
 to.pdf fig/UseCase.eps>
 (epstopdf)             \includegraphics on input line 395.
 Package epstopdf Info: Output file is already uptodate.
- <fig/UseCase-eps-converted-to.pdf, id=429, 501.875pt x 803.0pt>
+ <fig/UseCase-eps-converted-to.pdf, id=428, 501.875pt x 803.0pt>
 File: fig/UseCase-eps-converted-to.pdf Graphic file (type pdf)
 
 <use fig/UseCase-eps-converted-to.pdf>
@@ -785,7 +785,7 @@ Package epstopdf Info: Source file: <fig/ClassDiagram.eps>
 rted-to.pdf fig/ClassDiagram.eps>
 (epstopdf)             \includegraphics on input line 490.
 Package epstopdf Info: Output file is already uptodate.
- <fig/ClassDiagram-eps-converted-to.pdf, id=458, 501.875pt x 803.0pt>
+ <fig/ClassDiagram-eps-converted-to.pdf, id=457, 501.875pt x 803.0pt>
 File: fig/ClassDiagram-eps-converted-to.pdf Graphic file (type pdf)
 
 <use fig/ClassDiagram-eps-converted-to.pdf>
@@ -804,7 +804,7 @@ Package epstopdf Info: Source file: <fig/petriNet.eps>
 (epstopdf)             \includegraphics on input line 615.
 Package epstopdf Info: Output file is already uptodate.
 
-<fig/petriNet-eps-converted-to.pdf, id=485, 501.875pt x 803.0pt>
+<fig/petriNet-eps-converted-to.pdf, id=484, 501.875pt x 803.0pt>
 File: fig/petriNet-eps-converted-to.pdf Graphic file (type pdf)
 
 <use fig/petriNet-eps-converted-to.pdf>
@@ -822,7 +822,7 @@ Package epstopdf Info: Source file: <fig/UseCasePropoj.eps>
 erted-to.pdf fig/UseCasePropoj.eps>
 (epstopdf)             \includegraphics on input line 672.
 Package epstopdf Info: Output file is already uptodate.
- <fig/UseCasePropoj-eps-converted-to.pdf, id=498, 501.875pt x 803.0pt>
+ <fig/UseCasePropoj-eps-converted-to.pdf, id=497, 501.875pt x 803.0pt>
 File: fig/UseCasePropoj-eps-converted-to.pdf Graphic file (type pdf)
 
 <use fig/UseCasePropoj-eps-converted-to.pdf>
@@ -841,7 +841,7 @@ f>
 (epstopdf)             \includegraphics on input line 695.
 Package epstopdf Info: Output file is already uptodate.
 
-<fig/ClassDiagramPropoj-eps-converted-to.pdf, id=501, 584.1825pt x 803.0pt>
+<fig/ClassDiagramPropoj-eps-converted-to.pdf, id=500, 584.1825pt x 803.0pt>
 File: fig/ClassDiagramPropoj-eps-converted-to.pdf Graphic file (type pdf)
 
 <use fig/ClassDiagramPropoj-eps-converted-to.pdf>
@@ -864,7 +864,7 @@ hodaPropoj-eps-converted-to.pdf fig/petriNet_makeActionMethodaPropoj.eps>
 (epstopdf)             \includegraphics on input line 711.
 Package epstopdf Info: Output file is already uptodate.
 
-<fig/petriNet_makeActionMethodaPropoj-eps-converted-to.pdf, id=504, 501.875pt x
+<fig/petriNet_makeActionMethodaPropoj-eps-converted-to.pdf, id=503, 501.875pt x
  803.0pt>
 File: fig/petriNet_makeActionMethodaPropoj-eps-converted-to.pdf Graphic file (t
 ype pdf)
@@ -894,7 +894,7 @@ Package epstopdf Info: Source file: <fig/navrhAplikace.eps>
 erted-to.pdf fig/navrhAplikace.eps>
 (epstopdf)             \includegraphics on input line 779.
 Package epstopdf Info: Output file is already uptodate.
-<fig/navrhAplikace-eps-converted-to.pdf, id=536, 390.45876pt x 358.33875pt>
+<fig/navrhAplikace-eps-converted-to.pdf, id=535, 390.45876pt x 358.33875pt>
 File: fig/navrhAplikace-eps-converted-to.pdf Graphic file (type pdf)
 
 <use fig/navrhAplikace-eps-converted-to.pdf>
@@ -924,14 +924,14 @@ Kapitola 7.
 ]
 P\v {r}\'{\i }loha A.
 )
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 152.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 155.
  [34
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 152.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 155.
  (./bachelorsThesis.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 152.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 152.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 155.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 155.
 Package rerunfilecheck Info: File `bachelorsThesis.out' has not changed.
 (rerunfilecheck)             Checksum: 2A5204EE8998807B4B9A77FC0EA7F300;10528.
 
@@ -942,12 +942,12 @@ LaTeX Font Warning: Size substitutions with differences
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 152.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 155.
  ) 
 Here is how much of TeX's memory you used:
  18759 strings out of 494517
  311027 string characters out of 6168561
- 365425 words of memory out of 5000000
+ 365428 words of memory out of 5000000
  21530 multiletter control sequences out of 15000+600000
  27049 words of font info for 65 fonts, out of 8000000 for 9000
  324 hyphenation exceptions out of 8191
@@ -969,10 +969,10 @@ texmf-dist/fonts/type1/public/cs/cstt10.pfb></usr/share/texlive/texmf-dist/font
 s/type1/public/cs/cstt9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
 msfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helve
 tic/uhvr8a.pfb>
-Output written on bachelorsThesis.pdf (38 pages, 685190 bytes).
+Output written on bachelorsThesis.pdf (38 pages, 685386 bytes).
 PDF statistics:
- 761 PDF objects out of 1000 (max. 8388607)
- 681 compressed objects within 7 object streams
+ 760 PDF objects out of 1000 (max. 8388607)
+ 680 compressed objects within 7 object streams
  146 named destinations out of 1000 (max. 500000)
  582 words of extra memory for PDF output out of 10000 (max. 10000000)
 
