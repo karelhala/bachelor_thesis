@@ -43,7 +43,7 @@
 \contentsline {section}{\numberline {4.2}Architektura aplikace}{19}{section.4.2}
 \contentsline {section}{\numberline {4.3}Jednotliv\'e editory}{21}{section.4.3}
 \contentsline {subsection}{\numberline {4.3.1}Editor p\v r\IeC {\'\i }pad\r u u\v zit\IeC {\'\i }}{21}{subsection.4.3.1}
-\contentsline {subsection}{\numberline {4.3.2}Editor Diagramu t\v r\IeC {\'\i }d}{21}{subsection.4.3.2}
+\contentsline {subsection}{\numberline {4.3.2}Editor diagramu t\v r\IeC {\'\i }d}{21}{subsection.4.3.2}
 \contentsline {subsection}{\numberline {4.3.3}Editor objektov\v e orientovan\'ych Petriho s\IeC {\'\i }t\IeC {\'\i }}{22}{subsection.4.3.3}
 \contentsline {subsection}{\numberline {4.3.4}Prov\'az\'an\IeC {\'\i } jednotliv\'ych \v c\'ast\IeC {\'\i }}{23}{subsection.4.3.4}
 \contentsline {chapter}{\numberline {5}Roz\v s\IeC {\'\i }\v ren\'e mo\v znosti n\'astroje}{24}{chapter.5}
@@ -64,7 +64,7 @@
 \contentsline {subsection}{\numberline {6.2.1}Pr\r ub\v eh a v\'ysledky u\v zivatelsk\'e pr\'ace}{28}{subsection.6.2.1}
 \contentsline {section}{\numberline {6.3}Program\'ator}{29}{section.6.3}
 \contentsline {subsection}{\numberline {6.3.1}Pr\r ub\v eh testov\'an\IeC {\'\i }}{29}{subsection.6.3.1}
-\contentsline {subsection}{\numberline {6.3.2}Vyhodnocen\IeC {\'\i } rogram\'atorovy pr\'ace}{29}{subsection.6.3.2}
+\contentsline {subsection}{\numberline {6.3.2}Vyhodnocen\IeC {\'\i } program\'atorovy pr\'ace}{29}{subsection.6.3.2}
 \contentsline {section}{\numberline {6.4}V\'ysledky testov\'an\IeC {\'\i }}{29}{section.6.4}
 \contentsline {chapter}{\numberline {7}Z\'av\v er}{30}{chapter.7}
 \contentsline {section}{\numberline {7.1}Budoucnost aplikace}{30}{section.7.1}

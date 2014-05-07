@@ -937,41 +937,41 @@ Aplikace pouze napomáhá vývoji a postupnému vytváøení urèitých èástí. Nemá za
 úkol být naprosto zautomatizována a vytváøet v¹e bez zásahù od u¾ivatele.
 
 \chapter {Roz¹íøené mo¾nosti nástroje} \label{moznostiAplikace}
-Bìhem vývoje aplikace bylo poèítáno s nìkterými roz¹íøenímy a potøebnými 
+Bìhem vývoje aplikace bylo poèítáno s nìkterými roz¹íøeními a potøebnými 
 úpravami editoru. Pøevá¾nì z toho dùvodu, aby aplikace byla snáze pou¾itelná a 
 pøiná¹ela nové prvky. 
 
-Øekneme si nìco o zpùsoobech exportu aplikace a proè byl vybrátn tento druh 
-exportù \ref{exportDiagramu}. Dále si popí¹eme v èem je tento nástroj vylep¹ený 
-oproti konkurenci po grafické stránce nìkterých ovládacích prvkù v kapitole 
-\ref{grafickePrvky}.
+Øekneme si nìco o zpùsobech exportu aplikace a proè byl vybrán tento druh 
+exportù \ref{exportDiagramu}. Dále si popí¹eme v kapitole \ref{grafickePrvky} 
+popí¹eme, v èem je tento nástroj vylep¹ený po grafické stránce nìkterých 
+ovládacích prvkù oproti konkurenci.
 
 \section{Export diagramù} \label{exportDiagramu}
-Jako jeden z po¾adavkù bylo po¾adováno exportu do formátu \emph{XML}. Tohoto 
-bylo vyu¾ito v pøípadì ukládání stavu aplikace, kdy otevøený projekt je mo¾né 
-ulo¾it do formátu \textbf{XML}. Tento formát slou¾í pro ukládání a naèítání 
-projektù. Formát XML byl zvolen èásteènì kvùli jeho mo¾nému upravení, kdy je 
-mo¾né editovat obsah objektù bez nutnosti zaplého nástroje. Toto se ale 
-doporuèuje pouze zku¹eným u¾ivatelùm, proto¾e je mo¾né ¾e se díky tomuto 
-jakýmkoliv zpùsobem poru¹í editovaný soubor, který ji¾ nebude mo¾né jakkoliv 
-opravit. Pro export do XML byla vyu¾ita speciální knihovna blí¾e popsána v 
-kapitole \ref{xmlExport}.
+Jedním z po¾adavkù byl exportu do formátu \emph{XML}. Tohoto bylo vyu¾ito v 
+pøípadì ukládání stavu aplikace, kdy otevøený projekt je mo¾né ulo¾it do formátu 
+XML. Tento formát slou¾í pro ukládání a naèítání projektù. Formát XML 
+byl zvolen èásteènì kvùli jeho mo¾nému upravení, kdy lze editovat obsah 
+objektù bez nutnosti zapnutého nástroje. Toto se ale doporuèuje pouze zku¹eným 
+u¾ivatelùm, proto¾e je mo¾né, ¾e se díky tomuto zásahu jakýmkoliv zpùsobem 
+poru¹í editovaný soubor, který ji¾ nebude mo¾né opravit v tomto nástroji. Pro 
+export do XML byla vyu¾ita speciální knihovna blí¾e popsána v kapitole 
+\ref{xmlExport}.
 
 Velice u¾iteèným roz¹íøením je dále mo¾nost vykreslit námi editované diagramy a 
-sítì do formátu \textbf{PostScript} (formát EPS). V tomto textubyly pou¾ity 
+sítì do formátu \emph{PostScript} (formát EPS). V tomto textu byly pou¾ity 
 pøevá¾nì obrázky pocházející z výsledné aplikace. Editovaný projekt se ulo¾í do 
-samostatné slo¾ky pod jeho jménem a v¹echny editory jsou ulo¾eny v této slo¾ce. 
-Tato funkcionalita byla pøidána pomocí knihovny, kterou blí¾e popí¹eme v 
-kapitole \ref{postScriptExport}.
+samostatné slo¾ky pod jeho jménem a v¹echny výstupy z editorù jsou ulo¾eny v 
+této slo¾ce. Tato funkcionalita byla pøidána pomocí knihovny, kterou blí¾e 
+popí¹eme v kapitole \ref{postScriptExport}.
 
 \section{Grafické prvky}\label{grafickePrvky}
 Pro práci s grafickými prvky na editaèním plátnì bylo pou¾ito rùzných technik.
-Napøíklad pro detekci objektu pod ukazatelem, nebo detekci hrany pod kurzorem 
-a podobné.
+Jedna byla aplikována pro detekci objektu pod ukazatelem a druhá pro nalezení 
+hrany pod kurzorem.
 
 \subsection{Detekce objektu pod kurzorem}
-Zji¹tìní zda se nachází nìjaký objekt pod kurzorem bylo velice jednoduché. 
-Ka¾dý objekt má výpoèet pro toto zji¹tìní. Tento zpùsob zji¹»ìní objektu byl 
+Zji¹tìní, zda se nachází nìjaký objekt pod kurzorem, bylo velice jednoduché. 
+Ka¾dý objekt má výpoèet pro toto zji¹tìní. Tento zpùsob získání objektu byl 
 zvolen pøevá¾nì kvùli jednoduchosti pøidání nového tvaru.
 
 \begin{equation}\label{count:coords}
@@ -982,50 +982,43 @@ isY = \lvert mouseY - objectY \rvert
 \end{equation}
 Kde \eqref{count:coords}:
 \begin{itemize}
-  \item \textbf{objectX} a \textbf{objectY} jsou souøadnice X a Y pro 
+  \item \emph{ObjectX} a \emph{objectY} jsou souøadnice X a Y pro 
 bod objektu.
-  \item \textbf{mouseX} a \textbf{mouseY} urèují bod kurzoru.
-  \item \textbf{isX} a \textbf{isY} je vypoèítaná vzdálenost na osách X a Y.
+  \item \emph{MouseX} a \emph{mouseY} urèují bod kurzoru.
+  \item \emph{IsX} a \emph{isY} je vypoèítaná vzdálenost na osách X a Y.
 \end{itemize}
 
 Výpoèet je provádìn tak, ¾e se vypoèítá vzdálenost na osách mezi body a tato 
-vzdálenost se poté provìøí zda le¾í v daném objektu. Porovná se ¹íøka a vý¹ka 
-oproti tìmto vzdálenostem. Pokud bod kurzoru le¾í v tìchto hranicích, vykoná se 
-pøíslu¹ná operace, napøíklad zvýraznìní objektu.
+vzdálenost je provìøena, zda le¾í v daném objektu. Porovná se ¹íøka a vý¹ka 
+oproti vypoèítaným vzdálenostem. Pokud bod kurzoru le¾í v tìchto hranicích, 
+vykoná se pøíslu¹ná operace -- napøíklad zvýraznìní objektu.
 
 Tento zpùsob je nároèný na pamìt, pøevá¾nì kvùli neustálému volání pøi 
-jakémkoliv pohybu my¹i. Pro tento nástroj v¹ak toto omezení nemá vliv na výkon, 
-nebo celkový chod pøevá¾nì díky jednoduchosti a rychlosti.
+jakémkoliv pohybu my¹i. Pro tento nástroj v¹ak toto omezení nemá vliv na výkon 
+nebo celkový chod (pøevá¾nì díky jednoduchosti a rychlosti).
 
 \subsection{Výpoèet vzdálenosti hrany od bodu}
-Na druhou stranu zji¹tìní hrany pod kurzorem ji¾ je ponìkud nároènìj¹í. 
-Pøevá¾nì z toho dùvodu, ¾e hranu máme definovanou jako dovjici bodù. Výpoèet 
-pro takové zji¹tìní je ponìkud slo¾itìj¹í a mo¾ností pou¾ití rùzných vzorcù pro 
-toto zji¹tìní mnoho.
+Na druhou stranu zji¹tìní hrany pod kurzorem ji¾ je ponìkud nároènìj¹í, 
+pøevá¾nì z toho dùvodu, ¾e hranu máme definovanou jako dvojici bodù. Výpoèet 
+pro takové zji¹tìní je slo¾itìj¹í a mo¾ností pou¾ití rùzných vzorcù pro toto
+zji¹tìní je mnoho.
 
-V tomto nástroji jsou pou¾ity dvì metody zji¹tìní vzdálenosti bodu od pøímky. 
-Jedna metoda je pou¾ita pro výpoèet vzdálenosti kraje 
-objektu k bodu a na základì toho je hrana zkrácena (pou¾ito pøevá¾nì pro 
-vykreslení ¹ipky na konci hrany). Druhá metoda slou¾í pro 
-výpoèet bodu kurzoru a úseèky mezi dvìma body.
+Ve vyvíjeném nástroji jsou pou¾ity dvì metody zji¹tìní vzdálenosti bodu 
+od pøímky. Jedna metoda je vyu¾ita pro výpoèet vzdálenosti kraje objektu k bodu 
+a na základì toho je hrana zkrácena (pou¾ito pøevá¾nì pro vykreslení ¹ipky na 
+konci hrany). Druhá metoda slou¾í pro výpoèet bodu kurzoru a úseèky mezi dvìma 
+body.
 
 \subsubsection{Výpoèet kraje objektu k bodu} \label{lineToobject}
-Pøed samotným výpoètem prùseèíku okraje objektu a pøímky z nìj vycházející je 
-potøeba zjistit v jakém sektoru se nachází druhý konec úseèky (støed druhého 
-objektu). Pro zji¹tìní sektoru jsou poou¾ity úhlopøíèky objektu a to ve stylu, 
-¾e do vzorcù pro úhlopøíèku dosadíme bod X, nebo bod Y a výsledný bod provìøíme 
-zda le¾í pod a nebo nad touto úhlopøíèkou. Pro výpoøet bodu lze pou¾ít jednu z 
-rovnic \eqref{uhlopricka}.
-
-Pro samotný výpoèet bodu je pou¾ito shodnosti trojúhelníkù, s tím e máme zadaný 
-støed objektu ke kterému se sna¾íme zjistit protínaný okraj a bod odkud vychází 
-tato pøíka. Proto je po vybrání sektoru zji¹tìn pomìr stran pomocí podìlení 
-¹íøky, nebo vý¹ky (zále¾í na sektoru) a vzdálenosti støedu objektu od bodu na 
-ose X, nebo Y (opìt zále¾í na sektoru). Pøi zji¹tìném pomìru stran se dopoèítá 
-druhá strana trojúhelníku a výnasobí se s tímto pomìrem.
+Pøed samotným výpoètem prùseèíku okraje objektu a pøímky z nìj vycházející, je 
+potøeba zjistit, v jakém sektoru se nachází druhý konec úseèky (støed druhého 
+objektu). Pro zji¹tìní sektoru jsou pou¾ity úhlopøíèky objektu a to ve stylu, 
+¾e do vzorcù pro úhlopøíèku dosadíme bod X, nebo bod Y a u výsledného bod 
+provìøíme, zda le¾í pod nebo nad touto úhlopøíèkou. Pro výpoèet bodu lze 
+pou¾ít jednu z rovnic \eqref{uhlopricka}.
 
 \begin{subequations} \label{uhlopricka}
-Výpoèet zda se bod nachází pod, nad a nebo na úhlopøíèce.
+Výpoèet, zda se bod nachází pod, nad a nebo na úhlopøíèce:
 \begin{align}
 resultY &= \frac{YboduA - YboduB}{(XboduA - XboduB){(givenX-XboduA)}} + 
 YboduA\\
@@ -1033,28 +1026,36 @@ resultX &= \frac{givenY - YboduA}{\frac{YboduA - YboduB}{XboduA - XboduB}} +
 XboduA
 \end{align}
 \end{subequations}
-Kde pro \eqref{uhlopricka} znamená:
+Kde pro \eqref{uhlopricka}:
 \begin{itemize}
-  \item \textbf{resultX} a \textbf{resultY} výsledná souøednice bodu X, nebo Y.
-  \item \textbf{XboduA} a \textbf{YboduA} souøednice prvního bodu úhlopøíèky.
-  \item \textbf{XboduB} a \textbf{YboduB} souøadnice druhého bodu úhlopøíèky.
-  \item \textbf{givenX} a \textbf{givenY} souøadnice X, nebo Y z daného bodu, 
+  \item \emph{ResultX} a \emph{resultY} je výsledná souøednice bodu X, nebo Y.
+  \item \emph{XboduA} a \emph{YboduA} znamená souøednice prvního bodu 
+úhlopøíèky.
+  \item \emph{XboduB} a \emph{YboduB} urèuje souøadnice druhého bodu úhlopøíèky.
+  \item \emph{GivenX} a \emph{givenY} jsou souøadnice X, nebo Y z daného bodu, 
 zde je tento bod souøadnice støedu druhého objektu.
 \end{itemize}
 
+Pro samotný výpoèet bodu je pou¾ito shodnosti trojúhelníkù s tím, ¾e máme 
+zadaný støed objektu, ke kterému se sna¾íme zjistit protínaný okraj a bod, 
+odkud vychází tato úseèka. Proto je po vybrání sektoru zji¹tìn pomìr stran 
+pomocí podìlení ¹íøky, nebo vý¹ky (zále¾í na sektoru) a vzdálenosti støedu 
+objektu od bodu na ose X, nebo Y (opìt zále¾í na sektoru). Pøi zji¹tìném pomìru 
+stran se dopoèítá druhá strana trojúhelníku a vynásobí se s tímto pomìrem.
+
 \subsubsection{Výpoèet bodu kurzoru a úseèky} \label{pointToLine}
 Výpoèet vzdálenosti kurzoru od úseèky je provádìn odli¹ným vzorcem. Pøi tomto 
-výpoètu se nejdøíve urèí zda se bod nachází v rozmezí dané pøímky. To znamená, 
-zda se bod nachází pod a nebo nad úseèkou. Pro urèení bodu vùèi pøímce byla 
+výpoètu se nejdøíve urèí, zda se bod nachází v rozmezí dané pøímky (tedy 
+jestli bod le¾í pod a nebo nad úseèkou). Pro urèení bodu vùèi pøímce byla 
 pou¾ita rovnice \eqref{urceniPolohy}.
 
 \begin{equation} \label{urceniPolohy}
 h = \frac{(Px - Ax)(Bx - Ax) + (Py - Ay)(By - Ay)}{delkaUsecky}
 \end{equation}
 
-V momentì kdy výsledné \textbf{h} z rovnice \eqref{urceniPolohy} je v rozmezí 
-$ 0<h<1 $ bod se nachází pod a nebo nad touto úseèkou. Lze tedy vypoèítat 
-vzdálenost kurzoru od úseèky.
+V momentì kdy, výsledné \emph{h} z rovnice \eqref{urceniPolohy} je v rozmezí 
+$ 0<h<1 $, se bod nachází pod a nebo nad touto úseèkou (nikoliv za nebo pøed 
+úseèkou). Lze tedy vypoèítat vzdálenost kurzoru od úseèky.
 
 \begin{equation} \label{vypocetVzdalenosti}
 \frac{(Bx - Ax)(Py - Ay) - (Ax - Px)(By - Ay)}{delkaUsecky}
@@ -1062,11 +1063,11 @@ vzdálenost kurzoru od úseèky.
 
 Pro rovnice \eqref{urceniPolohy} a  \eqref{vypocetVzdalenosti} platí:
 \begin{itemize}
-  \item \textbf{Px} a \textbf{Py} jsou souøadnice kurzoru.
-  \item \textbf{Ax} a \textbf{Ay} reprezentují souøadnice bodu \textbf{A} 
-úseèky \textbf{AB}.
-  \item \textbf{Bx} a \textbf{By} slou¾í jako souøadnice bodu \textbf{B} na 
-úseèce \textbf{AB}.
+  \item \emph{Px} a \emph{Py} jsou souøadnice kurzoru.
+  \item \emph{Ax} a \emph{Ay} reprezentují souøadnice bodu \emph{A} 
+úseèky \emph{AB}.
+  \item \emph{Bx} a \emph{By} slou¾í jako souøadnice bodu \emph{B} na 
+úseèce \emph{AB}.
 \end{itemize}
 
 Vzorce pro výpoèet polohy bodu vùèi úseèce a pro finální výpoèet vzdálenosti 
@@ -1075,174 +1076,175 @@ tohoto bodu od úseèky byly pøevzaty z \cite{graphicGems2}.
 \section{Pou¾ité knihovny a ikony} \label{pouziteKnihovny}
 Pro zjednodu¹ení práce a mo¾nosti zamìøení se na dùle¾itìj¹í èásti nástroje 
 bylo pou¾ito nìkolik knihoven pro urychlení vývoje. Tyto knihovny jsou volnì ke 
-sta¾ení s velice pøehlednou dokumentací. Jejich pou¾ití je velice 
-jednoduché a rychlé. Pou¾itím tìchto knihoven vedlo k urychlení vývoje 
-dùle¾itých koponent, nicménì tyto knihovny nejsou nutností pro výslednou 
-aplikaci. Pokud by se ov¹em odtranily, bylo by nutné tyto knihovny nahradit 
-vlastní implemtnací tìchto funkcí.
+sta¾ení s pøehlednou dokumentací. Jejich pou¾ití je jednoduché a rychlé. 
+Aplikování tìchto knihoven vedlo k urychlení vývoje dùle¾itých koponent, 
+nicménì tyto knihovny nejsou nutností pro výslednou aplikaci. Pokud by se ov¹em 
+odtranily, bylo by nutné tyto knihovny nahradit vlastní implemtnací tìchto 
+funkcí.
 
 \subsection{XML export} \label{xmlExport}
 V pøípadì expotu do XML bylo zvoleno ukládání ve¹kerých grafù do speciální 
-struktury, kterou lze velice jednodu¹e pøedat knihovnì s názvem 
-\textbf{XStream} \footnote{Domovskou adresu pro tuto adresu lze nalést 
-na adrese \url{http://xstream.codehaus.org/}.}. Tato knihovna se postará o 
-bezproblémovou serializaci objektu do XML.
+struktury, kterou lze jednodu¹e pøedat knihovnì s názvem \emph{XStream} 
+\footnote{Domovskou adresu pro tuto knihovnu lze nalézt 
+na adrese: \url{http://xstream.codehaus.org/}.}. Tato knihovna se postará o 
+bezproblémovou serializaci a deserializaci objektu do a z XML.
 
-Výhodou této knihovny je jednoduchost pou¾ítí jak pøi serializaci, tak 
+Výhodou této knihovny je jednoduchost pou¾ití jak pøi serializaci, tak 
 deserializaci. V pøípadì naètení souboru je práce s touto knihovnou je¹tì 
-sna¾¹í. Dal¹í výhodou této knihovny je mo¾nost nastavit aliasy pro XML tagy, 
-tak¾e je mo¾né upravit XML soubor, který bude pou¾ívaný v tomto nástroji pro 
-dal¹í potøeby. Pokud napøíklad bude potøeba soubory exportované tímto nástrojem 
+sna¾¹í. Dal¹í výhodou knihovny je mo¾nost nastavit aliasy pro XML tagy, tak¾e 
+je mo¾né upravit XML soubor, který bude pou¾ívaný v tomto nástroji pro dal¹í 
+potøeby. Pokud napøíklad bude nutné soubory exportované tímto nástrojem 
 upravit v dal¹í aplikaci, která doká¾e èíst a vytváøet XML soubory, je mo¾né 
-upravit vstup a výstup této knihovny tak, ¾e nebude potøeba upravovat naèítání 
+zmìniz vstup a výstup této knihovny tak, ¾e nebude potøeba upravovat naèítání 
 a práci s tìmito soubory v jiné aplikaci.
 
-Pou¾itím této knihovny bylo docíleno bezchybného, rychlého a 
-jednoduchého vytvoøení souboru pro ukládání editovaného projektu.
+Pou¾itím této knihovny bylo docíleno bezchybného, rychlého a jednoduchého 
+vytvoøení souboru pro ukládání editovaného projektu.
 
 \subsection{PostScript export}\label{postScriptExport}
-Export do souboru PostScript nebyl nutností pro tuto aplikaci, nicménì bylo 
+Export do souboru PostScript nebyl nutností pro tuto aplikaci, ale bylo 
 zvoleno, ¾e export do tohoto formátu bude velice u¾iteèný a nástroj tím získá 
-velmi silnou funcionalitu.
+silnou funcionalitu.
 
 Pro export do formátu EPS bylo vyzkou¹eno nìkolik nástrojù, ¾ádný z nich ov¹em 
-nebyl tak jednoduchý na pou¾ití a nepodporoval tolik funkcí, jako tomu bylo 
-u Nástroje \textbf{EPS Graphics} \footnote{Dokumentaci a knihovnu samotnou lze 
-najít na adrese \url{http://www.abeel.be/epsgraphics/}.}.
+nebyl tak jednoduchý na pou¾ití a nepodporoval tolik funkcí jako tomu bylo 
+u nástroje \emph{EPS Graphics} \footnote{Dokumentaci a knihovnu samotnou lze 
+najít na adrese: \url{http://www.abeel.be/epsgraphics/}.}.
 
 Tento nástroj vyènívá nad konkurencí pøevá¾nì v mno¾ství implementovaných 
-funckí. Byl vybrán pøevá¾nì kvùli tomu, ¾e ve¹kerá grafika je tisknuta pomocí 
-\textbf{Graphics2D} a tato knihovna podporuje vìt¹inu funckí, které jsou 
-pou¾ívány právì v Graphics2D. \footnote{Pro bli¾¹í obeznámení implementvoaných 
-funckí je mo¾né nahlédnout do rozsáhlé API dokumentace na stránce 
-\url{http://epsgraphics.sourceforge.net/api/1.2/doc/}.}
+funkcí. Byl vybrán pøevá¾nì kvùli tomu, ¾e ve¹kerá grafika je tisknuta pomocí 
+\emph{Graphics2D} a tato knihovna podporuje vìt¹inu funkcí, které jsou 
+pou¾ívány právì v \emph{Graphics2D}. \footnote{Pro bli¾¹í obeznámení 
+implementovaných funkcí je mo¾né nahlédnout do rozsáhlé API dokumentace na 
+stránce: \url{http://epsgraphics.sourceforge.net/api/1.2/doc/}.}
 
 V celém tomto dokumentu byly pou¾ity obrázky, které byly exportovány pomocí 
-této 
-knihovny, umo¾òující velice rychlé a u¾iteèné roz¹íøení tohoto nástroje.
+této knihovny, umo¾òující velice rychlé a u¾iteèné roz¹íøení tohoto nástroje.
 
 \subsection{Pou¾ité ikony}
-V aplikaci bylo pou¾ito nìkolika ikon pro zpøehlednìní a k odlehèení 
-monotónnosti designu. Pøidáním tìchto ikon bylo umo¾nìno i ménì zruèným 
-u¾ivatelùm jednodu¹e pou¾ívat a osvojit si práci s tímto nástrojem.
+V aplikaci bylo pou¾ito nìkolika ikon pro zpøehlednìní a odlehèení monotónnosti 
+designu. Pøidáním tìchto ikon bylo umo¾nìno i ménì zruèným u¾ivatelùm jednodu¹e 
+pou¾ívat a osvojit si práci s tímto nástrojem.
 
 Ikony byly vybrány z galerie Open Icon Library\footnote{Adresa této galerie 
-je \url{http://openiconlibrary.sourceforge.net/}.}, tyto ikony jsou volnì ke 
-sta¾ení a pokud tento nástroj nebude vyu¾íván pro úèely zisku nemìl by být ¾ádný 
-problém s licencemi.
+je: \url{http://openiconlibrary.sourceforge.net/}.}, tyto ikony jsou volnì ke 
+sta¾ení, a pokud tento nástroj nebude vyu¾íván pro úèely zisku, nemìl by být 
+¾ádný problém s licencemi.
 
 \chapter{U¾ivatelské testování} \label{testyAvysledky}
-Zámìrem této kapitoly je pøednést testování a výsledky pou¾ívání této aplikace. 
-Budou pøedstaveny návrhy od mo¾ných zákazníkù a mo¾ných budoucích u¾ivatelù 
-tohoto nástroje. 
+Zámìrem této kapitoly je pøedvést výsledky u¾ivatelského testování. Budou zde
+pøedstaveny návrhy od mo¾ných zákazníkù a potencionálních u¾ivatelù tohoto 
+nástroje.
 
 \section{Nezku¹ený u¾ivatel}
 Nátroj byl pøedstaven nejdøíve u¾ivateli, který nemá ¾ádné zku¹enosti s 
 vytváøením programù, ani nikdy nebyl zapojen do vývoje programu. Tento test má 
-dokázat zda je nástroj pou¾itelný a nemá nìkterou chybu znemo¾òující práci s 
+dokázat, zda je nástroj pou¾itelný a nemá nìkterou chybu znemo¾òující práci s 
 tímto nástrojem.
 
 \subsection{Prùbìh pøedstavení}
-U¾ivateli bylo dáno za úkol vymyslet program, který by mu pomáhal pøi práci. 
-Tento program byl poté pøedstaven a popsán programátorovi. Pøi tomto testu 
-nebyla nalezena ¾ádná chyba a neostatek, u¾ivatel byl spokojený s rychlostí s 
-jakou se výsledný program rýsoval. Pøevá¾nì kvùlu tomu, ¾e si mohl okam¾itì 
-vybavit vìci, které ji¾ byly nachystány a které bude potøeba vymyslet.
+Nezku¹enému u¾ivateli bylo dáno za úkol vymyslet program, který by mu pomáhal 
+pøi práci. Tento program byl poté pøedstaven a popsán programátorovi. Pøi tomto 
+testu nebyla nalezena ¾ádná chyba a nedostatek. U¾ivatel byl spokojený s 
+rychlostí, s jakou se výsledný program rýsoval. Pøevá¾nì kvùli tomu, ¾e si mohl 
+okam¾itì vybavit vìci, které ji¾ byly nachystány a které bude potøeba vymyslet.
 
-Nástroj byl tedy velice pøínosný v tomto pøípadì a bylo mo¾né postoupit k 
+V tomto pøípadì byl nástroj byl tedy velice pøínosný a bylo mo¾né postoupit k 
 pøedání nástroje více zku¹enému u¾ivateli.
 
 \section{Zku¹enìj¹í u¾ivatel}
 Tento u¾ivatel ji¾ pou¾il diagram pøípadù u¾ití a rozumí návrhu aplikace. Bylo 
-po nìm po¾adováno, aby pøedvedl zda by zvládl v této aplikaci pøedstavit svoji 
+po nìm po¾adováno, aby pøedvedl, zda by zvládl v této aplikaci pøedstavit svoji 
 vizi programátorovi a zda aplikaci neschází nìkterý nutný prvek potøebný pro 
 jednoduché ovládání.
 
 \subsection{Prùbìh a výsledky u¾ivatelské práce}
 Pøi sledování práce u¾ivatele bylo zji¹»ìno, ¾e jeho uèební køivka je velice 
-strmá. To znamenalo, ¾e návrh aplikace byl velice dobrý a u¾ivatel si rychle 
-zvykl na práci a po chvilce zkou¹ení aplikace, byl schopný vytvoøit vlastní 
+strmá. To znamená, ¾e návrh aplikace byl velice dobrý a u¾ivatel si rychle 
+zvykl na práci a po chvilce zkou¹ení nástroje byl schopný vytvoøit vlastní 
 diagram pøípadù u¾ití.
 
 Bìhem tvoøení tohoto diagramu bylo ov¹em zji¹»ìno, ¾e aplikaci schází mo¾nost 
-okam¾itého zru¹ení pøidávání nových objektù na editaèní plátno a zru¹ení 
-spojení mezi objekty. Tento návrh byl tedy poznamenán a pozdìji implementován.
+okam¾itého zru¹ení pøidávání nových objektù na editaèní plátno. Tento návrh byl 
+tedy poznamenán a pozdìji implementován.
 
-U¾ivatel nemìl ¾ádnou dal¹í výtku k nástroji, kromì po¾adavku na vytvoøení 
-nápovìdy a jednoduchého popsání jednotlivých èástí nástroje.
+U¾ivatel nemìl ¾ádnou dal¹í výtku k nástroji kromì po¾adavku na vytvoøení 
+nápovìdy a jednoduchého popsání jednotlivých èástí nástroje, co¾ by mìlo být 
+buï v nápovìdì nebo v u¾ivatelské pøíruèce.
 
 \section{Programátor}
-V poslední èásti byl nástroj pøedstaven programátorovi, kterému bylo navrhnuto 
-aby vytvoøil jednoduchý program. Vytvoøil Diagram pøípadù u¾ití, poté pøidal 
-pár roz¹iøujích metod a tyto metody popsal pomocí Objektovì orientovaných 
-Petriho sítí. Bylo sledováno pøevá¾nì zda nechybí nìkterá dùle¾itá funkce, zda 
-není pøíli¹ omezovaný a zda není potøeba pøíli¹ pøedstavovat tento nástroj.
+V poslední èásti byl nástroj pøedstaven programátorovi, kterému bylo navrhnuto, 
+aby vytvoøil jednoduchý program. Vytvoøil diagram pøípadù u¾ití, poté pøidal 
+pár roz¹iøujích metod a tyto metody popsal pomocí objektovì orientovaných 
+Petriho sítí. Pøevá¾nì bylo sledováno, zda nechybí nìkterá dùle¾itá funkce a 
+není pøíli¹ omezovaný a jestli není potøeba pøíli¹ pøedstavovat tento nástroj.
 
 \subsection{Prùbìh testování}
-Tento u¾ivatel velice rychle pochopil základní ovládání nástroje, velice ocenil 
-rùzné mo¾nosti otevírání a zavírání jednotlivých projektù. Ocenil provázání 
-mezi diagram pøípadù u¾ití a diagramem tøíd. Po vysvìtlení jak spojit rùzné 
-objekty napøíè diagramy byl velice pøekvapen a s touto funkcí byl spokojený.
+Tento u¾ivatel rychle pochopil základní ovládací prvky nástroje, ocenil rùzné 
+mo¾nosti otevírání a zavírání jednotlivých projektù. Kladnì také zhodnotil 
+provázání mezi diagramem pøípadù u¾ití a diagramem tøíd. Po vysvìtlení, jak 
+spojit rùzné objekty napøíè diagramy, byl s touto funkcí spokojený.
 
-Po vysvìtlení jak fungují objektovì orientované Petriho sítì, byl pøekvapený 
-jak jednodu¹e a rychle lze vytváøet jednotlivé èásti aplikace. A jak rychle lze 
-popsat jednotlivé metodi pomocí Petriho sítí.
+Po pøedstavení, jak fungují objektovì orientované Petriho sítì, ocenil 
+jednochusot a rychlost vytváøení jednotlivých èástí aplikace a také svi¾nost 
+popisu metod pomocí Petriho sítí.
 
-\subsection{Vyhodnocení rogramátorovy práce}
-U¾ivatel byl spokojený s nástrojem a ocenil byl dal¹í roz¹íøení v podobì 
-exportu do zdrojových kódù a nebo simulace Petriho sítí.
+\subsection{Vyhodnocení programátorovy práce}
+U¾ivatel byl s nástrojem spokojený a ocenil by dal¹í roz¹íøení v podobì exportu 
+do zdrojových kódù nebo simulace Petriho sítí.
 
 \section{Výsledky testování}
-Po otestování tøemi rùznými u¾ivateli bylo objeveno nìkolik chyb, v podobì 
-napøíklad okam¾itého zru¹ení pøidávaných objektù a spojování tìchto objektù.
+Po otestování tøemi rùznými u¾ivateli bylo objeveno nìkolik chyb -- napøíklad v 
+podobì okam¾itého zru¹ení pøidávaných objektù a jejich spojování. Jinak 
+byli u¾ivatelé spokojeni s jednoduchostí a snadným ovládáním nástroje, co¾ 
+znamená splnìní po¾adované podmínky na intuitivnost a snadnost pou¾ití i pøi 
+automatickém generování -- jak bylo specifikováno v úvodu této práce.
 
 \chapter{Závìr} \label{zaver}
 V této kapitole se budeme postupnì vìnovat navrhovaným mo¾ným roz¹íøením, 
-kterýmo by bylo vhodné tento nástroj vylep¹it a roz¹íøit. A poté shrneme 
-vytvoøený nástroj, jeho pøínos a aktuální stav. Také popí¹eme nìkteré známé 
-chyby, nebo nedostatky.
+kterým by bylo vhodné tento nástroj vylep¹it. Poté shrneme vytvoøený nástroj, 
+jeho pøínos a aktuální stav. Také popí¹eme nìkteré známé chyby nebo nedostatky.
 
 \section{Budoucnost aplikace} \label{budoucnost}
-Tato kapitola pøedstavuje navrhované roz¹íøení pro tento nástroj. Nástroj je 
-bez tìchto navrhovaných roz¹íøení absolutnì funkèní, nicménì pøidáním tìchto 
-funkcí a mo¾ností by z tohoto nástroje udìlali pravdìpodobnì velice robustní 
-nástroj.
+Tato kapitola pøedstavuje navrhované roz¹íøení pro vytvoøený nástroj. Nástroj 
+je bez tìchto roz¹íøení funkèní, nicménì pøidání dal¹ích funkcí a mo¾ností by 
+z tohoto nástroje udìlalo pravdìpodobnì robustní nástroj.
 
-Roz¹íøení zde navrhnutá není nutné dodr¾et pøi dal¹í implementaci a pøidání 
-dal¹ích funkcí a vylep¹ení do tohoto nástroje. Nicménì jsou logicky vybrány a z 
-pohledu momentálního stavu aplikace by znamenaly velmi mnoho. Do aplikace je 
-samozøejmì mo¾né pøidat mnoho dal¹ích funkcí, 
+Roz¹íøení zde navrhnutá není nutné dodr¾et pøi dal¹í implementaci a pøidávání 
+funkcí a vylep¹ení do tohoto nástroje. Nicménì jsou logicky vybrány a z 
+pohledu momentálního stavu aplikace by znamenaly velmi mnoho. Do nástroje je 
+samozøejmì mo¾né pøidat mnoho dal¹ích funkcí.
 
 \subsubsection{Historie akcí}
-Jak ji¾ bylo zmínìno v pøede¹lých kapitolách jistì by se hodilo ukládat 
-postupný chod akcí, pøes které by bylo mo¾né postupnì kolovat, jak do zadu, tak 
-dopøedu. Co¾ by vedlo ke sna¾¹í editaci a pohodlnìj¹í práci s aplikací. Absence 
+Jak ji¾ bylo zmínìno v pøede¹lých kapitolách, jistì by se hodilo ukládat 
+postupný chod akcí, pøes které by bylo mo¾né postupnì kolovat, jak dozadu, tak 
+dopøedu, co¾ by vedlo ke sna¾¹í editaci a pohodlnìj¹í práci s aplikací. Absence 
 této funkce momentálnì neznamená nepou¾itelnost aplikace, pouze ji dìlá mírnì 
-tì¾kopádnou.  Toto roz¹íøení je momentálnì pova¾ováno za nejdùle¾itìj¹í a pøi 
-dal¹ím roz¹íøení nástroje by bylo vhodné tuto úpravu implementovat jako první.
+tì¾kopádnou. Toto roz¹íøení je nyní pova¾ováno za nejdùle¾itìj¹í a pøi dal¹ím 
+roz¹íøení nástroje by bylo vhodné tuto úpravu implementovat jako první.
 
 \subsubsection{Grafický design a editace designu}
 Grafický design a momentální vzhled nástroje není ¹patný, nebo nikterak 
 nepou¾itelný, je pouze jednoduchý a velice monotónní. Z tohoto dùvodu by 
-bylo vhodné pøidat mo¾nost zmìny vzhledu aplikace, a» u¾ nastavení 
-u¾ivatelského rozhraní, tak celkový vzhled objektù na editaèním plátnì. 
-Aplikace by díky tomuto ro¹íøení jistì byla více pøívìtivìj¹í k u¾ivateli.
+bylo vhodné pøidat mo¾nost zmìny vzhledu aplikace, a» u¾ nastavením 
+u¾ivatelského rozhraní, nebo celkového vzhled objektù na editaèním plátnì. 
+Aplikace by díky tomuto roz¹íøení byla více pøívìtivìj¹í k u¾ivateli.
 
 \subsubsection{Mo¾nost exportu Petriho sítì} \label{PNtalk}
 Pro lep¹í komunikaci mezi tímto nástrojem a nástroji, které se soustøedují 
-napøíklad na interpretaci Petriho sítí by bylo velice u¾iteèné, kdyby nástroj 
-mohl Objektovì orientované Petriho sítì exportovat do specifického formátu, 
-jako napøíklad PNTalk \footnote{Bli¾¹í informace o tomto jazyku a o projektu 
-PNTalk 
-lze nalést na stránkách \url{http://perchta.fit.vutbr.cz/pntalk2k}.}.
+napøíklad na interpretaci Petriho sítí, by bylo u¾iteèné, kdyby nástroj 
+mohl objektovì orientované Petriho sítì exportovat do specifického formátu, 
+jako napøíklad \emph{PNTalk} \footnote{Bli¾¹í informace o tomto jazyku a o 
+projektu PNTalk lze nalést na stránkách 
+\url{http://perchta.fit.vutbr.cz/pntalk2k}.}.
 
 \subsubsection{Simulace Petriho sítí}
-Pokud by se vyu¾ilo pøede¹lého roz¹íøení \ref{PNtalk} by se propojilo s dal¹ím 
-nástrojem, který by se staral o simulaci Petriho sítí vytvoøených v tomto 
-nástroji znamenalo by to znaèné urychlení vývoje aplikací. 
-Kdyby se od zákazníka pøevzali vstupy a výstupy pro testovací pøípady a ty by 
-se porovnaly s výstupem z tohoto simulátoru, na základì kterých by se dala 
-Petriho sít upravit.
+Pokud by se vyu¾ilo pøede¹lého roz¹íøení (mo¾nost exportu Petriho sítì) a 
+propojení s dal¹ím nástrojem, který by se staral o simulaci Petriho sítí 
+vytvoøených v tomto nástroji, znamenalo by to znaèné urychlení vývoje aplikací. 
+Kdyby se od zákazníka pøevzaly vstupy a výstupy pro testovací pøípady a ty by 
+se porovnaly s výstupem z tohoto simulátoru, znamenalo by to velice rychlé 
+zji¹tìní chyb, na základì kterých by se dala upravit Petriho sí».
 
 \subsubsection{Vytvoøení zdrojových kódù z diagramù a Petriho sítí} 
 \label{sourceCode}
