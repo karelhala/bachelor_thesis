@@ -15,18 +15,18 @@ si vybemere nìkteré jejich vlastnosti a vysvìtlíme pøípadné
 
 Navá¾eme kapitolou \ref{grafy} kde vysvìtlíme druhy grafù, které 
 se hodí pro implementaci námi zvolených èástí. Zamìøíme se na 
-tojici diagramù \textbf{Diagram pøipadù u¾ití, Diagram tøíd, 
-Objektovì orientované Petriho sítì}. Provázání mezi tìmito 
+trojici diagramù \textbf{Diagram pøipadù u¾ití}, \textbf{Diagram tøíd} a 
+\textbf{Objektovì orientované Petriho sítì}. Provázání mezi tìmito 
 diagramy poté vysvìtlíme v kapitole \ref{spojeni}.
 
-Poté pøestavíme nástroj, který byl pøedmìtem této práce. Pøedvedeme jeho silné 
+V následující kapitole pøestavíme nástroj, který byl pøedmìtem této práce. Pøedvedeme jeho silné 
 stránky, jakým zpùsobem byly vytvoøeny urèité èásti aplikace a také mírnì 
 nastíníme ovládací prvky tohoto nástroje \ref{samotatnaAplikace}. Na toto volnì 
 navá¾eme pøedstavním roz¹íøených mo¾ností tohoto nástroje v kapitole 
 \ref{moznostiAplikace}.
 
 Po vysvìltení nástroje pøedstavíme jeho pou¾itelnost v praxi, pøedstavením 
-nìkolika mo¾ných budoucích u¾ivatelù a jejichreakcí na tento nástroj. Popí¹eme 
+nìkolika mo¾ným budoucím u¾ivatelùm a jejich reakcí na tento nástroj. Popí¹eme 
 jejich chování a jejich pocity z aplikace \ref{testyAvysledky}.
 
 Závìrem práce poté bude pøedstavení mo¾ných dal¹ích roz¹íøení tohoto nástroje. 
@@ -37,7 +37,7 @@ nástroje a popøípadì popí¹eme mo¾né chyby anedostatky aplikace \ref{zaver}.
 Z hlediska sna¾¹ího porozumìní byl brán zøetel na konkurentní nástroje. Pøevá¾nì 
 byla brána v potaz jejich jednoduchost a co je dìlá tak hojnì 
 vyu¾ívanými a snadno pou¾itelnými. Z toho dùvodu byly prozkoumány dva 
-nástroje, Umbrello a komerèní Enterprise Architect. 
+nástroje, \textbf{Umbrello} a komerèní \textbf{Enterprise Architect}. 
 Detailnìj¹í popis jednotlivých aplikací, jejich výhod, nedostatkù a 
 pøevzatých vlastností je popsán v sekci \ref{umbrello} a \ref{enterpriseArchitect}.
 
@@ -46,21 +46,29 @@ Aplikace celým názvem \textbf{Umbrello UML Modeller}
 \footnote{Domovská stránka aplikace: \url{http://umbrello.kde.org/}} aplikace 
 primárnì urèena pro Unix systémy, nicménì je mo¾né jej bez problémù 
 nainstalovat také na Windows za pomoci KDE installeru a vybrání po¾adovaného 
-balíèku. Ovládání tohoto installeru, je velice jednoduché a intuitivní. 
+balíèku. \footnote{Ovládání tohoto installeru, je velice 
+jednoduché a intuitivní. Lze jej nalést na 
+\url{http://windows.kde.org/download.php}.}. 
 
 Mezi hlavní výhody Umbrello aplikace patøí refaktoring pro 
 nìkteré jazyky. Nicménì graficky zaostává za konkurencí ostatních 
 nástrojù pro tvorbu UML diagramù.
 
+\subsection{Motivace}
+Aplikace Umbrello je hojnì vyu¾ívána a chválena mezi u¾ivateli, z toho dùvodu 
+byl brán zøetel na tuto aplikaci. Také jednoduché pou¾ívání této aplikace bylo 
+velice pøínosné pro pozdìj¹í pochopení potøebných vlastností aplikace zamìøené 
+na dané téma.
+
 \subsection{Popis aplikace}
 Aplikace je velice robustní a poskytuje mnoho vlastností. Pøi ohlédnutí na to, 
-¾e je volnì ke sta¾ení a volnì k pou¾ívání \footnote{aplikace pou¾ívá licenci GNU general 
+¾e je volnì ke sta¾ení a volnì k pou¾ívání \footnote{Aplikace pou¾ívá licenci GNU general 
 public license 
 \url{http://www.gnu.org/licenses/old-licenses/gpl-2.0.html} co¾ 
 umo¾òuje zapojení komunity do vývoje tohoto nástroje.} aplikace 
 nabízí velké mno¾ství vlastností a mo¾ností.
-Umbrello poskytuje mnoho UML grafù a práce s touto aplikací je pomìrnì 
-jednoduchá, ale její jednoduchý design má pár neduhù. Pro men¹í aplikace 
+Umbrello poskytuje mnoho UML grafù a základní práce s touto aplikací je pomìrnì 
+jednoduchá, ale její jednoduchý design má pár slabin. Pro men¹í aplikace 
 a pro zaèínající firmy je naprosto dokonalá, ale absence pokroèilého 
 editoru a ne pøíli¹ jednoduché práce s editorem jako napøíklad 
 pøidání nové metody, zalomení èar a také vytvoøení jiného souboru.
@@ -80,7 +88,7 @@ prùbìh celého programu graficky.
   \item \textbf{Component Diagram} pro popis spojení a 
 komunikace mezi jednotlivými komponentami.
   \item \textbf{Deployment Diagram} popisuje 
-fyzické ulo¾í¹tì a ma¹iny, na kterých program bude pracovat.
+fyzické ulo¾í¹tì a zaøízení, na kterých program bude pracovat.
   \item \textbf{Entity Relationship Diagram} pro popis vztahu dat mezi sebou.
 \end{itemize}
 
@@ -90,12 +98,12 @@ zkratkám, tak také díky jednoduchému grafickému designu. Umbrello, také
 podporuje generaci a refactoring zdrojového kódu pro nìkteré jazyky. Staèí 
 pouze importovat jednu ji¾ vytvoøenou tøídu a Umbrello u¾ivatele provede 
 jednoduchým nastavením, výbìrem které tøídy namodelované v aplikaci se mají 
-vygenerovat a nabídne také mo¾nost upravit mírnì zvolený kód. Vzhledem na to, 
+vygenerovat a nabídne také mo¾nost mírnì upravit zvolený kód. Vzhledem na to, 
 ¾e aplikace je plnì zdarma je tato vlastnost velice pøínosná.
 
-Umbrello dále poskytuje mo¾nost èásteèné generace i v pøípadì, ¾e kdy¾ nejsou 
-poskytnu komentáøe na základì kterých by tato dokumentace mohla být vytvoøena. 
-Pøi generování tøíd je mo¾nost, také importovat zdrojový kód a nechat umbrello 
+Umbrello dále poskytuje mo¾nost èásteèné generace dokumentace i v pøípadì, ¾e nejsou 
+poskytnuty komentáøe na základì kterých by tato dokumentace mohla být vytvoøena. 
+Pøi generování tøíd je mo¾né, také importovat zdrojový kód a nechat umbrello 
 v¹e vygenerovat samo. Tato vlastnost je, ale podporována pouze pro jazyky 
 \texttt{ActionScript, Ada, C++, C\#, D IDL, Java, Javascript, MySQL}.
 
@@ -105,7 +113,7 @@ dokumentu. Pro export do formátu PNG je mo¾né vybrat èást diagramu, nebo celou
 sí». s touto mo¾ností také pøichází mo¾nost tisku celého diagramu. 
 \cite{umbrelloDocumentation}
 
-Umbrello je sice jednoduché na pou¾ívání a intuitivní, nicménì dlouhodobìj¹í 
+Umbrello je sice jednoduché a intuitivní na pou¾ívání, nicménì dlouhodobìj¹í 
 práce je zdlouhavá a pøíli¹ repetitvní. Nutnost vytvoøení objektu na editaèním 
 plátnì, poté výbìru nástroje pro pøesun a editaci daného objektu je zdlouhavá a 
 ¹patná. Jednodu¹¹í pro práci by jistì bylo vytvoøení objektu a po kliknutí na 
@@ -120,26 +128,20 @@ rozsáhlé mo¾nosti ve variabilitì grafických návrhù.
 
 Aplikace poskytla mnoho informací o vývoji editaèní aplikace, jakým chybám se 
 vyvarovat a co je naopak nezbytné k vytvoøení kvalitní aplikace zamìøené na 
-tvorbu diagramù. Není za potøebí ve výsledné aplikaci mnoho nároèných 
+tvorbu diagramù. Není zapotøebí ve výsledné aplikaci mnoho nároèných 
 grafických elementù, tyto elementy by byly ru¹ivé. Grafické rolo¾ení a 
-dosa¾itelnost vìt¹iny editaèních prvkù je v aplikaci Umbrello je velice 
+dosa¾itelnost vìt¹iny editaèních prvkù je v aplikaci Umbrello velice 
 jednoduché a intuitvní z tohoto dùvodu bylo ve výsledné aplikaci pøihlí¾eno na 
 tyto vlastnosti.
 
-Ve výsledné aplikaci bylo vyvarováno nìkterým neduhùm aplikace Umbrello. Jako 
+Ve výsledné aplikaci bylo vyvarováno nìkterým nedostatkùmm aplikace Umbrello. Jako 
 napøíklad zdlouhavé a repetetivní vytváøení tøíd, jejich pøesun po pracovní 
 plo¹e, nebo spojení tìchto tøíd.
 
-V Umbrello nelze dané spoje ohýbat, lze dané spoje ohýbat, ale tato 
-funkcionalita je velice ¹patnì navrhnutá. Dále není mo¾no v Umbrello nikterak 
-editovat dané spoje, tomuto bylo vyhnuto a pøidána editace spojù s mo¾ností 
-jednak zmìny typu, dále také zmìny objektu na který daná hrana ukazuje a také 
-mo¾nost jednoduchého odebrání hrany.
-
-K nepøehlednosti aplikaci Umbrello pøispívá také skuteènost, ¾e není vidìt 
-hrany výcházející z a nebo do daného objektu. K zpøehlednìní výsledného 
-diagramu bylo proto navrhnuto zvýraznìní tìchto hran. Co¾ vedlo jednak k 
-spøehlednìní a také k lep¹ímu cítìní a pou¾itelnosti.
+V Umbrello lze spoje mezi objekty ohýbat velice slo¾itì a z 
+u¾ivatelského hlediska velice nároènì. Celková práce se spoji 
+mezi objekty je v Umbrello øe¹ena pomìrnì slo¾itì, co¾ èasto 
+vede k vytváøení nepøehledných a ¹patnì pochopitelných diagramù.
 
 Aplikace Umbrello pøi pøidání nového objektu donutí u¾ivatele zadat jméno, co¾ 
 opìt vede ke zdlouhavé práci a repetetivním akcím, které u¾ivatele zbyteènì 
@@ -147,18 +149,12 @@ zdr¾ují od práce. Toto bylo vyhodnoceno jako nepøínosné a nutnost zadat jméno
 objektu pøi jeho vytvoøení bylo nahrazeno pozdìj¹í úpravou. Kdy si u¾ivatel 
 vytvoøí objekt a a¾ poté urèí jeho jméno.
 
-\subsection{Motivace}
-Aplikace Umbrello je hojnì vyu¾ívána a chválena mezi u¾ivateli, z toho dùvodu 
-byl brán zøetel na tuto aplikaci. Také jednoduché pou¾ívání této aplikace bylo 
-velice pøínosné pro pozdìj¹í pochopení potøebných vlastností aplikace zamìøené 
-na dané téma.
-
 \section{Enterprise Architect} \label{enterpriseArchitect}
 S ohlédnutím na Aplikaci Umbrello a nìkteré její nedostatky, bylo nutné pro 
 pozdìj¹í vývoj aplikace prozkoumat dal¹í systém. Tato aplikace se jmenuje 
 Enterprise Architect a je tvoøena firmou \textbf{Sparx Systems} 
 \footnote{\url{http://www.sparxsystems.com}}, tato firma se soustøeïuje na 
-tvorbu nástrojù pro tvorbu UML grafù. Bohu¾el firmou nabízené produkty jsou 
+tvorbu nástrojù pro tvorbu UML grafù. Firmou nabízené produkty jsou 
 placené, ale u¾ivatel obdr¾í opravdu robustní systémy pro tvorbu UML grafù a 
 mo¾nost refaktoringu pro nìkolik jazykù.
 
