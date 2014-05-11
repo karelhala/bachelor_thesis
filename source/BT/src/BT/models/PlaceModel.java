@@ -9,23 +9,23 @@ import java.awt.Dimension;
 import java.util.ArrayList;
 
 /**
+ * Class that hold variables and methods of each places. It stores paneSize,
+ * objects and object's lines.
  *
  * @author Karel Hala
  */
 public class PlaceModel {
-    
+
     /**
      * Size of printed pane as dimension.
      */
     protected Dimension paneSize;
-
     /**
      * Arraylist that contains all actors in UC
      *
      * @var ArrayList<UCActor>
      */
     protected ArrayList<CoordinateModel> objects = new ArrayList<>();
-
     /**
      * Arraylist that contains all join edges in UC
      *
@@ -40,8 +40,7 @@ public class PlaceModel {
      */
     private void addJoinEdge(LineModel joinEdge) {
         if (!lineExists(joinEdge)) {
-            if (joinEdge.getFirstObject() !=null && joinEdge.getSecondObject() !=null)
-            {
+            if (joinEdge.getFirstObject() != null && joinEdge.getSecondObject() != null) {
                 joinEdge.getFirstObject().addOutJoins(joinEdge);
                 joinEdge.getSecondObject().addInJoin(joinEdge);
                 this.joinEdges.addUnique(joinEdge);
@@ -49,14 +48,24 @@ public class PlaceModel {
         }
     }
 
+    /**
+     * Get pane size of printed pane.
+     *
+     * @return Dimension of Pane.
+     */
     public Dimension getPaneSize() {
         return paneSize;
     }
 
+    /**
+     * Set pane size for printing.
+     *
+     * @param paneSize Dimension of Pane.
+     */
     public void setPaneSize(Dimension paneSize) {
         this.paneSize = paneSize;
     }
-    
+
     /**
      * Method for returning all join edges in array list.
      *
@@ -68,6 +77,7 @@ public class PlaceModel {
 
     /**
      * Method for returning all objects in array list.
+     *
      * @return ArrayList<CoordinateModel>
      */
     public ArrayList<CoordinateModel> getObjects() {
@@ -84,6 +94,7 @@ public class PlaceModel {
     }
 
     /**
+     * Method for inserting new object to either join edges or to places.
      *
      * @param coordModel
      */
@@ -113,33 +124,31 @@ public class PlaceModel {
         }
         return false;
     }
-    
+
     /**
      * Method for fetching existing class.
+     *
      * @param newLine check if this line doeasn't exists.
      * @return line that allready exists or null.
      */
-    public LineModel getExistingLine(LineModel newLine)
-    {
-        if (lineExists(newLine))
-        {
+    public LineModel getExistingLine(LineModel newLine) {
+        if (lineExists(newLine)) {
             for (LineModel oneEdge : this.joinEdges) {
-            if (oneEdge.getSecondObject().equals(newLine.getSecondObject()) || oneEdge.getSecondObject().equals(newLine.getFirstObject())) {
-                if (oneEdge.getFirstObject().equals(newLine.getSecondObject()) || oneEdge.getFirstObject().equals(newLine.getFirstObject())) {
-                    return oneEdge;
+                if (oneEdge.getSecondObject().equals(newLine.getSecondObject()) || oneEdge.getSecondObject().equals(newLine.getFirstObject())) {
+                    if (oneEdge.getFirstObject().equals(newLine.getSecondObject()) || oneEdge.getFirstObject().equals(newLine.getFirstObject())) {
+                        return oneEdge;
+                    }
                 }
             }
         }
-        }
         return null;
     }
-    
+
     /**
-     * Method used for calculating pane size based on each object.
-     * This is usefull for calculating when exporting to EPS.
+     * Method used for calculating pane size based on each object. This is
+     * usefull for calculating when exporting to EPS.
      */
-    public void calculateDimension()
-    {
+    public void calculateDimension() {
         for (CoordinateModel coordinateModel : objects) {
             paneSize = RecalculatePaneSize.recalculateSizeofPaneOnObject(coordinateModel, paneSize);
         }
