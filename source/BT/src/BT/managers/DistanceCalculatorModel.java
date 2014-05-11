@@ -7,15 +7,29 @@ package BT.managers;
 import java.awt.Point;
 
 /**
+ * Model for storing variables and other functions used in Distance Calculator.
  *
  * @author Karel Hala
  */
 public class DistanceCalculatorModel {
 
+    /**
+     * Point A, often used as start point of line segment.
+     */
     protected Point pointA;
+    /**
+     * Point B, often used as end point of line segment.
+     */
     protected Point pointB;
+    /**
+     * Height of object.
+     */
     protected int objectHeight;
+    /**
+     * Width of object.
+     */
     protected int objectWidth;
+
     /**
      * Method for sqaure of x.
      *
@@ -68,7 +82,6 @@ public class DistanceCalculatorModel {
         public double y;
 
         public DoublePoint() {
-
         }
 
         public DoublePoint(double x, double y) {
@@ -78,8 +91,8 @@ public class DistanceCalculatorModel {
     }
 
     /**
-     * Private class that contains line segment points.
-     * These points are stored as DoublePoints.
+     * Private class that contains line segment points. These points are stored
+     * as DoublePoints.
      */
     protected class LineSegment {
 
@@ -87,7 +100,6 @@ public class DistanceCalculatorModel {
         public DoublePoint pointB;
 
         public LineSegment() {
-
         }
 
         public LineSegment(int x1, int y1, int x2, int y2) {

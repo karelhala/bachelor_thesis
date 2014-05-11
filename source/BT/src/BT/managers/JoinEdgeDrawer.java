@@ -14,9 +14,10 @@ import java.awt.Point;
 import java.awt.geom.AffineTransform;
 
 /**
- * Class that can draw triangles and diamonds at the end of lines.
- * This class is basic class for drawing additional components, such as 
- * traingles or strings at precise location.
+ * Class that can draw triangles and diamonds at the end of lines. This class is
+ * basic class for drawing additional components, such as traingles or strings
+ * at precise location.
+ *
  * @author Karel Hala
  */
 public class JoinEdgeDrawer {
@@ -25,22 +26,18 @@ public class JoinEdgeDrawer {
      * Start point of line.
      */
     protected Point startPoint;
-
     /**
      * End point of line.
      */
     protected Point endPoint;
-
     /**
      * Controller for detectiong color of line.
      */
     protected LineModel joinEdgeController;
-    
     /**
      * Point that describes where is start of text.
      */
     protected Point textStartPoint;
-    
     /**
      * Point that describes where is end of text.
      */
@@ -57,6 +54,7 @@ public class JoinEdgeDrawer {
 
     /**
      * Method for drawing arrow at end of the line given by 2 points.
+     *
      * @param g2D graphics that will have drawn this line.
      * @param A Start point.
      * @param B End point.
@@ -77,6 +75,7 @@ public class JoinEdgeDrawer {
 
     /**
      * Method for drawing traiangle at end of the line given by 2 points.
+     *
      * @param g2D graphics that will have drawn this triangle.
      * @param A Start point.
      * @param B End point.
@@ -106,6 +105,7 @@ public class JoinEdgeDrawer {
 
     /**
      * Method for drawing diamond at end of the line given by 2 points.
+     *
      * @param g2D graphics that will have drawn this diamond.
      * @param A Start point.
      * @param B End point.
@@ -142,6 +142,7 @@ public class JoinEdgeDrawer {
 
     /**
      * Method for drawing string at precise coordinates.
+     *
      * @param g2D drawing panel.
      * @param name String to be srawn.
      */
@@ -165,6 +166,7 @@ public class JoinEdgeDrawer {
 
     /**
      * Method for drawing line, that has break points inside.
+     *
      * @param g drawing panel.
      * @param startPoint start point of this line.
      * @param endPoint end point of this line.
@@ -186,15 +188,16 @@ public class JoinEdgeDrawer {
         }
     }
 
-    protected void setBasicColors(Graphics2D g)
-    {
+    protected void setBasicColors(Graphics2D g) {
         setBasicColors(g, true);
     }
-    
+
     /**
      * For setting basic colors of lines.
+     *
      * @param g drawing panel.
-     * @param searchForAssignedObject should be considered assigned object in cause.
+     * @param searchForAssignedObject should be considered assigned object in
+     * cause.
      */
     protected void setBasicColors(Graphics2D g, Boolean searchForAssignedObject) {
         if (this.joinEdgeController.getSelected()) {
@@ -207,13 +210,13 @@ public class JoinEdgeDrawer {
             }
         }
     }
-    
+
     /**
      * Method for setting start and end point of texts.
+     *
      * @param joins this argument holds join model.
      */
-    protected void setStartEndPointsText(LineModel joins)
-    {
+    protected void setStartEndPointsText(LineModel joins) {
         this.textStartPoint = (joins.getBreakPoints() != null && !joins.getBreakPoints().isEmpty()) ? joins.getBreakPoints().getLeftMiddle() : this.startPoint;
         this.textEndPoint = (joins.getBreakPoints() != null && !joins.getBreakPoints().isEmpty() && joins.getBreakPoints().size() > 1) ? joins.getBreakPoints().getRightMiddle() : this.endPoint;
     }

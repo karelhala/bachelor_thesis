@@ -20,11 +20,16 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
+ * Class that hold every object and it's lines. Objects and lines are stored in
+ * arrayList.
  *
  * @author Karel Hala
  */
 public class PlaceManager extends PlaceModel {
 
+    /**
+     * Basic constructor.
+     */
     public PlaceManager() {
         super();
         this.paneSize = new Dimension(500, 800);
@@ -36,11 +41,9 @@ public class PlaceManager extends PlaceModel {
      * @param selectedObject selectedObject object to be deleted
      */
     public void removePlace(CoordinateModel selectedObject) {
-        if (selectedObject.isRemovable())
-        {
+        if (selectedObject.isRemovable()) {
             removeJoinEdgesWithObject(selectedObject);
-            if (selectedObject.getAssignedObject() != null)
-            {
+            if (selectedObject.getAssignedObject() != null) {
                 (selectedObject.getAssignedObject()).setAssignedObject(null);
             }
             this.objects.remove(selectedObject);
@@ -49,17 +52,16 @@ public class PlaceManager extends PlaceModel {
 
     /**
      * Method for removing join edge from array list.
+     *
      * @param jointEdge jointEdge object to be removed.
      */
     public void removeJoinEdge(LineModel jointEdge) {
-        if (jointEdge.isRemovable())
-        {
+        if (jointEdge.isRemovable()) {
             jointEdge.getFirstObject().removeOutJoin(jointEdge);
             if (jointEdge.getSecondObject() != null) {
                 jointEdge.getSecondObject().removeInJoin(jointEdge);
             }
-            if (jointEdge.getAssignedObject() != null)
-            {
+            if (jointEdge.getAssignedObject() != null) {
                 jointEdge.getAssignedObject().setAssignedObject(null);
             }
             this.joinEdges.remove(jointEdge);
@@ -75,15 +77,13 @@ public class PlaceManager extends PlaceModel {
         Iterator<LineModel> it = joinEdges.iterator();
         while (it.hasNext()) {
             LineModel joinEdge = it.next();
-            if (joinEdge.isRemovable())
-            {
+            if (joinEdge.isRemovable()) {
                 if (joinEdge.getFirstObject().equals(removedObject) || joinEdge.getSecondObject().equals(removedObject)) {
                     joinEdge.getFirstObject().removeOutJoin(joinEdge);
                     if (joinEdge.getSecondObject() != null) {
                         joinEdge.getSecondObject().removeInJoin(joinEdge);
                     }
-                    if (joinEdge.getAssignedObject() != null)
-                    {
+                    if (joinEdge.getAssignedObject() != null) {
                         joinEdge.getAssignedObject().setAssignedObject(null);
                     }
                     it.remove();
@@ -101,14 +101,12 @@ public class PlaceManager extends PlaceModel {
             CoordinateModel coorModel = it.next();
             if (coorModel.getSelected()) {
                 LineModel selectedLine = (LineModel) coorModel;
-                if (selectedLine.isRemovable())
-                {
+                if (selectedLine.isRemovable()) {
                     selectedLine.getFirstObject().removeOutJoin(selectedLine);
                     if (selectedLine.getSecondObject() != null) {
                         selectedLine.getSecondObject().removeInJoin(selectedLine);
                     }
-                    if (selectedLine.getAssignedObject() != null)
-                    {
+                    if (selectedLine.getAssignedObject() != null) {
                         selectedLine.getAssignedObject().setAssignedObject(null);
                     }
                     it.remove();
@@ -120,24 +118,22 @@ public class PlaceManager extends PlaceModel {
             CoordinateModel coorModel = it.next();
             if (coorModel.getSelected() && coorModel.isRemovable()) {
                 removeJoinEdgesWithObject(coorModel);
-                if (coorModel.getAssignedObject() != null)
-                {
+                if (coorModel.getAssignedObject() != null) {
                     (coorModel.getAssignedObject()).setAssignedObject(null);
                 }
                 it.remove();
             }
         }
     }
-    
+
     /**
-     * Method that deletes all lines and objects, that has no assigned object in use case.
+     * Method that deletes all lines and objects, that has no assigned object in
+     * use case.
      */
-    public void deleteAllUnassignedObjects()
-    {
+    public void deleteAllUnassignedObjects() {
         for (Iterator<LineModel> it = joinEdges.iterator(); it.hasNext();) {
             CoordinateModel coorModel = it.next();
-            if (coorModel.isRemovable())
-            {
+            if (coorModel.isRemovable()) {
                 if (coorModel.getAssignedObject() == null) {
                     LineModel selectedLine = (LineModel) coorModel;
                     selectedLine.getFirstObject().removeOutJoin(selectedLine);
@@ -148,11 +144,10 @@ public class PlaceManager extends PlaceModel {
                 }
             }
         }
-        
+
         for (Iterator<CoordinateModel> it = objects.iterator(); it.hasNext();) {
             CoordinateModel coorModel = it.next();
-            if (coorModel.isRemovable())
-            {
+            if (coorModel.isRemovable()) {
                 if (coorModel.getAssignedObject() == null) {
                     removeJoinEdgesWithObject(coorModel);
                     it.remove();
@@ -175,6 +170,7 @@ public class PlaceManager extends PlaceModel {
 
     /**
      * Method for selecting lines that come out of object.
+     *
      * @param place selected place
      */
     public void setSelectedLinesOnObject(CoordinateModel place) {
@@ -186,122 +182,116 @@ public class PlaceManager extends PlaceModel {
             }
         }
     }
-    
-    public CoordinateModel getSelectedObject()
-    {
+
+    /**
+     * Method for fetching selected object, it will loop through objects only.
+     *
+     * @return CoordinateModel if any object is selected.
+     */
+    public CoordinateModel getSelectedObject() {
         for (CoordinateModel oneObject : this.objects) {
-            if (oneObject.getSelected())
-            {
+            if (oneObject.getSelected()) {
                 return oneObject;
             }
         }
         return null;
     }
-    
+
     /**
      * Method for fetching all use case actors.
+     *
      * @return ArrayList<CoordinateModel> of actors
      */
-    public ArrayList<CoordinateModel> getActorsFromUseCase()
-    {
+    public ArrayList<CoordinateModel> getActorsFromUseCase() {
         ArrayList<CoordinateModel> useCasemodels = new ArrayList<>();
         for (CoordinateModel oneObject : this.getObjects()) {
-            if (oneObject instanceof UCActor)
-            {
+            if (oneObject instanceof UCActor) {
                 useCasemodels.add(oneObject);
             }
         }
         return useCasemodels;
     }
-    
-    
+
     /**
      * Method for fetching all use case useCases.
+     *
      * @return ArrayList<CoordinateModel> of useCases
      */
-    public ArrayList<CoordinateModel> getUsecasesFromUseCase()
-    {
+    public ArrayList<CoordinateModel> getUsecasesFromUseCase() {
         ArrayList<CoordinateModel> useCasemodels = new ArrayList<>();
         for (CoordinateModel oneObject : this.getObjects()) {
-            if (oneObject instanceof UCUseCase)
-            {
+            if (oneObject instanceof UCUseCase) {
                 useCasemodels.add(oneObject);
             }
         }
         return useCasemodels;
     }
-    
+
     /**
      * Method for fetching all activities from class diagram.
+     *
      * @return ArrayList<CoordinateModel> of actors
      */
-    public ArrayList<CoordinateModel> getActivitiesFromClassDiagram()
-    {
+    public ArrayList<CoordinateModel> getActivitiesFromClassDiagram() {
         ArrayList<CoordinateModel> classModels = new ArrayList<>();
         for (CoordinateModel oneObject : this.getObjects()) {
-            if (oneObject instanceof CDClass && ((CDClass)oneObject).getTypeOfClass() == BT.ClassType.ACTIVITY)
-            {
+            if (oneObject instanceof CDClass && ((CDClass) oneObject).getTypeOfClass() == BT.ClassType.ACTIVITY) {
                 classModels.add(oneObject);
             }
         }
         return classModels;
     }
-    
-    
+
     /**
      * Method for fetching all actors from class diagram.
+     *
      * @return ArrayList<CoordinateModel> of useCases
      */
-    public ArrayList<CoordinateModel> getActorsFromClassDiagram()
-    {
+    public ArrayList<CoordinateModel> getActorsFromClassDiagram() {
         ArrayList<CoordinateModel> classModels = new ArrayList<>();
         for (CoordinateModel oneObject : this.getObjects()) {
-            if (oneObject instanceof CDClass && ((CDClass)oneObject).getTypeOfClass() == BT.ClassType.ACTOR)
-            {
+            if (oneObject instanceof CDClass && ((CDClass) oneObject).getTypeOfClass() == BT.ClassType.ACTOR) {
                 classModels.add(oneObject);
             }
         }
         return classModels;
     }
-    
+
     /**
-     * Method that creates option pane, that lets you select which object should be connected.
+     * Method that creates option pane, that lets you select which object should
+     * be connected.
+     *
      * @param modelsArray
      * @return int based on selected item
      */
-    public int createOptionPaneWithSelectBox(String[] modelsArray)
-    {
+    public int createOptionPaneWithSelectBox(String[] modelsArray) {
         JPanel dialogPanel = new JPanel(new BorderLayout());
         JComboBox comboBoxObjects = new JComboBox(modelsArray);
         dialogPanel.add(comboBoxObjects);
         int result = JOptionPane.showConfirmDialog(null, dialogPanel,
-                    "Please Select object you want to reactivate from", JOptionPane.OK_CANCEL_OPTION);
-        if (result == JOptionPane.OK_OPTION)
-        {   
+                "Please Select object you want to reactivate from", JOptionPane.OK_CANCEL_OPTION);
+        if (result == JOptionPane.OK_OPTION) {
             if ((JOptionPane.showConfirmDialog(null, "Are you sure you want to reactivate this object with selected object?",
-                    "Please confirm", JOptionPane.YES_NO_OPTION)) == JOptionPane.OK_OPTION)
-            {
+                    "Please confirm", JOptionPane.YES_NO_OPTION)) == JOptionPane.OK_OPTION) {
                 return comboBoxObjects.getSelectedIndex();
             }
-            
+
         }
         return -1;
     }
-    
+
     /**
-     * Find class by it's name.
-     * Returns first class with name className.
+     * Find class by it's name. Returns first class with name className.
+     *
      * @param className string of searched class.
      * @return found class or null.
      */
-    public CDClass getClassByName(String className)
-    {
+    public CDClass getClassByName(String className) {
         for (CoordinateModel coordinateModel : objects) {
-            if (coordinateModel instanceof CDClass && coordinateModel.getName().equals(className))
-            {
+            if (coordinateModel instanceof CDClass && coordinateModel.getName().equals(className)) {
                 return (CDClass) coordinateModel;
             }
-            
+
         }
         return null;
     }

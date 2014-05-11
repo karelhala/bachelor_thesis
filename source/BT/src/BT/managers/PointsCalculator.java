@@ -19,11 +19,30 @@ import java.awt.Point;
  */
 public class PointsCalculator {
 
+    /**
+     * First coordinateModel.
+     */
     private CoordinateModel firstObject;
+    /**
+     * Second coordinateModel.
+     */
     private CoordinateModel secondObject;
+    /**
+     * Distance calculator, for calculating intersection point or distance of
+     * point to line.
+     */
     private DistanceCalculator distanceCalculator;
+    /**
+     * Start point of line.
+     */
     private Point startPoint;
+    /**
+     * End point of line.
+     */
     private Point endPoint;
+    /**
+     * Break points of line.
+     */
     private MyArrayList<Point> breakPoints;
 
     public Point getStartPoint() {
@@ -34,6 +53,16 @@ public class PointsCalculator {
         return endPoint;
     }
 
+    /**
+     * Basic constructor. Every part of class will be set even breakPoints of
+     * line.
+     *
+     * @param firstObject coordinate Model.
+     * @param secondObject coordinate Model.
+     * @param startPoint start point of line.
+     * @param endPoint end point of line.
+     * @param breakPoints break point of line.
+     */
     public PointsCalculator(CoordinateModel firstObject, CoordinateModel secondObject, Point startPoint, Point endPoint, MyArrayList<Point> breakPoints) {
         this.firstObject = firstObject;
         this.secondObject = secondObject;
@@ -44,17 +73,20 @@ public class PointsCalculator {
         calculatePoints();
     }
 
+    /**
+     * Basic constructor. Every part of class will be set except breakPoints.
+     *
+     * @param firstObject coordinate Model.
+     * @param secondObject coordinate Model.
+     * @param startPoint start point of line.
+     * @param endPoint end point of line
+     */
     public PointsCalculator(CoordinateModel firstObject, CoordinateModel secondObject, Point startPoint, Point endPoint) {
-        this.firstObject = firstObject;
-        this.secondObject = secondObject;
-        this.startPoint = startPoint;
-        this.endPoint = endPoint;
-        this.distanceCalculator = new DistanceCalculator();
-        calculatePoints();
+        this(firstObject, secondObject, startPoint, endPoint, null);
     }
 
     /**
-     *
+     * Method wrapping calculating start and end point.
      */
     private void calculatePoints() {
         this.endPoint = calculateEndPoint();
@@ -64,16 +96,17 @@ public class PointsCalculator {
     }
 
     /**
+     * Method for calculating start point of line. First check if first object
+     * is set.
      *
-     * @return
+     * @return start point of line.
      */
     private Point calculateStartPoint() {
         Point pointA = (this.breakPoints != null && !this.breakPoints.isEmpty()) ? this.breakPoints.getFirst() : this.endPoint;
         Point pointB = this.startPoint;
         Point calculatedPoint;
         WidthHeight widthHeight = getObjectWidthAndheight(this.firstObject);
-        if (widthHeight != null)
-        {
+        if (widthHeight != null) {
             calculatedPoint = this.distanceCalculator.getPointOfIntersectionLineSegments(pointA, pointB, widthHeight.width, widthHeight.height);
             if (calculatedPoint != null) {
                 return calculatedPoint;
@@ -83,15 +116,16 @@ public class PointsCalculator {
     }
 
     /**
+     * Method for setting and calculating width and height of object. Result
+     * will be stored in WidthHeight private class.
      *
-     * @param object
-     * @return
+     * @param object object for whitch this will be calculated.
+     * @return WidthHeight object.
      */
     private WidthHeight getObjectWidthAndheight(CoordinateModel object) {
         int width;
         int height;
-        if (object != null)
-        {
+        if (object != null) {
             if (object instanceof UCActor) {
                 UCActor actor = (UCActor) object;
                 width = actor.getMaxWidth();
@@ -106,8 +140,10 @@ public class PointsCalculator {
     }
 
     /**
+     * Method for calculating end point of object. It will check if second
+     * object is not null and by this it will calculate it.
      *
-     * @return
+     * @return Point of actual intersection.
      */
     private Point calculateEndPoint() {
         if (this.secondObject != null) {
@@ -122,17 +158,31 @@ public class PointsCalculator {
     }
 
     /**
-     *
+     * Private class that sootres width and height of model.
      */
     private class WidthHeight {
 
+        /**
+         * Width of object.
+         */
         public int width;
+        /**
+         * Height of object.
+         */
         public int height;
 
+        /**
+         * Basic constructor. Width and height will be set later.
+         */
         public WidthHeight() {
-
         }
 
+        /**
+         * Basic constructor, it will set width and height.
+         *
+         * @param width
+         * @param height
+         */
         public WidthHeight(int width, int height) {
             this.width = width;
             this.height = height;
