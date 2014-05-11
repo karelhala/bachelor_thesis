@@ -18,8 +18,7 @@ public class DistanceCalculator extends DistanceCalculatorModel {
      * Method for calculating distance from point to line segment. First check
      * if point is withing line segment. And then calculate distance.
      *
-     * @param DoublePoint firstPointSegment first point determining line segment
-     * (point A)
+     * @param DoublePoint firstPointSegment first point determining line segment (point A)
      * @param secondPointSegment second point determining line segment (point B)
      * @param DoublePoint point coordinates of clicked point
      * @return double as distance from point to line segment
@@ -28,7 +27,8 @@ public class DistanceCalculator extends DistanceCalculatorModel {
     private double getDistancePointSegment(LineSegment line, DoublePoint point) {
         double LineLength = distanceFromTwoPoints(line.pointA, line.pointB);
         double t = ((point.x - line.pointA.x) * (line.pointB.x - line.pointA.x) + (point.y - line.pointA.y) * (line.pointB.y - line.pointA.y)) / LineLength;
-
+        System.out.println(LineLength);
+        System.out.println(t);
         if (t < 0) {
             return -1;
         }
