@@ -21,12 +21,26 @@ import javax.swing.event.PopupMenuEvent;
 import javax.swing.event.PopupMenuListener;
 
 /**
- *
- * @author Karel
+ * Class for controlling right bottom Panel.
+ * This class controlls right bottom panel in class diagram.
+ * Sets buttons, and fields in right bottom panel.
+ * This class is put between main content controller and it's model 
+ * because it has lot of to set.
+ * 
+ * @author Karel Hala
  */
 abstract public class CDBottomRightController extends CDMainContentModel {
+    /**
+     * Here is stored drawing pane of class diagram. Used mainly for redrawing.
+     */
     private final CDDrawingPane.drawing drawingPane;
     
+    /**
+     * Basic constructor.
+     * Sets diagram places, bottom right content model, attributes panel.
+     * Sets drawing to class diagram drawing pane.
+     * Add buttons with listeners to pane.
+     */
     public CDBottomRightController(DiagramPlacesManager diagramPlaces, BottomRightContentModel bottomRightContent, ClassDiagramAttributesPanel attributesPanel)
     {
         super(diagramPlaces, bottomRightContent, attributesPanel);
@@ -35,7 +49,9 @@ abstract public class CDBottomRightController extends CDMainContentModel {
     }
     
     /**
-     * Method for adding button listeners to every component.
+     * Method for adding buttons with listeners to content pane.
+     * Delete all inactive, reactivate all inactive, add new cariable, 
+     * add new method buttons are set.
      */
     private void addButtonListeners()
     {
@@ -116,6 +132,10 @@ abstract public class CDBottomRightController extends CDMainContentModel {
     
     /**
      * Method for adding new variable to selected class.
+     * When button for add new variable to class is pressed this method is called.
+     * Checks every string and selectbox if has text in it.
+     * Get visibility based on string [-,+,#].
+     * If every field is correct, insert it in class and redraw.
      */
     private void addNewVariableToClass()
     {
@@ -157,6 +177,11 @@ abstract public class CDBottomRightController extends CDMainContentModel {
     
     /**
      * Method for adding new variable to selected class.
+     * If button for inserting new method is pressed, call this method.
+     * Get visibility based on string [-,+,#].
+     * If every field is correct, insert it in class, create new petri net
+     * this petrinet insert in diagramPlaces, insert new non editable and non 
+     * removable place "return" to this new petri net.
      */
     private void addNewmethodToClass()
     {
