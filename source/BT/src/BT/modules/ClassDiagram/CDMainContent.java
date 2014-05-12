@@ -17,15 +17,18 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 /**
- *
+ * Class that creates new drawing pane for class diagram with given places.
  * @author Karel Hala
  */
 public final class CDMainContent extends ContentPaneModel {
 
-    private Dimension area;
+    /**
+     * Basic area of drawing pane.
+     */
+    private final Dimension area;
 
     /**
-     *
+     * Basic constructor. It will create drawing pane, insert places in it and createMainPane.
      * @param places
      */
     public CDMainContent(PlaceManager places) {
@@ -37,7 +40,7 @@ public final class CDMainContent extends ContentPaneModel {
     }
 
     /**
-     *
+     * This will set prefered size, set background color, and insert drawing pane in scrollPane.
      */
     private void createMainPane() {
         CDDrawingPane cdDrawingPane = (CDDrawingPane) this.drawingPane;
@@ -46,44 +49,5 @@ public final class CDMainContent extends ContentPaneModel {
         cdDrawingPane.getDrawing().repaint();
         JScrollPane myScrollPane = new JScrollPane(cdDrawingPane.getDrawing());
         this.mainContentPane.add(myScrollPane, BorderLayout.CENTER);
-    }
-
-    /**
-     *
-     * @param object
-     * @return
-     */
-    private WidthHeight getObjectWidthAndheight(CoordinateModel object) {
-        int objectWidth;
-        int objectHeight;
-        if (object instanceof UCActor) {
-            UCActor actor = (UCActor) object;
-            objectWidth = actor.getMaxWidth();
-            objectHeight = actor.getMaxHeight();
-        } else if (object instanceof UCUseCase) {
-            objectWidth = object.getWidth();
-            objectHeight = object.getHeight();
-        } else {
-            return null;
-        }
-        return new WidthHeight(objectWidth, objectHeight);
-    }
-
-    /**
-     *
-     */
-    private class WidthHeight {
-
-        public int width;
-        public int height;
-
-        public WidthHeight() {
-
-        }
-
-        public WidthHeight(int width, int height) {
-            this.width = width;
-            this.height = height;
-        }
     }
 }
