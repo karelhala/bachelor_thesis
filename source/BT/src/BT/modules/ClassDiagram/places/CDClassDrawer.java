@@ -17,17 +17,29 @@ import java.awt.Point;
 import java.util.ArrayList;
 
 /**
- *
+ * Drawer for classes in class diagram.
+ * It draws class, it's variables and methods and it's name.
  * @author Karel Hala
  */
 public class CDClassDrawer extends CDClassModel{
     
+    /**
+     * Basic constructor, calls parent with x and y.
+     */
     public CDClassDrawer(int x, int y)       
     {
         super(x,y);
     }
+    
     /**
-     *
+     * Draw class on drawing panel.
+     * Set font to Arial, bold and text size.
+     * If no in or out join is found set stroke to dashed.
+     * Draw filled class rect.
+     * Draw line above methods and below variables.
+     * Draw variables and methods.
+     * Resize the size of class based on size of variables and methods.
+     * 
      * @param g
      */
     public void drawClass(Graphics2D g) {
@@ -69,11 +81,12 @@ public class CDClassDrawer extends CDClassModel{
     }
     
     /**
-     *
-     * @param g
-     * @param attribues
-     * @param nameLinePoint
-     * @param fm
+     * Method for drawing attributes, either variables or methods.
+     * 
+     * @param g Graphics2D that will have these attributes.
+     * @param attribues either variables or methods.
+     * @param nameLinePoint startPoint.
+     * @param fm fontMetrics.
      */
     protected void drawAttributes(Graphics2D g, ArrayList<Attribute> attribues, Point nameLinePoint, FontMetrics fm) {
         for (Attribute attribute : attribues) {
@@ -82,9 +95,10 @@ public class CDClassDrawer extends CDClassModel{
     }
 
     /**
-     *
-     * @param fm
-     * @return
+     * Method for fetching height based on name, variables and methods.
+     * 
+     * @param fm FontMetrics.
+     * @return int prefered height.
      */
     protected int getMaximumHeight(FontMetrics fm) {
         int textheight = fm.getHeight();
@@ -93,9 +107,9 @@ public class CDClassDrawer extends CDClassModel{
     }
 
     /**
-     *
-     * @param fm
-     * @return
+     * Method for fetching width based on name, variables and methods.
+     * @param fm FontMetrics.
+     * @return int prefered width.
      */
     protected int getMaximumWidth(FontMetrics fm) {
         int shapewidth = fm.stringWidth(this.name);
@@ -107,10 +121,11 @@ public class CDClassDrawer extends CDClassModel{
     }
 
     /**
-     *
-     * @param attribues
-     * @param fm
-     * @return
+     * Method for fetching length of longest attribute.
+     * 
+     * @param attribues variables or methods.
+     * @param fm FontMetrics.
+     * @return int as maximum length.
      */
     protected int getMaximumStringLengthOfAttribute(ArrayList<Attribute> attribues, FontMetrics fm) {
         int maxWidth = 0;
