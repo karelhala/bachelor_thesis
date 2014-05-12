@@ -18,16 +18,24 @@ import java.awt.RenderingHints;
 import javax.swing.JPanel;
 
 /**
- *
+ * Class for drawing every object of class diagram to drawing pane.
+ * It has one variable from parrent, which is newLine, 
+ * this draws newLine differently, because it is not stored in places, yet.
+ * 
  * @author Karel Hala
  */
 public class CDDrawingPane extends DrawingPaneModel {
 
+    /**
+     * Draing panel, extends Jpenel.
+     */
     private final drawing drawPane;
 
     /**
-     *
-     * @param CDplaces
+     * Basic contructor.
+     * It calls parents constructor and creates new drawingPanel.
+     * 
+     * @param CDplaces PlaceManager with each class diagram place (object and line).
      */
     public CDDrawingPane(PlaceManager CDplaces) {
         super(CDplaces);
@@ -35,17 +43,23 @@ public class CDDrawingPane extends DrawingPaneModel {
     }
 
     /**
-     *
+     * Drawing panel, that displays each object of class diagram.
+     * Extends from DrawingPanel, which extends from Jpanel.
      */
     public class drawing extends DrawingJpanel {
 
+        /**
+         * Constructor, that calls DrawingJpanel.
+         */
         public drawing() {
             super();
         }
 
         /**
-         *
-         * @param g1
+         * Method for painting each object of class diagram.
+         * New line is drawn with green color.
+         * Set's antialiasing.
+         * @param g1 Graphics.
          */
         @Override
         protected void paintComponent(Graphics g1) {
@@ -72,8 +86,8 @@ public class CDDrawingPane extends DrawingPaneModel {
     }
 
     /**
-     *
-     * @return
+     * Get drawing of this class, it is for redrawing.
+     * @return classDiagram drawing.
      */
     public CDDrawingPane.drawing getDrawing() {
         return drawPane;
