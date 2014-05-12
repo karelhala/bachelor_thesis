@@ -17,39 +17,49 @@ import java.awt.Color;
 import java.util.ArrayList;
 
 /**
- *
+ * This class stores all data about class model in class diagram.
  * @author Karel Hala
  */
 public class CDClassModel extends CoordinateModel{
     /**
-     *
+     * Color of class background.
      */
     protected Color background;
 
     /**
-     *
+     * Class variables are stored in this.
      */
     protected ArrayList<Attribute> variables;
 
     /**
-     *
+     * Methods for this class are here.
      */
     protected ArrayList<Attribute> methods;
 
     /**
-     *
+     * Defines types of class.
      */
     protected BT.ClassType typeOfClass;
     
     /**
-     * 
+     * Every class has petri net network.
      */
     protected PetriNetPlaceManager pnNetwork;
     
     /**
-     *
-     * @param x
-     * @param y
+     * Basic constructor.
+     * Selected color : RED.
+     * Basic color : BLACK.
+     * Normal color : basicColor.
+     * Name : "Default".
+     * TextSize : 15.
+     * Background : Color(240, 209, 136).
+     * HowerColor : GREEN.
+     * New variables, method, inJoins, outJoins, pnNetwork.
+     * TypeOfClass : NONE.
+     * 
+     * @param x coordinate X.
+     * @param y coordinate Y.
      */
     public CDClassModel(int x, int y) {
         super();
@@ -70,53 +80,99 @@ public class CDClassModel extends CoordinateModel{
         this.pnNetwork = new PetriNetPlaceManager();
     }
     
+    /**
+     * Get type of class [Actor, Activity, None, Interface].
+     * 
+     * @return ClassType
+     */
     public ClassType getTypeOfClass() {
         return typeOfClass;
     }
-
+    
+    /**
+     * Set class type [Actor, Activity, None, Interface].
+     * 
+     * @param typeOfClass ClassType
+     */
     public void setTypeOfClass(ClassType typeOfClass) {
         this.typeOfClass = typeOfClass;
     }
-    
+
+    /**
+     * Get petrinet network for this class.
+     * 
+     * @return PetriNetPlaceManager.
+     */
     public PetriNetPlaceManager getPnNetwork()
     {
         return this.pnNetwork;
     }
 
+    /**
+     * Get class's variables (No parent's variables)
+     * 
+     * @return ArrayList<Attribute> of variables.
+     */
     public ArrayList<Attribute> getVariables() {
         return variables;
     }
 
+    /**
+     *  Get class's methods (No parent's methods).
+     * 
+     * @return ArrayList<Attribute> of methods.
+     */
     public ArrayList<Attribute> getMethods() {
         return methods;
     }
     
     /**
-     *
-     * @param newVariable
+     * Add new class variable.
+     * 
+     * @param newVariable Attribute.
      */
     public void addNewVariable(Attribute newVariable) {
         this.variables.add(newVariable);
     }
 
     /**
-     *
-     * @param newMethod
+     * Add new method for this class.
+     * 
+     * @param newMethod Attribute.
      */
     public void addNewMethod(Attribute newMethod) {
         this.methods.add(newMethod);
     }
-    
+
+    /**
+     * Remove method from class.
+     * Method is remover based on method argument.
+     * 
+     * @param Attribute this method will be removed.
+     */
     public void removeMethod(Attribute method)
     {
         this.methods.remove(method);
     }
-    
+
+    /**
+     * Remove variable from class.
+     * Variable is remover based on method argument.
+     * 
+     * @param Attribute this variable will be removed.
+     */
     public void removeVariable(Attribute variable)
     {
         this.variables.remove(variable);
     }
-    
+
+    /**
+     * Remove either method or class variable from class.
+     * It will search in variables and methods and if method is found with this name, remove it.
+     * Else remove variable.
+     * 
+     * @param remmovingAttr method or variable to be removed.
+     */
     public void removeAttribute(Attribute remmovingAttr)
     {
         if (this.methods.indexOf(remmovingAttr) != -1)
