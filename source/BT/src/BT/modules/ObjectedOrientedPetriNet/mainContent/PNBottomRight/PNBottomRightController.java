@@ -66,11 +66,18 @@ public class PNBottomRightController extends PNBottomRightModel {
                 }
             }
         }
-        if (this.selectedClass.loadClassAttributes().size() == 0) {
+        if (this.selectedClass == null || this.selectedClass.loadClassAttributes().size() == 0  ) {
             this.basicPetrinetPanel.getClassAttributes().setEnabled(false);
         } else {
             this.basicPetrinetPanel.getClassAttributes().setEnabled(true);
         }
+        
+        if (this.selectedMethod == null || this.selectedMethod.getObjectMethod() == null || this.selectedMethod.getObjectMethod().getAttributes().size() == 0) {
+            this.basicPetrinetPanel.getClassAttributes().setEnabled(false);
+        } else {
+            this.basicPetrinetPanel.getClassAttributes().setEnabled(true);
+        }
+            
         return this;
     }
 
