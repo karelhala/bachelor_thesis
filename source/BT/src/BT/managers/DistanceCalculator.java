@@ -27,8 +27,6 @@ public class DistanceCalculator extends DistanceCalculatorModel {
     private double getDistancePointSegment(LineSegment line, DoublePoint point) {
         double LineLength = distanceFromTwoPoints(line.pointA, line.pointB);
         double t = ((point.x - line.pointA.x) * (line.pointB.x - line.pointA.x) + (point.y - line.pointA.y) * (line.pointB.y - line.pointA.y)) / LineLength;
-        System.out.println(LineLength);
-        System.out.println(t);
         if (t < 0) {
             return -1;
         }

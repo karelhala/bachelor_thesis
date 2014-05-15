@@ -83,7 +83,6 @@ public class ExportToEps extends ExportModel{
                     cdGraphics.flush();
                     cdGraphics.close();
                 }
-                System.out.println(this.exportedPlaces.getPnPlaces().size());
                 if (this.exportedPlaces.getPnPlaces().size()>0)
                 {
                     for (PlaceManager onePetriNet : this.exportedPlaces.getPnPlaces()) {

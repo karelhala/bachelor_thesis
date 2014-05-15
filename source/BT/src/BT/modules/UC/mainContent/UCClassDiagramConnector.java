@@ -68,9 +68,18 @@ public class UCClassDiagramConnector {
      */
     public void createNewClassJoinEdge()
     {
-        CDJoinEdgeController newClassJoin = new CDJoinEdgeController(this.newLine.getFirstObject().getAssignedObject(), this.newLine.getSecondObject().getAssignedObject());
         UCJoinEdgeController useCaseJoin = (UCJoinEdgeController) this.newLine;
         BT.UCLineType useCaseLineType = useCaseJoin.getJoinEdgeType();
+        CDJoinEdgeController newClassJoin;
+        if (useCaseLineType == BT.UCLineType.INCLUDE)
+        {
+            newClassJoin = new CDJoinEdgeController(this.newLine.getSecondObject().getAssignedObject(), this.newLine.getFirstObject().getAssignedObject());
+        }
+        else
+        {
+            newClassJoin = new CDJoinEdgeController(this.newLine.getFirstObject().getAssignedObject(), this.newLine.getSecondObject().getAssignedObject());
+        }
+        
         if (useCaseLineType == BT.UCLineType.ASSOCIATION)
         {
             newClassJoin.setJoinEdgeType(BT.CDLineType.ASSOCIATION);
