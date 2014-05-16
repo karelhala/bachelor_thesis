@@ -6,7 +6,9 @@
 package BT.managers;
 
 import BT.models.CoordinateModel;
+import BT.models.LineModel;
 import java.awt.Dimension;
+import java.awt.Point;
 
 /**
  * Class for recalculating drawing pane.
@@ -34,6 +36,31 @@ public class RecalculatePaneSize {
         }
         if (newObject.getY() > size.height) {
             size.height = newObject.getY();
+        }
+        return size;
+    }
+    
+    /**
+     * 
+     * @param newLine
+     * @param size
+     * @return 
+     */
+    public static Dimension recalculateSizeOfPaneByLine(LineModel newLine, Dimension size)
+    {
+        if (newLine.getX() > size.width) {
+            size.width = newLine.getX();
+        }
+        if (newLine.getY() > size.height) {
+            size.height = newLine.getY();
+        }
+        for (Point oneBreak : newLine.getBreakPoints()) {
+            if (oneBreak.getX() > size.width) {
+                size.width = newLine.getX();
+            }
+            if (oneBreak.getY() > size.height) {
+                size.height = newLine.getY();
+            }
         }
         return size;
     }

@@ -6,6 +6,7 @@
 package BT.modules.ObjectedOrientedPetriNet;
 
 import BT.managers.DiagramPlacesManager;
+import BT.modules.ObjectedOrientedPetriNet.mainContent.PNDrawingPane;
 import BT.modules.ObjectedOrientedPetriNet.mainContent.PNMainContentController;
 import BT.modules.ObjectedOrientedPetriNet.mainContent.PNMainContentInitializer;
 import GUI.BasicPetrinetPanel;
@@ -60,7 +61,7 @@ public class PNContentController {
 
         PNLeftBottomContent pnLeftBottom = new PNLeftBottomContent(pnMain);
         pnLeftBottom.setListeners();
-
+        
         this.pnContent.setCenterPane(this.pnMain.getMainContent().getMainContentPane());
         this.pnContent.setLeftTopPane(cdLeftTop.getMainContentPane());
         this.pnContent.setLeftBottomPane(pnLeftBottom.getMainContentPane());

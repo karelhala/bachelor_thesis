@@ -53,17 +53,21 @@ public class UCDrawingPane extends DrawingPaneModel {
             Graphics2D g = (Graphics2D) g1.create();
             g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
             if (newLine != null) {
+                recalculateSize(newLine);
                 g.setColor(Color.GREEN);
                 ((UCJoinEdgeController) newLine).drawJoinEdge(g);
 
             }
 
             for (LineModel joinEdge : places.getJoinEdges()) {
+                recalculateSize(joinEdge);
+                places.setPaneSize(this.getSize());
                 ((UCJoinEdgeController) joinEdge).drawJoinEdge(g);
             }
 
             for (CoordinateModel object : places.getObjects()) {
                 recalculateSize(object);
+                places.setPaneSize(this.getSize());
                 if (object instanceof UCActor) {
                     ((UCActor) object).drawActor(g);
                 } else if (object instanceof UCUseCase) {

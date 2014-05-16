@@ -5,6 +5,7 @@
 package BT.modules.UC;
 
 import BT.managers.DiagramPlacesManager;
+import BT.modules.UC.mainContent.UCDrawingPane;
 import BT.modules.UC.mainContent.UCMainContentController;
 import GUI.BottomRightContentModel;
 import GUI.MainContentModel;

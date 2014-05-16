@@ -67,16 +67,20 @@ public class CDDrawingPane extends DrawingPaneModel {
             Graphics2D g = (Graphics2D) g1.create();
             g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
             if (newLine != null) {
+                recalculateSize(newLine);
                 g.setColor(Color.GREEN);
                 ((CDJoinEdgeController) newLine).drawJoinEdge(g);
             }
 
             for (LineModel joinEdge : places.getJoinEdges()) {
+                recalculateSize(joinEdge);
+                places.setPaneSize(this.getSize());
                 ((CDJoinEdgeController) joinEdge).drawJoinEdge(g);
             }
 
             for (CoordinateModel drawnClass : places.getObjects()) {
                 recalculateSize(drawnClass);
+                places.setPaneSize(this.getSize());
                 if (drawnClass instanceof CDClass)
                 {
                     ((CDClass) drawnClass).drawClass(g);
