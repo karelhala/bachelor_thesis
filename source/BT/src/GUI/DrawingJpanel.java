@@ -8,6 +8,7 @@ package GUI;
 
 import BT.managers.RecalculatePaneSize;
 import BT.models.CoordinateModel;
+import java.awt.Dimension;
 import javax.swing.JPanel;
 
 /**
@@ -20,7 +21,9 @@ public class DrawingJpanel extends JPanel{
     * @param newObject
     */
     protected void recalculateSize(CoordinateModel newObject) {
-        this.setPreferredSize(RecalculatePaneSize.recalculateSizeofPaneOnObject(newObject, this.getSize()));
+        Dimension calculatedSize = RecalculatePaneSize.recalculateSizeofPaneOnObject(newObject, this.getSize());
+        this.setPreferredSize(calculatedSize);
+        this.setSize(calculatedSize);
         this.revalidate();
     }
 }
