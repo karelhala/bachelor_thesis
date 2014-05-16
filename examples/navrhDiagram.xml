@@ -1229,7 +1229,7 @@
                                                                       <x>0</x>
                                                                       <y>0</y>
                                                                       <basicColor reference="../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../BT.modules.ClassDiagram.places.joinEdge.CDJoinEdgeController/basicColor"/>
-                                                                      <color reference="../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../BT.modules.ClassDiagram.places.joinEdge.CDJoinEdgeController/howerColor"/>
+                                                                      <color reference="../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../BT.modules.ClassDiagram.places.joinEdge.CDJoinEdgeController/basicColor"/>
                                                                       <selectedColor reference="../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../BT.modules.ClassDiagram.places.joinEdge.CDJoinEdgeController/selectedColor"/>
                                                                       <width>0</width>
                                                                       <height>0</height>
@@ -3571,7 +3571,7 @@
                                                                         <y>58</y>
                                                                         <name>DiagramPlacesManager</name>
                                                                         <basicColor reference="../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../basicColor"/>
-                                                                        <color reference="../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../basicColor"/>
+                                                                        <color reference="../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../howerColor"/>
                                                                         <selectedColor reference="../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../selectedColor"/>
                                                                         <width>263</width>
                                                                         <height>82</height>
