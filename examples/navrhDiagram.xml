@@ -21,7 +21,7 @@
   <cdPlaces>
     <paneSize>
       <width>1686</width>
-      <height>929</height>
+      <height>904</height>
     </paneSize>
     <objects>
       <BT.modules.ClassDiagram.places.CDClass>
@@ -452,7 +452,7 @@
               <x>0</x>
               <y>0</y>
               <basicColor reference="../../BT.modules.ClassDiagram.places.joinEdge.CDJoinEdgeController/basicColor"/>
-              <color reference="../../BT.modules.ClassDiagram.places.joinEdge.CDJoinEdgeController/howerColor"/>
+              <color reference="../../BT.modules.ClassDiagram.places.joinEdge.CDJoinEdgeController/basicColor"/>
               <selectedColor reference="../../BT.modules.ClassDiagram.places.joinEdge.CDJoinEdgeController/selectedColor"/>
               <width>0</width>
               <height>0</height>
@@ -478,7 +478,7 @@
                 <objectHeight>0</objectHeight>
                 <x>666</x>
                 <y>283</y>
-                <name>PetriNetcontroller</name>
+                <name>PetriNetController</name>
                 <basicColor reference="../../../../../basicColor"/>
                 <color reference="../../../../../basicColor"/>
                 <selectedColor reference="../../../../../selectedColor"/>
@@ -1198,11 +1198,11 @@
                                                                 <objectHeight>0</objectHeight>
                                                                 <x>138</x>
                                                                 <y>569</y>
-                                                                <name>ClassdiagramController</name>
+                                                                <name>ClassDiagramController</name>
                                                                 <basicColor reference="../../../../../../../../../../../../../../../../../../../../../../../../../../../../../basicColor"/>
                                                                 <color reference="../../../../../../../../../../../../../../../../../../../../../../../../../../../../../basicColor"/>
                                                                 <selectedColor reference="../../../../../../../../../../../../../../../../../../../../../../../../../../../../../selectedColor"/>
-                                                                <width>178</width>
+                                                                <width>179</width>
                                                                 <height>100</height>
                                                                 <selected>false</selected>
                                                                 <howerColor reference="../../../../../../../../../../../../../../../../../../../../../../../../../../../../../howerColor"/>
@@ -1229,7 +1229,7 @@
                                                                       <x>0</x>
                                                                       <y>0</y>
                                                                       <basicColor reference="../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../BT.modules.ClassDiagram.places.joinEdge.CDJoinEdgeController/basicColor"/>
-                                                                      <color reference="../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../BT.modules.ClassDiagram.places.joinEdge.CDJoinEdgeController/basicColor"/>
+                                                                      <color reference="../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../BT.modules.ClassDiagram.places.joinEdge.CDJoinEdgeController/howerColor"/>
                                                                       <selectedColor reference="../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../BT.modules.ClassDiagram.places.joinEdge.CDJoinEdgeController/selectedColor"/>
                                                                       <width>0</width>
                                                                       <height>0</height>
@@ -1589,15 +1589,15 @@
                                                                                 </dashedStroke>
                                                                                 <objectWidth>0</objectWidth>
                                                                                 <objectHeight>0</objectHeight>
-                                                                                <x>501</x>
-                                                                                <y>765</y>
+                                                                                <x>509</x>
+                                                                                <y>758</y>
                                                                                 <name>Method</name>
                                                                                 <basicColor reference="../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../BT.modules.ClassDiagram.places.joinEdge.CDJoinEdgeController/basicColor"/>
                                                                                 <color reference="../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../BT.modules.ClassDiagram.places.joinEdge.CDJoinEdgeController/basicColor"/>
                                                                                 <selectedColor reference="../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../BT.modules.ClassDiagram.places.joinEdge.CDJoinEdgeController/selectedColor"/>
                                                                                 <width>221</width>
                                                                                 <height>46</height>
-                                                                                <selected>true</selected>
+                                                                                <selected>false</selected>
                                                                                 <howerColor reference="../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../BT.modules.ClassDiagram.places.joinEdge.CDJoinEdgeController/secondObject/howerColor"/>
                                                                                 <inJoins serialization="custom">
                                                                                   <unserializable-parents/>
@@ -1674,8 +1674,8 @@
                                                                               </breakPoints>
                                                                               <startX>401</startX>
                                                                               <startY>625</startY>
-                                                                              <endX>484</endX>
-                                                                              <endY>742</endY>
+                                                                              <endX>489</endX>
+                                                                              <endY>735</endY>
                                                                               <noParentLine reference="../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../BT.modules.ClassDiagram.places.joinEdge.CDJoinEdgeController/noParentLine"/>
                                                                               <tolerance>8.0</tolerance>
                                                                               <joinEdgeType>AGGREGATION</joinEdgeType>
@@ -2905,7 +2905,7 @@
                                                         <color reference="../../../../../../../../../../../../../../../../../../../../../../../../../basicColor"/>
                                                         <selectedColor reference="../../../../../../../../../../../../../../../../../../../../../../../../../selectedColor"/>
                                                         <width>133</width>
-                                                        <height>64</height>
+                                                        <height>100</height>
                                                         <selected>false</selected>
                                                         <howerColor reference="../../../../../../../../../../../../../../../../../../../../../../../../../howerColor"/>
                                                         <inJoins serialization="custom">
@@ -3189,8 +3189,8 @@
                                                               </breakPoints>
                                                               <startX>453</startX>
                                                               <startY>275</startY>
-                                                              <endX>562</endX>
-                                                              <endY>364</endY>
+                                                              <endX>540</endX>
+                                                              <endY>346</endY>
                                                               <noParentLine reference="../../../../../../../../../../../../../../../../../../../../../../../../../../BT.modules.ClassDiagram.places.joinEdge.CDJoinEdgeController/noParentLine"/>
                                                               <tolerance>8.0</tolerance>
                                                               <joinEdgeType>GENERALIZATION</joinEdgeType>
@@ -3573,7 +3573,7 @@
                                                                         <basicColor reference="../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../basicColor"/>
                                                                         <color reference="../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../basicColor"/>
                                                                         <selectedColor reference="../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../selectedColor"/>
-                                                                        <width>302</width>
+                                                                        <width>263</width>
                                                                         <height>82</height>
                                                                         <selected>false</selected>
                                                                         <howerColor reference="../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../howerColor"/>
@@ -3658,18 +3658,18 @@
                                                                         <variables>
                                                                           <BT.managers.CD.Attribute>
                                                                             <visibility>PRIVATE</visibility>
-                                                                            <name>useCases</name>
-                                                                            <type>ArrayLise&lt;PlaceManager&gt;</type>
+                                                                            <name>PNPlace</name>
+                                                                            <type>ArrayList&lt;Placemanager&gt;</type>
                                                                           </BT.managers.CD.Attribute>
                                                                           <BT.managers.CD.Attribute>
                                                                             <visibility>PRIVATE</visibility>
-                                                                            <name>classDiagram</name>
-                                                                            <type>ArrayLise&lt;PlaceManager&gt;</type>
+                                                                            <name>UCPlace</name>
+                                                                            <type>PlaceManager</type>
                                                                           </BT.managers.CD.Attribute>
                                                                           <BT.managers.CD.Attribute>
                                                                             <visibility>PRIVATE</visibility>
-                                                                            <name>petriNets</name>
-                                                                            <type>ArrayLise&lt;PlaceManager&gt;</type>
+                                                                            <name>CDPlace</name>
+                                                                            <type>PlaceManager</type>
                                                                           </BT.managers.CD.Attribute>
                                                                         </variables>
                                                                         <methods/>
@@ -3706,7 +3706,7 @@
                                                                           <int>0</int>
                                                                         </list>
                                                                       </breakPoints>
-                                                                      <startX>353</startX>
+                                                                      <startX>333</startX>
                                                                       <startY>59</startY>
                                                                       <endX>501</endX>
                                                                       <endY>61</endY>
@@ -4348,7 +4348,7 @@
                                                                 <color reference="../../../../../../../../../../../../../../../../../../../../../../../../../../../../../basicColor"/>
                                                                 <selectedColor reference="../../../../../../../../../../../../../../../../../../../../../../../../../../../../../selectedColor"/>
                                                                 <width>174</width>
-                                                                <height>46</height>
+                                                                <height>82</height>
                                                                 <selected>false</selected>
                                                                 <howerColor reference="../../../../../../../../../../../../../../../../../../../../../../../../../../../../../howerColor"/>
                                                                 <inJoins serialization="custom">
@@ -4437,7 +4437,18 @@
                                                                   <blue>136</blue>
                                                                   <alpha>255</alpha>
                                                                 </background>
-                                                                <variables/>
+                                                                <variables>
+                                                                  <BT.managers.CD.Attribute>
+                                                                    <visibility>PRIVATE</visibility>
+                                                                    <name>action</name>
+                                                                    <type>String</type>
+                                                                  </BT.managers.CD.Attribute>
+                                                                  <BT.managers.CD.Attribute>
+                                                                    <visibility>PRIVATE</visibility>
+                                                                    <name>guard</name>
+                                                                    <type>String</type>
+                                                                  </BT.managers.CD.Attribute>
+                                                                </variables>
                                                                 <methods>
                                                                   <BT.managers.CD.Method>
                                                                     <visibility>PUBLIC</visibility>
@@ -4582,8 +4593,8 @@
                                                                   </java.awt.Point>
                                                                 </list>
                                                               </breakPoints>
-                                                              <startX>952</startX>
-                                                              <startY>404</startY>
+                                                              <startX>951</startX>
+                                                              <startY>386</startY>
                                                               <endX>667</endX>
                                                               <endY>395</endY>
                                                               <noParentLine reference="../../../../../../../../../../../../../../../../../../../../../../../../../../BT.modules.ClassDiagram.places.joinEdge.CDJoinEdgeController/noParentLine"/>
@@ -4613,13 +4624,23 @@
                                                         </background>
                                                         <variables>
                                                           <BT.managers.CD.Attribute>
-                                                            <visibility>PRIVATE</visibility>
+                                                            <visibility>PROTECTED</visibility>
                                                             <name>x</name>
                                                             <type>int</type>
                                                           </BT.managers.CD.Attribute>
                                                           <BT.managers.CD.Attribute>
-                                                            <visibility>PRIVATE</visibility>
+                                                            <visibility>PROTECTED</visibility>
                                                             <name>y</name>
+                                                            <type>int</type>
+                                                          </BT.managers.CD.Attribute>
+                                                          <BT.managers.CD.Attribute>
+                                                            <visibility>PROTECTED</visibility>
+                                                            <name>width</name>
+                                                            <type>int</type>
+                                                          </BT.managers.CD.Attribute>
+                                                          <BT.managers.CD.Attribute>
+                                                            <visibility>PROTECTED</visibility>
+                                                            <name>height</name>
                                                             <type>int</type>
                                                           </BT.managers.CD.Attribute>
                                                         </variables>
