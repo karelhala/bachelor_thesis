@@ -98,6 +98,20 @@ public class PNBottomLeftController {
         return null;
     }
 
+    /**
+     * Method for setting all method labels to false and repaint their color.
+     */
+    public void setAllMethodsNotSelectedAndRepaintAllMethods()
+    {
+        for (MethodLabel methodLabel : methodLabels) {
+            methodLabel.setSelected(false);
+            methodLabel.setBasicColor();
+        }
+    }
+    /**
+     * 
+     * @param drawnClass 
+     */
     public void setDrawnClass(MethodLabel drawnClass) {
         this.drawnClass = drawnClass;
     }

@@ -150,9 +150,9 @@ abstract public class PNMainContentInitializer extends PNMainContentModel {
 
             @Override
             public void mouseClicked(MouseEvent e) {
-                if (bottomLeftController.getSelectedmethodLabel() != null) {
-                    bottomLeftController.getSelectedmethodLabel().selectAndChangeColor(Boolean.FALSE);
-                }
+                bottomLeftController.setAllMethodsNotSelectedAndRepaintAllMethods();
+                bottomLeftController.getDrawnClass().setSelected(false);
+                bottomLeftController.getDrawnClass().setBasicColor();
                 listenedMethodLabel.selectAndChangeColor(Boolean.TRUE);
                 bottomRightController.setSelectedMethod(listenedMethodLabel);
                 bottomRightController.loadAttributesToComboBox();

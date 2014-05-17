@@ -56,22 +56,42 @@ public class MethodLabel extends JLabel {
         this.selected = false;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public Method getObjectMethod() {
         return objectMethod;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public CDClass getSelectedClass() {
         return selectedClass;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public Boolean isSelected() {
         return selected;
     }
 
+    /**
+     * 
+     * @param selected 
+     */
     public void setSelected(Boolean selected) {
         this.selected = selected;
     }
 
+    /**
+     * 
+     * @param selected 
+     */
     public void selectAndChangeColor(Boolean selected) {
         setSelected(selected);
         setBasicColor();
