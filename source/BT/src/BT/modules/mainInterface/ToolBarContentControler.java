@@ -40,6 +40,7 @@ public class ToolBarContentControler {
     private ActionListener saveAction;
     private ActionListener saveAsAction;
     private ActionListener exitAction;
+    private ActionListener helpAction;
     private final ArrayList<DiagramPlacesManager> diagramPlaces;
 
     /**
@@ -60,9 +61,10 @@ public class ToolBarContentControler {
         JButton openButton = toolBarcontent.addNewButton("Open File", "openFile.png");
         JButton saveButton = toolBarcontent.addNewButton("Save File", "saveFile.png");
         JButton saveAsButton = toolBarcontent.addNewButton("Save File As..", "saveAs.png");
-        JButton exportEps = toolBarcontent.addNewButton("Export to Eps");
+        JButton exportEps = toolBarcontent.addNewButton("Export to Eps", "printEps.png");
         JButton exportPdf = toolBarcontent.addNewButton("Export to PDF");
         JButton exportXml = toolBarcontent.addNewButton("Export to XML");
+        JButton help = toolBarcontent.addNewButton("Help");
         JButton exit = toolBarcontent.addNewButton("Exit", "exitApplication.png");
         
         NewFileButton.addActionListener(newFileAction);
@@ -73,6 +75,7 @@ public class ToolBarContentControler {
         exportEps.addActionListener(exportEpsAction);
         exportPdf.addActionListener(exportPdfAction);
         exportXml.addActionListener(exportXmlAction);
+        exportXml.addActionListener(helpAction);
         exit.addActionListener(exitAction);
         
         myPanel.add(NewFileButton);
@@ -82,8 +85,7 @@ public class ToolBarContentControler {
         myPanel.add(Closebutton);
         myPanel.add(new JSeparator(SwingConstants.VERTICAL));
         myPanel.add(exportEps);
-        myPanel.add(exportPdf);
-        myPanel.add(exportXml);
+        myPanel.add(help);
         myPanel.add(new JSeparator(SwingConstants.VERTICAL));
         myPanel.add(exit);
         this.toolBarcontent.setToolBarPane(myPanel);
@@ -252,6 +254,14 @@ public class ToolBarContentControler {
     
     public ArrayList<DiagramPlacesManager> getDiagramPlaces() {
         return diagramPlaces;
+    }
+
+    public ActionListener getHelpAction() {
+        return helpAction;
+    }
+
+    public void setHelpAction(ActionListener helpAction) {
+        this.helpAction = helpAction;
     }
     
     /**

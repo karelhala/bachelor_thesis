@@ -70,7 +70,7 @@ public class BottomLeftContentModel {
             public void mouseClicked(MouseEvent e) {
                 if (e.getClickCount() % 2 == 0) {
                     if (insertedAttribute instanceof Method) {
-                        String result = JOptionPane.showInputDialog("Please Enter attribues delimtered by column.", ((Method) insertedAttribute).getAttributesAsString());
+                        String result = JOptionPane.showInputDialog("Please Enter attribues delimtered by comma.", ((Method) insertedAttribute).getAttributesAsString());
                         if (result != null) {
                             result = result.replaceAll("\\s+","");
                             for (String oneAttribute : result.split(",")) {
