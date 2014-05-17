@@ -109,8 +109,8 @@ public class ButtonPaneModel extends ContentPaneModel implements ToggleButtonsIn
     }
 
     /**
-     * Untoggle other buttons if one button is selected. It will untoggle other
-     * buttons in group if one of group's button is selected.
+     * Untoggle other buttons if one button is selected. It will untoggle other buttons in group if one of group's
+     * button is selected.
      *
      * @param selectedButton button that has been selected.
      */
@@ -119,6 +119,29 @@ public class ButtonPaneModel extends ContentPaneModel implements ToggleButtonsIn
             JToggleButton toggleButton = (JToggleButton) comp;
             if (selectedButton != toggleButton) {
                 toggleButton.setSelected(false);
+            }
+        }
+    }
+
+    /**
+     * Set everz button to not selected.
+     */
+    public void setAllButtonsDiselected() {
+        for (Component comp : this.mainContentPane.getComponents()) {
+            if (comp instanceof JToggleButton) {
+                ((JToggleButton) comp).setSelected(false);
+            }
+        }
+    }
+    
+    /**
+     * If any button is set to disabled, this method will unset all disabled buttons.
+     */
+    public void setAllButtonsAvailable()
+    {
+        for (Component comp : this.mainContentPane.getComponents()) {
+            if (comp instanceof JToggleButton) {
+                ((JToggleButton) comp).setEnabled(true);
             }
         }
     }

@@ -62,8 +62,8 @@ public class ToolBarContentControler {
         JButton saveButton = toolBarcontent.addNewButton("Save File", "saveFile.png");
         JButton saveAsButton = toolBarcontent.addNewButton("Save File As..", "saveAs.png");
         JButton exportEps = toolBarcontent.addNewButton("Export to Eps", "printEps.png");
-        JButton exportPdf = toolBarcontent.addNewButton("Export to PDF");
-        JButton exportXml = toolBarcontent.addNewButton("Export to XML");
+//        JButton exportPdf = toolBarcontent.addNewButton("Export to PDF");
+//        JButton exportXml = toolBarcontent.addNewButton("Export to XML");
         JButton help = toolBarcontent.addNewButton("Help");
         JButton exit = toolBarcontent.addNewButton("Exit", "exitApplication.png");
         
@@ -73,9 +73,9 @@ public class ToolBarContentControler {
         saveAsButton.addActionListener(saveAsAction);
         openButton.addActionListener(openFileAction);
         exportEps.addActionListener(exportEpsAction);
-        exportPdf.addActionListener(exportPdfAction);
-        exportXml.addActionListener(exportXmlAction);
-        exportXml.addActionListener(helpAction);
+//        exportPdf.addActionListener(exportPdfAction);
+//        exportXml.addActionListener(exportXmlAction);
+        help.addActionListener(helpAction);
         exit.addActionListener(exitAction);
         
         myPanel.add(NewFileButton);

@@ -70,4 +70,5 @@ abstract public class MainContentController implements DrawingClicks {
             this.newJoinEdge.addBreakPoint(new Point(evt.getX(), evt.getY()));
         }
     }
+
 }

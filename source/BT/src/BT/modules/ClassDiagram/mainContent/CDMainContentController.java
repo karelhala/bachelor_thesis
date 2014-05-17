@@ -140,12 +140,12 @@ public class CDMainContentController extends CDBottomRightController implements 
         }
         this.leftBottomController.setSelectedObject(clickedObject);
         this.leftBottomController.objectSelected();
-        this.bottomRightContent.hideAdditionalContent();
+        this.bottomRightContent.showAdditionalContent(false);
         if (clickedObject != null) {
             clickedObject.setSelected(true);
             if (clickedObject instanceof CDClass)
             {
-                this.bottomRightContent.showAdditionalContent();
+                this.bottomRightContent.showAdditionalContent(true);
             }
             disableButtons(clickedObject);
         }
