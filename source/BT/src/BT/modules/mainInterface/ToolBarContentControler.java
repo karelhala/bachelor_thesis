@@ -66,7 +66,7 @@ public class ToolBarContentControler {
 //        JButton exportXml = toolBarcontent.addNewButton("Export to XML");
         JButton help = toolBarcontent.addNewButton("Help");
         JButton exit = toolBarcontent.addNewButton("Exit", "exitApplication.png");
-        
+
         NewFileButton.addActionListener(newFileAction);
         Closebutton.addActionListener(closeFileAction);
         saveButton.addActionListener(saveAction);
@@ -77,7 +77,7 @@ public class ToolBarContentControler {
 //        exportXml.addActionListener(exportXmlAction);
         help.addActionListener(helpAction);
         exit.addActionListener(exitAction);
-        
+
         myPanel.add(NewFileButton);
         myPanel.add(saveButton);
         myPanel.add(saveAsButton);
@@ -90,14 +90,13 @@ public class ToolBarContentControler {
         myPanel.add(exit);
         this.toolBarcontent.setToolBarPane(myPanel);
     }
-    
+
     /**
-     * 
+     *
      * @param myLayout
-     * @return 
+     * @return
      */
-    public ToolBarContentControler setBasicListeners(final WindowLayoutControler myLayout)
-    {   
+    public ToolBarContentControler setBasicListeners(final WindowLayoutControler myLayout) {
         setCloseAndOpenShortCuts(myLayout);
         return this;
     }
@@ -114,32 +113,28 @@ public class ToolBarContentControler {
     }
 
     /**
-     * 
+     *
      * @param openedDiagrams
-     * @param myLayout 
+     * @param myLayout
      */
-    public void openedFile(DiagramPlacesManager openedDiagrams, WindowLayoutControler myLayout)
-    {
+    public void openedFile(DiagramPlacesManager openedDiagrams, WindowLayoutControler myLayout) {
         NewTabController newTab = new NewTabController();
         newTab.setDiagramPlaces(openedDiagrams);
         newTab.addNewTab(myLayout);
         this.diagramPlaces.add(newTab.getDiagramPlaces());
     }
-    
+
     /**
      *
      * @param myLayout
      */
     public void CloseButtonMouseClicked(WindowLayoutControler myLayout) {
-        if (myLayout.getFileTab().getSelectedIndex()!= -1)
-        {
+        if (myLayout.getFileTab().getSelectedIndex() != -1) {
             int result = JOptionPane.showConfirmDialog(null, "Are you sure you want to close selected file?", "Please confirm", JOptionPane.YES_NO_OPTION);
-            if (result == JOptionPane.OK_OPTION)
-            {
+            if (result == JOptionPane.OK_OPTION) {
                 removeDiagramPlaceById(myLayout.getFileTab().getSelectedIndex());
                 for (DiagramPlacesManager diagramPlacesManager : diagramPlaces) {
-                    if (diagramPlacesManager.getDiagramNumber()>myLayout.getFileTab().getSelectedIndex())
-                    {
+                    if (diagramPlacesManager.getDiagramNumber() > myLayout.getFileTab().getSelectedIndex()) {
                         diagramPlacesManager.setDiagramNumber(diagramPlacesManager.getDiagramNumber() - 1);
                     }
                 }
@@ -150,10 +145,10 @@ public class ToolBarContentControler {
 
     /**
      * Method for removing diagramplaces by it's id
-     * @param id 
+     *
+     * @param id
      */
-    public void removeDiagramPlaceById(int id)
-    {
+    public void removeDiagramPlaceById(int id) {
         for (Iterator<DiagramPlacesManager> it = this.diagramPlaces.iterator(); it.hasNext();) {
             DiagramPlacesManager model = it.next();
             if (model.getDiagramNumber() == id) {
@@ -161,21 +156,19 @@ public class ToolBarContentControler {
             }
         }
     }
-    
+
     /**
-     * 
+     *
      * @param id
-     * @return 
+     * @return
      */
-    public DiagramPlacesManager getDiagramById(int id)
-    {
-        if (id < 0)
-        {
+    public DiagramPlacesManager getDiagramById(int id) {
+        if (id < 0) {
             return null;
         }
         return this.diagramPlaces.get(id);
     }
-    
+
     public void setNewFileAction(ActionListener newFileAction) {
         this.newFileAction = newFileAction;
     }
@@ -207,17 +200,17 @@ public class ToolBarContentControler {
     public void setSaveAsAction(ActionListener saveAsAction) {
         this.saveAsAction = saveAsAction;
     }
-    
+
     public ToolBarContentModel getToolBarcontent() {
         return this.toolBarcontent;
     }
 
     public ActionListener getNewFileAction() {
-	return newFileAction;
+        return newFileAction;
     }
 
     public ActionListener getCloseFileAction() {
-	return closeFileAction;
+        return closeFileAction;
     }
 
     public ActionListener getOpenFileAction() {
@@ -251,7 +244,7 @@ public class ToolBarContentControler {
     public void setExitAction(ActionListener exitAction) {
         this.exitAction = exitAction;
     }
-    
+
     public ArrayList<DiagramPlacesManager> getDiagramPlaces() {
         return diagramPlaces;
     }
@@ -263,7 +256,7 @@ public class ToolBarContentControler {
     public void setHelpAction(ActionListener helpAction) {
         this.helpAction = helpAction;
     }
-    
+
     /**
      *
      * @param myLayout

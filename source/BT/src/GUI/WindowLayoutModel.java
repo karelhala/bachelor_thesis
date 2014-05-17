@@ -8,6 +8,7 @@ import javax.swing.JSplitPane;
 
 /**
  * Class that sets main window
+ *
  * @author Karel Hala
  */
 public class WindowLayoutModel {
@@ -16,17 +17,17 @@ public class WindowLayoutModel {
      * Split pane that holds buttons on left and main content.
      */
     private JSplitPane leftSplitPane;
-    
+
     /**
      * Split pane that holds main content and bottom panes.
      */
     private JSplitPane rightSplitPane;
-    
+
     /**
      * Split pane that holds left top and left bottom buttons.
      */
     private JSplitPane leftContentSplitPane;
-    
+
     /**
      * Split pane that holds bottom panes.
      */
@@ -51,11 +52,10 @@ public class WindowLayoutModel {
     }
 
     /**
-     * Method for setting panes in desired split panes.
-     * Left split pane = left buttons | main content and bottom panes
-     * Right split pane = main content | bottom panes
-     * Left content split pane = left top pane (buttons) | right bottom pane (buttons)
-     * Right content split pane = left bottom pane | right bottom pane
+     * Method for setting panes in desired split panes. Left split pane = left buttons | main content and bottom panes
+     * Right split pane = main content | bottom panes Left content split pane = left top pane (buttons) | right bottom
+     * pane (buttons) Right content split pane = left bottom pane | right bottom pane
+     *
      * @param mycontent model that holds each and every pane.
      */
     public void setContentsSplitPanes(MainContentModel mycontent) {
@@ -84,6 +84,7 @@ public class WindowLayoutModel {
 
     /**
      * Method for fetching left split pane that holds every window pane.
+     *
      * @return JSplitPane
      */
     public JSplitPane getLeftSplitPane() {

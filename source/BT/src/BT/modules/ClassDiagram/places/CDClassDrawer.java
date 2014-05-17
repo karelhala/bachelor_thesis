@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package BT.modules.ClassDiagram.places;
 
 import BT.BT;
@@ -17,29 +16,24 @@ import java.awt.Point;
 import java.util.ArrayList;
 
 /**
- * Drawer for classes in class diagram.
- * It draws class, it's variables and methods and it's name.
+ * Drawer for classes in class diagram. It draws class, it's variables and methods and it's name.
+ *
  * @author Karel Hala
  */
-public class CDClassDrawer extends CDClassModel{
-    
+public class CDClassDrawer extends CDClassModel {
+
     /**
      * Basic constructor, calls parent with x and y.
      */
-    public CDClassDrawer(int x, int y)       
-    {
-        super(x,y);
+    public CDClassDrawer(int x, int y) {
+        super(x, y);
     }
-    
+
     /**
-     * Draw class on drawing panel.
-     * Set font to Arial, bold and text size.
-     * If no in or out join is found set stroke to dashed.
-     * Draw filled class rect.
-     * Draw line above methods and below variables.
-     * Draw variables and methods.
-     * Resize the size of class based on size of variables and methods.
-     * 
+     * Draw class on drawing panel. Set font to Arial, bold and text size. If no in or out join is found set stroke to
+     * dashed. Draw filled class rect. Draw line above methods and below variables. Draw variables and methods. Resize
+     * the size of class based on size of variables and methods.
+     *
      * @param g
      */
     public void drawClass(Graphics2D g) {
@@ -67,8 +61,7 @@ public class CDClassDrawer extends CDClassModel{
         );
         g.drawRect(x - this.width / 2, this.y - this.height / 2, this.width, this.height);
         g.setColor(Color.BLACK);
-        if (typeOfClass != BT.ClassType.NONE && typeOfClass != BT.ClassType.INTERFACE)
-        {
+        if (typeOfClass != BT.ClassType.NONE && typeOfClass != BT.ClassType.INTERFACE) {
             String stringType = (typeOfClass == BT.ClassType.ACTIVITY) ? "<Activity>" : "<Actor>";
             g.drawString(stringType, x - fm.stringWidth(stringType) / 2, y - height / 2 - 5);
             drawNoObjectString(g, "/no Use Case/");
@@ -79,10 +72,10 @@ public class CDClassDrawer extends CDClassModel{
         Point methodsPlace = new Point(variablesPlace.x, variablesPlace.y - (fm.getHeight() * this.variables.size()) - 5);
         drawAttributes(g, this.methods, methodsPlace, fm);
     }
-    
+
     /**
      * Method for drawing attributes, either variables or methods.
-     * 
+     *
      * @param g Graphics2D that will have these attributes.
      * @param attribues either variables or methods.
      * @param nameLinePoint startPoint.
@@ -96,7 +89,7 @@ public class CDClassDrawer extends CDClassModel{
 
     /**
      * Method for fetching height based on name, variables and methods.
-     * 
+     *
      * @param fm FontMetrics.
      * @return int prefered height.
      */
@@ -108,6 +101,7 @@ public class CDClassDrawer extends CDClassModel{
 
     /**
      * Method for fetching width based on name, variables and methods.
+     *
      * @param fm FontMetrics.
      * @return int prefered width.
      */
@@ -122,7 +116,7 @@ public class CDClassDrawer extends CDClassModel{
 
     /**
      * Method for fetching length of longest attribute.
-     * 
+     *
      * @param attribues variables or methods.
      * @param fm FontMetrics.
      * @return int as maximum length.

@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package GUI;
 
 import javax.swing.JMenu;
@@ -15,6 +14,7 @@ import javax.swing.JMenuItem;
  * @author E819996
  */
 public class MyMenyBarModel {
+
     protected JMenu jMenu1;
     protected JMenu jMenu2;
     protected JMenu jMenu3;
@@ -32,51 +32,51 @@ public class MyMenyBarModel {
     protected JMenuBar jMenuBar1;
 
     public JMenu getjMenu1() {
-	return jMenu1;
+        return jMenu1;
     }
 
     public JMenu getjMenu2() {
-	return jMenu2;
+        return jMenu2;
     }
 
     public JMenu getjMenu3() {
-	return jMenu3;
+        return jMenu3;
     }
 
     public JMenuItem getExportToPdf() {
-	return exportToPdf;
+        return exportToPdf;
     }
 
     public JMenuItem getExportToEps() {
-	return exportToEps;
+        return exportToEps;
     }
 
     public JMenuItem getExportToXml() {
-	return exportToXml;
+        return exportToXml;
     }
 
     public JMenuItem getNewFile() {
-	return newFile;
+        return newFile;
     }
 
     public JMenuItem getCloseFile() {
-	return closeFile;
+        return closeFile;
     }
 
     public JMenuItem getOpenFile() {
-	return openFile;
+        return openFile;
     }
 
     public JMenuItem getBackAction() {
-	return backAction;
+        return backAction;
     }
 
     public JMenuItem getFrontAction() {
-	return frontAction;
+        return frontAction;
     }
 
     public JMenuBar getjMenuBar1() {
-	return jMenuBar1;
+        return jMenuBar1;
     }
 
     public JMenuItem getSaveAction() {
@@ -86,53 +86,53 @@ public class MyMenyBarModel {
     public JMenuItem getSaveAsAction() {
         return saveAsAction;
     }
-    
+
     public void setjMenu1(JMenu jMenu1) {
-	this.jMenu1 = jMenu1;
+        this.jMenu1 = jMenu1;
     }
 
     public void setjMenu2(JMenu jMenu2) {
-	this.jMenu2 = jMenu2;
+        this.jMenu2 = jMenu2;
     }
 
     public void setjMenu3(JMenu jMenu3) {
-	this.jMenu3 = jMenu3;
+        this.jMenu3 = jMenu3;
     }
 
     public void setExportToPdf(JMenuItem exportToPdf) {
-	this.exportToPdf = exportToPdf;
+        this.exportToPdf = exportToPdf;
     }
 
     public void setExportToEps(JMenuItem exportToEps) {
-	this.exportToEps = exportToEps;
+        this.exportToEps = exportToEps;
     }
 
     public void setExportToXml(JMenuItem exportToXml) {
-	this.exportToXml = exportToXml;
+        this.exportToXml = exportToXml;
     }
 
     public void setNewFile(JMenuItem newFile) {
-	this.newFile = newFile;
+        this.newFile = newFile;
     }
 
     public void setCloseFile(JMenuItem closeFile) {
-	this.closeFile = closeFile;
+        this.closeFile = closeFile;
     }
 
     public void setOpenFile(JMenuItem openFile) {
-	this.openFile = openFile;
+        this.openFile = openFile;
     }
 
     public void setBackAction(JMenuItem backAction) {
-	this.backAction = backAction;
+        this.backAction = backAction;
     }
 
     public void setFrontAction(JMenuItem frontAction) {
-	this.frontAction = frontAction;
+        this.frontAction = frontAction;
     }
 
     public void setjMenuBar1(JMenuBar jMenuBar1) {
-	this.jMenuBar1 = jMenuBar1;
+        this.jMenuBar1 = jMenuBar1;
     }
 
     public void setSaveAction(JMenuItem saveAction) {

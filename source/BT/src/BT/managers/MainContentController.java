@@ -11,8 +11,8 @@ import java.awt.Point;
 import java.awt.event.MouseEvent;
 
 /**
- * Main class for managing man content controllers. It is abstract class, that
- * it's childs will implement Drawing clicks.
+ * Main class for managing man content controllers. It is abstract class, that it's childs will implement Drawing
+ * clicks.
  *
  * @author Karel Hala
  */

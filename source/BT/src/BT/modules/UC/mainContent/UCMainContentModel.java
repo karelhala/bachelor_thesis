@@ -24,9 +24,21 @@ import javax.swing.KeyStroke;
  */
 abstract public class UCMainContentModel extends MainContentController {
 
+    /**
+     *
+     */
     protected UCLeftBottomContent LeftBottomContent;
+    /**
+     *
+     */
     protected UCLeftTopContent LeftTopContent;
 
+    /**
+     * /
+     *
+     **
+     * @param diagramPlaces
+     */
     public UCMainContentModel(DiagramPlacesManager diagramPlaces) {
         this.diagramPlaces = diagramPlaces;
         this.places = diagramPlaces.getUcPlaces();
@@ -45,18 +57,34 @@ abstract public class UCMainContentModel extends MainContentController {
         setButtonsListeners();
     }
 
+    /**
+     *
+     * @param LeftBottomContent
+     */
     public void setLeftBottomContent(UCLeftBottomContent LeftBottomContent) {
         this.LeftBottomContent = LeftBottomContent;
     }
 
+    /**
+     *
+     * @param LeftTopContent
+     */
     public void setLeftTopContent(UCLeftTopContent LeftTopContent) {
         this.LeftTopContent = LeftTopContent;
     }
 
+    /**
+     *
+     * @return
+     */
     public UCLeftBottomContent getLeftBottomContent() {
         return LeftBottomContent;
     }
 
+    /**
+     *
+     * @return
+     */
     public UCLeftTopContent getLeftTopContent() {
         return LeftTopContent;
     }
@@ -78,7 +106,7 @@ abstract public class UCMainContentModel extends MainContentController {
             }
         }
         );
-        
+
         drawingPane.getDrawing().getActionMap().put("selectionCanceled", new AbstractAction() {
 
             @Override

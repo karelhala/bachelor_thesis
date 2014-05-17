@@ -7,8 +7,7 @@ package BT.models;
 import BT.managers.PlaceManager;
 
 /**
- * Model for drawing pane. This class holds drawed places and new line, if any
- * is being drawn.
+ * Model for drawing pane. This class holds drawed places and new line, if any is being drawn.
  *
  * @author Karel Hala
  */

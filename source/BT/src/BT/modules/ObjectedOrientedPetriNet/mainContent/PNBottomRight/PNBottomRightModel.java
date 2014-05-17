@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package BT.modules.ObjectedOrientedPetriNet.mainContent.PNBottomRight;
 
 import BT.managers.PlaceManager;
@@ -22,62 +21,63 @@ import GUI.PetrinetPlacePanel;
  * @author Karel Hala
  */
 abstract public class PNBottomRightModel {
+
     /**
-     * 
+     *
      */
     protected BottomRightContentModel bottomRightModel;
-    
+
     /**
-     * 
+     *
      */
     protected MethodLabel selectedMethod;
-    
+
     /**
-     * 
+     *
      */
     protected BasicPetrinetPanel basicPetrinetPanel;
-    
+
     /**
-     * 
+     *
      */
     protected PetrinetGuardActionPanel petrinetGuardAction;
-    
+
     /**
-     * 
+     *
      */
     protected PetrinetPlacePanel petrinetPlace;
-    
+
     /**
-     * 
+     *
      */
     protected PlaceManager petrinetPlaces;
-    
+
     /**
-     * 
+     *
      */
     protected PNDrawingPane petrinetDrawingPane;
-    
+
     /**
-     * 
+     *
      */
     protected CDClass selectedClass;
-    
+
     /**
-     * 
+     *
      */
     protected CoordinateModel selectedObject;
-    
+
     /**
      * Manager for all classes for open file.
      */
     protected PlaceManager classManager;
-    
+
     /**
-     * 
+     *
      * @param bottomRightModel
      * @param petrinetPanel
-     * @param petrinetGuardAction 
-     * @param petrinetPlace 
+     * @param petrinetGuardAction
+     * @param petrinetPlace
      */
     public PNBottomRightModel(BottomRightContentModel bottomRightModel, BasicPetrinetPanel petrinetPanel, PetrinetGuardActionPanel petrinetGuardAction, PetrinetPlacePanel petrinetPlace) {
         this.basicPetrinetPanel = petrinetPanel;
@@ -85,10 +85,11 @@ abstract public class PNBottomRightModel {
         this.bottomRightModel = bottomRightModel;
         this.petrinetPlace = petrinetPlace;
     }
-    
+
     /**
      * Getter for selected method of right content Panel.
-     * @return 
+     *
+     * @return
      */
     public MethodLabel getSelectedMethod() {
         return selectedMethod;
@@ -96,23 +97,24 @@ abstract public class PNBottomRightModel {
 
     /**
      * Setter for selected method of right content Panel.
+     *
      * @param selectedMethod
      */
     public void setSelectedMethod(MethodLabel selectedMethod) {
         this.selectedMethod = selectedMethod;
     }
-    
+
     /**
-     * 
-     * @return 
+     *
+     * @return
      */
     public BasicPetrinetPanel getBasicPetrinetPanel() {
         return basicPetrinetPanel;
     }
 
     /**
-     * 
-     * @return 
+     *
+     * @return
      */
     public PetrinetGuardActionPanel getPetrinetGuardAction() {
         return petrinetGuardAction;

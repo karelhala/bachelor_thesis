@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package BT.modules.ClassDiagram.mainContent;
 
 import BT.BT.AttributeType;
@@ -21,40 +20,34 @@ import javax.swing.event.PopupMenuEvent;
 import javax.swing.event.PopupMenuListener;
 
 /**
- * Class for controlling right bottom Panel.
- * This class controlls right bottom panel in class diagram.
- * Sets buttons, and fields in right bottom panel.
- * This class is put between main content controller and it's model 
- * because it has lot of to set.
- * 
+ * Class for controlling right bottom Panel. This class controlls right bottom panel in class diagram. Sets buttons, and
+ * fields in right bottom panel. This class is put between main content controller and it's model because it has lot of
+ * to set.
+ *
  * @author Karel Hala
  */
 abstract public class CDBottomRightController extends CDMainContentModel {
+
     /**
      * Here is stored drawing pane of class diagram. Used mainly for redrawing.
      */
     private final CDDrawingPane.drawing drawingPane;
-    
+
     /**
-     * Basic constructor.
-     * Sets diagram places, bottom right content model, attributes panel.
-     * Sets drawing to class diagram drawing pane.
-     * Add buttons with listeners to pane.
+     * Basic constructor. Sets diagram places, bottom right content model, attributes panel. Sets drawing to class
+     * diagram drawing pane. Add buttons with listeners to pane.
      */
-    public CDBottomRightController(DiagramPlacesManager diagramPlaces, BottomRightContentModel bottomRightContent, ClassDiagramAttributesPanel attributesPanel)
-    {
+    public CDBottomRightController(DiagramPlacesManager diagramPlaces, BottomRightContentModel bottomRightContent, ClassDiagramAttributesPanel attributesPanel) {
         super(diagramPlaces, bottomRightContent, attributesPanel);
         this.drawingPane = ((CDDrawingPane) this.mainContent.getDrawingPane()).getDrawing();
         addButtonListeners();
     }
-    
+
     /**
-     * Method for adding buttons with listeners to content pane.
-     * Delete all inactive, reactivate all inactive, add new cariable, 
-     * add new method buttons are set.
+     * Method for adding buttons with listeners to content pane. Delete all inactive, reactivate all inactive, add new
+     * cariable, add new method buttons are set.
      */
-    private void addButtonListeners()
-    {
+    private void addButtonListeners() {
         bottomRightContent.getTopButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
@@ -62,7 +55,7 @@ abstract public class CDBottomRightController extends CDMainContentModel {
                 drawingPane.repaint();
             }
         });
-        
+
         bottomRightContent.getBottomButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
@@ -70,7 +63,7 @@ abstract public class CDBottomRightController extends CDMainContentModel {
                 drawingPane.repaint();
             }
         });
-        
+
         this.attributesPanel.getAddMethod().addActionListener(new ActionListener() {
 
             @Override
@@ -81,7 +74,7 @@ abstract public class CDBottomRightController extends CDMainContentModel {
                 drawingPane.repaint();
             }
         });
-        
+
         this.attributesPanel.getAddVariable().addActionListener(new ActionListener() {
 
             @Override
@@ -92,7 +85,7 @@ abstract public class CDBottomRightController extends CDMainContentModel {
                 drawingPane.repaint();
             }
         });
-        
+
         this.attributesPanel.getAttributeTypeMethod().addPopupMenuListener(new PopupMenuListener() {
 
             @Override
@@ -110,7 +103,7 @@ abstract public class CDBottomRightController extends CDMainContentModel {
                 attributesPanel.removeAllObjectsFromAttributeType();
             }
         });
-        
+
         this.attributesPanel.getAttributeTypeVariable().addPopupMenuListener(new PopupMenuListener() {
 
             @Override
@@ -129,87 +122,64 @@ abstract public class CDBottomRightController extends CDMainContentModel {
             }
         });
     }
-    
+
     /**
-     * Method for adding new variable to selected class.
-     * When button for add new variable to class is pressed this method is called.
-     * Checks every string and selectbox if has text in it.
-     * Get visibility based on string [-,+,#].
-     * If every field is correct, insert it in class and redraw.
+     * Method for adding new variable to selected class. When button for add new variable to class is pressed this
+     * method is called. Checks every string and selectbox if has text in it. Get visibility based on string [-,+,#]. If
+     * every field is correct, insert it in class and redraw.
      */
-    private void addNewVariableToClass()
-    {
-        
-        if (places.getSelectedObject() != null && places.getSelectedObject() instanceof CDClass)
-        {
+    private void addNewVariableToClass() {
+
+        if (places.getSelectedObject() != null && places.getSelectedObject() instanceof CDClass) {
             CDClass selectedClass = (CDClass) places.getSelectedObject();
             AttributeType selectedAtttributeType = null;
-            if (attributesPanel.getVisibilityVariable().getSelectedItem() == "-")
-            {
+            if (attributesPanel.getVisibilityVariable().getSelectedItem() == "-") {
                 selectedAtttributeType = AttributeType.PRIVATE;
-            }
-            else if (attributesPanel.getVisibilityVariable().getSelectedItem() == "+")
-            {
+            } else if (attributesPanel.getVisibilityVariable().getSelectedItem() == "+") {
                 selectedAtttributeType = AttributeType.PUBLIC;
-            }
-            else if (attributesPanel.getVisibilityVariable().getSelectedItem() == "#")
-            {
+            } else if (attributesPanel.getVisibilityVariable().getSelectedItem() == "#") {
                 selectedAtttributeType = AttributeType.PROTECTED;
             }
-            if (selectedAtttributeType != null && !"".equals(this.attributesPanel.getVariableName().getText()))
-            {
-                if (this.attributesPanel.getAttributeTypeVariable().getSelectedItem() != null)
-                {
+            if (selectedAtttributeType != null && !"".equals(this.attributesPanel.getVariableName().getText())) {
+                if (this.attributesPanel.getAttributeTypeVariable().getSelectedItem() != null) {
                     Attribute newAttribute = new Attribute(
                             selectedAtttributeType,
-                            this.attributesPanel.getVariableName().getText(), 
+                            this.attributesPanel.getVariableName().getText(),
                             (String) this.attributesPanel.getAttributeTypeVariable().getSelectedItem()
                     );
                     selectedClass.addNewVariable(newAttribute);
                 }
             }
-        }
-        else
-        {
+        } else {
             JOptionPane.showMessageDialog(null, "No class selected please select class.");
         }
     }
-    
+
     /**
-     * Method for adding new variable to selected class.
-     * If button for inserting new method is pressed, call this method.
-     * Get visibility based on string [-,+,#].
-     * If every field is correct, insert it in class, create new petri net
-     * this petrinet insert in diagramPlaces, insert new non editable and non 
-     * removable place "return" to this new petri net.
+     * Method for adding new variable to selected class. If button for inserting new method is pressed, call this
+     * method. Get visibility based on string [-,+,#]. If every field is correct, insert it in class, create new petri
+     * net this petrinet insert in diagramPlaces, insert new non editable and non removable place "return" to this new
+     * petri net.
      */
-    private void addNewmethodToClass()
-    {
-        
-        if (places.getSelectedObject() != null && places.getSelectedObject() instanceof CDClass)
-        {
+    private void addNewmethodToClass() {
+
+        if (places.getSelectedObject() != null && places.getSelectedObject() instanceof CDClass) {
             CDClass selectedClass = (CDClass) places.getSelectedObject();
             AttributeType selectedAtttributeType = null;
-            if (attributesPanel.getVisibilityMethod().getSelectedItem() == "-")
-            {
+            if (attributesPanel.getVisibilityMethod().getSelectedItem() == "-") {
                 selectedAtttributeType = AttributeType.PRIVATE;
-            }
-            else if (attributesPanel.getVisibilityMethod().getSelectedItem() == "+")
-            {
+            } else if (attributesPanel.getVisibilityMethod().getSelectedItem() == "+") {
                 selectedAtttributeType = AttributeType.PUBLIC;
-            }
-            else if (attributesPanel.getVisibilityMethod().getSelectedItem() == "#")
-            {
+            } else if (attributesPanel.getVisibilityMethod().getSelectedItem() == "#") {
                 selectedAtttributeType = AttributeType.PROTECTED;
             }
-            if (selectedAtttributeType != null && !"".equals(this.attributesPanel.getMethodName().getText()))
-            {
+            if (selectedAtttributeType != null && !"".equals(this.attributesPanel.getMethodName().getText())) {
                 String selectedType = (String) this.attributesPanel.getAttributeTypeMethod().getSelectedItem();
-                selectedType = (selectedType == null)?"void":selectedType;
+                selectedType = (selectedType == null) ? "void" : selectedType;
                 Method newMethod = new Method(
-                        selectedAtttributeType, 
-                        this.attributesPanel.getMethodName().getText(), 
-                        selectedType, 
+                        selectedAtttributeType,
+                        this.attributesPanel.getMethodName().getText(),
+                        selectedType,
                         selectedClass
                 );
                 newMethod.getPetriNet().setAssignedmethod(newMethod);
@@ -222,9 +192,7 @@ abstract public class CDBottomRightController extends CDMainContentModel {
                 selectedClass.addNewMethod(newMethod);
                 this.diagramPlaces.addPnPlace(newMethod.getPetriNet());
             }
-        }
-        else
-        {
+        } else {
             JOptionPane.showMessageDialog(null, "No class selected please select class.");
         }
     }

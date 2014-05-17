@@ -83,8 +83,7 @@ public class PNPlace extends PNPlaceModel {
      * @return
      */
     protected PNPlace drawConstant(Graphics2D g, FontMetrics fm) {
-        if (this.constant != null)
-        {
+        if (this.constant != null) {
             g.drawString(this.constant, x - fm.stringWidth(this.constant) / 2, this.y + fm.getHeight() / 2 - 4);
         }
         return this;
@@ -92,6 +91,7 @@ public class PNPlace extends PNPlaceModel {
 
     /**
      * Get all variables as string joined with ",".
+     *
      * @return allVariables String.
      */
     public String getVariablesAsString() {

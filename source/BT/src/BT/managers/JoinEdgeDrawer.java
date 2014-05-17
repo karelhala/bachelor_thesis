@@ -14,9 +14,8 @@ import java.awt.Point;
 import java.awt.geom.AffineTransform;
 
 /**
- * Class that can draw triangles and diamonds at the end of lines. This class is
- * basic class for drawing additional components, such as traingles or strings
- * at precise location.
+ * Class that can draw triangles and diamonds at the end of lines. This class is basic class for drawing additional
+ * components, such as traingles or strings at precise location.
  *
  * @author Karel Hala
  */
@@ -196,8 +195,7 @@ public class JoinEdgeDrawer {
      * For setting basic colors of lines.
      *
      * @param g drawing panel.
-     * @param searchForAssignedObject should be considered assigned object in
-     * cause.
+     * @param searchForAssignedObject should be considered assigned object in cause.
      */
     protected void setBasicColors(Graphics2D g, Boolean searchForAssignedObject) {
         if (this.joinEdgeController.getSelected()) {

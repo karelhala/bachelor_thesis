@@ -42,13 +42,13 @@ public final class CDLeftTopContent extends ButtonPaneModel {
     public void createMainPane() {
         JToggleButton newClass = new JToggleButton("New Class");
         newClass.setName(BT.CDObjectType.CLASS.name());
-        
+
         JToggleButton newInterface = new JToggleButton("New Interface");
         newInterface.setName(BT.CDObjectType.INTERFACE.name());
 
         this.mainContentPane.add(newClass);
-        
+
         this.mainContentPane.add(newInterface);
-        
+
     }
 }

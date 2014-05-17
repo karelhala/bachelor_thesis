@@ -36,8 +36,8 @@ public class PNLeftBottomContent extends ButtonPaneModel {
     }
 
     /**
-     * Method that will create main content pane. It will add to this pane 3
-     * jtoggle buttons, these buttons are specified byt lineType enum.
+     * Method that will create main content pane. It will add to this pane 3 jtoggle buttons, these buttons are
+     * specified byt lineType enum.
      */
     public void createMainPane() {
         JToggleButton join = new JToggleButton("Join");

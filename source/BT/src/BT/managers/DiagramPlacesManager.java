@@ -10,11 +10,9 @@ import java.io.File;
 import java.util.ArrayList;
 
 /**
- * Class that holds every place manager. This class is used to store every place
- * and operations with it. It holds number of diagram (index of tab). File name
- * (name of opened file). UcPlaces actors and actions of useCase diagram.
- * CdPlaces class diagram classes. PnPlaces are stored in arrayList because of
- * methods can have petriNet too.
+ * Class that holds every place manager. This class is used to store every place and operations with it. It holds number
+ * of diagram (index of tab). File name (name of opened file). UcPlaces actors and actions of useCase diagram. CdPlaces
+ * class diagram classes. PnPlaces are stored in arrayList because of methods can have petriNet too.
  *
  * @author Karel Hala
  */

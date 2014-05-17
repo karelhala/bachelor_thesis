@@ -9,8 +9,7 @@ import BT.models.LineModel;
 import java.awt.Point;
 
 /**
- * Class for checking objects under mouse. It will check basic objects and even
- * lines.
+ * Class for checking objects under mouse. It will check basic objects and even lines.
  *
  * @author Karel Hala
  */
@@ -32,9 +31,8 @@ public class ObjectChecker {
     }
 
     /**
-     * Method for checking if any object is under mouse. It will check if basic
-     * object is under mouse and this will be returned. Or if line is under
-     * mouse, and this line will be returned.
+     * Method for checking if any object is under mouse. It will check if basic object is under mouse and this will be
+     * returned. Or if line is under mouse, and this line will be returned.
      *
      * @param mousePoint Poit of mouse.
      * @return Coordinate object, either object or line.

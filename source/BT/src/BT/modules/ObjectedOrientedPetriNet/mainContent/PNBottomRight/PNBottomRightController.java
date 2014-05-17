@@ -66,8 +66,8 @@ public class PNBottomRightController extends PNBottomRightModel {
                 }
             }
         }
-        if (this.selectedClass.loadClassAttributes().size() != 0 || 
-                (this.selectedMethod != null && this.selectedMethod.getObjectMethod() != null && this.selectedMethod.getObjectMethod().getAttributes().size() != 0)) {
+        if (this.selectedClass.loadClassAttributes().size() != 0
+                || (this.selectedMethod != null && this.selectedMethod.getObjectMethod() != null && this.selectedMethod.getObjectMethod().getAttributes().size() != 0)) {
             this.basicPetrinetPanel.getClassAttributes().setEnabled(true);
         } else {
             this.basicPetrinetPanel.getClassAttributes().setEnabled(false);
@@ -85,8 +85,7 @@ public class PNBottomRightController extends PNBottomRightModel {
         bottomRightModel.getTopButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                if (selectedObject instanceof PNTransition)
-                {
+                if (selectedObject instanceof PNTransition) {
                     PNTransition selectedTransition = (PNTransition) selectedObject;
                     String guardString = createGuardPanel(selectedTransition.getGuard());
                     if (guardString != null) {
@@ -121,7 +120,7 @@ public class PNBottomRightController extends PNBottomRightModel {
                 petrinetDrawingPane.getDrawing().repaint();
             }
         });
-        
+
         this.petrinetPlace.getConfirmButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
@@ -135,15 +134,13 @@ public class PNBottomRightController extends PNBottomRightModel {
     /**
      * Method for handeling when button for setting constant clicked.
      */
-    public void setConstantClicked()
-    {
+    public void setConstantClicked() {
         String constant = this.petrinetPlace.getConstantField().getText();
-        if (constant != null && !constant.equals("") && this.selectedObject instanceof PNPlace)
-        {
-            ((PNPlace)this.selectedObject).setConstant(constant);
+        if (constant != null && !constant.equals("") && this.selectedObject instanceof PNPlace) {
+            ((PNPlace) this.selectedObject).setConstant(constant);
         }
     }
-    
+
     /**
      * Change guard and action fields for selected transition.
      */
@@ -152,9 +149,8 @@ public class PNBottomRightController extends PNBottomRightModel {
             PNTransition selectedTransition = (PNTransition) selectedObject;
             this.petrinetGuardAction.getActionField().setText(selectedTransition.getAction().getActionAsString());
             this.petrinetGuardAction.getGuardField().setText(selectedTransition.getGuard());
-        }
-        else if (this.selectedObject != null && this.selectedObject instanceof PNPlace){
-            this.petrinetPlace.getConstantField().setText(((PNPlace)selectedObject).getConstant());
+        } else if (this.selectedObject != null && this.selectedObject instanceof PNPlace) {
+            this.petrinetPlace.getConstantField().setText(((PNPlace) selectedObject).getConstant());
         } else {
             this.petrinetGuardAction.getActionField().setText("");
             this.petrinetGuardAction.getGuardField().setText("");
@@ -301,7 +297,7 @@ public class PNBottomRightController extends PNBottomRightModel {
                 selectedTransition.getAction().setVariable(variableField.getSelectedItem().toString());
                 for (LineModel oneLine : selectedTransition.getOutJoins()) {
                     ((PNJoinEdgeController) oneLine).addVariable(selectedTransition.getActionVariable());
-                    ((PNPlace)oneLine.getSecondObject()).addVariable(selectedTransition.getActionVariable());
+                    ((PNPlace) oneLine.getSecondObject()).addVariable(selectedTransition.getActionVariable());
                 }
             }
         }

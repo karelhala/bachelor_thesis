@@ -18,10 +18,9 @@ import java.awt.RenderingHints;
 import javax.swing.JPanel;
 
 /**
- * Class for drawing every object of class diagram to drawing pane.
- * It has one variable from parrent, which is newLine, 
+ * Class for drawing every object of class diagram to drawing pane. It has one variable from parrent, which is newLine,
  * this draws newLine differently, because it is not stored in places, yet.
- * 
+ *
  * @author Karel Hala
  */
 public class CDDrawingPane extends DrawingPaneModel {
@@ -32,9 +31,8 @@ public class CDDrawingPane extends DrawingPaneModel {
     private final drawing drawPane;
 
     /**
-     * Basic contructor.
-     * It calls parents constructor and creates new drawingPanel.
-     * 
+     * Basic contructor. It calls parents constructor and creates new drawingPanel.
+     *
      * @param CDplaces PlaceManager with each class diagram place (object and line).
      */
     public CDDrawingPane(PlaceManager CDplaces) {
@@ -43,8 +41,7 @@ public class CDDrawingPane extends DrawingPaneModel {
     }
 
     /**
-     * Drawing panel, that displays each object of class diagram.
-     * Extends from DrawingPanel, which extends from Jpanel.
+     * Drawing panel, that displays each object of class diagram. Extends from DrawingPanel, which extends from Jpanel.
      */
     public class drawing extends DrawingJpanel {
 
@@ -56,9 +53,8 @@ public class CDDrawingPane extends DrawingPaneModel {
         }
 
         /**
-         * Method for painting each object of class diagram.
-         * New line is drawn with green color.
-         * Set's antialiasing.
+         * Method for painting each object of class diagram. New line is drawn with green color. Set's antialiasing.
+         *
          * @param g1 Graphics.
          */
         @Override
@@ -81,8 +77,7 @@ public class CDDrawingPane extends DrawingPaneModel {
             for (CoordinateModel drawnClass : places.getObjects()) {
                 recalculateSize(drawnClass);
                 places.setPaneSize(this.getSize());
-                if (drawnClass instanceof CDClass)
-                {
+                if (drawnClass instanceof CDClass) {
                     ((CDClass) drawnClass).drawClass(g);
                 }
             }
@@ -91,6 +86,7 @@ public class CDDrawingPane extends DrawingPaneModel {
 
     /**
      * Get drawing of this class, it is for redrawing.
+     *
      * @return classDiagram drawing.
      */
     public CDDrawingPane.drawing getDrawing() {

@@ -133,12 +133,11 @@ public class ButtonPaneModel extends ContentPaneModel implements ToggleButtonsIn
             }
         }
     }
-    
+
     /**
      * If any button is set to disabled, this method will unset all disabled buttons.
      */
-    public void setAllButtonsAvailable()
-    {
+    public void setAllButtonsAvailable() {
         for (Component comp : this.mainContentPane.getComponents()) {
             if (comp instanceof JToggleButton) {
                 ((JToggleButton) comp).setEnabled(true);

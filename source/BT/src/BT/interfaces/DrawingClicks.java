@@ -24,8 +24,7 @@ public interface DrawingClicks {
     /**
      * Method for handling double clicks on drawing pane.
      *
-     * @param pressedObject if any object is under mouse, this will be sent to
-     * method.
+     * @param pressedObject if any object is under mouse, this will be sent to method.
      */
     public void drawingPaneDoubleCliked(CoordinateModel pressedObject);
 
@@ -37,8 +36,7 @@ public interface DrawingClicks {
     public void drawingPaneClicked(MouseEvent evt);
 
     /**
-     * Method for handling dragging on pane. Send mouse event and object that is
-     * being dragged is any.
+     * Method for handling dragging on pane. Send mouse event and object that is being dragged is any.
      *
      * @param e mouse event for this method
      * @param dragged object that is being dragged on pane if is any.

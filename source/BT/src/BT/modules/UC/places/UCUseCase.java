@@ -27,6 +27,7 @@ public class UCUseCase extends CoordinateModel {
 
     /**
      * TODO: make model
+     *
      * @param x
      * @param y
      */

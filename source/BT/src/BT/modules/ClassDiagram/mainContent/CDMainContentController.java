@@ -41,17 +41,17 @@ public class CDMainContentController extends CDBottomRightController implements 
      * @param leftContentModel
      */
     public CDMainContentController(
-            DiagramPlacesManager diagramPlaces, 
-            BottomRightContentModel bottomRightContent, 
-            ClassDiagramAttributesPanel attributesPanel, 
+            DiagramPlacesManager diagramPlaces,
+            BottomRightContentModel bottomRightContent,
+            ClassDiagramAttributesPanel attributesPanel,
             BottomLeftContentModel leftContentModel) {
-        
+
         super(diagramPlaces, bottomRightContent, attributesPanel);
         this.leftBottomController = new CDBottomLeftController(leftContentModel, ((CDDrawingPane) this.mainContent.getDrawingPane()).getDrawing());
         this.leftBottomController.setDiagramPlaces(diagramPlaces);
         this.leftContentModel = leftContentModel;
     }
-    
+
     /**
      *
      * @param e
@@ -93,7 +93,7 @@ public class CDMainContentController extends CDBottomRightController implements 
             newClass.getPnNetwork().setAssignedClass(newClass);
             this.diagramPlaces.addPnPlace(newClass.getPnNetwork());
             newClass.setAssignedObject(newClass);
-        }else if(selectedItemButton != null && CDObjectType.INTERFACE.name().equals(selectedItemButton.getName())){
+        } else if (selectedItemButton != null && CDObjectType.INTERFACE.name().equals(selectedItemButton.getName())) {
             CDClass newInterface = new CDClass(evt.getX(), evt.getY());
             newInterface.getPnNetwork().setAssignedClass(newInterface);
             newInterface.setTypeOfClass(ClassType.INTERFACE);
@@ -143,14 +143,11 @@ public class CDMainContentController extends CDBottomRightController implements 
         this.bottomRightContent.showAdditionalContent(false);
         if (clickedObject != null) {
             clickedObject.setSelected(true);
-            if (clickedObject instanceof CDClass)
-            {
+            if (clickedObject instanceof CDClass) {
                 this.bottomRightContent.showAdditionalContent(true);
             }
             disableButtons(clickedObject);
-        }
-        else
-        {
+        } else {
             disableButtons(null);
         }
         ((CDDrawingPane) this.mainContent.getDrawingPane()).getDrawing().repaint();
@@ -162,8 +159,7 @@ public class CDMainContentController extends CDBottomRightController implements 
      */
     @Override
     public void drawingPaneDoubleCliked(CoordinateModel pressedObject) {
-        if (pressedObject != null && !(pressedObject instanceof LineModel))
-        {
+        if (pressedObject != null && !(pressedObject instanceof LineModel)) {
             JTextField nameInput = new JTextField();
             JPanel dialogPanel = new JPanel(new BorderLayout());
             dialogPanel.add(nameInput, BorderLayout.PAGE_START);
@@ -176,9 +172,8 @@ public class CDMainContentController extends CDBottomRightController implements 
             classTypeGroup.add(actor);
             classTypeGroup.add(none);
             ClassType typeOfClass = ((CDClass) pressedObject).getTypeOfClass();
-            ((JRadioButton) ((typeOfClass == ClassType.ACTIVITY) ? activity : (typeOfClass == ClassType.NONE)?none:actor)).setSelected(true);
-            if (pressedObject.getInJoins().isEmpty() && pressedObject.getOutJoins().isEmpty() && ((CDClass)pressedObject).getTypeOfClass() != ClassType.INTERFACE)
-            {
+            ((JRadioButton) ((typeOfClass == ClassType.ACTIVITY) ? activity : (typeOfClass == ClassType.NONE) ? none : actor)).setSelected(true);
+            if (pressedObject.getInJoins().isEmpty() && pressedObject.getOutJoins().isEmpty() && ((CDClass) pressedObject).getTypeOfClass() != ClassType.INTERFACE) {
                 dialogPanel.add(actor, BorderLayout.LINE_START);
                 dialogPanel.add(activity, BorderLayout.CENTER);
                 dialogPanel.add(none, BorderLayout.LINE_END);
@@ -189,23 +184,21 @@ public class CDMainContentController extends CDBottomRightController implements 
                     "Please Enter name of class and select type", JOptionPane.OK_CANCEL_OPTION);
             if (result == JOptionPane.OK_OPTION) {
                 pressedObject.setName(nameInput.getText());
-                ((CDClass) pressedObject).setTypeOfClass((actor.isSelected() == true) ? ClassType.ACTOR : (activity.isSelected() == true)?ClassType.ACTIVITY:ClassType.NONE);
+                ((CDClass) pressedObject).setTypeOfClass((actor.isSelected() == true) ? ClassType.ACTOR : (activity.isSelected() == true) ? ClassType.ACTIVITY : ClassType.NONE);
                 this.useCaseConnector.setSelectedModel(pressedObject);
                 this.useCaseConnector.createNewUseCaseObject(nameInput.getText());
             }
-        } else if (pressedObject instanceof CDJoinEdgeController)
-        {
+        } else if (pressedObject instanceof CDJoinEdgeController) {
             JPanel dialogPanel = new JPanel(new BorderLayout());
             CDJoinEdgeController selectedLine = (CDJoinEdgeController) pressedObject;
-            if (selectedLine.getJoinEdgeType() == CDLineType.USERINPUT)
-            {
-                String[] actorClass = { CDLineType.AGGREGATION.name(), CDLineType.COMPOSITION.name()};
+            if (selectedLine.getJoinEdgeType() == CDLineType.USERINPUT) {
+                String[] actorClass = {CDLineType.AGGREGATION.name(), CDLineType.COMPOSITION.name()};
                 JComboBox selectType = new JComboBox(actorClass);
                 dialogPanel.add(selectType);
                 int result = JOptionPane.showConfirmDialog(null, dialogPanel,
-                    "Please select type of this line", JOptionPane.OK_CANCEL_OPTION);
+                        "Please select type of this line", JOptionPane.OK_CANCEL_OPTION);
                 if (result == JOptionPane.OK_OPTION) {
-                    selectedLine.setJoinEdgeType((selectType.getSelectedItem().equals(CDLineType.COMPOSITION.name()))?CDLineType.COMPOSITION:CDLineType.AGGREGATION);
+                    selectedLine.setJoinEdgeType((selectType.getSelectedItem().equals(CDLineType.COMPOSITION.name())) ? CDLineType.COMPOSITION : CDLineType.AGGREGATION);
                 }
             }
         }
@@ -233,7 +226,7 @@ public class CDMainContentController extends CDBottomRightController implements 
      */
     public void drawJoinEdge(CoordinateModel clickedObject) {
         if (this.LeftBottomContent.getSelectedButton() != null) {
-            this.newJoinEdge = CDJoinEdgeManipulator.createJoinEdge((CDJoinEdgeController) this.newJoinEdge, clickedObject,this.LeftBottomContent.getSelectedButton());
+            this.newJoinEdge = CDJoinEdgeManipulator.createJoinEdge((CDJoinEdgeController) this.newJoinEdge, clickedObject, this.LeftBottomContent.getSelectedButton());
         }
 
         if (!this.newJoinEdge.isLineEmpty()) {
@@ -242,21 +235,17 @@ public class CDMainContentController extends CDBottomRightController implements 
             } else {
                 this.newJoinEdge.setSelected(false);
             }
-            
-            if (((CDJoinEdgeController)this.newJoinEdge).checkBothObjects())
-            {
-                if (this.newJoinEdge.getFirstObject().getAssignedObject() != null && this.newJoinEdge.getSecondObject().getAssignedObject() != null)
-                {
+
+            if (((CDJoinEdgeController) this.newJoinEdge).checkBothObjects()) {
+                if (this.newJoinEdge.getFirstObject().getAssignedObject() != null && this.newJoinEdge.getSecondObject().getAssignedObject() != null) {
                     this.useCaseConnector.setNewline(this.newJoinEdge);
                     this.useCaseConnector.createNewUseCaseJoin();
                 }
-            }
-            else
-            {
+            } else {
                 this.newJoinEdge.setAssignedObject(this.newJoinEdge);
             }
             this.places.addObject(this.newJoinEdge);
-            
+
             this.newJoinEdge = null;
         }
         CDDrawingPane cdDrawing = (CDDrawingPane) this.mainContent.getDrawingPane();
@@ -272,39 +261,32 @@ public class CDMainContentController extends CDBottomRightController implements 
             this.newJoinEdge = null;
             this.mainContent.getDrawingPane().setNewLine(null);
         } else {
-            if (this.newJoinEdge != null && (this.newJoinEdge.getFirstObject()==null || this.newJoinEdge.getFirstObject().equals(clickedObject))) {
+            if (this.newJoinEdge != null && (this.newJoinEdge.getFirstObject() == null || this.newJoinEdge.getFirstObject().equals(clickedObject))) {
                 this.newJoinEdge = null;
-            }
-            else
-            {
+            } else {
                 this.places.setAllObjectDiselected();
                 disableButtons(null);
             }
             drawJoinEdge(clickedObject);
         }
     }
-    
+
     /**
      * Method for disabling or reanabling buttons based on selected object
+     *
      * @param selectedObject object that has been selected.
      */
-    private void disableButtons(CoordinateModel selectedObject)
-    {
-        if (selectedObject != null && selectedObject instanceof CDClass && ((CDClass)selectedObject).getTypeOfClass() == ClassType.INTERFACE)
-        {
+    private void disableButtons(CoordinateModel selectedObject) {
+        if (selectedObject != null && selectedObject instanceof CDClass && ((CDClass) selectedObject).getTypeOfClass() == ClassType.INTERFACE) {
             for (CDLineType lineType : CDLineType.values()) {
-                if (lineType != CDLineType.GENERALIZATION)
-                {
-                    if (this.LeftBottomContent.getButtonWithName(lineType.name()) != null)
-                    {
+                if (lineType != CDLineType.GENERALIZATION) {
+                    if (this.LeftBottomContent.getButtonWithName(lineType.name()) != null) {
                         this.LeftBottomContent.getButtonWithName(lineType.name()).setEnabled(false);
                         this.LeftBottomContent.getButtonWithName(lineType.name()).setSelected(false);
                     }
                 }
             }
-        }
-        else
-        {
+        } else {
             for (CDLineType lineType : CDLineType.values()) {
                 if (this.LeftBottomContent.getButtonWithName(lineType.name()) != null) {
                     this.LeftBottomContent.getButtonWithName(lineType.name()).setEnabled(true);

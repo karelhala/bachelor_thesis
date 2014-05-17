@@ -16,14 +16,14 @@ import javax.swing.KeyStroke;
  *
  * @author Karel Hala
  */
-public class MyMenuBar extends MyMenyBarModel{
+public class MyMenuBar extends MyMenyBarModel {
 
     public MyMenuBar() {
         initializeMenu();
         initializeItems();
-	addItemsToFilemenu();
-	addItemsToEditMenu();
-	addItesmToExportMenu();
+        addItemsToFilemenu();
+        addItemsToEditMenu();
+        addItesmToExportMenu();
         addItemsToMenu();
     }
 
@@ -48,176 +48,173 @@ public class MyMenuBar extends MyMenyBarModel{
     private void initializeItems() {
         this.jMenu1 = new JMenu();
         this.jMenu2 = new JMenu();
-	this.jMenu3 = new JMenu();
+        this.jMenu3 = new JMenu();
 
         this.jMenu1.setText("File");
         this.jMenu2.setText("Edit");
-	this.jMenu3.setText("Export");
+        this.jMenu3.setText("Export");
     }
 
     /**
      * Method for inserting file items to file menu.
      */
-    private void addItemsToFilemenu()
-    {
-	this.newFile = new JMenuItem("New File");
-	this.openFile = new JMenuItem("Open File");
-	this.closeFile = new JMenuItem("Close File");
+    private void addItemsToFilemenu() {
+        this.newFile = new JMenuItem("New File");
+        this.openFile = new JMenuItem("Open File");
+        this.closeFile = new JMenuItem("Close File");
         this.saveAction = new JMenuItem("Save File");
         this.saveAsAction = new JMenuItem("Save As...");
         this.exit = new JMenuItem("Exit");
-	
-	this.jMenu1.add(this.newFile);
+
+        this.jMenu1.add(this.newFile);
         this.jMenu1.addSeparator();
         this.jMenu1.add(this.saveAction);
         this.jMenu1.add(this.saveAsAction);
         this.jMenu1.addSeparator();
-	this.jMenu1.add(this.openFile);
-	this.jMenu1.add(this.closeFile);
+        this.jMenu1.add(this.openFile);
+        this.jMenu1.add(this.closeFile);
         this.jMenu1.addSeparator();
         this.jMenu1.add(this.exit);
     }
-    
+
     /**
      * Method for initializing and inserting edit menu items.
      */
-    private void addItemsToEditMenu()
-    {
-	this.backAction = new JMenuItem("Back");
-	this.frontAction = new JMenuItem("forward");
-	
-	this.jMenu2.add(this.backAction);
-	this.jMenu2.add(this.frontAction);
+    private void addItemsToEditMenu() {
+        this.backAction = new JMenuItem("Back");
+        this.frontAction = new JMenuItem("forward");
+
+        this.jMenu2.add(this.backAction);
+        this.jMenu2.add(this.frontAction);
     }
-    
+
     /**
      * Method for initializing and inserting export menu items.
      */
-    private void addItesmToExportMenu()
-    {
-	this.exportToEps = new JMenuItem("Export to EPS");
-	this.exportToXml = new JMenuItem("Export to XML");
-	this.exportToPdf = new JMenuItem("Export to PDF");
-	
-	this.jMenu3.add(this.exportToEps);
-	this.jMenu3.add(this.exportToXml);
-	this.jMenu3.add(this.exportToPdf);
+    private void addItesmToExportMenu() {
+        this.exportToEps = new JMenuItem("Export to EPS");
+        this.exportToXml = new JMenuItem("Export to XML");
+        this.exportToPdf = new JMenuItem("Export to PDF");
+
+        this.jMenu3.add(this.exportToEps);
+        this.jMenu3.add(this.exportToXml);
+        this.jMenu3.add(this.exportToPdf);
     }
-    
+
     /**
      * Method for adding menus to menu bar
      */
     private void addItemsToMenu() {
         this.jMenuBar1.add(this.jMenu1);
 //        this.jMenuBar1.add(this.jMenu2);
-	this.jMenuBar1.add(this.jMenu3);
+        this.jMenuBar1.add(this.jMenu3);
     }
 
     /**
      * Method for add new file listener to new file item
-     * @param newFileListener 
+     *
+     * @param newFileListener
      */
-    public void addActionListenerToNewFileItem(ActionListener newFileListener)
-    {
-	this.newFile.addActionListener(newFileListener);
-	this.newFile.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK));
+    public void addActionListenerToNewFileItem(ActionListener newFileListener) {
+        this.newFile.addActionListener(newFileListener);
+        this.newFile.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK));
     }
-    
+
     /**
      * Method for close file listener to close file item
-     * @param closeFileListener 
+     *
+     * @param closeFileListener
      */
-    public void addActionListenerToCloseFileItem(ActionListener closeFileListener)
-    {
-	this.closeFile.addActionListener(closeFileListener);
+    public void addActionListenerToCloseFileItem(ActionListener closeFileListener) {
+        this.closeFile.addActionListener(closeFileListener);
         this.closeFile.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X, ActionEvent.CTRL_MASK));
     }
-    
+
     /**
      * Method for open file listener to open file item
-     * @param openFileListener 
+     *
+     * @param openFileListener
      */
-    public void addActionListenerToOpenNewFileItem(ActionListener openFileListener)
-    {
-	this.openFile.addActionListener(openFileListener);
-	this.openFile.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, ActionEvent.CTRL_MASK));
+    public void addActionListenerToOpenNewFileItem(ActionListener openFileListener) {
+        this.openFile.addActionListener(openFileListener);
+        this.openFile.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, ActionEvent.CTRL_MASK));
     }
-    
+
     /**
      * Method for back action listener to take back action
-     * @param backActionListener 
+     *
+     * @param backActionListener
      */
-    public void addActionListenerToBackActionItem(ActionListener backActionListener)
-    {
-	this.backAction.addActionListener(backActionListener);
-	this.backAction.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Z, ActionEvent.CTRL_MASK));
+    public void addActionListenerToBackActionItem(ActionListener backActionListener) {
+        this.backAction.addActionListener(backActionListener);
+        this.backAction.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Z, ActionEvent.CTRL_MASK));
     }
-    
+
     /**
      * Method for forward action listener do again action.
-     * @param forwardActionListener 
+     *
+     * @param forwardActionListener
      */
-    public void addActionListenerToForwardActionItem(ActionListener forwardActionListener)
-    {
-	this.backAction.addActionListener(forwardActionListener);
-	this.backAction.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Y, ActionEvent.CTRL_MASK));
+    public void addActionListenerToForwardActionItem(ActionListener forwardActionListener) {
+        this.backAction.addActionListener(forwardActionListener);
+        this.backAction.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Y, ActionEvent.CTRL_MASK));
     }
-    
+
     /**
      * Method for adding listener to export to pdf.
-     * @param exportPdfListener 
+     *
+     * @param exportPdfListener
      */
-    public void addActionListenerToExportPdf(ActionListener exportPdfListener)
-    {
-	this.exportToPdf.addActionListener(exportPdfListener);
-	this.exportToPdf.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, ActionEvent.ALT_MASK));
+    public void addActionListenerToExportPdf(ActionListener exportPdfListener) {
+        this.exportToPdf.addActionListener(exportPdfListener);
+        this.exportToPdf.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, ActionEvent.ALT_MASK));
     }
-    
+
     /**
      * Method for adding listener to export to eps.
-     * @param exportEpsListener 
+     *
+     * @param exportEpsListener
      */
-    public void addActionListenerToExportEps(ActionListener exportEpsListener)
-    {
-	this.exportToEps.addActionListener(exportEpsListener);
-	this.exportToEps.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, ActionEvent.ALT_MASK));
+    public void addActionListenerToExportEps(ActionListener exportEpsListener) {
+        this.exportToEps.addActionListener(exportEpsListener);
+        this.exportToEps.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, ActionEvent.ALT_MASK));
     }
-    
+
     /**
      * Method for adding listener to export to xml.
-     * @param exportXmlListener 
+     *
+     * @param exportXmlListener
      */
-    public void addActionListenerToExportXml(ActionListener exportXmlListener)
-    {
-	this.exportToXml.addActionListener(exportXmlListener);
-	this.exportToXml.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X, ActionEvent.ALT_MASK));
+    public void addActionListenerToExportXml(ActionListener exportXmlListener) {
+        this.exportToXml.addActionListener(exportXmlListener);
+        this.exportToXml.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X, ActionEvent.ALT_MASK));
     }
-    
+
     /**
      * Method for adding save action listener to save option.
-     * @param saveAction 
+     *
+     * @param saveAction
      */
-    public void addActionListenerToSave(ActionListener saveAction)
-    {
+    public void addActionListenerToSave(ActionListener saveAction) {
         this.saveAction.addActionListener(saveAction);
         this.saveAction.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, ActionEvent.CTRL_MASK));
     }
-    
+
     /**
      * Method for setting listener to save as.
-     * @param saveAsAction 
+     *
+     * @param saveAsAction
      */
-    public void addActionListenerToSaveAs(ActionListener saveAsAction)
-    {
+    public void addActionListenerToSaveAs(ActionListener saveAsAction) {
         this.saveAsAction.addActionListener(saveAsAction);
     }
-    
+
     /**
      * Method for setting listener to exit application.
+     *
      * @param exitApplication listener.
      */
-    public void addActionListenerToExit(ActionListener exitApplication)
-    {
+    public void addActionListenerToExit(ActionListener exitApplication) {
         this.exit.addActionListener(exitApplication);
     }
 }

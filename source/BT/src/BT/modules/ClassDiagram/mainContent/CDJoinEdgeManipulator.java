@@ -16,12 +16,14 @@ import javax.swing.JToggleButton;
 
 /**
  * Class for manipulating with join edges in class diagram part.
+ *
  * @author Karel
  */
 public class CDJoinEdgeManipulator {
 
     /**
-     * Method for changing  type of join edge based on name of button
+     * Method for changing type of join edge based on name of button
+     *
      * @param selectedButton
      * @param joinEdge
      */
@@ -46,8 +48,9 @@ public class CDJoinEdgeManipulator {
     }
 
     /**
-     * Method for creating join edge bwtween classes. It will create new join edge if no one exists
-     * and add to it on first or second place new object. Based on which part is epmty.
+     * Method for creating join edge bwtween classes. It will create new join edge if no one exists and add to it on
+     * first or second place new object. Based on which part is epmty.
+     *
      * @param joinEdge edge that is being created
      * @param clickedObject object that is inserted either on first or second place in join edge.
      * @param selectedButton
@@ -57,7 +60,7 @@ public class CDJoinEdgeManipulator {
         if (joinEdge == null) {
             joinEdge = new CDJoinEdgeController();
         }
-        
+
         changeLineTypeByButton(selectedButton, joinEdge);
         if (joinEdge.getFirstObject() == null) {
             joinEdge.setFirstObject(clickedObject);
@@ -68,103 +71,83 @@ public class CDJoinEdgeManipulator {
         }
         return joinEdge;
     }
-    
+
     /**
-     * Method for checking objects and lines between them.
-     * If you are joining interfaces, you can use only generalization. If you connect
-     * to any class interface you can do it only with realization.
+     * Method for checking objects and lines between them. If you are joining interfaces, you can use only
+     * generalization. If you connect to any class interface you can do it only with realization.
+     *
      * @param joinEdge that is under inspection
-     * @return 
+     * @return
      */
-    public static CDJoinEdgeController checkObjects(CDJoinEdgeController joinEdge)
-    {
+    public static CDJoinEdgeController checkObjects(CDJoinEdgeController joinEdge) {
         String errorMessage = "";
-        try
-        {
+        try {
             //check for connection between interface and any other class
-            if (((CDClass)joinEdge.getFirstObject()).getTypeOfClass() == ClassType.INTERFACE && joinEdge.getJoinEdgeType() != CDLineType.GENERALIZATION && 
-                   joinEdge.getSecondObject() != null && ((CDClass)joinEdge.getSecondObject()).getTypeOfClass() == ClassType.INTERFACE)
-            {
+            if (((CDClass) joinEdge.getFirstObject()).getTypeOfClass() == ClassType.INTERFACE && joinEdge.getJoinEdgeType() != CDLineType.GENERALIZATION
+                    && joinEdge.getSecondObject() != null && ((CDClass) joinEdge.getSecondObject()).getTypeOfClass() == ClassType.INTERFACE) {
                 errorMessage = "You can't use any other join edge between interface and other classes than GENERALIZATION.";
                 joinEdge.setFirstObject(null);
                 joinEdge.setSecondObject(null);
             }
-            
+
             //check for connection between any class and interface
-            if (((CDClass)joinEdge.getFirstObject()).getTypeOfClass() != ClassType.INTERFACE && joinEdge.getSecondObject() != null && ((CDClass)joinEdge.getSecondObject()).getTypeOfClass() == ClassType.INTERFACE &&
-                    joinEdge.getJoinEdgeType() != CDLineType.REALIZATION)
-            {
+            if (((CDClass) joinEdge.getFirstObject()).getTypeOfClass() != ClassType.INTERFACE && joinEdge.getSecondObject() != null && ((CDClass) joinEdge.getSecondObject()).getTypeOfClass() == ClassType.INTERFACE
+                    && joinEdge.getJoinEdgeType() != CDLineType.REALIZATION) {
                 errorMessage = "You can't connect any other class with  interface, than with REALIZATION join.";
                 joinEdge.setSecondObject(null);
             }
-            
+
             //check if class can have another parent
-            if (joinEdge.getJoinEdgeType() == CDLineType.GENERALIZATION)
-            {
-                if (joinEdge.getFirstObject()!= null && ((CDClass)joinEdge.getFirstObject()).hasParent())
-                {
+            if (joinEdge.getJoinEdgeType() == CDLineType.GENERALIZATION) {
+                if (joinEdge.getFirstObject() != null && ((CDClass) joinEdge.getFirstObject()).hasParent()) {
                     joinEdge.setFirstObject(null);
                     return joinEdge;
                 }
-                
-                if (joinEdge.getSecondObject() != null)
-                {
-                    for (CDClass newParent = ((CDClass)joinEdge.getSecondObject()).getParent(); newParent != null; newParent = newParent.getParent())
-                    {
-                        if (newParent.equals(joinEdge.getFirstObject()))
-                        {
+
+                if (joinEdge.getSecondObject() != null) {
+                    for (CDClass newParent = ((CDClass) joinEdge.getSecondObject()).getParent(); newParent != null; newParent = newParent.getParent()) {
+                        if (newParent.equals(joinEdge.getFirstObject())) {
                             joinEdge.setSecondObject(null);
                             return joinEdge;
                         }
                     }
                 }
             }
-            
+
             //check for connection bewteen activity and actor
-            if (((CDClass)joinEdge.getFirstObject()).getTypeOfClass() == ClassType.ACTIVITY)
-            {
-                if (joinEdge.getSecondObject() != null)
-                {
-                    if (((CDClass)joinEdge.getSecondObject()).getTypeOfClass() == ClassType.ACTOR)
-                    {
-                        if (joinEdge.getJoinEdgeType() != CDLineType.ASSOCIATION)
-                        {
+            if (((CDClass) joinEdge.getFirstObject()).getTypeOfClass() == ClassType.ACTIVITY) {
+                if (joinEdge.getSecondObject() != null) {
+                    if (((CDClass) joinEdge.getSecondObject()).getTypeOfClass() == ClassType.ACTOR) {
+                        if (joinEdge.getJoinEdgeType() != CDLineType.ASSOCIATION) {
                             errorMessage = "You can't use any other join between actor and action than ASSOCIATON.";
                             joinEdge.setSecondObject(null);
-                        }
-                        else
-                        {
+                        } else {
                             CoordinateModel firstObject = joinEdge.getFirstObject();
                             joinEdge.setFirstObject(joinEdge.getSecondObject());
                             joinEdge.setSecondObject(firstObject);
-                            ((MyArrayList)joinEdge.getBreakPoints()).swapWholeArrayList();
+                            ((MyArrayList) joinEdge.getBreakPoints()).swapWholeArrayList();
                         }
                     }
                 }
             }
-            
+
             //check for connection bewteen actor and activity
-            if (((CDClass)joinEdge.getFirstObject()).getTypeOfClass() == ClassType.ACTOR)
-            {
-                if (joinEdge.getSecondObject() != null)
-                {
-                    if (((CDClass)joinEdge.getSecondObject()).getTypeOfClass() == ClassType.ACTIVITY)
-                    {
-                        if (joinEdge.getJoinEdgeType() != CDLineType.ASSOCIATION)
-                        {
+            if (((CDClass) joinEdge.getFirstObject()).getTypeOfClass() == ClassType.ACTOR) {
+                if (joinEdge.getSecondObject() != null) {
+                    if (((CDClass) joinEdge.getSecondObject()).getTypeOfClass() == ClassType.ACTIVITY) {
+                        if (joinEdge.getJoinEdgeType() != CDLineType.ASSOCIATION) {
                             errorMessage = "You can't use any other join between actor and action than ASSOCIATON.";
                             joinEdge.setSecondObject(null);
                         }
                     }
                 }
             }
-        }catch (NullPointerException exep){
+        } catch (NullPointerException exep) {
             System.err.println(exep.getMessage());
         }
-        
+
         //display error message if needed
-        if (!errorMessage.equals(""))
-        {
+        if (!errorMessage.equals("")) {
             JOptionPane.showMessageDialog(null, errorMessage);
         }
         return joinEdge;

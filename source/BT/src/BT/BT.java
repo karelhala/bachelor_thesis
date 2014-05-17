@@ -110,8 +110,7 @@ public class BT {
     }
 
     /**
-     * Method that creates Jpanel containing Jcomponent and label for this
-     * component.
+     * Method that creates Jpanel containing Jcomponent and label for this component.
      *
      * @param element to be inser
      * @param label Jlabel, that describes it.
@@ -122,8 +121,7 @@ public class BT {
     }
 
     /**
-     * Method that creates Jpanel containing Jcomponent and label for this
-     * component with different font for label.
+     * Method that creates Jpanel containing Jcomponent and label for this component with different font for label.
      *
      * @param element to be inser
      * @param label Jlabel, that describes it.

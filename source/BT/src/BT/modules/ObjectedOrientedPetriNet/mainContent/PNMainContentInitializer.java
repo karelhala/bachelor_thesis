@@ -35,8 +35,8 @@ import javax.swing.KeyStroke;
 abstract public class PNMainContentInitializer extends PNMainContentModel {
 
     /**
-     * 
-     * @param diagramPlaces 
+     *
+     * @param diagramPlaces
      */
     public PNMainContentInitializer(DiagramPlacesManager diagramPlaces) {
         super(diagramPlaces);
@@ -44,7 +44,7 @@ abstract public class PNMainContentInitializer extends PNMainContentModel {
     }
 
     /**
-     * 
+     *
      */
     private void createMainPane() {
         PNDrawingPane pnDrawing = (PNDrawingPane) this.mainContent.getDrawingPane();
@@ -61,6 +61,7 @@ abstract public class PNMainContentInitializer extends PNMainContentModel {
         final PNDrawingPane drawingPane = (PNDrawingPane) this.mainContent.getDrawingPane();
         drawingPane.getDrawing().getActionMap().put("removeObject", new AbstractAction() {
             PNDrawingPane drawingPane = (PNDrawingPane) mainContent.getDrawingPane();
+
             @Override
             public void actionPerformed(ActionEvent ae) {
                 places.removeAllSelectedItems();
@@ -68,7 +69,7 @@ abstract public class PNMainContentInitializer extends PNMainContentModel {
                 drawingPane.getDrawing().repaint();
             }
         });
-        
+
         drawingPane.getDrawing().getActionMap().put("selectionCanceled", new AbstractAction() {
 
             @Override
@@ -105,12 +106,11 @@ abstract public class PNMainContentInitializer extends PNMainContentModel {
         this.mainContent.getDrawingPane().setNewLine(newJoinEdge);
         ((PNDrawingPane) this.mainContent.getDrawingPane()).getDrawing().repaint();
     }
-    
+
     /**
      * Method for calling repainting bottom left content model.
      */
-    public void repaintBottomLeft()
-    {
+    public void repaintBottomLeft() {
         this.bottomLeftController.repaintBottomLeftContent(this.selectedClass);
         this.bottomLeftController.getDrawnClass().setSelected(Boolean.TRUE);
         setListenerToMethodLabel(this.bottomLeftController.getDrawnClass());
@@ -118,25 +118,23 @@ abstract public class PNMainContentInitializer extends PNMainContentModel {
             setListenerToMethodLabel(oneLabel);
         }
     }
-    
+
     /**
      * Load selected class attributes to combobox.
      */
-    public void repaintBottomRight()
-    {
+    public void repaintBottomRight() {
         this.bottomRightController.setSelectedClass(selectedClass);
         this.bottomRightController.setPetrinetPlaces(places);
         this.bottomRightController.setSelectedMethod(null);
         this.bottomRightController.loadAttributesToComboBox();
         showPanel();
     }
-    
+
     /**
-     * 
-     * @param listenedMethodLabel 
+     *
+     * @param listenedMethodLabel
      */
-    private void setListenerToMethodLabel(final MethodLabel listenedMethodLabel)
-    {
+    private void setListenerToMethodLabel(final MethodLabel listenedMethodLabel) {
         listenedMethodLabel.setBasicColor();
         listenedMethodLabel.addMouseListener(new MouseAdapter() {
             @Override
@@ -144,19 +142,16 @@ abstract public class PNMainContentInitializer extends PNMainContentModel {
                 listenedMethodLabel.setForeground(Color.RED);
                 e.getComponent().setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
             }
-            
+
             @Override
-            public void mouseExited(MouseEvent e)
-            {
+            public void mouseExited(MouseEvent e) {
                 listenedMethodLabel.setBasicColor();
             }
-            
+
             @Override
-            public void mouseClicked(MouseEvent e)
-            {
-                if (bottomLeftController.getSelectedmethodLabel() != null)
-                {
-                    bottomLeftController.getSelectedmethodLabel().selectAndChangeColor(Boolean.FALSE);   
+            public void mouseClicked(MouseEvent e) {
+                if (bottomLeftController.getSelectedmethodLabel() != null) {
+                    bottomLeftController.getSelectedmethodLabel().selectAndChangeColor(Boolean.FALSE);
                 }
                 listenedMethodLabel.selectAndChangeColor(Boolean.TRUE);
                 bottomRightController.setSelectedMethod(listenedMethodLabel);
@@ -166,29 +161,28 @@ abstract public class PNMainContentInitializer extends PNMainContentModel {
                 showPanel();
             }
         });
-            
+
     }
-    
+
     /**
-     * 
-     * @param selectedPlaces 
+     *
+     * @param selectedPlaces
      */
-    private void setPlacesAndRepaintDrawing(PlaceManager selectedPlaces)
-    {
+    private void setPlacesAndRepaintDrawing(PlaceManager selectedPlaces) {
         this.places = selectedPlaces;
         this.mainContent.getDrawingPane().setPlaces(selectedPlaces);
-        ((PNDrawingPane)this.mainContent.getDrawingPane()).getDrawing().repaint();
+        ((PNDrawingPane) this.mainContent.getDrawingPane()).getDrawing().repaint();
     }
-    
+
     /**
      * Initialize rightBottomController with basicPanel and guard action Panel.
+     *
      * @param petrinetPanel
      * @param petrinetGuardAction
      * @param petrinetPlace
      * @return this object.
      */
-    public PNMainContentInitializer initializeRightController(BasicPetrinetPanel petrinetPanel, PetrinetGuardActionPanel petrinetGuardAction, PetrinetPlacePanel petrinetPlace)
-    {
+    public PNMainContentInitializer initializeRightController(BasicPetrinetPanel petrinetPanel, PetrinetGuardActionPanel petrinetGuardAction, PetrinetPlacePanel petrinetPlace) {
         this.bottomRightController = new PNBottomRightController(bottomRightModel, petrinetPanel, petrinetGuardAction, petrinetPlace);
         this.bottomRightController.setSelectedClass(selectedClass);
         this.bottomRightController.setPetrinetDrawingPane((PNDrawingPane) this.mainContent.getDrawingPane());
@@ -197,52 +191,43 @@ abstract public class PNMainContentInitializer extends PNMainContentModel {
         this.bottomRightController.initializeButtonListeners();
         return this;
     }
-    
+
     /**
      * Show basic panel content pane.
      */
-    public void showBasicPanel()
-    {
+    public void showBasicPanel() {
         this.bottomRightModel.replaceAdditionalContent(this.bottomRightController.getBasicPetrinetPanel().getContentPane());
         this.bottomRightModel.hideButtons();
     }
-    
+
     /**
      * Show transition content pane.
      */
-    public void showTransitionPanel()
-    {
+    public void showTransitionPanel() {
         this.bottomRightModel.replaceAdditionalContent(this.bottomRightController.getPetrinetGuardAction().getContentPane());
         this.bottomRightModel.showButtons();
     }
-    
+
     /**
      * Show place content pane.
      */
-    public void showPlacePanel()
-    {
+    public void showPlacePanel() {
         this.bottomRightModel.replaceAdditionalContent(this.bottomRightController.getPetrinetPlace().getContentPane());
         this.bottomRightModel.hideButtons();
     }
-    
+
     /**
      * Method for showing propriete panel, based on selected object.
      */
-    public void showPanel()
-    {
+    public void showPanel() {
         this.bottomRightController.setSelectedObject(places.getSelectedObject());
-        if (places.getSelectedObject() instanceof PNPlace)
-        {
+        if (places.getSelectedObject() instanceof PNPlace) {
             showPlacePanel();
             this.bottomRightController.changeGuardAndAction();
-        }
-        else if (places.getSelectedObject() instanceof PNTransition)
-        {
+        } else if (places.getSelectedObject() instanceof PNTransition) {
             showTransitionPanel();
             this.bottomRightController.changeGuardAndAction();
-        }
-        else
-        {
+        } else {
             showBasicPanel();
             this.bottomRightController.changeGuardAndAction();
         }

@@ -12,8 +12,8 @@ import java.awt.Graphics2D;
 import java.util.ArrayList;
 
 /**
- * Model that describes each object on drawing pane. It stores basic data, that
- * are used in each object, even in join edges.
+ * Model that describes each object on drawing pane. It stores basic data, that are used in each object, even in join
+ * edges.
  *
  * @author Karel Hala
  */
@@ -97,8 +97,7 @@ public class CoordinateModel {
     protected Boolean removable;
 
     /**
-     * Basic constructor, that sets object editable, removable and create
-     * dashedStroke.
+     * Basic constructor, that sets object editable, removable and create dashedStroke.
      */
     public CoordinateModel() {
         this.selected = false;
@@ -265,8 +264,7 @@ public class CoordinateModel {
     }
 
     /**
-     * Set basic color, this color is drawn when object is not selected or
-     * howered.
+     * Set basic color, this color is drawn when object is not selected or howered.
      */
     public void setBasicColor() {
         this.color = this.basicColor;
@@ -412,8 +410,8 @@ public class CoordinateModel {
     }
 
     /**
-     * Method for deleting all assigned objects with selected object. It will
-     * also delete assigned objects to every line.
+     * Method for deleting all assigned objects with selected object. It will also delete assigned objects to every
+     * line.
      */
     public void disMemberObject() {
         if (this.getAssignedObject() != null) {

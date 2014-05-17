@@ -19,16 +19,14 @@ import BT.modules.UC.mainContent.UCMainContentController;
 public final class UCLeftBottomContent extends ButtonPaneModel {
 
     /**
-     * contructor, that creates grid of 4 rows and 1 column a fill them with
-     * jtogglebuttons
+     * contructor, that creates grid of 4 rows and 1 column a fill them with jtogglebuttons
      */
     public UCLeftBottomContent() {
         this(null);
     }
 
     /**
-     * contructor, that creates grid of 4 rows and 1 column a fill them with
-     * jtogglebuttons
+     * contructor, that creates grid of 4 rows and 1 column a fill them with jtogglebuttons
      *
      * @param UCMain
      */
@@ -39,8 +37,8 @@ public final class UCLeftBottomContent extends ButtonPaneModel {
     }
 
     /**
-     * Method that will create main content pane. It will add to this pane 4
-     * jtoggle buttons, these buttons are specified byt lineType enum.
+     * Method that will create main content pane. It will add to this pane 4 jtoggle buttons, these buttons are
+     * specified byt lineType enum.
      */
     public void createMainPane() {
         JToggleButton association = new JToggleButton("Association");

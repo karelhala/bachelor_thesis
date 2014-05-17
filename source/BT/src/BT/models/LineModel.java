@@ -23,15 +23,14 @@ public class LineModel extends CoordinateModel {
      */
     protected CoordinateModel secondObject;
     /**
-     * Distance calculator. Used for calculating distance from line, or
-     * intersection of lines.
+     * Distance calculator. Used for calculating distance from line, or intersection of lines.
      */
     protected DistanceCalculator distanceCalculator;
     /**
      * Break points of line.
      */
     protected MyArrayList<Point> breakPoints;
-    
+
     /**
      * Coordinate X of start point for this line.
      */
@@ -49,8 +48,7 @@ public class LineModel extends CoordinateModel {
      */
     protected int endY;
     /**
-     * Basic color of no parent is given.
-     * no parent means, no connected object in other part of application.
+     * Basic color of no parent is given. no parent means, no connected object in other part of application.
      */
     protected Color noParentLine;
     /**
@@ -59,16 +57,8 @@ public class LineModel extends CoordinateModel {
     protected double tolerance;
 
     /**
-     * Basic constructor.
-     * It will set:
-     * tolerance to 8.
-     * selected color to RED.
-     * basicColor to BLACK.
-     * noParentLine color to GRAY.
-     * normalColor to BLACK.
-     * hower color to ORANGE.
-     * Create new distanceCalculator.
-     * create new breakPoints.
+     * Basic constructor. It will set: tolerance to 8. selected color to RED. basicColor to BLACK. noParentLine color to
+     * GRAY. normalColor to BLACK. hower color to ORANGE. Create new distanceCalculator. create new breakPoints.
      */
     public LineModel() {
         this.tolerance = 8;
@@ -148,6 +138,7 @@ public class LineModel extends CoordinateModel {
 
     /**
      * Check if line is in range of X and Y.
+     *
      * @param x coordinate X of point.
      * @param y coordinate Y of point.
      * @return true if is in range, false if not.
@@ -178,8 +169,8 @@ public class LineModel extends CoordinateModel {
     }
 
     /**
-     * Method for fetching end point of line based on second object. If line has
-     * no second object, return endX and endY of this line.
+     * Method for fetching end point of line based on second object. If line has no second object, return endX and endY
+     * of this line.
      *
      * @return Point
      */
@@ -201,6 +192,7 @@ public class LineModel extends CoordinateModel {
 
     /**
      * Linemodel to string.
+     *
      * @return parentString() from coordinateModel.
      */
     @Override

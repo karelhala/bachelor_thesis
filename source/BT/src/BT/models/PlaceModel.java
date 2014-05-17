@@ -9,8 +9,7 @@ import java.awt.Dimension;
 import java.util.ArrayList;
 
 /**
- * Class that hold variables and methods of each places. It stores paneSize,
- * objects and object's lines.
+ * Class that hold variables and methods of each places. It stores paneSize, objects and object's lines.
  *
  * @author Karel Hala
  */
@@ -107,9 +106,8 @@ public class PlaceModel {
     }
 
     /**
-     * Method that checks if line allrady exists, either in way first object -->
-     * second object or second object --> first object. Resolving issue with
-     * multiple lines connected to same objects. Also checks if line isn't same
+     * Method that checks if line allrady exists, either in way first object --> second object or second object -->
+     * first object. Resolving issue with multiple lines connected to same objects. Also checks if line isn't same
      *
      * @param newLine
      * @return true when line exist
@@ -145,8 +143,8 @@ public class PlaceModel {
     }
 
     /**
-     * Method used for calculating pane size based on each object. This is
-     * usefull for calculating when exporting to EPS.
+     * Method used for calculating pane size based on each object. This is usefull for calculating when exporting to
+     * EPS.
      */
     public void calculateDimension() {
         for (CoordinateModel coordinateModel : objects) {

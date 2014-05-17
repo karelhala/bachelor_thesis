@@ -20,16 +20,14 @@ import BT.modules.ClassDiagram.mainContent.CDMainContentController;
 public final class CDLeftBottomContent extends ButtonPaneModel {
 
     /**
-     * contructor, that creates grid of 3 rows and 1 column a fill them with
-     * jtogglebuttons
+     * contructor, that creates grid of 3 rows and 1 column a fill them with jtogglebuttons
      */
     public CDLeftBottomContent() {
         this(null);
     }
 
     /**
-     * contructor, that creates grid of 3 rows and 1 column a fill them with
-     * jtogglebuttons
+     * contructor, that creates grid of 3 rows and 1 column a fill them with jtogglebuttons
      *
      * @param cdMain
      */
@@ -40,8 +38,8 @@ public final class CDLeftBottomContent extends ButtonPaneModel {
     }
 
     /**
-     * Method that will create main content pane. It will add to this pane 3
-     * jtoggle buttons, these buttons are specified byt lineType enum.
+     * Method that will create main content pane. It will add to this pane 3 jtoggle buttons, these buttons are
+     * specified byt lineType enum.
      */
     public void createMainPane() {
         JToggleButton association = new JToggleButton("Association");
