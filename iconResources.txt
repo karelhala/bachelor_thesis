@@ -9,3 +9,4 @@ http://openiconlibrary.sourceforge.net/gallery2/?./Icons/actions/document-open-5
 http://openiconlibrary.sourceforge.net/gallery2/?./Icons/actions/document-export.png
 http://openiconlibrary.sourceforge.net/gallery2/?./Icons/actions/edit-add-2.png
 http://openiconlibrary.sourceforge.net/gallery2/?./Icons/actions/dialog-cancel-3.png
+http://openiconlibrary.sourceforge.net/gallery2/?./Icons/actions/document-print-3.png
