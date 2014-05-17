@@ -164,19 +164,21 @@ public class CDMainContentController extends CDBottomRightController implements 
             JPanel dialogPanel = new JPanel(new BorderLayout());
             dialogPanel.add(nameInput, BorderLayout.PAGE_START);
             nameInput.setText(pressedObject.getName());
-            JRadioButton actor = new JRadioButton("actor");
-            JRadioButton activity = new JRadioButton("activity");
-            JRadioButton none = new JRadioButton("none");
+            JRadioButton actor = new JRadioButton("actor", false);
+            JRadioButton activity = new JRadioButton("activity", false);
+            JRadioButton none = new JRadioButton("none", false);
             ButtonGroup classTypeGroup = new ButtonGroup();
             classTypeGroup.add(activity);
             classTypeGroup.add(actor);
             classTypeGroup.add(none);
-            ClassType typeOfClass = ((CDClass) pressedObject).getTypeOfClass();
-            ((JRadioButton) ((typeOfClass == ClassType.ACTIVITY) ? activity : (typeOfClass == ClassType.NONE) ? none : actor)).setSelected(true);
-            if (pressedObject.getInJoins().isEmpty() && pressedObject.getOutJoins().isEmpty() && ((CDClass) pressedObject).getTypeOfClass() != ClassType.INTERFACE) {
-                dialogPanel.add(actor, BorderLayout.LINE_START);
-                dialogPanel.add(activity, BorderLayout.CENTER);
-                dialogPanel.add(none, BorderLayout.LINE_END);
+            if (((CDClass) pressedObject).getTypeOfClass() != ClassType.INTERFACE) {
+                ClassType typeOfClass = ((CDClass) pressedObject).getTypeOfClass();
+                ((JRadioButton) ((typeOfClass == ClassType.ACTIVITY) ? activity : (typeOfClass == ClassType.NONE) ? none : actor)).setSelected(true);
+                if (pressedObject.getInJoins().isEmpty() && pressedObject.getOutJoins().isEmpty() && ((CDClass) pressedObject).getTypeOfClass() != ClassType.INTERFACE) {
+                    dialogPanel.add(actor, BorderLayout.LINE_START);
+                    dialogPanel.add(activity, BorderLayout.CENTER);
+                    dialogPanel.add(none, BorderLayout.LINE_END);
+                }
             }
             this.useCaseConnector.setSelectedModel(pressedObject);
             this.useCaseReactivator.addButtonsToDialog(dialogPanel);
@@ -184,7 +186,18 @@ public class CDMainContentController extends CDBottomRightController implements 
                     "Please Enter name of class and select type", JOptionPane.OK_CANCEL_OPTION);
             if (result == JOptionPane.OK_OPTION) {
                 pressedObject.setName(nameInput.getText());
-                ((CDClass) pressedObject).setTypeOfClass((actor.isSelected() == true) ? ClassType.ACTOR : (activity.isSelected() == true) ? ClassType.ACTIVITY : ClassType.NONE);
+                ClassType selectedType;
+                if (actor.isSelected() == true) {
+                    selectedType = ClassType.ACTOR;
+                } else if (activity.isSelected() == true) {
+                    selectedType = ClassType.ACTIVITY;
+                } else if (none.isSelected() == true) {
+                    selectedType = ClassType.NONE;
+                } else {
+                    selectedType = ClassType.INTERFACE;
+                }
+                System.out.println(selectedType);
+                ((CDClass) pressedObject).setTypeOfClass(selectedType);
                 this.useCaseConnector.setSelectedModel(pressedObject);
                 this.useCaseConnector.createNewUseCaseObject(nameInput.getText());
             }
