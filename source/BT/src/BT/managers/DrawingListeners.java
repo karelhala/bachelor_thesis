@@ -27,10 +27,6 @@ public class DrawingListeners extends MouseInputAdapter {
      * Object, that is being dragged on drawing pane.
      */
     private CoordinateModel draggedObject;
-    /**
-     * This checker will check for objects under mouse.
-     */
-    private final ObjectChecker objectChecker;
 
     /**
      * Basic constructor for creating drawing listeners.
@@ -39,7 +35,6 @@ public class DrawingListeners extends MouseInputAdapter {
      */
     public DrawingListeners(DrawingClicks mainContent) {
         this.mainContent = (MainContentController) mainContent;
-        this.objectChecker = new ObjectChecker(this.mainContent.getPlaces());
     }
 
     /**
@@ -55,6 +50,7 @@ public class DrawingListeners extends MouseInputAdapter {
         if (SwingUtilities.isRightMouseButton(evt)) {
             this.mainContent.rightClick(evt);
         } else {
+            ObjectChecker objectChecker = new ObjectChecker(this.mainContent.getPlaces());
             CoordinateModel coordObject = objectChecker.getObjectUnderMouse(evt.getPoint());
             if (coordObject == null) {
                 this.mainContent.drawingPaneClicked(evt);
@@ -112,7 +108,8 @@ public class DrawingListeners extends MouseInputAdapter {
         changeCursorByObject(e);
         if (SwingUtilities.isLeftMouseButton(e)) {
             if (this.draggedObject instanceof LineModel) {
-                this.mainContent.setSelectedObject(this.objectChecker.getObjectUnderMouse(e.getPoint()));
+                ObjectChecker objectChecker = new ObjectChecker(this.mainContent.getPlaces());
+                this.mainContent.setSelectedObject(objectChecker.getObjectUnderMouse(e.getPoint()));
             }
             this.draggedObject = null;
         }
@@ -128,7 +125,8 @@ public class DrawingListeners extends MouseInputAdapter {
     public void mouseClicked(MouseEvent e) {
         changeCursorByObject(e);
         if (SwingUtilities.isLeftMouseButton(e)) {
-            CoordinateModel clickedObject = this.objectChecker.getObjectUnderMouse(e.getPoint());
+            ObjectChecker objectChecker = new ObjectChecker(this.mainContent.getPlaces());
+            CoordinateModel clickedObject = objectChecker.getObjectUnderMouse(e.getPoint());
             if (e.getClickCount() % 2 == 0) {
                 if (clickedObject != null) {
                     this.mainContent.drawingPaneDoubleCliked(clickedObject);
@@ -145,7 +143,8 @@ public class DrawingListeners extends MouseInputAdapter {
      * @param e mouseEvent that is being done.
      */
     private void changeCursorByObject(MouseEvent e) {
-        CoordinateModel coordObject = this.objectChecker.getObjectUnderMouse(e.getPoint());
+        ObjectChecker objectChecker = new ObjectChecker(this.mainContent.getPlaces());
+        CoordinateModel coordObject = objectChecker.getObjectUnderMouse(e.getPoint());
         if (coordObject != null) {
             e.getComponent().setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         } else {

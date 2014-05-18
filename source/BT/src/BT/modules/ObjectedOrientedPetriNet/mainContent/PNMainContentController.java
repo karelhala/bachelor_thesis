@@ -24,12 +24,16 @@ import javax.swing.JTextField;
 import javax.swing.JToggleButton;
 
 /**
+ * Controller for handeling clicks on petri net panel. This class handles calling of mouse clicks and mouse movements.
+ * It will create and change objects on petri net drawing panel. It also handles creating and joining objects on petri
+ * net drawing panel.
  *
  * @author Karel Hala
  */
 public class PNMainContentController extends PNMainContentInitializer implements DrawingClicks {
 
     /**
+     * Basic constructor. It calls paren's constructor with diagramPlacesManager.
      *
      * @param diagramPlaces
      */
@@ -38,8 +42,9 @@ public class PNMainContentController extends PNMainContentInitializer implements
     }
 
     /**
+     * When mouse is moved in petriNet panel. Highlight objects on drawing panel.
      *
-     * @param evt
+     * @param evt MouseEvent location of cursor.
      */
     @Override
     public void drawingPanecheckMove(MouseEvent evt) {
@@ -59,8 +64,10 @@ public class PNMainContentController extends PNMainContentInitializer implements
     }
 
     /**
+     * When drawing panel of petriNet is double clicked. Change name of object (for PNPlace or PNTransition) or create
+     * dialog for checking variables to be sent through join (for PNJoinEdge).
      *
-     * @param pressedObject
+     * @param pressedObject object that was double clicked.
      */
     @Override
     public void drawingPaneDoubleCliked(CoordinateModel pressedObject) {
@@ -117,8 +124,10 @@ public class PNMainContentController extends PNMainContentInitializer implements
     }
 
     /**
+     * When pane of petriNet was clicked. Create new object (if no object is under mouse). Which object is defined by
+     * checked button from leftTopContent.
      *
-     * @param evt
+     * @param evt location of mouse.
      */
     @Override
     public void drawingPaneClicked(MouseEvent evt) {
@@ -144,9 +153,10 @@ public class PNMainContentController extends PNMainContentInitializer implements
     }
 
     /**
+     * When mouse is being dragged. Relocate objects under mouse if any is under.
      *
-     * @param e
-     * @param dragged
+     * @param e location of mouse.
+     * @param dragged Dragged object.
      */
     @Override
     public void drawingMouseDragged(MouseEvent e, CoordinateModel dragged) {
@@ -168,8 +178,9 @@ public class PNMainContentController extends PNMainContentInitializer implements
     }
 
     /**
+     * When mouse is clicked, this methodis called. hoglight object and change panels based on object type.
      *
-     * @param clickedObject
+     * @param clickedObject object that was clicked on.
      */
     @Override
     public void setSelectedObject(CoordinateModel clickedObject) {
@@ -201,7 +212,7 @@ public class PNMainContentController extends PNMainContentInitializer implements
     }
 
     /**
-     *
+     * Delete new line if no buttom is selected from left bottom cotroller.
      */
     @Override
     public void buttonsChanged() {
@@ -211,8 +222,10 @@ public class PNMainContentController extends PNMainContentInitializer implements
     }
 
     /**
+     * Create new or update new join edge. When both objects are saved in join edge, save it to places. Check if
+     * connection is possible.
      *
-     * @param clickedObject
+     * @param clickedObject object that was clicked on.
      */
     public void drawJoinEdge(CoordinateModel clickedObject) {
         this.newJoinEdge = createJoinEdge((PNJoinEdgeController) this.newJoinEdge, clickedObject);
@@ -231,10 +244,11 @@ public class PNMainContentController extends PNMainContentInitializer implements
     }
 
     /**
-     *
-     * @param joinEdge
-     * @param clickedObject
-     * @return
+     * method for checking if connection between two objects is possible.
+     * 
+     * @param joinEdge eddited join edge.
+     * @param clickedObject clicked object.
+     * @return PNJoinEdgeController changed join edge.
      */
     private PNJoinEdgeController createJoinEdge(PNJoinEdgeController joinEdge, CoordinateModel clickedObject) {
         if (joinEdge == null) {
@@ -257,8 +271,9 @@ public class PNMainContentController extends PNMainContentInitializer implements
     }
 
     /**
-     *
-     * @param clickedObject
+     * When clicked on object delete new line if wrong object under mouse or edit join edge.
+     * 
+     * @param clickedObject object that was clicked on drawing panel.
      */
     private void clickedOnObject(CoordinateModel clickedObject) {
         if (clickedObject == null || clickedObject instanceof LineModel) {

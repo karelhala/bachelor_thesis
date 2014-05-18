@@ -19,19 +19,21 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 
 /**
+ * Class that draws each object of petri nets to Jpanel.
  *
  * @author Karel Hala
  */
 public class PNDrawingPane extends DrawingPaneModel {
 
     /**
-     * 
+     * Drawing panel, that draws each object.
      */
     private final PNDrawingPane.drawing drawPane;
 
     /**
+     * Basic constructor. This constructor will set Places and create new drawing Panel.
      *
-     * @param PNplaces
+     * @param PNplaces places that will be drawn.
      */
     public PNDrawingPane(PlaceManager PNplaces) {
         super(PNplaces);
@@ -39,15 +41,18 @@ public class PNDrawingPane extends DrawingPaneModel {
     }
 
     /**
-     *
+     * Class for drawing each object. It extends DrawingJpanel, which extends Jpanel.
      */
     public class drawing extends DrawingJpanel {
 
+        /**
+         * Basic graphic that handels drawing of objects.
+         */
         private Graphics2D graphicsPanel;
 
         /**
-         *
-         * @param g1
+         * Override paintComponent for drawing objects.
+         * @param g1 Graphics.
          */
         @Override
         protected void paintComponent(Graphics g1) {
@@ -83,8 +88,9 @@ public class PNDrawingPane extends DrawingPaneModel {
     }
 
     /**
+     * Return drawing panel.
      *
-     * @return
+     * @return PNDrawingPane.drawing.
      */
     public PNDrawingPane.drawing getDrawing() {
         return drawPane;

@@ -16,32 +16,48 @@ import GUI.PetrinetGuardActionPanel;
 import GUI.PetrinetPlacePanel;
 
 /**
- *
+ * Content controller for petriNets.
+ * It creates panels and objects of petri net part.
+ * 
  * @author Karel Hala
  */
 public class PNContentController {
 
+    /**
+     * Main content is stored in this variable.
+     */
     private final MainContentModel pnContent;
+    /**
+     * Main controller to Petri Net.
+     */
     private PNMainContentController pnMain;
 
     /**
-     *
+     * Basic constructor, that creates new mainContent model.
      */
     public PNContentController() {
         this.pnContent = new MainContentModel();
     }
 
+    /**
+     * Getter for main content model. In here is stored each part of main panels.
+     * @return MainContentModel with panels where is stored controls.
+     */
     public MainContentModel getPnContent() {
         return pnContent;
     }
 
+    /**
+     * Getter for main content controller of petri nets.
+     * @return PNMainContentController which controlls whole petri net drqawing panel.
+     */
     public PNMainContentController getPnMain() {
         return pnMain;
     }
 
     /**
-     *
-     * @param diagramPlaces
+     * Create every component of petriNet. In here every component is created and stored in pnContent.
+     * @param diagramPlaces every object on drawing panels is stored in this.
      */
     public void createComponents(DiagramPlacesManager diagramPlaces) {
         BottomLeftContentModel bottomLeftContentModel = new BottomLeftContentModel();

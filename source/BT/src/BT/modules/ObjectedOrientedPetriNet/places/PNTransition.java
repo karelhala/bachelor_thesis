@@ -70,7 +70,7 @@ public class PNTransition extends PNTransitionModel {
      *
      * @param g drawing plate.
      * @param fm font metrics.
-     * @return
+     * @return PNTransition for further use.
      */
     private PNTransition drawLine(Graphics2D g, FontMetrics fm) {
         int yCoord;
@@ -88,7 +88,7 @@ public class PNTransition extends PNTransitionModel {
      * compare stringwidth of guard and if it is higher, resize the whole transition.
      *
      * @param fm FontMetrics of graphics2D.
-     * @return this object.
+     * @return PNTransition for further use.
      */
     protected PNTransition setObjectWidth(FontMetrics fm) {
         this.width = 10;
@@ -108,7 +108,8 @@ public class PNTransition extends PNTransitionModel {
     /**
      * Add string heights so transition can be taller.
      *
-     * @param fm
+     * @param fm for calculating object height.
+     * @return PNTransition for further use.
      */
     private PNTransition setObjectHeight(FontMetrics fm) {
         int objectTall = 5;
@@ -125,10 +126,12 @@ public class PNTransition extends PNTransitionModel {
     }
 
     /**
+     * Draw guard string on Graphics2D. Draw guard string on correct position. It calculates this position by guard
+     * string metrics.
      *
-     * @param g
-     * @param fm
-     * @return
+     * @param g Graphics2D for drawing guard string.
+     * @param fm FontMetrics of petriNet drawing panel.
+     * @return PNTransition for further use.
      */
     private PNTransition drawGuard(Graphics2D g, FontMetrics fm) {
         g.drawString(this.guard, x - fm.stringWidth(this.guard) / 2, y - this.height / 2 + fm.getHeight() - 5);
@@ -136,10 +139,12 @@ public class PNTransition extends PNTransitionModel {
     }
 
     /**
+     * Draw action string on Graphics2D. Draw action string on correct position. It calculates this position by action
+     * string metrics.
      *
-     * @param g
-     * @param fm
-     * @return
+     * @param g Graphics2D for drawing action string.
+     * @param fm FontMetrics of petriNet drawing panel.
+     * @return PNTransition for further use.
      */
     private PNTransition drawAction(Graphics2D g, FontMetrics fm) {
         g.drawString(this.action.getActionAsString(), x - fm.stringWidth(this.action.getActionAsString()) / 2, y + this.height / 2 - fm.getHeight() + 12);

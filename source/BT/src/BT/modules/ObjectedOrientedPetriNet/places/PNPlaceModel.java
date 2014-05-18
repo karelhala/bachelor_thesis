@@ -7,7 +7,6 @@ package BT.modules.ObjectedOrientedPetriNet.places;
 
 import BT.models.MyArrayList;
 import java.awt.Color;
-import java.util.ArrayList;
 
 /**
  *
@@ -16,14 +15,16 @@ import java.util.ArrayList;
 public class PNPlaceModel extends PetriNetModel {
 
     /**
-     * Contstant that is in place.
+     * Contstant that is in place object on drawing panel.
      */
     protected String constant;
 
     /**
+     * Basic constructor. It sets X,Y, width, height, selected color, basic color, color, hower color. it creates new
+     * inJoins MyArrayList and out joins MyArrayList plus variables MyArrayList.
      *
-     * @param x
-     * @param y
+     * @param x coordinate X of object.
+     * @param y coordinate Y of object.
      */
     public PNPlaceModel(int x, int y) {
         super();
@@ -43,7 +44,7 @@ public class PNPlaceModel extends PetriNetModel {
     }
 
     /**
-     * Get constant.
+     * Get constant string.
      *
      * @return String of constant.
      */
@@ -52,7 +53,7 @@ public class PNPlaceModel extends PetriNetModel {
     }
 
     /**
-     * Set constant to this.
+     * Set constant string.
      *
      * @param constant
      */

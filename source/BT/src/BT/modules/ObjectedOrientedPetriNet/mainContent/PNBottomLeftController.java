@@ -13,27 +13,30 @@ import GUI.MethodLabel;
 import java.util.ArrayList;
 
 /**
+ * Class that controls bottom left panel where are method labels stored. In left bottom panel are stored method labels
+ * where are methods and one specific class.
  *
  * @author Karel Hala
  */
 public class PNBottomLeftController {
 
     /**
-     *
+     * Model that describes location of each method label.
      */
     private final BottomLeftContentModel bottomLeftModel;
 
     /**
-     *
+     * Class that is being drawn.
      */
     private MethodLabel drawnClass;
 
     /**
-     *
+     * All method Labels stored in arrayList.
      */
     private final ArrayList<MethodLabel> methodLabels;
 
     /**
+     * Basic constructor, that will set BottomLeftContentModel. It creates new arrayList with each method label.
      *
      * @param bottomLeftModel
      */
@@ -42,10 +45,18 @@ public class PNBottomLeftController {
         this.methodLabels = new ArrayList<>();
     }
 
+    /**
+     * Return class that is drawn.
+     * @return MethodLabel with specific class.
+     */
     public MethodLabel getDrawnClass() {
         return drawnClass;
     }
 
+    /**
+     * Return all method labels.
+     * @return ArrayList<MethodLabel>.
+     */
     public ArrayList<MethodLabel> getMethodLabels() {
         return methodLabels;
     }
@@ -70,7 +81,7 @@ public class PNBottomLeftController {
     }
 
     /**
-     * Method that will clear all methods.
+     * Method that will clear all method labels.
      */
     public void removeAllmethods() {
         if (this.methodLabels != null && !this.methodLabels.isEmpty()) {
@@ -101,16 +112,17 @@ public class PNBottomLeftController {
     /**
      * Method for setting all method labels to false and repaint their color.
      */
-    public void setAllMethodsNotSelectedAndRepaintAllMethods()
-    {
+    public void setAllMethodsNotSelectedAndRepaintAllMethods() {
         for (MethodLabel methodLabel : methodLabels) {
             methodLabel.setSelected(false);
             methodLabel.setBasicColor();
         }
     }
+
     /**
-     * 
-     * @param drawnClass 
+     * Set class that will be drawn.
+     *
+     * @param drawnClass MethodLabel with specific class.
      */
     public void setDrawnClass(MethodLabel drawnClass) {
         this.drawnClass = drawnClass;

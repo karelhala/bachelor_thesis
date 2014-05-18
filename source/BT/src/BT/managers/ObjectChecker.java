@@ -59,11 +59,14 @@ public class ObjectChecker {
      * @return object if any is under mouse.
      */
     private CoordinateModel isObjectunderMouse(int x, int y) {
-        for (CoordinateModel object : places.getObjects()) {
-            if (object.isObject(x, y)) {
-                return object;
-            } else {
-                object.setBasicColor();
+        if (places != null)
+        {
+            for (CoordinateModel object : places.getObjects()) {
+                if (object.isObject(x, y)) {
+                    return object;
+                } else {
+                    object.setBasicColor();
+                }
             }
         }
         return null;
@@ -77,11 +80,14 @@ public class ObjectChecker {
      * @return join edge if any is under mouse.
      */
     private LineModel isJoinEdgeUnderMouse(int x, int y) {
-        for (LineModel joinEdge : places.getJoinEdges()) {
-            if (joinEdge.isInRange(x, y)) {
-                return joinEdge;
-            } else {
-                joinEdge.setBasicColor();
+        if (places != null)
+        {
+            for (LineModel joinEdge : places.getJoinEdges()) {
+                if (joinEdge.isInRange(x, y)) {
+                    return joinEdge;
+                } else {
+                    joinEdge.setBasicColor();
+                }
             }
         }
         return null;

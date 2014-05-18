@@ -31,17 +31,19 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 /**
+ * Class for creating panels, which will controll Action or Guard.
  *
  * @author Karel Hala
  */
 public class PNBottomRightController extends PNBottomRightModel {
 
     /**
+     * Basic constructor that will call parent's constructor with each argument.
      *
-     * @param bottomRightModel
-     * @param petrinetPanel
-     * @param petrinetGuardAction
-     * @param petrinetPlace
+     * @param bottomRightModel to be specified in PNBottomRightModel.
+     * @param petrinetPanel to be specified in PNBottomRightModel.
+     * @param petrinetGuardAction to be specified in PNBottomRightModel.
+     * @param petrinetPlace to be specified in PNBottomRightModel.
      */
     public PNBottomRightController(BottomRightContentModel bottomRightModel, BasicPetrinetPanel petrinetPanel, PetrinetGuardActionPanel petrinetGuardAction, PetrinetPlacePanel petrinetPlace) {
         super(bottomRightModel, petrinetPanel, petrinetGuardAction, petrinetPlace);
@@ -158,9 +160,19 @@ public class PNBottomRightController extends PNBottomRightModel {
     }
 
     /**
+     * Crates guard panel to set guard in PNTransition.
+     * <pre>
+     * <code>It will create new dialog which will have:
+     * String field: for direct changing of guard.
+     * And button.
+     * Or button.
+     * Set to new guard button.
+     * Left variable input, operator and right variable input.
+     * </code>
+     * </pre>
      *
-     * @param guardString
-     * @return
+     * @param guardString o;d guard string.
+     * @return new guard string.
      */
     private String createGuardPanel(String guardString) {
         PNTransition selectedTransition = (PNTransition) selectedObject;
@@ -249,12 +261,12 @@ public class PNBottomRightController extends PNBottomRightModel {
     /**
      * Join variables over operator to guard string over glue. If glue is null, replace guard string.
      *
-     * @param guardString
-     * @param glue
-     * @param leftVariable
-     * @param rightVariable
-     * @param operator
-     * @return
+     * @param guardString old guard string.
+     * @param glue glue wchich will be used to join old guard with new settings [&&,||].
+     * @param leftVariable variable or constant on left side.
+     * @param rightVariable variable or constant on right side.
+     * @param operator this will be used to join left and right variable. Basic operator, if new one is empty, is "==".
+     * @return new guard string joined by glue string.
      */
     public String joinGuardString(String guardString, String glue, String leftVariable, String rightVariable, String operator) {
         operator = ("".equals(operator)) ? "==" : operator;
@@ -265,8 +277,10 @@ public class PNBottomRightController extends PNBottomRightModel {
     }
 
     /**
+     * Create panel with action to be set. Panel is shown in dialog window, it containt variable JcomboBox and Jtext
+     * field.
      *
-     * @param oldAction
+     * @param oldAction ActionModel to be shown as default value.
      */
     public void createActionPanel(ActionModel oldAction) {
         PNTransition selectedTransition = (PNTransition) selectedObject;
@@ -299,9 +313,7 @@ public class PNBottomRightController extends PNBottomRightModel {
                     ((PNJoinEdgeController) oneLine).addVariable(selectedTransition.getActionVariable());
                     ((PNPlace) oneLine.getSecondObject()).addVariable(selectedTransition.getActionVariable());
                 }
-            }
-            else
-            {
+            } else {
                 selectedTransition.getAction().setVariable(null);
             }
         }

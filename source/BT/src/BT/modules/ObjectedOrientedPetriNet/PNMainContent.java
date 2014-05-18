@@ -15,16 +15,21 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 /**
+ * Here every part of main content is stored and created.
  *
  * @author Karel Hala
  */
 public class PNMainContent extends ContentPaneModel {
 
+    /**
+     * Area of drawing panel.
+     */
     private final Dimension area;
 
     /**
+     * Basic constructor. It will create new content Pane, drawing pane and set the area to 0 0.
      *
-     * @param places
+     * @param places PlaceManager with places of petriNet.
      */
     public PNMainContent(PlaceManager places) {
         super();
@@ -35,7 +40,8 @@ public class PNMainContent extends ContentPaneModel {
     }
 
     /**
-     *
+     * Creates main panel. It will set preferred size to area, background color to white, repaint it and position it in 
+     * JscrollPanel.
      */
     private void createMainPane() {
         PNDrawingPane pnDrawingPane = (PNDrawingPane) this.drawingPane;

@@ -13,20 +13,14 @@ import javax.swing.JPanel;
 import javax.swing.JToggleButton;
 
 /**
- *
+ * Class for storing button for creating join edge. This controller controls only one button.
+ * 
  * @author Karel Hala
  */
-public class PNLeftBottomContent extends ButtonPaneModel {
+public final class PNLeftBottomContent extends ButtonPaneModel {
 
     /**
-     *
-     */
-    public PNLeftBottomContent() {
-        this(null);
-    }
-
-    /**
-     *
+     * Basic constructor. It creates panel with grid 1,1 and insert button with join.
      * @param PNMain
      */
     public PNLeftBottomContent(PNMainContentController PNMain) {

@@ -13,10 +13,11 @@ import javax.swing.JPanel;
 import javax.swing.JToggleButton;
 
 /**
- *
+ * Class that holds buttons for creating objects on petrinet drawing panel.
+ * 
  * @author Karel Hala
  */
-public class PNLeftTopContent extends ButtonPaneModel {
+public final class PNLeftTopContent extends ButtonPaneModel {
 
     /**
      * Constructor, creates gridlayour and calls to create left Top pane

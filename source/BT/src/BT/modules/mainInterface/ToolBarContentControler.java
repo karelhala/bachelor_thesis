@@ -64,7 +64,7 @@ public class ToolBarContentControler {
         JButton exportEps = toolBarcontent.addNewButton("Export to Eps", "printEps.png");
 //        JButton exportPdf = toolBarcontent.addNewButton("Export to PDF");
 //        JButton exportXml = toolBarcontent.addNewButton("Export to XML");
-        JButton help = toolBarcontent.addNewButton("Help");
+        JButton help = toolBarcontent.addNewButton("Help", "help.png");
         JButton exit = toolBarcontent.addNewButton("Exit", "exitApplication.png");
 
         NewFileButton.addActionListener(newFileAction);

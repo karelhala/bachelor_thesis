@@ -29,14 +29,16 @@ import javax.swing.JComponent;
 import javax.swing.KeyStroke;
 
 /**
+ * Class that initialize classes and call proper methods for petriNets. This class is usefull for bottom left and right
+ * panels, when it shows correct panels and stuff.
  *
  * @author Karel Hala
  */
 abstract public class PNMainContentInitializer extends PNMainContentModel {
 
     /**
-     *
-     * @param diagramPlaces
+     * Basic constructor. Senad to it's parrent diagram places, all objects on petri net panel.
+     * @param diagramPlaces DiagramPlacesManager all objects on petri net panel.
      */
     public PNMainContentInitializer(DiagramPlacesManager diagramPlaces) {
         super(diagramPlaces);
@@ -44,7 +46,7 @@ abstract public class PNMainContentInitializer extends PNMainContentModel {
     }
 
     /**
-     *
+     * This will create new drawing pane and sets mouse listenrs and button listeners to drawing pane.
      */
     private void createMainPane() {
         PNDrawingPane pnDrawing = (PNDrawingPane) this.mainContent.getDrawingPane();
@@ -55,7 +57,7 @@ abstract public class PNMainContentInitializer extends PNMainContentModel {
     }
 
     /**
-     *
+     * Set listener to escape and delete button.
      */
     public void setButtonsListeners() {
         final PNDrawingPane drawingPane = (PNDrawingPane) this.mainContent.getDrawingPane();
@@ -89,8 +91,8 @@ abstract public class PNMainContentInitializer extends PNMainContentModel {
     }
 
     /**
-     *
-     * @param draggedJoinEdge
+     * This will remove line from joins and create new line with ending at the tip of cursor.
+     * @param draggedJoinEdge PNJoinEdgeController removed join.
      */
     protected void removeLineFromArrayListAndSetNewLine(PNJoinEdgeController draggedJoinEdge) {
         this.newJoinEdge = new PNJoinEdgeController();
@@ -99,7 +101,7 @@ abstract public class PNMainContentInitializer extends PNMainContentModel {
     }
 
     /**
-     *
+     * Delete new line that is being drawn.
      */
     protected void deleteNewLine() {
         this.newJoinEdge = null;
@@ -131,8 +133,11 @@ abstract public class PNMainContentInitializer extends PNMainContentModel {
     }
 
     /**
-     *
-     * @param listenedMethodLabel
+     * Listeners to method label are clicked, entered and exited.
+     * Clicked: petri net will be redrawn.
+     * Enetered: indicate user can click.
+     * Exited: change back to original color.
+     * @param listenedMethodLabel method label, that has these listeners set up.
      */
     private void setListenerToMethodLabel(final MethodLabel listenedMethodLabel) {
         listenedMethodLabel.setBasicColor();
@@ -165,8 +170,8 @@ abstract public class PNMainContentInitializer extends PNMainContentModel {
     }
 
     /**
-     *
-     * @param selectedPlaces
+     * Method for setting petrinet objects and repaint.
+     * @param selectedPlaces PlaceManager new objects to be drawn.
      */
     private void setPlacesAndRepaintDrawing(PlaceManager selectedPlaces) {
         this.places = selectedPlaces;
@@ -177,10 +182,10 @@ abstract public class PNMainContentInitializer extends PNMainContentModel {
     /**
      * Initialize rightBottomController with basicPanel and guard action Panel.
      *
-     * @param petrinetPanel
-     * @param petrinetGuardAction
-     * @param petrinetPlace
-     * @return this object.
+     * @param petrinetPanel panel for inserting new variable as place.
+     * @param petrinetGuardAction panel with action and guard text field.
+     * @param petrinetPlace panel with setting constant to place.
+     * @return PNMainContentInitializer.
      */
     public PNMainContentInitializer initializeRightController(BasicPetrinetPanel petrinetPanel, PetrinetGuardActionPanel petrinetGuardAction, PetrinetPlacePanel petrinetPlace) {
         this.bottomRightController = new PNBottomRightController(bottomRightModel, petrinetPanel, petrinetGuardAction, petrinetPlace);

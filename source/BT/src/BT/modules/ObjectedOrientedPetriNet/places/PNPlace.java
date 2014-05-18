@@ -18,18 +18,19 @@ import java.awt.Graphics2D;
 public class PNPlace extends PNPlaceModel {
 
     /**
-     *
-     * @param x
-     * @param y
+     * Basic constructor for passing x and y to parent.
+     * 
+     * @param x coordinate X.
+     * @param y coordinate Y.
      */
     public PNPlace(int x, int y) {
         super(x, y);
     }
 
     /**
-     * 
+     * Draws place on Graphics2d.
      *
-     * @param g
+     * @param g Graphics2D which will draw petriNetPlace.
      */
     public void drawPlace(Graphics2D g) {
         Color placeColor = this.color;
@@ -48,9 +49,9 @@ public class PNPlace extends PNPlaceModel {
     }
 
     /**
-     *
-     * @param fm
-     * @return
+     * Set height of object based on constant string height.
+     * @param fm FontMetrics for calculating height of string.
+     * @return PNPlace for further use.
      */
     protected PNPlace setObjectHeight(FontMetrics fm) {
         int objectTall = 15;
@@ -63,9 +64,9 @@ public class PNPlace extends PNPlaceModel {
     }
 
     /**
-     *
-     * @param fm
-     * @return
+     * Set width of object based on constant string height.
+     * @param fm FontMetrics for calculating height of string.
+     * @return PNPlace for further use.
      */
     protected PNPlace setObjectWidth(FontMetrics fm) {
         this.width = 30;
@@ -77,10 +78,10 @@ public class PNPlace extends PNPlaceModel {
     }
 
     /**
-     *
-     * @param g
-     * @param fm
-     * @return
+     * This will draw constant on graphics2D. It calculates correct position of text.
+     * @param g Graphics2D for drawing text.
+     * @param fm FontMetrics for calculating where to draw string.
+     * @return PNPlace for further use.
      */
     protected PNPlace drawConstant(Graphics2D g, FontMetrics fm) {
         if (this.constant != null) {

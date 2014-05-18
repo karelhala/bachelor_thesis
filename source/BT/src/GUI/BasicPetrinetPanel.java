@@ -34,6 +34,10 @@ public final class BasicPetrinetPanel {
      */
     private final JPanel contentPane;
 
+    /**
+     * Basic constructor. It will create new Jcombobox for attributes or method's arguments, content pane which will
+     * have all of this stored, addClassVariable button.
+     */
     public BasicPetrinetPanel() {
         this.classAttributes = new JComboBox();
         this.contentPane = new JPanel(new BorderLayout());
@@ -52,7 +56,7 @@ public final class BasicPetrinetPanel {
     /**
      * Get combo box with attributes.
      *
-     * @return
+     * @return JComboBox class attributes or method arguments.
      */
     public JComboBox getClassAttributes() {
         return classAttributes;
@@ -61,12 +65,17 @@ public final class BasicPetrinetPanel {
     /**
      * Get main content panel.
      *
-     * @return
+     * @return JPanel content pane.
      */
     public JPanel getContentPane() {
         return contentPane;
     }
 
+    /**
+     * Return button add class variable.
+     *
+     * @return JButton addClassVariable.
+     */
     public JButton getAddClassVariable() {
         return addClassVariable;
     }
