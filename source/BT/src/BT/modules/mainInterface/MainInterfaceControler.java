@@ -7,6 +7,7 @@ package BT.modules.mainInterface;
 import BT.managers.DiagramPlacesManager;
 import GUI.MainWindowModel;
 import GUI.MyToolBar;
+import com.thoughtworks.xstream.converters.ConversionException;
 import com.thoughtworks.xstream.io.StreamException;
 import java.awt.Component;
 import java.awt.Frame;
@@ -111,7 +112,7 @@ public class MainInterfaceControler {
                     if (diagramsFile != null && !fileAllredyOpened) {
                         ToolBarContent.openedFile(diagramsFile, myLayout);
                     }
-                } catch (StreamException fatalError) {
+                } catch (StreamException | ConversionException fatalError) {
                     JOptionPane.showMessageDialog(null, "Fatal error when trying to open file.");
                 }
             }
@@ -153,7 +154,7 @@ public class MainInterfaceControler {
                             if (openedFile != null) {
                                 ToolBarContent.openedFile(openedFile, myLayout);
                             }
-                        } catch (StreamException fatalError) {
+                        } catch (StreamException | ConversionException fatalError) {
                             JOptionPane.showMessageDialog(null, "Fatal error when trying to open file.");
                         }
                     }

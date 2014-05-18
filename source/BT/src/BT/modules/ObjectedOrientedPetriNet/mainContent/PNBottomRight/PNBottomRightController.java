@@ -293,12 +293,16 @@ public class PNBottomRightController extends PNBottomRightModel {
                 "Please Enter Action for this transition.", JOptionPane.OK_CANCEL_OPTION);
         if (result == JOptionPane.OK_OPTION) {
             selectedTransition.getAction().setBasicAction(actionArea.getText());
-            if (variableField.getSelectedItem() != null) {
+            if (variableField.getSelectedItem() != null && !variableField.getSelectedItem().toString().equals("")) {
                 selectedTransition.getAction().setVariable(variableField.getSelectedItem().toString());
                 for (LineModel oneLine : selectedTransition.getOutJoins()) {
                     ((PNJoinEdgeController) oneLine).addVariable(selectedTransition.getActionVariable());
                     ((PNPlace) oneLine.getSecondObject()).addVariable(selectedTransition.getActionVariable());
                 }
+            }
+            else
+            {
+                selectedTransition.getAction().setVariable(null);
             }
         }
     }
