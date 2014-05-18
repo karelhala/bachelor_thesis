@@ -109,6 +109,7 @@ public class CDUseCaseConnector {
      * Method for creating new joins between associated objects in use case.
      */
     public void createNewUseCaseJoin() {
+        LineModel assignedLine = getjoinedLine(this.newline.getFirstObject().getAssignedObject(), this.newline.getSecondObject().getAssignedObject());
         UCJoinEdgeController newUseCaseLine = new UCJoinEdgeController(this.newline.getFirstObject().getAssignedObject(), this.newline.getSecondObject().getAssignedObject());
         CDJoinEdgeController cdJoin = (CDJoinEdgeController) this.newline;
         if (cdJoin.getJoinEdgeType() == BT.CDLineType.ASSOCIATION) {
@@ -120,12 +121,36 @@ public class CDUseCaseConnector {
         } else if (cdJoin.getJoinEdgeType() == BT.CDLineType.COMPOSITION) {
             newUseCaseLine.setJoinEdgeType(BT.UCLineType.USERINPUT);
         }
-        if (this.newline.getFirstObject().getAssignedObject() != null && this.newline.getSecondObject().getAssignedObject() != null) {
-            this.newline.getFirstObject().getAssignedObject().addOutJoins(newUseCaseLine);
-            this.newline.getSecondObject().getAssignedObject().addInJoin(newUseCaseLine);
+        if (assignedLine == null) {
+            if (this.newline.getFirstObject().getAssignedObject() != null && this.newline.getSecondObject().getAssignedObject() != null) {
+                this.newline.getFirstObject().getAssignedObject().addOutJoins(newUseCaseLine);
+                this.newline.getSecondObject().getAssignedObject().addInJoin(newUseCaseLine);
+            }
+            newUseCaseLine.setAssignedObject(cdJoin);
+            cdJoin.setAssignedObject(newUseCaseLine);
+            this.ucPlaces.addObject(newUseCaseLine);
+        } else if (((UCJoinEdgeController) assignedLine).getJoinEdgeType() == newUseCaseLine.getJoinEdgeType()) {
+            assignedLine.setAssignedObject(cdJoin);
+            cdJoin.setAssignedObject(assignedLine);
+        } else {
+            newUseCaseLine.setAssignedObject(null);
+            cdJoin.setAssignedObject(null);
         }
-        newUseCaseLine.setAssignedObject(cdJoin);
-        cdJoin.setAssignedObject(newUseCaseLine);
-        this.ucPlaces.addObject(newUseCaseLine);
+    }
+
+    /**
+     * Check if line allreadz exists with given first and second object. If line exists, return it for further use.
+     *
+     * @param firstObject use case's first object.
+     * @param secondObject use case's second object.
+     * @return null or actual line.s
+     */
+    private LineModel getjoinedLine(CoordinateModel firstObject, CoordinateModel secondObject) {
+        for (LineModel outJoin : firstObject.getOutJoins()) {
+            if (outJoin.getSecondObject().equals(secondObject)) {
+                return outJoin;
+            }
+        }
+        return null;
     }
 }

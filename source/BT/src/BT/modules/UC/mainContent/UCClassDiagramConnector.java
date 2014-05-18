@@ -63,7 +63,7 @@ public class UCClassDiagramConnector {
     }
 
     /**
-     * Method for creating join edge between propriete classes.
+     * Method for creating join edge between assigned classes.
      */
     public void createNewClassJoinEdge() {
         UCJoinEdgeController useCaseJoin = (UCJoinEdgeController) this.newLine;
@@ -84,11 +84,24 @@ public class UCClassDiagramConnector {
         } else if (useCaseLineType == BT.UCLineType.INCLUDE) {
             newClassJoin.setJoinEdgeType(BT.CDLineType.USERINPUT);
         }
-        this.newLine.getFirstObject().getAssignedObject().addOutJoins(newClassJoin);
-        this.newLine.getSecondObject().getAssignedObject().addInJoin(newClassJoin);
-        newClassJoin.setAssignedObject(useCaseJoin);
-        useCaseJoin.setAssignedObject(newClassJoin);
-        this.cdPlaces.addObject(newClassJoin);
+        LineModel assignedLine = getjoinedLine(this.newLine.getFirstObject().getAssignedObject(), this.newLine.getSecondObject().getAssignedObject());
+        System.out.println(assignedLine);
+        if (assignedLine == null)
+        {
+            this.newLine.getFirstObject().getAssignedObject().addOutJoins(newClassJoin);
+            this.newLine.getSecondObject().getAssignedObject().addInJoin(newClassJoin);
+            newClassJoin.setAssignedObject(useCaseJoin);
+            useCaseJoin.setAssignedObject(newClassJoin);
+            this.cdPlaces.addObject(newClassJoin);
+        } else if (assignedLine instanceof CDJoinEdgeController && ((CDJoinEdgeController)assignedLine).getJoinEdgeType() == newClassJoin.getJoinEdgeType())
+        {
+            assignedLine.setAssignedObject(useCaseJoin);
+            useCaseJoin.setAssignedObject(assignedLine);
+        } else
+        {
+            assignedLine.setAssignedObject(null);
+            useCaseJoin.setAssignedObject(null);
+        }
     }
 
     public CDClass createNewClassdiagramObject() {
@@ -272,5 +285,28 @@ public class UCClassDiagramConnector {
             this.newLine = oneJoin;
             createNewClassJoinEdge();
         }
+    }
+    
+    /**
+     * Check if line allreadz exists with given first and second object. If line exists, return it for further use.
+     *
+     * @param firstObject use case's first object.
+     * @param secondObject use case's second object.
+     * @return null or actual line.s
+     */
+    private LineModel getjoinedLine(CoordinateModel firstObject, CoordinateModel secondObject) {
+        System.out.println(firstObject);
+        System.out.println(secondObject);
+        for (LineModel outJoin : firstObject.getOutJoins()) {
+            if (outJoin.getSecondObject().equals(secondObject)) {
+                return outJoin;
+            }
+        }
+        for (LineModel outJoin : secondObject.getOutJoins()) {
+            if (outJoin.getSecondObject().equals(secondObject)) {
+                return outJoin;
+            }
+        }
+        return null;
     }
 }
