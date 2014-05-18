@@ -7,6 +7,7 @@ package BT.managers;
 import BT.interfaces.DrawingClicks;
 import BT.models.CoordinateModel;
 import BT.models.LineModel;
+import java.awt.Cursor;
 import java.awt.event.MouseEvent;
 import javax.swing.SwingUtilities;
 import javax.swing.event.MouseInputAdapter;
@@ -21,11 +22,15 @@ public class DrawingListeners extends MouseInputAdapter {
     /**
      * Controller that holds function for controlling these actions.
      */
-    private MainContentController mainContent;
+    private final MainContentController mainContent;
     /**
      * Object, that is being dragged on drawing pane.
      */
     private CoordinateModel draggedObject;
+    /**
+     * This checker will check for objects under mouse.
+     */
+    private final ObjectChecker objectChecker;
 
     /**
      * Basic constructor for creating drawing listeners.
@@ -34,6 +39,7 @@ public class DrawingListeners extends MouseInputAdapter {
      */
     public DrawingListeners(DrawingClicks mainContent) {
         this.mainContent = (MainContentController) mainContent;
+        this.objectChecker = new ObjectChecker(this.mainContent.getPlaces());
     }
 
     /**
@@ -45,10 +51,10 @@ public class DrawingListeners extends MouseInputAdapter {
      */
     @Override
     public void mousePressed(java.awt.event.MouseEvent evt) {
+        changeCursorByObject(evt);
         if (SwingUtilities.isRightMouseButton(evt)) {
             this.mainContent.rightClick(evt);
         } else {
-            ObjectChecker objectChecker = new ObjectChecker(this.mainContent.getPlaces());
             CoordinateModel coordObject = objectChecker.getObjectUnderMouse(evt.getPoint());
             if (coordObject == null) {
                 this.mainContent.drawingPaneClicked(evt);
@@ -68,6 +74,7 @@ public class DrawingListeners extends MouseInputAdapter {
      */
     @Override
     public void mouseDragged(MouseEvent e) {
+        changeCursorByObject(e);
         if (draggedObject != null) {
             if (this.draggedObject instanceof LineModel) {
                 LineModel draggedJoin = (LineModel) this.draggedObject;
@@ -91,6 +98,7 @@ public class DrawingListeners extends MouseInputAdapter {
      */
     @Override
     public void mouseMoved(MouseEvent e) {
+        changeCursorByObject(e);
         this.mainContent.drawingPanecheckMove(e);
     }
 
@@ -101,10 +109,10 @@ public class DrawingListeners extends MouseInputAdapter {
      */
     @Override
     public void mouseReleased(MouseEvent e) {
+        changeCursorByObject(e);
         if (SwingUtilities.isLeftMouseButton(e)) {
             if (this.draggedObject instanceof LineModel) {
-                ObjectChecker objectChecker = new ObjectChecker(this.mainContent.getPlaces());
-                this.mainContent.setSelectedObject(objectChecker.getObjectUnderMouse(e.getPoint()));
+                this.mainContent.setSelectedObject(this.objectChecker.getObjectUnderMouse(e.getPoint()));
             }
             this.draggedObject = null;
         }
@@ -118,9 +126,9 @@ public class DrawingListeners extends MouseInputAdapter {
      */
     @Override
     public void mouseClicked(MouseEvent e) {
+        changeCursorByObject(e);
         if (SwingUtilities.isLeftMouseButton(e)) {
-            ObjectChecker objectChecker = new ObjectChecker(this.mainContent.getPlaces());
-            CoordinateModel clickedObject = objectChecker.getObjectUnderMouse(e.getPoint());
+            CoordinateModel clickedObject = this.objectChecker.getObjectUnderMouse(e.getPoint());
             if (e.getClickCount() % 2 == 0) {
                 if (clickedObject != null) {
                     this.mainContent.drawingPaneDoubleCliked(clickedObject);
@@ -128,6 +136,20 @@ public class DrawingListeners extends MouseInputAdapter {
             } else {
                 this.mainContent.setSelectedObject(clickedObject);
             }
+        }
+    }
+
+    /**
+     * This changes cursor by object under the cursor. It will check what object is under cursor and change cursor's
+     * style.
+     * @param e mouseEvent that is being done.
+     */
+    private void changeCursorByObject(MouseEvent e) {
+        CoordinateModel coordObject = this.objectChecker.getObjectUnderMouse(e.getPoint());
+        if (coordObject != null) {
+            e.getComponent().setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        } else {
+            e.getComponent().setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
         }
     }
 }
