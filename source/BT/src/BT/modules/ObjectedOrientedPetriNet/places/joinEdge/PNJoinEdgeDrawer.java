@@ -14,19 +14,29 @@ import java.awt.Graphics2D;
 import java.awt.Point;
 
 /**
+ * Class for drawing petriNet join edges. Extends basic JoinEdgeDrawer with methods for drawing specific shapes and
+ * string at different coordinates.
  *
  * @author Karel Hala
  */
 public class PNJoinEdgeDrawer extends JoinEdgeDrawer {
 
+    /**
+     * Basic constructor. It calls parent's contructor.
+     *
+     * @param joinEdgeController specified in JoinEdgeDrawer.
+     * @param startPoint specified in JoinEdgeDrawer.
+     * @param endPoint specified in JoinEdgeDrawer.
+     */
     public PNJoinEdgeDrawer(LineModel joinEdgeController, Point startPoint, Point endPoint) {
         super(joinEdgeController, startPoint, endPoint);
     }
 
     /**
-     * Method for drawing each type of line.
+     * Method for drawing each type of line with different end objects. It draws string at correct position, it draws
+     * variables of petriNet join edge at correct place.
      *
-     * @param g
+     * @param g Graphics2D that will draw this join edge.
      */
     public void drawLine(Graphics2D g) {
         if (this.joinEdgeController.getSelected()) {

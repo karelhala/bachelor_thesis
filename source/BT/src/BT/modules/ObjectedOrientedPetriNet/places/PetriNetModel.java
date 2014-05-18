@@ -9,6 +9,7 @@ import BT.models.CoordinateModel;
 import BT.models.MyArrayList;
 
 /**
+ * Model for managing petriNet models. It stores variables in MyArrayList as unique Strings.
  *
  * @author Karel Hala
  */

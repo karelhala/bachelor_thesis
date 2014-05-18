@@ -9,7 +9,8 @@ import BT.models.MyArrayList;
 import java.awt.Color;
 
 /**
- *
+ * Model for petriNet place object on drawing panel.
+ * 
  * @author Karel Hala
  */
 public class PNPlaceModel extends PetriNetModel {

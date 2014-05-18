@@ -16,7 +16,8 @@ import java.awt.FontMetrics;
 import java.awt.Graphics2D;
 
 /**
- *
+ * Class for drawing petriNet transition which has actiona and guard string.
+ * 
  * @author Karel Hala
  */
 public class PNTransition extends PNTransitionModel {
@@ -31,8 +32,8 @@ public class PNTransition extends PNTransitionModel {
     /**
      * Creates transition at passed x and y coordinates.
      *
-     * @param x
-     * @param y
+     * @param x coordinate X.
+     * @param y coordinate Y.
      */
     public PNTransition(int x, int y) {
         super(x, y);

@@ -8,7 +8,6 @@ package BT.modules.ObjectedOrientedPetriNet.places;
 import BT.models.ActionModel;
 import BT.models.MyArrayList;
 import java.awt.Color;
-import java.util.ArrayList;
 
 /**
  *
@@ -28,9 +27,12 @@ public class PNTransitionModel extends PetriNetModel {
     protected ActionModel action;
 
     /**
+     * Basic constructor for creating model of petriNet transition. It will set X and Y based on arguments. It will set
+     * width, height, selectecolor, basicColor, color, name, textSize, howerColor. It will create inJoin and outJoins
+     * plus variables as MyArrayList.
      *
-     * @param x
-     * @param y
+     * @param x coordinate X.
+     * @param y coordinate Y.
      */
     public PNTransitionModel(int x, int y) {
         super();
@@ -49,18 +51,38 @@ public class PNTransitionModel extends PetriNetModel {
         this.variables = new MyArrayList<>();
     }
 
+    /**
+     * Set guard string to guard.
+     *
+     * @param guard String that will be shown in guard field.
+     */
     public void setGuard(String guard) {
         this.guard = guard;
     }
 
+    /**
+     * Set action string to action.
+     *
+     * @param action String that will be shown in action field.
+     */
     public void setAction(ActionModel action) {
         this.action = action;
     }
 
+    /**
+     * Get guard string.
+     *
+     * @return string from guard field.
+     */
     public String getGuard() {
         return guard;
     }
 
+    /**
+     * Returns action string.
+     *
+     * @return action string from action field.
+     */
     public ActionModel getAction() {
         return action;
     }

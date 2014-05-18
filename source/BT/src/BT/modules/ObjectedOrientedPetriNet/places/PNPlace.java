@@ -12,7 +12,8 @@ import java.awt.FontMetrics;
 import java.awt.Graphics2D;
 
 /**
- *
+ * Class for drawing petriNet place. It draws circle with constant in it.
+ * 
  * @author Karel Hala
  */
 public class PNPlace extends PNPlaceModel {

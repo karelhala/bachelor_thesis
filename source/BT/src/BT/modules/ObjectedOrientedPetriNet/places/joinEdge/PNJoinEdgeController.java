@@ -15,28 +15,31 @@ import java.awt.Graphics2D;
 import java.awt.Point;
 
 /**
+ * Class for constrolling petriNet joins. It set's start and end point of petriNet join. It manages variables arround
+ * line.
  *
  * @author Karel Hala
  */
 public class PNJoinEdgeController extends LineModel {
 
     /**
-     *
+     * Join edge type of petriNet join.
      */
     private BT.OOPNLineType joinEdgeType;
 
     /**
-     *
+     * Selected variables to be shown.
      */
     private final MyArrayList<String> selectedVariables;
 
     /**
-     *
+     * Additional string variable.
      */
     private String additionalVariable;
 
     /**
-     *
+     * Basic constructor. It calls parent's (LineModel) constructor.
+     * Sets joinEdge type to JOIN and create selectedVariables as MyArrayList.
      */
     public PNJoinEdgeController() {
         super();
@@ -44,14 +47,29 @@ public class PNJoinEdgeController extends LineModel {
         this.selectedVariables = new MyArrayList<>();
     }
 
+    /**
+     * Set type of petriNet join edge.
+     * 
+     * @param joinEdgeType OOPNLineType (now only JOIN).
+     */
     public void setJoinEdgeType(OOPNLineType joinEdgeType) {
         this.joinEdgeType = joinEdgeType;
     }
 
+    /**
+     * Get type of petriNet join edge.
+     * 
+     * @return OOPNLineType (now only JOIN).
+     */
     public OOPNLineType getJoinEdgeType() {
         return joinEdgeType;
     }
 
+    /**
+     * Get variables that are selected to be shown near join edge. Retun them as MyArrayList of strings.
+     * 
+     * @return MyArrayList<String> selected variables.
+     */
     public MyArrayList<String> getSelectedVariables() {
         return selectedVariables;
     }
@@ -59,16 +77,25 @@ public class PNJoinEdgeController extends LineModel {
     /**
      * Add unique variable to join edge.
      *
-     * @param newVariable
+     * @param newVariable this new variable will be added to selectedVariables.
      */
     public void addVariable(String newVariable) {
         this.selectedVariables.addUnique(newVariable);
     }
 
+    /**
+     * Return additional variable as String.
+     * 
+     * @return additional variable is shown near join edge.
+     */
     public String getAdditionalVariable() {
         return additionalVariable;
     }
 
+    /**
+     * Set additional variable as String.
+     * @param additionalVariable additional variable is shown near join edge.
+     */
     public void setAdditionalVariable(String additionalVariable) {
         this.additionalVariable = additionalVariable;
     }
@@ -76,7 +103,7 @@ public class PNJoinEdgeController extends LineModel {
     /**
      * For fetching selected variables as String joined by ","
      *
-     * @return
+     * @return all variables joined as string, comma is separator to these variables.
      */
     public String getVariablesAsString() {
         String returnedString = "";
@@ -96,8 +123,10 @@ public class PNJoinEdgeController extends LineModel {
     }
 
     /**
-     *
-     * @param g
+     * For drawing this join edge.
+     * First calculate start and end point of this join edge. Then call drawing function.
+     * 
+     * @param g Graphics2D that will draw this join edge.
      */
     public void drawJoinEdge(Graphics2D g) {
         PointsCalculator pointsCaluclator = new PointsCalculator(this.firstObject, this.secondObject, getStartPoint(), getEndPoint(), this.breakPoints);
