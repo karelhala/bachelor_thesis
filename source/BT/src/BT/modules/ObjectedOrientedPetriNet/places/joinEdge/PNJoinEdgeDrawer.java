@@ -7,7 +7,6 @@ package BT.modules.ObjectedOrientedPetriNet.places.joinEdge;
 
 import BT.managers.JoinEdgeDrawer;
 import BT.models.LineModel;
-import BT.modules.ObjectedOrientedPetriNet.places.PNPlace;
 import BT.modules.ObjectedOrientedPetriNet.places.PNTransition;
 import java.awt.BasicStroke;
 import java.awt.Color;
@@ -16,7 +15,7 @@ import java.awt.Point;
 
 /**
  *
- * @author Karel
+ * @author Karel Hala
  */
 public class PNJoinEdgeDrawer extends JoinEdgeDrawer {
 

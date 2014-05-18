@@ -16,35 +16,70 @@ import BT.modules.UC.places.UCJoinEdge.UCJoinEdgeController;
 import BT.modules.UC.places.UCUseCase;
 
 /**
- *
- * @author Karel
+ * Class for connecting classes to use cases.
+ * 
+ * @author Karel Hala
  */
 public class CDUseCaseConnector {
 
+    /**
+     * Created class. Based on this object, use case will be created.
+     */
     private CoordinateModel selectedModel;
+    /**
+     * Line that is drawn. Based on this line, join edge in useCase will be created.
+     */
     private LineModel newline;
+    /**
+     * Places with useCases objects.
+     */
     private final PlaceManager ucPlaces;
 
+    /**
+     * Basic constructor, that will set use case places.
+     * @param UCPlaces PlaceManager stores each use case.
+     */
     public CDUseCaseConnector(PlaceManager UCPlaces) {
         this.ucPlaces = UCPlaces;
     }
 
+    /**
+     * Method for returning selected class.
+     * It will return object that was created and based on which new useCase object will be created.
+     * @return CoordinateModel selectedModel.
+     */
     public CoordinateModel getSelectedModel() {
         return selectedModel;
     }
 
+    /**
+     * Set class based on which new object in use case will be created.
+     * @param selectedModel CoordinateModel selectedModel which is created, or eddited class.
+     */
     public void setSelectedModel(CoordinateModel selectedModel) {
         this.selectedModel = selectedModel;
     }
 
+    /**
+     * Gettter for line that was created. Based on this line new join edge in useCase will be created.
+     * @return LineModel of class join edge.
+     */
     public LineModel getNewline() {
         return newline;
     }
 
+    /**
+     * Based on this line new join edge in useCase will be created.
+     * @param newline LineModel of class join edge.
+     */
     public void setNewline(LineModel newline) {
         this.newline = newline;
-    }
+    }    
 
+    /**
+     * Get manager which stores each useCase object.
+     * @return PlaceManager with all use cases, actors and jins between them.
+     */
     public PlaceManager getUcPlaces() {
         return ucPlaces;
     }

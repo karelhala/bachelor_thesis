@@ -28,36 +28,73 @@ import javax.swing.JTextField;
 
 /**
  *
- * @author Karel
+ * @author Karel Hala
  */
 public class UCClassDiagramConnector {
 
+    /**
+     * 
+     */
     private CoordinateModel selectedObject;
+    /**
+     * 
+     */
     private LineModel newLine;
+    /**
+     * 
+     */
     private final PlaceManager cdPlaces;
+    /**
+     * 
+     */
     private final PlaceManager ucPlaces;
-
+    
+    /**
+     * 
+     * @param cdPlaces
+     * @param ucPlaces 
+     */
     public UCClassDiagramConnector(PlaceManager cdPlaces, PlaceManager ucPlaces) {
         this.cdPlaces = cdPlaces;
         this.ucPlaces = ucPlaces;
     }
 
+    /**
+     * 
+     * @param newLine 
+     */
     public void setNewLine(LineModel newLine) {
         this.newLine = newLine;
     }
-
+    
+    /**
+     * 
+     * @return 
+     */
     public LineModel getNewLine() {
         return newLine;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public PlaceManager getCdPlaces() {
         return cdPlaces;
     }
 
+    /**
+     * 
+     * @param selectedObject 
+     */
     public void setSelectedObject(CoordinateModel selectedObject) {
         this.selectedObject = selectedObject;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public CoordinateModel getSelectedObject() {
         return selectedObject;
     }
@@ -85,7 +122,6 @@ public class UCClassDiagramConnector {
             newClassJoin.setJoinEdgeType(BT.CDLineType.USERINPUT);
         }
         LineModel assignedLine = getjoinedLine(this.newLine.getFirstObject().getAssignedObject(), this.newLine.getSecondObject().getAssignedObject());
-        System.out.println(assignedLine);
         if (assignedLine == null)
         {
             this.newLine.getFirstObject().getAssignedObject().addOutJoins(newClassJoin);
@@ -104,6 +140,10 @@ public class UCClassDiagramConnector {
         }
     }
 
+    /**
+     * 
+     * @return 
+     */
     public CDClass createNewClassdiagramObject() {
         return createNewClassdiagramObject(this.selectedObject.getName());
     }
@@ -111,8 +151,8 @@ public class UCClassDiagramConnector {
     /**
      * Method for creating new object in class diagram based on use case.
      *
-     * @param className
-     * @return
+     * @param className name of new class.
+     * @return newly created class.
      */
     public CDClass createNewClassdiagramObject(String className) {
         CDClass newClass = new CDClass(this.selectedObject.getX(), this.selectedObject.getY());
@@ -295,8 +335,6 @@ public class UCClassDiagramConnector {
      * @return null or actual line.s
      */
     private LineModel getjoinedLine(CoordinateModel firstObject, CoordinateModel secondObject) {
-        System.out.println(firstObject);
-        System.out.println(secondObject);
         for (LineModel outJoin : firstObject.getOutJoins()) {
             if (outJoin.getSecondObject().equals(secondObject)) {
                 return outJoin;

@@ -32,7 +32,7 @@ import net.sf.epsgraphics.EpsGraphics;
  * Class for exporting selected file to EPS. It will take diagramPlacesManager and loop through every object and print
  * it to file.
  *
- * @author Karel
+ * @author Karel Hala
  */
 public class ExportToEps extends ExportModel {
 

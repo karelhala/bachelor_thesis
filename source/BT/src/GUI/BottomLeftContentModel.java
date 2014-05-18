@@ -8,7 +8,6 @@ package GUI;
 import BT.managers.CD.Attribute;
 import BT.managers.CD.Method;
 import java.awt.BorderLayout;
-import java.awt.Component;
 import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -20,7 +19,7 @@ import javax.swing.JScrollPane;
 
 /**
  *
- * @author Karel
+ * @author Karel Hala
  */
 public class BottomLeftContentModel {
 

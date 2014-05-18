@@ -14,7 +14,7 @@ import javax.swing.JToggleButton;
 
 /**
  *
- * @author Karel
+ * @author Karel Hala
  */
 public class PNLeftBottomContent extends ButtonPaneModel {
 

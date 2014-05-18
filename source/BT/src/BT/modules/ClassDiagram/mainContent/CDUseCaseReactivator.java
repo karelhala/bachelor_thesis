@@ -28,15 +28,31 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 /**
+ * Class that handels reactivating of class diagram and use case diagram. When class should be reactivated to use case
+ * diagram, or class should be reactivated with specific use case, this class will handle it.
  *
- * @author Karel
+ * @author Karel Hala.
  */
 public class CDUseCaseReactivator {
 
+    /**
+     * Connector for creating new use case objects and lines.
+     */
     final private CDUseCaseConnector useCaseconnector;
+    /**
+     * All objects from useCase. This is used for reactivating class with secific use case object.
+     */
     private ArrayList<CoordinateModel> allModels;
+    /**
+     * Here are stored class diagram objects.
+     */
     final private PlaceManager cdModels;
 
+    /**
+     * Basic constructor that sets CDUseCaseConnector and PlaceManager.
+     * @param useCaseconnector for creating new objects and lines of use case.
+     * @param cdModels manager with all class diagram objects and lines.
+     */
     public CDUseCaseReactivator(CDUseCaseConnector useCaseconnector, PlaceManager cdModels) {
         this.useCaseconnector = useCaseconnector;
         this.cdModels = cdModels;

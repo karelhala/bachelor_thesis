@@ -15,7 +15,7 @@ import javax.swing.JPanel;
  * Class for holding bottom right content of window. It has 2 bottons and one additional content. These 2 buttons are
  * topButton and topButton, additional content is stored via Jpanel additionalcontent.
  *
- * @author Karel
+ * @author Karel Hala
  */
 public class BottomRightContentModel {
 

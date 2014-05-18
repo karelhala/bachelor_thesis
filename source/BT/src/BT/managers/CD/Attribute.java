@@ -11,7 +11,7 @@ import BT.BT.AttributeType;
 /**
  * Class for working with attributes of class on class diagram.
  *
- * @author Karel
+ * @author Karel Hala
  */
 public class Attribute {
 

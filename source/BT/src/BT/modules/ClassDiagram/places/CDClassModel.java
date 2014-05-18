@@ -8,7 +8,6 @@ package BT.modules.ClassDiagram.places;
 import BT.BT;
 import BT.BT.ClassType;
 import BT.managers.CD.Attribute;
-import BT.managers.PlaceManager;
 import BT.models.CoordinateModel;
 import BT.models.MyArrayList;
 import BT.modules.ObjectedOrientedPetriNet.PetriNetPlaceManager;
@@ -140,7 +139,7 @@ public class CDClassModel extends CoordinateModel {
     /**
      * Remove method from class. Method is remover based on method argument.
      *
-     * @param Attribute this method will be removed.
+     * @param method this method will be removed.
      */
     public void removeMethod(Attribute method) {
         this.methods.remove(method);
@@ -149,7 +148,7 @@ public class CDClassModel extends CoordinateModel {
     /**
      * Remove variable from class. Variable is remover based on method argument.
      *
-     * @param Attribute this variable will be removed.
+     * @param variable this variable will be removed.
      */
     public void removeVariable(Attribute variable) {
         this.variables.remove(variable);

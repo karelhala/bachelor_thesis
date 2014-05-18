@@ -18,7 +18,7 @@ import javax.swing.JButton;
 /**
  * Class for controlling bottom left content. Such as methods and variables.
  *
- * @author Karel
+ * @author Karel Hala
  */
 public class CDBottomLeftController {
 
@@ -52,6 +52,7 @@ public class CDBottomLeftController {
 
     /**
      * Get object that is selected for this component.
+     * @return selected object (CoordinateModel).
      */
     public CoordinateModel getSelectedObject() {
         return selectedObject;
@@ -59,6 +60,7 @@ public class CDBottomLeftController {
 
     /**
      * Set object that is selected for this component.
+     * @param selectedobject set selected Object (CoordinateModel).
      */
     public void setSelectedObject(CoordinateModel selectedobject) {
         this.selectedObject = selectedobject;
@@ -66,6 +68,7 @@ public class CDBottomLeftController {
 
     /**
      * Get drawing pane of class diagram.
+     * @return all places in each diagram for this project (DiagramPlacesManager).
      */
     public DiagramPlacesManager getDiagramPlaces() {
         return diagramPlaces;
@@ -73,6 +76,7 @@ public class CDBottomLeftController {
 
     /**
      * Set all diagram places, this is mainly beacuse inserting new petriNet.
+     * @param diagramPlaces DiagramPlacesManager to be set.
      */
     public void setDiagramPlaces(DiagramPlacesManager diagramPlaces) {
         this.diagramPlaces = diagramPlaces;

@@ -6,7 +6,6 @@
 package BT.modules.ObjectedOrientedPetriNet;
 
 import BT.managers.DiagramPlacesManager;
-import BT.modules.ObjectedOrientedPetriNet.mainContent.PNDrawingPane;
 import BT.modules.ObjectedOrientedPetriNet.mainContent.PNMainContentController;
 import BT.modules.ObjectedOrientedPetriNet.mainContent.PNMainContentInitializer;
 import GUI.BasicPetrinetPanel;
@@ -18,7 +17,7 @@ import GUI.PetrinetPlacePanel;
 
 /**
  *
- * @author Karel
+ * @author Karel Hala
  */
 public class PNContentController {
 

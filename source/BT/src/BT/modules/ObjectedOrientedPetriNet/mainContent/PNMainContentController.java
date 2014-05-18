@@ -25,7 +25,7 @@ import javax.swing.JToggleButton;
 
 /**
  *
- * @author Karel
+ * @author Karel Hala
  */
 public class PNMainContentController extends PNMainContentInitializer implements DrawingClicks {
 

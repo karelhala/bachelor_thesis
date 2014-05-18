@@ -19,20 +19,50 @@ import javax.swing.JTextField;
 
 /**
  *
- * @author Karel
+ * @author Karel Hala
  */
 public class ClassDiagramAttributesPanel {
 
+    /**
+     * 
+     */
     private final JPanel contentPanel;
+    /**
+     * 
+     */
     private final JTextField variableName;
+    /**
+     * 
+     */
     private final JTextField methodName;
+    /**
+     * 
+     */
     private final JComboBox visibilityVariable;
+    /**
+     * 
+     */
     private final JComboBox visibilityMethod;
+    /**
+     * 
+     */
     private final JComboBox attributeTypeVariable;
+    /**
+     * 
+     */
     private final JComboBox attributeTypeMethod;
+    /**
+     * 
+     */
     private final JButton addVariable;
+    /**
+     * 
+     */
     private final JButton addMethod;
 
+    /**
+     * 
+     */
     public ClassDiagramAttributesPanel() {
         this.contentPanel = new JPanel(new GridBagLayout());
         this.variableName = new JTextField();
@@ -102,38 +132,74 @@ public class ClassDiagramAttributesPanel {
         this.contentPanel.add(elementWithLabelAbove(addMethod, new JLabel(" ")), c);
     }
 
+    /**
+     * 
+     * @return 
+     */
     public JPanel getContentPanel() {
         return contentPanel;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public JTextField getVariableName() {
         return variableName;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public JTextField getMethodName() {
         return methodName;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public JButton getAddVariable() {
         return addVariable;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public JButton getAddMethod() {
         return addMethod;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public JComboBox getVisibilityVariable() {
         return visibilityVariable;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public JComboBox getVisibilityMethod() {
         return visibilityMethod;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public JComboBox getAttributeTypeVariable() {
         return attributeTypeVariable;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public JComboBox getAttributeTypeMethod() {
         return attributeTypeMethod;
     }

@@ -226,6 +226,10 @@ public class UCMainContentController extends UCMainContentModel implements Drawi
                 this.newJoinEdge = null;
             }
         }
+        else
+        {
+            this.newJoinEdge.setSecondObject(null);
+        }
         UCDrawingPane UCdrawing = (UCDrawingPane) this.mainContent.getDrawingPane();
         UCdrawing.setNewLine(newJoinEdge);
     }

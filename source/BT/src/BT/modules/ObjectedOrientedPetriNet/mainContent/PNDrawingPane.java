@@ -20,11 +20,14 @@ import java.awt.RenderingHints;
 
 /**
  *
- * @author Karel
+ * @author Karel Hala
  */
 public class PNDrawingPane extends DrawingPaneModel {
 
-    private PNDrawingPane.drawing drawPane;
+    /**
+     * 
+     */
+    private final PNDrawingPane.drawing drawPane;
 
     /**
      *

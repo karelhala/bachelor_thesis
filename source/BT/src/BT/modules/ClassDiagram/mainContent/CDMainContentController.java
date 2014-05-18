@@ -28,17 +28,23 @@ import javax.swing.JTextField;
 import javax.swing.JToggleButton;
 
 /**
+ * This class controlls main content Panel. This class handles calling of mouse clicks and mouse movements. It will
+ * create and change objects on class diagram drawing panel. It also handles creating and joining objects on class
+ * diagram drawing pane. It handels creating of new usecases by calling right method from CDUseCaseConnector.
  *
  * @author Karel Hala
  */
 public class CDMainContentController extends CDBottomRightController implements DrawingClicks {
 
     /**
+     * Basic constructor. It sends to his parent DiagramPlacesManager, BottomRightContentModel,
+     * ClassDiagramAttributesPanel and create new leftBottomController, set left content model to
+     * BottomLeftContentModel.
      *
-     * @param diagramPlaces
-     * @param bottomRightContent
-     * @param attributesPanel
-     * @param leftContentModel
+     * @param diagramPlaces all places of diagram, this will be used in it's parrent.
+     * @param bottomRightContent panel for handeling right part of class diagram.
+     * @param attributesPanel leftPanel with adding new variables and methods.
+     * @param leftContentModel model for setting bottom left model with reactivate buttons and additional content.
      */
     public CDMainContentController(
             DiagramPlacesManager diagramPlaces,
@@ -53,9 +59,11 @@ public class CDMainContentController extends CDBottomRightController implements 
     }
 
     /**
+     * When mouse is being dragged on drawing pane. This method will check for type of dragged object and change it's
+     * coordinates.
      *
-     * @param e
-     * @param dragged
+     * @param e MouseEvent, storring where mouse is located and what is being done.
+     * @param dragged CoordinateModel that is being dragged on drawing pane.
      */
     @Override
     public void drawingMouseDragged(MouseEvent e, CoordinateModel dragged) {
@@ -78,8 +86,10 @@ public class CDMainContentController extends CDBottomRightController implements 
     }
 
     /**
+     * This method is called when clicked on class diagram drawing. When mouse is clicked (pressed and released), this
+     * method will either create new object or select object.
      *
-     * @param evt
+     * @param evt coordinates of clicked mouse.
      */
     @Override
     public void drawingPaneClicked(MouseEvent evt) {
@@ -107,8 +117,9 @@ public class CDMainContentController extends CDBottomRightController implements 
     }
 
     /**
+     * This is called when mouse moves on class diagram drawing. It highlights objects when hover over them.
      *
-     * @param evt
+     * @param evt coordinates of mouse.
      */
     @Override
     public void drawingPanecheckMove(MouseEvent evt) {
@@ -128,8 +139,10 @@ public class CDMainContentController extends CDBottomRightController implements 
     }
 
     /**
+     * When object is selected in class diagram. This method will handle additional components to be shown based on type
+     * of selected class or if line is clicked.
      *
-     * @param clickedObject
+     * @param clickedObject selected object (CoordinateModel).
      */
     @Override
     public void setSelectedObject(CoordinateModel clickedObject) {
@@ -154,8 +167,10 @@ public class CDMainContentController extends CDBottomRightController implements 
     }
 
     /**
+     * When object is double clicked on class diagram. This method will bring dialog for setting objects being double
+     * clicked.
      *
-     * @param pressedObject
+     * @param pressedObject double clicked object (CoordinateModel).
      */
     @Override
     public void drawingPaneDoubleCliked(CoordinateModel pressedObject) {
@@ -196,7 +211,6 @@ public class CDMainContentController extends CDBottomRightController implements 
                 } else {
                     selectedType = ClassType.INTERFACE;
                 }
-                System.out.println(selectedType);
                 ((CDClass) pressedObject).setTypeOfClass(selectedType);
                 this.useCaseConnector.setSelectedModel(pressedObject);
                 this.useCaseConnector.createNewUseCaseObject(nameInput.getText());
@@ -218,7 +232,8 @@ public class CDMainContentController extends CDBottomRightController implements 
     }
 
     /**
-     *
+     * When buttons are changed in class diagram. When buttons from left content are changed, fire this method. It will
+     * change style of join edge between classes.
      */
     @Override
     public void buttonsChanged() {
@@ -234,8 +249,11 @@ public class CDMainContentController extends CDBottomRightController implements 
     }
 
     /**
+     * Method for drawing join edge on class diagram. It checks if new line can be drawn. If both objects are set for
+     * join edge, add this new line to placeManager for class diagram.
      *
-     * @param clickedObject
+     * @param clickedObject clicked class, it will be stored either on first object or second object place for join
+     * edge.
      */
     public void drawJoinEdge(CoordinateModel clickedObject) {
         if (this.LeftBottomContent.getSelectedButton() != null) {
@@ -266,8 +284,10 @@ public class CDMainContentController extends CDBottomRightController implements 
     }
 
     /**
+     * Method fired when clicked on class. When clicked on class, either delete new line or change new line based on
+     * clicked object.
      *
-     * @param clickedObject
+     * @param clickedObject object, that was clicked on.
      */
     private void clickedOnObject(CoordinateModel clickedObject) {
         if (clickedObject == null || clickedObject instanceof LineModel) {

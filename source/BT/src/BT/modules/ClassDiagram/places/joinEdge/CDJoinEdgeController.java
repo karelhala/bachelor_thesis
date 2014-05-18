@@ -50,6 +50,7 @@ public class CDJoinEdgeController extends LineModel {
 
     /**
      * Method for getting type of controlled line.
+     * @return returns CDLineType of controlled join edge.
      */
     public CDLineType getJoinEdgeType() {
         return joinEdgeType;
@@ -114,7 +115,7 @@ public class CDJoinEdgeController extends LineModel {
     /**
      * Method that gives you classType of first object.
      *
-     * @return classType
+     * @return classType return first's object type.
      */
     private ClassType getFirstObjectType() {
         return ((CDClass) this.getFirstObject()).getTypeOfClass();
@@ -123,7 +124,7 @@ public class CDJoinEdgeController extends LineModel {
     /**
      * Method that gives you classType of second object.
      *
-     * @return classType
+     * @return classType returns second's object type.
      */
     private ClassType getSecondObjectType() {
         return ((CDClass) this.getSecondObject()).getTypeOfClass();
@@ -132,7 +133,7 @@ public class CDJoinEdgeController extends LineModel {
     /**
      * Method that lets you check if both objects are joinable with use case.
      *
-     * @return true if both object are activity and or actor
+     * @return true if both object are activity and or actor.
      */
     public Boolean checkBothObjects() {
         if (getFirstObjectType() == ClassType.ACTIVITY || getFirstObjectType() == ClassType.ACTOR) {
@@ -146,7 +147,7 @@ public class CDJoinEdgeController extends LineModel {
     /**
      * Get first object as CDClass if it is instance of CDClass.
      *
-     * @return (CDClass) firstObject
+     * @return (CDClass) firstObject.
      */
     public CDClass getFirstClass() {
         if (this.firstObject instanceof CDClass) {
@@ -158,7 +159,7 @@ public class CDJoinEdgeController extends LineModel {
     /**
      * Get second object object as CDClass if it is instance of CDClass.
      *
-     * @return (CDClass) secondObject
+     * @return (CDClass) secondObject.
      */
     public CDClass getSecondClass() {
         if (this.secondObject instanceof CDClass) {

@@ -17,7 +17,7 @@ import java.awt.Graphics2D;
 
 /**
  *
- * @author Karel
+ * @author Karel Hala
  */
 public class PNTransition extends PNTransitionModel {
 

@@ -13,7 +13,7 @@ import java.awt.Graphics2D;
 
 /**
  *
- * @author Karel
+ * @author Karel Hala
  */
 public class PNPlace extends PNPlaceModel {
 
@@ -27,7 +27,7 @@ public class PNPlace extends PNPlaceModel {
     }
 
     /**
-     * TODO: refactor
+     * 
      *
      * @param g
      */

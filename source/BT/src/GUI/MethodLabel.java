@@ -13,7 +13,7 @@ import javax.swing.JLabel;
 
 /**
  *
- * @author Karel
+ * @author Karel Hala
  */
 public class MethodLabel extends JLabel {
 

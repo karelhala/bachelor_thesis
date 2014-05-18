@@ -6,10 +6,7 @@ package BT.modules.ClassDiagram;
 
 import BT.managers.PlaceManager;
 import BT.models.ContentPaneModel;
-import BT.models.CoordinateModel;
 import BT.modules.ClassDiagram.mainContent.CDDrawingPane;
-import BT.modules.UC.places.UCActor;
-import BT.modules.UC.places.UCUseCase;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;

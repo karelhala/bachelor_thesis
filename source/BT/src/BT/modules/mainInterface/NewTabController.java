@@ -21,7 +21,7 @@ import javax.swing.JTabbedPane;
 
 /**
  *
- * @author Karel
+ * @author Karel Hala
  */
 public class NewTabController {
 

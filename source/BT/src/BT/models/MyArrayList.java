@@ -12,7 +12,7 @@ import java.util.Collections;
 /**
  * Class that extends array list by few methods.
  *
- * @author Karel
+ * @author Karel Hala
  * @param <E>
  */
 public class MyArrayList<E> extends ArrayList<E> {

@@ -12,7 +12,7 @@ import java.io.File;
  * Class for exporting files to PDF. It will take diagramPlacesManager and loop through every object and print it to
  * file.
  *
- * @author Karel
+ * @author Karel Hala
  */
 public class ExportToPdf extends ExportModel {
 

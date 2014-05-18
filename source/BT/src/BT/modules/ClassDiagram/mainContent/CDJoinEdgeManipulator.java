@@ -17,15 +17,15 @@ import javax.swing.JToggleButton;
 /**
  * Class for manipulating with join edges in class diagram part.
  *
- * @author Karel
+ * @author Karel Hala
  */
 public class CDJoinEdgeManipulator {
 
     /**
      * Method for changing type of join edge based on name of button
      *
-     * @param selectedButton
-     * @param joinEdge
+     * @param selectedButton button to determin what type of line should it be.
+     * @param joinEdge that will have changed type.
      */
     public static void changeLineTypeByButton(JToggleButton selectedButton, CDJoinEdgeController joinEdge) {
         switch (selectedButton.getName()) {
@@ -54,7 +54,7 @@ public class CDJoinEdgeManipulator {
      * @param joinEdge edge that is being created
      * @param clickedObject object that is inserted either on first or second place in join edge.
      * @param selectedButton
-     * @return
+     * @return CDJoinEdgeController changed join between classes.
      */
     public static CDJoinEdgeController createJoinEdge(CDJoinEdgeController joinEdge, CoordinateModel clickedObject, JToggleButton selectedButton) {
         if (joinEdge == null) {
@@ -77,7 +77,7 @@ public class CDJoinEdgeManipulator {
      * generalization. If you connect to any class interface you can do it only with realization.
      *
      * @param joinEdge that is under inspection
-     * @return
+     * @return CDJoinEdgeController changed join between classes.
      */
     public static CDJoinEdgeController checkObjects(CDJoinEdgeController joinEdge) {
         String errorMessage = "";

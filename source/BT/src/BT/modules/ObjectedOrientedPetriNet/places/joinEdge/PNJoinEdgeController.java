@@ -16,7 +16,7 @@ import java.awt.Point;
 
 /**
  *
- * @author Karel
+ * @author Karel Hala
  */
 public class PNJoinEdgeController extends LineModel {
 

@@ -16,7 +16,7 @@ import javax.swing.JScrollPane;
 
 /**
  *
- * @author Karel
+ * @author Karel Hala
  */
 public class PNMainContent extends ContentPaneModel {
 

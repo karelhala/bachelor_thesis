@@ -12,7 +12,7 @@ import java.io.IOException;
 /**
  * Class for setting basic model for exports.
  *
- * @author Karel
+ * @author Karel Hala
  */
 public class ExportModel {
 

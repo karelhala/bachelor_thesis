@@ -24,6 +24,8 @@ public class CDClassDrawer extends CDClassModel {
 
     /**
      * Basic constructor, calls parent with x and y.
+     * @param x coordinate X.
+     * @param y coordinate Y.
      */
     public CDClassDrawer(int x, int y) {
         super(x, y);
@@ -34,7 +36,7 @@ public class CDClassDrawer extends CDClassModel {
      * dashed. Draw filled class rect. Draw line above methods and below variables. Draw variables and methods. Resize
      * the size of class based on size of variables and methods.
      *
-     * @param g
+     * @param g Graphics2D which will handle the drawing.
      */
     public void drawClass(Graphics2D g) {
         Color classColor = this.color;

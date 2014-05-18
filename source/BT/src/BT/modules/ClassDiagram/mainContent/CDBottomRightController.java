@@ -36,6 +36,9 @@ abstract public class CDBottomRightController extends CDMainContentModel {
     /**
      * Basic constructor. Sets diagram places, bottom right content model, attributes panel. Sets drawing to class
      * diagram drawing pane. Add buttons with listeners to pane.
+     * @param diagramPlaces
+     * @param bottomRightContent
+     * @param attributesPanel
      */
     public CDBottomRightController(DiagramPlacesManager diagramPlaces, BottomRightContentModel bottomRightContent, ClassDiagramAttributesPanel attributesPanel) {
         super(diagramPlaces, bottomRightContent, attributesPanel);
@@ -129,17 +132,10 @@ abstract public class CDBottomRightController extends CDMainContentModel {
      * every field is correct, insert it in class and redraw.
      */
     private void addNewVariableToClass() {
-
         if (places.getSelectedObject() != null && places.getSelectedObject() instanceof CDClass) {
             CDClass selectedClass = (CDClass) places.getSelectedObject();
-            AttributeType selectedAtttributeType = null;
-            if (attributesPanel.getVisibilityVariable().getSelectedItem() == "-") {
-                selectedAtttributeType = AttributeType.PRIVATE;
-            } else if (attributesPanel.getVisibilityVariable().getSelectedItem() == "+") {
-                selectedAtttributeType = AttributeType.PUBLIC;
-            } else if (attributesPanel.getVisibilityVariable().getSelectedItem() == "#") {
-                selectedAtttributeType = AttributeType.PROTECTED;
-            }
+            AttributeType selectedAtttributeType = getVisibilityOfAttributeFromString(
+                    attributesPanel.getVisibilityVariable().getSelectedItem().toString());
             if (selectedAtttributeType != null && !"".equals(this.attributesPanel.getVariableName().getText())) {
                 if (this.attributesPanel.getAttributeTypeVariable().getSelectedItem() != null) {
                     Attribute newAttribute = new Attribute(
@@ -162,17 +158,10 @@ abstract public class CDBottomRightController extends CDMainContentModel {
      * petri net.
      */
     private void addNewmethodToClass() {
-
         if (places.getSelectedObject() != null && places.getSelectedObject() instanceof CDClass) {
             CDClass selectedClass = (CDClass) places.getSelectedObject();
-            AttributeType selectedAtttributeType = null;
-            if (attributesPanel.getVisibilityMethod().getSelectedItem() == "-") {
-                selectedAtttributeType = AttributeType.PRIVATE;
-            } else if (attributesPanel.getVisibilityMethod().getSelectedItem() == "+") {
-                selectedAtttributeType = AttributeType.PUBLIC;
-            } else if (attributesPanel.getVisibilityMethod().getSelectedItem() == "#") {
-                selectedAtttributeType = AttributeType.PROTECTED;
-            }
+            AttributeType selectedAtttributeType = getVisibilityOfAttributeFromString(
+                    attributesPanel.getVisibilityMethod().getSelectedItem().toString());
             if (selectedAtttributeType != null && !"".equals(this.attributesPanel.getMethodName().getText())) {
                 String selectedType = (String) this.attributesPanel.getAttributeTypeMethod().getSelectedItem();
                 selectedType = (selectedType == null) ? "void" : selectedType;
@@ -195,5 +184,28 @@ abstract public class CDBottomRightController extends CDMainContentModel {
         } else {
             JOptionPane.showMessageDialog(null, "No class selected please select class.");
         }
+    }
+
+    /**
+     * This will parse string and return visibility type. Swithc over parsed string and checks if string is "-" or "+"
+     * or "#" and return right visibility type.
+     *
+     * @param stringType visibility string.
+     * @return AttributeType[PRIVATE, PUBLIC, PROTECTED].
+     */
+    private AttributeType getVisibilityOfAttributeFromString(String stringType) {
+        AttributeType parsedType = null;
+        switch (stringType) {
+            case "-":
+                parsedType = AttributeType.PRIVATE;
+                break;
+            case "+":
+                parsedType = AttributeType.PUBLIC;
+                break;
+            case "#":
+                parsedType = AttributeType.PROTECTED;
+                break;
+        }
+        return parsedType;
     }
 }

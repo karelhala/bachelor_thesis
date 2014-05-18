@@ -30,7 +30,7 @@ import javax.swing.KeyStroke;
 
 /**
  *
- * @author Karel
+ * @author Karel Hala
  */
 abstract public class PNMainContentInitializer extends PNMainContentModel {
 

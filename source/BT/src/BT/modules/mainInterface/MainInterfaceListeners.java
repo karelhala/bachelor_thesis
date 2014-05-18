@@ -20,7 +20,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
- * @author Karel
+ * @author Karel Hala
  */
 public class MainInterfaceListeners {
 

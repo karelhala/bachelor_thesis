@@ -15,7 +15,6 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
-import javax.swing.JPanel;
 
 /**
  * Class for drawing every object of class diagram to drawing pane. It has one variable from parrent, which is newLine,
