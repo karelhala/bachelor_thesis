@@ -10,7 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 /**
- * Class that creates toolBar content
+ * Class that creates toolBar content.
  *
  * @author Karel Hala
  */
@@ -28,10 +28,19 @@ public class ToolBarContentModel {
         this.toolBarPane = new JPanel();
     }
 
+    /**
+     * Get toolbar pane which stores each button.
+     * 
+     * @return JPanel with every button of toolbar.
+     */
     public JPanel getToolBarPane() {
         return this.toolBarPane;
     }
-
+    
+    /**
+     * Set toolbar pane which stores each button.
+     * @param toolBarPane JPanel with every button of toolbar.
+     */
     public void setToolBarPane(JPanel toolBarPane) {
         this.toolBarPane = toolBarPane;
     }
@@ -47,6 +56,12 @@ public class ToolBarContentModel {
         return addNewButton(name, iconName, Color.GRAY);
     }
 
+    /**
+     * Add button with name and nothign else.
+     * 
+     * @param name name of button
+     * @return created JButton.
+     */
     public JButton addNewButton(String name) {
         return addNewButton(name, null);
     }

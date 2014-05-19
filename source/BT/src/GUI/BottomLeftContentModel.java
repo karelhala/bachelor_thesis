@@ -23,10 +23,22 @@ import javax.swing.JScrollPane;
  */
 public class BottomLeftContentModel {
 
+    /**
+     * 
+     */
     final private JPanel contentPane;
+    /**
+     * 
+     */
     final private JScrollPane scrollPane;
+    /**
+     * 
+     */
     final private JPanel mainPane;
 
+    /**
+     * 
+     */
     public BottomLeftContentModel() {
         this.contentPane = new JPanel(new GridLayout(0, 1));
         this.scrollPane = new JScrollPane();
@@ -34,14 +46,26 @@ public class BottomLeftContentModel {
         initilizeCompponent();
     }
 
+    /**
+     * 
+     * @return 
+     */
     public JPanel getContentPane() {
         return contentPane;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public JScrollPane getScrollPane() {
         return scrollPane;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public JPanel getMainPane() {
         return mainPane;
     }
@@ -89,6 +113,11 @@ public class BottomLeftContentModel {
         this.contentPane.add(newPanel);
     }
 
+    /**
+     * 
+     * @param classLabel
+     * @return 
+     */
     public BottomLeftContentModel addClassLabelToPane(JLabel classLabel) {
         this.mainPane.removeAll();
         this.mainPane.add(this.scrollPane, BorderLayout.CENTER);

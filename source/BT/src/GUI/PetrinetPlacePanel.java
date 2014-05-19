@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 /**
- *
+ * Class for storring constant text field in additiona jpanel.
  * @author Karel Hala
  */
 public class PetrinetPlacePanel {

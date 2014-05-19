@@ -17,7 +17,6 @@ import javax.swing.JTabbedPane;
 import GUI.WindowLayoutModel;
 import java.awt.Component;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
 
 /**
  *
@@ -25,9 +24,21 @@ import java.awt.event.MouseAdapter;
  */
 public class WindowLayoutControler {
 
+    /**
+     * 
+     */
     private final CloseTabbedPane fileTab;
+    /**
+     * 
+     */
     private final MyToolBar toolBar;
+    /**
+     * 
+     */
     private final PlusTab plusTab;
+    /**
+     * 
+     */
     private ActionListener addNewTabListener;
 
     /**

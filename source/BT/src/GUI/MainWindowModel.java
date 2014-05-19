@@ -13,11 +13,31 @@ import java.awt.Dimension;
  */
 public class MainWindowModel extends javax.swing.JFrame {
 
+    /**
+     * 
+     */
     private int width = 1200;
+    
+    /**
+     * 
+     */
     private int height = 750;
+    /**
+     * 
+     */
     private WindowLayoutControler myLayout;
+    /**
+     * 
+     */
     private MyMenuBar myMenu;
 
+    /**
+     * 
+     * @param programName
+     * @param width
+     * @param height
+     * @param myLayout 
+     */
     public MainWindowModel(String programName, int width, int height, WindowLayoutControler myLayout) {
         super(programName);
         this.width = width;
@@ -25,6 +45,11 @@ public class MainWindowModel extends javax.swing.JFrame {
         this.myLayout = myLayout;
     }
 
+    /**
+     * 
+     * @param programName
+     * @param myLayout 
+     */
     public MainWindowModel(String programName, WindowLayoutControler myLayout) {
         super(programName);
         this.myLayout = myLayout;

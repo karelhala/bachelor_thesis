@@ -24,8 +24,15 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  */
 public class MainInterfaceListeners {
 
+    /**
+     * 
+     */
     final private ToolBarContentControler toolBarContent;
 
+    /**
+     * 
+     * @param toolBarContent 
+     */
     public MainInterfaceListeners(ToolBarContentControler toolBarContent) {
         this.toolBarContent = toolBarContent;
     }

@@ -18,6 +18,9 @@ import javax.swing.KeyStroke;
  */
 public class MyMenuBar extends MyMenyBarModel {
 
+    /**
+     * 
+     */
     public MyMenuBar() {
         initializeMenu();
         initializeItems();

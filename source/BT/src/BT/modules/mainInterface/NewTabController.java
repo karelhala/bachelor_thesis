@@ -69,10 +69,18 @@ public class NewTabController {
         this.diagramPlaces.setDiagramNumber(myLayout.getFileTab().getSelectedIndex());
     }
 
+    /**
+     * 
+     * @return 
+     */
     public DiagramPlacesManager getDiagramPlaces() {
         return diagramPlaces;
     }
 
+    /**
+     * 
+     * @param diagramPlaces 
+     */
     public void setDiagramPlaces(DiagramPlacesManager diagramPlaces) {
         this.diagramPlaces = diagramPlaces;
     }

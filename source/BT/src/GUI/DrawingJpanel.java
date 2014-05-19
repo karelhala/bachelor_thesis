@@ -29,6 +29,10 @@ public class DrawingJpanel extends JPanel {
         this.revalidate();
     }
 
+    /**
+     * 
+     * @param drawnLine 
+     */
     protected void recalculateSizeForLines(LineModel drawnLine) {
         Dimension calculatedSize = RecalculatePaneSize.recalculateSizeOfPaneByLine(drawnLine, this.getSize());
         this.setPreferredSize(calculatedSize);

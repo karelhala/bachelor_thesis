@@ -5,8 +5,6 @@
 package BT.modules.mainInterface;
 
 import BT.managers.DiagramPlacesManager;
-import BT.models.CoordinateModel;
-import GUI.MyMenuBar;
 import GUI.ToolBarContentModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -30,17 +28,53 @@ import javax.swing.SwingConstants;
  */
 public class ToolBarContentControler {
 
+    /**
+     * 
+     */
     private final ToolBarContentModel toolBarcontent;
+    /**
+     * 
+     */
     private ActionListener newFileAction;
+    /**
+     * 
+     */
     private ActionListener closeFileAction;
+    /**
+     * 
+     */
     private ActionListener openFileAction;
+    /**
+     * 
+     */
     private ActionListener exportEpsAction;
+    /**
+     * 
+     */
     private ActionListener exportPdfAction;
+    /**
+     * 
+     */
     private ActionListener exportXmlAction;
+    /**
+     * 
+     */
     private ActionListener saveAction;
+    /**
+     * 
+     */
     private ActionListener saveAsAction;
+    /**
+     * 
+     */
     private ActionListener exitAction;
+    /**
+     * 
+     */
     private ActionListener helpAction;
+    /**
+     * 
+     */
     private final ArrayList<DiagramPlacesManager> diagramPlaces;
 
     /**
@@ -169,90 +203,178 @@ public class ToolBarContentControler {
         return this.diagramPlaces.get(id);
     }
 
+    /**
+     * 
+     * @param newFileAction 
+     */
     public void setNewFileAction(ActionListener newFileAction) {
         this.newFileAction = newFileAction;
     }
 
+    /**
+     * 
+     * @param closeFileAction 
+     */
     public void setCloseFileAction(ActionListener closeFileAction) {
         this.closeFileAction = closeFileAction;
     }
 
+    /**
+     * 
+     * @param openFileAction 
+     */
     public void setOpenFileAction(ActionListener openFileAction) {
         this.openFileAction = openFileAction;
     }
 
+    /**
+     * 
+     * @param exportEpsAction 
+     */
     public void setExportEpsAction(ActionListener exportEpsAction) {
         this.exportEpsAction = exportEpsAction;
     }
 
+    /**
+     * 
+     * @param exportPdfAction 
+     */
     public void setExportPdfAction(ActionListener exportPdfAction) {
         this.exportPdfAction = exportPdfAction;
     }
 
+    /**
+     * 
+     * @param exportXmlAction 
+     */
     public void setExportXmlAction(ActionListener exportXmlAction) {
         this.exportXmlAction = exportXmlAction;
     }
 
+    /**
+     * 
+     * @param saveAction 
+     */
     public void setSaveAction(ActionListener saveAction) {
         this.saveAction = saveAction;
     }
 
+    /**
+     * 
+     * @param saveAsAction 
+     */
     public void setSaveAsAction(ActionListener saveAsAction) {
         this.saveAsAction = saveAsAction;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public ToolBarContentModel getToolBarcontent() {
         return this.toolBarcontent;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public ActionListener getNewFileAction() {
         return newFileAction;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public ActionListener getCloseFileAction() {
         return closeFileAction;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public ActionListener getOpenFileAction() {
         return openFileAction;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public ActionListener getExportEpsAction() {
         return exportEpsAction;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public ActionListener getExportPdfAction() {
         return exportPdfAction;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public ActionListener getExportXmlAction() {
         return exportXmlAction;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public ActionListener getSaveAction() {
         return saveAction;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public ActionListener getSaveAsAction() {
         return saveAsAction;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public ActionListener getExitAction() {
         return exitAction;
     }
 
+    /**
+     * 
+     * @param exitAction 
+     */
     public void setExitAction(ActionListener exitAction) {
         this.exitAction = exitAction;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public ArrayList<DiagramPlacesManager> getDiagramPlaces() {
         return diagramPlaces;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public ActionListener getHelpAction() {
         return helpAction;
     }
 
+    /**
+     * 
+     * @param helpAction 
+     */
     public void setHelpAction(ActionListener helpAction) {
         this.helpAction = helpAction;
     }

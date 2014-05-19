@@ -24,9 +24,21 @@ import javax.swing.JPanel;
  */
 public class MainInterfaceControler {
 
+    /**
+     * 
+     */
     final private ToolBarContentControler ToolBarContent;
+    /**
+     * 
+     */
     final private MyToolBar toolBar;
+    /**
+     * 
+     */
     final private WindowLayoutControler myLayout;
+    /**
+     * 
+     */
     final private MainWindowModel mainWindowModel;
 
     /**

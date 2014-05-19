@@ -36,10 +36,19 @@ import net.sf.epsgraphics.EpsGraphics;
  */
 public class ExportToEps extends ExportModel {
 
+    /**
+     * Basic constructor.
+     *
+     * @param diagramPlaces explaned in ExportModel.
+     * @param exportToFolder explaned in ExportModel.
+     */
     public ExportToEps(DiagramPlacesManager diagramPlaces, File exportToFolder) {
         super(diagramPlaces, exportToFolder);
     }
 
+    /**
+     * Saves all use cases, classes and loop through each OOPN and saves each object off it to new eps file.
+     */
     public void exportAllToFiles() {
         try {
             if (this.exportedPlaces.getUcPlaces().getObjects().size() > 0) {

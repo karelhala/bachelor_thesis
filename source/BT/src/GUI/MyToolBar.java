@@ -13,24 +13,45 @@ import javax.swing.JToolBar;
  */
 public class MyToolBar {
 
+    /**
+     * 
+     */
     private javax.swing.JToolBar jToolBar;
 
+    /**
+     * 
+     */
     public MyToolBar() {
         initializeToolBar();
     }
 
+    /**
+     * 
+     * @return 
+     */
     public JToolBar getToolbar() {
         return this.jToolBar;
     }
 
+    /**
+     * 
+     * @param jToolBar 
+     */
     public void setToolbar(JToolBar jToolBar) {
         this.jToolBar = jToolBar;
     }
 
+    /**
+     * 
+     * @param mypanel 
+     */
     public void setPaneToolbar(JPanel mypanel) {
         this.jToolBar.add(mypanel);
     }
 
+    /**
+     * 
+     */
     private void initializeToolBar() {
         this.jToolBar = new JToolBar();
         this.jToolBar.setFloatable(false);
