@@ -17,6 +17,7 @@ import java.io.File;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
 
 /**
  *
@@ -40,6 +41,10 @@ public class MainInterfaceControler {
      * 
      */
     final private MainWindowModel mainWindowModel;
+    /**
+     * Manager for opening and reading help files.
+     */
+    final private HelpManager helpManager;
 
     /**
      *
@@ -50,6 +55,7 @@ public class MainInterfaceControler {
         this.toolBar = new MyToolBar();
         this.myLayout = new WindowLayoutControler(this.toolBar, this.ToolBarContent);
         this.mainWindowModel = new MainWindowModel(programName, this.myLayout);
+        this.helpManager = new HelpManager();
     }
 
     /**
@@ -62,6 +68,7 @@ public class MainInterfaceControler {
         this.ToolBarContent.setBasicListeners(this.myLayout).addBasicButtons();
         this.myLayout.setAddNewTabListener(this.ToolBarContent.getNewFileAction());
         this.myLayout.setMouseClickedOnPlusButton();
+        this.helpManager.loadFiles().setListenerToComboBox();
         setMenuListeners();
     }
 
@@ -174,6 +181,17 @@ public class MainInterfaceControler {
                 } else {
                     JOptionPane.showMessageDialog(null, "No file to save.");
                 }
+            }
+        });
+        this.ToolBarContent.setHelpAction(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                int selectedTab = 0;
+                if (myLayout.getSelectedTab() instanceof JTabbedPane)
+                {
+                    selectedTab = ((JTabbedPane)myLayout.getSelectedTab()).getSelectedIndex() + 1;
+                }
+                helpManager.showDialog(selectedTab);
             }
         });
     }
