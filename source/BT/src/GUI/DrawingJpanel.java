@@ -12,7 +12,8 @@ import java.awt.Dimension;
 import javax.swing.JPanel;
 
 /**
- *
+ * Class that recalculate pane size for showing scroll bars.
+ * 
  * @author Karel Hala
  */
 public class DrawingJpanel extends JPanel {
@@ -20,7 +21,7 @@ public class DrawingJpanel extends JPanel {
     /**
      * Method for recaltulating and resizing drawing pane based on objects in it.
      *
-     * @param newObject
+     * @param newObject CoordinateModel which is recalculated.
      */
     protected void recalculateSize(CoordinateModel newObject) {
         Dimension calculatedSize = RecalculatePaneSize.recalculateSizeofPaneOnObject(newObject, this.getSize());
@@ -30,8 +31,9 @@ public class DrawingJpanel extends JPanel {
     }
 
     /**
+     * Method for recaltulating and resizing drawing pane based on lines in it.
      * 
-     * @param drawnLine 
+     * @param drawnLine LineModel which is recalculated.
      */
     protected void recalculateSizeForLines(LineModel drawnLine) {
         Dimension calculatedSize = RecalculatePaneSize.recalculateSizeOfPaneByLine(drawnLine, this.getSize());

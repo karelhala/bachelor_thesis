@@ -7,39 +7,39 @@ package GUI;
 import javax.swing.JPanel;
 
 /**
- * Class for handeling with main content in window
+ * Class for handeling with main content in window.
  *
  * @author Karel Hala
  */
 public class MainContentModel {
 
     /**
-     * Left Top part of window
+     * Left Top part of window.
      */
     private JPanel leftTopPane;
 
     /**
-     * Left bottom part of window
+     * Left bottom part of window.
      */
     private JPanel leftBottomPane;
 
     /**
-     * Bottom left part of window
+     * Bottom left part of window.
      */
     private JPanel bottomLeftPane;
 
     /**
-     * Bottom right part of window
+     * Bottom right part of window.
      */
     private JPanel bottomRightPane;
 
     /**
-     * Main content
+     * Main content.
      */
     private JPanel centerPane;
 
     /**
-     * constructor it creates new panes for each part of window
+     * Constructor it creates new panes for each part of window.
      */
     public MainContentModel() {
         this.leftTopPane = new JPanel();

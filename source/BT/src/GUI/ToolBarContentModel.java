@@ -67,10 +67,10 @@ public class ToolBarContentModel {
     }
 
     /**
-     * Method for initializing and creating new button
+     * Method for initializing and creating new button.
      *
-     * @param name new name of button
-     * @param iconName
+     * @param name new name of button.
+     * @param iconName name of icon, including extension.
      * @param buttonColor color of new button.
      * @return new button created and initialized.
      */

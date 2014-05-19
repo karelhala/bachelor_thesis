@@ -13,7 +13,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 /**
- * Class for storring constant text field in additiona jpanel.
+ * Class for storring constant text field in additiona jpanel. This is for petriNets.
+ *
  * @author Karel Hala
  */
 public class PetrinetPlacePanel {
@@ -33,6 +34,10 @@ public class PetrinetPlacePanel {
      */
     private final JButton confirmButton;
 
+    /**
+     * Basic constructor. It creates constantField, contentPane, confirmButton and set confirmButton toolTip to it's
+     * text.
+     */
     public PetrinetPlacePanel() {
         this.constantField = new JTextField();
         this.contentPane = new JPanel(new BorderLayout());
@@ -41,14 +46,26 @@ public class PetrinetPlacePanel {
         insertIntoPane();
     }
 
+    /**
+     * Returns text field which stores constant field.
+     * @return constantField as JTextField.
+     */
     public JTextField getConstantField() {
         return constantField;
     }
 
+    /**
+     * Returns content pane which has all elements in it.
+     * @return contentPane as JPanel.
+     */
     public JPanel getContentPane() {
         return contentPane;
     }
 
+    /**
+     * Returns confirm button that will commit changes to place.
+     * @return confirmButton as JButton.
+     */
     public JButton getConfirmButton() {
         return confirmButton;
     }
