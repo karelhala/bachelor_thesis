@@ -1,1 +1,53 @@
-sdfsdf
+This part of application serves for drawing class diagrams.
+
+====== OBJECTS ======
+
+Choose object from left top panel.
+
+Normal class or interface can be inserted.
+Select which you want to add and click on drawing panel. When you want to stop inserting, just unselect the type or hit ESCAPE.
+
+To specify object, i.e. mirroring class to use case diagram. Object has to have no joins and can't be interface. Double click non joined object and select Actor for mirrring this object as Actor, Action as use case and none to not mirror it.
+
+====== JOIN EDGES ======
+
+Select join edge type and start connecting objects on drawing panel.
+
+Association is used as uni-directional. Between either non specifed classes or between actor--->Actovity.
+Aggregation for specify that one object can be part of other object.
+Composition to say, that one object is part of other object.
+Generalization to connect child to parent class.
+Realization to connect normal class to interface.
+
+====== EDIT OBJECT ======
+
+
+Double click on object on drawing panel to edit it's name.
+
+You can find that you can reactivate with and plain reactivate object if you double click object. This can be done only if object is either Actor or Activity and class is joined with some other class.
+
+====== REACTIVATORS ======
+
+When double clicked on class which is joined with some other class you can change it's mirrored object in use case by hitting "Reactivate with".
+
+If class has no mirrored object in use case diagram you can reactivate it with button "Reactivate".
+
+====== BOTTOM RIGHT ======
+
+To delete all inactive classes in class diagram, i.e. classes with no specific object in use case diagram, hit this button.
+
+To reactivate all inactive classes in class diagram, ie classes with no specific object in use case diagram, hit this button and all classes will be mirrored to use case diagram.
+
+Select class and you will be able to assign variables and methods to it. Top line is for variables, bottom for methods.
+
+First selectBox defines visibiliy (- is private, + is public, # is protected), then give variable or method's name and then specifz it's type. Type can be picked based on classes on working panel.
+
+Add button neaxt to line for variable is for adding new variable, button next to method is for adding method to class.
+
+====== BOTTOM LEFT ======
+
+Each line represents either class variable or method.
+
+Double click on method and you can edit method's arguments.
+
+Button next to each line is for deleting this variable or method.

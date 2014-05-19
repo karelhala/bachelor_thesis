@@ -1,1 +1,58 @@
-afs
+This part of application serves for drawing objected oriented Petri nets (OOPN).
+
+If you want to access this part please select class first and then you will be able to access it.
+
+====== OBJECTS ======
+
+Choose object from left top panel.
+
+Place for adding places of Petri net.
+Transition which will hold guard and action.
+
+Choose object and click on drawing panel (white area). Objects will be created, if you want to create multiple objects, just keep on clicking. Once you want to stop creating same object, unselect it in left top panel or hit ESCAPE button on keyboard.
+
+====== JOIN EDGES ======
+
+There is only one join edge in Petri nets.
+
+This join edge can be used only in way place--->transition OR transition--->place
+
+When you want to change which objects are connected first choose type of join edge and then dragg line that will be changed.
+
+Double click on line and specify variables that are transmitted with it.
+
+====== EDIT OBJECT ======
+
+Double click on object on drawing panel to edit it's name.
+
+====== BOTTOM RIGHT ======
+
+Based on what object is selected this part will be different.
+
+If no object is selected you can add class variables and method's atguments (if OOPN for method is being handled) as places.
+
+If place is selected you can edit it's constant.
+
+If transition is selected you will be able to show guard or action panel. For changing guard and action.
+
+====== GUARD DIALOG ======
+
+Can be accesed only if transition is selected.
+
+Top of window contains actual guard, you can either change it directly, or pick variables, operators between them and set guard to it, or append it to old guard using && or ||.
+
+You can choose variables that actualy come into transition.
+
+====== ACTION DIALOG ======
+
+Can be accesed only if transition is selected.
+
+Top of window contains variable selectbox, or direct input for variable.
+
+In bottom you can set action to some string.
+
+new variables will be introduced only if you type new one to variable field.
+
+====== BOTTOM LEFT ======
+
+If selected class has some methods, you will be able to change OOPN by selecting them in bottom left part.

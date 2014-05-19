@@ -26,14 +26,41 @@ public class HelpManager extends HelpModel{
     public HelpManager loadFiles()
     {
         InputStream resourceAsStream;
-        resourceAsStream = HelpManager.class.getResourceAsStream("/resources/help/applicationHelp.txt");
-        this.applicationString = new Scanner(resourceAsStream,"UTF8").useDelimiter("\\Z").next();
-        resourceAsStream = HelpManager.class.getResourceAsStream("/resources/help/classDiagramHelp.txt");
-        this.classDiagramString = new Scanner(resourceAsStream,"UTF8").useDelimiter("\\Z").next();
-        resourceAsStream = HelpManager.class.getResourceAsStream("/resources/help/useCaseHelp.txt");
-        this.useCaseString = new Scanner(resourceAsStream,"UTF8").useDelimiter("\\Z").next();
-        resourceAsStream = HelpManager.class.getResourceAsStream("/resources/help/petriNetHelp.txt");
-        this.petriNetString = new Scanner(resourceAsStream,"UTF8").useDelimiter("\\Z").next();
+        try{
+            resourceAsStream = HelpManager.class.getResourceAsStream("/resources/help/applicationHelp.txt");
+            this.applicationString = new Scanner(resourceAsStream,"UTF8").useDelimiter("\\Z").next();
+        }
+        catch (NullPointerException ex)
+        {
+            System.err.println("Error when loading help files.");
+        }
+        try{
+            resourceAsStream = HelpManager.class.getResourceAsStream("/resources/help/petriNetHelp.txt");
+            this.petriNetString = new Scanner(resourceAsStream,"UTF8").useDelimiter("\\Z").next();
+        }
+        catch (NullPointerException ex)
+        {
+            System.err.println("Error when loading help files.");
+        }
+        try{
+            resourceAsStream = HelpManager.class.getResourceAsStream("/resources/help/useCaseHelp.txt");
+            this.useCaseString = new Scanner(resourceAsStream,"UTF8").useDelimiter("\\Z").next();
+        }
+        catch (NullPointerException ex)
+        {
+            System.err.println("Error when loading help files.");
+        }
+        try{
+            resourceAsStream = HelpManager.class.getResourceAsStream("/resources/help/classDiagramHelp.txt");
+            this.classDiagramString = new Scanner(resourceAsStream,"UTF8").useDelimiter("\\Z").next();
+        }
+        catch (NullPointerException ex)
+        {
+            System.err.println("Error when loading help files.");
+        }
+            
+            
+            
         return this;
     }
     
@@ -45,6 +72,7 @@ public class HelpManager extends HelpModel{
     {
         this.displayedHelp.setText(getHelpBasedOnComboBox(selectedTab));
         this.helpSelect.setSelectedIndex(selectedTab);
+        this.displayedHelp.setCaretPosition(0);
         JOptionPane.showConfirmDialog(null, this.contentPanel,
                     "Help information", JOptionPane.OK_CANCEL_OPTION);
     }
@@ -59,6 +87,7 @@ public class HelpManager extends HelpModel{
             @Override
             public void actionPerformed(ActionEvent ae) {
                 displayedHelp.setText(getHelpBasedOnComboBox(helpSelect.getSelectedIndex()));
+                displayedHelp.setCaretPosition(0);
             }
         });
         return this;

@@ -1,1 +1,41 @@
-asffa
+This part of application serves for drawing use case diagrams.
+
+====== OBJECTS ======
+
+Choose object from left top panel.
+
+Actor object is used to specify role in application.
+Use case specify action in application.
+
+Choose object and click on drawing panel (white area). Objects will be created, if you want to create multiple objects, just keep on clicking. Once you want to stop creating same object, unselect it in left top panel or hit ESCAPE button on keyboard.
+
+====== JOIN EDGES ======
+
+Choose join edge to join two objects on drawing panel.
+
+Association is used between Actor--->useCase.
+Inculde is used useCase--->inner useCase.
+Extends is use useCase--->extended useCase.
+Generalization can be used between useCases or Actors.
+
+If you join use case and actor with differen join than associtaion, the join will be changed to Association.
+
+When you want to change which objects are connected first choose type of join edge and then dragg line that will be changed.
+
+====== EDIT OBJECT ======
+
+Double click on object on drawing panel to edit it's name.
+
+You can find that you can reactivate with and plain reactivate object if you double click object.
+
+====== REACTIVATORS ======
+
+If object of useCase  has no equivalent class in class diagram you will be able to change it by double clicking on object nad hitting button "reactivate".
+
+If you want to reactivate useCase object with specific class just hit button reactivate with.
+
+====== BOTTOM RIGHT ======
+
+To delete all inactive objects in usecase diagram, i.e. objects with no specific class in class diagram, hit this button.
+
+To reactivate all inactive objects in usecase diagram, ie objects with no specific class in class diagram, hit this button and all objects will be mirrored to class diagram.

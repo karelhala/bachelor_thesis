@@ -61,7 +61,8 @@ public class HelpModel {
     {
         String[] selectString = {"Whole application help", "Use case help", "Class diagram help", "Objected oriented Petri net help"};
         helpSelect = new JComboBox(selectString);
-        displayedHelp = new JTextArea(0, 50);
+        displayedHelp = new JTextArea();
+        displayedHelp.setLineWrap(true);
         insertElements();
     }
     
