@@ -25,13 +25,14 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 public class MainInterfaceListeners {
 
     /**
-     * 
+     * Toolbar buttons and their listeners.
      */
     final private ToolBarContentControler toolBarContent;
 
     /**
-     * 
-     * @param toolBarContent 
+     * Basic constructor.
+     * It sets toolBarcontet.
+     * @param toolBarContent stores each button with different action.
      */
     public MainInterfaceListeners(ToolBarContentControler toolBarContent) {
         this.toolBarContent = toolBarContent;

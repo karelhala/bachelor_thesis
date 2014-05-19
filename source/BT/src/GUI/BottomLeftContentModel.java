@@ -18,26 +18,29 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 /**
+ * Class for holding class variables and methods. Fisrt variables will be shown and below them methods. Each line will
+ * hav button for deleting them.
  *
  * @author Karel Hala
  */
 public class BottomLeftContentModel {
 
     /**
-     * 
+     * Content pane which holds class variables and methods.
      */
     final private JPanel contentPane;
     /**
-     * 
+     * scroll pane for scrolling.
      */
     final private JScrollPane scrollPane;
     /**
-     * 
+     * Each component is stored in this.
      */
     final private JPanel mainPane;
 
     /**
-     * 
+     * Basic constructor. It sets layout of this bottom left component to 0 and 1. Each new oject will be inserted
+     * below. It creates contentPane, scrollPane, mainPane and intialize content pane.
      */
     public BottomLeftContentModel() {
         this.contentPane = new JPanel(new GridLayout(0, 1));
@@ -47,24 +50,18 @@ public class BottomLeftContentModel {
     }
 
     /**
-     * 
-     * @return 
+     * Returns content pane which holds each class variable and method.
+     *
+     * @return contentPane as JPanel.
      */
     public JPanel getContentPane() {
         return contentPane;
     }
 
     /**
-     * 
-     * @return 
-     */
-    public JScrollPane getScrollPane() {
-        return scrollPane;
-    }
-
-    /**
-     * 
-     * @return 
+     * Returns main pane with each cariable and method.
+     *
+     * @return mainPane as JPanel.
      */
     public JPanel getMainPane() {
         return mainPane;
@@ -80,10 +77,12 @@ public class BottomLeftContentModel {
     }
 
     /**
-     * Method that will insert text with button to contentPane
+     * Method that will insert text with button to contentPane. Create new JLabel and add listener when double clicked
+     * on it to bring dialog for adding arguments for selected method. Variables are in top of bottom left panel, method
+     * are in bottom of it.
      *
-     * @param insertedAttribute
-     * @param deletebutton
+     * @param insertedAttribute Attribute either method or class variable.
+     * @param deletebutton JButton to remove this attribute.
      */
     public void addObjectsToPane(final Attribute insertedAttribute, JButton deletebutton) {
         final JLabel newLabel = new JLabel();
@@ -114,9 +113,10 @@ public class BottomLeftContentModel {
     }
 
     /**
-     * 
-     * @param classLabel
-     * @return 
+     * Method for inserting class to bottom left with tooltip. It will be inserted in left top.
+     *
+     * @param classLabel JLabel to be inserted.
+     * @return BottomLeftContentModel for further use.
      */
     public BottomLeftContentModel addClassLabelToPane(JLabel classLabel) {
         this.mainPane.removeAll();
@@ -129,9 +129,11 @@ public class BottomLeftContentModel {
     }
 
     /**
+     * Method for inserting new class variable or method to bottom left. It will insert label with tooltip to content
+     * panel.
      *
-     * @param attributeLabel
-     * @return
+     * @param attributeLabel JLabel to be inserted.
+     * @return BottomLeftContentModel for further use.
      */
     public BottomLeftContentModel addAttributesToPane(JLabel attributeLabel) {
         attributeLabel.setToolTipText("Method of object");

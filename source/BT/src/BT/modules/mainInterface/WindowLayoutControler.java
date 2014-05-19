@@ -25,19 +25,19 @@ import java.awt.event.ActionListener;
 public class WindowLayoutControler {
 
     /**
-     * 
+     *
      */
     private final CloseTabbedPane fileTab;
     /**
-     * 
+     *
      */
     private final MyToolBar toolBar;
     /**
-     * 
+     *
      */
     private final PlusTab plusTab;
     /**
-     * 
+     *
      */
     private ActionListener addNewTabListener;
 
@@ -129,11 +129,13 @@ public class WindowLayoutControler {
     }
 
     /**
+     * Add new tab to file tab. Create tab for useCase, classDiagram and OOPetriNets. Add these elemnts to close tab and
+     * create plus tab panel.
      *
-     * @param UCContentModel
-     * @param UMLContentModel
-     * @param OOPNContentModel
-     * @param name
+     * @param UCContentModel MainContentModel of useCase.
+     * @param UMLContentModel MainContentModel of classDiagram.
+     * @param OOPNContentModel MainContentModel of objected oriented pteri nets.
+     * @param name file tab name.
      */
     public void addNewTab(MainContentModel UCContentModel, MainContentModel UMLContentModel, MainContentModel OOPNContentModel, String name) {
         JTabbedPane typeTab = new JTabbedPane();
@@ -154,9 +156,10 @@ public class WindowLayoutControler {
     }
 
     /**
+     * Creates myWindow and sets split panes and eventuly return left split pane.
      *
-     * @param mycontent
-     * @return
+     * @param mycontent MainContentModel content with each object and elemtn in it.
+     * @return myWindow.getLeftSplitPane() which holds left and right content.
      */
     private JSplitPane getWindowLayout(MainContentModel mycontent) {
         WindowLayoutModel myWindow = new WindowLayoutModel();
@@ -168,8 +171,9 @@ public class WindowLayoutControler {
     }
 
     /**
+     * Return file tab pane.
      *
-     * @return
+     * @return fileTab as JTabbedPane.
      */
     public JTabbedPane getFileTab() {
         return this.fileTab;

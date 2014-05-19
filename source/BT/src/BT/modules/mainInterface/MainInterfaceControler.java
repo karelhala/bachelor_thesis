@@ -20,25 +20,26 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
 /**
+ * Class that controlls main interface. It creates listeners for each button and menu item.
  *
  * @author Karel Hala
  */
 public class MainInterfaceControler {
 
     /**
-     * 
+     * Toolbar with each button to manage this tool.
      */
     final private ToolBarContentControler ToolBarContent;
     /**
-     * 
+     * Toolbar model.
      */
     final private MyToolBar toolBar;
     /**
-     * 
+     * For controlling layout and feel of window.
      */
     final private WindowLayoutControler myLayout;
     /**
-     * 
+     * for setting basic size of window.
      */
     final private MainWindowModel mainWindowModel;
     /**
@@ -47,6 +48,8 @@ public class MainInterfaceControler {
     final private HelpManager helpManager;
 
     /**
+     * Basic constructor. It creates new ToolBarContentControler, MyToolBar, WindowLayoutControler, MainWindowModel and
+     * help manager.
      *
      * @param programName
      */
@@ -59,7 +62,7 @@ public class MainInterfaceControler {
     }
 
     /**
-     *
+     * Create main window and set listeners and feel of window.
      */
     public void runTheMainWindow() {
         createListeners();
@@ -187,9 +190,8 @@ public class MainInterfaceControler {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 int selectedTab = 0;
-                if (myLayout.getSelectedTab() instanceof JTabbedPane)
-                {
-                    selectedTab = ((JTabbedPane)myLayout.getSelectedTab()).getSelectedIndex() + 1;
+                if (myLayout.getSelectedTab() instanceof JTabbedPane) {
+                    selectedTab = ((JTabbedPane) myLayout.getSelectedTab()).getSelectedIndex() + 1;
                 }
                 helpManager.showDialog(selectedTab);
             }
@@ -216,21 +218,21 @@ public class MainInterfaceControler {
                 helpManager.showDialog(1);
             }
         });
-        
+
         this.mainWindowModel.getMyMenu().addActionListenerToClassDiagramHelp(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 helpManager.showDialog(2);
             }
         });
-        
+
         this.mainWindowModel.getMyMenu().addActionListenerToOOPNHelp(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 helpManager.showDialog(3);
             }
         });
-        
+
         this.mainWindowModel.getMyMenu().addActionListenerToApplicationHelp(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {

@@ -23,62 +23,64 @@ import javax.swing.KeyStroke;
 import javax.swing.SwingConstants;
 
 /**
+ * Stores toolBar content, like buttons and their listeners.
  *
  * @author Karel Hala
  */
 public class ToolBarContentControler {
 
     /**
-     * 
+     * It creates and inserts new button to toolBar.
      */
     private final ToolBarContentModel toolBarcontent;
     /**
-     * 
+     * Action listener to new file.
      */
     private ActionListener newFileAction;
     /**
-     * 
+     * Action listener to close file.
      */
     private ActionListener closeFileAction;
     /**
-     * 
+     * Action listener to open file.
      */
     private ActionListener openFileAction;
     /**
-     * 
+     * Action listener to export to EPS.
      */
     private ActionListener exportEpsAction;
     /**
-     * 
+     * Action listener to export to PFS. Not implemented.
      */
     private ActionListener exportPdfAction;
     /**
-     * 
+     * Action listener to export to XML. Not implemented.
      */
     private ActionListener exportXmlAction;
     /**
-     * 
+     * Action listener to save file.
      */
     private ActionListener saveAction;
     /**
-     * 
+     * Action listener to save file as... .
      */
     private ActionListener saveAsAction;
     /**
-     * 
+     * Action listener to exit application.
      */
     private ActionListener exitAction;
     /**
-     * 
+     * Action listener to show basic help.
      */
     private ActionListener helpAction;
     /**
-     * 
+     * Action listener to sotre each and evry diagram place manager with every object. Here is stored every part of
+     * opened and managed files.
      */
     private final ArrayList<DiagramPlacesManager> diagramPlaces;
 
     /**
-     *
+     * Basic contructor. It creates toolbar model and set diagramPlaces to new ArrayList.
      */
     public ToolBarContentControler() {
         this.toolBarcontent = new ToolBarContentModel();
@@ -86,7 +88,7 @@ public class ToolBarContentControler {
     }
 
     /**
-     *
+     * Create buttons for toolbar and insert them. If an icon is found, add button with icon.
      */
     public void addBasicButtons() {
         JPanel myPanel = this.toolBarcontent.getToolBarPane();
@@ -126,9 +128,10 @@ public class ToolBarContentControler {
     }
 
     /**
+     * Set close and new tab shortcuts (CTRL+W and CTRL+T).
      *
-     * @param myLayout
-     * @return
+     * @param myLayout WindowLayoutControler which stores every part of window.
+     * @return ToolBarContentControler for further use.
      */
     public ToolBarContentControler setBasicListeners(final WindowLayoutControler myLayout) {
         setCloseAndOpenShortCuts(myLayout);
@@ -136,8 +139,9 @@ public class ToolBarContentControler {
     }
 
     /**
+     * When new file is clicked. Create NewTabController, set diagramPlaces for this tab, add new tab to opened files.
      *
-     * @param myLayout
+     * @param myLayout WindowLayoutControler for storing this frshly created file.
      */
     public void NewFileButtonMouseClicked(WindowLayoutControler myLayout) {
         NewTabController newTab = new NewTabController();
@@ -147,9 +151,10 @@ public class ToolBarContentControler {
     }
 
     /**
+     * Open file method. It will create new tab, insert DiagramPlacesManager from file.
      *
-     * @param openedDiagrams
-     * @param myLayout
+     * @param openedDiagrams DiagramPlacesManager from file
+     * @param myLayout WindowLayoutControler for storing this freshly created file.
      */
     public void openedFile(DiagramPlacesManager openedDiagrams, WindowLayoutControler myLayout) {
         NewTabController newTab = new NewTabController();
@@ -159,8 +164,9 @@ public class ToolBarContentControler {
     }
 
     /**
+     * Clicked on close button. Free diagram places, close button and recalculate index of tab's diagram places manager.
      *
-     * @param myLayout
+     * @param myLayout WindowLayoutControler.
      */
     public void CloseButtonMouseClicked(WindowLayoutControler myLayout) {
         if (myLayout.getFileTab().getSelectedIndex() != -1) {
@@ -192,9 +198,10 @@ public class ToolBarContentControler {
     }
 
     /**
-     *
-     * @param id
-     * @return
+     * Method for fetching places based on tab index.
+     * 
+     * @param id index of diagram places.
+     * @return diagram places with specific id.
      */
     public DiagramPlacesManager getDiagramById(int id) {
         if (id < 0) {
@@ -204,183 +211,183 @@ public class ToolBarContentControler {
     }
 
     /**
-     * 
-     * @param newFileAction 
+     * Set listener for new file action.
+     * @param newFileAction ActionListener.
      */
     public void setNewFileAction(ActionListener newFileAction) {
         this.newFileAction = newFileAction;
     }
 
     /**
-     * 
-     * @param closeFileAction 
+     * Set listener for close file action.
+     * @param closeFileAction ActionListener.
      */
     public void setCloseFileAction(ActionListener closeFileAction) {
         this.closeFileAction = closeFileAction;
     }
 
     /**
-     * 
-     * @param openFileAction 
+     * Set listener for open file action.
+     * @param openFileAction ActionListener.
      */
     public void setOpenFileAction(ActionListener openFileAction) {
         this.openFileAction = openFileAction;
     }
 
     /**
-     * 
-     * @param exportEpsAction 
+     * Set listener for axport to EPS action.
+     * @param exportEpsAction ActionListener
      */
     public void setExportEpsAction(ActionListener exportEpsAction) {
         this.exportEpsAction = exportEpsAction;
     }
 
     /**
-     * 
-     * @param exportPdfAction 
+     * Set listener for axport to EPS action.
+     * @param exportPdfAction ActionListener
      */
     public void setExportPdfAction(ActionListener exportPdfAction) {
         this.exportPdfAction = exportPdfAction;
     }
 
     /**
-     * 
-     * @param exportXmlAction 
+     * Set listener for axport to XML action.
+     * @param exportXmlAction ActionListener.
      */
     public void setExportXmlAction(ActionListener exportXmlAction) {
         this.exportXmlAction = exportXmlAction;
     }
 
     /**
-     * 
-     * @param saveAction 
+     * Set listener for axport to save file action.
+     * @param saveAction ActionListener.
      */
     public void setSaveAction(ActionListener saveAction) {
         this.saveAction = saveAction;
     }
 
     /**
-     * 
-     * @param saveAsAction 
+     * Set listener for axport to save file as.. action.
+     * @param saveAsAction ActionListener.
      */
     public void setSaveAsAction(ActionListener saveAsAction) {
         this.saveAsAction = saveAsAction;
     }
 
     /**
-     * 
-     * @return 
+     * Returns toolbar Content.
+     * @return toolBarcontent as ToolBarContentModel;
      */
     public ToolBarContentModel getToolBarcontent() {
         return this.toolBarcontent;
     }
 
     /**
-     * 
-     * @return 
+     * Returns new file action.
+     * @return newFileAction as ActionListener.
      */
     public ActionListener getNewFileAction() {
         return newFileAction;
     }
 
     /**
-     * 
-     * @return 
+     * Returns close file action.
+     * @return closeFileAction as ActionListener.
      */
     public ActionListener getCloseFileAction() {
         return closeFileAction;
     }
 
     /**
-     * 
-     * @return 
+     * Returns open file action.
+     * @return openFileAction as ActionListener.
      */
     public ActionListener getOpenFileAction() {
         return openFileAction;
     }
 
     /**
-     * 
-     * @return 
+     * Returns export to EPS action.
+     * @return exportEpsAction as ActionListener.
      */
     public ActionListener getExportEpsAction() {
         return exportEpsAction;
     }
 
     /**
-     * 
-     * @return 
+     * Returns export to PDF action.
+     * @return exportPdfAction as ActionListener.
      */
     public ActionListener getExportPdfAction() {
         return exportPdfAction;
     }
 
     /**
-     * 
-     * @return 
+     * Returns export to XML action.
+     * @return exportXmlAction as ActionListener.
      */
     public ActionListener getExportXmlAction() {
         return exportXmlAction;
     }
 
     /**
-     * 
-     * @return 
+     * Returns save file action.
+     * @return saveAction as ActionListener.
      */
     public ActionListener getSaveAction() {
         return saveAction;
     }
 
     /**
-     * 
-     * @return 
+     * Returns save file as.. action.
+     * @return saveAsAction as ActionListener.
      */
     public ActionListener getSaveAsAction() {
         return saveAsAction;
     }
 
     /**
-     * 
-     * @return 
+     * Returns exit application action.
+     * @return exitAction as ActionListener.
      */
     public ActionListener getExitAction() {
         return exitAction;
     }
 
     /**
-     * 
-     * @param exitAction 
+     * Set exit application action.
+     * @param exitAction exitAction to be set as ActionListener.
      */
     public void setExitAction(ActionListener exitAction) {
         this.exitAction = exitAction;
     }
 
     /**
-     * 
-     * @return 
+     * Returns all diagrams, all objects and lines as arrayList.
+     * @return diagramPlaces as ArrayList<DiagramPlacesManager>.
      */
     public ArrayList<DiagramPlacesManager> getDiagramPlaces() {
         return diagramPlaces;
     }
 
     /**
-     * 
-     * @return 
+     * Get help action.
+     * @return helpAction as ActionListener.
      */
     public ActionListener getHelpAction() {
         return helpAction;
     }
 
-    /**
-     * 
-     * @param helpAction 
+    /** 
+     * Set help action.
+     * @param helpAction helpAction to be set to ActionListener.
      */
     public void setHelpAction(ActionListener helpAction) {
         this.helpAction = helpAction;
     }
 
     /**
-     *
+     * Set close and new file short cuts. CTRL+T for new file, CTRL+W for close file.
      * @param myLayout
      */
     private void setCloseAndOpenShortCuts(final WindowLayoutControler myLayout) {

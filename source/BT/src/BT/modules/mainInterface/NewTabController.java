@@ -20,19 +20,23 @@ import javax.swing.JOptionPane;
 import javax.swing.JTabbedPane;
 
 /**
+ * Class for creating new tab of application
  *
  * @author Karel Hala
  */
 public class NewTabController {
 
     /**
-     *
+     * Each place, object and line is stored here.
      */
     private DiagramPlacesManager diagramPlaces;
 
     /**
+     * Creates new tab. Creates controllers for UseCase, class diagram and petriNets. Add new tab and forbids to change
+     * the tab to petriNet if no class or interface is selected. Also sets correct places for petriNet.
      *
-     * @param myLayout
+     * @param myLayout WindowLayoutControler stores other parts of application. Like toolbar, menu and most importany
+     * tabs.
      */
     public void addNewTab(final WindowLayoutControler myLayout) {
         UCContentController UCController = new UCContentController();
@@ -70,16 +74,16 @@ public class NewTabController {
     }
 
     /**
-     * 
-     * @return 
+     * Return diagram places for newly created tab.
+     * @return
      */
     public DiagramPlacesManager getDiagramPlaces() {
         return diagramPlaces;
     }
 
     /**
-     * 
-     * @param diagramPlaces 
+     * Sets diagram places for new tab. This is important hence the new tab will handle based on this variable.
+     * @param diagramPlaces
      */
     public void setDiagramPlaces(DiagramPlacesManager diagramPlaces) {
         this.diagramPlaces = diagramPlaces;
