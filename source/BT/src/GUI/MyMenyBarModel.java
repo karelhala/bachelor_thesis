@@ -28,6 +28,10 @@ public class MyMenyBarModel {
      */
     protected JMenu jMenu3;
     /**
+     * Help menu for manuBar.
+     */
+    protected JMenu helpMenu;
+    /**
      * 
      */
     protected JMenuItem exportToPdf;
@@ -71,6 +75,26 @@ public class MyMenyBarModel {
      * 
      */
     protected JMenuItem exit;
+    /**
+     * Current help item of manuBar.
+     */
+    protected JMenuItem currentHelp;
+    /**
+     * Application help item of manuBar.
+     */
+    protected JMenuItem applicationHelp;
+    /**
+     * Use Case help item of manuBar.
+     */
+    protected JMenuItem useCaseHelp;
+    /**
+     * Class diagram help item of manuBar.
+     */
+    protected JMenuItem classDiagramHelp;
+    /**
+     * OOPN help item of manuBar.
+     */
+    protected JMenuItem oopnHelp;
     /**
      * 
      */

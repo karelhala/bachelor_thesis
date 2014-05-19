@@ -209,6 +209,34 @@ public class MainInterfaceControler {
         this.mainWindowModel.getMyMenu().addActionListenerToExportXml(ToolBarContent.getExportXmlAction());
         this.mainWindowModel.getMyMenu().addActionListenerToSaveAs(ToolBarContent.getSaveAsAction());
         this.mainWindowModel.getMyMenu().addActionListenerToExit(ToolBarContent.getExitAction());
+        this.mainWindowModel.getMyMenu().addActionListenerToCurrentHelp(ToolBarContent.getHelpAction());
+        this.mainWindowModel.getMyMenu().addActionListenerToUseCaseHelp(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                helpManager.showDialog(1);
+            }
+        });
+        
+        this.mainWindowModel.getMyMenu().addActionListenerToClassDiagramHelp(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                helpManager.showDialog(2);
+            }
+        });
+        
+        this.mainWindowModel.getMyMenu().addActionListenerToOOPNHelp(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                helpManager.showDialog(3);
+            }
+        });
+        
+        this.mainWindowModel.getMyMenu().addActionListenerToApplicationHelp(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                helpManager.showDialog(0);
+            }
+        });
     }
 
 }

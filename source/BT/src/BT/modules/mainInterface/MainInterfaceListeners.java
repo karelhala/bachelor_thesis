@@ -172,7 +172,7 @@ public class MainInterfaceListeners {
             if (returnVal == JFileChooser.APPROVE_OPTION) {
                 ExportToXml xmlExporter = new ExportToXml(toolBarContent.getDiagramById(tabId), fc.getSelectedFile());
             }
-            System.out.println("ExportXmlClicked");
+            JOptionPane.showMessageDialog(null, "Export to XMl not yet implemented. If you want to export to RAW XML, click on save button.");
         } else {
             JOptionPane.showMessageDialog(null, "No file to export.");
         }
@@ -191,7 +191,7 @@ public class MainInterfaceListeners {
             if (returnVal == JFileChooser.APPROVE_OPTION) {
                 ExportToPdf pdfExporter = new ExportToPdf(toolBarContent.getDiagramById(tabId), fc.getSelectedFile());
             }
-            System.out.println("ExoprtToPdfClicked");
+            JOptionPane.showMessageDialog(null, "Export to PDF not yet implemented.");
         } else {
             JOptionPane.showMessageDialog(null, "No file to export.");
         }
