@@ -25,18 +25,27 @@ import javax.swing.JTextField;
 import javax.swing.JToggleButton;
 
 /**
- *
+ * Class for controlling main content of useCase.
+ * 
  * @author Karel Hala
  */
 public class UCMainContentController extends UCMainContentModel implements DrawingClicks {
 
+    /**
+     * Connector between useCase diagram and clas diagram. The connection is being done from useCase.
+     */
     private final UCClassDiagramConnector classDiagramConnector;
+
+    /**
+     * Content with buttons to reactivate and delete all inactive objects.
+     */
     private final BottomRightContentModel bottomRightContent;
 
     /**
+     * Basic constructor that sets diagram places manager and bottom right content.
      *
-     * @param diagramPlaces
-     * @param bottomRightContent
+     * @param diagramPlaces to be specified in UCMainContentModel.
+     * @param bottomRightContent bottom right content for buttons for reactivating and deleting inactive objects.
      */
     public UCMainContentController(DiagramPlacesManager diagramPlaces, BottomRightContentModel bottomRightContent) {
         super(diagramPlaces);
@@ -46,7 +55,8 @@ public class UCMainContentController extends UCMainContentModel implements Drawi
     }
 
     /**
-     *
+     * Method for creating listeners to top and bottom buttons. Create listeners for top button as delete all
+     * inactiveuseCases and bottom to be reactivating all inactive.
      */
     private void addButtonClickListeners() {
         this.bottomRightContent.getTopButton().addActionListener(new ActionListener() {
@@ -67,9 +77,11 @@ public class UCMainContentController extends UCMainContentModel implements Drawi
     }
 
     /**
+     * When mouse is dragged on drawing panel of useCase. Change coordinates of dragged object based on cursor
+     * coordinates. Behave differently when dragged line and when object.
      *
-     * @param e
-     * @param dragged
+     * @param e MouseEvent of mouse cursor.
+     * @param dragged CoordinateModel object that is dragged.
      */
     @Override
     public void drawingMouseDragged(MouseEvent e, CoordinateModel dragged) {
@@ -92,8 +104,10 @@ public class UCMainContentController extends UCMainContentModel implements Drawi
     }
 
     /**
+     * When clicked on drawing panel. Create new object of useCase diagram. Either Actor or useCase and create correct
+     * class in class diagram.
      *
-     * @param evt
+     * @param evt MouseEvent of cursor.
      */
     @Override
     public void drawingPaneClicked(MouseEvent evt) {
@@ -120,8 +134,9 @@ public class UCMainContentController extends UCMainContentModel implements Drawi
     }
 
     /**
+     * Check move on drawing pane of useCase. Highlight each object when hover.
      *
-     * @param evt
+     * @param evt MouseEvent of mouse cursor.
      */
     @Override
     public void drawingPanecheckMove(MouseEvent evt) {
@@ -141,8 +156,10 @@ public class UCMainContentController extends UCMainContentModel implements Drawi
     }
 
     /**
+     * When object was selected on useCase drawing panel. Method for handeling selecting of different object on useCase
+     * drawing panel.
      *
-     * @param clickedObject
+     * @param clickedObject CoordinateModel object that was selected.
      */
     @Override
     public void setSelectedObject(CoordinateModel clickedObject) {
@@ -169,8 +186,10 @@ public class UCMainContentController extends UCMainContentModel implements Drawi
     }
 
     /**
+     * When double clicked on drawing panel of useCase. When double clicked bring japnel for changing name and
+     * reactivating. When clicked on line which needs to be specified bring jpanel for it.
      *
-     * @param pressedObject
+     * @param pressedObject CoordinateModel object that was double clicked.
      */
     @Override
     public void drawingPaneDoubleCliked(CoordinateModel pressedObject) {
@@ -204,8 +223,10 @@ public class UCMainContentController extends UCMainContentModel implements Drawi
     }
 
     /**
+     * Change joind edge type of useCase join. Create new join in class diagram and change and create new line when is
+     * necessary.
      *
-     * @param clickedObject
+     * @param clickedObject CoordinateModel object that was clicked on.
      */
     private void drawJoinEdge(CoordinateModel clickedObject) {
         this.newJoinEdge = UCJoinEdgeManipulator.createJoinEdge((UCJoinEdgeController) this.newJoinEdge, clickedObject);
@@ -225,9 +246,7 @@ public class UCMainContentController extends UCMainContentModel implements Drawi
                 }
                 this.newJoinEdge = null;
             }
-        }
-        else
-        {
+        } else {
             this.newJoinEdge.setSecondObject(null);
         }
         UCDrawingPane UCdrawing = (UCDrawingPane) this.mainContent.getDrawingPane();
@@ -235,8 +254,10 @@ public class UCMainContentController extends UCMainContentModel implements Drawi
     }
 
     /**
+     * When clicked on drawing panel for useCase. Edit new join edge between useCase objects, either insert object to
+     * LineModel's first object place or to second place.
      *
-     * @param clickedObject
+     * @param clickedObject CoordinateModel object that was clicked on from useCase drawing panel.
      */
     private void clickedOnObject(CoordinateModel clickedObject) {
         if (clickedObject == null || clickedObject instanceof UCJoinEdgeController) {
@@ -251,7 +272,8 @@ public class UCMainContentController extends UCMainContentModel implements Drawi
     }
 
     /**
-     *
+     * When buttons are changed change new line. Wither delete it entirely or change the type based on changed button
+     * type.
      */
     @Override
     public void buttonsChanged() {

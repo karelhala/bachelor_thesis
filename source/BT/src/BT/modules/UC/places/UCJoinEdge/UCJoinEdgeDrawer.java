@@ -13,16 +13,17 @@ import java.awt.Graphics2D;
 import java.awt.Point;
 
 /**
- *
+ * Class for drawing join edges of useCase diagram.
+ * 
  * @author Karel Hala
  */
 public class UCJoinEdgeDrawer extends JoinEdgeDrawer {
 
     /**
-     *
-     * @param joinEdgeController
-     * @param startPoint
-     * @param endPoint
+     * Basic constructor. It sets joinEdgeController, startPoint, endPoint based on JoinEdgeDrawer.
+     * @param joinEdgeController explained in JoinEdgeDrawer.
+     * @param startPoint explained in JoinEdgeDrawer.
+     * @param endPoint explained in JoinEdgeDrawer.
      */
     public UCJoinEdgeDrawer(LineModel joinEdgeController, Point startPoint, Point endPoint) {
         super(joinEdgeController, startPoint, endPoint);
@@ -31,7 +32,7 @@ public class UCJoinEdgeDrawer extends JoinEdgeDrawer {
     /**
      * Method for drawing each type of line.
      *
-     * @param g
+     * @param g Graphics2D for drawing join edges.
      */
     public void drawLine(Graphics2D g) {
         setBasicColors(g);

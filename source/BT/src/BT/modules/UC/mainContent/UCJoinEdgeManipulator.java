@@ -12,19 +12,17 @@ import BT.modules.UC.places.UCUseCase;
 import javax.swing.JToggleButton;
 
 /**
+ * Class for manipulating with join edges between each usecase object.
  *
  * @author Karel Hala
  */
 public class UCJoinEdgeManipulator {
 
-    public UCJoinEdgeManipulator() {
-        super();
-    }
-
     /**
+     * Change type of join edge by button type.
      *
-     * @param selectedButton
-     * @param joinEdge
+     * @param selectedButton selected button, by this the line will change.
+     * @param joinEdge line to be changed.
      */
     public static void changeLineTypeByButton(JToggleButton selectedButton, UCJoinEdgeController joinEdge) {
         switch (selectedButton.getName()) {
@@ -49,10 +47,12 @@ public class UCJoinEdgeManipulator {
     }
 
     /**
+     * Method for creating join edge. It will create jin edge if null is passed, insert to first place if no object is
+     * there or insert at second place. It will call method for checking if objects are correct.
      *
-     * @param joinEdge
-     * @param clickedObject
-     * @return
+     * @param joinEdge UCJoinEdgeController to be created and eddited.
+     * @param clickedObject CoordinateModel oject that will be inseted on first object or second object place.
+     * @return changed UCJoinEdgeController.
      */
     public static UCJoinEdgeController createJoinEdge(UCJoinEdgeController joinEdge, CoordinateModel clickedObject) {
         if (joinEdge == null) {
@@ -75,8 +75,9 @@ public class UCJoinEdgeManipulator {
     }
 
     /**
-     *
-     * @param joinEdge
+     * Method for setting type of line based on second object. This is used for checking of association join.s
+     * 
+     * @param joinEdge UCJoinEdgeController to be inspected.
      */
     public static void setLineTypeBySecondObject(UCJoinEdgeController joinEdge) {
         if (joinEdge.getFirstObject() instanceof UCActor && joinEdge.getSecondObject() instanceof UCUseCase) {
@@ -90,8 +91,9 @@ public class UCJoinEdgeManipulator {
     }
 
     /**
-     *
-     * @param joinEdge
+     * method for checking if first and second object can be joined together.
+     * 
+     * @param joinEdge UCJoinEdgeController to be inspected.
      */
     public static void checkObjects(UCJoinEdgeController joinEdge) {
         if (joinEdge.getFirstObject() != null && joinEdge.getFirstObject() instanceof UCActor) {

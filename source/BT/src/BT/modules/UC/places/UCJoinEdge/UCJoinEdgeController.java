@@ -14,25 +14,41 @@ import java.awt.Point;
 import java.util.Objects;
 
 /**
+ * Class for calculating start and end point of join edge between ueCase objects and setting type of line.
  *
  * @author Karel Hala
  */
 public class UCJoinEdgeController extends LineModel {
 
+    /**
+     * Type of join edge that is being created.
+     */
     private UCLineType joinEdgeType;
 
+    /**
+     * Basic constructor. It sets first object and second object.
+     *
+     * @param firstObject first object to be set in LineModel.
+     * @param secondObject sectond object to be set in LineModel.
+     */
     public UCJoinEdgeController(CoordinateModel firstObject, CoordinateModel secondObject) {
         super();
         this.firstObject = firstObject;
         this.secondObject = secondObject;
     }
 
+    /**
+     * Method for setting join edge type of useCase join.
+     *
+     * @param joinEdgeType UCLineType join edge type.
+     */
     public void setJoinEdgeType(UCLineType joinEdgeType) {
         this.joinEdgeType = joinEdgeType;
     }
 
     /**
-     *
+     * basic constructor which creates basic join edge without any object assigned. Basic join edge type is set to
+     * ASSOCIATION.
      */
     public UCJoinEdgeController() {
         super();
@@ -40,16 +56,19 @@ public class UCJoinEdgeController extends LineModel {
     }
 
     /**
+     * Get type of eddited join edge.
      *
-     * @return
+     * @return UCLineType of join.
      */
     public UCLineType getJoinEdgeType() {
         return this.joinEdgeType;
     }
 
     /**
+     * Draw join edge. First check start and end points. Then draw break points. Then draw actual join edge using
+     * joinEdge drawer.
      *
-     * @param g
+     * @param g Graphics2D to be used to drawing.
      */
     public void drawJoinEdge(Graphics2D g) {
         if (this.firstObject != null) {
@@ -65,34 +84,5 @@ public class UCJoinEdgeController extends LineModel {
                 setEndPoint(endPoint);
             }
         }
-    }
-
-    /**
-     *
-     * @param other
-     * @return
-     */
-    @Override
-    public boolean equals(Object other) {
-        if (other instanceof UCJoinEdgeController) {
-            UCJoinEdgeController object = (UCJoinEdgeController) other;
-            if (this.hashCode() == object.hashCode()) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    /**
-     *
-     * @return
-     */
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 67 * hash + Objects.hashCode(this.firstObject);
-        hash = 67 * hash + Objects.hashCode(this.secondObject);
-        hash = 67 * hash + Objects.hashCode(this.joinEdgeType);
-        return hash;
     }
 }

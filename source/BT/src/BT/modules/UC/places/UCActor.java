@@ -11,22 +11,25 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics2D;
-import java.util.ArrayList;
-import java.util.Objects;
-import java.util.UUID;
 
 /**
+ * Class for drawing actors of useCase diagram.
  *
  * @author Karel Hala
  */
 public class UCActor extends CoordinateModel {
 
-    private int gap;
-    private UUID id;
+    /**
+     * Gap between object and border.
+     */
+    private final int gap;
 
     /**
-     * @param x
-     * @param y
+     * Basic constructor. It sets x and y coordinates to passed x and y. It also sets selected color, width, height,
+     * basic color, color, name, textSize, fap, hower color, inJoins, outJoins.
+     *
+     * @param x coordinate X.
+     * @param y coordinate Y.
      */
     public UCActor(int x, int y) {
         super();
@@ -43,10 +46,10 @@ public class UCActor extends CoordinateModel {
         this.howerColor = Color.red;
         this.inJoins = new MyArrayList<>();
         this.outJoins = new MyArrayList<>();
-        this.id = UUID.randomUUID();
     }
 
     /**
+     * Method for fetchign maximum object width.
      *
      * @return
      */
@@ -55,6 +58,7 @@ public class UCActor extends CoordinateModel {
     }
 
     /**
+     * Method for fetchign maximum object height.
      *
      * @return
      */
@@ -63,9 +67,9 @@ public class UCActor extends CoordinateModel {
     }
 
     /**
-     * TODO: refactor
+     * Method for drawing actors. It draws outline if actor is selected.
      *
-     * @param g
+     * @param g Graphics2D for drawing objects.
      */
     public void drawActor(Graphics2D g) {
         Color actorColor = this.color;
@@ -102,8 +106,9 @@ public class UCActor extends CoordinateModel {
     }
 
     /**
+     * Draw rectangle if actor is selected.
      *
-     * @param g
+     * @param g Graphics2D to draw rectanle arround actor.
      */
     public void drawRectArroundActor(Graphics2D g) {
         int borderWidth = getMax(this.objectWidth, this.getWidth());
@@ -112,32 +117,4 @@ public class UCActor extends CoordinateModel {
         g.setColor(Color.black);
         g.drawRect(this.x - borderWidth / 2, this.y - borderHeight / 2, borderWidth, borderHeight);
     }
-
-    /**
-     *
-     * @param other
-     * @return
-     */
-    @Override
-    public boolean equals(Object other) {
-        if (other instanceof UCActor) {
-            UCActor object = (UCActor) other;
-            if (this.hashCode() == object.hashCode()) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    /**
-     *
-     * @return
-     */
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 67 * hash + Objects.hashCode(this.id);
-        return hash;
-    }
-
 }

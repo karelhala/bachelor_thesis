@@ -16,22 +16,23 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
-import javax.swing.JPanel;
 
 /**
- *
+ * This class stores drawing pane for useCase.
+ * 
  * @author Karel Hala
  */
 public class UCDrawingPane extends DrawingPaneModel {
 
     /**
-     *
+     * Drawing pane which draws each object off useCase.
      */
     private final drawing drawPane;
 
     /**
-     *
-     * @param UCPlaces
+     * Basic construcotr.
+     * 
+     * @param UCPlaces PlaceManager which sotres each object off useCase.
      */
     public UCDrawingPane(PlaceManager UCPlaces) {
         super(UCPlaces);
@@ -39,13 +40,13 @@ public class UCDrawingPane extends DrawingPaneModel {
     }
 
     /**
-     *
+     * Class which draws each object off useCase PlaceManager. it is descendant of DrawingJpanel.
      */
     public class drawing extends DrawingJpanel {
 
         /**
-         *
-         * @param g1
+         * Overrides paintComponent of Jpanel.
+         * @param g1 Graphics which will draw each object on Jpanel.
          */
         @Override
         protected void paintComponent(Graphics g1) {
@@ -78,8 +79,9 @@ public class UCDrawingPane extends DrawingPaneModel {
     }
 
     /**
-     *
-     * @return
+     * Returns drawing panel which draws each useCase object.
+     * 
+     * @return drawing of useCase.
      */
     public drawing getDrawing() {
         return this.drawPane;

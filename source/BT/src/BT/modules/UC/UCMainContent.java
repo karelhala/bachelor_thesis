@@ -17,23 +17,29 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 /**
+ * Class with every part of main content. It creates drawing panel and set area and background color.
  *
  * @author Karel Hala
  */
 public final class UCMainContent extends ContentPaneModel {
 
+    /**
+     * Prefered area of drawing panel.
+     */
     private Dimension area;
 
     /**
-     *
+     * Basic constructor. It calls other constructor with no places.
      */
     public UCMainContent() {
         this(null);
     }
 
     /**
+     * Construcotr that sets places which are drawn as argument's places. Creates mainContentPanel, drawingPane and set
+     * area to 0 0.
      *
-     * @param places
+     * @param places these places have all use case object inside.
      */
     public UCMainContent(PlaceManager places) {
         super();
@@ -44,7 +50,8 @@ public final class UCMainContent extends ContentPaneModel {
     }
 
     /**
-     *
+     * For creating drawing pane and setting it. It sets drawing pane to white background and reapint it and isert it in
+     * JscrollPane.
      */
     private void createMainPane() {
         UCDrawingPane ucDrawing = (UCDrawingPane) this.drawingPane;
@@ -54,44 +61,5 @@ public final class UCMainContent extends ContentPaneModel {
         JScrollPane myScrollPane = new JScrollPane();
         myScrollPane.setViewportView(ucDrawing.getDrawing());
         this.mainContentPane.add(myScrollPane, BorderLayout.CENTER);
-    }
-
-    /**
-     *
-     * @param object
-     * @return
-     */
-    private WidthHeight getObjectWidthAndheight(CoordinateModel object) {
-        int objectWidth;
-        int objectHeight;
-        if (object instanceof UCActor) {
-            UCActor actor = (UCActor) object;
-            objectWidth = actor.getMaxWidth();
-            objectHeight = actor.getMaxHeight();
-        } else if (object instanceof UCUseCase) {
-            objectWidth = object.getWidth();
-            objectHeight = object.getHeight();
-        } else {
-            return null;
-        }
-        return new WidthHeight(objectWidth, objectHeight);
-    }
-
-    /**
-     *
-     */
-    private class WidthHeight {
-
-        public int width;
-        public int height;
-
-        public WidthHeight() {
-
-        }
-
-        public WidthHeight(int width, int height) {
-            this.width = width;
-            this.height = height;
-        }
     }
 }

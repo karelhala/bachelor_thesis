@@ -11,25 +11,30 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics2D;
-import java.util.ArrayList;
-import java.util.Objects;
-import java.util.UUID;
 
 /**
+ * Class for drawing use case of useCase diagram. Rectangle will be drawn arround object if it is selected.
  *
  * @author Karel Hala
  */
 public class UCUseCase extends CoordinateModel {
 
-    private int gap;
-    private UUID id;
-    private Color outLineColor;
+    /**
+     * Gap between use case and rectangle.
+     */
+    private final int gap;
 
     /**
-     * TODO: make model
+     * Color of Rectangle arround use case.
+     */
+    private final Color outLineColor;
+
+    /**
+     * Basic constructor. It will create object on given coordinates. Sets selected color, width, height, basic color,
+     * color, outline color, name, hower color. It also creates in joins and out joins as new objects of MyArrayList.
      *
-     * @param x
-     * @param y
+     * @param x coordinate X of object.
+     * @param y coordinate Y of object.
      */
     public UCUseCase(int x, int y) {
         super();
@@ -47,13 +52,12 @@ public class UCUseCase extends CoordinateModel {
         this.howerColor = Color.green;
         this.inJoins = new MyArrayList<>();
         this.outJoins = new MyArrayList<>();
-        this.id = UUID.randomUUID();
     }
 
     /**
-     * TODO: refactor
-     *
-     * @param g
+     * Draw use case using Graphics2D. It draws rectangle arround use case if it is selected.
+     * 
+     * @param g Graphics2D for drawing these objects.
      */
     public void drawUseCase(Graphics2D g) {
         Color useCaseColor = this.color;
@@ -77,8 +81,9 @@ public class UCUseCase extends CoordinateModel {
     }
 
     /**
-     *
-     * @param g
+     * Draw rectangle arround use cases if this object is selected.
+     * 
+     * @param g Graphics2D for drawing rectangle.
      */
     public void drawRectArroundUseCase(Graphics2D g) {
         int borderWidth = getMax(this.objectWidth, this.width);
@@ -86,32 +91,5 @@ public class UCUseCase extends CoordinateModel {
         g.setStroke(new BasicStroke(1));
         g.setColor(Color.black);
         g.drawRect(this.x - borderWidth / 2 - this.gap, this.y - this.height / 2 - this.gap, borderWidth + this.gap, borderHeight + this.gap);
-    }
-
-    /**
-     *
-     * @param other
-     * @return
-     */
-    @Override
-    public boolean equals(Object other) {
-        if (other instanceof UCUseCase) {
-            UCUseCase object = (UCUseCase) other;
-            if (this.hashCode() == object.hashCode()) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    /**
-     *
-     * @return
-     */
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 67 * hash + Objects.hashCode(this.id);
-        return hash;
     }
 }

@@ -9,13 +9,18 @@ import BT.managers.DiagramPlacesManager;
 import java.io.File;
 
 /**
- * Class for exporting files to PDF. It will take diagramPlacesManager and loop through every object and print it to
+ * To be implemented. Class for exporting files to PDF. It will take diagramPlacesManager and loop through every object and print it to
  * file.
  *
  * @author Karel Hala
  */
 public class ExportToPdf extends ExportModel {
 
+    /**
+     * To be implemented.
+     * @param diagramPlaces
+     * @param exportToFolder 
+     */
     public ExportToPdf(DiagramPlacesManager diagramPlaces, File exportToFolder) {
         super(diagramPlaces, exportToFolder);
     }

@@ -19,16 +19,17 @@ import BT.modules.UC.mainContent.UCMainContentController;
 public final class UCLeftBottomContent extends ButtonPaneModel {
 
     /**
-     * contructor, that creates grid of 4 rows and 1 column a fill them with jtogglebuttons
+     * Contructor, that creates grid of 4 rows and 1 column a fill them with jtogglebuttons.
      */
     public UCLeftBottomContent() {
         this(null);
     }
 
     /**
-     * contructor, that creates grid of 4 rows and 1 column a fill them with jtogglebuttons
+     * Contructor, that creates grid of 4 rows and 1 column a fill them with jtogglebuttons. Creates maincontentPane as
+     * jpanel with 4 rows.
      *
-     * @param UCMain
+     * @param UCMain UCMainContentController calls parent's constructor with UCMainContentController.
      */
     public UCLeftBottomContent(UCMainContentController UCMain) {
         super(UCMain);

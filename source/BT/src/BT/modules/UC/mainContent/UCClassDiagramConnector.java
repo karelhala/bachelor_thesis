@@ -27,32 +27,35 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 /**
+ * Class for connecting use case to class diagram. This class will reactivate class in class diagram based on selected
+ * object off useCase diagram.
  *
  * @author Karel Hala
  */
 public class UCClassDiagramConnector {
 
     /**
-     * 
+     * Selected object based on which new class in class diagram will be created.
      */
     private CoordinateModel selectedObject;
     /**
-     * 
+     * Newly created line.
      */
     private LineModel newLine;
     /**
-     * 
+     * Each class of class diagram.
      */
     private final PlaceManager cdPlaces;
     /**
-     * 
+     * Each object of useCase.
      */
     private final PlaceManager ucPlaces;
-    
+
     /**
-     * 
-     * @param cdPlaces
-     * @param ucPlaces 
+     * Basic constructor. It sets class diagram places and useCase places.
+     *
+     * @param cdPlaces each class off class diagram.
+     * @param ucPlaces each object of useCase.
      */
     public UCClassDiagramConnector(PlaceManager cdPlaces, PlaceManager ucPlaces) {
         this.cdPlaces = cdPlaces;
@@ -60,40 +63,45 @@ public class UCClassDiagramConnector {
     }
 
     /**
-     * 
-     * @param newLine 
+     * Set line that was just created. Determine what line should be inserted in class diagram.
+     *
+     * @param newLine new line as LineModel.
      */
     public void setNewLine(LineModel newLine) {
         this.newLine = newLine;
     }
-    
+
     /**
-     * 
-     * @return 
+     * Get line that is newlz created.
+     *
+     * @return LineModel new Line.
      */
     public LineModel getNewLine() {
         return newLine;
     }
 
     /**
-     * 
-     * @return 
+     * Get all classes of class diagram.
+     *
+     * @return classes of class diagram as PlaceManager.
      */
     public PlaceManager getCdPlaces() {
         return cdPlaces;
     }
 
     /**
-     * 
-     * @param selectedObject 
+     * Set object that is selected. From this object CDClass is determined.
+     *
+     * @param selectedObject CoordinateModel.
      */
     public void setSelectedObject(CoordinateModel selectedObject) {
         this.selectedObject = selectedObject;
     }
 
     /**
-     * 
-     * @return 
+     * Get object that is selected. From this object CDClass is determined.
+     *
+     * @return selected object.
      */
     public CoordinateModel getSelectedObject() {
         return selectedObject;
@@ -122,27 +130,25 @@ public class UCClassDiagramConnector {
             newClassJoin.setJoinEdgeType(BT.CDLineType.USERINPUT);
         }
         LineModel assignedLine = getjoinedLine(this.newLine.getFirstObject().getAssignedObject(), this.newLine.getSecondObject().getAssignedObject());
-        if (assignedLine == null)
-        {
+        if (assignedLine == null) {
             this.newLine.getFirstObject().getAssignedObject().addOutJoins(newClassJoin);
             this.newLine.getSecondObject().getAssignedObject().addInJoin(newClassJoin);
             newClassJoin.setAssignedObject(useCaseJoin);
             useCaseJoin.setAssignedObject(newClassJoin);
             this.cdPlaces.addObject(newClassJoin);
-        } else if (assignedLine instanceof CDJoinEdgeController && ((CDJoinEdgeController)assignedLine).getJoinEdgeType() == newClassJoin.getJoinEdgeType())
-        {
+        } else if (assignedLine instanceof CDJoinEdgeController && ((CDJoinEdgeController) assignedLine).getJoinEdgeType() == newClassJoin.getJoinEdgeType()) {
             assignedLine.setAssignedObject(useCaseJoin);
             useCaseJoin.setAssignedObject(assignedLine);
-        } else
-        {
+        } else {
             assignedLine.setAssignedObject(null);
             useCaseJoin.setAssignedObject(null);
         }
     }
 
     /**
-     * 
-     * @return 
+     * Method for creating newClassDiagramObject from selectedObject's name.
+     *
+     * @return created CDClass.
      */
     public CDClass createNewClassdiagramObject() {
         return createNewClassdiagramObject(this.selectedObject.getName());
@@ -311,7 +317,7 @@ public class UCClassDiagramConnector {
     }
 
     /**
-     *
+     * Method for reactivating all inactive objects. Check for all inactive objects and recreate their assigned objects.
      */
     public void reactivateAllObjects() {
         for (CoordinateModel oneObject : ucPlaces.getObjects()) {
@@ -326,7 +332,7 @@ public class UCClassDiagramConnector {
             createNewClassJoinEdge();
         }
     }
-    
+
     /**
      * Check if line allreadz exists with given first and second object. If line exists, return it for further use.
      *
