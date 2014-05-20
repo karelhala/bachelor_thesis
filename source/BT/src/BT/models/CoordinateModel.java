@@ -194,7 +194,7 @@ public class CoordinateModel {
     /**
      * Get name of object, this name is printed arround object.
      *
-     * @return
+     * @return name as String.
      */
     public String getName() {
         return this.name;
@@ -280,7 +280,7 @@ public class CoordinateModel {
     /**
      * Get width of whole object.
      *
-     * @return
+     * @return objectWidth as int.
      */
     public int getObjectWidth() {
         return objectWidth;
@@ -289,7 +289,7 @@ public class CoordinateModel {
     /**
      * Get height of whole object.
      *
-     * @return
+     * @return objectHeight as int.
      */
     public int getObjectHeight() {
         return objectHeight;
@@ -327,7 +327,7 @@ public class CoordinateModel {
     /**
      * Get assiged object of other part of application.
      *
-     * @return
+     * @return method for returning mirrored object. Class for useCase and usecase for class.
      */
     public CoordinateModel getAssignedObject() {
         return assignedObject;
@@ -483,7 +483,7 @@ public class CoordinateModel {
     /**
      * Get originalToString.
      *
-     * @return
+     * @return result of parent's toString method.
      */
     protected String parentToString() {
         return super.toString();

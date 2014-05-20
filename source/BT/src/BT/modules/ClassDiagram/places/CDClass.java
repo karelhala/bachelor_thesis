@@ -47,7 +47,7 @@ public class CDClass extends CDClassDrawer {
     /**
      * Method that will return parent class. It will be returned only if class has parent.
      *
-     * @return
+     * @return parent class as CDClass.
      */
     public CDClass getParent() {
         if (hasParent()) {

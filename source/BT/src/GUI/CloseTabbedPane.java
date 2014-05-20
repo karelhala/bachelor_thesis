@@ -21,25 +21,32 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
 /**
+ * Class which defines and creates panel with close button on it.
  *
  * @author Karel Hala
  */
 public class CloseTabbedPane extends JTabbedPane {
 
     /**
-     *
+     * Controller for whole toolbar.
      */
     final private ToolBarContentControler toolBarContent;
 
+    /**
+     * Basic constructor. It assign toolBarContent to toolBarContent.
+     *
+     * @param toolBarContent this will be toolBarContent.
+     */
     public CloseTabbedPane(ToolBarContentControler toolBarContent) {
         super();
         this.toolBarContent = toolBarContent;
     }
 
     /**
+     * Method for setting panel with title and close button on each tab.
      *
-     * @param title
-     * @param component
+     * @param title file name.
+     * @param component this will be close icon.
      */
     public void addCloseTab(String title, final JComponent component) {
         JPanel closePanel = new JPanel();
@@ -61,8 +68,9 @@ public class CloseTabbedPane extends JTabbedPane {
     }
 
     /**
+     * Remove tab with specific component.
      *
-     * @param component
+     * @param component Component that will be removed from file tabs.
      */
     public void removeTab(Component component) {
         int result = JOptionPane.showConfirmDialog(null, "Are you sure you want to close this file?", "Please confirm", JOptionPane.YES_NO_OPTION);
@@ -87,9 +95,10 @@ public class CloseTabbedPane extends JTabbedPane {
     }
 
     /**
+     * Method for creating button which will remove tab at specific index.
      *
-     * @param component
-     * @return
+     * @param component Component which describes where button is located.
+     * @return buttonClose as JButton.
      */
     private JButton createCloseButton(final Component component) {
         JButton buttonClose = new JButton();
@@ -99,7 +108,7 @@ public class CloseTabbedPane extends JTabbedPane {
         MouseAdapter mouseListener = new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent evt) {
-                buttonCloseMouseClicked(evt, component);
+                buttonCloseMouseClicked(component);
             }
         };
         buttonClose.addMouseListener(mouseListener);
@@ -110,17 +119,19 @@ public class CloseTabbedPane extends JTabbedPane {
     }
 
     /**
+     * Event when clicked on remove tab button.
      *
-     * @param evt
-     * @param component
+     * @param component which describes what tab should be removed.
      */
-    private void buttonCloseMouseClicked(MouseEvent evt, Component component) {
+    private void buttonCloseMouseClicked(Component component) {
         removeTab(component);
     }
 
     /**
+     * For creating close icon for button. Icon is located at resources under name "closeFile.png". If no icon is found
+     * it will have "x".
      *
-     * @param buttonClose
+     * @param buttonClose button that will have this icon.
      */
     private void createIconsForButton(JButton buttonClose) {
         try {

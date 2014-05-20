@@ -75,7 +75,7 @@ public class NewTabController {
 
     /**
      * Return diagram places for newly created tab.
-     * @return
+     * @return diagramPlaces as DiagramPlacesManager.
      */
     public DiagramPlacesManager getDiagramPlaces() {
         return diagramPlaces;
@@ -83,7 +83,7 @@ public class NewTabController {
 
     /**
      * Sets diagram places for new tab. This is important hence the new tab will handle based on this variable.
-     * @param diagramPlaces
+     * @param diagramPlaces diagramPlaces will be set as DiagramPlacesManager.
      */
     public void setDiagramPlaces(DiagramPlacesManager diagramPlaces) {
         this.diagramPlaces = diagramPlaces;

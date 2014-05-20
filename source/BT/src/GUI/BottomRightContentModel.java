@@ -20,27 +20,28 @@ import javax.swing.JPanel;
 public class BottomRightContentModel {
 
     /**
-     *
+     * Pane shich holds every content of this class.
      */
     final private JPanel contentPane;
 
     /**
-     *
+     * Bottom button, used in useCase and class diagram for reactivating.
      */
     final private JButton bottomButton;
 
     /**
-     *
+     * Top buttton, used in useCase and class diagram for deleting inactive.
      */
     final private JButton topButton;
 
     /**
-     *
+     * Additional content panel.
      */
     private JPanel additionalContent;
 
     /**
-     *
+     * Basic constructor. It creates new contentPane, bottomButton and topButton. It inserts each content in content
+     * pane.
      */
     public BottomRightContentModel() {
         this.contentPane = new JPanel(new BorderLayout());
@@ -79,24 +80,27 @@ public class BottomRightContentModel {
     }
 
     /**
+     * Retuns panel which holds each content of this class.
      *
-     * @return
+     * @return contentPane as JPanel.
      */
     public JPanel getContentPane() {
         return contentPane;
     }
 
     /**
+     * Returns button which is located at bottom.
      *
-     * @return
+     * @return bottomButton as JButton.
      */
     public JButton getBottomButton() {
         return bottomButton;
     }
 
     /**
+     * Returns button which is located at top.
      *
-     * @return
+     * @return topButton as JButton.
      */
     public JButton getTopButton() {
         return topButton;
@@ -105,15 +109,16 @@ public class BottomRightContentModel {
     /**
      * Set adition content pane. You might want to call addAditionalContent as well.
      *
-     * @param additionalContent
+     * @param additionalContent additionalContent as JPanel.
      */
     public void setAdditionalContent(JPanel additionalContent) {
         this.additionalContent = additionalContent;
     }
 
     /**
+     * Returns additional content, which holds other settings.
      *
-     * @return
+     * @return additionalContent as JPanel.
      */
     public JPanel getAdditionalContent() {
         return additionalContent;

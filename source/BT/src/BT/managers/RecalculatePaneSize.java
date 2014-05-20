@@ -41,10 +41,10 @@ public class RecalculatePaneSize {
     }
 
     /**
-     *
-     * @param newLine
-     * @param size
-     * @return
+     * Method for racalculating pane size based on new line.
+     * @param newLine line that is being printed.
+     * @param size of pane.
+     * @return new size or old one if not changed.
      */
     public static Dimension recalculateSizeOfPaneByLine(LineModel newLine, Dimension size) {
         if (newLine.getX() > size.width) {

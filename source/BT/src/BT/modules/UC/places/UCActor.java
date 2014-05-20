@@ -51,7 +51,7 @@ public class UCActor extends CoordinateModel {
     /**
      * Method for fetchign maximum object width.
      *
-     * @return
+     * @return maximum from object width and width.
      */
     public int getMaxWidth() {
         return getMax(this.objectWidth, this.width);
@@ -60,7 +60,7 @@ public class UCActor extends CoordinateModel {
     /**
      * Method for fetchign maximum object height.
      *
-     * @return
+     * @return objectHeight.
      */
     public int getMaxHeight() {
         return this.objectHeight;

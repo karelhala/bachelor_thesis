@@ -20,15 +20,15 @@ public class PlaceModel {
      */
     protected Dimension paneSize;
     /**
-     * Arraylist that contains all actors in UC
+     * Arraylist that contains all actors in UC.
      *
-     * @var ArrayList<UCActor>
+     * ArrayList<UCActor>
      */
     protected ArrayList<CoordinateModel> objects = new ArrayList<>();
     /**
-     * Arraylist that contains all join edges in UC
+     * Arraylist that contains all join edges in UC.
      *
-     * @var MyArrayList<LineModel>
+     * MyArrayList<LineModel>
      */
     protected MyArrayList<LineModel> joinEdges = new MyArrayList<>();
 

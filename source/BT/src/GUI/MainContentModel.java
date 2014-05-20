@@ -49,80 +49,80 @@ public class MainContentModel {
         this.centerPane = new JPanel();
     }
     /**
-     * 
-     * @param panel 
+     * Method for setting left top pane.
+     * @param panel leftTopPane as JPanel.
      */
     public void setLeftTopPane(JPanel panel) {
         this.leftTopPane = panel;
     }
 
     /**
-     * 
-     * @param panel 
+     * Method for setting left bottom pane.
+     * @param panel leftBottomPane will be set as JPanel.
      */
     public void setLeftBottomPane(JPanel panel) {
         this.leftBottomPane = panel;
     }
 
     /**
-     * 
-     * @param panel 
+     * Method for setting bottom left pane.
+     * @param panel  bottomLeftPane will be set as JPanel.
      */
     public void setBottomLeftPane(JPanel panel) {
         this.bottomLeftPane = panel;
     }
 
     /**
-     * 
-     * @param panel 
+     * Method for setting bottom right pane.
+     * @param panel bottomRightPane will be set as JPanel.
      */
     public void setBottomRightPane(JPanel panel) {
         this.bottomRightPane = panel;
     }
 
     /**
-     * 
-     * @param panel 
+     * Method for setting center pane, also known as ain pane.
+     * @param panel centerPane will be set as JPanel.
      */
     public void setCenterPane(JPanel panel) {
         this.centerPane = panel;
     }
 
     /**
-     * 
-     * @return 
+     * Method for returning left top pane.
+     * @return leftTopPane as JPanel.
      */
     public JPanel getLeftTopPane() {
         return this.leftTopPane;
     }
 
     /**
-     * 
-     * @return 
+     * Method for returning left bottom pane.
+     * @return leftBottomPane as JPanel.
      */
     public JPanel getLeftBottomPane() {
         return this.leftBottomPane;
     }
 
     /**
-     * 
-     * @return 
+     * Method for returning bottom left pane.
+     * @return bottomLeftPane as JPanel.
      */
     public JPanel getBottomLeftPane() {
         return this.bottomLeftPane;
     }
 
     /**
-     * 
-     * @return 
+     * Method for returning bottom right pane.
+     * @return bottomRightPane as JPanel.
      */
     public JPanel getBottomRightPane() {
         return this.bottomRightPane;
     }
 
     /**
-     * 
-     * @return 
+     * Method for returning center pane, also known as main pane.
+     * @return centerPane as JPanel.
      */
     public JPanel getCenterPane() {
         return this.centerPane;

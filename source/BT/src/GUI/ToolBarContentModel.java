@@ -48,9 +48,9 @@ public class ToolBarContentModel {
     /**
      * Method for creating new Button with basic color to toolBar.
      *
-     * @param name
-     * @param iconName
-     * @return
+     * @param name string in button.
+     * @param iconName name of icon in resources.
+     * @return created button.
      */
     public JButton addNewButton(String name, String iconName) {
         return addNewButton(name, iconName, Color.GRAY);

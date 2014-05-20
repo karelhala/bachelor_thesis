@@ -19,29 +19,31 @@ import java.awt.Component;
 import java.awt.event.ActionListener;
 
 /**
+ * Class that holds and maintain window layout of whole application.
  *
  * @author Karel Hala
  */
 public class WindowLayoutControler {
 
     /**
-     *
+     * CloseTabbedPane with opened files.
      */
     private final CloseTabbedPane fileTab;
     /**
-     *
+     * Toolbar at top of application.
      */
     private final MyToolBar toolBar;
     /**
-     *
+     * Plus tab at end of opened files.
      */
     private final PlusTab plusTab;
     /**
-     *
+     * Listener for ading new tab.
      */
     private ActionListener addNewTabListener;
 
     /**
+     * Basic constructor. It sets toolBar, ToolBarContentControler. It creates fileTab and plusTab.
      *
      * @param toolBar
      * @param toolBarContent
@@ -54,23 +56,25 @@ public class WindowLayoutControler {
     }
 
     /**
+     * Listener to add new file button.
      *
-     * @param addNewTabListener
+     * @param addNewTabListener addNewTabListener will be set to ActionListener .
      */
     public void setAddNewTabListener(ActionListener addNewTabListener) {
         this.addNewTabListener = addNewTabListener;
     }
 
     /**
-     *
+     * Sets mouse clicked on plus action.
      */
     public void setMouseClickedOnPlusButton() {
         this.plusTab.addMouseClickedListenerToPlus(this.addNewTabListener);
     }
 
     /**
+     * Method for adding new button to toolBar.
      *
-     * @param pane
+     * @param pane Container with buttons and components.
      */
     public void addComponentsToPane(Container pane) {
         if (!(pane.getLayout() instanceof BorderLayout)) {
@@ -84,28 +88,31 @@ public class WindowLayoutControler {
     }
 
     /**
+     * Method for inserting new tab to file tabs.
      *
-     * @param UCContentModel
-     * @param UMLContentModel
-     * @param OOPNContentModel
-     * @param diagramPlaces
+     * @param UCContentModel MainContentModel of use case diagram.
+     * @param UMLContentModel MainContentModel of class diagram.
+     * @param OOPNContentModel MainContentModel of petriNets.
+     * @param diagramPlaces DiagramPlacesManager each object and it's lines.
      */
     public void addNewTab(MainContentModel UCContentModel, MainContentModel UMLContentModel, MainContentModel OOPNContentModel, DiagramPlacesManager diagramPlaces) {
         addNewTab(UCContentModel, UMLContentModel, OOPNContentModel, diagramPlaces.getFileName());
     }
 
     /**
+     * Method for removing tab, closed by button.
      *
-     * @param selectedTab
+     * @param selectedTab selected tab as Component.
      */
     public void removeTab(Component selectedTab) {
         removeTab(selectedTab, true);
     }
 
     /**
+     * Remove selected tab.
      *
-     * @param selectedTab
-     * @param closedByButton
+     * @param selectedTab tab to be removed.
+     * @param closedByButton whether or not it was closed by botton or by shortcut.
      */
     public void removeTab(Component selectedTab, Boolean closedByButton) {
         if (closedByButton && this.fileTab.getTabCount() > 1) {
@@ -121,8 +128,9 @@ public class WindowLayoutControler {
     }
 
     /**
+     * Returns selected tab.
      *
-     * @return
+     * @return selected tab as Component.
      */
     public Component getSelectedTab() {
         return this.fileTab.getSelectedComponent();

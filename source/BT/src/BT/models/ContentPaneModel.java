@@ -34,7 +34,7 @@ public class ContentPaneModel {
     /**
      * Method for returning drawingPaneModel.
      *
-     * @return
+     * @return drawingPane as DrawingPaneModel.
      */
     public DrawingPaneModel getDrawingPane() {
         return drawingPane;

@@ -92,7 +92,7 @@ abstract public class PNBottomRightModel {
     /**
      * Getter for selected method of right content Panel.
      *
-     * @return
+     * @return selectedMethod as MethodLabel.
      */
     public MethodLabel getSelectedMethod() {
         return selectedMethod;

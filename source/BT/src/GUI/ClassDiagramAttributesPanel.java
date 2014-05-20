@@ -18,50 +18,52 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 /**
+ * Class which has panel for creating new class variables and methods.
  *
  * @author Karel Hala
  */
 public class ClassDiagramAttributesPanel {
 
     /**
-     * 
+     * Content panel which holds each element of this class.
      */
     private final JPanel contentPanel;
     /**
-     * 
+     * Variable text field, which is used to describe variable's name.
      */
     private final JTextField variableName;
     /**
-     * 
+     * Tethod text field, which is used to describe method's name.
      */
     private final JTextField methodName;
     /**
-     * 
+     * Select box for choosing visibility of variable.
      */
     private final JComboBox visibilityVariable;
     /**
-     * 
+     * Select box for choosing visibility of method.
      */
     private final JComboBox visibilityMethod;
     /**
-     * 
+     * Select box fot choosing type of variable.
      */
     private final JComboBox attributeTypeVariable;
     /**
-     * 
+     * Select box fot choosing return type of method.
      */
     private final JComboBox attributeTypeMethod;
     /**
-     * 
+     * Button for confirming variable and adding it to class.
      */
     private final JButton addVariable;
     /**
-     * 
+     * Button for confirming method and adding it to class.
      */
     private final JButton addMethod;
 
     /**
-     * 
+     * Masic constructor. It creates contentPanel, variableName, methodName, visibilityVariable, visibilityMethod,
+     * attributeTypeVariable, attributeTypeMethod, addMethod, addVariable and insert each component to right position.
      */
     public ClassDiagramAttributesPanel() {
         this.contentPanel = new JPanel(new GridBagLayout());
@@ -133,72 +135,72 @@ public class ClassDiagramAttributesPanel {
     }
 
     /**
-     * 
-     * @return 
+     * Returns content panel which holds each component.
+     * @return contentPanel as JPanel.
      */
     public JPanel getContentPanel() {
         return contentPanel;
     }
 
     /**
-     * 
-     * @return 
+     * Returns variable's name.
+     * @return variableName as JTextField
      */
     public JTextField getVariableName() {
         return variableName;
     }
 
     /**
-     * 
-     * @return 
+     * Returns method's name.
+     * @return methodName as JTextField.
      */
     public JTextField getMethodName() {
         return methodName;
     }
 
     /**
-     * 
-     * @return 
+     * Returns button for adding variable.
+     * @return addVariable as JButton.
      */
     public JButton getAddVariable() {
         return addVariable;
     }
 
     /**
-     * 
-     * @return 
+     * Returns button for adding method.
+     * @return addMethod as JButton
      */
     public JButton getAddMethod() {
         return addMethod;
     }
 
     /**
-     * 
-     * @return 
+     * Returns visibility of class variable.
+     * @return visibilityVariable as JComboBox.
      */
     public JComboBox getVisibilityVariable() {
         return visibilityVariable;
     }
 
     /**
-     * 
-     * @return 
+     * Returns visibility of method.
+     * @return visibilityMethod as JComboBox.
      */
     public JComboBox getVisibilityMethod() {
         return visibilityMethod;
     }
 
     /**
-     * 
-     * @return 
+     * Returns type of variable.
+     * @return attributeTypeVariable as JComboBox.
      */
     public JComboBox getAttributeTypeVariable() {
         return attributeTypeVariable;
     }
 
     /**
-     * 
-     * @return 
+     * Returns return type of method.
+     * @return attributeTypeMethod as JComboBox.
      */
     public JComboBox getAttributeTypeMethod() {
         return attributeTypeMethod;

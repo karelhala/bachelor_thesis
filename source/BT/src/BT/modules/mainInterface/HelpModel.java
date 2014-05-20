@@ -55,7 +55,6 @@ public class HelpModel {
     
     /**
      * Basic constructor. It will create each element and insert it into panel.
-     * @param selectedTab
      */
     public HelpModel()
     {

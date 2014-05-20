@@ -12,30 +12,31 @@ import java.awt.Color;
 import javax.swing.JLabel;
 
 /**
- *
+ * Class which holds labels describing class and method. It is used in OOPN bottom left part.
+ * 
  * @author Karel Hala
  */
 public class MethodLabel extends JLabel {
 
     /**
-     *
+     * Method that is controlled by this class.
      */
     private final Method objectMethod;
 
     /**
-     *
+     * CDClass that is controlled by this class.
      */
     private final CDClass selectedClass;
 
     /**
-     *
+     * Defines if label is selected or not.
      */
     private Boolean selected;
 
     /**
-     *
-     * @param name
-     * @param objectMethod
+     * Creates label with method assigned.
+     * @param name string of label.
+     * @param objectMethod method that will be assigned.
      */
     public MethodLabel(String name, Method objectMethod) {
         super(name);
@@ -45,9 +46,9 @@ public class MethodLabel extends JLabel {
     }
 
     /**
-     *
-     * @param name
-     * @param selectedClass
+     * Creates label with class assigned.
+     * @param name string of label.
+     * @param selectedClass class that will be assigned.
      */
     public MethodLabel(String name, CDClass selectedClass) {
         super(name);
@@ -57,40 +58,40 @@ public class MethodLabel extends JLabel {
     }
 
     /**
-     * 
-     * @return 
+     * Returns assigned method.
+     * @return objectMethod as Method.
      */
     public Method getObjectMethod() {
         return objectMethod;
     }
 
     /**
-     * 
-     * @return 
+     * Returns assigned CDclass.
+     * @return selectedClass as CDClass.
      */
     public CDClass getSelectedClass() {
         return selectedClass;
     }
 
     /**
-     * 
-     * @return 
+     * informs if label is selected.
+     * @return true or false.
      */
     public Boolean isSelected() {
         return selected;
     }
 
     /**
-     * 
-     * @param selected 
+     * Select or disselect label.
+     * @param selected true or false.
      */
     public void setSelected(Boolean selected) {
         this.selected = selected;
     }
 
     /**
-     * 
-     * @param selected 
+     * Method for selecting label and changing it color.
+     * @param selected true or false.
      */
     public void selectAndChangeColor(Boolean selected) {
         setSelected(selected);
@@ -98,7 +99,7 @@ public class MethodLabel extends JLabel {
     }
 
     /**
-     *
+     * Method for drawing basic color, if selected then true, if not then black.
      */
     public void setBasicColor() {
         if (this.selected) {

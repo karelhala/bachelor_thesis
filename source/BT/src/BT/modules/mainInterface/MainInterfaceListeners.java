@@ -19,7 +19,8 @@ import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
- *
+ * Class that maintain listeners to main interface.
+ * 
  * @author Karel Hala
  */
 public class MainInterfaceListeners {
@@ -114,7 +115,7 @@ public class MainInterfaceListeners {
     /**
      * Method for handeling clicking on open button.
      *
-     * @return
+     * @return openedFile as DiagramPlacesManager.
      */
     public DiagramPlacesManager clickedOnOpen() {
         DiagramPlacesManager openedFile = null;
