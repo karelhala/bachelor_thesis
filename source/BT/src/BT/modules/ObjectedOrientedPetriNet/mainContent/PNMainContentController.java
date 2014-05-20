@@ -142,7 +142,6 @@ public class PNMainContentController extends PNMainContentInitializer implements
             this.places.setAllObjectDiselected();
             PNTransition newTrasition = new PNTransition(evt.getX(), evt.getY());
             newTrasition.setName("");
-            newTrasition.setAssignedObject(this.selectedClass);
             this.bottomRightModel.showAllItems(true);
             this.places.addObject(newTrasition);
         } else {
