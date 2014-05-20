@@ -51,8 +51,12 @@ public class MainInterfaceListeners {
             if (selectedDiagrams.getAbsolutePath() == null) {
                 selectedDiagrams = loadSaveDialog(selectedDiagrams);
             }
-            saveDiagrams(selectedDiagrams);
-            return selectedDiagrams.getFileName();
+            if (selectedDiagrams != null)
+            {
+                saveDiagrams(selectedDiagrams);
+                return selectedDiagrams.getFileName();
+            }
+            return null;
         } else {
             JOptionPane.showMessageDialog(null, "No file to save.");
             return null;

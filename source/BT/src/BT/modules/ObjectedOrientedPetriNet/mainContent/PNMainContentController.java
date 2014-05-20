@@ -118,6 +118,10 @@ public class PNMainContentController extends PNMainContentInitializer implements
                         }
                     }
                 }
+                else if (additionalVariable.getText().equals(""))
+                {
+                    clickedLine.setAdditionalVariable(null);
+                }
             }
         }
         ((PNDrawingPane) this.mainContent.getDrawingPane()).getDrawing().repaint();

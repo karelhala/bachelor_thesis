@@ -107,7 +107,7 @@ public class MainInterfaceControler {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 String fileName = mainInterfaceListeners.clickedOnSave(myLayout.getFileTab().getSelectedIndex());
-                if (myLayout.getFileTab().getSelectedIndex() != -1) {
+                if (fileName != null && myLayout.getFileTab().getSelectedIndex() != -1) {
                     Component tabComponent = myLayout.getFileTab().getTabComponentAt(myLayout.getFileTab().getSelectedIndex());
                     if (tabComponent instanceof JPanel) {
                         JPanel tabPanel = (JPanel) tabComponent;
