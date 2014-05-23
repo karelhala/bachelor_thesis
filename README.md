@@ -5,9 +5,9 @@ name: Nástroj pro podporu vývoje softwarových systémů
 
 author: Karel Hala
 
-link to latest binary version (15.5.2014): https://dl.dropboxusercontent.com/u/42535875/bachelorThesisBinary.zip
+link to latest binary version (23.5.2014): https://dl.dropboxusercontent.com/u/42535875/bachelorThesisBinary.zip
 
-link to latest source version (15.5.2014): https://dl.dropboxusercontent.com/u/42535875/bachelorThesisSources.zip
+link to latest source version (23.5.2014): https://dl.dropboxusercontent.com/u/42535875/bachelorThesisSources.zip
 
 Default option for ant is compile and run, so you can run command ant and program will run.
 
