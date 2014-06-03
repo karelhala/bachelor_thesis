@@ -1,0 +1,386 @@
+<BT.managers.DiagramPlacesManager>
+  <absolutePath>C:\Users\Karel\Desktop\bachelor_thesis\finalVersion\examples\classDiagramExampel.xml</absolutePath>
+  <fileName>classDiagramExampel</fileName>
+  <diagramNumber>0</diagramNumber>
+  <ucPlaces>
+    <paneSize>
+      <width>500</width>
+      <height>800</height>
+    </paneSize>
+    <objects/>
+    <joinEdges serialization="custom">
+      <unserializable-parents/>
+      <list>
+        <default>
+          <size>0</size>
+        </default>
+        <int>0</int>
+      </list>
+    </joinEdges>
+  </ucPlaces>
+  <cdPlaces>
+    <paneSize>
+      <width>965</width>
+      <height>443</height>
+    </paneSize>
+    <objects>
+      <BT.modules.ClassDiagram.places.CDClass>
+        <dashedStroke>
+          <width>2.0</width>
+          <join>0</join>
+          <cap>0</cap>
+          <miterlimit>10.0</miterlimit>
+          <dash>
+            <float>10.0</float>
+          </dash>
+          <dash__phase>0.0</dash__phase>
+        </dashedStroke>
+        <objectWidth>0</objectWidth>
+        <objectHeight>0</objectHeight>
+        <x>97</x>
+        <y>80</y>
+        <name>parent</name>
+        <basicColor>
+          <red>0</red>
+          <green>0</green>
+          <blue>0</blue>
+          <alpha>255</alpha>
+        </basicColor>
+        <color reference="../basicColor"/>
+        <selectedColor>
+          <red>255</red>
+          <green>0</green>
+          <blue>0</blue>
+          <alpha>255</alpha>
+        </selectedColor>
+        <width>56</width>
+        <height>28</height>
+        <selected>false</selected>
+        <howerColor>
+          <red>0</red>
+          <green>255</green>
+          <blue>0</blue>
+          <alpha>255</alpha>
+        </howerColor>
+        <inJoins serialization="custom">
+          <unserializable-parents/>
+          <list>
+            <default>
+              <size>1</size>
+            </default>
+            <int>1</int>
+            <BT.modules.ClassDiagram.places.joinEdge.CDJoinEdgeController>
+              <dashedStroke>
+                <width>2.0</width>
+                <join>0</join>
+                <cap>0</cap>
+                <miterlimit>10.0</miterlimit>
+                <dash>
+                  <float>10.0</float>
+                </dash>
+                <dash__phase>0.0</dash__phase>
+              </dashedStroke>
+              <objectWidth>0</objectWidth>
+              <objectHeight>0</objectHeight>
+              <x>0</x>
+              <y>0</y>
+              <basicColor reference="../../../../basicColor"/>
+              <color reference="../../../../basicColor"/>
+              <selectedColor reference="../../../../selectedColor"/>
+              <width>0</width>
+              <height>0</height>
+              <selected>false</selected>
+              <howerColor>
+                <red>255</red>
+                <green>200</green>
+                <blue>0</blue>
+                <alpha>255</alpha>
+              </howerColor>
+              <assignedObject class="BT.modules.ClassDiagram.places.joinEdge.CDJoinEdgeController" reference=".."/>
+              <textSize>0</textSize>
+              <editable>true</editable>
+              <removable>true</removable>
+              <firstObject class="BT.modules.ClassDiagram.places.CDClass">
+                <dashedStroke>
+                  <width>2.0</width>
+                  <join>0</join>
+                  <cap>0</cap>
+                  <miterlimit>10.0</miterlimit>
+                  <dash>
+                    <float>10.0</float>
+                  </dash>
+                  <dash__phase>0.0</dash__phase>
+                </dashedStroke>
+                <objectWidth>0</objectWidth>
+                <objectHeight>0</objectHeight>
+                <x>104</x>
+                <y>302</y>
+                <name>child</name>
+                <basicColor reference="../../../../../basicColor"/>
+                <color reference="../../../../../basicColor"/>
+                <selectedColor reference="../../../../../selectedColor"/>
+                <width>44</width>
+                <height>28</height>
+                <selected>false</selected>
+                <howerColor reference="../../../../../howerColor"/>
+                <inJoins serialization="custom">
+                  <unserializable-parents/>
+                  <list>
+                    <default>
+                      <size>1</size>
+                    </default>
+                    <int>1</int>
+                    <BT.modules.ClassDiagram.places.joinEdge.CDJoinEdgeController>
+                      <dashedStroke>
+                        <width>2.0</width>
+                        <join>0</join>
+                        <cap>0</cap>
+                        <miterlimit>10.0</miterlimit>
+                        <dash>
+                          <float>10.0</float>
+                        </dash>
+                        <dash__phase>0.0</dash__phase>
+                      </dashedStroke>
+                      <objectWidth>0</objectWidth>
+                      <objectHeight>0</objectHeight>
+                      <x>0</x>
+                      <y>0</y>
+                      <basicColor reference="../../../../../../../../basicColor"/>
+                      <color reference="../../../../../../../../basicColor"/>
+                      <selectedColor reference="../../../../../../../../selectedColor"/>
+                      <width>0</width>
+                      <height>0</height>
+                      <selected>true</selected>
+                      <howerColor reference="../../../../../howerColor"/>
+                      <assignedObject class="BT.modules.ClassDiagram.places.joinEdge.CDJoinEdgeController" reference=".."/>
+                      <textSize>0</textSize>
+                      <editable>true</editable>
+                      <removable>true</removable>
+                      <firstObject class="BT.modules.ClassDiagram.places.CDClass">
+                        <dashedStroke>
+                          <width>2.0</width>
+                          <join>0</join>
+                          <cap>0</cap>
+                          <miterlimit>10.0</miterlimit>
+                          <dash>
+                            <float>10.0</float>
+                          </dash>
+                          <dash__phase>0.0</dash__phase>
+                        </dashedStroke>
+                        <objectWidth>0</objectWidth>
+                        <objectHeight>0</objectHeight>
+                        <x>389</x>
+                        <y>298</y>
+                        <name>polygon</name>
+                        <basicColor reference="../../../../../../../../../basicColor"/>
+                        <color reference="../../../../../../../../../basicColor"/>
+                        <selectedColor reference="../../../../../../../../../selectedColor"/>
+                        <width>66</width>
+                        <height>28</height>
+                        <selected>true</selected>
+                        <howerColor reference="../../../../../../../../../howerColor"/>
+                        <inJoins serialization="custom">
+                          <unserializable-parents/>
+                          <list>
+                            <default>
+                              <size>0</size>
+                            </default>
+                            <int>0</int>
+                          </list>
+                        </inJoins>
+                        <outJoins serialization="custom">
+                          <unserializable-parents/>
+                          <list>
+                            <default>
+                              <size>1</size>
+                            </default>
+                            <int>1</int>
+                            <BT.modules.ClassDiagram.places.joinEdge.CDJoinEdgeController reference="../../../.."/>
+                          </list>
+                        </outJoins>
+                        <assignedObject class="BT.modules.ClassDiagram.places.CDClass" reference=".."/>
+                        <textSize>15</textSize>
+                        <editable>true</editable>
+                        <removable>true</removable>
+                        <background>
+                          <red>240</red>
+                          <green>209</green>
+                          <blue>136</blue>
+                          <alpha>255</alpha>
+                        </background>
+                        <variables/>
+                        <methods/>
+                        <typeOfClass>NONE</typeOfClass>
+                        <pnNetwork>
+                          <paneSize>
+                            <width>500</width>
+                            <height>800</height>
+                          </paneSize>
+                          <objects/>
+                          <joinEdges serialization="custom">
+                            <unserializable-parents/>
+                            <list>
+                              <default>
+                                <size>0</size>
+                              </default>
+                              <int>0</int>
+                            </list>
+                          </joinEdges>
+                          <assignedClass reference="../.."/>
+                        </pnNetwork>
+                      </firstObject>
+                      <secondObject class="BT.modules.ClassDiagram.places.CDClass" reference="../../../.."/>
+                      <distanceCalculator>
+                        <objectHeight>0</objectHeight>
+                        <objectWidth>0</objectWidth>
+                      </distanceCalculator>
+                      <breakPoints serialization="custom">
+                        <unserializable-parents/>
+                        <list>
+                          <default>
+                            <size>0</size>
+                          </default>
+                          <int>0</int>
+                        </list>
+                      </breakPoints>
+                      <startX>356</startX>
+                      <startY>298</startY>
+                      <endX>126</endX>
+                      <endY>302</endY>
+                      <noParentLine>
+                        <red>128</red>
+                        <green>128</green>
+                        <blue>128</blue>
+                        <alpha>255</alpha>
+                      </noParentLine>
+                      <tolerance>8.0</tolerance>
+                      <joinEdgeType>COMPOSITION</joinEdgeType>
+                    </BT.modules.ClassDiagram.places.joinEdge.CDJoinEdgeController>
+                  </list>
+                </inJoins>
+                <outJoins serialization="custom">
+                  <unserializable-parents/>
+                  <list>
+                    <default>
+                      <size>1</size>
+                    </default>
+                    <int>1</int>
+                    <BT.modules.ClassDiagram.places.joinEdge.CDJoinEdgeController reference="../../../.."/>
+                  </list>
+                </outJoins>
+                <assignedObject class="BT.modules.ClassDiagram.places.CDClass" reference=".."/>
+                <textSize>15</textSize>
+                <editable>true</editable>
+                <removable>true</removable>
+                <background>
+                  <red>240</red>
+                  <green>209</green>
+                  <blue>136</blue>
+                  <alpha>255</alpha>
+                </background>
+                <variables/>
+                <methods/>
+                <typeOfClass>NONE</typeOfClass>
+                <pnNetwork>
+                  <paneSize>
+                    <width>500</width>
+                    <height>800</height>
+                  </paneSize>
+                  <objects/>
+                  <joinEdges serialization="custom">
+                    <unserializable-parents/>
+                    <list>
+                      <default>
+                        <size>0</size>
+                      </default>
+                      <int>0</int>
+                    </list>
+                  </joinEdges>
+                  <assignedClass reference="../.."/>
+                </pnNetwork>
+              </firstObject>
+              <secondObject class="BT.modules.ClassDiagram.places.CDClass" reference="../../../.."/>
+              <distanceCalculator>
+                <objectHeight>0</objectHeight>
+                <objectWidth>0</objectWidth>
+              </distanceCalculator>
+              <breakPoints serialization="custom">
+                <unserializable-parents/>
+                <list>
+                  <default>
+                    <size>0</size>
+                  </default>
+                  <int>0</int>
+                </list>
+              </breakPoints>
+              <startX>104</startX>
+              <startY>288</startY>
+              <endX>97</endX>
+              <endY>94</endY>
+              <noParentLine reference="../firstObject/inJoins/list/BT.modules.ClassDiagram.places.joinEdge.CDJoinEdgeController/noParentLine"/>
+              <tolerance>8.0</tolerance>
+              <joinEdgeType>GENERALIZATION</joinEdgeType>
+            </BT.modules.ClassDiagram.places.joinEdge.CDJoinEdgeController>
+          </list>
+        </inJoins>
+        <outJoins serialization="custom">
+          <unserializable-parents/>
+          <list>
+            <default>
+              <size>0</size>
+            </default>
+            <int>0</int>
+          </list>
+        </outJoins>
+        <assignedObject class="BT.modules.ClassDiagram.places.CDClass" reference=".."/>
+        <textSize>15</textSize>
+        <editable>true</editable>
+        <removable>true</removable>
+        <background>
+          <red>240</red>
+          <green>209</green>
+          <blue>136</blue>
+          <alpha>255</alpha>
+        </background>
+        <variables/>
+        <methods/>
+        <typeOfClass>NONE</typeOfClass>
+        <pnNetwork>
+          <paneSize>
+            <width>500</width>
+            <height>800</height>
+          </paneSize>
+          <objects/>
+          <joinEdges serialization="custom">
+            <unserializable-parents/>
+            <list>
+              <default>
+                <size>0</size>
+              </default>
+              <int>0</int>
+            </list>
+          </joinEdges>
+          <assignedClass reference="../.."/>
+        </pnNetwork>
+      </BT.modules.ClassDiagram.places.CDClass>
+      <BT.modules.ClassDiagram.places.CDClass reference="../BT.modules.ClassDiagram.places.CDClass/inJoins/list/BT.modules.ClassDiagram.places.joinEdge.CDJoinEdgeController/firstObject/inJoins/list/BT.modules.ClassDiagram.places.joinEdge.CDJoinEdgeController/firstObject"/>
+      <BT.modules.ClassDiagram.places.CDClass reference="../BT.modules.ClassDiagram.places.CDClass/inJoins/list/BT.modules.ClassDiagram.places.joinEdge.CDJoinEdgeController/firstObject"/>
+    </objects>
+    <joinEdges serialization="custom">
+      <unserializable-parents/>
+      <list>
+        <default>
+          <size>2</size>
+        </default>
+        <int>2</int>
+        <BT.modules.ClassDiagram.places.joinEdge.CDJoinEdgeController reference="../../../objects/BT.modules.ClassDiagram.places.CDClass/inJoins/list/BT.modules.ClassDiagram.places.joinEdge.CDJoinEdgeController"/>
+        <BT.modules.ClassDiagram.places.joinEdge.CDJoinEdgeController reference="../../../objects/BT.modules.ClassDiagram.places.CDClass/inJoins/list/BT.modules.ClassDiagram.places.joinEdge.CDJoinEdgeController/firstObject/inJoins/list/BT.modules.ClassDiagram.places.joinEdge.CDJoinEdgeController"/>
+      </list>
+    </joinEdges>
+  </cdPlaces>
+  <pnPlaces>
+    <BT.modules.ObjectedOrientedPetriNet.PetriNetPlaceManager reference="../../cdPlaces/objects/BT.modules.ClassDiagram.places.CDClass/pnNetwork"/>
+    <BT.modules.ObjectedOrientedPetriNet.PetriNetPlaceManager reference="../../cdPlaces/objects/BT.modules.ClassDiagram.places.CDClass/inJoins/list/BT.modules.ClassDiagram.places.joinEdge.CDJoinEdgeController/firstObject/inJoins/list/BT.modules.ClassDiagram.places.joinEdge.CDJoinEdgeController/firstObject/pnNetwork"/>
+    <BT.modules.ObjectedOrientedPetriNet.PetriNetPlaceManager reference="../../cdPlaces/objects/BT.modules.ClassDiagram.places.CDClass/inJoins/list/BT.modules.ClassDiagram.places.joinEdge.CDJoinEdgeController/firstObject/pnNetwork"/>
+  </pnPlaces>
+</BT.managers.DiagramPlacesManager>

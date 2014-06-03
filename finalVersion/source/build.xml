@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="bachelorsThesis" default="go" basedir=".">
+	<!-- nastaveni cest k jednotlivym adresarum -->
+    <property name="srcdir" location="./src" />
+    <property name="bindir" location="./build" />
+    <property name="deploydir" location="./deploy" />
+	<property name="jarname" value="bachelorsThesis.jar" />
+    <property name="mainclass" value="BT.BT" />
+    <property name="libdir" value="./lib"/>
+	<property name="doc"     value="./doc"/>
+  
+   	<path id="classpath">
+        <fileset dir="${libdir}" includes="**/*.jar"/>
+    </path>
+    
+    <target name="clean">
+        <delete dir="${bindir}"/>
+    </target>
+
+	<!-- compile -->
+    <target name="compile" depends="clean, check-libs, getLibs, copyLibAndSource">
+		
+		<manifestclasspath property="jar.classpath" jarfile="${jarname}">
+            <classpath>
+                <fileset dir="${libdir}" includes="*.jar"/>
+            </classpath>
+        </manifestclasspath>
+		
+		<!-- vytvoreni adresare s binarnimi soubory -->
+        <mkdir dir="${bindir}"/>        
+        <javac includeantruntime="false" srcdir="${srcdir}" destdir="${bindir}">
+			<classpath>
+				<fileset dir="${libdir}">
+					<include name="**/*.jar" />
+				</fileset>
+			</classpath>
+		</javac>
+        
+        <!-- vytvoreni slozky a build -->
+        <jar destfile="${deploydir}/${jarname}">
+            <fileset dir="${bindir}"/>
+            <manifest>
+                <attribute name="Main-Class" value="${mainclass}"/> <!-- cesta k hlavni tride -->
+                <attribute name="Class-Path" value="${jar.classpath}" />
+            </manifest>
+        </jar>
+    </target>
+   
+   <!-- vytvoreni dokumentace z komentaru -->
+	<target name="doc" depends="compile">
+		<javadoc sourcepath="${srcdir}" destdir="${doc}">
+		</javadoc>
+	</target>
+	
+	<!-- kopirovani resources a obsahu lib slozky -->
+	<target name="copyLibAndSource">
+		<mkdir dir="${bindir}/resources"/>	
+		<copy todir="${bindir}/resources">  
+			<fileset dir="${srcdir}/resources">  
+				<include name="*.*"/>
+			</fileset>  
+		</copy>
+		<mkdir dir="${bindir}/resources/help"/>
+		<copy todir="${bindir}/resources/help/">  
+			<fileset dir="${srcdir}/resources/help/">  
+				<include name="*.*"/>
+			</fileset>  
+		</copy>
+		
+		<mkdir dir="${deploydir}/lib/"/>	
+		<copy todir="${deploydir}/lib/">  
+			<fileset dir="${libdir}">  
+				<include name="*.jar"/>
+			</fileset>  
+		</copy>
+	</target>
+	
+	<!-- pojdme spustit clienta -->
+	<target name="run">
+        <java jar="${deploydir}/${jarname}" fork="true"/>
+    <!-- konec spousteni clienta -->
+	</target>
+	
+	<!-- nastaveni zda existuji soubory -->
+	<target name="check-libs">
+		<available file="${libdir}/" property="libFound"/>
+		<available file="${libdir}/xstream-1.4.7.jar" property="xstreamFound"/>
+		<available file="${libdir}/epsgraphics-1.4.jar" property="epsFound"/>
+	</target>
+	
+	<!-- volani stahnuti jednotlivych knihoven -->
+	<target name="getLibs">
+		<mkdir dir="${libdir}/"/>
+		<antcall target="downloadXstream"></antcall>
+		<antcall target="downloadEps"></antcall>
+	</target>
+	
+	<!-- volani stahnuti xtream knihovny -->
+	<target name="downloadXstream" unless="xstreamFound">
+		<get 
+		   src="https://nexus.codehaus.org/content/repositories/releases/com/thoughtworks/xstream/xstream/1.4.7/xstream-1.4.7.jar" 
+		   dest="${libdir}">
+		</get>
+	</target>
+	
+	<!-- volani stahnuti eps knihovny -->
+	<target name="downloadEps" unless="epsFound">
+		<get 
+		   src="https://dl.dropboxusercontent.com/u/42535875/epsgraphics-1.4.jar" 
+		   dest="${libdir}">
+		</get>
+	</target>
+	
+	<!-- zakladni volani, compile a run -->
+	<target name="go" depends="compile, run"/>
+</project>

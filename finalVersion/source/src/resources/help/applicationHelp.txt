@@ -1,0 +1,76 @@
+This help will guide you trough basic settings and usefull information about this tool.
+
+Main menu:
+	At the top of this application you have main menu with creating new project, opening file, exporting and other stuff.
+	New file - create new project file.
+	Save File - save focused file.
+	Save File as - save focused file as...
+	Open File - for opening files made in this application.
+	Close File - close focused file
+	Exit - terminate tool and exit applications.
+	
+	Export to EPS - exports focused file to postScript format.
+	Export to XML - not implemented yet.
+	Export to PDF - not implemented yet.
+
+	Help will show different guides about different part of this tool.
+
+Toolbar: 
+	here you can click on each button and action will be done
+	New file - create new project file.
+	Save File - save focused file.
+	Save File as - save focused file as...
+	Open File - for opening files made in this application.
+	Close File - close focused file
+	Exit - terminate tool and exit applications.
+	
+	Export to EPS - exports focused file to postScript format.
+
+	Help will show different guides about different part of this tool.
+
+====== TABS GUIDE ======
+
+Plus botton near opened projects will create new project.
+
+Close button at each project tab will close tab and project of this tab.
+
+Each project has three tabs. In these tabs you can create and edit:
+	use case diagram in UseCase tab
+	class diagram in ClassDiagram tab
+	Objected oriented Petri nets in OOPetriNets tab.
+
+====== OBJECT INFROMATION ======	
+
+Center part of tool (white area) will show current diagram, objects and their connections.
+	Hover over object and it will be higlighted.
+	Click on object and you will get additional information about object.
+	Double click on object to edit it.
+	Presss, hold and move with object to relocate it on drawing panel.
+	When connecting two objects, right click for break poiont.
+	Click, press and dragg line to unsnap it and release it on empty place to delete this line. (dispatch)
+	To change second object of line dispatch it and reatach it to different object.
+	If you want to change type of line, select type and dispatch it from object.
+
+====== WINDOW INFORMATION ======
+
+Left part of each object containt buttons for selecting what object should be added to pane (top par of left panel). Select object and click to white pane. If you want to connect objects on pane, select type of join edge (bottom part of left panel).
+
+Bottom part of this tool will show additional actins that can be done.
+
+
+====== SHORTCUTS ======
+
+CTRL+T will create new project.
+CTRL+W will close selected project.
+CTRL+N will create new project.
+CTRL+O will open saved project.
+CTRL+S will save selected project.
+CTRL+X will close selected project.
+ALT+E will export to EPS.
+F1 will bring help.
+
+DELETE remove selected object (there is no way back)
+
+ESC will diselect objects, unclick any button and stop connecting objects.
+
+Right mouse button for adding break points when two objects of diagrams are joined together.

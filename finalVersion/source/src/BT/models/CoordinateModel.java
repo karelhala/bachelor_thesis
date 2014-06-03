@@ -488,5 +488,4 @@ public class CoordinateModel {
     protected String parentToString() {
         return super.toString();
     }
-    
 }
